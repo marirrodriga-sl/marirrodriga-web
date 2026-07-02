@@ -1261,6 +1261,42 @@
       .hero-title { font-size: clamp(30px, 9vw, 44px); }
       .sw-modal-name { font-size: 19px; }
     }
+
+    /* ─── CHATBOT DEMO ──────────────────────────────── */
+    .tg-header{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--border);background:var(--purple-tint2)}
+    .tg-avatar{width:36px;height:36px;border-radius:50%;background:var(--purple);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}
+    .tg-info{flex:1}
+    .tg-name{font-size:13px;font-weight:600;color:var(--text-1)}
+    .tg-check{color:var(--purple);margin-left:4px}
+    .tg-status{font-size:11px;color:var(--text-3)}
+    .tg-messages{max-height:200px;overflow-y:auto;padding:12px 16px;display:flex;flex-direction:column;gap:8px}
+    .tg-bubble{max-width:75%;padding:8px 12px;border-radius:14px;font-size:13px;line-height:1.5;position:relative}
+    .tg-bubble--bot{background:var(--purple-tint);color:var(--text-1);border-bottom-left-radius:4px;align-self:flex-start}
+    .tg-bubble--user{background:var(--purple);color:#fff;border-bottom-right-radius:4px;align-self:flex-end}
+    .tg-time{font-size:10px;opacity:.5;margin-left:6px;display:inline-block}
+    .tg-typing{padding:8px 16px;display:flex;gap:4px;align-items:center}
+    .tg-typing span{width:6px;height:6px;border-radius:50%;background:var(--purple-pale);animation:tgdot 1.2s infinite}
+    .tg-typing span:nth-child(2){animation-delay:.2s}
+    .tg-typing span:nth-child(3){animation-delay:.4s}
+    @keyframes tgdot{0%,80%,100%{transform:scale(0.8);opacity:.4}40%{transform:scale(1.2);opacity:1}}
+    .tg-quick{display:flex;flex-wrap:wrap;gap:6px;padding:8px 16px}
+    .tg-quick-btn{font-size:11px;padding:5px 10px;border-radius:20px;border:1px solid var(--purple-pale);background:var(--purple-tint);color:var(--purple);cursor:pointer;font-family:var(--font-body)}
+    .tg-quick-btn:hover{background:var(--purple);color:#fff}
+    .tg-input-row{display:flex;gap:8px;padding:10px 16px;border-top:1px solid var(--border)}
+    .tg-input{flex:1;padding:8px 12px;border:1px solid var(--border);border-radius:20px;font-size:13px;font-family:var(--font-body);outline:none}
+    .tg-input:focus{border-color:var(--purple-pale)}
+    .tg-send{width:36px;height:36px;border-radius:50%;background:var(--purple);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center}
+
+    /* ─── INVOICE SIMULATOR ─────────────────────────── */
+    .inv-desc{font-size:12px;color:var(--text-2);margin-bottom:10px;display:flex;align-items:flex-start;gap:6px}
+    .inv-examples{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-bottom:10px}
+    .inv-ex-btn{font-size:11px;padding:4px 10px;border-radius:20px;border:1px solid var(--purple-pale);background:var(--purple-tint);color:var(--purple);cursor:pointer;font-family:var(--font-body)}
+    .inv-ex-btn:hover{background:var(--purple);color:#fff}
+    .inv-textarea{width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:8px;font-size:13px;font-family:var(--font-body);resize:vertical;outline:none}
+    .inv-textarea:focus{border-color:var(--purple-pale)}
+    .inv-frame{width:100%;height:340px;border:1px solid var(--border);border-radius:8px;margin-top:12px}
+    .inv-reset{display:block;margin:8px auto 0;font-size:12px;color:var(--text-3);background:none;border:none;cursor:pointer;text-decoration:underline}
+
   </style>
 </head>
 <body>
@@ -1600,15 +1636,38 @@
               </div>
               <div>
                 <div class="panel-label">🚀 Agente en acción</div>
-                <div class="demo-wrap chat" id="demo-1">
-                  <div class="demo-chat-head d-step">💬 Agente conversacional · respuesta automática · 24/7</div>
-                  <div class="demo-msg demo-msg--user d-step">¿Cuánto vale una limpieza dental?</div>
-                  <div class="demo-msg demo-msg--bot d-step">Básica 45 € · Completa 65 €. ¿Cuándo te va bien?</div>
-                  <div class="demo-msg demo-msg--user d-step">¿Hay hueco mañana por la tarde?</div>
-                  <div class="demo-msg demo-msg--bot d-step">Tengo 17:00, 18:30 o 19:00. ¿Cuál te va?</div>
-                  <div class="demo-msg demo-msg--user d-step">18:30 perfecto</div>
-                  <div class="demo-msg demo-msg--bot d-step">✅ Cita reservada para mañana a las 18:30. ¡Hasta entonces!</div>
-                </div>
+                <div class="demo-wrap" id="demo-1">
+  <!-- HEADER -->
+  <div class="tg-header">
+    <div class="tg-avatar">MR</div>
+    <div class="tg-info">
+      <div class="tg-name">Agente_Marirrodriga_IA <span class="tg-check">✓</span></div>
+      <div class="tg-status">bot · en línea</div>
+    </div>
+  </div>
+  <!-- MESSAGES -->
+  <div class="tg-messages" id="tg-msgs">
+    <div class="tg-bubble tg-bubble--bot">👋 ¡Hola! Soy Mari Robot, el agente de demostración de Marirrodriga I.A.<span class="tg-time" id="tg-time-init"></span></div>
+    <div class="tg-bubble tg-bubble--bot">Ponme a prueba: pregunta lo que quieras sobre automatización.<span class="tg-time"></span></div>
+  </div>
+  <!-- TYPING -->
+  <div class="tg-typing" id="tg-typing" style="display:none">
+    <span></span><span></span><span></span>
+  </div>
+  <!-- QUICK -->
+  <div class="tg-quick">
+    <button class="tg-quick-btn" onclick="tgSend('¿Cuándo hay disponibilidad?')">¿Cuándo hay disponibilidad?</button>
+    <button class="tg-quick-btn" onclick="tgSend('Quiero agendar una demo')">Quiero agendar una demo</button>
+    <button class="tg-quick-btn" onclick="tgSend('¿Qué puedes hacer?')">¿Qué puedes hacer?</button>
+  </div>
+  <!-- INPUT -->
+  <div class="tg-input-row">
+    <input class="tg-input" id="tg-input" placeholder="Mensaje…" onkeydown="if(event.key==='Enter')tgSend()">
+    <button class="tg-send" onclick="tgSend()">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+    </button>
+  </div>
+</div>
                 <button class="sc-cart-btn-panel" id="cart-panel-1" onclick="toggleCart(event,1,'Chat &amp; Voz','Asistentes Conversacionales')" style="margin-top:16px;">+ Añadir al presupuesto</button>
               </div>
             </div>
@@ -1646,19 +1705,19 @@
               <div>
                 <div class="panel-label">🚀 Del mensaje a la factura</div>
                 <div class="demo-wrap" id="demo-2">
-                  <div class="d-step"><div class="demo-notif"><span class="demo-notif-icon">📱</span><span>Mensaje recibido: <em>"Instalación fontanería, 150€ + IVA, Sr. García"</em></span></div></div>
-                  <div class="d-step"><div class="demo-arrow">↓ IA procesando…</div></div>
-                  <div class="d-step">
-                    <div class="demo-invoice">
-                      <div class="demo-invoice-head">FACTURA #2024-087</div>
-                      <div class="demo-invoice-line"><span>Instalación fontanería</span><span>150,00 €</span></div>
-                      <div class="demo-invoice-line"><span>IVA 21%</span><span>31,50 €</span></div>
-                      <div class="demo-invoice-total"><span>TOTAL</span><span>181,50 €</span></div>
-                      <div class="demo-invoice-stamp">✓ PAGADO · VERIFACTU</div>
-                    </div>
-                  </div>
-                  <div class="d-step"><div class="demo-notif"><span class="demo-notif-icon">✅</span><span>PDF generado · 📧 Enviado al cliente · 📑 Registrado en Sheets</span></div></div>
-                </div>
+  <p class="inv-desc">✨ Escribe en lenguaje natural qué servicio has prestado, a quién y por cuánto. La IA rellenará la plantilla al instante.</p>
+  <div class="inv-examples">
+    <span style="font-size:11px;color:var(--text-3)">O prueba con:</span>
+    <button class="inv-ex-btn" onclick="invSetEx(0)">Fisioterapia exenta</button>
+    <button class="inv-ex-btn" onclick="invSetEx(1)">Autónomo IRPF 7%</button>
+    <button class="inv-ex-btn" onclick="invSetEx(2)">Consultoría</button>
+  </div>
+  <textarea class="inv-textarea" id="inv-input" rows="3" placeholder="Ej: Consultoría de marketing a Maderas Paco por 500€"></textarea>
+  <div style="text-align:right;margin-top:8px">
+    <button class="sc-expand-btn" id="inv-btn" onclick="invGenerate()" style="background:var(--purple);color:#fff;border:none;padding:10px 20px;border-radius:8px;font-size:13px;cursor:pointer">✨ Generar con IA</button>
+  </div>
+  <div id="inv-result"></div>
+</div>
                 <button class="sc-cart-btn-panel" id="cart-panel-2" onclick="toggleCart(event,2,'Gestión rápida','Generación Automática de Facturas')" style="margin-top:16px;">+ Añadir al presupuesto</button>
               </div>
             </div>
@@ -1696,18 +1755,16 @@
               <div>
                 <div class="panel-label">🚀 Documento procesado en tiempo real</div>
                 <div class="demo-wrap" id="demo-3">
-                  <div class="d-step"><div class="demo-notif"><span class="demo-notif-icon">📥</span><span>Nuevo email: "Factura proveedor adjunta"</span></div></div>
-                  <div class="d-step"><div class="demo-notif"><span class="demo-notif-icon">🔍</span><span>IA analizando adjunto PDF…</span></div></div>
-                  <div class="d-step">
-                    <div class="demo-doc-result">
-                      <div>Tipo: <strong>Factura de proveedor</strong></div>
-                      <div>Importe: <strong>3.200 €</strong></div>
-                      <div>Vencimiento: <strong>30 jul 2025</strong></div>
-                    </div>
-                  </div>
-                  <div class="d-step"><div class="demo-notif"><span class="demo-notif-icon">📁</span><span>Archivado en Drive → Facturas/2025/Julio</span></div></div>
-                  <div class="d-step"><div class="demo-notif"><span class="demo-notif-icon">✅</span><span>Sheets actualizado · CRM registrado · Gestoría notificada</span></div></div>
-                </div>
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+    <span style="font-size:12px;color:var(--text-3)">Pega un email o documento:</span>
+    <button class="inv-ex-btn" onclick="docLoadExample()">Cargar email de ejemplo</button>
+  </div>
+  <textarea class="inv-textarea" id="doc-input" rows="4" placeholder="Pega el contenido del email o PDF aquí…"></textarea>
+  <div style="text-align:right;margin-top:8px">
+    <button id="doc-btn" onclick="docAnalyze()" style="background:var(--purple);color:#fff;border:none;padding:10px 20px;border-radius:8px;font-size:13px;cursor:pointer;font-family:var(--font-body)">👁 Analizar</button>
+  </div>
+  <div id="doc-result"></div>
+</div>
                 <button class="sc-cart-btn-panel" id="cart-panel-3" onclick="toggleCart(event,3,'Orden inteligente','Gestión Documental y Correos')" style="margin-top:16px;">+ Añadir al presupuesto</button>
               </div>
             </div>
@@ -1745,17 +1802,36 @@
               <div>
                 <div class="panel-label">🚀 Lead analizado al instante</div>
                 <div class="demo-wrap" id="demo-4">
-                  <div class="d-step"><div class="demo-notif"><span class="demo-notif-icon">🔔</span><span>Nuevo lead: Clínica Dental Ríos · Madrid</span></div></div>
-                  <div class="d-step">
-                    <div class="demo-score">
-                      Score IA: <strong>9.2 / 10</strong>
-                      <span class="demo-badge-pill">Alta intención</span>
-                    </div>
-                  </div>
-                  <div class="d-step"><div class="demo-notif"><span class="demo-notif-icon">✉️</span><span>Email personalizado enviado automáticamente</span></div></div>
-                  <div class="d-step"><div class="demo-notif"><span class="demo-notif-icon">📲</span><span>Alerta a tu equipo: "Lead caliente · actuar ahora"</span></div></div>
-                  <div class="d-step"><div class="demo-reply">Respuesta: «¡Cuéntame más, me interesa!»</div></div>
-                </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+    <div>
+      <div style="font-size:11px;font-weight:600;color:var(--text-3);margin-bottom:10px">① Formulario del lead</div>
+      <div style="margin-bottom:8px">
+        <label style="font-size:11px;color:var(--text-2);display:block;margin-bottom:3px">Nombre:</label>
+        <input id="lead-name" value="Andrés Iniesta" style="width:100%;padding:7px 10px;border:1px solid var(--border);border-radius:6px;font-size:12px;font-family:var(--font-body)">
+      </div>
+      <div style="margin-bottom:8px">
+        <label style="font-size:11px;color:var(--text-2);display:block;margin-bottom:3px">Email o Telegram:</label>
+        <input id="lead-contact" value="@andres8" style="width:100%;padding:7px 10px;border:1px solid var(--border);border-radius:6px;font-size:12px;font-family:var(--font-body)">
+      </div>
+      <div style="margin-bottom:12px">
+        <label style="font-size:11px;color:var(--text-2);display:block;margin-bottom:3px">Presupuesto estimado:</label>
+        <select id="lead-budget" style="width:100%;padding:7px 10px;border:1px solid var(--border);border-radius:6px;font-size:12px;font-family:var(--font-body)">
+          <option value="bajo">Menos de 1.000€</option>
+          <option value="medio">1.000€ – 5.000€</option>
+          <option value="alto" selected>Más de 5.000€ (VIP)</option>
+        </select>
+      </div>
+      <button onclick="leadSubmit()" style="width:100%;padding:10px;background:var(--purple);color:#fff;border:none;border-radius:8px;font-size:13px;cursor:pointer;font-family:var(--font-body)">Enviar formulario</button>
+    </div>
+    <div>
+      <div style="font-size:11px;font-weight:600;color:var(--text-3);margin-bottom:10px">② Alerta comercial (tu móvil)</div>
+      <div style="background:#1a1a2e;border-radius:12px;padding:12px;min-height:140px">
+        <div style="font-size:10px;color:#aaa;text-align:center;margin-bottom:8px">Telegram — Canal Comercial</div>
+        <div id="lead-result" style="font-size:11px;color:#ccc;text-align:center;padding-top:20px">Envía el formulario para ver la alerta aquí…</div>
+      </div>
+    </div>
+  </div>
+</div>
                 <button class="sc-cart-btn-panel" id="cart-panel-4" onclick="toggleCart(event,4,'Conversión','Conversión de Clientes Potenciales')" style="margin-top:16px;">+ Añadir al presupuesto</button>
               </div>
             </div>
@@ -3415,6 +3491,234 @@
     window.addEventListener('DOMContentLoaded', () => {
       animateIsmabot();
     });
+
+    // ─── CHATBOT DEMO ─────────────────────────
+    const TG_WEBHOOK = 'https://isman8nproyect.cloud/webhook/asistente-conversacional-demo';
+    let tgBusy = false;
+
+    function tgTime() {
+      const d = new Date();
+      return d.getHours() + ':' + String(d.getMinutes()).padStart(2,'0');
+    }
+
+    function tgAppend(text, role) {
+      const box = document.getElementById('tg-msgs');
+      const el = document.createElement('div');
+      el.className = 'tg-bubble tg-bubble--' + role;
+      el.innerHTML = text + '<span class="tg-time">' + tgTime() + '</span>';
+      box.appendChild(el);
+      box.scrollTop = box.scrollHeight;
+    }
+
+    function tgLocalReply(text) {
+      const t = text.toLowerCase();
+      if (t.includes('hacer') || t.includes('servicios') || t.includes('qué puedes'))
+        return 'Automatizamos tareas repetitivas: facturas, llamadas, resúmenes de correo, cualificación de leads… Básicamente, hacemos que trabajes menos y produzcas más. 🚀';
+      if (t.includes('precio') || t.includes('coste') || t.includes('cuesta'))
+        return 'Mucho menos de lo que cuesta perder 2 horas al día con tareas repetitivas. Hacemos presupuesto personalizado. ¡Cuéntanos tu caso! 👇';
+      if (t.includes('demo') || t.includes('disponibilidad') || t.includes('agendar'))
+        return 'Perfecto. Puedes hablar directamente con ISMABOT en Telegram para que analice tu caso y te proponga una solución real. 👇 O déjanos tu contacto en el formulario de abajo.';
+      return '¡Buena pregunta! Soy MariRobot — rápida, eficiente y sin rodeos. ¿Vemos cómo automatizar tu operativa? 🤖';
+    }
+
+    async function tgSend(preset) {
+      if (tgBusy) return;
+      const input = document.getElementById('tg-input');
+      const msg = (preset || input.value).trim();
+      if (!msg) return;
+      input.value = '';
+      tgBusy = true;
+      tgAppend(msg, 'user');
+      document.getElementById('tg-typing').style.display = 'flex';
+
+      try {
+        const res = await fetch(TG_WEBHOOK, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'X-Web-Token': 'mweb-2026-xk9p' },
+          body: JSON.stringify({ message: msg, sessionId: 'demo-web' })
+        });
+        const data = await res.json();
+        document.getElementById('tg-typing').style.display = 'none';
+        const parts = Array.isArray(data.parts) && data.parts.length ? data.parts : [data.reply || data.agentResponse || '…'];
+        tgAppend(parts[0], 'bot');
+        for (let i = 1; i < parts.length; i++) {
+          document.getElementById('tg-typing').style.display = 'flex';
+          await new Promise(r => setTimeout(r, 1200));
+          document.getElementById('tg-typing').style.display = 'none';
+          tgAppend(parts[i], 'bot');
+        }
+      } catch {
+        document.getElementById('tg-typing').style.display = 'none';
+        tgAppend(tgLocalReply(msg), 'bot');
+      }
+      tgBusy = false;
+    }
+
+    // Init timestamp
+    document.addEventListener('DOMContentLoaded', () => {
+      const el = document.getElementById('tg-time-init');
+      if (el) el.textContent = tgTime();
+    });
+
+    // ─── INVOICE SIMULATOR ────────────────────
+    const INV_EXAMPLES = [
+      'He dado 10 sesiones de fisioterapia domiciliaria a la clínica Bienestar S.L. (B87654321) a 55€ la sesión. Es servicio sanitario, exento de IVA.',
+      'Consultoría de automatización de procesos a Startup Digital Ideas S.L. por 2.800€. Soy autónomo en mi primer año de actividad, aplica retención IRPF del 7%.',
+      'Consultoría de marketing a Maderas Paco por 500€.',
+    ];
+
+    function invSetEx(i) {
+      document.getElementById('inv-input').value = INV_EXAMPLES[i];
+    }
+
+    function invBuildHtml(inputText) {
+      const amountMatch = inputText.match(/(\d+(?:[.,]\d+)?)\s*(?:€|euros?)/i);
+      const base = amountMatch ? parseFloat(amountMatch[1].replace(',','.')) : 300;
+      const tax = base * 0.21, total = base + tax;
+      const num = 'FAC-2026-' + Math.floor(1000 + Math.random()*9000);
+      const fecha = new Date().toLocaleDateString('es-ES');
+      const venc = new Date(Date.now()+30*86400000).toLocaleDateString('es-ES');
+      let client = 'Cliente Simulado';
+      const m = inputText.match(/(?:a la empresa|para|a)\s+([A-ZÀ-Ú][A-Za-zÀ-úà-ú\s]+)/i);
+      if (m) client = m[1].trim();
+      else if (/bienestar/i.test(inputText)) client = 'Clínica Bienestar S.L.';
+      else if (/startup/i.test(inputText)) client = 'Startup Digital Ideas S.L.';
+      else if (/paco/i.test(inputText)) client = 'Maderas Paco';
+      let concept = 'Servicio de automatización';
+      if (/fisioter/i.test(inputText)) concept = 'Sesiones de fisioterapia domiciliaria';
+      else if (/consultor/i.test(inputText)) concept = 'Consultoría de marketing';
+      else if (/web|landing/i.test(inputText)) concept = 'Desarrollo web';
+      return `<html><head><style>body{font-family:Arial,sans-serif;color:#1E1B4B;margin:24px;background:#fff}
+        .hdr{display:flex;justify-content:space-between;border-bottom:2px solid #6D28D9;padding-bottom:16px;margin-bottom:20px}
+        .brand{font-size:18px;font-weight:bold;color:#6D28D9}.inv-t{font-size:22px;font-weight:bold;text-align:right}
+        table{width:100%;border-collapse:collapse;margin:16px 0}th{background:#6D28D9;color:#fff;padding:8px;text-align:left;font-size:11px}
+        td{padding:8px;border-bottom:1px solid #E2E8F0;font-size:11px;color:#475569}
+        .tot{width:220px;margin-left:auto;border-collapse:collapse}.tot td{padding:6px 8px;font-size:11px}
+        .tot-row td{background:#EDE9FE;font-weight:bold;color:#6D28D9}.ftr{margin-top:30px;text-align:center;font-size:10px;color:#94A3B8;border-top:1px solid #E2E8F0;padding-top:12px}
+        .pbtn{background:#6D28D9;color:#fff;border:none;padding:6px 12px;border-radius:4px;cursor:pointer;font-size:11px;margin-bottom:12px}@media print{.pbtn{display:none}}
+        </style></head><body>
+        <div style="text-align:right;margin-bottom:8px"><button class="pbtn" onclick="window.print()">Imprimir / PDF</button></div>
+        <div class="hdr"><div><div class="brand">MARIRRODRIGA I.A</div><div style="font-size:10px;color:#475569;margin-top:4px">NIF: B-82914109<br>Gran Canaria, España</div></div>
+        <div style="text-align:right"><div class="inv-t">FACTURA</div><div style="font-size:10px;margin-top:6px"><strong>Nº:</strong> ${num}<br><strong>Fecha:</strong> ${fecha}<br><strong>Vencimiento:</strong> ${venc}</div></div></div>
+        <div style="background:#F5F3FF;border-left:4px solid #6D28D9;padding:10px 14px;border-radius:4px;margin-bottom:16px;font-size:11px"><strong>Facturado a:</strong> ${client}</div>
+        <table><thead><tr><th>Descripción</th><th style="text-align:right">Total</th></tr></thead>
+        <tbody><tr><td>${concept}</td><td style="text-align:right">${base.toFixed(2)} €</td></tr></tbody></table>
+        <table class="tot">
+        <tr><td>Base imponible:</td><td style="text-align:right">${base.toFixed(2)} €</td></tr>
+        <tr><td>IVA (21%):</td><td style="text-align:right">${tax.toFixed(2)} €</td></tr>
+        <tr class="tot-row"><td>TOTAL:</td><td style="text-align:right">${total.toFixed(2)} €</td></tr></table>
+        <div class="ftr">Factura generada por MARIRRODRIGA I.A · Gracias por confiar en nosotros</div></body></html>`;
+    }
+
+    function invGenerate() {
+      const text = document.getElementById('inv-input').value.trim() || INV_EXAMPLES[2];
+      if (!document.getElementById('inv-input').value.trim()) document.getElementById('inv-input').value = text;
+      const btn = document.getElementById('inv-btn');
+      btn.textContent = 'Generando…'; btn.disabled = true;
+      const res = document.getElementById('inv-result');
+      res.innerHTML = '<div style="padding:16px;text-align:center;color:var(--text-3);font-size:13px">⏳ Procesando…</div>';
+      setTimeout(() => {
+        const html = invBuildHtml(text);
+        res.innerHTML = '<iframe class="inv-frame" srcdoc="' + html.replace(/"/g, '&quot;') + '" title="Factura"></iframe><button class="inv-reset" onclick="invReset()">↺ Nueva factura</button>';
+        btn.textContent = '✨ Generar con IA'; btn.disabled = false;
+      }, 1800);
+    }
+
+    function invReset() {
+      document.getElementById('inv-input').value = '';
+      document.getElementById('inv-result').innerHTML = '';
+    }
+
+    // ─── DOCUMENT CLASSIFIER ──────────────────
+    const DOC_WEBHOOK = 'https://isman8nproyect.cloud/webhook/clasificar-documento-demo';
+    const DOC_SAMPLE = `De: Carlos Ruiz (carlos.ruiz@gmail.com)
+Asunto: INCIDENCIA CON EL PEDIDO #82914 - RETRASO Y RECLAMACIÓN
+
+Hola, escribo porque estoy sumamente descontento. Hace 5 días que compré la plantilla de automatización de marketing y no me ha llegado el enlace de descarga. He revisado la carpeta de spam y tampoco hay nada. He pagado 149€ y exijo que me den una solución hoy mismo o procederé a abrir una disputa en PayPal y a poner una reseña negativa. Espero vuestra pronta respuesta.`;
+
+    function docLoadExample() {
+      document.getElementById('doc-input').value = DOC_SAMPLE;
+    }
+
+    function docLocalAnalyze(text) {
+      const t = text.toLowerCase();
+      if (/reclamac|urgente|descontento|paypal|dinero|no me llega/.test(t))
+        return { priority:'Reclamación Urgente', isUrgent:true, category:'Soporte Técnico / Ventas',
+          summary:'El cliente reclama el envío de un producto por valor de 149€ que no ha recibido en 5 días. Amenaza con disputa de PayPal.',
+          draft:'Estimado Carlos Ruiz,\n\nLamentamos el retraso. Hemos validado tu compra. Aquí tienes tu enlace de descarga inmediato.\n\nPara compensar las molestias, hemos activado un descuento del 20% en tu próxima compra.\n\nDisculpa las molestias,\nEquipo MARIRRODRIGA I.A' };
+      return { priority:'Consulta Normal', isUrgent:false, category:'Consulta Comercial',
+        summary:'El cliente realiza una consulta general sobre servicios o presupuesto para automatización.',
+        draft:'Estimado cliente,\n\nGracias por su interés. Nos encantaría agendar una breve llamada de 15 minutos para entender sus procesos y prepararle una propuesta a medida.\n\nQuedamos a su disposición,\nEquipo MARIRRODRIGA I.A' };
+    }
+
+    async function docAnalyze() {
+      const text = document.getElementById('doc-input').value.trim();
+      if (!text) return;
+      const btn = document.getElementById('doc-btn');
+      btn.textContent = 'Analizando…'; btn.disabled = true;
+      const res = document.getElementById('doc-result');
+      res.innerHTML = '<div style="padding:16px;text-align:center;color:var(--text-3);font-size:13px">⏳ Leyendo y clasificando…</div>';
+      let result;
+      try {
+        const r = await fetch(DOC_WEBHOOK, {
+          method:'POST', headers:{'Content-Type':'application/json','X-Web-Token':'mweb-2026-xk9p'},
+          body: JSON.stringify({ emailContent: text })
+        });
+        const d = await r.json();
+        result = { priority: d.priority, isUrgent: (d.priority||'').toLowerCase().includes('urgente'),
+          category: d.category, summary: d.summary, draft: d.draft };
+      } catch {
+        result = docLocalAnalyze(text);
+      }
+      const urgentBadge = result.isUrgent ? '<span style="background:#fee2e2;color:#dc2626;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600">⚠️ ' + result.priority + '</span>' : '<span style="background:var(--purple-tint);color:var(--purple);padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600">' + result.priority + '</span>';
+      res.innerHTML = '<div style="margin-top:12px;border:1px solid var(--border);border-radius:10px;overflow:hidden">' +
+        '<div style="padding:12px 16px;border-bottom:1px solid var(--border);display:flex;gap:8px">' + urgentBadge +
+        '<span style="background:var(--purple-tint);color:var(--text-2);padding:3px 10px;border-radius:20px;font-size:11px">' + result.category + '</span></div>' +
+        '<div style="padding:12px 16px"><div style="font-size:12px;font-weight:600;margin-bottom:4px">Resumen ejecutivo:</div>' +
+        '<p style="font-size:12px;color:var(--text-2);margin:0 0 12px">' + result.summary + '</p>' +
+        '<div style="font-size:12px;font-weight:600;margin-bottom:6px">Borrador de respuesta:</div>' +
+        '<div style="background:var(--purple-tint2);border:1px solid var(--border);border-radius:6px;padding:10px;font-size:12px;white-space:pre-wrap;color:var(--text-2)">' + result.draft +
+        '<br><button onclick="navigator.clipboard.writeText(\'' + result.draft.replace(/'/g,"\\'").replace(/\n/g,'\\n') + '\');this.textContent=\'✓ Copiado\';setTimeout(()=>this.textContent=\'Copiar borrador\',2000)" style="margin-top:8px;font-size:11px;padding:4px 10px;border:1px solid var(--border);border-radius:4px;cursor:pointer;background:#fff;color:var(--text-2);font-family:var(--font-body)">Copiar borrador</button></div></div></div>';
+      btn.textContent = '👁 Analizar'; btn.disabled = false;
+    }
+
+    // ─── LEAD QUALIFIER ───────────────────────
+    const LEAD_WEBHOOK = 'https://isman8nproyect.cloud/webhook/cualificar-lead-demo';
+
+    function leadScoreLocal(budget) {
+      if (budget==='alto')  return {score:'9.8/10',vip:true, badge:'👑 VIP LEAD',       desc:'Lead altamente rentable. Empresa con intenciones de automatizar flujos clave y presupuesto alto.'};
+      if (budget==='medio') return {score:'7.8/10',vip:false,badge:'🔔 LEAD ESTÁNDAR',  desc:'Empresa mediana con presupuestos estándar de digitalización.'};
+      return                       {score:'4.5/10',vip:false,badge:'⚠️ LEAD BAJO',      desc:'Presupuesto bajo. Interés exploratorio.'};
+    }
+
+    async function leadSubmit() {
+      const name = document.getElementById('lead-name').value.trim();
+      const contact = document.getElementById('lead-contact').value.trim();
+      const budget = document.getElementById('lead-budget').value;
+      if (!name || !contact) return;
+      const res = document.getElementById('lead-result');
+      res.innerHTML = '<div style="text-align:center;padding:20px"><span style="color:#aaa">Cualificando lead con IA…</span></div>';
+      let result;
+      try {
+        const r = await fetch(LEAD_WEBHOOK, {
+          method:'POST', headers:{'Content-Type':'application/json','X-Web-Token':'mweb-2026-xk9p'},
+          body: JSON.stringify({name, contact, budget})
+        });
+        const d = await r.json();
+        result = {name, contact, budget, score: d.interestScore||'?/10', vip: d.isVip, badge: d.badgeText||'🔔 LEAD', desc: d.profileDesc||''};
+      } catch {
+        result = {name, contact, budget, ...leadScoreLocal(budget)};
+      }
+      const budgetMap = {alto:'> 5.000€', medio:'1.000€ – 5.000€', bajo:'< 1.000€'};
+      const vipStyle = result.vip ? 'border-left:3px solid #f59e0b;' : 'border-left:3px solid #6366f1;';
+      res.innerHTML = '<div style="background:#16213e;border-radius:8px;padding:10px;' + vipStyle + '">' +
+        '<div style="display:flex;justify-content:space-between;margin-bottom:8px">' +
+        '<span style="font-size:11px;font-weight:700;color:' + (result.vip?'#f59e0b':'#818cf8') + '">' + result.badge + '</span>' +
+        '<span style="font-size:11px;color:#aaa">Score: ' + result.score + '</span></div>' +
+        '<div style="font-size:11px;color:#ccc;margin-bottom:6px"><strong style="color:#fff">Nombre:</strong> ' + result.name + '<br><strong style="color:#fff">Contacto:</strong> ' + result.contact + '<br><strong style="color:#fff">Presupuesto:</strong> ' + budgetMap[result.budget] + '</div>' +
+        '<div style="font-size:10px;color:#aaa;font-style:italic">"' + result.desc + '"</div></div>';
+    }
+
   </script>
 </body>
 </html>
