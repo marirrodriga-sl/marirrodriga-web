@@ -3493,7 +3493,7 @@
     });
 
     // ─── CHATBOT DEMO ─────────────────────────
-    const TG_WEBHOOK = 'https://isman8nproyect.cloud/webhook/asistente-conversacional-demo';
+    const TG_WEBHOOK = 'https://isman8nproyect.cloud/webhook/chatbot-demo-web';
     let tgBusy = false;
 
     function tgTime() {
@@ -3610,13 +3610,34 @@
         <div class="ftr">Factura generada por MARIRRODRIGA I.A · Gracias por confiar en nosotros</div></body></html>`;
     }
 
-    function invGenerate() {
+    const INV_WEBHOOK = 'https://isman8nproyect.cloud/webhook/generar-factura-drive';
+
+    async function invGenerate() {
       const text = document.getElementById('inv-input').value.trim() || INV_EXAMPLES[2];
       if (!document.getElementById('inv-input').value.trim()) document.getElementById('inv-input').value = text;
       const btn = document.getElementById('inv-btn');
       btn.textContent = 'Generando…'; btn.disabled = true;
       const res = document.getElementById('inv-result');
-      res.innerHTML = '<div style="padding:16px;text-align:center;color:var(--text-3);font-size:13px">⏳ Procesando…</div>';
+      res.innerHTML = '<div style="padding:16px;text-align:center;color:var(--text-3);font-size:13px">⏳ Procesando con IA…</div>';
+      try {
+        const r = await fetch(INV_WEBHOOK, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'X-Web-Token': 'mweb-2026-xk9p' },
+          body: JSON.stringify({ inputText: text })
+        });
+        if (r.ok) {
+          const data = await r.json();
+          if (data.pdfUrl) {
+            res.innerHTML = '<iframe class="inv-frame" src="' + data.pdfUrl + '" title="Factura"></iframe><button class="inv-reset" onclick="invReset()">↺ Nueva factura</button>';
+          } else if (data.pdfBase64) {
+            res.innerHTML = '<iframe class="inv-frame" src="data:application/pdf;base64,' + data.pdfBase64 + '" title="Factura"></iframe><button class="inv-reset" onclick="invReset()">↺ Nueva factura</button>';
+          } else {
+            throw new Error('no pdf in response');
+          }
+          btn.textContent = '✨ Generar con IA'; btn.disabled = false;
+          return;
+        }
+      } catch (_) { /* fallback to local */ }
       setTimeout(() => {
         const html = invBuildHtml(text);
         res.innerHTML = '<iframe class="inv-frame" srcdoc="' + html.replace(/"/g, '&quot;') + '" title="Factura"></iframe><button class="inv-reset" onclick="invReset()">↺ Nueva factura</button>';
