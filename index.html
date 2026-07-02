@@ -1547,6 +1547,7 @@
         <h3>¿Tu sector no está aquí <em>todavía</em>?</h3>
         <p>Cuéntanos qué tipo de negocio tienes y qué problemas quieres resolver. Lo añadimos por orden de demanda.</p>
         <div class="sector-request-form" id="sector-request-form">
+          <input type="text" name="website" style="display:none !important;position:absolute;left:-9999px;" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="sector-request-row">
             <input class="sector-request-input" id="sr-sector" type="text" placeholder="Ej: clínica veterinaria, academia de idiomas…" style="flex:1" />
             <input class="sector-request-input" id="sr-email" type="email" placeholder="Tu email" style="flex:1" />
@@ -2234,6 +2235,7 @@
         <div class="contact-form-wrap">
           <div id="contact-form-content">
             <div class="form-title">Déjanos tu contacto</div>
+            <input type="text" name="website" style="display:none !important;position:absolute;left:-9999px;" tabindex="-1" autocomplete="off" aria-hidden="true">
             <div class="form-row">
               <div class="form-field">
                 <label class="form-label">Nombre *</label>
@@ -2334,6 +2336,7 @@
         </div>
         <ul class="cart-list" id="cart-list"></ul>
         <p class="cart-form-label">Déjanos tus datos y te enviamos el presupuesto:</p>
+        <input type="text" name="website" style="display:none !important;position:absolute;left:-9999px;" tabindex="-1" autocomplete="off" aria-hidden="true">
         <input class="cart-input" id="cart-nombre" type="text" placeholder="Tu nombre" />
         <input class="cart-input" id="cart-apellidos" type="text" placeholder="Tus apellidos" />
         <input class="cart-input" id="cart-email" type="email" placeholder="Tu email" />
@@ -2496,7 +2499,7 @@
       const servicios = Object.values(cart).map(i => i.badge + ' – ' + i.title);
       fetch('https://isman8nproyect.cloud/webhook/solicitud-carrito', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'X-Web-Token': 'mweb-2026-xk9p' },
         body: JSON.stringify({ nombre, apellidos, email, servicios, source: 'carrito-ia-carta', timestamp: new Date().toISOString() })
       }).catch(() => {});
       document.getElementById('cart-modal-content').style.display = 'none';
@@ -2684,7 +2687,7 @@
       if (!nombre || !email) { alert('Por favor, rellena tu nombre y email.'); return; }
       fetch('https://isman8nproyect.cloud/webhook/contacto-web', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'X-Web-Token': 'mweb-2026-xk9p' },
         body: JSON.stringify({ nombre, email, mensaje, timestamp: new Date().toISOString(), source: 'marirrodriga-web-contacto' })
       }).catch(() => {});
       document.getElementById('contact-form-content').style.display = 'none';
@@ -2698,7 +2701,7 @@
       if (!sector || !email) { alert('Por favor, escribe tu sector y tu email.'); return; }
       fetch('https://isman8nproyect.cloud/webhook/contacto-web', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'X-Web-Token': 'mweb-2026-xk9p' },
         body: JSON.stringify({ nombre: email, email, mensaje: `Solicitud de sector: ${sector}`, timestamp: new Date().toISOString(), source: 'web-sector-request' })
       }).catch(() => {});
       document.getElementById('sector-request-form').style.display = 'none';
@@ -3191,6 +3194,7 @@
         <div class="sw-contact-mini" id="sw-contact-mini">
           <h4 id="sw-contact-title">¿Hablamos sobre tu negocio?</h4>
           <div id="sw-contact-form">
+            <input type="text" name="website" style="display:none !important;position:absolute;left:-9999px;" tabindex="-1" autocomplete="off" aria-hidden="true">
             <div class="sw-contact-grid">
               <input class="sw-c-input" id="sw-nombre" type="text" placeholder="Tu nombre" />
               <input class="sw-c-input" id="sw-apellidos" type="text" placeholder="Tus apellidos" />
@@ -3246,6 +3250,7 @@
           <div style="margin-bottom:28px;">${items}</div>
           <div id="sw-dev-form">
             <div style="font-size:14px;font-weight:600;color:var(--text-1);margin-bottom:14px;">Reserva tu lugar ahora</div>
+            <input type="text" name="website" style="display:none !important;position:absolute;left:-9999px;" tabindex="-1" autocomplete="off" aria-hidden="true">
             <div class="sw-noprice-form">
               <input class="sw-c-input" id="swd-nombre" type="text" placeholder="Tu nombre" />
               <input class="sw-c-input" id="swd-apellidos" type="text" placeholder="Tus apellidos" />
@@ -3307,6 +3312,7 @@
           ${fromBlock}
           <p class="sw-noprice-lead">Cada negocio es diferente. Cuéntanos qué necesitas y te preparamos un sistema a medida con su precio real — sin plantillas genéricas ni sorpresas.</p>
           <div id="sw-contact-form-np">
+            <input type="text" name="website" style="display:none !important;position:absolute;left:-9999px;" tabindex="-1" autocomplete="off" aria-hidden="true">
             <div class="sw-noprice-form">
               <input class="sw-c-input" id="swn-nombre" type="text" placeholder="Tu nombre" />
               <input class="sw-c-input" id="swn-apellidos" type="text" placeholder="Tus apellidos" />
@@ -3349,7 +3355,7 @@
         source: d ? d.contact_source : 'web-software',
       };
       fetch('https://isman8nproyect.cloud/webhook/solicitud-negocio', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload)
+        method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Web-Token': 'mweb-2026-xk9p' }, body: JSON.stringify(payload)
       }).catch(() => {});
       document.getElementById('sw-contact-form').style.display = 'none';
       document.getElementById('sw-contact-success').style.display = 'block';
@@ -3363,7 +3369,7 @@
       const d = SW_DATA[currentSWSector];
       fetch('https://isman8nproyect.cloud/webhook/solicitud-negocio', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'X-Web-Token': 'mweb-2026-xk9p' },
         body: JSON.stringify({
           nombre, apellidos, email,
           negocio: document.getElementById('swd-negocio').value.trim(),
@@ -3391,7 +3397,7 @@
         source: d ? d.contact_source : 'web-software',
       };
       fetch('https://isman8nproyect.cloud/webhook/solicitud-negocio', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload)
+        method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Web-Token': 'mweb-2026-xk9p' }, body: JSON.stringify(payload)
       }).catch(() => {});
       document.getElementById('sw-contact-form-np').style.display = 'none';
       document.getElementById('sw-contact-success-np').style.display = 'block';
