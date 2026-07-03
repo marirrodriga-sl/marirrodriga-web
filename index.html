@@ -3,7 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Marirrodriga IA — Mockup V2</title>
+  <title>Marirrodriga IA — Automatización con IA para tu negocio</title>
+  <meta name="description" content="Software de IA hecho para tu sector — clínicas dentales, reservas, redes sociales — o agentes de IA a la carta. Listo en 48 horas, sin permanencia y con resultados desde el primer mes.">
+  <link rel="canonical" href="https://www.marirrodriga-ia.com/">
+  <meta name="theme-color" content="#7C3AED">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Marirrodriga IA">
+  <meta property="og:title" content="Marirrodriga IA — Tu negocio, funcionando sin ti">
+  <meta property="og:description" content="Software de IA hecho para tu sector o agentes sueltos para lo que necesites resolver. Listo en 48 horas, sin permanencia.">
+  <meta property="og:url" content="https://www.marirrodriga-ia.com/">
+  <meta property="og:image" content="https://www.marirrodriga-ia.com/og-image.png">
+  <meta property="og:locale" content="es_ES">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Marirrodriga IA — Tu negocio, funcionando sin ti">
+  <meta name="twitter:description" content="Software de IA hecho para tu sector o agentes de IA a la carta. Listo en 48 horas, sin permanencia.">
+  <meta name="twitter:image" content="https://www.marirrodriga-ia.com/og-image.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Marirrodriga IA",
+    "url": "https://www.marirrodriga-ia.com/",
+    "logo": "https://www.marirrodriga-ia.com/apple-touch-icon.png",
+    "description": "Agencia de automatización con IA para negocios: software por sector y agentes de IA a la carta.",
+    "areaServed": "ES",
+    "sameAs": ["https://t.me/Marirrodrigabot"]
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -1137,129 +1168,160 @@
     .sw-dev:hover { opacity:1; }
     .sw-dev .software-cover { filter: saturate(.7); }
 
+    /* ─── CLASES PARA CONTENIDO GENERADO POR JS (modales) ────── */
+    .sw-showcase-wrap { padding: 44px 48px 48px; }
+    .sw-showcase-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .sw-divider-line { height: 1px; background: var(--border); margin: 0 48px; }
+    .sw-promo-banner { margin: 0 48px; }
+    .sw-migration-card {
+      grid-column: 1/-1; padding: 28px 32px;
+      background: linear-gradient(135deg, var(--purple-dark) 0%, #5b21b6 100%);
+      border-radius: 16px; display: flex; align-items: flex-start; gap: 28px;
+    }
+    .demo-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
     /* ═══════════════════════════════ RESPONSIVE ═══════════════ */
 
     /* ── Tablet ≤1024px ──────────────────────────────────────── */
     @media (max-width: 1024px) {
       .nav { padding: 0 32px; }
-      .hero { padding: 72px 32px 80px; }
-      .hero-grid { gap: 40px; }
-      .hero-right { min-width: 0; width: 360px; }
-      .sc-section, .softwares-section, .contact-section,
-      .concepts-section, .antes-section { padding: 72px 32px; }
-      .footer-inner { padding: 48px 32px 32px; }
+      .hero { padding: 64px 32px 72px; }
+      .hero-inner { grid-template-columns: 1fr 340px; gap: 48px; }
+      .como-section, .softwares-section, .sc-section,
+      .alacarta-section, .contact-section { padding: 72px 32px; }
+      .footer { padding: 56px 32px 32px; }
       .softwares-grid { grid-template-columns: repeat(2, 1fr); }
-      .citas-card { grid-column: span 2; }
+      .citas-card { grid-column: span 2; grid-template-columns: 1fr 1fr; }
+      .citas-right { grid-column: 1 / -1; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+      .citas-price-sub { margin: 6px 0 0; }
+      .ismabot-card { padding: 32px; gap: 32px; }
       .sw-plans { padding: 32px 32px 40px; }
       .sw-modal-header { padding: 32px 32px 24px; }
       .sw-contact-mini { padding: 28px 32px; }
       .sw-noprice { padding: 32px 32px 40px; }
-      .cart-bar-inner { padding: 14px 32px; }
+      .sw-showcase-wrap { padding: 36px 32px 40px; }
+      .sw-showcase-grid { grid-template-columns: repeat(2, 1fr); }
+      .sw-divider-line, .sw-promo-banner { margin: 0 32px; }
+      .cart-bar { padding: 14px 32px; }
     }
 
     /* ── Mobile ≤768px ───────────────────────────────────────── */
     @media (max-width: 768px) {
       /* Nav */
-      .nav { padding: 0 20px; height: auto; min-height: 60px; flex-wrap: wrap; gap: 0; }
-      .nav-left { gap: 12px; }
+      .nav { padding: 0 16px; height: 60px; gap: 10px; }
+      .nav-links { display: none; }
       .nav-logo { font-size: 14px; }
-      .nav-center { display: none; }
-      .nav-right { gap: 8px; }
-      .nav-right .btn-ghost { display: none; }
-      .btn-nav-cta { padding: 8px 14px; font-size: 12px; }
-      .nav-cart-btn { padding: 6px 10px; font-size: 12px; }
+      .nav-logo svg { width: 26px; height: 26px; }
+      .nav-cta { padding: 10px 14px; font-size: 11px; white-space: nowrap; }
+      .nav-cart-btn { padding: 8px 10px; font-size: 11px; }
 
       /* Hero */
-      .hero { padding: 56px 20px 64px; }
-      .hero-grid { grid-template-columns: 1fr; gap: 48px; }
-      .hero-right { width: 100%; max-width: 100%; }
+      .hero { padding: 44px 20px 56px; min-height: auto; }
+      .hero-inner { grid-template-columns: 1fr; gap: 36px; }
+      .hero h1 { font-size: clamp(36px, 10vw, 48px); }
+      .hero-sub { font-size: 15px; line-height: 1.75; margin-bottom: 30px; }
+      .hero-btns { flex-direction: column; align-items: stretch; }
+      .hero-btns .btn-primary, .hero-btns .btn-secondary { justify-content: center; text-align: center; }
+      .hero-trust { gap: 12px 20px; margin-top: 30px; padding-top: 24px; }
+      .hero-right { width: 100%; }
       .hero-sidenav { display: none; }
-      .hero-title { font-size: clamp(36px, 8vw, 52px); }
-      .hero-sub { font-size: 15px; }
-      .hero-actions { flex-direction: column; align-items: flex-start; gap: 12px; }
-      .hero-badge { font-size: 11px; }
 
-      /* Concepts */
-      .concepts-section { padding: 56px 20px; }
-      .concepts-grid { grid-template-columns: 1fr; gap: 16px; }
+      /* Secciones */
+      .como-section, .softwares-section, .sc-section,
+      .alacarta-section, .contact-section { padding: 56px 20px; }
+      .section-title { font-size: clamp(28px, 8vw, 38px); }
+      .section-sub { font-size: 14px; margin-bottom: 40px; }
 
-      /* Stats */
-      .antes-section { padding: 56px 20px; }
-      .stat-bar { grid-template-columns: 1fr 1fr; gap: 12px; }
+      /* Cómo funciona */
+      .concepts-grid { grid-template-columns: 1fr; gap: 14px; margin-bottom: 48px; }
+      .concept-card { padding: 26px 22px; }
+      .stats-grid { grid-template-columns: 1fr 1fr; gap: 4px; padding-top: 32px; }
+      .stat-card { padding: 18px 8px; }
+      .stat-value { font-size: 32px; }
+      .stat-label { font-size: 12px; }
 
       /* Softwares */
-      .softwares-section { padding: 56px 20px; }
       .softwares-grid { grid-template-columns: 1fr; gap: 16px; }
-      .citas-card { grid-column: span 1; grid-template-columns: 1fr; gap: 20px; padding: 24px 20px; }
-      .citas-feats { grid-template-columns: 1fr 1fr; }
-      .citas-right { text-align: left; align-items: flex-start; }
+      .citas-card { grid-column: span 1; grid-template-columns: 1fr; gap: 24px; padding: 28px 22px; }
+      .citas-right { grid-column: auto; display: block; }
+      .citas-price-sub { margin: 6px 0 20px; }
+      .sector-request { padding: 36px 22px; }
       .sector-request-row { flex-direction: column; }
       .sector-request-form { max-width: 100%; }
 
       /* A la carta */
-      .sc-section { padding: 56px 20px; }
-      .sc-main { grid-template-columns: 48px 1fr; gap: 14px; padding: 20px 16px 16px; }
-      .sc-illus { font-size: 28px; width: 48px; height: 48px; border-radius: 12px; }
-      .sc-actions { grid-column: span 2; flex-direction: column; gap: 8px; }
-      .sc-expand-btn, .sc-cart-btn { width: 100%; text-align: center; }
-      .sc-panel { padding: 24px 16px; }
+      .sc-main { grid-template-columns: 56px 1fr; gap: 14px; padding: 20px 16px 16px; align-items: flex-start; }
+      .sc-illus { width: 56px; height: 56px; font-size: 26px; border-radius: 12px; }
+      .sc-title { font-size: 17px; }
+      .sc-desc { font-size: 12.5px; }
+      .sc-actions { grid-column: 1 / -1; flex-direction: column; gap: 8px; min-width: 0; align-items: stretch; }
+      .sc-expand-btn, .sc-cart-btn { width: 100%; text-align: center; padding: 12px 14px; }
+      .sc-panel { padding: 20px 16px; }
       .sc-panel-grid { grid-template-columns: 1fr; gap: 24px; }
-      .sc-title { font-size: 15px; }
-      .sc-cart-btn-panel { width: 100%; }
 
-      /* Contact */
-      .contact-section { padding: 56px 20px; }
+      /* ISMABOT */
+      .ismabot-card { grid-template-columns: 1fr; padding: 28px 22px; gap: 28px; }
+      .ismabot-title { font-size: 28px; }
+      .ismabot-cta { width: 100%; justify-content: center; }
+
+      /* Contacto */
       .contact-grid { grid-template-columns: 1fr; gap: 40px; }
-      .contact-form-wrap { padding: 24px 20px; }
+      .contact-form-wrap { padding: 26px 20px; }
       .form-row { grid-template-columns: 1fr; }
+      .contact-left .btn-primary { width: 100% !important; justify-content: center; }
 
       /* Footer */
-      .footer { padding: 0; }
-      .footer-inner { padding: 40px 20px 24px; grid-template-columns: 1fr 1fr; gap: 32px 20px; }
+      .footer { padding: 48px 20px 28px; }
+      .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px 20px; padding-bottom: 32px; }
       .footer-inner > div:first-child { grid-column: span 2; }
-      .footer-bottom { padding: 16px 20px; flex-direction: column; gap: 8px; text-align: center; }
+      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
 
-      /* Modals */
-      .sw-modal { border-radius: 16px 16px 0 0; }
-      .sw-overlay { align-items: flex-end; padding: 0; }
+      /* Modal software */
+      .sw-overlay { padding: 16px 0 0; }
+      .sw-modal { border-radius: 20px 20px 0 0; }
       .sw-modal-header { padding: 24px 20px 20px; }
-      .sw-modal-emoji { font-size: 36px; }
+      .sw-modal-emoji { font-size: 36px; margin-bottom: 10px; }
       .sw-modal-name { font-size: 22px; }
-      .sw-plans { padding: 20px 20px 32px; flex-direction: column; }
+      .sw-modal-desc { font-size: 14px; }
+      .sw-plans { padding: 20px 20px 32px; }
       .sw-plan { min-width: 0; }
       .sw-contact-mini { padding: 24px 20px; }
       .sw-contact-grid { grid-template-columns: 1fr; }
       .sw-noprice { padding: 24px 20px 32px; }
       .sw-noprice-form { grid-template-columns: 1fr; }
       .sw-noprice-form .full { grid-column: span 1; }
+      .sw-showcase-wrap { padding: 28px 20px 32px; }
+      .sw-showcase-grid { grid-template-columns: 1fr; }
+      .sw-divider-line, .sw-promo-banner { margin: 0 20px; }
+      .sw-migration-card { flex-direction: column; padding: 22px 20px; gap: 16px; }
 
-      .cart-modal { border-radius: 16px 16px 0 0; }
-      .cart-overlay { align-items: flex-end; padding: 0; }
-      .cart-modal-header { padding: 20px 20px 16px; }
-      .cart-modal-body { padding: 0 20px 20px; }
-      .cart-form-row { grid-template-columns: 1fr; }
-      .cart-bar-inner { padding: 12px 20px; flex-direction: column; gap: 10px; align-items: flex-start; }
-      .cart-bar-cta { width: 100%; text-align: center; }
+      /* Carrito */
+      .cart-overlay { padding: 16px; }
+      .cart-modal { padding: 28px 20px; max-height: 90vh; }
+      .cart-bar { padding: 12px 16px; gap: 12px; }
+      .cart-bar-names { display: none; }
+      .cart-bar-cta { padding: 12px 16px; font-size: 12px; white-space: nowrap; }
 
-      .ob-modal { border-radius: 16px 16px 0 0; }
-      .ob-overlay { align-items: flex-end; padding: 0; }
-      .ob-body { padding: 24px 20px 32px; }
-      .ob-opts { grid-template-columns: 1fr 1fr; }
+      /* Onboarding */
+      .ob-overlay { padding: 16px; }
+      .ob-modal { padding: 36px 22px 28px; border-radius: 20px; }
+      .ob-title { font-size: 25px; }
 
-      /* Section titles */
-      .section-title { font-size: clamp(28px, 6vw, 40px); }
-      .section-sub { font-size: 14px; }
+      /* Demos */
+      .demo-two-col { grid-template-columns: 1fr; }
+      .inv-frame { height: 300px; }
     }
 
     /* ── Very small ≤480px ───────────────────────────────────── */
     @media (max-width: 480px) {
-      .stat-bar { grid-template-columns: 1fr; }
-      .citas-feats { grid-template-columns: 1fr; }
+      .hero h1 { font-size: clamp(32px, 11vw, 40px); }
+      .stat-value { font-size: 28px; }
+      .citas-price { font-size: 40px; }
+      .citas-title { font-size: 24px; }
       .footer-inner { grid-template-columns: 1fr; }
       .footer-inner > div:first-child { grid-column: span 1; }
-      .ob-opts { grid-template-columns: 1fr; }
-      .hero-title { font-size: clamp(30px, 9vw, 44px); }
-      .sw-modal-name { font-size: 19px; }
+      .sw-modal-name { font-size: 20px; }
+      .nav-cta { font-size: 10px; padding: 9px 11px; }
     }
 
     /* ─── CHATBOT DEMO ──────────────────────────────── */
@@ -1335,7 +1397,7 @@
         🛒 Mi selección
         <span class="nav-cart-count" id="nav-cart-count">0</span>
       </button>
-      <button class="nav-cta" onclick="openOB()">Adapta esta web a tus necesidades</button>
+      <button class="nav-cta" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Hablar con nosotros</button>
     </div>
   </nav>
 
@@ -1589,6 +1651,7 @@
             <input class="sector-request-input" id="sr-email" type="email" placeholder="Tu email" style="flex:1" />
           </div>
           <button class="sector-request-btn" onclick="submitSectorRequest()">Proponer mi sector →</button>
+          <p style="font-size:11px;color:var(--text-4);margin-top:4px;">Al enviar aceptas la <a href="/privacidad.html" target="_blank" style="color:var(--purple);text-decoration:underline;">política de privacidad</a></p>
         </div>
         <div id="sector-request-success" style="display:none; margin-top:16px; font-size:14px; color:var(--purple); font-weight:600;">
           ¡Gracias! Te avisamos cuando añadamos tu sector.
@@ -1802,7 +1865,7 @@
               <div>
                 <div class="panel-label">🚀 Lead analizado al instante</div>
                 <div class="demo-wrap" id="demo-4">
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+  <div class="demo-two-col">
     <div>
       <div style="font-size:11px;font-weight:600;color:var(--text-3);margin-bottom:10px">① Formulario del lead</div>
       <div style="margin-bottom:8px">
@@ -1845,7 +1908,7 @@
             <div class="sc-content">
               <span class="sc-badge">Anti no-show</span>
               <h3 class="sc-title">5. Recordatorios Automáticos de Cita</h3>
-              <p class="sc-desc">Avisa a tus clientes antes de su cita en los plazos que configures. Ellos confirman o cancelan con un toque. Si cancelan, el hueco se reasigna a la lista de espera automáticamente.</p>
+              <p class="sc-desc">Avisa a tus clientes antes de cada cita y ellos confirman o cancelan con un toque. Si alguien cancela, el hueco se ofrece solo a la lista de espera. Menos sillas vacías, cero llamadas.</p>
             </div>
             <div class="sc-actions">
               <button class="sc-expand-btn" id="exp-5" onclick="toggleSC(5)">¡Pruébalo aquí! ▼</button>
@@ -1892,7 +1955,7 @@
             <div class="sc-content">
               <span class="sc-badge">Reputación</span>
               <h3 class="sc-title">6. Reseñas en Google en Automático</h3>
-              <p class="sc-desc">Tras cada servicio, el agente envía un mensaje personalizado con enlace directo a tu perfil de Google. Sin pedir nada — en el momento en que el cliente está más satisfecho.</p>
+              <p class="sc-desc">Tras cada servicio, tu cliente recibe un mensaje con el enlace directo a tu perfil de Google — justo cuando está más contento. Tú no pides nada; las reseñas llegan solas.</p>
             </div>
             <div class="sc-actions">
               <button class="sc-expand-btn" id="exp-6" onclick="toggleSC(6)">¡Pruébalo aquí! ▼</button>
@@ -1934,7 +1997,7 @@
             <div class="sc-content">
               <span class="sc-badge">Control total</span>
               <h3 class="sc-title">7. Resumen Diario del Negocio</h3>
-              <p class="sc-desc">Recibes en Telegram o email un informe completo a la hora que configures: citas, consultas, facturación estimada y alertas urgentes.</p>
+              <p class="sc-desc">Cada tarde, un mensaje en Telegram o email con lo que importa: citas, consultas, facturación estimada y lo que necesita tu atención. Tu negocio entero en 30 segundos.</p>
             </div>
             <div class="sc-actions">
               <button class="sc-expand-btn" id="exp-7" onclick="toggleSC(7)">¡Pruébalo aquí! ▼</button>
@@ -1977,7 +2040,7 @@
             <div class="sc-content">
               <span class="sc-badge">Ventas</span>
               <h3 class="sc-title">8. Seguimiento Automático de Presupuestos</h3>
-              <p class="sc-desc">El agente hace seguimiento tras enviar un presupuesto, en los plazos que definas, con mensajes útiles — no spam. Se detiene solo cuando el cliente acepta o rechaza.</p>
+              <p class="sc-desc">Envías el presupuesto y el agente hace el seguimiento por ti — mensajes útiles, no spam. Se para solo cuando el cliente decide. Ningún presupuesto muere por olvido.</p>
             </div>
             <div class="sc-actions">
               <button class="sc-expand-btn" id="exp-8" onclick="toggleSC(8)">¡Pruébalo aquí! ▼</button>
@@ -2020,7 +2083,7 @@
             <div class="sc-content">
               <span class="sc-badge">Retención</span>
               <h3 class="sc-title">9. Reactivación de Clientes Inactivos</h3>
-              <p class="sc-desc">Detecta clientes sin actividad en 30, 60 o 90 días y les envía un mensaje con su historial. Si responden con interés, agenda la cita directamente — sin que tú hagas nada.</p>
+              <p class="sc-desc">Detecta quién lleva 30, 60 o 90 días sin venir y le escribe con su historial en la mano. Si responde con interés, la cita se agenda sola — tú te enteras cuando ya está hecha.</p>
             </div>
             <div class="sc-actions">
               <button class="sc-expand-btn" id="exp-9" onclick="toggleSC(9)">¡Pruébalo aquí! ▼</button>
@@ -2062,7 +2125,7 @@
             <div class="sc-content">
               <span class="sc-badge">Atención 24/7</span>
               <h3 class="sc-title">10. Agente de Voz para Citas</h3>
-              <p class="sc-desc">Atiende llamadas entrantes, consulta tu agenda en tiempo real y gestiona reservas con lenguaje natural. Ninguna llamada queda sin responder — ni a las 10 de la noche ni en festivos.</p>
+              <p class="sc-desc">Coge el teléfono por ti: consulta tu agenda real y cierra la reserva hablando con naturalidad. Ni una llamada sin responder — tampoco a las 10 de la noche ni en festivos.</p>
             </div>
             <div class="sc-actions">
               <button class="sc-expand-btn" id="exp-10" onclick="toggleSC(10)">¡Pruébalo aquí! ▼</button>
@@ -2104,7 +2167,7 @@
             <div class="sc-content">
               <span class="sc-badge">Captación</span>
               <h3 class="sc-title">11. Pipeline de Captación Outbound</h3>
-              <p class="sc-desc">Del prospecto frío al contacto cualificado, solo. El agente localiza, contacta y hace seguimiento. Tu comercial solo actúa cuando hay interés real de compra.</p>
+              <p class="sc-desc">Del prospecto frío al contacto cualificado sin que muevas un dedo. Localiza, contacta y hace seguimiento; tu comercial solo entra cuando hay interés real de compra.</p>
             </div>
             <div class="sc-actions">
               <button class="sc-expand-btn" id="exp-11" onclick="toggleSC(11)">¡Pruébalo aquí! ▼</button>
@@ -2148,7 +2211,7 @@
             <div class="sc-content">
               <span class="sc-badge">WhatsApp</span>
               <h3 class="sc-title">12. Respuesta Automática por WhatsApp</h3>
-              <p class="sc-desc">Tu WhatsApp responde solo: preguntas frecuentes, precios, disponibilidad y reservas — al instante, a cualquier hora. Te avisa si hay algo que no sabe gestionar.</p>
+              <p class="sc-desc">Tu WhatsApp responde solo: dudas, precios, disponibilidad y reservas al momento, a cualquier hora. Y te avisa cuando algo se le escapa — nunca deja a un cliente colgado.</p>
             </div>
             <div class="sc-actions">
               <button class="sc-expand-btn" id="exp-12" onclick="toggleSC(12)">¡Pruébalo aquí! ▼</button>
@@ -2192,7 +2255,7 @@
             <div class="sc-content">
               <span class="sc-badge">Productividad</span>
               <h3 class="sc-title">13. Conversor de Audios a Apuntes</h3>
-              <p class="sc-desc">Sube cualquier audio — una reunión, una llamada de ventas, una clase — y recibe la transcripción completa, el resumen ejecutivo y las tareas detectadas. En segundos.</p>
+              <p class="sc-desc">Sube el audio de una reunión, una llamada o una clase y recibe la transcripción completa, el resumen y las tareas detectadas. En segundos, no en horas.</p>
             </div>
             <div class="sc-actions">
               <button class="sc-expand-btn" id="exp-13" onclick="toggleSC(13)">¡Pruébalo aquí! ▼</button>
@@ -2303,9 +2366,7 @@
           </div>
 
           <br />
-          <a href="https://t.me/Marirrodrigabot" target="_blank" rel="noopener">
-            <button class="btn-primary" style="width: fit-content;" onclick="window.open('https://t.me/Marirrodrigabot','_blank')">Hablar con ISMABOT en Telegram →</button>
-          </a>
+          <a class="btn-primary" style="width: fit-content;" href="https://t.me/Marirrodrigabot" target="_blank" rel="noopener">Hablar con ISMABOT en Telegram →</a>
         </div>
 
         <div class="contact-form-wrap">
@@ -2326,6 +2387,10 @@
               <label class="form-label">¿Qué quieres automatizar? <span style="color: var(--text-4); font-weight: 400;">(opcional)</span></label>
               <textarea class="form-textarea" id="contact-mensaje" rows="4" placeholder="Ej: Quiero automatizar la gestión de citas de mi clínica..."></textarea>
             </div>
+            <label style="display:flex;align-items:flex-start;gap:9px;font-size:12px;color:var(--text-3);margin-bottom:14px;cursor:pointer;line-height:1.5;">
+              <input type="checkbox" id="contact-privacidad" style="margin-top:2px;accent-color:var(--purple);width:16px;height:16px;flex-shrink:0;">
+              <span>He leído y acepto la <a href="/privacidad.html" target="_blank" style="color:var(--purple);text-decoration:underline;">política de privacidad</a> *</span>
+            </label>
             <button class="form-submit" onclick="submitContact()">Enviar y que me contacten →</button>
             <p class="form-disclaimer">Sin spam · Te respondemos en menos de 24h</p>
           </div>
@@ -2365,12 +2430,12 @@
         <div class="footer-col-title">Empresa</div>
         <a class="footer-link" href="#contacto" onclick="event.preventDefault();document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Contacto</a>
         <a class="footer-link" href="https://t.me/Marirrodrigabot" target="_blank" rel="noopener">ISMABOT</a>
-        <a class="footer-link" href="#" onclick="event.preventDefault()">Blog</a>
-        <a class="footer-link" href="#" onclick="event.preventDefault()">Privacidad</a>
+        <a class="footer-link" href="/privacidad.html">Política de privacidad</a>
+        <a class="footer-link" href="/aviso-legal.html">Aviso legal</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <span class="footer-copy">© 2025 Marirrodriga IA. Todos los derechos reservados.</span>
+      <span class="footer-copy">© 2026 Marirrodriga IA. Todos los derechos reservados.</span>
       <span class="footer-trust">Hecho con IA · Para negocios reales</span>
     </div>
   </footer>
@@ -2416,6 +2481,10 @@
         <input class="cart-input" id="cart-nombre" type="text" placeholder="Tu nombre" />
         <input class="cart-input" id="cart-apellidos" type="text" placeholder="Tus apellidos" />
         <input class="cart-input" id="cart-email" type="email" placeholder="Tu email" />
+        <label style="display:flex;align-items:flex-start;gap:9px;font-size:12px;color:var(--text-3);margin-bottom:12px;cursor:pointer;line-height:1.5;">
+          <input type="checkbox" id="cart-privacidad" style="margin-top:2px;accent-color:var(--purple);width:16px;height:16px;flex-shrink:0;">
+          <span>He leído y acepto la <a href="/privacidad.html" target="_blank" style="color:var(--purple);text-decoration:underline;">política de privacidad</a> *</span>
+        </label>
         <button class="cart-submit" id="cart-submit" onclick="submitCart()">Solicitar presupuesto →</button>
       </div>
       <div class="cart-success" id="cart-success" style="display:none">
@@ -2572,6 +2641,7 @@
         alert('Por favor, rellena todos los campos.');
         return;
       }
+      if (!document.getElementById('cart-privacidad').checked) { alert('Para solicitar el presupuesto, acepta la política de privacidad.'); return; }
       const servicios = Object.values(cart).map(i => i.badge + ' – ' + i.title);
       fetch('https://isman8nproyect.cloud/webhook/solicitud-carrito', {
         method: 'POST',
@@ -2761,6 +2831,7 @@
       const email = document.getElementById('contact-email').value.trim();
       const mensaje = document.getElementById('contact-mensaje').value.trim();
       if (!nombre || !email) { alert('Por favor, rellena tu nombre y email.'); return; }
+      if (!document.getElementById('contact-privacidad').checked) { alert('Para enviar el formulario, acepta la política de privacidad.'); return; }
       fetch('https://isman8nproyect.cloud/webhook/contacto-web', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'X-Web-Token': 'mweb-2026-xk9p' },
@@ -3139,7 +3210,7 @@
       ];
 
       const migrationCard = `
-        <div style="grid-column:1/-1;padding:28px 32px;background:linear-gradient(135deg,var(--purple-dark) 0%,#5b21b6 100%);border-radius:16px;display:flex;align-items:flex-start;gap:28px;">
+        <div class="sw-migration-card">
           <div style="flex-shrink:0;width:52px;height:52px;background:rgba(255,255,255,.12);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:26px;">🔄</div>
           <div style="flex:1;">
             <div style="display:inline-block;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:100px;padding:3px 12px;font-size:10px;font-weight:700;color:rgba(255,255,255,.8);letter-spacing:.06em;margin-bottom:10px;">SIN DISRUPCIÓN</div>
@@ -3175,7 +3246,7 @@
         </div>`).join('');
 
       return `
-        <div style="padding:48px 48px 48px;">
+        <div class="sw-showcase-wrap">
           <div style="display:inline-flex;align-items:center;gap:8px;background:var(--purple-tint);border:1px solid var(--border);border-radius:100px;padding:5px 14px;margin-bottom:20px;">
             <span style="font-size:11px;font-weight:700;color:var(--purple);letter-spacing:.05em;">✦ DESCUBRE DENTIA</span>
           </div>
@@ -3183,18 +3254,18 @@
             Un software dental completo.<br><em style="color:var(--purple);">Que además trabaja solo.</em>
           </div>
           <p style="font-size:13px;color:var(--text-3);margin-bottom:32px;line-height:1.7;max-width:620px;">Dentia es un software de gestión clínica completo — y encima automatiza lo que en otras clínicas hace una persona. Cada módulo tiene su propia capa de inteligencia artificial integrada: no es un chatbot genérico añadido por encima, es parte del software desde el primer día.</p>
-          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
+          <div class="sw-showcase-grid">
             ${migrationCard}
             ${cards}
           </div>
         </div>
-        <div style="height:1px;background:var(--border);margin:0 48px;"></div>`;
+        <div class="sw-divider-line"></div>`;
     }
 
     function renderSWPlans(d) {
       const hasSetupPromo = d.plans.some(p => p.promo_setup !== false);
       const banner = `
-        <div style="margin:0 48px 0;padding:14px 20px;background:linear-gradient(135deg,#7c3aed15,#a78bfa20);border:1px solid var(--purple-light);border-radius:12px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+        <div class="sw-promo-banner" style="padding:14px 20px;background:linear-gradient(135deg,#7c3aed15,#a78bfa20);border:1px solid var(--purple-light);border-radius:12px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
           <span style="font-size:20px;">🌞</span>
           <div>
             <span style="font-size:13px;font-weight:700;color:var(--purple);">Promo verano — hasta el 31 de agosto</span>
@@ -3222,7 +3293,8 @@
       const trialColor = f ? '#e9d5ff' : 'var(--purple)';
       const trialBg = f ? 'rgba(196,181,253,.15)' : 'var(--purple-tint)';
       const availBadge = p.available_from
-        ? `<div style="display:inline-block;margin-bottom:10px;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:.05em;background:${f?'rgba(255,255,255,.1)':'var(--purple-tint)'};color:${f?'rgba(255,255,255,.7)':'var(--purple-mid)'};">⏳ Disponible desde ${p.available_from}</div>` : '';
+        ? `<div style="display:inline-block;margin-bottom:10px;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:.05em;background:${f?'rgba(252,211,77,.18)':'#fffbeb'};border:1px solid ${f?'rgba(252,211,77,.4)':'#fcd34d'};color:${f?'#fde68a':'#92700a'};">⏳ Lanzamiento en ${p.available_from} — lista de espera abierta</div>` : '';
+      const ctaText = p.available_from ? 'Reservar mi plaza →' : 'Solicitar información';
       const dentiaBadge = p.dentia_included === true
         ? `<div style="display:inline-flex;align-items:center;gap:6px;margin-bottom:12px;padding:5px 13px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:.03em;background:${f?'rgba(255,255,255,.15)':'rgba(124,58,237,.1)'};border:1px solid ${f?'rgba(255,255,255,.25)':'rgba(124,58,237,.25)'};color:${f?'#fff':'var(--purple)'};">✦ Incluye Dentia</div>`
         : p.dentia_included === false
@@ -3260,7 +3332,7 @@
           <div class="sw-plan-ideal ${idealCls}" style="margin-top:10px;">${p.ideal}</div>
           <div class="sw-plan-divider ${divCls}"></div>
           <div class="sw-plan-feats">${feats}</div>
-          <button class="sw-plan-cta ${ctaCls}" onclick="selectSWPlan('${p.label}')">Solicitar información</button>
+          <button class="sw-plan-cta ${ctaCls}" onclick="selectSWPlan('${p.label}')">${ctaText}</button>
         </div>
       `;
     }
@@ -3278,7 +3350,7 @@
               <input class="sw-c-input" id="sw-negocio" type="text" placeholder="Nombre de tu ${d.contact_label}" />
             </div>
             <button class="sw-c-submit" onclick="submitSWContact()">Quiero más información →</button>
-            <p style="font-size:11px;color:var(--text-4);margin-top:10px;">Sin compromisos · Respondemos en menos de 24h</p>
+            <p style="font-size:11px;color:var(--text-4);margin-top:10px;">Sin compromisos · Respondemos en menos de 24h · Al enviar aceptas la <a href="/privacidad.html" target="_blank" style="color:var(--purple);text-decoration:underline;">política de privacidad</a></p>
           </div>
           <div id="sw-contact-success" style="display:none;text-align:center;padding:20px 0;">
             <div style="font-size:40px;margin-bottom:10px;">🎉</div>
@@ -3298,12 +3370,12 @@
           ${m.auto ? `<div style="margin-top:auto;padding-top:10px;border-top:1px solid var(--border-soft);font-size:11.5px;color:var(--text-3);line-height:1.55;">${m.auto}</div>` : ''}
         </div>`).join('');
       return `
-        <div style="padding:40px 48px 48px;">
-          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:0;">
+        <div class="sw-showcase-wrap">
+          <div class="sw-showcase-grid">
             ${cards}
           </div>
         </div>
-        <div style="height:1px;background:var(--border);margin:0 48px;"></div>`;
+        <div class="sw-divider-line"></div>`;
     }
 
     function renderSWInDevelopment(d) {
@@ -3334,7 +3406,7 @@
               <input class="sw-c-input full" id="swd-negocio" type="text" placeholder="Nombre de tu ${d.contact_label}" />
             </div>
             <button class="sw-c-submit" style="margin-top:16px;" onclick="submitSWDev()">Apuntarme al lanzamiento →</button>
-            <p style="font-size:11px;color:var(--text-4);margin-top:10px;">Sin compromisos · Te avisamos cuando esté listo · Oferta de verano garantizada</p>
+            <p style="font-size:11px;color:var(--text-4);margin-top:10px;">Sin compromisos · Te avisamos cuando esté listo · Oferta de verano garantizada · Al enviar aceptas la <a href="/privacidad.html" target="_blank" style="color:var(--purple);text-decoration:underline;">política de privacidad</a></p>
           </div>
           <div id="sw-dev-success" style="display:none;text-align:center;padding:30px 0;">
             <div style="font-size:40px;margin-bottom:10px;">🎉</div>
@@ -3397,7 +3469,7 @@
             </div>
             <div style="margin-top:16px;">
               <button class="sw-c-submit" onclick="submitSWContactNP()">Solicitar valoración gratuita →</button>
-              <p style="font-size:11px;color:var(--text-4);margin-top:10px;">Sin compromisos · Valoración gratuita de 15 minutos</p>
+              <p style="font-size:11px;color:var(--text-4);margin-top:10px;">Sin compromisos · Valoración gratuita de 15 minutos · Al enviar aceptas la <a href="/privacidad.html" target="_blank" style="color:var(--purple);text-decoration:underline;">política de privacidad</a></p>
             </div>
           </div>
           <div id="sw-contact-success-np" style="display:none;text-align:center;padding:30px 0;">
@@ -3741,5 +3813,6 @@ Hola, escribo porque estoy sumamente descontento. Hace 5 días que compré la pl
     }
 
   </script>
+  <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
