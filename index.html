@@ -32,7 +32,8 @@
     "logo": "https://www.marirrodriga-ia.com/apple-touch-icon.png",
     "description": "Agencia de automatización con IA para negocios: software por sector y agentes de IA a la carta.",
     "areaServed": "ES",
-    "sameAs": ["https://t.me/Marirrodrigabot"]
+    "sameAs": [],
+    "contactPoint": { "@type": "ContactPoint", "telephone": "+34675148566", "contactType": "customer service", "areaServed": "ES" }
   }
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -63,7 +64,6 @@
 
     html { scroll-behavior: smooth; }
     body { font-family: var(--font-body); background: #fff; color: var(--text-1); line-height: 1.6; padding-bottom: 80px; }
-    #ismabot-msgs { max-height: 200px; overflow-y: auto; }
     .sc-cart-btn-panel { display: block; width: 100%; }
     a { text-decoration: none; color: inherit; }
     button { font-family: var(--font-body); cursor: pointer; border: none; }
@@ -459,67 +459,6 @@
     }
     .ac-price { font-size: 13px; font-weight: 700; color: var(--text-1); }
     .ac-cta { font-size: 12px; font-weight: 600; color: var(--purple); display: flex; align-items: center; gap: 4px; }
-
-    /* ISMABOT card — destacada */
-    .ismabot-card {
-      grid-column: span 3;
-      background: linear-gradient(135deg, var(--purple-dark) 0%, #1e0b40 100%);
-      border-radius: 16px; padding: 40px 48px;
-      border: 1px solid rgba(167,139,250,.2);
-      display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
-      box-shadow: 0 12px 60px rgba(59,7,100,.2);
-    }
-    .ismabot-badge {
-      display: inline-flex; align-items: center; gap: 6px;
-      background: rgba(167,139,250,.15); border: 1px solid rgba(167,139,250,.3);
-      border-radius: 100px; padding: 5px 14px;
-      font-size: 11px; font-weight: 600; color: var(--purple-pale);
-      margin-bottom: 18px; width: fit-content;
-    }
-    .ismabot-title {
-      font-family: var(--font-head);
-      font-size: 36px; font-weight: 600; color: #fff;
-      margin-bottom: 14px; line-height: 1.1;
-    }
-    .ismabot-title em { font-style: italic; color: var(--purple-pale); }
-    .ismabot-desc { font-size: 15px; color: rgba(255,255,255,.45); line-height: 1.8; margin-bottom: 28px; }
-    .ismabot-feats { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
-    .ismabot-feat {
-      display: inline-flex; align-items: center; gap: 6px;
-      background: rgba(167,139,250,.1); border: 1px solid rgba(167,139,250,.2);
-      border-radius: 100px; padding: 6px 14px;
-      font-size: 12px; font-weight: 500; color: rgba(255,255,255,.65);
-    }
-    .ismabot-cta {
-      display: inline-flex; align-items: center; gap: 10px;
-      background: var(--purple-light); color: var(--purple-dark);
-      font-size: 14px; font-weight: 800;
-      padding: 15px 28px; border-radius: 100px;
-    }
-    .ismabot-chat {
-      background: rgba(255,255,255,.05); border-radius: 14px;
-      padding: 24px; border: 1px solid rgba(255,255,255,.08);
-    }
-    .chat-header {
-      display: flex; align-items: center; gap: 10px;
-      margin-bottom: 20px; padding-bottom: 16px;
-      border-bottom: 1px solid rgba(255,255,255,.08);
-    }
-    .chat-avatar {
-      width: 32px; height: 32px; border-radius: 50%;
-      background: var(--purple); display: flex; align-items: center;
-      justify-content: center; font-size: 14px;
-    }
-    .chat-name { font-size: 13px; font-weight: 700; color: #fff; }
-    .chat-status { font-size: 11px; color: rgba(167,139,250,.7); }
-    .chat-messages { display: flex; flex-direction: column; gap: 10px; }
-    .chat-msg {
-      font-size: 13px; line-height: 1.5; padding: 10px 14px; border-radius: 12px;
-      max-width: 85%;
-    }
-    .chat-msg--bot { background: rgba(255,255,255,.08); color: rgba(255,255,255,.8); align-self: flex-start; border-bottom-left-radius: 4px; }
-    .chat-msg--user { background: var(--purple); color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
-    .chat-msg--bot-accent { background: rgba(167,139,250,.15); border: 1px solid rgba(167,139,250,.25); color: rgba(255,255,255,.8); align-self: flex-start; border-bottom-left-radius: 4px; }
 
     /* ─── CONTACTO ──────────────────────────────────────── */
     .contact-section { background: #fff; padding: 96px 64px; }
@@ -1168,6 +1107,25 @@
     .sw-dev:hover { opacity:1; }
     .sw-dev .software-cover { filter: saturate(.7); }
 
+    /* ─── WHATSAPP FLOTANTE ─────────────────────────────────── */
+    .wa-float {
+      position: fixed; right: 28px; bottom: 28px; z-index: 250;
+      width: 60px; height: 60px; border-radius: 50%;
+      background: #25D366;
+      box-shadow: 0 6px 24px rgba(0,0,0,.28), 0 0 0 0 rgba(37,211,102,.5);
+      display: flex; align-items: center; justify-content: center;
+      transition: bottom .25s ease, transform .2s ease, box-shadow .2s ease;
+      animation: waPulse 2.6s ease-out infinite;
+    }
+    .wa-float:hover { transform: scale(1.08); box-shadow: 0 8px 30px rgba(0,0,0,.32); }
+    .wa-float svg { width: 30px; height: 30px; fill: #fff; }
+    .wa-float.shift { bottom: 100px; }
+    @keyframes waPulse {
+      0% { box-shadow: 0 6px 24px rgba(0,0,0,.28), 0 0 0 0 rgba(37,211,102,.45); }
+      70% { box-shadow: 0 6px 24px rgba(0,0,0,.28), 0 0 0 14px rgba(37,211,102,0); }
+      100% { box-shadow: 0 6px 24px rgba(0,0,0,.28), 0 0 0 0 rgba(37,211,102,0); }
+    }
+
     /* ─── CLASES PARA CONTENIDO GENERADO POR JS (modales) ────── */
     .sw-showcase-wrap { padding: 44px 48px 48px; }
     .sw-showcase-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
@@ -1194,7 +1152,6 @@
       .citas-card { grid-column: span 2; grid-template-columns: 1fr 1fr; }
       .citas-right { grid-column: 1 / -1; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
       .citas-price-sub { margin: 6px 0 0; }
-      .ismabot-card { padding: 32px; gap: 32px; }
       .sw-plans { padding: 32px 32px 40px; }
       .sw-modal-header { padding: 32px 32px 24px; }
       .sw-contact-mini { padding: 28px 32px; }
@@ -1259,11 +1216,6 @@
       .sc-panel { padding: 20px 16px; }
       .sc-panel-grid { grid-template-columns: 1fr; gap: 24px; }
 
-      /* ISMABOT */
-      .ismabot-card { grid-template-columns: 1fr; padding: 28px 22px; gap: 28px; }
-      .ismabot-title { font-size: 28px; }
-      .ismabot-cta { width: 100%; justify-content: center; }
-
       /* Contacto */
       .contact-grid { grid-template-columns: 1fr; gap: 40px; }
       .contact-form-wrap { padding: 26px 20px; }
@@ -1310,6 +1262,11 @@
       /* Demos */
       .demo-two-col { grid-template-columns: 1fr; }
       .inv-frame { height: 300px; }
+
+      /* WhatsApp flotante */
+      .wa-float { width: 52px; height: 52px; right: 16px; bottom: 16px; }
+      .wa-float svg { width: 26px; height: 26px; }
+      .wa-float.shift { bottom: 160px; }
     }
 
     /* ── Very small ≤480px ───────────────────────────────────── */
@@ -1454,7 +1411,7 @@
               <span class="sidenav-num">03</span>
               <div>
                 <span class="sidenav-title">Contacto directo</span>
-                <span class="sidenav-desc">Habla con ISMABOT o déjanos tu contacto y te escribimos</span>
+                <span class="sidenav-desc">Escríbenos por WhatsApp o déjanos tu contacto y te respondemos</span>
               </div>
             </button>
           </nav>
@@ -2298,34 +2255,6 @@
           </div>
         </div>
 
-        <!-- ISMABOT al final -->
-        <div class="ismabot-card">
-          <div>
-            <div class="ismabot-badge">⭐ Agente a medida · Gratis</div>
-            <div class="ismabot-title">ISMABOT —<br /><em>Tu guía sin compromiso</em></div>
-            <p class="ismabot-desc">Has explorado las herramientas. Ahora ISMABOT analiza tu negocio, identifica qué automatizaciones son aplicables a tu caso y te prepara un plan concreto. Sin coste, sin compromiso.</p>
-            <div class="ismabot-feats">
-              <span class="ismabot-feat">🧠 Memoria de chat</span>
-              <span class="ismabot-feat">🎤 Texto, imagen y audio</span>
-              <span class="ismabot-feat">💬 Conversación sin prisa</span>
-              <span class="ismabot-feat">📊 Informes personalizados</span>
-            </div>
-            <a href="https://t.me/Marirrodrigabot" target="_blank" class="ismabot-cta">Hablar con ISMABOT en Telegram →</a>
-          </div>
-          <div class="ismabot-chat">
-            <div class="chat-header">
-              <div class="chat-avatar">🤖</div>
-              <div>
-                <div class="chat-name">ISMABOT</div>
-                <div class="chat-status">● En línea</div>
-              </div>
-            </div>
-            <div class="chat-messages" id="ismabot-msgs">
-              <div class="chat-msg chat-msg--bot">Hola 👋 Soy ISMABOT. ¿A qué te dedicas?</div>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
   </section>
@@ -2339,14 +2268,14 @@
           <div class="section-label">Contacto directo</div>
           <h2>Cuéntanos tu caso.<br />No pierdas <em>tu tiempo.</em></h2>
           <div class="divider"></div>
-          <p>No esperas, no formularios largos, no intermediarios. Habla con ISMABOT o déjanos tu contacto y te escribimos en menos de 24h.</p>
+          <p>No esperas, no formularios largos, no intermediarios. Escríbenos por WhatsApp o déjanos tu contacto y te respondemos en menos de 24h.</p>
 
           <div class="contact-info-items">
             <div class="contact-info-item">
-              <div class="contact-info-icon">🤖</div>
+              <div class="contact-info-icon">💬</div>
               <div>
-                <div class="contact-info-title">ISMABOT — Respuesta inmediata</div>
-                <div class="contact-info-sub">Agente IA en Telegram. Disponible ahora, sin espera.</div>
+                <div class="contact-info-title">WhatsApp — Respuesta directa</div>
+                <div class="contact-info-sub">Escríbenos al 675 148 566. Sin esperas, sin intermediarios.</div>
               </div>
             </div>
             <div class="contact-info-item">
@@ -2366,7 +2295,7 @@
           </div>
 
           <br />
-          <a class="btn-primary" style="width: fit-content;" href="https://t.me/Marirrodrigabot" target="_blank" rel="noopener">Hablar con ISMABOT en Telegram →</a>
+          <a class="btn-primary" style="width: fit-content;" href="https://wa.me/34675148566" target="_blank" rel="noopener">Escribir por WhatsApp →</a>
         </div>
 
         <div class="contact-form-wrap">
@@ -2429,7 +2358,7 @@
       <div>
         <div class="footer-col-title">Empresa</div>
         <a class="footer-link" href="#contacto" onclick="event.preventDefault();document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Contacto</a>
-        <a class="footer-link" href="https://t.me/Marirrodrigabot" target="_blank" rel="noopener">ISMABOT</a>
+        <a class="footer-link" href="https://wa.me/34675148566" target="_blank" rel="noopener">WhatsApp</a>
         <a class="footer-link" href="/privacidad.html">Política de privacidad</a>
         <a class="footer-link" href="/aviso-legal.html">Aviso legal</a>
       </div>
@@ -2547,6 +2476,11 @@
     </div>
   </div>
 
+  <!-- ═══════════════════════════════════ WHATSAPP FLOTANTE ═══ -->
+  <a href="https://wa.me/34675148566" target="_blank" rel="noopener" class="wa-float" id="wa-float" aria-label="Escríbenos por WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.004 2c-5.523 0-10 4.477-10 10 0 1.77.46 3.435 1.267 4.876L2 22l5.25-1.375A9.955 9.955 0 0012.004 22c5.523 0 10-4.477 10-10s-4.477-10-10-10zm0 18.2a8.17 8.17 0 01-4.166-1.14l-.299-.177-3.111.816.83-3.034-.194-.312a8.19 8.19 0 01-1.26-4.353c0-4.522 3.678-8.2 8.2-8.2 4.523 0 8.2 3.678 8.2 8.2 0 4.523-3.677 8.2-8.2 8.2z"/></svg>
+  </a>
+
   <script>
     // ─── CART STATE ──────────────────────────────────────────
     const cart = {}; // id -> {badge, title}
@@ -2595,6 +2529,8 @@
       // Cart bar
       const bar = document.getElementById('cart-bar');
       bar.classList.toggle('visible', count > 0);
+      const waFloat = document.getElementById('wa-float');
+      if (waFloat) waFloat.classList.toggle('shift', count > 0);
       document.getElementById('cart-bar-count').textContent =
         count + ' ' + (count === 1 ? 'función seleccionada' : 'funciones seleccionadas');
       const names = ids.map(id => cart[id].badge);
@@ -2726,43 +2662,6 @@
       delete demoTimers[id];
       const container = document.getElementById('demo-' + id);
       if (container) container.querySelectorAll('.d-step').forEach(s => s.classList.remove('show'));
-    }
-
-    // ─── ISMABOT CHAT ANIMATION ──────────────────────────────
-    const ismabotMsgs = [
-      { from: 'bot',  text: 'Hola 👋 Soy ISMABOT. ¿A qué te dedicas?' },
-      { from: 'user', text: 'Clínica de fisioterapia. Somos 3 fisios.' },
-      { from: 'bot',  text: '¿Qué procesos lleváis todavía a mano?' },
-      { from: 'user', text: 'Agenda, facturas y recordatorios.' },
-      { from: 'bot',  text: 'Para darte un plan útil, necesito escucharte.' },
-      { from: 'bot',  text: 'Cuando lo tengas claro — agendamos con Ismael 🤝' },
-    ];
-
-    function animateIsmabot() {
-      const container = document.getElementById('ismabot-msgs');
-      if (!container) return;
-      let i = 0;
-      container.innerHTML = '';
-
-      function addMsg() {
-        if (i >= ismabotMsgs.length) {
-          setTimeout(() => { container.innerHTML = ''; i = 0; setTimeout(addMsg, 600); }, 4000);
-          return;
-        }
-        const msg = ismabotMsgs[i];
-        const el = document.createElement('div');
-        el.className = 'chat-msg chat-msg--' + msg.from;
-        el.textContent = msg.text;
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(6px)';
-        el.style.transition = 'opacity .3s, transform .3s';
-        container.appendChild(el);
-        container.scrollTop = container.scrollHeight;
-        setTimeout(() => { el.style.opacity = '1'; el.style.transform = 'translateY(0)'; }, 30);
-        i++;
-        setTimeout(addMsg, msg.from === 'bot' ? 1800 : 1200);
-      }
-      addMsg();
     }
 
     // ─── ONBOARDING MODAL ─────────────────────────────────────
@@ -3559,10 +3458,6 @@
       if (e.target === document.getElementById('sw-overlay')) closeSoftware();
     }
 
-    // ─── INIT ─────────────────────────────────────────────────
-    window.addEventListener('DOMContentLoaded', () => {
-      animateIsmabot();
-    });
 
     // ─── CHATBOT DEMO ─────────────────────────
     const TG_WEBHOOK = 'https://isman8nproyect.cloud/webhook/chatbot-demo-web';
@@ -3589,7 +3484,7 @@
       if (t.includes('precio') || t.includes('coste') || t.includes('cuesta'))
         return 'Mucho menos de lo que cuesta perder 2 horas al día con tareas repetitivas. Hacemos presupuesto personalizado. ¡Cuéntanos tu caso! 👇';
       if (t.includes('demo') || t.includes('disponibilidad') || t.includes('agendar'))
-        return 'Perfecto. Puedes hablar directamente con ISMABOT en Telegram para que analice tu caso y te proponga una solución real. 👇 O déjanos tu contacto en el formulario de abajo.';
+        return 'Perfecto. Escríbenos directamente por WhatsApp al 675 148 566 y lo vemos ahora mismo. 👇 O déjanos tu contacto en el formulario de abajo.';
       return '¡Buena pregunta! Soy MariRobot — rápida, eficiente y sin rodeos. ¿Vemos cómo automatizar tu operativa? 🤖';
     }
 
