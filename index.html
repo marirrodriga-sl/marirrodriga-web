@@ -1481,15 +1481,15 @@
       <div class="softwares-grid">
 
         <!-- ── DISPONIBLES ─────────────────────────────────── -->
-        <div class="software-card" onclick="openSoftware('dental')" style="cursor:pointer">
+        <div class="software-card" onclick="location.href='/dentia.html'" style="cursor:pointer">
           <div class="software-cover" style="background: linear-gradient(135deg, #EBF8FF, #BEE3F8);">🦷</div>
           <div class="software-body">
             <span class="software-tag">Clínica Dental</span>
-            <div class="software-title">Dentia — te llena la agenda, cierra presupuestos y recupera pacientes que se enfriaron.</div>
-            <p class="software-desc">Software dental completo: citas 24/7, seguimiento de presupuestos, recordatorios que frenan los no-shows e informes cada mes.</p>
+            <div class="software-title">Dentia — el software dental que además trabaja solo: llena la agenda, cierra presupuestos y recupera pacientes.</div>
+            <p class="software-desc">Gestión clínica completa en la nube + un asistente de IA que atiende a tus pacientes por WhatsApp. Sin cuota de alta, sin permanencia.</p>
             <div class="software-footer">
-              <span class="software-price">Desde 99€/mes</span>
-              <span class="software-link">Ver planes →</span>
+              <span class="software-price">Desde 59€/mes</span>
+              <span class="software-link">Ver Dentia →</span>
             </div>
           </div>
         </div>
@@ -2350,7 +2350,7 @@
       </div>
       <div>
         <div class="footer-col-title">Sectores</div>
-        <a class="footer-link" href="#softwares" onclick="event.preventDefault();openSoftware('dental')">Clínica Dental</a>
+        <a class="footer-link" href="/dentia.html">Clínica Dental</a>
         <a class="footer-link" href="#softwares" onclick="event.preventDefault();openSoftware('estetica')">Estética</a>
         <a class="footer-link" href="#softwares" onclick="event.preventDefault();openSoftware('deporte')">Centro Deportivo</a>
         <a class="footer-link" href="#softwares" onclick="event.preventDefault();openSoftware('autoescuela')">Autoescuela</a>
@@ -2759,49 +2759,51 @@
     const SW_DATA = {
       dental: {
         emoji: '🦷', tag: 'Automatización IA para clínicas dentales',
-        name: 'Deja de perder pacientes e ingresos <em>sin contratar a nadie más</em>',
-        desc: 'Tres problemas que tu clínica sufre cada semana: citas vacías por no-shows, presupuestos que mueren solos y consultas que nadie atiende. Dentia los resuelve.',
+        name: 'El software dental que además <em>trabaja solo</em>',
+        desc: 'Gestión completa de tu clínica en la nube — agenda, historia clínica, odontograma, presupuestos y facturación — con un asistente de IA que atiende a tus pacientes, cierra presupuestos y te avisa de lo importante. Todo por menos de lo que cuesta el software dental de siempre.',
         plans: [
           {
-            label:'Básico', name:'IA con tu software actual', featured:false,
-            dentia_included: false,
-            desc:'Automatizaciones IA que funcionan encima de tu software actual. Sin migración, sin cambiar nada de lo que ya tienes.',
-            monthly:99, setup:300, trial:50,
-            ideal:'Clínicas que quieren empezar a automatizar sin cambiar su software.',
+            label:'Esencial', name:'Todo tu software dental, en la nube', featured:false,
+            dentia_included: true,
+            desc:'Sustituye tu programa actual por Dentia: gestión clínica completa, facturación y reserva online, accesible desde cualquier dispositivo.',
+            monthly:59, setup:0, trial:0,
+            ideal:'Clínicas y gabinetes que quieren un software moderno, completo y sin complicaciones.',
             feats:[
-              {text:'Chatbot de citas 24/7 por WhatsApp o web — tus pacientes reservan cuando quieren, sin esperar a que recepción esté libre'},
-              {text:'Sincronización con tu calendario actual — el bot consulta huecos reales antes de ofrecer cita'},
-              {text:'Recordatorios automáticos pre-cita (48h y 24h) con confirmación del paciente — menos sillas vacías'},
-              {text:'Soporte por email en horario laboral'},
+              {text:'Agenda, ficha de paciente, odontograma digital e historia clínica'},
+              {text:'Presupuestos y pagos con catálogo de tratamientos'},
+              {text:'Facturación simple: factura o recibo en un clic, numerada y archivada'},
+              {text:'Reserva de cita online 24/7 para tus pacientes'},
+              {text:'Recordatorios automáticos de cita — menos sillas vacías'},
+              {text:'100% en la nube · almacenamiento de datos clínicos incluido'},
             ]
           },
           {
-            label:'Estándar', name:'Dentia + IA integrada', featured:true,
+            label:'Profesional', name:'Dentia + Asistente de IA', featured:true,
             dentia_included: true,
-            desc:'Migras a Dentia, nuestro software dental completo, con todas las automatizaciones IA ya integradas. Un software propio que reemplaza lo que tienes ahora y además trabaja solo.',
-            monthly:199, setup:700, trial:100,
-            available_from:'agosto 2026',
-            ideal:'Clínicas que quieren dejar de pagar por su software actual y tener todo integrado.',
+            desc:'Todo Dentia más el asistente de IA que atiende a tus pacientes por WhatsApp: resuelve dudas, acompaña la decisión de presupuestos y te trae más citas cerradas — sin que recepción levante el teléfono.',
+            monthly:99, setup:0, trial:0,
+            ideal:'Clínicas que quieren llenar la agenda y cerrar más presupuestos sin sumar personal.',
             feats:[
-              {text:'Todo lo del plan Básico', inh:true},
-              {text:'Chatbot de cierre de presupuestos — agente especializado por tratamiento que resuelve dudas del paciente 24/7 durante su período de decisión', hi:true},
-              {text:'Seguimiento post-cita automatizado — el sistema contacta al paciente después del tratamiento'},
-              {text:'Solicitud automática de reseñas en Google tras cada visita'},
-              {text:'Reactivación automática de pacientes inactivos — detecta quién lleva demasiado tiempo sin venir y le contacta para agendar revisión'},
-              {text:'Informe mensual: citas gestionadas, no-shows evitados, presupuestos reactivados, barreras de cierre detectadas', hi:true},
+              {text:'Todo lo del plan Esencial', inh:true},
+              {text:'Asistente de IA por WhatsApp 24/7 — reserva, consulta y cancela citas conversando, y conoce el historial de cada paciente', hi:true},
+              {text:'Acompañamiento de presupuestos — resuelve dudas del paciente durante su decisión y cierra el presupuesto por chat', hi:true},
+              {text:'Seguimiento post-visita real: primero se interesa por el paciente, luego pide la reseña de Google'},
+              {text:'Recuperación automática de pacientes que llevan meses sin venir'},
+              {text:'Análisis del negocio con IA: dudas y objeciones frecuentes, mejoras sugeridas', hi:true},
             ]
           },
           {
-            label:'Premium', name:'Dentia + Control Total', featured:false,
+            label:'Clínica', name:'Dentia + Control Total', featured:false,
             dentia_included: true,
-            desc:'Todo lo de Dentia más una capa estratégica: dashboard financiero, sesión trimestral con Ismael y soporte prioritario.',
-            monthly:329, setup:1000, trial:165,
-            available_from:'agosto 2026',
-            ideal:'Clínicas que quieren control total sobre operaciones y finanzas.',
+            desc:'Para clínicas con varios profesionales o volumen alto de imágenes: todo lo anterior más firma digital, almacenamiento ampliado y soporte prioritario.',
+            monthly:149, setup:0, trial:0,
+            ideal:'Clínicas medianas, multiprofesional o con radiología digital.',
             feats:[
-              {text:'Todo lo del plan Estándar', inh:true},
-              {text:'Dashboard mensual — ingresos, gastos, producción por profesional y comparativa entre meses, todo visual y sin tocar Excel', hi:true},
-              {text:'Sesión estratégica trimestral — revisión conjunta de los datos para detectar oportunidades y ajustar procesos'},
+              {text:'Todo lo del plan Profesional', inh:true},
+              {text:'Firma digital de consentimientos informados — el paciente firma en pantalla, archivado en PDF', hi:true},
+              {text:'Almacenamiento ampliado para radiografías e imágenes clínicas', hi:true},
+              {text:'Multiprofesional y multi-sede'},
+              {text:'Cuadro de mando económico e informes avanzados'},
               {text:'Soporte prioritario con respuesta en menos de 4 horas'},
             ]
           },
@@ -3164,7 +3166,8 @@
 
     function renderSWPlans(d) {
       const hasSetupPromo = d.plans.some(p => p.promo_setup !== false);
-      const banner = `
+      const showBanner = d.plans.some(p => p.promo_setup !== false || (p.trial && p.trial > 0));
+      const banner = !showBanner ? '' : `
         <div class="sw-promo-banner" style="padding:14px 20px;background:linear-gradient(135deg,#7c3aed15,#a78bfa20);border:1px solid var(--purple-light);border-radius:12px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
           <span style="font-size:20px;">🌞</span>
           <div>
@@ -3200,14 +3203,21 @@
         : p.dentia_included === false
         ? `<div style="display:inline-flex;align-items:center;gap:6px;margin-bottom:12px;padding:5px 13px;border-radius:20px;font-size:11px;font-weight:600;letter-spacing:.03em;background:${f?'rgba(255,255,255,.08)':'var(--purple-tint2)'};border:1px solid ${f?'rgba(255,255,255,.15)':'var(--border)'};color:${f?'rgba(255,255,255,.6)':'var(--text-3)'};">↗ Funciona con tu software actual</div>`
         : '';
-      const setupLine = p.promo_setup === false ? `
+      const setupLine = p.setup === 0 ? `
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:2px;">
+            <span style="font-size:13px;color:${f?'rgba(255,255,255,.75)':'var(--text-2)'};font-weight:600;">Puesta en marcha y migración</span>
+            <span style="font-size:12px;font-weight:800;padding:2px 10px;border-radius:20px;background:${f?'#7c3aed':'var(--purple)'};color:#fff;white-space:nowrap;">INCLUIDAS</span>
+          </div>
+          <div style="font-size:11px;color:${f?'rgba(255,255,255,.4)':'var(--text-4)'};margin-bottom:2px;">Sin cuota de alta · sin permanencia</div>` : p.promo_setup === false ? `
           <div style="font-size:13px;color:${f?'rgba(255,255,255,.65)':'var(--text-3)'};margin-bottom:2px;">Instalación <strong>${p.setup.toLocaleString('es-ES')}€</strong> · pago único</div>` : `
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:2px;">
             <span style="font-size:13px;text-decoration:line-through;color:${f?'rgba(255,255,255,.55)':'var(--text-3)'};font-weight:500;">Instalación ${p.setup.toLocaleString('es-ES')}€</span>
             <span style="font-size:12px;font-weight:800;padding:2px 10px;border-radius:20px;background:${f?'#7c3aed':'var(--purple)'};color:#fff;white-space:nowrap;">🌞 GRATIS</span>
           </div>
           <div style="font-size:11px;color:${f?'rgba(255,255,255,.4)':'var(--text-4)'};margin-bottom:2px;">Te ahorras ${p.setup.toLocaleString('es-ES')}€ · Promo hasta el 31 agosto</div>`;
-      const trialLine = `<div style="margin:10px 0 2px;padding:9px 12px;background:${trialBg};border-radius:8px;font-size:12px;color:${trialColor};font-weight:600;border:1px solid ${f?'rgba(196,181,253,.25)':'var(--border)'};line-height:1.5;">
+      const trialLine = p.trial === 0 ? `<div style="margin:10px 0 2px;padding:9px 12px;background:${trialBg};border-radius:8px;font-size:12px;color:${trialColor};font-weight:600;border:1px solid ${f?'rgba(196,181,253,.25)':'var(--border)'};line-height:1.5;">
+            ✦ Primer mes de prueba<br><span style="font-weight:400;opacity:.75;">Sin permanencia · lo dejas cuando quieras</span>
+          </div>` : `<div style="margin:10px 0 2px;padding:9px 12px;background:${trialBg};border-radius:8px;font-size:12px;color:${trialColor};font-weight:600;border:1px solid ${f?'rgba(196,181,253,.25)':'var(--border)'};line-height:1.5;">
             ✦ 2 primeros meses a <strong>${p.trial}€/mes</strong><br><span style="font-weight:400;opacity:.75;">Luego ${p.monthly}€/mes · Sin permanencia</span>
           </div>`;
       const feats = p.feats.map(ft => {
