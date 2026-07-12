@@ -77,6 +77,20 @@
   ul.clean{list-style:none;margin:20px 0}
   ul.clean li{background:#fff;border:1px solid var(--border);border-radius:11px;padding:14px 18px;margin-bottom:10px;font-size:15px;color:var(--ink-2);display:flex;gap:12px}
   ul.clean li b{color:var(--ink)}ul.clean .d{color:var(--teal);font-weight:800}
+  /* ── banda distintivo IA ── */
+  .ia-band{background:linear-gradient(165deg,var(--teal-d),#0b5b54);color:#fff}
+  .ia-band h2{color:#fff}
+  .ia-band h2 em{color:var(--accent)}
+  .ia-band .lead{color:rgba(255,255,255,.8)}
+  .ia-band .eyebrow{background:rgba(255,255,255,.14);color:#fff}
+  .ia-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:40px}
+  .ia-row{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:22px}
+  .ia-row .mod{display:flex;align-items:center;gap:10px;font-weight:700;font-size:16px;margin-bottom:10px}
+  .ia-row .sin{font-size:13.5px;color:rgba(255,255,255,.55);margin-bottom:10px}
+  .ia-row .sin b{color:rgba(255,255,255,.78);font-weight:600}
+  .ia-row .con{font-size:14.5px;color:#fff;border-left:3px solid var(--accent);padding-left:12px;line-height:1.55}
+  .ia-row .con b{color:var(--accent)}
+  @media(max-width:860px){.ia-grid{grid-template-columns:1fr}}
   /* ── divisor de sección del menú ── */
   .sec-head{text-align:center;padding:64px 0 0}
   .sec-head .kicker{font-family:var(--font-head);font-style:italic;font-size:20px;color:var(--teal)}
@@ -186,6 +200,47 @@
   <p class="lead">Dentia es un software de gestión clínica completo — y encima automatiza lo que en otras clínicas hace una persona. La IA no es un chatbot genérico añadido por encima: es parte del software desde el primer día, con acceso a la agenda y al historial reales.</p>
   <div class="fig"><img src="dentia-img/dashboard.png" alt="Panel de inicio de Dentia" loading="lazy" /></div>
   <p class="lead" style="margin-top:6px">La pantalla de inicio te muestra el día de un golpe de vista: citas de hoy, seguimientos, presupuestos abiertos e ingresos. Sencillo desde el primer día, sin manuales.</p>
+</div></section>
+
+<!-- ── Distintivo: la IA módulo a módulo ── -->
+<section class="ia-band"><div class="wrap">
+  <div class="center">
+    <span class="eyebrow">✦ Nuestro distintivo</span>
+    <h2>El software completo de siempre…<br/>que además <em>piensa</em></h2>
+    <p class="lead">Debajo de cada módulo normal hay una IA trabajando. Esto es exactamente lo que añade en cada sitio — y lo que ganas tú.</p>
+  </div>
+  <div class="ia-grid">
+    <div class="ia-row">
+      <div class="mod">📅 Agenda y citas</div>
+      <div class="sin"><b>Lo de siempre:</b> agenda por profesional, tipos de cita, estados.</div>
+      <div class="con">✦ La IA recuerda cada cita el día antes y el paciente confirma con un toque; el hueco del que cancela se detecta al momento. <b>Ganas:</b> menos sillones vacíos sin que nadie del mostrador llame.</div>
+    </div>
+    <div class="ia-row">
+      <div class="mod">💶 Presupuestos</div>
+      <div class="sin"><b>Lo de siempre:</b> los creas, los imprimes y los controlas por estado y valor.</div>
+      <div class="con">✦ La IA los persigue sola: resuelve las dudas del paciente por WhatsApp y le acompaña hasta la decisión. <b>Ganas:</b> presupuestos que antes morían en un cajón, cerrados.</div>
+    </div>
+    <div class="ia-row">
+      <div class="mod">🗂 Ficha del paciente</div>
+      <div class="sin"><b>Lo de siempre:</b> odontograma, historia clínica, radiografías y documentos.</div>
+      <div class="con">✦ La IA vigila las fichas: detecta al que lleva un año sin venir y le invita a volver antes de que acabe en otra clínica. <b>Ganas:</b> pacientes recuperados sin listas a mano.</div>
+    </div>
+    <div class="ia-row">
+      <div class="mod">📞 Atención al paciente</div>
+      <div class="sin"><b>Lo de siempre:</b> el teléfono de recepción, en horario de recepción.</div>
+      <div class="con">✦ El asistente atiende por WhatsApp 24/7 conociendo el historial, y reserva o cancela citas reales. <b>Ganas:</b> la cita de las 21:00 ya no se va a la siguiente clínica de Google.</div>
+    </div>
+    <div class="ia-row">
+      <div class="mod">🧾 Facturación y contabilidad</div>
+      <div class="sin"><b>Lo de siempre:</b> factura en un clic con numeración correlativa.</div>
+      <div class="con">✦ La IA analiza las cuentas y te sirve la foto del negocio, sin Excel ni gestorías de por medio. <b>Ganas:</b> decidir con números, no con sensaciones.</div>
+    </div>
+    <div class="ia-row">
+      <div class="mod">⭐ Reputación y mejora continua</div>
+      <div class="sin"><b>Lo de siempre:</b> esto los programas clásicos directamente no lo tocan.</div>
+      <div class="con">✦ Tras cada visita la IA se interesa por el paciente: si está bien, le pide la reseña; si no, avisa a la clínica. Y cada semana te sugiere mejoras leyendo las conversaciones. <b>Ganas:</b> más reseñas y una clínica que aprende.</div>
+    </div>
+  </div>
 </div></section>
 
 <section><div class="wrap">
