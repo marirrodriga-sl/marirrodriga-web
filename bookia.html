@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bookia — La silla nunca parada, la agenda siempre llena | Marirrodriga IA</title>
+<meta name="description" content="Software de citas con IA para barberías: encaja las citas sin huecos muertos y le suma un asistente que atiende por WhatsApp y Telegram, reserva solo, recupera a los clientes que no vuelven y pide reseñas. Desde 49€/mes, sin alta ni permanencia." />
+<meta property="og:title" content="Bookia — La silla nunca parada, la agenda siempre llena" />
+<meta property="og:description" content="Software de citas con IA para barberías. Sin huecos muertos, con un asistente que atiende, reserva y recupera clientes. Desde 49€/mes." />
+<meta property="og:type" content="website" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%92%88%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Identidad Bookia — barbería moderna: petróleo de noche + turquesa neón + latón de oficio */
+    --petrol:#08262f;--petrol-2:#0c3944;--brand:#0e7490;--brand-d:#0b596e;
+    --neon:#22d3ee;--neon-2:#2dd4bf;--brass:#c6923e;
+    --ink:#0d1c1f;--ink-2:#3c4c4e;--ink-3:#61767a;--ink-4:#93a8ab;
+    --bg:#fff;--bg-soft:#f1f7f7;--bg-warn:#fff8ec;
+    --border:#e2eded;--border-2:#cfe0e0;
+    --ok:#0e8a8a;--warn:#c6923e;
+    --shadow:0 1px 3px rgba(8,38,47,.06),0 10px 34px rgba(8,38,47,.06);
+    --font-display:'Bricolage Grotesque',system-ui,sans-serif;
+    --font-body:'Hanken Grotesk',system-ui,sans-serif;
+    --font-mono:'Space Mono',ui-monospace,monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font-body);color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+  .narrow{max-width:780px;margin:0 auto}
+  .center{text-align:center}.center .lead{margin-left:auto;margin-right:auto}
+  section{padding:74px 0}
+  h1{font-family:var(--font-display);font-size:clamp(40px,6.6vw,74px);line-height:1.0;letter-spacing:-.03em;font-weight:800}
+  h2{font-family:var(--font-display);font-size:clamp(30px,4.4vw,46px);line-height:1.06;letter-spacing:-.025em;font-weight:700;margin-bottom:14px}
+  h1 em,h2 em{font-style:normal;color:var(--brand)}
+  .lead{font-size:18px;color:var(--ink-2);max-width:660px;font-weight:400}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--brand);background:#e5f4f6;padding:7px 14px;border-radius:6px;margin-bottom:22px}
+  /* barber-pole: la firma de la página */
+  .pole{background:repeating-linear-gradient(48deg,var(--brand) 0 7px,var(--neon) 7px 14px);background-size:200% 200%;animation:spin 7s linear infinite}
+  @keyframes spin{to{background-position:28px 0}}
+  @media(prefers-reduced-motion:reduce){.pole{animation:none}}
+  .btn{display:inline-flex;align-items:center;gap:9px;background:var(--brand);color:#fff;font-family:var(--font-body);font-weight:700;font-size:15px;padding:14px 26px;border-radius:10px;border:none;cursor:pointer;transition:transform .15s,box-shadow .15s;box-shadow:0 8px 22px rgba(14,116,144,.32)}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(14,116,144,.42)}
+  .btn.ghost{background:transparent;color:var(--brand);border:1.5px solid var(--border-2);box-shadow:none}
+  .btn.ghost:hover{border-color:var(--brand);background:var(--bg-soft)}
+  .btn.light{background:#fff;color:var(--petrol)}
+  /* ── NAV ── */
+  nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;gap:14px;height:64px}
+  .brand{display:flex;align-items:center;gap:11px}
+  .brand .bar{width:6px;height:30px;border-radius:3px}
+  .brand .nm{font-family:var(--font-display);font-weight:800;font-size:21px;letter-spacing:-.03em}
+  .brand .nm small{display:block;font-family:var(--font-mono);font-size:9px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-4);margin-top:-2px}
+  .nav-links{display:flex;gap:28px;overflow-x:auto;scrollbar-width:none}
+  .nav-links::-webkit-scrollbar{display:none}
+  .nav-links a{font-size:14px;font-weight:600;color:var(--ink-3);white-space:nowrap;padding:4px 0;border-bottom:2px solid transparent;transition:color .15s}
+  .nav-links a:hover{color:var(--brand);border-bottom-color:var(--neon)}
+  .nav-cta{font-size:13.5px;padding:10px 18px;white-space:nowrap}
+  /* ── HERO ── */
+  .hero{position:relative;background:var(--petrol);color:#fff;overflow:hidden;padding:76px 0 84px}
+  .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(900px 420px at 78% -8%,rgba(34,211,238,.22),transparent),radial-gradient(700px 380px at 6% 108%,rgba(45,212,191,.12),transparent);pointer-events:none}
+  .hero .wrap{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:52px;align-items:center}
+  .hero .eyebrow{background:rgba(34,211,238,.14);color:var(--neon)}
+  .hero h1{color:#fff}
+  .hero h1 em{background:linear-gradient(100deg,var(--neon),var(--neon-2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .hero .lead{color:rgba(233,246,247,.82);margin-top:22px;font-size:18px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}
+  .hero-trust{margin-top:26px;display:flex;gap:8px 20px;flex-wrap:wrap;font-family:var(--font-mono);font-size:12px;color:rgba(233,246,247,.6)}
+  .hero-trust b{color:var(--neon);font-weight:400}
+  /* comparador de agenda: rejilla vs bookia (thesis) */
+  .cmp-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:18px}
+  .col-h{font-family:var(--font-mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;text-align:center;margin-bottom:10px;color:rgba(233,246,247,.55)}
+  .col-h.us{color:var(--neon)}
+  .slot{border-radius:8px;padding:9px 11px;margin-bottom:6px;font-size:12.5px;font-weight:600;display:flex;justify-content:space-between;align-items:center}
+  .slot .tm{font-family:var(--font-mono);font-size:11px;opacity:.8}
+  .slot.busy{background:rgba(255,255,255,.1);color:#fff}
+  .slot.busy.tq{background:linear-gradient(90deg,rgba(34,211,238,.9),rgba(45,212,191,.85));color:#06222a}
+  .slot.dead{background:repeating-linear-gradient(45deg,rgba(255,255,255,.04) 0 6px,rgba(255,255,255,.09) 6px 12px);color:rgba(255,255,255,.5);border:1px dashed rgba(255,255,255,.2);font-weight:400;font-size:11.5px;justify-content:center}
+  .cmp-foot{text-align:center;font-size:12px;margin-top:4px;color:rgba(233,246,247,.6)}
+  .cmp-foot b{color:var(--neon)}
+  /* ── STATS ── */
+  .stats{background:var(--petrol-2)}
+  .stats .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.08);border-radius:16px;overflow:hidden}
+  .stat{background:var(--petrol-2);padding:26px 22px;color:#fff}
+  .stat .n{font-family:var(--font-display);font-size:38px;font-weight:800;letter-spacing:-.03em;color:var(--neon);line-height:1}
+  .stat .l{font-size:13.5px;color:rgba(233,246,247,.72);margin-top:9px}
+  /* ── PROBLEM ── */
+  .prob-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px}
+  .prob{background:#fff;border:1px solid var(--border);border-radius:16px;padding:28px;box-shadow:var(--shadow);position:relative}
+  .prob .n{font-family:var(--font-mono);font-size:12px;color:var(--brass);font-weight:700}
+  .prob h3{font-family:var(--font-display);font-size:20px;font-weight:700;margin:10px 0 8px;letter-spacing:-.02em}
+  .prob p{font-size:14.5px;color:var(--ink-3)}
+  /* ── generic sections ── */
+  .soft{background:var(--bg-soft);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+  .fig{margin:30px 0 8px;border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:0 16px 50px rgba(8,38,47,.1)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
+  .card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:22px}
+  .card h3{font-family:var(--font-display);font-size:17px;font-weight:700;margin-bottom:5px;letter-spacing:-.01em}
+  .card p{font-size:14px;color:var(--ink-3)}
+  .note{border-left:3px solid var(--brand);background:#fff;border-radius:0 12px 12px 0;padding:16px 20px;margin:22px 0;font-size:15px;color:var(--ink-2);box-shadow:var(--shadow)}
+  /* ── IA band ── */
+  .ia-band{background:var(--petrol);color:#fff;position:relative;overflow:hidden}
+  .ia-band::before{content:"";position:absolute;inset:0;background:radial-gradient(700px 300px at 90% 0,rgba(34,211,238,.14),transparent);pointer-events:none}
+  .ia-band .wrap{position:relative}
+  .ia-band h2{color:#fff}.ia-band h2 em{color:var(--neon)}
+  .ia-band .lead{color:rgba(233,246,247,.78)}
+  .ia-band .eyebrow{background:rgba(34,211,238,.14);color:var(--neon)}
+  .ia-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:40px}
+  .ia-row{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:22px;display:flex;gap:16px}
+  .ia-row .em{font-size:24px;line-height:1;flex-shrink:0}
+  .ia-row .mod{font-family:var(--font-display);font-weight:700;font-size:16.5px;margin-bottom:6px}
+  .ia-row .con{font-size:14px;color:rgba(233,246,247,.82);line-height:1.55}
+  .ia-row .con b{color:var(--neon);font-weight:600}
+  /* ── sec divider ── */
+  .sec-head{text-align:center;padding:66px 0 0}
+  .sec-head .kick{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-4)}
+  .sec-head .kick .ln{width:34px;height:3px;border-radius:2px}
+  /* ── phone mock ── */
+  .phone{max-width:390px;margin:26px auto 0;border:9px solid #0d1c1f;border-radius:38px;overflow:hidden;box-shadow:0 22px 60px rgba(8,38,47,.28)}
+  .tg-top{background:var(--petrol-2);color:#fff;padding:13px 16px;display:flex;align-items:center;gap:11px}
+  .tg-av{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--neon));display:flex;align-items:center;justify-content:center;font-size:17px}
+  .tg-top .nm{font-size:14.5px;font-weight:700;line-height:1.2}.tg-top .st{font-family:var(--font-mono);font-size:10.5px;color:var(--neon)}
+  .tg-body{background:#e9eff0;padding:15px 13px}
+  .bubble{max-width:82%;padding:8px 12px;border-radius:12px;font-size:14px;margin-bottom:6px;line-height:1.45;box-shadow:0 1px 1px rgba(0,0,0,.06)}
+  .b-user{background:#d6f3fb;color:#0d2a31;margin-left:auto;border-bottom-right-radius:3px}
+  .b-bot{background:#fff;color:#233;margin-right:auto;border-bottom-left-radius:3px}
+  .bubble .t{display:block;font-family:var(--font-mono);font-size:9.5px;color:#8aa;text-align:right;margin-top:3px}
+  .grp{margin-bottom:9px}
+  .mock-lbl{font-size:13px;color:var(--ink-4);text-align:center;margin:26px auto 0;font-style:italic;max-width:520px}
+  /* ── objetivos ── */
+  .obj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+  .obj{background:#fff;border:1px solid var(--border);border-radius:16px;padding:24px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px}
+  .obj .em{font-size:26px}
+  .obj h3{font-family:var(--font-display);font-size:17px;font-weight:700;letter-spacing:-.01em}
+  .obj p{font-size:14px;color:var(--ink-3)}
+  .obj .kpi{margin-top:auto;padding-top:14px;font-family:var(--font-mono);font-size:11px;font-weight:700;letter-spacing:.02em;text-transform:uppercase;color:var(--brand);border-top:1px solid var(--border)}
+  /* ── comparativa ── */
+  .cmp{overflow-x:auto;margin-top:30px;border:1px solid var(--border);border-radius:16px}
+  table{border-collapse:collapse;width:100%;min-width:560px;font-size:14.5px}
+  th,td{padding:13px 18px;text-align:left;border-bottom:1px solid var(--border)}
+  thead th{background:var(--bg-soft);font-family:var(--font-mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.03em;color:var(--ink-3);font-weight:700}
+  th.us{color:var(--brand)}td.us{color:var(--brand);font-weight:700;background:#eef8f9}
+  tbody tr:last-child td{border-bottom:none}
+  .yes{color:var(--ok);font-weight:700}.no{color:var(--ink-4)}
+  /* ── precios ── */
+  .promo{background:var(--petrol);color:#fff;border-radius:24px;padding:46px 40px;text-align:center;position:relative;overflow:hidden;max-width:860px;margin:40px auto 0}
+  .promo::before{content:"";position:absolute;left:0;top:0;bottom:0;width:8px}
+  .promo .eyebrow{background:rgba(198,146,62,.2);color:var(--brass)}
+  .promo h2{color:#fff}.promo h2 em{color:var(--neon)}
+  .promo p{color:rgba(233,246,247,.82);max-width:600px;margin:12px auto 26px;font-size:16px}
+  .promo .fine{font-family:var(--font-mono);font-size:11px;color:rgba(233,246,247,.5);margin-top:16px}
+  .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px;align-items:start}
+  .plan{background:#fff;border:1px solid var(--border-2);border-radius:20px;padding:30px 26px;position:relative}
+  .plan.feat{border:2px solid var(--brand);box-shadow:0 22px 54px rgba(14,116,144,.18)}
+  .plan .top-pole{position:absolute;top:0;left:24px;right:24px;height:4px;border-radius:0 0 4px 4px}
+  .plan-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);color:#fff;font-family:var(--font-mono);font-size:11px;font-weight:700;letter-spacing:.03em;padding:6px 16px;border-radius:20px;white-space:nowrap}
+  .plan .pl{font-family:var(--font-mono);font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--brand)}
+  .plan .pn{font-family:var(--font-display);font-size:20px;font-weight:700;margin:8px 0 10px;letter-spacing:-.02em}
+  .plan .pd{font-size:14px;color:var(--ink-3);min-height:64px}
+  .plan .price{font-family:var(--font-display);font-size:50px;font-weight:800;letter-spacing:-.03em;margin:10px 0 2px}
+  .plan .price span{font-family:var(--font-body);font-size:16px;font-weight:600;color:var(--ink-3)}
+  .plan .setup{font-family:var(--font-mono);font-size:12px;color:var(--ink-3);margin-bottom:18px}.plan .setup b{color:var(--ok)}
+  .plan ul{list-style:none;margin:16px 0;display:flex;flex-direction:column;gap:10px}
+  .plan li{font-size:13.5px;color:var(--ink-2);display:flex;gap:9px;align-items:flex-start}
+  .plan li::before{content:"✓";color:var(--brand);font-weight:800;flex-shrink:0}
+  .plan li.hi{font-weight:600;color:var(--ink)}
+  .plan .btn{width:100%;justify-content:center;margin-top:6px}
+  /* ── FAQ ── */
+  details{background:#fff;border:1px solid var(--border);border-radius:12px;padding:18px 22px;margin-bottom:12px}
+  summary{font-family:var(--font-display);font-weight:600;font-size:16px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;letter-spacing:-.01em}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";color:var(--brand);font-size:22px;font-family:var(--font-body)}
+  details[open] summary::after{content:"–"}
+  details p{margin-top:12px;color:var(--ink-3);font-size:14.5px}
+  /* ── final ── */
+  .final{background:var(--petrol);color:#fff;border-radius:28px;padding:62px 40px;text-align:center;margin:0 24px;position:relative;overflow:hidden}
+  .final::before{content:"";position:absolute;inset:0;background:radial-gradient(600px 280px at 50% 0,rgba(34,211,238,.16),transparent);pointer-events:none}
+  .final .wrap2{position:relative}
+  .final h2{color:#fff}.final h2 em{color:var(--neon)}
+  .final p{color:rgba(233,246,247,.85);font-size:18px;max-width:600px;margin:14px auto 30px}
+  footer{padding:44px 0;text-align:center;color:var(--ink-4);font-size:13.5px;border-top:1px solid var(--border)}
+  footer a{color:var(--brand)}
+  footer .fpole{width:60px;height:5px;border-radius:3px;margin:0 auto 18px}
+  @media(max-width:900px){
+    .hero .wrap{grid-template-columns:1fr;gap:34px}
+    .stats .grid,.prob-grid,.grid2,.plans,.obj-grid,.ia-grid{grid-template-columns:1fr}
+    .stats .grid{gap:1px}
+    section{padding:54px 0}
+    .final,.promo{padding:40px 26px}
+    .brand .nm small{display:none}.nav-cta{display:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════ NAV ═══════════ -->
+<nav><div class="wrap nav-in">
+  <div class="brand">
+    <div class="bar pole"></div>
+    <div class="nm">Bookia<small>by Marirrodriga IA</small></div>
+  </div>
+  <div class="nav-links">
+    <a href="#que-es">Qué es</a>
+    <a href="#funciones">Funciones</a>
+    <a href="#objetivos">Objetivos</a>
+    <a href="#precios">Precios</a>
+  </div>
+  <a class="btn nav-cta" href="https://wa.me/34675148566?text=Hola%2C%20quiero%20info%20de%20Bookia%20para%20mi%20barber%C3%ADa" target="_blank" rel="noopener">Pedir una demo</a>
+</div></nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+<header class="hero" id="que-es"><div class="wrap">
+  <div>
+    <span class="eyebrow">💈 Software de citas con IA para barberías</span>
+    <h1>La silla nunca parada,<br/>la agenda <em>siempre llena</em></h1>
+    <p class="lead">Bookia encaja las citas una detrás de otra, sin los huecos muertos que dejan las apps de siempre. Y le suma un asistente que atiende a tus clientes por WhatsApp y Telegram, les reserva la cita, recupera al que lleva meses sin aparecer y pide las reseñas por ti. Sin contratar a nadie más y sin pelearte con la tecnología.</p>
+    <div class="hero-cta">
+      <a class="btn" href="https://wa.me/34675148566?text=Hola%2C%20quiero%20ver%20Bookia%20en%20mi%20barber%C3%ADa" target="_blank" rel="noopener">Quiero verlo con mi barbería →</a>
+      <a class="btn ghost" href="#precios" style="color:#cfeef4;border-color:rgba(255,255,255,.25)">Ver precios</a>
+    </div>
+    <div class="hero-trust">
+      <span>✦ <b>Sin cuota de alta</b></span><span>✦ <b>Sin permanencia</b></span><span>✦ <b>Puesta en marcha incluida</b></span><span>✦ <b>Desde el móvil</b></span>
+    </div>
+  </div>
+  <!-- Thesis: rejilla de siempre vs Bookia -->
+  <div>
+    <div class="cmp-cols">
+      <div>
+        <div class="col-h">La rejilla de siempre</div>
+        <div class="slot busy"><span>Corte</span><span class="tm">09:30</span></div>
+        <div class="slot dead">hueco muerto · 20 min</div>
+        <div class="slot busy"><span>Corte + barba</span><span class="tm">10:30</span></div>
+        <div class="slot dead">hueco muerto · 15 min</div>
+        <div class="slot busy"><span>Rapado</span><span class="tm">11:30</span></div>
+      </div>
+      <div>
+        <div class="col-h us">Con Bookia</div>
+        <div class="slot busy tq"><span>Corte</span><span class="tm">09:30</span></div>
+        <div class="slot busy tq"><span>Corte + barba</span><span class="tm">10:00</span></div>
+        <div class="slot busy tq"><span>Rapado</span><span class="tm">10:45</span></div>
+        <div class="slot busy tq"><span>Corte</span><span class="tm">11:00</span></div>
+        <div class="slot busy tq"><span>Barba</span><span class="tm">11:30</span></div>
+      </div>
+    </div>
+    <p class="cmp-foot">Misma mañana, mismos barberos: <b>2 cortes más</b> solo por no dejar huecos.</p>
+  </div>
+</div></header>
+
+<!-- ═══════════ STATS ═══════════ -->
+<section class="stats" style="padding:34px 0"><div class="wrap"><div class="grid">
+  <div class="stat"><div class="n">24/7</div><div class="l">tus clientes reservan y preguntan aunque estés con la máquina en la mano</div></div>
+  <div class="stat"><div class="n">0</div><div class="l">huecos muertos de rejilla: cada cita se pega a la anterior</div></div>
+  <div class="stat"><div class="n">0€</div><div class="l">de alta, sin ordenador dedicado y sin permanencia</div></div>
+  <div class="stat"><div class="n">1ª</div><div class="l">seréis de las primeras barberías de la zona con un asistente que atiende solo</div></div>
+</div></div></section>
+
+<!-- ═══════════ PROBLEMA ═══════════ -->
+<section><div class="wrap">
+  <span class="eyebrow">El problema</span>
+  <h2>Cada semana se te escapan <em>cortes que no vuelven</em></h2>
+  <p class="lead">No es por falta de trabajo. Es por lo que pasa entre corte y corte, y por el que reservó y no vino.</p>
+  <div class="prob-grid">
+    <div class="prob"><div class="n">01</div><h3>La silla parada</h3><p>Entre un cliente y el siguiente quedan 20 minutos que no caben para nada. Multiplícalo por toda la semana: son cortes que no haces y dinero que se queda en la silla vacía.</p></div>
+    <div class="prob"><div class="n">02</div><h3>El que dice que viene y no aparece</h3><p>Reservó, no avisó y no vino. Esa hora ya no la llena nadie — y tú sin enterarte hasta que miras el reloj y la silla sigue vacía.</p></div>
+    <div class="prob"><div class="n">03</div><h3>El que se va y no vuelve</h3><p>Un mes, dos, tres… y un día lo ves saliendo de la barbería de al lado. Nadie le escribió a tiempo para recordarle que le tocaba.</p></div>
+  </div>
+</div></section>
+
+<!-- ═══════════ QUÉ ES ═══════════ -->
+<section class="soft"><div class="wrap">
+  <span class="eyebrow">Qué es Bookia</span>
+  <h2>Dos cosas en una: <em>tu agenda</em> y <em>tu asistente</em></h2>
+  <p class="lead">Bookia es el software con el que llevas la barbería —agenda, clientes, servicios, caja— y encima automatiza lo que en otros sitios haría una persona en recepción. La IA no es un chatbot genérico pegado por encima: trabaja sobre tu agenda real desde el primer día.</p>
+  <div class="fig"><img src="bookia-img/agenda.png" alt="Agenda de Bookia con dos barberos y los huecos libres marcados" loading="lazy" /></div>
+  <p class="lead" style="margin-top:6px">La agenda del día, un barbero por columna y las citas ocupando justo lo que dura cada servicio. Los <strong>huecos libres se ven de un vistazo</strong> — y se rellenan con un toque, sin dejar los pequeños agujeros de siempre.</p>
+</div></section>
+
+<!-- ═══════════ DISTINTIVO IA ═══════════ -->
+<section class="ia-band"><div class="wrap">
+  <div class="center">
+    <span class="eyebrow">✦ Nuestro distintivo</span>
+    <h2>El software de la barbería…<br/>que además <em>trabaja solo</em></h2>
+    <p class="lead" style="margin:0 auto">Debajo de cada parte normal hay una IA currando. Esto es lo que añade en cada sitio — y lo que ganas tú.</p>
+  </div>
+  <div class="ia-grid">
+    <div class="ia-row"><div class="em">📅</div><div><div class="mod">Agenda sin huecos muertos</div><div class="con">Cada cita se encaja pegada a la anterior según lo que dura el servicio, y el día antes el cliente recibe el recordatorio y confirma con un toque. <b>Ganas: más cortes al día y menos plantones.</b></div></div></div>
+    <div class="ia-row"><div class="em">💬</div><div><div class="mod">Un asistente que atiende</div><div class="con">Contesta por WhatsApp y Telegram a cualquier hora, resuelve dudas y reserva la cita de verdad — también a las 22:00 y en domingo. <b>Ganas: la cita que antes se iba a otra barbería.</b></div></div></div>
+    <div class="ia-row"><div class="em">🔁</div><div><div class="mod">Recupera al que no vuelve</div><div class="con">Detecta al cliente que lleva semanas sin aparecer y le escribe para que vuelva, antes de que se acostumbre a otro sitio. <b>Ganas: clientes recuperados sin listas a mano.</b></div></div></div>
+    <div class="ia-row"><div class="em">⭐</div><div><div class="mod">Más reseñas en Google</div><div class="con">Tras el corte se interesa por el cliente y, si sale contento, le pide la reseña en el momento justo. Si algo no gustó, te avisa a ti antes que a Google. <b>Ganas: mejor reputación sin perseguir a nadie.</b></div></div></div>
+    <div class="ia-row"><div class="em">📊</div><div><div class="mod">La foto del negocio</div><div class="con">Retención, cada cuánto vuelve un cliente, cuánto vale, quién está dormido… los números que de verdad importan para crecer, sin Excel ni gestorías. <b>Ganas: decidir con datos, no con sensaciones.</b></div></div></div>
+    <div class="ia-row"><div class="em">💡</div><div><div class="mod">La barbería aprende</div><div class="con">Cada semana lee las conversaciones (en anónimo) y te dice qué preguntan tus clientes, qué les frena y qué mejorar. <b>Ganas: ideas concretas para vender más.</b></div></div></div>
+  </div>
+</div></section>
+
+<!-- ═══════════ FUNCIONES ═══════════ -->
+<div class="sec-head" id="funciones"><div class="wrap">
+  <div class="kick"><span class="ln pole"></span> Funciones <span class="ln pole"></span></div>
+  <h2 style="margin-top:14px">Todo lo que hace Bookia, <em>por dentro</em></h2>
+</div></div>
+
+<section><div class="wrap">
+  <span class="eyebrow">Reserva online</span>
+  <h2>Tus clientes reservan solos, <em>sin dejar huecos</em></h2>
+  <p class="lead">Les pasas un enlace y eligen servicio, día y hora en tres toques desde el móvil. Como cada servicio dura lo que tiene que durar, Bookia encaja las citas apretadas — no como las rejillas fijas que dejan medios huecos imposibles de llenar.</p>
+  <div style="display:flex;justify-content:center"><div class="fig" style="max-width:340px"><img src="bookia-img/reserva-movil.png" alt="Reserva online desde el móvil, paso de elegir la hora" loading="lazy" /></div></div>
+</div></section>
+
+<section class="soft"><div class="wrap">
+  <span class="eyebrow">El asistente</span>
+  <h2>Atiende, reserva y no deja escapar <em>a nadie</em></h2>
+  <p class="lead">Conversa con tus clientes con naturalidad, conoce tus servicios y precios y gestiona citas de verdad. 24 horas al día, por WhatsApp o Telegram.</p>
+  <div class="grid2">
+    <div class="card"><h3>Reserva conversando</h3><p>Consulta huecos reales y cierra la cita, aunque sea de madrugada.</p></div>
+    <div class="card"><h3>Responde lo que preguntan</h3><p>Horarios, precios, cómo llegar, si atendéis niños… lo que tú le enseñes.</p></div>
+    <div class="card"><h3>Recupera dormidos</h3><p>Escribe al que lleva semanas sin venir y le busca hueco esta misma semana.</p></div>
+    <div class="card"><h3>Pide la reseña</h3><p>Tras el corte, en el momento justo y solo a quien salió contento.</p></div>
+  </div>
+  <p class="mock-lbl">Habla como habla la gente, entiende varios mensajes seguidos y reserva de verdad:</p>
+  <div class="phone">
+    <div class="tg-top"><div class="tg-av">💈</div><div><div class="nm">Barbería · Asistente</div><div class="st">en línea</div></div></div>
+    <div class="tg-body">
+      <div class="grp"><div class="bubble b-user">buenas 👋<span class="t">21:14</span></div><div class="bubble b-user">quiero cortarme mañana por la tarde<span class="t">21:14</span></div></div>
+      <div class="grp"><div class="bubble b-bot">¡Hola! 😎 Claro. ¿Solo corte o corte + barba?<span class="t">21:14</span></div></div>
+      <div class="grp"><div class="bubble b-user">corte y barba<span class="t">21:15</span></div></div>
+      <div class="grp"><div class="bubble b-bot">Perfecto. Mañana por la tarde tengo:<span class="t">21:15</span></div><div class="bubble b-bot">🕔 17:00 con Víctor · 🕕 18:15 con Yeray. ¿Cuál te viene mejor?<span class="t">21:15</span></div></div>
+      <div class="grp"><div class="bubble b-user">las 17 con victor<span class="t">21:16</span></div></div>
+      <div class="grp"><div class="bubble b-bot">¡Hecho! ✅ Corte + barba mañana a las 17:00 con Víctor. Te esperamos 💈<span class="t">21:16</span></div></div>
+    </div>
+  </div>
+  <div class="note"><strong>El asistente sabe exactamente lo que tú decidas contarle.</strong> Le das tus servicios, precios, horario y las preguntas típicas, y marcas qué temas prefieres que deriven a una llamada. Tú mandas.</div>
+</div></section>
+
+<section><div class="wrap">
+  <span class="eyebrow">Seguimiento del negocio</span>
+  <h2>Los números que <em>hoy nadie mira</em></h2>
+  <p class="lead">Cuántos clientes vuelven, cada cuánto, cuánto vale cada uno y quién está a punto de perderse. La información con la que se decide si contratar, subir precios o abrir otro sillón — servida sola, sin Excel.</p>
+  <div class="fig"><img src="bookia-img/negocio.png" alt="Panel de seguimiento del negocio: retención, frecuencia, clientes dormidos" loading="lazy" /></div>
+  <div class="fig"><img src="bookia-img/mejoras.png" alt="Mejoras sugeridas por la IA a partir de las conversaciones" loading="lazy" /></div>
+</div></section>
+
+<!-- ═══════════ OBJETIVOS ═══════════ -->
+<section class="soft" id="objetivos"><div class="wrap">
+  <div class="center">
+    <div class="kick" style="display:inline-flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-4)"><span class="ln pole" style="width:34px;height:3px;border-radius:2px"></span> Objetivos <span class="ln pole" style="width:34px;height:3px;border-radius:2px"></span></div>
+    <h2 style="margin-top:14px">Lo que Bookia viene a <em>cambiar</em> en tu barbería</h2>
+    <p class="lead">No montamos software por montar software. Cada función existe para mover un número concreto — y ese número se mide, con un antes y un después.</p>
+  </div>
+  <div class="obj-grid">
+    <div class="obj"><div class="em">🪑</div><h3>Menos sillas paradas</h3><p>Las citas se encajan apretadas y los huecos libres se ven al momento para rellenarlos. El tiempo muerto de la rejilla desaparece.</p><div class="kpi">Se mide en: huecos muertos por semana</div></div>
+    <div class="obj"><div class="em">📵</div><h3>Menos plantones</h3><p>Recordatorio automático el día antes con confirmación en un toque. El que iba a fallar avisa a tiempo o confirma que viene.</p><div class="kpi">Se mide en: plantones por semana</div></div>
+    <div class="obj"><div class="em">🔁</div><h3>Clientes que vuelven</h3><p>El que lleva semanas sin venir ya no se pierde en silencio: el asistente lo detecta y le escribe antes de que se acostumbre a otro sitio.</p><div class="kpi">Se mide en: clientes recuperados al mes</div></div>
+    <div class="obj"><div class="em">⭐</div><h3>Mejor reputación</h3><p>Al cliente contento se le pide la reseña en el momento justo. Más estrellas en Google, sin que tengas que pedirlo tú a cada uno.</p><div class="kpi">Se mide en: reseñas nuevas en Google</div></div>
+    <div class="obj"><div class="em">📱</div><h3>El teléfono, tranquilo</h3><p>Reservas, cambios y dudas se atienden solos, también fuera de horario. Dejas de parar el corte para coger el móvil.</p><div class="kpi">Se mide en: reservas atendidas por el bot</div></div>
+    <div class="obj"><div class="em">📈</div><h3>Decisiones con datos</h3><p>Sabes cada cuánto vuelve tu cliente medio, cuánto vale y cómo va la caja. Para crecer sobre números, no sobre sensaciones.</p><div class="kpi">Se mide en: retención y frecuencia de visita</div></div>
+  </div>
+  <div class="note" style="max-width:760px;margin:36px auto 0"><strong>Por eso podemos ofrecerte la prueba de abajo:</strong> como todo se mide desde el primer día con tus propios números, a los 60 días no hay que creerse nada — se mira el antes y el después, y decides tú.</div>
+</div></section>
+
+<!-- ═══════════ COMPARATIVA ═══════════ -->
+<section><div class="wrap">
+  <span class="eyebrow">Comparativa</span>
+  <h2>Lo que traen las apps de citas… <em>y lo que no</em></h2>
+  <p class="lead">Bookia hace lo que esperas de una app de reservas — y encima todo lo que una app normal no toca.</p>
+  <div class="cmp"><table>
+    <thead><tr><th>Función</th><th class="us">Bookia</th><th>App de citas normal</th></tr></thead>
+    <tbody>
+      <tr><td>Agenda y reserva online</td><td class="us">Sí</td><td class="yes">Sí</td></tr>
+      <tr><td>Recordatorio de cita</td><td class="us">Sí</td><td class="yes">Sí</td></tr>
+      <tr><td>Varios barberos en una agenda</td><td class="us">Sí</td><td class="yes">Sí</td></tr>
+      <tr><td>Citas encajadas sin huecos muertos</td><td class="us">Sí</td><td class="no">Rejilla rígida</td></tr>
+      <tr><td>Asistente de IA por WhatsApp y Telegram</td><td class="us">Sí</td><td class="no">No</td></tr>
+      <tr><td>Recupera solo a los clientes dormidos</td><td class="us">Sí</td><td class="no">No</td></tr>
+      <tr><td>Pide reseñas de Google en el momento justo</td><td class="us">Sí</td><td class="no">Rara vez</td></tr>
+      <tr><td>Retención, frecuencia y valor por cliente</td><td class="us">Sí</td><td class="no">No</td></tr>
+      <tr><td>Mejoras sugeridas leyendo las conversaciones</td><td class="us">Sí</td><td class="no">No</td></tr>
+      <tr><td>Sin cuota de alta ni permanencia</td><td class="us">Sí</td><td class="no">Varía</td></tr>
+    </tbody>
+  </table></div>
+</div></section>
+
+<!-- ═══════════ PRECIOS ═══════════ -->
+<section class="soft" id="precios"><div class="wrap">
+  <div class="center">
+    <span class="eyebrow">Precios</span>
+    <h2>Un precio <em>honesto</em>, sin sorpresas</h2>
+    <p class="lead">Sin cuota de alta, sin permanencia y con la puesta en marcha incluida. Pruébalo el primer mes; si no te convence, lo dejas.</p>
+  </div>
+
+  <div class="promo">
+    <div class="pole" style="position:absolute;left:0;top:0;bottom:0;width:8px"></div>
+    <span class="eyebrow">🌞 Promo de verano · solo 5 barberías</span>
+    <h2>60 días con Bookia en tu barbería.<br/>Si no ves resultado, <em>no pagas nada</em>.</h2>
+    <p>Lo montamos nosotros, os enseñamos a usarlo y lo mides con tus propios números. Si a los 60 días no ves la agenda más llena y menos tiempo perdido, lo quitamos y no cobramos. Si sí, te quedas el precio de la promo congelado para siempre.</p>
+    <a class="btn light" href="https://wa.me/34675148566?text=Hola%2C%20quiero%20una%20de%20las%205%20plazas%20de%20la%20promo%20de%20Bookia" target="_blank" rel="noopener">Quiero una de las 5 plazas →</a>
+    <p class="fine">Plazas limitadas de verdad: cuando se cubran las 5, esta oferta desaparece de la página.</p>
+  </div>
+
+  <div class="plans">
+    <div class="plan">
+      <div class="top-pole pole"></div>
+      <div class="pl">Esencial</div><div class="pn">Llena tu agenda</div>
+      <div class="pd">Toda la gestión de la barbería en el móvil, con reserva online que no deja huecos muertos.</div>
+      <div class="price">49€<span>/mes</span></div>
+      <div class="setup"><b>Puesta en marcha incluida</b> · sin permanencia</div>
+      <ul><li>Agenda por barbero y clientes</li><li>Reserva online 24/7 sin huecos de rejilla</li><li>Recordatorio de cita con confirmación</li><li>Catálogo de servicios y horarios</li><li>Soporte en 48h laborables</li></ul>
+      <a class="btn ghost" href="https://wa.me/34675148566?text=Hola%2C%20me%20interesa%20el%20plan%20Esencial%20de%20Bookia" target="_blank" rel="noopener">Empezar con Esencial</a>
+    </div>
+    <div class="plan feat">
+      <div class="plan-badge pole" style="color:#06222a">★ El más elegido</div>
+      <div class="top-pole pole"></div>
+      <div class="pl">Profesional</div><div class="pn">La IA atiende a tus clientes</div>
+      <div class="pd">Todo Bookia más el asistente que atiende por WhatsApp y Telegram, reserva solo y no deja escapar a nadie.</div>
+      <div class="price">99€<span>/mes</span></div>
+      <div class="setup"><b>Puesta en marcha incluida</b> · sin permanencia</div>
+      <ul><li>Todo lo del plan Esencial</li><li class="hi">Asistente de IA por WhatsApp y Telegram</li><li class="hi">Reserva y cancela citas conversando</li><li>Reactivación de clientes dormidos</li><li>Post-corte + reseñas en Google</li><li class="hi">Mejoras sugeridas leyendo las conversaciones</li></ul>
+      <a class="btn" href="https://wa.me/34675148566?text=Hola%2C%20quiero%20el%20plan%20Profesional%20de%20Bookia" target="_blank" rel="noopener">Quiero el Profesional</a>
+    </div>
+    <div class="plan">
+      <div class="top-pole pole"></div>
+      <div class="pl">Negocio</div><div class="pn">Dirige con datos</div>
+      <div class="pd">Para barberías con varios sillones que quieren la foto completa del negocio, no solo la agenda.</div>
+      <div class="price">149€<span>/mes</span></div>
+      <div class="setup"><b>Puesta en marcha incluida</b> · sin permanencia</div>
+      <ul><li>Todo lo del plan Profesional</li><li class="hi">Retención, frecuencia y valor por cliente</li><li class="hi">Informe de negocio y clientes dormidos</li><li>Barberos ilimitados</li><li>Soporte prioritario (&lt;4h)</li></ul>
+      <a class="btn ghost" href="https://wa.me/34675148566?text=Hola%2C%20quiero%20hablar%20del%20plan%20Negocio%20de%20Bookia" target="_blank" rel="noopener">Hablar del plan Negocio</a>
+    </div>
+  </div>
+  <p class="center" style="margin-top:28px;font-family:var(--font-mono);font-size:12px;color:var(--ink-4)">Precios sin IVA. ¿No sabes cuál encaja con tu barbería? Escríbenos y te lo decimos en 5 minutos.</p>
+</div></section>
+
+<!-- ═══════════ FAQ ═══════════ -->
+<section><div class="wrap narrow">
+  <div class="center"><span class="eyebrow">Dudas frecuentes</span><h2>Lo que suelen preguntarnos</h2></div>
+  <div style="margin-top:36px">
+    <details><summary>¿Tengo que instalar algo o comprar un ordenador?</summary><p>No. Bookia funciona en el navegador desde el móvil, la tablet o el ordenador que ya tienes. Abres y ya está.</p></details>
+    <details><summary>¿Y mis clientes de ahora, los que tengo en la libreta o el WhatsApp?</summary><p>Los pasamos nosotros en la puesta en marcha. Empiezas con tu gente ya dentro, no de cero.</p></details>
+    <details><summary>¿Hay permanencia o cuota de alta?</summary><p>Ninguna. Pagas mes a mes y lo dejas cuando quieras. Instalación y formación incluidas.</p></details>
+    <details><summary>¿El asistente funciona por WhatsApp o por Telegram?</summary><p>Por los dos. Para probarlo lo conectamos a Telegram en un momento; cuando quieras dar el salto, lo pasamos a tu WhatsApp de la barbería.</p></details>
+    <details><summary>¿El bot me quita el trato con el cliente?</summary><p>Al revés: le quita el trabajo repetitivo (reservas y dudas fuera de horario, recordar al que no vuelve) para que tú dediques el tiempo al cliente que tienes en la silla.</p></details>
+    <details><summary>¿Qué sabe decir el asistente?</summary><p>Exactamente lo que tú le enseñes: tus servicios, precios, horario y las preguntas típicas. Y marcas qué temas prefieres que deriven a una llamada contigo.</p></details>
+  </div>
+</div></section>
+
+<!-- ═══════════ FINAL ═══════════ -->
+<section style="padding-top:20px">
+  <div class="final"><div class="wrap2">
+    <h2>¿Lo vemos funcionando <em>con tu barbería</em>?</h2>
+    <p>Una demo real, sin PowerPoint: la agenda con tus servicios, una cita reservada por el asistente delante de ti y los números de tu negocio. 15 minutos y te decimos con honestidad si Bookia os encaja.</p>
+    <a class="btn light" href="https://wa.me/34675148566?text=Hola%2C%20quiero%20una%20demo%20de%20Bookia%20para%20mi%20barber%C3%ADa" target="_blank" rel="noopener">Pedir mi demo gratis por WhatsApp →</a>
+  </div></div>
+</section>
+
+<footer><div class="wrap">
+  <div class="fpole pole"></div>
+  Bookia es un producto de <a href="/">Marirrodriga IA</a> · Automatización con IA para negocios que quieren crecer sin trabajar el doble.<br>
+  <a href="https://wa.me/34675148566" target="_blank" rel="noopener">WhatsApp 675 148 566</a> · <a href="mailto:ismaelcebrian14@gmail.com">ismaelcebrian14@gmail.com</a>
+</div></footer>
+
+</body>
+</html>
