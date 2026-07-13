@@ -50,7 +50,7 @@
   .btn.ghost:hover{border-color:var(--brand);background:var(--bg-soft)}
   .btn.light{background:#fff;color:var(--petrol)}
   /* ── NAV ── */
-  nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+  nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
   .nav-in{display:flex;align-items:center;justify-content:space-between;gap:14px;height:64px}
   .brand{display:flex;align-items:center;gap:11px}
   .brand .bar{width:6px;height:30px;border-radius:3px}
@@ -277,7 +277,7 @@
   <h2>Dos cosas en una: <em>tu agenda</em> y <em>tu asistente</em></h2>
   <p class="lead">Bookia es el software con el que llevas la barbería —agenda, clientes, servicios, caja— y encima automatiza lo que en otros sitios haría una persona en recepción. La IA no es un chatbot genérico pegado por encima: trabaja sobre tu agenda real desde el primer día.</p>
   <div class="fig"><img src="bookia-img/agenda.png" alt="Agenda de Bookia con dos barberos y los huecos libres marcados" loading="lazy" /></div>
-  <p class="lead" style="margin-top:6px">La agenda del día, un barbero por columna y las citas ocupando justo lo que dura cada servicio. Los <strong>huecos libres se ven de un vistazo</strong> — y se rellenan con un toque, sin dejar los pequeños agujeros de siempre.</p>
+  <p class="lead" style="margin-top:6px">La agenda del día, un barbero por columna y las citas ocupando justo lo que dura cada servicio. Los <strong>huecos libres se ven de un vistazo</strong> y se rellenan con un toque. Y agenda al minuto: si un corte acaba a las 10:20, la siguiente cita puede entrar a las <strong>10:25</strong> — no a las 10:30 de las rejillas de siempre.</p>
 </div></section>
 
 <!-- ═══════════ DISTINTIVO IA ═══════════ -->
@@ -361,23 +361,39 @@
   <div class="note" style="max-width:760px;margin:36px auto 0"><strong>Por eso podemos ofrecerte la prueba de abajo:</strong> como todo se mide desde el primer día con tus propios números, a los 60 días no hay que creerse nada — se mira el antes y el después, y decides tú.</div>
 </div></section>
 
+<!-- ═══════════ TU AGENDA ES TUYA ═══════════ -->
+<section class="soft"><div class="wrap">
+  <span class="eyebrow">Sin depender de plataformas</span>
+  <h2>Tu agenda es tuya, <em>no de Booksy</em></h2>
+  <p class="lead">Las plataformas de siempre te cobran una comisión por cada cliente nuevo, le enseñan tu competencia cuando entra a reservar contigo y se quedan con sus datos. Con Bookia el sistema es tuyo — y tus clientes también.</p>
+  <div class="grid2">
+    <div class="card"><h3>Tus clientes son tuyos</h3><p>Sus datos y su historial se quedan contigo, en tu canal. Nadie se los lleva ni se los enseña a otro.</p></div>
+    <div class="card"><h3>Cero comisiones</h3><p>Nada de pagar el 30% de la primera visita de cada cliente nuevo. Reservan y punto.</p></div>
+    <div class="card"><h3>Nadie ve a tu competencia</h3><p>Cuando un cliente entra a reservar contigo, no le aparecen tres barberías más de tu zona al lado.</p></div>
+    <div class="card"><h3>Sin apps ni registros</h3><p>Reservan escribiéndote por WhatsApp, como ya te escriben. Hasta los de toda la vida, sin descargar nada.</p></div>
+  </div>
+  <div class="note">Y el precio <strong>no sube cada vez que entra un barbero nuevo</strong>: es fijo. En las plataformas, cada empleado te cuesta más cuota.</div>
+</div></section>
+
 <!-- ═══════════ COMPARATIVA ═══════════ -->
 <section><div class="wrap">
   <span class="eyebrow">Comparativa</span>
-  <h2>Lo que traen las apps de citas… <em>y lo que no</em></h2>
-  <p class="lead">Bookia hace lo que esperas de una app de reservas — y encima todo lo que una app normal no toca.</p>
+  <h2>Bookia frente a <em>Booksy y las apps de siempre</em></h2>
+  <p class="lead">Todo lo que esperas de una app de reservas — y todo lo que las plataformas no te dan (o te cobran).</p>
   <div class="cmp"><table>
-    <thead><tr><th>Función</th><th class="us">Bookia</th><th>App de citas normal</th></tr></thead>
+    <thead><tr><th>Función</th><th class="us">Bookia</th><th>Booksy y apps de siempre</th></tr></thead>
     <tbody>
       <tr><td>Agenda y reserva online</td><td class="us">Sí</td><td class="yes">Sí</td></tr>
-      <tr><td>Recordatorio de cita</td><td class="us">Sí</td><td class="yes">Sí</td></tr>
-      <tr><td>Varios barberos en una agenda</td><td class="us">Sí</td><td class="yes">Sí</td></tr>
-      <tr><td>Citas encajadas sin huecos muertos</td><td class="us">Sí</td><td class="no">Rejilla rígida</td></tr>
+      <tr><td>Cómo reserva el cliente</td><td class="us">Escribe por WhatsApp</td><td class="no">App + registro</td></tr>
+      <tr><td>Comisión por cliente nuevo</td><td class="us">Cero</td><td class="no">Hasta 30% de la 1ª visita</td></tr>
+      <tr><td>De quién son tus clientes</td><td class="us">Tuyos, en tu canal</td><td class="no">Viven en su plataforma</td></tr>
+      <tr><td>Al reservar, ¿ve a tu competencia?</td><td class="us">Nadie más</td><td class="no">Te pone otras al lado</td></tr>
+      <tr><td>Huecos entre citas</td><td class="us">Agenda al minuto</td><td class="no">Rejilla rígida</td></tr>
+      <tr><td>El precio sube por cada empleado</td><td class="us">No, es fijo</td><td class="no">Sí</td></tr>
       <tr><td>Asistente de IA por WhatsApp y Telegram</td><td class="us">Sí</td><td class="no">No</td></tr>
       <tr><td>Recupera solo a los clientes dormidos</td><td class="us">Sí</td><td class="no">No</td></tr>
-      <tr><td>Pide reseñas de Google en el momento justo</td><td class="us">Sí</td><td class="no">Rara vez</td></tr>
+      <tr><td>Pide reseñas de Google tras el corte</td><td class="us">Automático</td><td class="no">Manual o no se hace</td></tr>
       <tr><td>Retención, frecuencia y valor por cliente</td><td class="us">Sí</td><td class="no">No</td></tr>
-      <tr><td>Mejoras sugeridas leyendo las conversaciones</td><td class="us">Sí</td><td class="no">No</td></tr>
       <tr><td>Sin cuota de alta ni permanencia</td><td class="us">Sí</td><td class="no">Varía</td></tr>
     </tbody>
   </table></div>
@@ -405,7 +421,7 @@
       <div class="top-pole pole"></div>
       <div class="pl">Esencial</div><div class="pn">Llena tu agenda</div>
       <div class="pd">Toda la gestión de la barbería en el móvil, con reserva online que no deja huecos muertos.</div>
-      <div class="price">49€<span>/mes</span></div>
+      <div class="price">25€<span>/mes</span></div>
       <div class="setup"><b>Puesta en marcha incluida</b> · sin permanencia</div>
       <ul><li>Agenda por barbero y clientes</li><li>Reserva online 24/7 sin huecos de rejilla</li><li>Recordatorio de cita con confirmación</li><li>Catálogo de servicios y horarios</li><li>Soporte en 48h laborables</li></ul>
       <a class="btn ghost" href="https://wa.me/34675148566?text=Hola%2C%20me%20interesa%20el%20plan%20Esencial%20de%20Bookia" target="_blank" rel="noopener">Empezar con Esencial</a>
@@ -415,7 +431,7 @@
       <div class="top-pole pole"></div>
       <div class="pl">Profesional</div><div class="pn">La IA atiende a tus clientes</div>
       <div class="pd">Todo Bookia más el asistente que atiende por WhatsApp y Telegram, reserva solo y no deja escapar a nadie.</div>
-      <div class="price">99€<span>/mes</span></div>
+      <div class="price">49€<span>/mes</span></div>
       <div class="setup"><b>Puesta en marcha incluida</b> · sin permanencia</div>
       <ul><li>Todo lo del plan Esencial</li><li class="hi">Asistente de IA por WhatsApp y Telegram</li><li class="hi">Reserva y cancela citas conversando</li><li>Reactivación de clientes dormidos</li><li>Post-corte + reseñas en Google</li><li class="hi">Mejoras sugeridas leyendo las conversaciones</li></ul>
       <a class="btn" href="https://wa.me/34675148566?text=Hola%2C%20quiero%20el%20plan%20Profesional%20de%20Bookia" target="_blank" rel="noopener">Quiero el Profesional</a>
@@ -424,7 +440,7 @@
       <div class="top-pole pole"></div>
       <div class="pl">Negocio</div><div class="pn">Dirige con datos</div>
       <div class="pd">Para barberías con varios sillones que quieren la foto completa del negocio, no solo la agenda.</div>
-      <div class="price">149€<span>/mes</span></div>
+      <div class="price">99€<span>/mes</span></div>
       <div class="setup"><b>Puesta en marcha incluida</b> · sin permanencia</div>
       <ul><li>Todo lo del plan Profesional</li><li class="hi">Retención, frecuencia y valor por cliente</li><li class="hi">Informe de negocio y clientes dormidos</li><li>Barberos ilimitados</li><li>Soporte prioritario (&lt;4h)</li></ul>
       <a class="btn ghost" href="https://wa.me/34675148566?text=Hola%2C%20quiero%20hablar%20del%20plan%20Negocio%20de%20Bookia" target="_blank" rel="noopener">Hablar del plan Negocio</a>

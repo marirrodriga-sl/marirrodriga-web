@@ -1488,6 +1488,33 @@
       <div class="softwares-grid">
 
         <!-- ── DISPONIBLES ─────────────────────────────────── -->
+        <!-- Bookia — banner destacado (cualquier negocio de citas), recoloreado a turquesa -->
+        <style>
+          .citas-card.bookia{background:#08262f;border-color:rgba(34,211,238,.25);box-shadow:0 8px 40px rgba(8,38,47,.25);}
+          .citas-card.bookia .citas-tag{color:#22d3ee;}
+          .citas-card.bookia .citas-feat::before{color:#22d3ee;}
+          .citas-card.bookia .citas-cta{background:rgba(34,211,238,.14);border-color:rgba(34,211,238,.4);}
+          .citas-card.bookia .citas-cta:hover{background:rgba(34,211,238,.24);}
+        </style>
+        <div class="citas-card bookia" onclick="location.href='/bookia'" style="cursor:pointer">
+          <div class="citas-left">
+            <span class="citas-tag">Para cualquier negocio de citas</span>
+            <div class="citas-title">Bookia — tu agenda y tu asistente, sin depender de plataformas</div>
+            <p class="citas-desc">Barberías, peluquerías, estética, uñas… El software de citas que encaja tu agenda sin huecos muertos, con un asistente de IA que atiende por WhatsApp y Telegram, reserva solo, recupera clientes y pide reseñas. Tus clientes son tuyos: sin comisiones y sin que les enseñen a tu competencia.</p>
+          </div>
+          <div class="citas-feats">
+            <div class="citas-feat">Reservas 24/7 por WhatsApp y Telegram</div>
+            <div class="citas-feat">Agenda al minuto, sin huecos muertos</div>
+            <div class="citas-feat">Reseñas Google y reactivación solas</div>
+            <div class="citas-feat">Cero comisiones · tus clientes son tuyos</div>
+          </div>
+          <div class="citas-right">
+            <div class="citas-price">25<span>€/mes</span></div>
+            <div class="citas-price-sub">🌞 Promo de verano: 60 días · si no ves resultado, no pagas</div>
+            <button class="citas-cta" onclick="event.stopPropagation();location.href='/bookia'">Ver Bookia →</button>
+          </div>
+        </div>
+
         <div class="software-card" onclick="location.href='/dentia'" style="cursor:pointer">
           <div class="software-cover" style="background: linear-gradient(135deg, #E6FFFA, #B2F5EA);">🦷</div>
           <div class="software-body">
@@ -1498,20 +1525,6 @@
             <div class="software-footer">
               <span class="software-price">Desde 59€/mes</span>
               <span class="software-link" style="color:#0f766e;">Ver Dentia →</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="software-card" onclick="location.href='/bookia'" style="cursor:pointer">
-          <div class="software-cover" style="background: linear-gradient(135deg, #CCFBF1, #A5F3FC);">💈</div>
-          <div class="software-body">
-            <span class="software-tag">Barbería</span>
-            <div class="software-title">Bookia — el software de citas que además trabaja solo: llena la agenda sin huecos muertos y recupera clientes.</div>
-            <p class="software-desc">Agenda y reserva online que encaja las citas sin huecos muertos + un asistente de IA que atiende por WhatsApp y Telegram, reserva solo y pide reseñas. Sin cuota de alta, sin permanencia.</p>
-            <div style="display:inline-flex;align-items:center;gap:6px;margin:2px 0 10px;padding:5px 12px;border-radius:20px;font-size:11.5px;font-weight:700;background:rgba(14,116,144,.07);border:1px solid rgba(14,116,144,.25);color:#0e7490;">🌞 Promo de verano: 60 días de prueba — si no ves resultado, no pagas</div>
-            <div class="software-footer">
-              <span class="software-price">Desde 49€/mes</span>
-              <span class="software-link" style="color:#0e7490;">Ver Bookia →</span>
             </div>
           </div>
         </div>
@@ -1539,26 +1552,6 @@
               <span class="software-price">Desde 89€/mes</span>
               <span class="software-link">Ver planes →</span>
             </div>
-          </div>
-        </div>
-
-        <!-- CITAS CARD -->
-        <div class="citas-card" onclick="openSoftware('reservas')" style="cursor:pointer">
-          <div class="citas-left">
-            <span class="citas-tag">Para negocios con citas</span>
-            <div class="citas-title">¿Solo quieres quitarte<br />la agenda de encima?</div>
-            <p class="citas-desc">Tu propio sistema de reservas por WhatsApp — sin plataformas de terceros y sin pagar comisión por cada cita.</p>
-          </div>
-          <div class="citas-feats">
-            <div class="citas-feat">Reservas 24/7 por WhatsApp</div>
-            <div class="citas-feat">Recordatorios con confirmación</div>
-            <div class="citas-feat">Reseñas Google automáticas</div>
-            <div class="citas-feat">Reactivación de clientes inactivos</div>
-          </div>
-          <div class="citas-right">
-            <div class="citas-price">79<span>€/mes</span></div>
-            <div class="citas-price-sub">🌞 Setup gratis hasta el 31 agosto · 2 planes disponibles</div>
-            <button class="citas-cta" onclick="event.stopPropagation();openSoftware('reservas')">Ver la oferta completa →</button>
           </div>
         </div>
 
