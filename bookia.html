@@ -170,6 +170,15 @@
   .plan li::before{content:"✓";color:var(--brand);font-weight:800;flex-shrink:0}
   .plan li.hi{font-weight:600;color:var(--ink)}
   .plan .btn{width:100%;justify-content:center;margin-top:6px}
+  /* ── software a medida ── */
+  .medida{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-top:26px;background:var(--petrol);color:#fff;border-radius:20px;padding:26px 30px;position:relative;overflow:hidden}
+  .medida .em{font-size:30px;flex-shrink:0}
+  .medida .tx{flex:1;min-width:280px}
+  .medida .tx h3{font-family:var(--font-display);font-size:20px;font-weight:700;color:#fff;margin-bottom:5px;letter-spacing:-.01em}
+  .medida .tx p{font-size:14.5px;color:rgba(233,246,247,.82)}
+  .medida .tx strong{color:var(--neon);font-weight:600}
+  .medida .btn.light{white-space:nowrap}
+  @media(max-width:700px){.medida{flex-direction:column;align-items:flex-start}}
   /* ── FAQ ── */
   details{background:#fff;border:1px solid var(--border);border-radius:12px;padding:18px 22px;margin-bottom:12px}
   summary{font-family:var(--font-display);font-weight:600;font-size:16px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;letter-spacing:-.01em}
@@ -447,6 +456,16 @@
     </div>
   </div>
   <p class="center" style="margin-top:28px;font-family:var(--font-mono);font-size:12px;color:var(--ink-4)">Precios sin IVA · el asistente de IA está en todos los planes. ¿No sabes cuál encaja con tu barbería? Escríbenos y te lo decimos en 5 minutos.</p>
+
+  <div class="medida">
+    <div class="pole" style="position:absolute;left:0;top:0;bottom:0;width:6px"></div>
+    <div class="em">🛠️</div>
+    <div class="tx">
+      <h3>¿Te falta algo? ¿Te sobra algo?</h3>
+      <p>Estos tres planes son nuestro software <strong>prediseñado</strong>, listo para arrancar. Pero no es una caja cerrada: podemos <strong>añadir las funciones</strong> que necesites o <strong>quitar las que no uses</strong> y montarte un Bookia a tu medida. Cuéntanos cómo trabajas.</p>
+    </div>
+    <a class="btn light" href="https://wa.me/34675148566?text=Hola%2C%20quiero%20un%20Bookia%20a%20medida%20para%20mi%20negocio" target="_blank" rel="noopener">Pedir algo a medida →</a>
+  </div>
 </div></section>
 
 <!-- ═══════════ FAQ ═══════════ -->

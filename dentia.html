@@ -134,6 +134,14 @@
   .plan li{font-size:13.5px;color:var(--ink-2);display:flex;gap:9px;align-items:flex-start}
   .plan li::before{content:"✓";color:var(--teal);font-weight:800;flex-shrink:0}
   .plan li.hi{font-weight:600;color:var(--ink)}.plan .btn{width:100%;justify-content:center;margin-top:4px}
+  .medida{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-top:26px;background:linear-gradient(155deg,var(--teal),var(--teal-d));color:#fff;border-radius:20px;padding:26px 30px}
+  .medida .em{font-size:30px;flex-shrink:0}
+  .medida .tx{flex:1;min-width:280px}
+  .medida .tx h3{font-family:var(--font-head);font-size:22px;font-weight:600;color:#fff;margin-bottom:5px}
+  .medida .tx p{font-size:14.5px;color:rgba(255,255,255,.82)}
+  .medida .tx strong{color:var(--accent);font-weight:600}
+  .medida .btn{background:#fff;color:var(--teal);white-space:nowrap}
+  @media(max-width:700px){.medida{flex-direction:column;align-items:flex-start}}
   details{background:var(--bg-soft);border:1px solid var(--border);border-radius:12px;padding:18px 22px;margin-bottom:12px}
   summary{font-weight:700;font-size:15.5px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px}
   summary::-webkit-details-marker{display:none}summary::after{content:"+";color:var(--teal);font-size:22px}
@@ -432,6 +440,15 @@
     </div>
   </div>
   <p class="center" style="margin-top:28px;font-size:13.5px;color:var(--ink-4)">Precios sin IVA. ¿No sabes cuál encaja con tu clínica? Escríbenos y te lo decimos en 5 minutos.</p>
+
+  <div class="medida">
+    <div class="em">🛠️</div>
+    <div class="tx">
+      <h3>¿Te falta algo? ¿Te sobra algo?</h3>
+      <p>Estos planes son nuestro software <strong>prediseñado</strong>, listo para entregar. Pero no es una caja cerrada: podemos <strong>añadir las funciones</strong> que tu clínica necesite o <strong>quitar las que no uses</strong>, y montarte un Dentia a tu medida. Cuéntanos cómo trabajáis.</p>
+    </div>
+    <a class="btn" href="https://wa.me/34675148566?text=Hola%2C%20quiero%20un%20Dentia%20a%20medida%20para%20mi%20cl%C3%ADnica" target="_blank" rel="noopener">Pedir algo a medida →</a>
+  </div>
 </div></section>
 
 <section class="soft"><div class="wrap narrow">
