@@ -132,6 +132,14 @@
   .bubble .t{display:block;font-family:var(--font-mono);font-size:9.5px;color:#8aa;text-align:right;margin-top:3px}
   .grp{margin-bottom:9px}
   .mock-lbl{font-size:13px;color:var(--ink-4);text-align:center;margin:26px auto 0;font-style:italic;max-width:520px}
+  .lnk{color:var(--brand);text-decoration:underline;word-break:break-all}
+  /* dúo: chat previo + captura de la reserva */
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:34px;margin-top:30px;align-items:start}
+  .duo .cap{font-size:13px;color:var(--ink-3);text-align:center;margin-bottom:12px;font-weight:600}
+  .duo .cap b{color:var(--brand)}
+  .duo .phone{margin:0 auto;max-width:360px}
+  .duo .fig{margin:0 auto;max-width:340px}
+  @media(max-width:860px){.duo{grid-template-columns:1fr;gap:26px}}
   /* ── objetivos ── */
   .obj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
   .obj{background:#fff;border:1px solid var(--border);border-radius:16px;padding:24px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px}
@@ -314,9 +322,27 @@
 
 <section><div class="wrap">
   <span class="eyebrow">Reserva online</span>
-  <h2>Tus clientes reservan solos, <em>sin dejar huecos</em></h2>
-  <p class="lead">Les pasas un enlace y eligen servicio, día y hora en tres toques desde el móvil. Como cada servicio dura lo que tiene que durar, Bookia encaja las citas apretadas — no como los horarios fijos de media hora, que dejan medios huecos imposibles de llenar.</p>
-  <div style="display:flex;justify-content:center"><div class="fig" style="max-width:340px"><img src="bookia-img/reserva-movil.png" alt="Reserva online desde el móvil, paso de elegir la hora" loading="lazy" /></div></div>
+  <h2>Dos formas de coger cita, <em>una misma agenda</em></h2>
+  <p class="lead">El cliente elige: cierra la cita conversando con el asistente, o toca el enlace y escoge él mismo el hueco desde el móvil. Los dos caminos trabajan sobre la misma agenda en tiempo real — y como cada servicio dura lo que tiene que durar, las citas se encajan sin dejar medios huecos imposibles de llenar.</p>
+  <div class="duo">
+    <div>
+      <p class="cap">1 · Por chat: <b>el asistente se lo resuelve</b>…</p>
+      <div class="phone">
+        <div class="tg-top"><div class="tg-av">💈</div><div><div class="nm">Barbería · Asistente</div><div class="st">en línea</div></div></div>
+        <div class="tg-body">
+          <div class="grp"><div class="bubble b-user">Hola, ¿tenéis hueco mañana?<span class="t">12:40</span></div></div>
+          <div class="grp"><div class="bubble b-bot">¡Hola! Claro 🙂 ¿Qué quieres hacerte? Corte, corte y barba, arreglo de barba…<span class="t">12:40</span></div></div>
+          <div class="grp"><div class="bubble b-user">corte y barba<span class="t">12:41</span></div></div>
+          <div class="grp"><div class="bubble b-bot">Perfecto. Mañana tengo hueco a las 10:30 o a las 18:00. ¿Te reservo alguno?<span class="t">12:41</span></div><div class="bubble b-bot">Y si prefieres verlo tú mismo, aquí tienes todos los huecos: <span class="lnk">tubarberia.bookia.app/reservar</span><span class="t">12:41</span></div></div>
+          <div class="grp"><div class="bubble b-user">voy a mirar el enlace 👌<span class="t">12:42</span></div></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p class="cap">2 · …o por el enlace: <b>elige él mismo el hueco</b></p>
+      <div class="fig"><img src="bookia-img/reserva-movil.png" alt="Página de reserva online en el móvil con los huecos reales" loading="lazy" /></div>
+    </div>
+  </div>
 </div></section>
 
 <section class="soft"><div class="wrap">
@@ -448,7 +474,7 @@
       <div class="top-pole pole"></div>
       <div class="pl">Negocio</div><div class="pn">Dirige el negocio y tu marca</div>
       <div class="pd">Para barberías con varios sillones que quieren los números del negocio y su propia presencia en internet.</div>
-      <div class="price">99€<span>/mes</span></div>
+      <div class="price">149€<span>/mes</span></div>
       <div class="setup"><b>Puesta en marcha incluida</b> · sin permanencia</div>
       <ul><li>Todo lo del plan Profesional</li><li class="hi">Profesionales ilimitados</li><li class="hi">Landing page del negocio incluida: tu web con tus servicios y el botón de reservar</li><li>Seguimiento del negocio: retención, frecuencia y valor por cliente</li><li>Soporte prioritario (&lt;4h)</li></ul>
       <a class="btn ghost" href="https://wa.me/34675148566?text=Hola%2C%20quiero%20hablar%20del%20plan%20Negocio%20de%20Bookia" target="_blank" rel="noopener">Hablar del plan Negocio</a>

@@ -112,6 +112,14 @@
   .b-bot{background:#fff;color:#2b3038;margin-right:auto;border-top-left-radius:2px}
   .bubble .t{display:block;font-size:10px;color:#8aa;text-align:right;margin-top:2px}
   .grp{margin-bottom:10px}.mock-lbl{font-size:12.5px;color:var(--ink-4);text-align:center;margin:0 auto 4px;font-style:italic;max-width:560px}
+  .lnk{color:var(--teal);text-decoration:underline;word-break:break-all}
+  /* dúo: chat previo + captura de la reserva */
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:34px;margin-top:30px;align-items:start}
+  .duo .cap{font-size:13.5px;color:var(--ink-3);text-align:center;margin-bottom:12px;font-weight:700}
+  .duo .cap b{color:var(--teal)}
+  .duo .phone{margin:0 auto;max-width:360px}
+  .duo .fig{margin:0 auto;max-width:340px}
+  @media(max-width:860px){.duo{grid-template-columns:1fr;gap:26px}}
   /* ── comparativa ── */
   .cmp{overflow-x:auto;margin-top:30px;border:1px solid var(--border);border-radius:16px}
   table{border-collapse:collapse;width:100%;min-width:620px;font-size:14.5px}
@@ -318,9 +326,27 @@
 
 <section><div class="wrap">
   <span class="eyebrow">Reserva online</span>
-  <h2>El paciente reserva solo, <em>sin dejar huecos muertos</em></h2>
-  <p class="lead">El paciente elige el tipo de cita y, como cada una dura lo que tiene que durar, el sistema encaja las citas unas detrás de otras sin los huecos pequeños que dejan los horarios rígidos. La agenda se llena apretada.</p>
-  <div style="display:flex;justify-content:center"><div class="fig" style="max-width:340px"><img src="dentia-img/reserva-movil.png" alt="Reserva online con tipo de cita" loading="lazy" /></div></div>
+  <h2>Dos formas de coger cita, <em>una misma agenda</em></h2>
+  <p class="lead">El paciente elige: cierra la cita conversando con el asistente, o toca el enlace y escoge él mismo el hueco desde el móvil, con el tipo de cita ya seleccionado. Los dos caminos trabajan sobre la misma agenda en tiempo real — y como cada cita dura lo que tiene que durar, se encajan unas detrás de otras sin huecos muertos.</p>
+  <div class="duo">
+    <div>
+      <p class="cap">1 · Por WhatsApp: <b>el asistente se lo resuelve</b>…</p>
+      <div class="phone">
+        <div class="wa-top"><div class="wa-av">🦷</div><div><div class="nm">Clínica Dental</div><div class="st">en línea</div></div></div>
+        <div class="wa-body">
+          <div class="grp"><div class="bubble b-user">Hola, quería pedir cita<span class="t">12:40</span></div></div>
+          <div class="grp"><div class="bubble b-bot">¡Hola! Claro. ¿Es para una revisión, una limpieza o tienes alguna molestia?<span class="t">12:40</span></div></div>
+          <div class="grp"><div class="bubble b-user">una revisión<span class="t">12:41</span></div></div>
+          <div class="grp"><div class="bubble b-bot">Perfecto. Esta semana tengo el miércoles a las 18:00 o el jueves a las 12:00. ¿Te reservo alguna?<span class="t">12:41</span></div><div class="bubble b-bot">Y si prefieres verlo tú, aquí tienes el calendario con la revisión ya seleccionada: <span class="lnk">tuclinica.dentia.app/reservar</span><span class="t">12:41</span></div></div>
+          <div class="grp"><div class="bubble b-user">Miro el enlace, ¡gracias!<span class="t">12:42</span></div></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p class="cap">2 · …o por el enlace: <b>elige él mismo el hueco</b></p>
+      <div class="fig"><img src="dentia-img/reserva-movil.png" alt="Página de reserva online con el tipo de cita ya seleccionado" loading="lazy" /></div>
+    </div>
+  </div>
 </div></section>
 
 <section class="soft"><div class="wrap">
