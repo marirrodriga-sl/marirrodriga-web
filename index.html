@@ -1341,7 +1341,7 @@
         <circle cx="14" cy="16" r="2"   fill="#7c6eec" opacity="0.5"/>
         <path d="M4 32 Q10 26 16 32 Q22 38 28 32 Q34 26 40 32 Q46 38 52 32 Q58 26 60 32" fill="none" stroke="#7c6eec" stroke-width="1" opacity="0.4"/>
       </svg>
-      Marirrodriga<b>.IA</b>
+      <span>Marirrodriga<b>.IA</b></span>
     </div>
     <div class="nav-links">
       <button class="nav-link" onclick="document.getElementById('inicio').scrollIntoView({behavior:'smooth'})">Inicio</button>
@@ -1518,43 +1518,87 @@
           </div>
         </div>
 
-        <div class="software-card" onclick="location.href='/dentia'" style="cursor:pointer">
-          <div class="software-cover" style="background: linear-gradient(135deg, #E6FFFA, #B2F5EA);">🦷</div>
-          <div class="software-body">
-            <span class="software-tag">Clínica Dental</span>
-            <div class="software-title">Dentia — el software dental que además trabaja solo: llena la agenda, cierra presupuestos y recupera pacientes.</div>
-            <p class="software-desc">Gestión clínica completa en la nube + un asistente de IA que atiende a tus pacientes por WhatsApp. Sin cuota de alta, sin permanencia.</p>
-            <div style="display:inline-flex;align-items:center;gap:6px;margin:2px 0 10px;padding:5px 12px;border-radius:20px;font-size:11.5px;font-weight:700;background:rgba(15,118,110,.07);border:1px solid rgba(15,118,110,.25);color:#0f766e;">🌞 Promo de verano: 60 días con garantía — si no funciona, te devolvemos lo pagado</div>
-            <div class="software-footer">
-              <span class="software-price">Desde 59€/mes</span>
-              <span class="software-link" style="color:#0f766e;">Ver Dentia →</span>
-            </div>
+        <style>
+          .citas-card.dentia{background:#0a2e29;border-color:rgba(45,212,191,.25);box-shadow:0 8px 40px rgba(10,46,41,.25);}
+          .citas-card.dentia .citas-tag{color:#2dd4bf;}
+          .citas-card.dentia .citas-feat::before{color:#2dd4bf;}
+          .citas-card.dentia .citas-cta{background:rgba(45,212,191,.14);border-color:rgba(45,212,191,.4);}
+          .citas-card.dentia .citas-cta:hover{background:rgba(45,212,191,.24);}
+          .citas-card.web{background:#0a1c33;border-color:rgba(96,165,250,.25);box-shadow:0 8px 40px rgba(10,28,51,.25);}
+          .citas-card.web .citas-tag{color:#60a5fa;}
+          .citas-card.web .citas-feat::before{color:#60a5fa;}
+          .citas-card.web .citas-cta{background:rgba(96,165,250,.14);border-color:rgba(96,165,250,.4);}
+          .citas-card.web .citas-cta:hover{background:rgba(96,165,250,.24);}
+          .citas-card.rrss{background:#0a2416;border-color:rgba(74,222,128,.25);box-shadow:0 8px 40px rgba(10,36,22,.25);}
+          .citas-card.rrss .citas-tag{color:#4ade80;}
+          .citas-card.rrss .citas-feat::before{color:#4ade80;}
+          .citas-card.rrss .citas-cta{background:rgba(74,222,128,.14);border-color:rgba(74,222,128,.4);}
+          .citas-card.rrss .citas-cta:hover{background:rgba(74,222,128,.24);}
+        </style>
+
+        <div class="citas-card dentia" onclick="location.href='/dentia'" style="cursor:pointer">
+          <div class="citas-left">
+            <span class="citas-tag">Para clínicas dentales</span>
+            <div class="citas-title">Dentia — el software dental que además trabaja solo</div>
+            <p class="citas-desc">Gestión completa de tu clínica en la nube — agenda, historia clínica, odontograma, presupuestos y facturación — con un asistente de IA que atiende a tus pacientes, cierra presupuestos y te avisa de lo importante. Todo por menos de lo que cuesta el software dental de siempre.</p>
+          </div>
+          <div class="citas-feats">
+            <div class="citas-feat">Agenda, ficha de paciente, odontograma digital e historia clínica</div>
+            <div class="citas-feat">Presupuestos y pagos con catálogo de tratamientos</div>
+            <div class="citas-feat">Facturación simple: factura o recibo en un clic</div>
+            <div class="citas-feat">Reserva de cita online 24/7 para tus pacientes</div>
+            <div class="citas-feat">Recordatorios automáticos de cita — menos sillas vacías</div>
+            <div class="citas-feat">Asistente de IA por WhatsApp en el plan superior</div>
+            <div class="citas-feat">CRM Kanban de seguimiento — exclusivo Dentia</div>
+          </div>
+          <div class="citas-right">
+            <div class="citas-price">59<span>€/mes</span></div>
+            <div class="citas-price-sub">🌞 Promo de verano: 60 días con garantía · si no funciona, te lo devolvemos</div>
+            <button class="citas-cta" onclick="event.stopPropagation();location.href='/dentia'">Ver Dentia →</button>
           </div>
         </div>
 
-        <div class="software-card" onclick="openSoftware('web')" style="cursor:pointer">
-          <div class="software-cover" style="background: linear-gradient(135deg, #EFF6FF, #BFDBFE);">🌐</div>
-          <div class="software-body">
-            <span class="software-tag">Presencia Web</span>
-            <div class="software-title">Tu web, conectada a todo lo que automatizas.</div>
-            <p class="software-desc">Nada de plantillas genéricas: una página que capta clientes y habla con ellos mientras tú haces otra cosa.</p>
-            <div class="software-footer">
-              <span class="software-price">Diseño 350€ · IA a medida</span>
-              <span class="software-link">Ver oferta →</span>
-            </div>
+        <div class="citas-card web" onclick="event.preventDefault();openSoftware('web')" style="cursor:pointer">
+          <div class="citas-left">
+            <span class="citas-tag">Webs con IA integrada</span>
+            <div class="citas-title">Tu web no debería ser un folleto. Debería trabajar por ti.</div>
+            <p class="citas-desc">Diseño profesional a medida + integraciones IA: chatbot 24/7, captación de leads, reservas, automatizaciones n8n. El precio base cubre el diseño — las integraciones se presupuestan según lo que necesites.</p>
+          </div>
+          <div class="citas-feats">
+            <div class="citas-feat">Diseño profesional a medida, sin plantillas genéricas</div>
+            <div class="citas-feat">Chatbot integrado que atiende a los visitantes 24/7</div>
+            <div class="citas-feat">Captación de leads automática, notificación al instante</div>
+            <div class="citas-feat">Reservas conectadas directamente desde la web</div>
+            <div class="citas-feat">Velocidad y SEO cuidados desde el primer día</div>
+            <div class="citas-feat">Conectada a todas tus automatizaciones (n8n)</div>
+            <div class="citas-feat">Analytics y seguimiento de qué convierte</div>
+          </div>
+          <div class="citas-right">
+            <div class="citas-price">350<span>€ diseño</span></div>
+            <div class="citas-price-sub">Integraciones IA a medida · mantenimiento opcional 25€/mes</div>
+            <button class="citas-cta" onclick="event.stopPropagation();openSoftware('web')">Ver oferta →</button>
           </div>
         </div>
 
-        <div class="software-card" onclick="openSoftware('rrss')" style="cursor:pointer">
-          <div class="software-cover" style="background: linear-gradient(135deg, #F0FDF4, #BBF7D0);">📱</div>
-          <div class="software-body">
-            <span class="software-tag">RRSS & Blog</span>
-            <div class="software-title">Blog, redes y newsletter publicándose solos, todos los días.</div>
-            <p class="software-desc">El sistema elige el tema, escribe, crea las imágenes y publica en LinkedIn, Instagram y X. Tú no tocas nada.</p>
-            <div class="software-footer">
-              <span class="software-price">Desde 89€/mes</span>
-              <span class="software-link">Ver planes →</span>
-            </div>
+        <div class="citas-card rrss" onclick="event.preventDefault();openSoftware('rrss')" style="cursor:pointer">
+          <div class="citas-left">
+            <span class="citas-tag">Gestión RRSS con IA</span>
+            <div class="citas-title">Contenido que convierte, publicado sin que levantes un dedo</div>
+            <p class="citas-desc">Estrategia de contenidos, redacción asistida por IA, calendario editorial y publicación automatizada. Para negocios que quieren presencia digital sin dedicarle horas a la semana.</p>
+          </div>
+          <div class="citas-feats">
+            <div class="citas-feat">Estrategia de contenidos y calendario editorial a medida</div>
+            <div class="citas-feat">Redacción asistida por IA en tu tono de voz</div>
+            <div class="citas-feat">Imágenes generadas por IA para cada publicación</div>
+            <div class="citas-feat">Publicación automática en LinkedIn, Instagram y X</div>
+            <div class="citas-feat">Newsletter mensual enviada sin intervención manual</div>
+            <div class="citas-feat">Blog corporativo con SEO, publicado solo</div>
+            <div class="citas-feat">Informe mensual de rendimiento y ajustes de estrategia</div>
+          </div>
+          <div class="citas-right">
+            <div class="citas-price">89<span>€/mes</span></div>
+            <div class="citas-price-sub">Instagram + 1 red a elegir · ~15 publicaciones/mes</div>
+            <button class="citas-cta" onclick="event.stopPropagation();openSoftware('rrss')">Ver planes →</button>
           </div>
         </div>
 
