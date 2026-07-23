@@ -1496,7 +1496,7 @@
           .citas-card.bookia .citas-cta{background:rgba(34,211,238,.14);border-color:rgba(34,211,238,.4);}
           .citas-card.bookia .citas-cta:hover{background:rgba(34,211,238,.24);}
         </style>
-        <div class="citas-card bookia" onclick="location.href='/bookia'" style="cursor:pointer">
+        <div class="citas-card bookia" onclick="openBookiaSectors()" style="cursor:pointer">
           <div class="citas-left">
             <span class="citas-tag">Para cualquier negocio de citas</span>
             <div class="citas-title">Bookia — tu agenda y tu asistente, sin depender de plataformas</div>
@@ -1514,7 +1514,7 @@
           <div class="citas-right">
             <div class="citas-price">49<span>€/mes</span></div>
             <div class="citas-price-sub">🌞 Promo de verano: 60 días con garantía · si no funciona, te lo devolvemos</div>
-            <button class="citas-cta" onclick="event.stopPropagation();location.href='/bookia'">Ver Bookia →</button>
+            <button class="citas-cta" onclick="event.stopPropagation();openBookiaSectors()">Ver Bookia →</button>
           </div>
         </div>
 
@@ -2363,7 +2363,7 @@
         <div class="footer-col-title">Servicios</div>
         <a class="footer-link" href="#softwares" onclick="event.preventDefault();document.getElementById('softwares').scrollIntoView({behavior:'smooth'})">Softwares por sector</a>
         <a class="footer-link" href="#alacarta" onclick="event.preventDefault();document.getElementById('alacarta').scrollIntoView({behavior:'smooth'})">IA a la carta</a>
-        <a class="footer-link" href="/bookia">Bookia — citas con IA</a>
+        <a class="footer-link" href="#softwares" onclick="event.preventDefault();openBookiaSectors()">Bookia — citas con IA</a>
         <a class="footer-link" href="#softwares" onclick="event.preventDefault();openSoftware('rrss')">RRSS automatizadas</a>
       </div>
       <div>
@@ -3046,6 +3046,43 @@
 
     let currentSWSector = null;
     let currentSWPlan = null;
+
+    // ─── Bookia: selector de sector ──────────────────────────────
+    const BOOKIA_SECTORS = [
+      { icon: '💈', title: 'Barbería', desc: 'La landing original de Bookia, pensada para barbershops.', href: '/bookia' },
+      { icon: '✂️', title: 'Peluquería', desc: 'Agenda por peluquero, huecos libres de un vistazo.', href: '/bookia-peluqueria' },
+      { icon: '✨', title: 'Estética', desc: 'Reservas de tratamientos sin llamadas ni WhatsApp suelto.', href: '/bookia-estetica' },
+      { icon: '💅', title: 'Uñas', desc: 'Agenda al minuto, sin huecos muertos entre clientas.', href: '/bookia-unas' },
+      { icon: '🎨', title: 'Tatuajes', desc: 'Citas largas bien encajadas y clientes que no se pierden.', href: '/bookia-tatuajes' },
+      { icon: '🧑‍⚕️', title: 'Fisioterapia', desc: 'Sesiones recurrentes gestionadas sin recepción.', href: '/bookia-fisioterapia' },
+      { icon: '🦶', title: 'Podología', desc: 'Agenda y asistente para consultas de podología.', href: '/bookia-podologia' },
+    ];
+
+    function renderBookiaSectors() {
+      const cards = BOOKIA_SECTORS.map(s => `
+        <div style="padding:20px 22px;background:#fff;border:1px solid var(--border);border-radius:14px;cursor:pointer;transition:box-shadow .2s,transform .15s;" onclick="location.href='${s.href}'" onmouseenter="this.style.boxShadow='0 4px 20px rgba(34,211,238,.14)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.boxShadow='none';this.style.transform='none'">
+          <div style="font-size:24px;margin-bottom:10px;">${s.icon}</div>
+          <div style="font-size:13px;font-weight:700;color:var(--text-1);margin-bottom:6px;line-height:1.3;">${s.title}</div>
+          <p style="font-size:12px;color:var(--text-3);line-height:1.55;margin:0;">${s.desc}</p>
+        </div>`).join('');
+      return `
+        <div class="sw-showcase-wrap">
+          <p style="font-size:14px;color:var(--text-3);margin:0 0 20px;">Mismo software, agenda y asistente de IA — con la landing y el ejemplo hechos para tu sector. Elige el tuyo:</p>
+          <div class="sw-showcase-grid">
+            ${cards}
+          </div>
+        </div>`;
+    }
+
+    function openBookiaSectors() {
+      document.getElementById('sw-emoji').textContent = '📅';
+      document.getElementById('sw-tag').textContent = 'Bookia';
+      document.getElementById('sw-name').innerHTML = '¿Cuál es tu negocio?';
+      document.getElementById('sw-desc').textContent = 'Elige tu sector y te llevamos directo a tu ejemplo.';
+      document.getElementById('sw-body').innerHTML = renderBookiaSectors();
+      document.getElementById('sw-overlay').classList.add('open');
+      document.getElementById('sw-modal').scrollTop = 0;
+    }
 
     function openSoftware(sector) {
       const d = SW_DATA[sector];
