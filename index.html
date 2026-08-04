@@ -693,6 +693,15 @@
       display: flex; align-items: center; justify-content: center;
     }
 
+    /* ─── DEPARTAMENTOS (Para empresas) ───────────────── */
+    .dept-block { margin-bottom: 72px; }
+    .dept-block:last-child { margin-bottom: 0; }
+    .dept-head { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; padding-bottom: 18px; border-bottom: 2px solid var(--border); }
+    .dept-emoji { font-size: 34px; line-height: 1; flex-shrink: 0; }
+    .dept-name { font-family: var(--font-head); font-size: 24px; font-weight: 600; color: var(--text-1); margin: 0 0 3px; }
+    .dept-pain { font-size: 14px; color: var(--text-3); margin: 0; }
+    @media (max-width: 640px) { .dept-emoji { font-size: 28px; } .dept-name { font-size: 20px; } .dept-block { margin-bottom: 56px; } }
+
     /* ─── SERVICE CARDS (A LA CARTA FULL) ─────────────── */
     .sc-section { background: var(--purple-tint); padding: 96px 64px; }
     .sc-grid { display: flex; flex-direction: column; gap: 16px; }
@@ -1206,7 +1215,7 @@
       .sector-request-row { flex-direction: column; }
       .sector-request-form { max-width: 100%; }
 
-      /* A la carta */
+      /* Para empresas */
       .sc-main { grid-template-columns: 56px 1fr; gap: 14px; padding: 20px 16px 16px; align-items: flex-start; }
       .sc-illus { width: 56px; height: 56px; font-size: 26px; border-radius: 12px; }
       .sc-title { font-size: 17px; }
@@ -1345,8 +1354,8 @@
     </div>
     <div class="nav-links">
       <button class="nav-link" onclick="document.getElementById('inicio').scrollIntoView({behavior:'smooth'})">Inicio</button>
+      <button class="nav-link" onclick="document.getElementById('alacarta').scrollIntoView({behavior:'smooth'})">Para empresas</button>
       <button class="nav-link" onclick="document.getElementById('softwares').scrollIntoView({behavior:'smooth'})">Softwares</button>
-      <button class="nav-link" onclick="document.getElementById('alacarta').scrollIntoView({behavior:'smooth'})">A la carta</button>
       <button class="nav-link" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Contacto</button>
     </div>
     <div style="display:flex;gap:10px;align-items:center;">
@@ -1376,14 +1385,14 @@
             <div class="hero-badge-dot"></div>
             Automatización con IA para negocios
           </div>
-          <h1>Tu negocio,<br />funcionando <em>sin ti.</em></h1>
+          <h1>Automatizamos tu empresa,<br />departamento <em>a departamento.</em></h1>
           <p class="hero-sub">
-            Software de IA hecho para tu sector, o agentes sueltos para lo que necesites resolver.
-            En marcha en días, no en meses — sin permanencia, y lo ves funcionando en esta misma web antes de decidir nada.
+            Ponemos agentes de IA a trabajar en los departamentos que más tiempo te quitan — atención al cliente, ventas, administración, datos.
+            Diseñados a medida de tu empresa. Y si tu sector encaja, también tenemos software completo listo en días. Sin permanencia, y lo pruebas aquí mismo antes de decidir.
           </p>
           <div class="hero-btns">
-            <button class="btn-primary" onclick="document.getElementById('softwares').scrollIntoView({behavior:'smooth'})">Ver soluciones por sector →</button>
-            <button class="btn-secondary" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Hablar con nosotros</button>
+            <button class="btn-primary" onclick="document.getElementById('alacarta').scrollIntoView({behavior:'smooth'})">Ver qué automatizamos →</button>
+            <button class="btn-secondary" onclick="bookCall()">Reservar llamada gratis</button>
           </div>
           <div class="hero-trust">
             <div class="hero-trust-item"><div class="hero-trust-dot"></div> Pruébalo en demo antes de contratar</div>
@@ -1400,18 +1409,18 @@
             <span>→</span>
           </button>
           <nav class="hero-sidenav">
-            <button class="sidenav-item" onclick="document.getElementById('softwares').scrollIntoView({behavior:'smooth'})">
+            <button class="sidenav-item" onclick="document.getElementById('alacarta').scrollIntoView({behavior:'smooth'})">
               <span class="sidenav-num">01</span>
+              <div>
+                <span class="sidenav-title">Automatización por departamentos</span>
+                <span class="sidenav-desc">Agentes de IA para atención, ventas, finanzas, datos y marketing — a medida de tu empresa</span>
+              </div>
+            </button>
+            <button class="sidenav-item" onclick="document.getElementById('softwares').scrollIntoView({behavior:'smooth'})">
+              <span class="sidenav-num">02</span>
               <div>
                 <span class="sidenav-title">Softwares por sector</span>
                 <span class="sidenav-desc">Más funciones que tu software actual, pensado para cómo funciona tu sector</span>
-              </div>
-            </button>
-            <button class="sidenav-item" onclick="document.getElementById('alacarta').scrollIntoView({behavior:'smooth'})">
-              <span class="sidenav-num">02</span>
-              <div>
-                <span class="sidenav-title">IA a la carta</span>
-                <span class="sidenav-desc">Elige el agente que necesitas sin cambiar lo que ya tienes</span>
               </div>
             </button>
             <button class="sidenav-item" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">
@@ -1432,19 +1441,19 @@
   <section class="como-section">
     <div class="section-inner">
       <div class="section-label">Cómo funciona</div>
-      <h2 class="section-title">Dos formas de automatizar<br /><em>tu negocio.</em></h2>
-      <p class="section-sub">El paquete completo para tu sector, o un agente suelto para una tarea concreta. Tú decides hasta dónde llegamos.</p>
+      <h2 class="section-title">Automatizamos tu empresa<br /><em>por departamentos.</em></h2>
+      <p class="section-sub">Ponemos agentes de IA a trabajar en las áreas que más tiempo te quitan. Empiezas por un departamento y creces desde ahí. Y si tu sector encaja, también tenemos un software completo listo para funcionar.</p>
 
       <div class="concepts-grid">
         <div class="concept-card">
-          <div class="concept-icon">🤖</div>
-          <div class="concept-title">Software por sector</div>
-          <p class="concept-body">Un software completo, montado para cómo funciona de verdad tu sector. Citas, presupuestos, recordatorios e informes — en marcha en días y trabajando solo desde el primer mes.</p>
+          <div class="concept-icon">🧩</div>
+          <div class="concept-title">Agentes por departamento</div>
+          <p class="concept-body">Ponemos IA a trabajar en atención al cliente, ventas, finanzas, datos o marketing — diseñada para las tareas concretas que hoy te comen el tiempo. Empiezas por un departamento y creces desde ahí.</p>
         </div>
         <div class="concept-card">
-          <div class="concept-icon">⚡</div>
-          <div class="concept-title">IA a la carta</div>
-          <p class="concept-body">¿Ya tienes tu software y solo te falta una pieza? Coge el agente que necesitas del catálogo. No cambias nada de lo que ya usas, y sin permanencia.</p>
+          <div class="concept-icon">🤖</div>
+          <div class="concept-title">Software por sector</div>
+          <p class="concept-body">¿Tu sector encaja? Un software completo, montado para cómo funciona de verdad tu negocio. Citas, presupuestos, recordatorios e informes — en marcha en días y trabajando solo desde el primer mes.</p>
         </div>
         <div class="concept-card">
           <div class="concept-icon">🛠️</div>
@@ -1617,9 +1626,9 @@
           <div class="software-body">
             <span class="software-tag">Autoescuela</span>
             <div class="software-title">Software propio para autoescuelas — en construcción.</div>
-            <p class="software-desc">Gestión de alumnos, clases prácticas, exámenes y comunicación automática. Apúntate ahora y opta a la oferta de verano en el lanzamiento.</p>
+            <p class="software-desc">Gestión de alumnos, clases prácticas, exámenes y comunicación automática. Apúntate ahora y sé de los primeros en acceder.</p>
             <div class="software-footer">
-              <span class="software-price" style="color:var(--text-3);">🌞 Oferta verano al lanzamiento</span>
+              <span class="software-price" style="color:var(--text-3);">Lista de espera abierta</span>
               <span class="software-link">Reservar mi lugar →</span>
             </div>
           </div>
@@ -1633,9 +1642,9 @@
           <div class="software-body">
             <span class="software-tag">Clínica de Estética</span>
             <div class="software-title">Software propio para centros de estética — en construcción.</div>
-            <p class="software-desc">Historial de tratamientos, agenda, seguimiento de clientes y automatizaciones IA. Apúntate ahora y opta a la oferta de verano en el lanzamiento.</p>
+            <p class="software-desc">Historial de tratamientos, agenda, seguimiento de clientes y automatizaciones IA. Apúntate ahora y sé de los primeros en acceder.</p>
             <div class="software-footer">
-              <span class="software-price" style="color:var(--text-3);">🌞 Oferta verano al lanzamiento</span>
+              <span class="software-price" style="color:var(--text-3);">Lista de espera abierta</span>
               <span class="software-link">Reservar mi lugar →</span>
             </div>
           </div>
@@ -1649,9 +1658,9 @@
           <div class="software-body">
             <span class="software-tag">Centro Deportivo</span>
             <div class="software-title">Software propio para gimnasios y centros deportivos — en construcción.</div>
-            <p class="software-desc">Gestión de socios, reservas de clases, cuotas y reactivación automática de bajas. Apúntate ahora y opta a la oferta de verano en el lanzamiento.</p>
+            <p class="software-desc">Gestión de socios, reservas de clases, cuotas y reactivación automática de bajas. Apúntate ahora y sé de los primeros en acceder.</p>
             <div class="software-footer">
-              <span class="software-price" style="color:var(--text-3);">🌞 Oferta verano al lanzamiento</span>
+              <span class="software-price" style="color:var(--text-3);">Lista de espera abierta</span>
               <span class="software-link">Reservar mi lugar →</span>
             </div>
           </div>
@@ -1682,13 +1691,25 @@
   <!-- ═══════════════════════════════════ A LA CARTA ═════════ -->
   <section class="sc-section" id="alacarta">
     <div class="section-inner">
-      <div class="section-label">Catálogo individual</div>
-      <h2 class="section-title">IA <em>a la carta</em></h2>
-      <p class="section-sub">Despliega cualquier agente y pruébalo en tiempo real. Añade los que necesitas al presupuesto y te diseñamos una solución conjunta. Sin permanencia.</p>
+      <div class="section-label">Automatización por departamentos</div>
+      <h2 class="section-title">Para <em>empresas</em></h2>
+      <p class="section-sub">Organizamos la IA por departamentos, igual que tu empresa. Estos son ejemplos reales de agentes que ya tenemos trabajando — tu solución se diseña sobre las necesidades concretas de tu negocio. Pruébalos aquí mismo, sin permanencia.</p>
+      <div style="margin-top:26px;display:flex;gap:14px;flex-wrap:wrap;align-items:center;">
+        <button class="btn-primary" onclick="bookCall()">Reservar llamada gratis →</button>
+        <span style="font-size:13px;color:var(--text-3)">15 min · sin compromiso · te preparamos una propuesta a medida</span>
+      </div>
 
-      <div class="sc-grid">
+      <div class="dept-block">
+        <div class="dept-head">
+          <span class="dept-emoji">🎧</span>
+          <div>
+            <h3 class="dept-name">Atención al Cliente</h3>
+            <p class="dept-pain">¿Cuántas llamadas, WhatsApps y dudas se quedan sin responder fuera de horario?</p>
+          </div>
+        </div>
+        <div class="sc-grid">
 
-        <!-- CARD 1 -->
+<!-- CARD 1 -->
         <div class="sc-card" id="sc-1">
           <div class="sc-main">
             <div class="sc-illus">💬</div>
@@ -1699,7 +1720,7 @@
             </div>
             <div class="sc-actions">
               <button class="sc-expand-btn" id="exp-1" onclick="toggleSC(1)">¡Pruébalo aquí! ▼</button>
-              <button class="sc-cart-btn" id="cart-1" onclick="toggleCart(event,1,'Chat &amp; Voz','Asistentes Conversacionales')">+ Añadir al presupuesto</button>
+              <button class="sc-cart-btn" id="cart-1" onclick="toggleCart(event,1,'Chat &amp; Voz','Asistentes Conversacionales')">+ Me interesa</button>
             </div>
           </div>
           <div class="sc-panel" id="panel-1">
@@ -1750,110 +1771,159 @@
     </button>
   </div>
 </div>
-                <button class="sc-cart-btn-panel" id="cart-panel-1" onclick="toggleCart(event,1,'Chat &amp; Voz','Asistentes Conversacionales')" style="margin-top:16px;">+ Añadir al presupuesto</button>
+                <button class="sc-cart-btn-panel" id="cart-panel-1" onclick="toggleCart(event,1,'Chat &amp; Voz','Asistentes Conversacionales')" style="margin-top:16px;">+ Me interesa</button>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- CARD 2 -->
-        <div class="sc-card" id="sc-2">
+<!-- CARD 5 -->
+        <div class="sc-card" id="sc-5">
           <div class="sc-main">
-            <div class="sc-illus">🧾</div>
+            <div class="sc-illus">🔔</div>
             <div class="sc-content">
-              <span class="sc-badge">Gestión rápida</span>
-              <h3 class="sc-title">2. Generación Automática de Facturas</h3>
-              <p class="sc-desc">Tus facturas hechas en segundos. Le dices qué has vendido y te devuelve el PDF listo, enviado al cliente y anotado en tu contabilidad.</p>
+              <span class="sc-badge">Anti no-show</span>
+              <h3 class="sc-title">5. Recordatorios Automáticos de Cita</h3>
+              <p class="sc-desc">Avisa a tus clientes antes de cada cita y ellos confirman o cancelan con un toque. Si alguien cancela, el hueco se ofrece solo a la lista de espera. Menos sillas vacías, cero llamadas.</p>
             </div>
             <div class="sc-actions">
-              <button class="sc-expand-btn" id="exp-2" onclick="toggleSC(2)">¡Pruébalo aquí! ▼</button>
-              <button class="sc-cart-btn" id="cart-2" onclick="toggleCart(event,2,'Gestión rápida','Generación Automática de Facturas')">+ Añadir al presupuesto</button>
+              <button class="sc-expand-btn" id="exp-5" onclick="toggleSC(5)">¡Pruébalo aquí! ▼</button>
+              <button class="sc-cart-btn" id="cart-5" onclick="toggleCart(event,5,'Anti no-show','Recordatorios Automáticos de Cita')">+ Me interesa</button>
             </div>
           </div>
-          <div class="sc-panel" id="panel-2">
+          <div class="sc-panel" id="panel-5">
             <div class="sc-panel-grid">
               <div>
                 <div class="panel-label">🔗 ¿Y si lo llevamos más lejos?</div>
                 <div class="flow-chain">
-                  <div class="flow-node-core"><span class="flow-node-dot"></span>Mensaje de texto → Factura PDF lista al instante</div>
-                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">✅</span>Validación y envío por Verifactu (obligatorio desde 2026)</div></div>
-                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">📧</span>Envío automático al cliente por email</div></div>
-                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">⏰</span>Recordatorio de pago en el plazo que configures</div></div>
-                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">📑</span>Registro contable automático en Google Sheets</div></div>
-                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">📆</span>Informe mensual listo para la gestoría en un clic</div></div>
+                  <div class="flow-node-core"><span class="flow-node-dot"></span>Aviso automático antes de cada cita</div>
+                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">✅</span>El cliente confirma o cancela con un toque — sin llamar</div></div>
+                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">🔄</span>Si cancela, el hueco se libera y se ofrece a la lista de espera</div></div>
+                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">📧</span>Canal configurable: WhatsApp, email o ambos</div></div>
+                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">📊</span>Log de confirmaciones en tiempo real</div></div>
+                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">🧾</span>Se integra con tu calendario sin cambiar nada</div></div>
                 </div>
-                <div class="flow-savings">Facturar, cuadrar cuentas y preparar la documentación de la gestoría te come entre 15 y 20 horas al mes. El agente lo hace solo — y cumple Verifactu de serie.</div>
+                <div class="flow-savings">Un no-show en consulta, clínica o peluquería cuesta entre 30€ y 150€ de media. Con recordatorios automáticos la tasa baja entre el 50% y el 75% desde el primer mes.</div>
               </div>
               <div>
-                <div class="panel-label">🚀 Del mensaje a la factura</div>
-                <div class="demo-wrap" id="demo-2">
-  <p class="inv-desc">✨ Escribe en lenguaje natural qué servicio has prestado, a quién y por cuánto. La IA rellenará la plantilla al instante.</p>
-  <div class="inv-examples">
-    <span style="font-size:11px;color:var(--text-3)">O prueba con:</span>
-    <button class="inv-ex-btn" onclick="invSetEx(0)">Fisioterapia exenta</button>
-    <button class="inv-ex-btn" onclick="invSetEx(1)">Autónomo IRPF 7%</button>
-    <button class="inv-ex-btn" onclick="invSetEx(2)">Consultoría</button>
-  </div>
-  <textarea class="inv-textarea" id="inv-input" rows="3" placeholder="Ej: Consultoría de marketing a Maderas Paco por 500€"></textarea>
-  <div style="text-align:right;margin-top:8px">
-    <button class="sc-expand-btn" id="inv-btn" onclick="invGenerate()" style="background:var(--purple);color:#fff;border:none;padding:10px 20px;border-radius:8px;font-size:13px;cursor:pointer">✨ Generar con IA</button>
-  </div>
-  <div id="inv-result"></div>
-</div>
-                <button class="sc-cart-btn-panel" id="cart-panel-2" onclick="toggleCart(event,2,'Gestión rápida','Generación Automática de Facturas')" style="margin-top:16px;">+ Añadir al presupuesto</button>
+                <div class="panel-label">🚀 Flujo de recordatorio en tiempo real</div>
+                <div class="demo-wrap" id="demo-5">
+                  <div class="d-step"><div class="demo-notif"><span class="demo-notif-icon">🔔</span><span>«Cita mañana a las 10:00 — ¿Confirmas tu asistencia, María?»</span></div></div>
+                  <div class="d-step">
+                    <div class="demo-btns">
+                      <span class="demo-btn demo-btn--yes">✓ Confirmar</span>
+                      <span class="demo-btn demo-btn--no">✗ Cancelar</span>
+                    </div>
+                  </div>
+                  <div class="d-step"><div class="demo-notif"><span class="demo-notif-icon">✅</span><span>¡Cita confirmada! Hasta mañana, María</span></div></div>
+                  <div class="d-step"><div class="demo-notif"><span class="demo-notif-icon">📋</span><span>Agenda actualizada · Sin llamadas · Sin no-shows</span></div></div>
+                </div>
+                <button class="sc-cart-btn-panel" id="cart-panel-5" onclick="toggleCart(event,5,'Anti no-show','Recordatorios Automáticos de Cita')" style="margin-top:16px;">+ Me interesa</button>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- CARD 3 -->
-        <div class="sc-card" id="sc-3">
+<!-- CARD 10 -->
+        <div class="sc-card" id="sc-10">
           <div class="sc-main">
-            <div class="sc-illus">📂</div>
+            <div class="sc-illus">📞</div>
             <div class="sc-content">
-              <span class="sc-badge">Orden inteligente</span>
-              <h3 class="sc-title">3. Gestión Documental y Clasificación de Correos</h3>
-              <p class="sc-desc">Se acabaron los papeles y la bandeja de entrada a rebosar. Saca los datos de tus PDFs y te ordena el correo por ti.</p>
+              <span class="sc-badge">Atención 24/7</span>
+              <h3 class="sc-title">10. Agente de Voz para Citas</h3>
+              <p class="sc-desc">Coge el teléfono por ti: consulta tu agenda real y cierra la reserva hablando con naturalidad. Ni una llamada sin responder — tampoco a las 10 de la noche ni en festivos.</p>
             </div>
             <div class="sc-actions">
-              <button class="sc-expand-btn" id="exp-3" onclick="toggleSC(3)">¡Pruébalo aquí! ▼</button>
-              <button class="sc-cart-btn" id="cart-3" onclick="toggleCart(event,3,'Orden inteligente','Gestión Documental y Correos')">+ Añadir al presupuesto</button>
+              <button class="sc-expand-btn" id="exp-10" onclick="toggleSC(10)">¡Pruébalo aquí! ▼</button>
+              <button class="sc-cart-btn" id="cart-10" onclick="toggleCart(event,10,'Atención 24/7','Agente de Voz para Citas')">+ Me interesa</button>
             </div>
           </div>
-          <div class="sc-panel" id="panel-3">
+          <div class="sc-panel" id="panel-10">
             <div class="sc-panel-grid">
               <div>
                 <div class="panel-label">🔗 ¿Y si lo llevamos más lejos?</div>
                 <div class="flow-chain">
-                  <div class="flow-node-core"><span class="flow-node-dot"></span>Extrae datos de PDFs y clasifica correos por IA</div>
-                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">💬</span>Auto-respuesta según urgencia: venta, reclamación o rutina</div></div>
-                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">📁</span>Archivado automático en Drive por categoría y fecha</div></div>
-                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">📲</span>Alerta Telegram si detecta un correo urgente</div></div>
-                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">🗃️</span>CRM actualizado con datos extraídos automáticamente</div></div>
-                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">📊</span>Informe semanal de actividad de bandeja de entrada</div></div>
+                  <div class="flow-node-core"><span class="flow-node-dot"></span>Atiende llamadas entrantes y gestiona la agenda 24/7</div>
+                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">📞</span>Consulta disponibilidad real y reserva cita en el momento</div></div>
+                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">🔄</span>Modifica o cancela citas con lenguaje natural</div></div>
+                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">❓</span>Responde preguntas frecuentes: precios, ubicación, servicios</div></div>
+                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">👤</span>Escala a persona real si la consulta es compleja</div></div>
+                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">📋</span>Resumen de cada llamada enviado por email al instante</div></div>
                 </div>
-                <div class="flow-savings">Clasificar correos, sacar datos de facturas, archivar documentos: horas cada día que no dedicas a lo que importa. El agente lo resuelve al momento, sin que se acumule nada.</div>
+                <div class="flow-savings">Una llamada perdida fuera de horario es un cliente que va a la competencia. Con un agente de voz, ninguna llamada queda sin responder — ni a las 10 de la noche ni en festivos.</div>
               </div>
               <div>
-                <div class="panel-label">🚀 Documento procesado en tiempo real</div>
-                <div class="demo-wrap" id="demo-3">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-    <span style="font-size:12px;color:var(--text-3)">Pega un email o documento:</span>
-    <button class="inv-ex-btn" onclick="docLoadExample()">Cargar email de ejemplo</button>
-  </div>
-  <textarea class="inv-textarea" id="doc-input" rows="4" placeholder="Pega el contenido del email o PDF aquí…"></textarea>
-  <div style="text-align:right;margin-top:8px">
-    <button id="doc-btn" onclick="docAnalyze()" style="background:var(--purple);color:#fff;border:none;padding:10px 20px;border-radius:8px;font-size:13px;cursor:pointer;font-family:var(--font-body)">👁 Analizar</button>
-  </div>
-  <div id="doc-result"></div>
-</div>
-                <button class="sc-cart-btn-panel" id="cart-panel-3" onclick="toggleCart(event,3,'Orden inteligente','Gestión Documental y Correos')" style="margin-top:16px;">+ Añadir al presupuesto</button>
+                <div class="panel-label">🚀 Llamada gestionada por el agente</div>
+                <div class="demo-wrap" id="demo-10">
+                  <div class="d-step"><div class="demo-call">📞 Llamada entrante a las 22:14…</div></div>
+                  <div class="d-step"><div class="demo-notif"><span class="demo-notif-icon">🤖</span><span>«¡Hola! Soy el asistente de voz. ¿En qué puedo ayudarte hoy?»</span></div></div>
+                  <div class="d-step"><div class="demo-reply">Cliente: «Quiero cita para el martes por la mañana»</div></div>
+                  <div class="d-step"><div class="demo-notif"><span class="demo-notif-icon">✅</span><span>Cita reservada: martes 10:30 · Confirmación enviada por SMS</span></div></div>
+                </div>
+                <button class="sc-cart-btn-panel" id="cart-panel-10" onclick="toggleCart(event,10,'Atención 24/7','Agente de Voz para Citas')" style="margin-top:16px;">+ Me interesa</button>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- CARD 4 -->
+<!-- CARD 12 -->
+        <div class="sc-card" id="sc-12">
+          <div class="sc-main">
+            <div class="sc-illus">💬</div>
+            <div class="sc-content">
+              <span class="sc-badge">WhatsApp</span>
+              <h3 class="sc-title">12. Respuesta Automática por WhatsApp</h3>
+              <p class="sc-desc">Tu WhatsApp responde solo: dudas, precios, disponibilidad y reservas al momento, a cualquier hora. Y te avisa cuando algo se le escapa — nunca deja a un cliente colgado.</p>
+            </div>
+            <div class="sc-actions">
+              <button class="sc-expand-btn" id="exp-12" onclick="toggleSC(12)">¡Pruébalo aquí! ▼</button>
+              <button class="sc-cart-btn" id="cart-12" onclick="toggleCart(event,12,'WhatsApp','Respuesta Automática por WhatsApp')">+ Me interesa</button>
+            </div>
+          </div>
+          <div class="sc-panel" id="panel-12">
+            <div class="sc-panel-grid">
+              <div>
+                <div class="panel-label">🔗 ¿Y si lo llevamos más lejos?</div>
+                <div class="flow-chain">
+                  <div class="flow-node-core"><span class="flow-node-dot"></span>Tu WhatsApp responde solo, a cualquier hora</div>
+                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">💬</span>Preguntas frecuentes, precios y disponibilidad respondidas al instante</div></div>
+                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">📅</span>Gestiona reservas directamente desde el chat</div></div>
+                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">🔔</span>Te avisa si hay una consulta que no sabe resolver</div></div>
+                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">🧠</span>Aprende de tu negocio: menú, servicios, horarios, tarifas</div></div>
+                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">📊</span>Log de conversaciones y consultas más frecuentes</div></div>
+                </div>
+                <div class="flow-savings">El 67% de los clientes prefiere WhatsApp antes de llamar. Si tardas más de 5 minutos en responder, el 50% busca otra opción. Este agente responde en segundos, sin que tú estés pendiente.</div>
+              </div>
+              <div>
+                <div class="panel-label">🚀 Conversación gestionada por IA</div>
+                <div class="demo-wrap chat" id="demo-12">
+                  <div class="demo-chat-head d-step">💬 WhatsApp · respuesta automática · 24/7</div>
+                  <div class="demo-msg demo-msg--user d-step">¿Cuánto vale una limpieza dental?</div>
+                  <div class="demo-msg demo-msg--bot d-step">Básica 45 € · Completa 65 €. ¿Cuándo te va bien?</div>
+                  <div class="demo-msg demo-msg--user d-step">¿Hay hueco mañana por la tarde?</div>
+                  <div class="demo-msg demo-msg--bot d-step">Tengo 17:00, 18:30 o 19:00. ¿Cuál te va?</div>
+                  <div class="demo-msg demo-msg--user d-step">18:30 perfecto, gracias</div>
+                </div>
+                <button class="sc-cart-btn-panel" id="cart-panel-12" onclick="toggleCart(event,12,'WhatsApp','Respuesta Automática por WhatsApp')" style="margin-top:16px;">+ Me interesa</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        </div>
+      </div>
+
+      <div class="dept-block">
+        <div class="dept-head">
+          <span class="dept-emoji">📈</span>
+          <div>
+            <h3 class="dept-name">Ventas y Captación</h3>
+            <p class="dept-pain">¿Cuántos presupuestos y leads se enfrían porque nadie hace el seguimiento a tiempo?</p>
+          </div>
+        </div>
+        <div class="sc-grid">
+
+<!-- CARD 4 -->
         <div class="sc-card" id="sc-4">
           <div class="sc-main">
             <div class="sc-illus">🎯</div>
@@ -1864,7 +1934,7 @@
             </div>
             <div class="sc-actions">
               <button class="sc-expand-btn" id="exp-4" onclick="toggleSC(4)">Ver detalles ▼</button>
-              <button class="sc-cart-btn" id="cart-4" onclick="toggleCart(event,4,'Conversión','Conversión de Clientes Potenciales')">+ Añadir al presupuesto</button>
+              <button class="sc-cart-btn" id="cart-4" onclick="toggleCart(event,4,'Conversión','Conversión de Clientes Potenciales')">+ Me interesa</button>
             </div>
           </div>
           <div class="sc-panel" id="panel-4">
@@ -1914,145 +1984,13 @@
     </div>
   </div>
 </div>
-                <button class="sc-cart-btn-panel" id="cart-panel-4" onclick="toggleCart(event,4,'Conversión','Conversión de Clientes Potenciales')" style="margin-top:16px;">+ Añadir al presupuesto</button>
+                <button class="sc-cart-btn-panel" id="cart-panel-4" onclick="toggleCart(event,4,'Conversión','Conversión de Clientes Potenciales')" style="margin-top:16px;">+ Me interesa</button>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- CARD 5 -->
-        <div class="sc-card" id="sc-5">
-          <div class="sc-main">
-            <div class="sc-illus">🔔</div>
-            <div class="sc-content">
-              <span class="sc-badge">Anti no-show</span>
-              <h3 class="sc-title">5. Recordatorios Automáticos de Cita</h3>
-              <p class="sc-desc">Avisa a tus clientes antes de cada cita y ellos confirman o cancelan con un toque. Si alguien cancela, el hueco se ofrece solo a la lista de espera. Menos sillas vacías, cero llamadas.</p>
-            </div>
-            <div class="sc-actions">
-              <button class="sc-expand-btn" id="exp-5" onclick="toggleSC(5)">¡Pruébalo aquí! ▼</button>
-              <button class="sc-cart-btn" id="cart-5" onclick="toggleCart(event,5,'Anti no-show','Recordatorios Automáticos de Cita')">+ Añadir al presupuesto</button>
-            </div>
-          </div>
-          <div class="sc-panel" id="panel-5">
-            <div class="sc-panel-grid">
-              <div>
-                <div class="panel-label">🔗 ¿Y si lo llevamos más lejos?</div>
-                <div class="flow-chain">
-                  <div class="flow-node-core"><span class="flow-node-dot"></span>Aviso automático antes de cada cita</div>
-                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">✅</span>El cliente confirma o cancela con un toque — sin llamar</div></div>
-                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">🔄</span>Si cancela, el hueco se libera y se ofrece a la lista de espera</div></div>
-                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">📧</span>Canal configurable: WhatsApp, email o ambos</div></div>
-                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">📊</span>Log de confirmaciones en tiempo real</div></div>
-                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">🧾</span>Se integra con tu calendario sin cambiar nada</div></div>
-                </div>
-                <div class="flow-savings">Un no-show en consulta, clínica o peluquería cuesta entre 30€ y 150€ de media. Con recordatorios automáticos la tasa baja entre el 50% y el 75% desde el primer mes.</div>
-              </div>
-              <div>
-                <div class="panel-label">🚀 Flujo de recordatorio en tiempo real</div>
-                <div class="demo-wrap" id="demo-5">
-                  <div class="d-step"><div class="demo-notif"><span class="demo-notif-icon">🔔</span><span>«Cita mañana a las 10:00 — ¿Confirmas tu asistencia, María?»</span></div></div>
-                  <div class="d-step">
-                    <div class="demo-btns">
-                      <span class="demo-btn demo-btn--yes">✓ Confirmar</span>
-                      <span class="demo-btn demo-btn--no">✗ Cancelar</span>
-                    </div>
-                  </div>
-                  <div class="d-step"><div class="demo-notif"><span class="demo-notif-icon">✅</span><span>¡Cita confirmada! Hasta mañana, María</span></div></div>
-                  <div class="d-step"><div class="demo-notif"><span class="demo-notif-icon">📋</span><span>Agenda actualizada · Sin llamadas · Sin no-shows</span></div></div>
-                </div>
-                <button class="sc-cart-btn-panel" id="cart-panel-5" onclick="toggleCart(event,5,'Anti no-show','Recordatorios Automáticos de Cita')" style="margin-top:16px;">+ Añadir al presupuesto</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- CARD 6 -->
-        <div class="sc-card" id="sc-6">
-          <div class="sc-main">
-            <div class="sc-illus">⭐</div>
-            <div class="sc-content">
-              <span class="sc-badge">Reputación</span>
-              <h3 class="sc-title">6. Reseñas en Google en Automático</h3>
-              <p class="sc-desc">Tras cada servicio, tu cliente recibe un mensaje con el enlace directo a tu perfil de Google — justo cuando está más contento. Tú no pides nada; las reseñas llegan solas.</p>
-            </div>
-            <div class="sc-actions">
-              <button class="sc-expand-btn" id="exp-6" onclick="toggleSC(6)">¡Pruébalo aquí! ▼</button>
-              <button class="sc-cart-btn" id="cart-6" onclick="toggleCart(event,6,'Reputación','Reseñas Google Automáticas')">+ Añadir al presupuesto</button>
-            </div>
-          </div>
-          <div class="sc-panel" id="panel-6">
-            <div class="sc-panel-grid">
-              <div>
-                <div class="panel-label">🔗 ¿Y si lo llevamos más lejos?</div>
-                <div class="flow-chain">
-                  <div class="flow-node-core"><span class="flow-node-dot"></span>Solicitud de reseña enviada justo después del servicio</div>
-                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">🎯</span>Personalizado con el nombre del cliente y el servicio recibido</div></div>
-                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">🔗</span>Enlace directo a tu perfil de Google Business</div></div>
-                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">⏱️</span>Timing optimizado: se envía cuando el cliente está más satisfecho</div></div>
-                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">📈</span>Más reseñas = más visibilidad en Google Maps y buscador</div></div>
-                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">🔔</span>Alerta si llega una reseña negativa para responder rápido</div></div>
-                </div>
-                <div class="flow-savings">Una estrella más en Google puede suponer hasta un 9% de aumento en ingresos. El 88% de los consumidores confía en reseñas igual que en recomendaciones personales.</div>
-              </div>
-              <div>
-                <div class="panel-label">🚀 Del servicio a la reseña, automático</div>
-                <div class="demo-wrap" id="demo-6">
-                  <div class="d-step"><div class="demo-notif"><span class="demo-notif-icon">💬</span><span>«¿Cómo fue tu visita, María? Valora tu experiencia en Google»</span></div></div>
-                  <div class="d-step"><div class="demo-stars">★★★★★</div></div>
-                  <div class="d-step"><div class="demo-notif"><span class="demo-notif-icon">🎉</span><span>Nueva reseña de 5 ⭐ recibida · Google Business</span></div></div>
-                  <div class="d-step"><div class="demo-notif"><span class="demo-notif-icon">📈</span><span>4.9 ⭐ promedio · +12 reseñas este mes · más visibilidad Maps</span></div></div>
-                </div>
-                <button class="sc-cart-btn-panel" id="cart-panel-6" onclick="toggleCart(event,6,'Reputación','Reseñas Google Automáticas')" style="margin-top:16px;">+ Añadir al presupuesto</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- CARD 7 -->
-        <div class="sc-card" id="sc-7">
-          <div class="sc-main">
-            <div class="sc-illus">📊</div>
-            <div class="sc-content">
-              <span class="sc-badge">Control total</span>
-              <h3 class="sc-title">7. Resumen Diario del Negocio</h3>
-              <p class="sc-desc">Cada tarde, un mensaje en Telegram o email con lo que importa: citas, consultas, facturación estimada y lo que necesita tu atención. Tu negocio entero en 30 segundos.</p>
-            </div>
-            <div class="sc-actions">
-              <button class="sc-expand-btn" id="exp-7" onclick="toggleSC(7)">¡Pruébalo aquí! ▼</button>
-              <button class="sc-cart-btn" id="cart-7" onclick="toggleCart(event,7,'Control total','Resumen Diario del Negocio')">+ Añadir al presupuesto</button>
-            </div>
-          </div>
-          <div class="sc-panel" id="panel-7">
-            <div class="sc-panel-grid">
-              <div>
-                <div class="panel-label">🔗 ¿Y si lo llevamos más lejos?</div>
-                <div class="flow-chain">
-                  <div class="flow-node-core"><span class="flow-node-dot"></span>Informe del día en Telegram o email, a la hora que elijas</div>
-                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">📅</span>Citas del día: completadas, canceladas y pendientes</div></div>
-                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">💬</span>Mensajes y consultas recibidos — con los urgentes marcados</div></div>
-                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">💶</span>Facturación estimada del día</div></div>
-                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">🔔</span>Alertas: presupuestos sin responder, clientes inactivos</div></div>
-                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">📆</span>Resumen semanal automático los viernes</div></div>
-                </div>
-                <div class="flow-savings">Saber qué ha pasado en tu negocio sin abrir 5 apps. Un informe consolidado cada tarde para cerrar el día con toda la información relevante en 30 segundos.</div>
-              </div>
-              <div>
-                <div class="panel-label">🚀 Tu resumen diario, así llega</div>
-                <div class="demo-wrap" id="demo-7">
-                  <div class="d-step"><div class="demo-report-head">📊 Resumen del día — 18:00 · Telegram</div></div>
-                  <div class="d-step"><div class="demo-stat"><span>📅 Citas completadas</span><strong>12</strong></div></div>
-                  <div class="d-step"><div class="demo-stat"><span>💶 Facturación estimada</span><strong>840 €</strong></div></div>
-                  <div class="d-step"><div class="demo-stat"><span>🔔 Nuevos leads hoy</span><strong>4</strong></div></div>
-                  <div class="d-step"><div class="demo-stat demo-stat--alert"><span>⚠️ Presupuestos sin respuesta</span><strong>2</strong></div></div>
-                </div>
-                <button class="sc-cart-btn-panel" id="cart-panel-7" onclick="toggleCart(event,7,'Control total','Resumen Diario del Negocio')" style="margin-top:16px;">+ Añadir al presupuesto</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- CARD 8 -->
+<!-- CARD 8 -->
         <div class="sc-card" id="sc-8">
           <div class="sc-main">
             <div class="sc-illus">📋</div>
@@ -2063,7 +2001,7 @@
             </div>
             <div class="sc-actions">
               <button class="sc-expand-btn" id="exp-8" onclick="toggleSC(8)">¡Pruébalo aquí! ▼</button>
-              <button class="sc-cart-btn" id="cart-8" onclick="toggleCart(event,8,'Ventas','Seguimiento Automático de Presupuestos')">+ Añadir al presupuesto</button>
+              <button class="sc-cart-btn" id="cart-8" onclick="toggleCart(event,8,'Ventas','Seguimiento Automático de Presupuestos')">+ Me interesa</button>
             </div>
           </div>
           <div class="sc-panel" id="panel-8">
@@ -2089,13 +2027,13 @@
                   <div class="d-step"><div class="demo-reply">Cliente: «Adelante, lo aceptamos»</div></div>
                   <div class="d-step"><div class="demo-notif"><span class="demo-notif-icon">✅</span><span>Presupuesto cerrado · Seguimiento detenido automáticamente</span></div></div>
                 </div>
-                <button class="sc-cart-btn-panel" id="cart-panel-8" onclick="toggleCart(event,8,'Ventas','Seguimiento Automático de Presupuestos')" style="margin-top:16px;">+ Añadir al presupuesto</button>
+                <button class="sc-cart-btn-panel" id="cart-panel-8" onclick="toggleCart(event,8,'Ventas','Seguimiento Automático de Presupuestos')" style="margin-top:16px;">+ Me interesa</button>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- CARD 9 -->
+<!-- CARD 9 -->
         <div class="sc-card" id="sc-9">
           <div class="sc-main">
             <div class="sc-illus">🔄</div>
@@ -2106,7 +2044,7 @@
             </div>
             <div class="sc-actions">
               <button class="sc-expand-btn" id="exp-9" onclick="toggleSC(9)">¡Pruébalo aquí! ▼</button>
-              <button class="sc-cart-btn" id="cart-9" onclick="toggleCart(event,9,'Retención','Reactivación de Clientes Inactivos')">+ Añadir al presupuesto</button>
+              <button class="sc-cart-btn" id="cart-9" onclick="toggleCart(event,9,'Retención','Reactivación de Clientes Inactivos')">+ Me interesa</button>
             </div>
           </div>
           <div class="sc-panel" id="panel-9">
@@ -2131,55 +2069,13 @@
                   <div class="d-step"><div class="demo-reply">Ana: «Me apunto, ¿cuándo hay hueco?»</div></div>
                   <div class="d-step"><div class="demo-notif"><span class="demo-notif-icon">📅</span><span>Cita agendada · Martes 1 jul · 11:00 · sin intervención</span></div></div>
                 </div>
-                <button class="sc-cart-btn-panel" id="cart-panel-9" onclick="toggleCart(event,9,'Retención','Reactivación de Clientes Inactivos')" style="margin-top:16px;">+ Añadir al presupuesto</button>
+                <button class="sc-cart-btn-panel" id="cart-panel-9" onclick="toggleCart(event,9,'Retención','Reactivación de Clientes Inactivos')" style="margin-top:16px;">+ Me interesa</button>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- CARD 10 -->
-        <div class="sc-card" id="sc-10">
-          <div class="sc-main">
-            <div class="sc-illus">📞</div>
-            <div class="sc-content">
-              <span class="sc-badge">Atención 24/7</span>
-              <h3 class="sc-title">10. Agente de Voz para Citas</h3>
-              <p class="sc-desc">Coge el teléfono por ti: consulta tu agenda real y cierra la reserva hablando con naturalidad. Ni una llamada sin responder — tampoco a las 10 de la noche ni en festivos.</p>
-            </div>
-            <div class="sc-actions">
-              <button class="sc-expand-btn" id="exp-10" onclick="toggleSC(10)">¡Pruébalo aquí! ▼</button>
-              <button class="sc-cart-btn" id="cart-10" onclick="toggleCart(event,10,'Atención 24/7','Agente de Voz para Citas')">+ Añadir al presupuesto</button>
-            </div>
-          </div>
-          <div class="sc-panel" id="panel-10">
-            <div class="sc-panel-grid">
-              <div>
-                <div class="panel-label">🔗 ¿Y si lo llevamos más lejos?</div>
-                <div class="flow-chain">
-                  <div class="flow-node-core"><span class="flow-node-dot"></span>Atiende llamadas entrantes y gestiona la agenda 24/7</div>
-                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">📞</span>Consulta disponibilidad real y reserva cita en el momento</div></div>
-                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">🔄</span>Modifica o cancela citas con lenguaje natural</div></div>
-                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">❓</span>Responde preguntas frecuentes: precios, ubicación, servicios</div></div>
-                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">👤</span>Escala a persona real si la consulta es compleja</div></div>
-                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">📋</span>Resumen de cada llamada enviado por email al instante</div></div>
-                </div>
-                <div class="flow-savings">Una llamada perdida fuera de horario es un cliente que va a la competencia. Con un agente de voz, ninguna llamada queda sin responder — ni a las 10 de la noche ni en festivos.</div>
-              </div>
-              <div>
-                <div class="panel-label">🚀 Llamada gestionada por el agente</div>
-                <div class="demo-wrap" id="demo-10">
-                  <div class="d-step"><div class="demo-call">📞 Llamada entrante a las 22:14…</div></div>
-                  <div class="d-step"><div class="demo-notif"><span class="demo-notif-icon">🤖</span><span>«¡Hola! Soy el asistente de voz. ¿En qué puedo ayudarte hoy?»</span></div></div>
-                  <div class="d-step"><div class="demo-reply">Cliente: «Quiero cita para el martes por la mañana»</div></div>
-                  <div class="d-step"><div class="demo-notif"><span class="demo-notif-icon">✅</span><span>Cita reservada: martes 10:30 · Confirmación enviada por SMS</span></div></div>
-                </div>
-                <button class="sc-cart-btn-panel" id="cart-panel-10" onclick="toggleCart(event,10,'Atención 24/7','Agente de Voz para Citas')" style="margin-top:16px;">+ Añadir al presupuesto</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- CARD 11 -->
+<!-- CARD 11 -->
         <div class="sc-card" id="sc-11">
           <div class="sc-main">
             <div class="sc-illus">📡</div>
@@ -2190,7 +2086,7 @@
             </div>
             <div class="sc-actions">
               <button class="sc-expand-btn" id="exp-11" onclick="toggleSC(11)">¡Pruébalo aquí! ▼</button>
-              <button class="sc-cart-btn" id="cart-11" onclick="toggleCart(event,11,'Captación','Pipeline de Captación Outbound')">+ Añadir al presupuesto</button>
+              <button class="sc-cart-btn" id="cart-11" onclick="toggleCart(event,11,'Captación','Pipeline de Captación Outbound')">+ Me interesa</button>
             </div>
           </div>
           <div class="sc-panel" id="panel-11">
@@ -2217,57 +2113,123 @@
                   <div class="d-step"><div class="demo-notif"><span class="demo-notif-icon">✉️</span><span>Email personalizado enviado: «He visto que gestionáis la agenda en…»</span></div></div>
                   <div class="d-step"><div class="demo-reply">«¡Cuéntame más, me interesa!»</div></div>
                 </div>
-                <button class="sc-cart-btn-panel" id="cart-panel-11" onclick="toggleCart(event,11,'Captación','Pipeline de Captación Outbound')" style="margin-top:16px;">+ Añadir al presupuesto</button>
+                <button class="sc-cart-btn-panel" id="cart-panel-11" onclick="toggleCart(event,11,'Captación','Pipeline de Captación Outbound')" style="margin-top:16px;">+ Me interesa</button>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- CARD 12 -->
-        <div class="sc-card" id="sc-12">
+        </div>
+      </div>
+
+      <div class="dept-block">
+        <div class="dept-head">
+          <span class="dept-emoji">🧾</span>
+          <div>
+            <h3 class="dept-name">Finanzas y Administración</h3>
+            <p class="dept-pain">¿Cuántas horas al mes se van en facturas, papeleo y ordenar el correo?</p>
+          </div>
+        </div>
+        <div class="sc-grid">
+
+<!-- CARD 2 -->
+        <div class="sc-card" id="sc-2">
           <div class="sc-main">
-            <div class="sc-illus">💬</div>
+            <div class="sc-illus">🧾</div>
             <div class="sc-content">
-              <span class="sc-badge">WhatsApp</span>
-              <h3 class="sc-title">12. Respuesta Automática por WhatsApp</h3>
-              <p class="sc-desc">Tu WhatsApp responde solo: dudas, precios, disponibilidad y reservas al momento, a cualquier hora. Y te avisa cuando algo se le escapa — nunca deja a un cliente colgado.</p>
+              <span class="sc-badge">Gestión rápida</span>
+              <h3 class="sc-title">2. Generación Automática de Facturas</h3>
+              <p class="sc-desc">Tus facturas hechas en segundos. Le dices qué has vendido y te devuelve el PDF listo, enviado al cliente y anotado en tu contabilidad.</p>
             </div>
             <div class="sc-actions">
-              <button class="sc-expand-btn" id="exp-12" onclick="toggleSC(12)">¡Pruébalo aquí! ▼</button>
-              <button class="sc-cart-btn" id="cart-12" onclick="toggleCart(event,12,'WhatsApp','Respuesta Automática por WhatsApp')">+ Añadir al presupuesto</button>
+              <button class="sc-expand-btn" id="exp-2" onclick="toggleSC(2)">¡Pruébalo aquí! ▼</button>
+              <button class="sc-cart-btn" id="cart-2" onclick="toggleCart(event,2,'Gestión rápida','Generación Automática de Facturas')">+ Me interesa</button>
             </div>
           </div>
-          <div class="sc-panel" id="panel-12">
+          <div class="sc-panel" id="panel-2">
             <div class="sc-panel-grid">
               <div>
                 <div class="panel-label">🔗 ¿Y si lo llevamos más lejos?</div>
                 <div class="flow-chain">
-                  <div class="flow-node-core"><span class="flow-node-dot"></span>Tu WhatsApp responde solo, a cualquier hora</div>
-                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">💬</span>Preguntas frecuentes, precios y disponibilidad respondidas al instante</div></div>
-                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">📅</span>Gestiona reservas directamente desde el chat</div></div>
-                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">🔔</span>Te avisa si hay una consulta que no sabe resolver</div></div>
-                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">🧠</span>Aprende de tu negocio: menú, servicios, horarios, tarifas</div></div>
-                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">📊</span>Log de conversaciones y consultas más frecuentes</div></div>
+                  <div class="flow-node-core"><span class="flow-node-dot"></span>Mensaje de texto → Factura PDF lista al instante</div>
+                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">✅</span>Validación y envío por Verifactu (obligatorio desde 2026)</div></div>
+                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">📧</span>Envío automático al cliente por email</div></div>
+                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">⏰</span>Recordatorio de pago en el plazo que configures</div></div>
+                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">📑</span>Registro contable automático en Google Sheets</div></div>
+                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">📆</span>Informe mensual listo para la gestoría en un clic</div></div>
                 </div>
-                <div class="flow-savings">El 67% de los clientes prefiere WhatsApp antes de llamar. Si tardas más de 5 minutos en responder, el 50% busca otra opción. Este agente responde en segundos, sin que tú estés pendiente.</div>
+                <div class="flow-savings">Facturar, cuadrar cuentas y preparar la documentación de la gestoría te come entre 15 y 20 horas al mes. El agente lo hace solo — y cumple Verifactu de serie.</div>
               </div>
               <div>
-                <div class="panel-label">🚀 Conversación gestionada por IA</div>
-                <div class="demo-wrap chat" id="demo-12">
-                  <div class="demo-chat-head d-step">💬 WhatsApp · respuesta automática · 24/7</div>
-                  <div class="demo-msg demo-msg--user d-step">¿Cuánto vale una limpieza dental?</div>
-                  <div class="demo-msg demo-msg--bot d-step">Básica 45 € · Completa 65 €. ¿Cuándo te va bien?</div>
-                  <div class="demo-msg demo-msg--user d-step">¿Hay hueco mañana por la tarde?</div>
-                  <div class="demo-msg demo-msg--bot d-step">Tengo 17:00, 18:30 o 19:00. ¿Cuál te va?</div>
-                  <div class="demo-msg demo-msg--user d-step">18:30 perfecto, gracias</div>
-                </div>
-                <button class="sc-cart-btn-panel" id="cart-panel-12" onclick="toggleCart(event,12,'WhatsApp','Respuesta Automática por WhatsApp')" style="margin-top:16px;">+ Añadir al presupuesto</button>
+                <div class="panel-label">🚀 Del mensaje a la factura</div>
+                <div class="demo-wrap" id="demo-2">
+  <p class="inv-desc">✨ Escribe en lenguaje natural qué servicio has prestado, a quién y por cuánto. La IA rellenará la plantilla al instante.</p>
+  <div class="inv-examples">
+    <span style="font-size:11px;color:var(--text-3)">O prueba con:</span>
+    <button class="inv-ex-btn" onclick="invSetEx(0)">Fisioterapia exenta</button>
+    <button class="inv-ex-btn" onclick="invSetEx(1)">Autónomo IRPF 7%</button>
+    <button class="inv-ex-btn" onclick="invSetEx(2)">Consultoría</button>
+  </div>
+  <textarea class="inv-textarea" id="inv-input" rows="3" placeholder="Ej: Consultoría de marketing a Maderas Paco por 500€"></textarea>
+  <div style="text-align:right;margin-top:8px">
+    <button class="sc-expand-btn" id="inv-btn" onclick="invGenerate()" style="background:var(--purple);color:#fff;border:none;padding:10px 20px;border-radius:8px;font-size:13px;cursor:pointer">✨ Generar con IA</button>
+  </div>
+  <div id="inv-result"></div>
+</div>
+                <button class="sc-cart-btn-panel" id="cart-panel-2" onclick="toggleCart(event,2,'Gestión rápida','Generación Automática de Facturas')" style="margin-top:16px;">+ Me interesa</button>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- CARD 13 -->
+<!-- CARD 3 -->
+        <div class="sc-card" id="sc-3">
+          <div class="sc-main">
+            <div class="sc-illus">📂</div>
+            <div class="sc-content">
+              <span class="sc-badge">Orden inteligente</span>
+              <h3 class="sc-title">3. Gestión Documental y Clasificación de Correos</h3>
+              <p class="sc-desc">Se acabaron los papeles y la bandeja de entrada a rebosar. Saca los datos de tus PDFs y te ordena el correo por ti.</p>
+            </div>
+            <div class="sc-actions">
+              <button class="sc-expand-btn" id="exp-3" onclick="toggleSC(3)">¡Pruébalo aquí! ▼</button>
+              <button class="sc-cart-btn" id="cart-3" onclick="toggleCart(event,3,'Orden inteligente','Gestión Documental y Correos')">+ Me interesa</button>
+            </div>
+          </div>
+          <div class="sc-panel" id="panel-3">
+            <div class="sc-panel-grid">
+              <div>
+                <div class="panel-label">🔗 ¿Y si lo llevamos más lejos?</div>
+                <div class="flow-chain">
+                  <div class="flow-node-core"><span class="flow-node-dot"></span>Extrae datos de PDFs y clasifica correos por IA</div>
+                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">💬</span>Auto-respuesta según urgencia: venta, reclamación o rutina</div></div>
+                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">📁</span>Archivado automático en Drive por categoría y fecha</div></div>
+                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">📲</span>Alerta Telegram si detecta un correo urgente</div></div>
+                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">🗃️</span>CRM actualizado con datos extraídos automáticamente</div></div>
+                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">📊</span>Informe semanal de actividad de bandeja de entrada</div></div>
+                </div>
+                <div class="flow-savings">Clasificar correos, sacar datos de facturas, archivar documentos: horas cada día que no dedicas a lo que importa. El agente lo resuelve al momento, sin que se acumule nada.</div>
+              </div>
+              <div>
+                <div class="panel-label">🚀 Documento procesado en tiempo real</div>
+                <div class="demo-wrap" id="demo-3">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+    <span style="font-size:12px;color:var(--text-3)">Pega un email o documento:</span>
+    <button class="inv-ex-btn" onclick="docLoadExample()">Cargar email de ejemplo</button>
+  </div>
+  <textarea class="inv-textarea" id="doc-input" rows="4" placeholder="Pega el contenido del email o PDF aquí…"></textarea>
+  <div style="text-align:right;margin-top:8px">
+    <button id="doc-btn" onclick="docAnalyze()" style="background:var(--purple);color:#fff;border:none;padding:10px 20px;border-radius:8px;font-size:13px;cursor:pointer;font-family:var(--font-body)">👁 Analizar</button>
+  </div>
+  <div id="doc-result"></div>
+</div>
+                <button class="sc-cart-btn-panel" id="cart-panel-3" onclick="toggleCart(event,3,'Orden inteligente','Gestión Documental y Correos')" style="margin-top:16px;">+ Me interesa</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+<!-- CARD 13 -->
         <div class="sc-card" id="sc-13">
           <div class="sc-main">
             <div class="sc-illus">🎙️</div>
@@ -2278,7 +2240,7 @@
             </div>
             <div class="sc-actions">
               <button class="sc-expand-btn" id="exp-13" onclick="toggleSC(13)">¡Pruébalo aquí! ▼</button>
-              <button class="sc-cart-btn" id="cart-13" onclick="toggleCart(event,13,'Productividad','Conversor de Audios a Apuntes')">+ Añadir al presupuesto</button>
+              <button class="sc-cart-btn" id="cart-13" onclick="toggleCart(event,13,'Productividad','Conversor de Audios a Apuntes')">+ Me interesa</button>
             </div>
           </div>
           <div class="sc-panel" id="panel-13">
@@ -2311,13 +2273,254 @@
                   </div>
                   <div class="d-step"><div class="demo-notif"><span class="demo-notif-icon">📁</span><span>Apuntes guardados en Drive · Reunión 25 jun · resumen + tareas</span></div></div>
                 </div>
-                <button class="sc-cart-btn-panel" id="cart-panel-13" onclick="toggleCart(event,13,'Productividad','Conversor de Audios a Apuntes')" style="margin-top:16px;">+ Añadir al presupuesto</button>
+                <button class="sc-cart-btn-panel" id="cart-panel-13" onclick="toggleCart(event,13,'Productividad','Conversor de Audios a Apuntes')" style="margin-top:16px;">+ Me interesa</button>
               </div>
             </div>
           </div>
         </div>
 
+        </div>
       </div>
+
+      <div class="dept-block">
+        <div class="dept-head">
+          <span class="dept-emoji">📊</span>
+          <div>
+            <h3 class="dept-name">Datos y Dirección</h3>
+            <p class="dept-pain">¿Decides con datos, o con la sensación de cómo va el mes?</p>
+          </div>
+        </div>
+        <div class="sc-grid">
+
+<!-- CARD 7 -->
+        <div class="sc-card" id="sc-7">
+          <div class="sc-main">
+            <div class="sc-illus">📊</div>
+            <div class="sc-content">
+              <span class="sc-badge">Control total</span>
+              <h3 class="sc-title">7. Resumen Diario del Negocio</h3>
+              <p class="sc-desc">Cada tarde, un mensaje en Telegram o email con lo que importa: citas, consultas, facturación estimada y lo que necesita tu atención. Tu negocio entero en 30 segundos.</p>
+            </div>
+            <div class="sc-actions">
+              <button class="sc-expand-btn" id="exp-7" onclick="toggleSC(7)">¡Pruébalo aquí! ▼</button>
+              <button class="sc-cart-btn" id="cart-7" onclick="toggleCart(event,7,'Control total','Resumen Diario del Negocio')">+ Me interesa</button>
+            </div>
+          </div>
+          <div class="sc-panel" id="panel-7">
+            <div class="sc-panel-grid">
+              <div>
+                <div class="panel-label">🔗 ¿Y si lo llevamos más lejos?</div>
+                <div class="flow-chain">
+                  <div class="flow-node-core"><span class="flow-node-dot"></span>Informe del día en Telegram o email, a la hora que elijas</div>
+                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">📅</span>Citas del día: completadas, canceladas y pendientes</div></div>
+                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">💬</span>Mensajes y consultas recibidos — con los urgentes marcados</div></div>
+                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">💶</span>Facturación estimada del día</div></div>
+                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">🔔</span>Alertas: presupuestos sin responder, clientes inactivos</div></div>
+                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">📆</span>Resumen semanal automático los viernes</div></div>
+                </div>
+                <div class="flow-savings">Saber qué ha pasado en tu negocio sin abrir 5 apps. Un informe consolidado cada tarde para cerrar el día con toda la información relevante en 30 segundos.</div>
+              </div>
+              <div>
+                <div class="panel-label">🚀 Tu resumen diario, así llega</div>
+                <div class="demo-wrap" id="demo-7">
+                  <div class="d-step"><div class="demo-report-head">📊 Resumen del día — 18:00 · Telegram</div></div>
+                  <div class="d-step"><div class="demo-stat"><span>📅 Citas completadas</span><strong>12</strong></div></div>
+                  <div class="d-step"><div class="demo-stat"><span>💶 Facturación estimada</span><strong>840 €</strong></div></div>
+                  <div class="d-step"><div class="demo-stat"><span>🔔 Nuevos leads hoy</span><strong>4</strong></div></div>
+                  <div class="d-step"><div class="demo-stat demo-stat--alert"><span>⚠️ Presupuestos sin respuesta</span><strong>2</strong></div></div>
+                </div>
+                <button class="sc-cart-btn-panel" id="cart-panel-7" onclick="toggleCart(event,7,'Control total','Resumen Diario del Negocio')" style="margin-top:16px;">+ Me interesa</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 14 -->
+        <div class="sc-card" id="sc-14">
+          <div class="sc-main">
+            <div class="sc-illus">📈</div>
+            <div class="sc-content">
+              <span class="sc-badge">Analítica</span>
+              <h3 class="sc-title">Informe de Negocio con IA</h3>
+              <p class="sc-desc">Cada semana, un informe claro con lo que de verdad mueve tu negocio: retención, valor por cliente (LTV), frecuencia de compra y qué clientes se están enfriando. Decisiones con datos, no con intuición.</p>
+            </div>
+            <div class="sc-actions">
+              <button class="sc-expand-btn" id="exp-14" onclick="toggleSC(14)">¡Pruébalo aquí! ▼</button>
+              <button class="sc-cart-btn" id="cart-14" onclick="toggleCart(event,14,'Analítica','Informe de Negocio con IA')">+ Me interesa</button>
+            </div>
+          </div>
+          <div class="sc-panel" id="panel-14">
+            <div class="sc-panel-grid">
+              <div>
+                <div class="panel-label">🔗 ¿Y si lo llevamos más lejos?</div>
+                <div class="flow-chain">
+                  <div class="flow-node-core"><span class="flow-node-dot"></span>Informe automático de negocio, cada semana</div>
+                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">🔁</span>Tasa de retención y recurrentes frente a clientes nuevos</div></div>
+                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">💎</span>Valor de vida del cliente (LTV) y ticket medio</div></div>
+                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">📅</span>Frecuencia de compra y clientes que se están enfriando</div></div>
+                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">🏆</span>Ranking de servicios y productos más rentables</div></div>
+                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">💡</span>Recomendaciones de IA sobre qué mejorar este mes</div></div>
+                </div>
+                <div class="flow-savings">La mayoría de negocios no sabe cuánto vale un cliente ni cuántos pierde cada mes. Este informe lo pone negro sobre blanco — y te dice dónde actuar.</div>
+              </div>
+              <div>
+                <div class="panel-label">🚀 Tu informe semanal, así llega</div>
+                <div class="demo-wrap" id="demo-14">
+                  <div class="d-step"><div class="demo-report-head">📊 Informe semanal · lunes 09:00</div></div>
+                  <div class="d-step"><div class="demo-stat"><span>🔁 Tasa de retención</span><strong>68%</strong></div></div>
+                  <div class="d-step"><div class="demo-stat"><span>💎 LTV medio por cliente</span><strong>420 €</strong></div></div>
+                  <div class="d-step"><div class="demo-stat"><span>📅 Frecuencia media</span><strong>cada 34 días</strong></div></div>
+                  <div class="d-step"><div class="demo-stat demo-stat--alert"><span>⚠️ Clientes enfriándose</span><strong>9</strong></div></div>
+                </div>
+                <button class="sc-cart-btn-panel" id="cart-panel-14" onclick="toggleCart(event,14,'Analítica','Informe de Negocio con IA')" style="margin-top:16px;">+ Me interesa</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 15 -->
+        <div class="sc-card" id="sc-15">
+          <div class="sc-main">
+            <div class="sc-illus">🧠</div>
+            <div class="sc-content">
+              <span class="sc-badge">Insights</span>
+              <h3 class="sc-title">Análisis IA de Conversaciones</h3>
+              <p class="sc-desc">La IA lee todas las conversaciones de tus clientes (chat, WhatsApp, correo) y te devuelve las dudas más repetidas, las objeciones de venta y las quejas — para que sepas qué arreglar antes de que te cueste clientes.</p>
+            </div>
+            <div class="sc-actions">
+              <button class="sc-expand-btn" id="exp-15" onclick="toggleSC(15)">¡Pruébalo aquí! ▼</button>
+              <button class="sc-cart-btn" id="cart-15" onclick="toggleCart(event,15,'Insights','Análisis IA de Conversaciones')">+ Me interesa</button>
+            </div>
+          </div>
+          <div class="sc-panel" id="panel-15">
+            <div class="sc-panel-grid">
+              <div>
+                <div class="panel-label">🔗 ¿Y si lo llevamos más lejos?</div>
+                <div class="flow-chain">
+                  <div class="flow-node-core"><span class="flow-node-dot"></span>Analiza todas las conversaciones y detecta patrones</div>
+                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">❓</span>Dudas más frecuentes que repiten tus clientes</div></div>
+                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">🛑</span>Objeciones de venta que están frenando cierres</div></div>
+                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">😡</span>Quejas y motivos de insatisfacción recurrentes</div></div>
+                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">📝</span>Sugerencias de respuestas y textos para mejorarlos</div></div>
+                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">📈</span>Informe periódico anónimo, sin leer conversación por conversación</div></div>
+                </div>
+                <div class="flow-savings">Tus clientes te están diciendo qué falla — pero nadie tiene tiempo de leer cientos de chats. La IA lo resume y te señala el patrón que te está costando dinero.</div>
+              </div>
+              <div>
+                <div class="panel-label">🚀 El informe de conversaciones, así llega</div>
+                <div class="demo-wrap" id="demo-15">
+                  <div class="d-step"><div class="demo-report-head">🧠 Análisis del mes · 312 conversaciones</div></div>
+                  <div class="d-step"><div class="demo-stat"><span>❓ Duda #1: «horario de apertura»</span><strong>47×</strong></div></div>
+                  <div class="d-step"><div class="demo-stat"><span>🛑 Objeción top: «me parece caro»</span><strong>23×</strong></div></div>
+                  <div class="d-step"><div class="demo-stat demo-stat--alert"><span>⚠️ Queja repetida: esperas al teléfono</span><strong>11×</strong></div></div>
+                  <div class="d-step"><div class="demo-notif"><span class="demo-notif-icon">💡</span><span>Sugerencia IA: publica el horario en el chatbot y añade opción de pago fraccionado</span></div></div>
+                </div>
+                <button class="sc-cart-btn-panel" id="cart-panel-15" onclick="toggleCart(event,15,'Insights','Análisis IA de Conversaciones')" style="margin-top:16px;">+ Me interesa</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        </div>
+      </div>
+
+      <div class="dept-block">
+        <div class="dept-head">
+          <span class="dept-emoji">📣</span>
+          <div>
+            <h3 class="dept-name">Marketing y RRSS</h3>
+            <p class="dept-pain">¿Cuánto tiempo llevas sin pedir reseñas ni publicar, simplemente por falta de tiempo?</p>
+          </div>
+        </div>
+        <div class="sc-grid">
+
+<!-- CARD 6 -->
+        <div class="sc-card" id="sc-6">
+          <div class="sc-main">
+            <div class="sc-illus">⭐</div>
+            <div class="sc-content">
+              <span class="sc-badge">Reputación</span>
+              <h3 class="sc-title">6. Reseñas en Google en Automático</h3>
+              <p class="sc-desc">Tras cada servicio, tu cliente recibe un mensaje con el enlace directo a tu perfil de Google — justo cuando está más contento. Tú no pides nada; las reseñas llegan solas.</p>
+            </div>
+            <div class="sc-actions">
+              <button class="sc-expand-btn" id="exp-6" onclick="toggleSC(6)">¡Pruébalo aquí! ▼</button>
+              <button class="sc-cart-btn" id="cart-6" onclick="toggleCart(event,6,'Reputación','Reseñas Google Automáticas')">+ Me interesa</button>
+            </div>
+          </div>
+          <div class="sc-panel" id="panel-6">
+            <div class="sc-panel-grid">
+              <div>
+                <div class="panel-label">🔗 ¿Y si lo llevamos más lejos?</div>
+                <div class="flow-chain">
+                  <div class="flow-node-core"><span class="flow-node-dot"></span>Solicitud de reseña enviada justo después del servicio</div>
+                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">🎯</span>Personalizado con el nombre del cliente y el servicio recibido</div></div>
+                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">🔗</span>Enlace directo a tu perfil de Google Business</div></div>
+                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">⏱️</span>Timing optimizado: se envía cuando el cliente está más satisfecho</div></div>
+                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">📈</span>Más reseñas = más visibilidad en Google Maps y buscador</div></div>
+                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">🔔</span>Alerta si llega una reseña negativa para responder rápido</div></div>
+                </div>
+                <div class="flow-savings">Una estrella más en Google puede suponer hasta un 9% de aumento en ingresos. El 88% de los consumidores confía en reseñas igual que en recomendaciones personales.</div>
+              </div>
+              <div>
+                <div class="panel-label">🚀 Del servicio a la reseña, automático</div>
+                <div class="demo-wrap" id="demo-6">
+                  <div class="d-step"><div class="demo-notif"><span class="demo-notif-icon">💬</span><span>«¿Cómo fue tu visita, María? Valora tu experiencia en Google»</span></div></div>
+                  <div class="d-step"><div class="demo-stars">★★★★★</div></div>
+                  <div class="d-step"><div class="demo-notif"><span class="demo-notif-icon">🎉</span><span>Nueva reseña de 5 ⭐ recibida · Google Business</span></div></div>
+                  <div class="d-step"><div class="demo-notif"><span class="demo-notif-icon">📈</span><span>4.9 ⭐ promedio · +12 reseñas este mes · más visibilidad Maps</span></div></div>
+                </div>
+                <button class="sc-cart-btn-panel" id="cart-panel-6" onclick="toggleCart(event,6,'Reputación','Reseñas Google Automáticas')" style="margin-top:16px;">+ Me interesa</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 16 -->
+        <div class="sc-card" id="sc-16">
+          <div class="sc-main">
+            <div class="sc-illus">✍️</div>
+            <div class="sc-content">
+              <span class="sc-badge">Contenido</span>
+              <h3 class="sc-title">Agente de Contenidos y RRSS</h3>
+              <p class="sc-desc">Genera publicaciones para tus redes con tu tono, las programa y las publica sola. Mantienes presencia constante en LinkedIn, Instagram o Google sin dedicarle horas cada semana.</p>
+            </div>
+            <div class="sc-actions">
+              <button class="sc-expand-btn" id="exp-16" onclick="toggleSC(16)">¡Pruébalo aquí! ▼</button>
+              <button class="sc-cart-btn" id="cart-16" onclick="toggleCart(event,16,'Contenido','Agente de Contenidos y RRSS')">+ Me interesa</button>
+            </div>
+          </div>
+          <div class="sc-panel" id="panel-16">
+            <div class="sc-panel-grid">
+              <div>
+                <div class="panel-label">🔗 ¿Y si lo llevamos más lejos?</div>
+                <div class="flow-chain">
+                  <div class="flow-node-core"><span class="flow-node-dot"></span>Crea, programa y publica tus contenidos, solo</div>
+                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">🗓️</span>Calendario de contenidos propuesto para todo el mes</div></div>
+                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">✍️</span>Redacta el post con tu tono y tu temática</div></div>
+                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">🖼️</span>Sugiere imagen o la genera con IA</div></div>
+                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">⏰</span>Programa y publica a la hora de mayor alcance</div></div>
+                  <div class="flow-step"><div class="flow-connector"></div><div class="flow-node-step"><span class="flow-step-icon">📊</span>Informe de alcance e interacción cada semana</div></div>
+                </div>
+                <div class="flow-savings">Publicar con constancia es lo primero que se abandona por falta de tiempo. Este agente mantiene tus redes vivas — sin que tengas que pensar qué subir.</div>
+              </div>
+              <div>
+                <div class="panel-label">🚀 Del cero al post publicado, automático</div>
+                <div class="demo-wrap" id="demo-16">
+                  <div class="d-step"><div class="demo-notif"><span class="demo-notif-icon">🗓️</span><span>Tema de hoy: «3 señales de que tu negocio necesita automatizar»</span></div></div>
+                  <div class="d-step"><div class="demo-notif"><span class="demo-notif-icon">✍️</span><span>Post redactado con tu tono · imagen generada · hashtags incluidos</span></div></div>
+                  <div class="d-step"><div class="demo-notif"><span class="demo-notif-icon">⏰</span><span>Programado: LinkedIn · hoy 13:30 (hora de mayor alcance)</span></div></div>
+                  <div class="d-step"><div class="demo-notif"><span class="demo-notif-icon">📊</span><span>Publicado · +1.240 impresiones · 38 interacciones esta semana</span></div></div>
+                </div>
+                <button class="sc-cart-btn-panel" id="cart-panel-16" onclick="toggleCart(event,16,'Contenido','Agente de Contenidos y RRSS')" style="margin-top:16px;">+ Me interesa</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -2406,7 +2609,7 @@
       <div>
         <div class="footer-col-title">Servicios</div>
         <a class="footer-link" href="#softwares" onclick="event.preventDefault();document.getElementById('softwares').scrollIntoView({behavior:'smooth'})">Softwares por sector</a>
-        <a class="footer-link" href="#alacarta" onclick="event.preventDefault();document.getElementById('alacarta').scrollIntoView({behavior:'smooth'})">IA a la carta</a>
+        <a class="footer-link" href="#alacarta" onclick="event.preventDefault();document.getElementById('alacarta').scrollIntoView({behavior:'smooth'})">Para empresas</a>
         <a class="footer-link" href="#softwares" onclick="event.preventDefault();openBookiaSectors()">Bookia — citas con IA</a>
         <a class="footer-link" href="#softwares" onclick="event.preventDefault();openSoftware('rrss')">RRSS automatizadas</a>
       </div>
@@ -2436,10 +2639,10 @@
   <!-- ═══════════════════════════════════ CART BAR ════════════ -->
   <div class="cart-bar" id="cart-bar">
     <div class="cart-bar-info">
-      <span class="cart-bar-count" id="cart-bar-count">0 funciones seleccionadas</span>
+      <span class="cart-bar-count" id="cart-bar-count">0 servicios que te interesan</span>
       <span class="cart-bar-names" id="cart-bar-names"></span>
     </div>
-    <button class="cart-bar-cta" onclick="openCartModal()">Solicitar presupuesto →</button>
+    <button class="cart-bar-cta" onclick="openCartModal()">Reservar llamada →</button>
   </div>
 
   <!-- ═══════════════════════════════════ SOFTWARE MODAL ══════════ -->
@@ -2465,11 +2668,11 @@
     <div class="cart-modal">
       <div id="cart-modal-content">
         <div class="cart-modal-header">
-          <div class="cart-modal-title">Tu selección de funciones</div>
+          <div class="cart-modal-title">Lo que te interesa</div>
           <button class="cart-modal-x" onclick="closeCartModal()">✕</button>
         </div>
         <ul class="cart-list" id="cart-list"></ul>
-        <p class="cart-form-label">Déjanos tus datos y te enviamos el presupuesto:</p>
+        <p class="cart-form-label">Reserva una llamada gratis (15 min, sin compromiso). En ella te preparamos una propuesta a medida con lo que has marcado. Déjanos tus datos:</p>
         <input type="text" name="website" style="display:none !important;position:absolute;left:-9999px;" tabindex="-1" autocomplete="off" aria-hidden="true">
         <input class="cart-input" id="cart-nombre" type="text" placeholder="Tu nombre" />
         <input class="cart-input" id="cart-apellidos" type="text" placeholder="Tus apellidos" />
@@ -2478,12 +2681,13 @@
           <input type="checkbox" id="cart-privacidad" style="margin-top:2px;accent-color:var(--purple);width:16px;height:16px;flex-shrink:0;">
           <span>He leído y acepto la <a href="/privacidad" target="_blank" style="color:var(--purple);text-decoration:underline;">política de privacidad</a> *</span>
         </label>
-        <button class="cart-submit" id="cart-submit" onclick="submitCart()">Solicitar presupuesto →</button>
+        <button class="cart-submit" id="cart-submit" onclick="submitCart()">Reservar llamada gratis →</button>
       </div>
       <div class="cart-success" id="cart-success" style="display:none">
         <div class="cart-success-icon">✓</div>
-        <h3>¡Solicitud enviada!</h3>
-        <p>Te contactamos en menos de 24 horas con tu presupuesto personalizado.</p>
+        <h3>¡Recibido!</h3>
+        <p>Te hemos abierto el calendario para que elijas hueco para tu llamada gratis de 15 min. Si no se abrió, pulsa el botón.</p>
+        <button class="cart-submit" onclick="bookCall()" style="margin-bottom:10px">Reservar llamada gratis →</button>
         <button class="cart-success-close" onclick="closeCartModal()">Cerrar</button>
       </div>
     </div>
@@ -2549,6 +2753,17 @@
     // ─── CART STATE ──────────────────────────────────────────
     const cart = {}; // id -> {badge, title}
 
+    // ─── RESERVA DE LLAMADA (Cal.com) ────────────────────────
+    // TODO Ismael: sustituir por la URL real de Cal.com de las llamadas de diagnóstico
+    const CALCOM_URL = "https://cal.com/PENDIENTE";
+    function bookCall() {
+      if (CALCOM_URL.includes('PENDIENTE')) {
+        document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' });
+      } else {
+        window.open(CALCOM_URL, '_blank');
+      }
+    }
+
     function toggleCart(e, id, badge, title) {
       e.stopPropagation();
       if (cart[id]) {
@@ -2570,16 +2785,16 @@
       const count = ids.length;
 
       // Update all cart buttons
-      for (let i = 1; i <= 13; i++) {
+      for (let i = 1; i <= 16; i++) {
         const btn = document.getElementById('cart-' + i);
         const panelBtn = document.getElementById('cart-panel-' + i);
         const inCart = !!cart[i];
         if (btn) {
-          btn.textContent = inCart ? '✓ Añadido al presupuesto' : '+ Añadir al presupuesto';
+          btn.textContent = inCart ? '✓ En tu consulta' : '+ Me interesa';
           btn.classList.toggle('in-cart', inCart);
         }
         if (panelBtn) {
-          panelBtn.textContent = inCart ? '✓ Añadido al presupuesto' : '+ Añadir al presupuesto';
+          panelBtn.textContent = inCart ? '✓ En tu consulta' : '+ Me interesa';
           panelBtn.classList.toggle('in-cart', inCart);
         }
       }
@@ -2596,7 +2811,7 @@
       const waFloat = document.getElementById('wa-float');
       if (waFloat) waFloat.classList.toggle('shift', count > 0);
       document.getElementById('cart-bar-count').textContent =
-        count + ' ' + (count === 1 ? 'función seleccionada' : 'funciones seleccionadas');
+        count + ' ' + (count === 1 ? 'servicio que te interesa' : 'servicios que te interesan');
       const names = ids.map(id => cart[id].badge);
       document.getElementById('cart-bar-names').textContent =
         names.slice(0,3).join(' · ') + (count > 3 ? ` · +${count-3} más` : '');
@@ -2646,8 +2861,9 @@
       fetch('https://isman8nproyect.cloud/webhook/solicitud-carrito', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'X-Web-Token': 'mweb-2026-xk9p' },
-        body: JSON.stringify({ nombre, apellidos, email, servicios, source: 'carrito-ia-carta', timestamp: new Date().toISOString() })
+        body: JSON.stringify({ nombre, apellidos, email, servicios, source: 'consulta-departamentos', timestamp: new Date().toISOString() })
       }).catch(() => {});
+      bookCall();
       document.getElementById('cart-modal-content').style.display = 'none';
       document.getElementById('cart-success').style.display = 'block';
     }
@@ -2777,13 +2993,15 @@
 
     function completeOB() {
       closeOB();
+      // La clínica dental tiene su propia landing completa
+      if (obData.sector === 'dental') { window.location.href = '/dentia'; return; }
       // Scroll to relevant section based on sector
-      const sectorMap = { dental:'#softwares', estetica:'#softwares', deporte:'#softwares', autoescuela:'#softwares' };
+      const sectorMap = { estetica:'#softwares', deporte:'#softwares', autoescuela:'#softwares' };
       const target = sectorMap[obData.sector] || '#alacarta';
       const el = document.querySelector(target);
       if (el) el.scrollIntoView({ behavior:'smooth' });
       // Open software modal if specific sector
-      if (['dental','estetica','deporte','autoescuela'].includes(obData.sector)) {
+      if (['estetica','deporte','autoescuela'].includes(obData.sector)) {
         setTimeout(() => openSoftware(obData.sector), 600);
       }
     }
@@ -2820,109 +3038,6 @@
 
     // ─── SOFTWARE MODAL ──────────────────────────────────────
     const SW_DATA = {
-      dental: {
-        emoji: '🦷', tag: 'Automatización IA para clínicas dentales',
-        name: 'El software dental que además <em>trabaja solo</em>',
-        desc: 'Gestión completa de tu clínica en la nube — agenda, historia clínica, odontograma, presupuestos y facturación — con un asistente de IA que atiende a tus pacientes, cierra presupuestos y te avisa de lo importante. Todo por menos de lo que cuesta el software dental de siempre.',
-        plans: [
-          {
-            label:'Esencial', name:'Todo tu software dental, en la nube', featured:false,
-            dentia_included: true,
-            desc:'Sustituye tu programa actual por Dentia: gestión clínica completa, facturación y reserva online, accesible desde cualquier dispositivo.',
-            monthly:59, setup:0, trial:0,
-            ideal:'Clínicas y gabinetes que quieren un software moderno, completo y sin complicaciones.',
-            feats:[
-              {text:'Agenda, ficha de paciente, odontograma digital e historia clínica'},
-              {text:'Presupuestos y pagos con catálogo de tratamientos'},
-              {text:'Facturación simple: factura o recibo en un clic, numerada y archivada'},
-              {text:'Reserva de cita online 24/7 para tus pacientes'},
-              {text:'Recordatorios automáticos de cita — menos sillas vacías'},
-              {text:'100% en la nube · almacenamiento de datos clínicos incluido'},
-            ]
-          },
-          {
-            label:'Profesional', name:'Dentia + Asistente de IA', featured:true,
-            dentia_included: true,
-            desc:'Todo Dentia más el asistente de IA que atiende a tus pacientes por WhatsApp: resuelve dudas, acompaña la decisión de presupuestos y te trae más citas cerradas — sin que recepción levante el teléfono.',
-            monthly:99, setup:0, trial:0,
-            ideal:'Clínicas que quieren llenar la agenda y cerrar más presupuestos sin sumar personal.',
-            feats:[
-              {text:'Todo lo del plan Esencial', inh:true},
-              {text:'Asistente de IA por WhatsApp 24/7 — reserva, consulta y cancela citas conversando, y conoce el historial de cada paciente', hi:true},
-              {text:'Acompañamiento de presupuestos — resuelve dudas del paciente durante su decisión y cierra el presupuesto por chat', hi:true},
-              {text:'Seguimiento post-visita real: primero se interesa por el paciente, luego pide la reseña de Google'},
-              {text:'Recuperación automática de pacientes que llevan meses sin venir'},
-              {text:'Análisis del negocio con IA: dudas y objeciones frecuentes, mejoras sugeridas', hi:true},
-            ]
-          },
-          {
-            label:'Clínica', name:'Dentia + Control Total', featured:false,
-            dentia_included: true,
-            desc:'Para clínicas con varios profesionales o volumen alto de imágenes: todo lo anterior más firma digital, almacenamiento ampliado y soporte prioritario.',
-            monthly:149, setup:0, trial:0,
-            ideal:'Clínicas medianas, multiprofesional o con radiología digital.',
-            feats:[
-              {text:'Todo lo del plan Profesional', inh:true},
-              {text:'Firma digital de consentimientos informados — el paciente firma en pantalla, archivado en PDF', hi:true},
-              {text:'Almacenamiento ampliado para radiografías e imágenes clínicas', hi:true},
-              {text:'Multiprofesional y multi-sede'},
-              {text:'Cuadro de mando económico e informes avanzados'},
-              {text:'Soporte prioritario con respuesta en menos de 4 horas'},
-            ]
-          },
-        ],
-        contact_label: 'nombre de tu clínica',
-        contact_sector: 'Clínica dental',
-        contact_source: 'web-sector-dental',
-        showcase: [
-          { icon:'📊', title:'Dashboard de clínica', desc:'5 KPIs en tiempo real: citas de hoy, ingresos del mes, pacientes activos, presupuestos pendientes y tratamientos en curso. Todo de un vistazo.' },
-          { icon:'📅', title:'Agenda digital', desc:'Vista diaria por profesional. Crea, edita y cambia el estado de citas inline. Filtro por dentista, notas por cita.' },
-          { icon:'👥', title:'Ficha de paciente', desc:'Historial completo: citas, tratamientos, presupuestos, pagos e interacciones. Búsqueda instantánea, toggle activo/inactivo.' },
-          { icon:'🦷', title:'Odontograma digital', desc:'32 dientes en notación FDI. 9 estados clínicos (caries, corona, extracción…). Click para editar, notas por diente.' },
-          { icon:'📋', title:'Historia clínica', desc:'Timeline automático de visitas atendidas con los tratamientos vinculados a cada sesión. Sin rellenar nada a mano.' },
-          { icon:'💰', title:'Presupuestos', desc:'Catálogo de 23 tratamientos en español. Desglose por ítems, estados (pendiente, aceptado, rechazado), fecha de validez.' },
-          { icon:'💳', title:'Pagos', desc:'Registra cobros por método de pago, vincula a presupuesto y lleva el total cobrado por paciente en tiempo real.' },
-          { icon:'🎯', title:'CRM Kanban', desc:'Panel de seguimiento de pacientes tipo Trello. Arrastra pacientes entre columnas según el estado de su proceso. Exclusivo Dentia — ningún software dental lo tiene.' },
-          { icon:'🔔', title:'Recordatorios automáticos', desc:'WhatsApp o Telegram al paciente 14h antes de la cita. Confirmación/cancelación por link sin llamar a la clínica.' },
-          { icon:'📤', title:'Seguimiento de presupuestos', desc:'Alerta semanal automática de presupuestos pendientes de respuesta. Sin que ningún presupuesto quede en el olvido.' },
-          { icon:'☁️', title:'100% en la nube', desc:'Accede desde cualquier dispositivo. Sin instalar nada, sin depender de un ordenador concreto.' },
-          { icon:'🔐', title:'Control de acceso por rol', desc:'Perfil administrador y perfil dentista con vistas diferenciadas. Cada profesional ve solo lo que necesita.' },
-        ],
-      },
-      reservas: {
-        emoji: '📅', tag: 'Sistema de reservas propio con IA',
-        name: 'Tu agenda, tus clientes, tus datos. <em>Sin plataformas de terceros.</em>',
-        desc: 'Reservas por WhatsApp 24/7, recordatorios automáticos y reactivación de clientes. Sin plataformas de terceros, sin comisiones, sin que tus datos vivan en casa de otro.',
-        plans: [
-          {
-            label:'Básico', name:'Tu propia agenda', featured:false,
-            desc:'Tu propio sistema de reservas por WhatsApp. Sin plataformas de terceros, sin comisiones.',
-            monthly:79, setup:300, trial:39,
-            ideal:'Negocios que quieren dejar las plataformas de reservas externas y gestionar sus citas por WhatsApp.',
-            feats:[
-              {text:'Reservas por WhatsApp 24/7 — El cliente escribe, el asistente responde al instante, ofrece los huecos reales de tu agenda y cierra la cita solo.'},
-              {text:'Agenda flexible al minuto — Sin franjas rígidas ni huecos muertos.'},
-              {text:'Recordatorios automáticos con confirmación — 24h antes, el cliente recibe un WhatsApp.'},
-              {text:'Base de datos de clientes propia — Sus datos y su historial son tuyos, no de ninguna plataforma.'},
-            ]
-          },
-          {
-            label:'Completo', name:'Clientes que Vuelven', featured:true,
-            desc:'Todo el sistema de reservas más reputación online automática y recuperación de clientes dormidos. El ciclo completo sin tocar nada.',
-            monthly:129, setup:400, trial:65,
-            ideal:'Negocios que además de gestionar citas quieren crecer en reseñas y recuperar clientes sin esfuerzo.',
-            feats:[
-              {text:'Todo lo del plan Básico', inh:true},
-              {text:'Reseñas Google automáticas — Tras cada cita el sistema pide valoración. Sin acordarte de pedirlo nunca más.', hi:true},
-              {text:'Reactivación de clientes dormidos — Si un habitual lleva más tiempo del normal sin reservar, recibe un mensaje automático.', hi:true},
-              {text:'Informe mensual — Citas gestionadas, ausencias evitadas, clientes reactivados y evolución de reseñas. En tu correo cada mes.'},
-            ]
-          },
-        ],
-        contact_label: 'nombre de tu negocio',
-        contact_sector: 'Reservas / Agenda',
-        contact_source: 'web-sector-reservas',
-      },
       estetica: {
         emoji: '✨', tag: 'Software de gestión para centros de estética',
         name: 'El software de tu centro de estética. <em>Con IA que trabaja contigo.</em>',
@@ -3264,18 +3379,7 @@
     }
 
     function renderSWPlans(d) {
-      const hasSetupPromo = d.plans.some(p => p.promo_setup !== false);
-      const showBanner = d.plans.some(p => p.promo_setup !== false || (p.trial && p.trial > 0));
-      const banner = !showBanner ? '' : `
-        <div class="sw-promo-banner" style="padding:14px 20px;background:linear-gradient(135deg,#7c3aed15,#a78bfa20);border:1px solid var(--purple-light);border-radius:12px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
-          <span style="font-size:20px;">🌞</span>
-          <div>
-            <span style="font-size:13px;font-weight:700;color:var(--purple);">Promo verano — hasta el 31 de agosto</span>
-            ${hasSetupPromo ? '<span style="font-size:13px;color:var(--text-3);margin-left:8px;">Setup gratuito en todos los planes</span>' : ''}
-          </div>
-          <div style="margin-left:auto;font-size:12px;color:var(--text-4);font-style:italic;">2 primeros meses al 50%</div>
-        </div>`;
-      const plans = banner + `<div class="sw-plans">${d.plans.map(p => renderSWPlanCard(p)).join('')}</div>`;
+      const plans = `<div class="sw-plans">${d.plans.map(p => renderSWPlanCard(p)).join('')}</div>`;
       const showcase = d.showcase ? renderDentiaShowcase() : '';
       return showcase + plans;
     }
@@ -3307,13 +3411,8 @@
             <span style="font-size:13px;color:${f?'rgba(255,255,255,.75)':'var(--text-2)'};font-weight:600;">Puesta en marcha y migración</span>
             <span style="font-size:12px;font-weight:800;padding:2px 10px;border-radius:20px;background:${f?'#7c3aed':'var(--purple)'};color:#fff;white-space:nowrap;">INCLUIDAS</span>
           </div>
-          <div style="font-size:11px;color:${f?'rgba(255,255,255,.4)':'var(--text-4)'};margin-bottom:2px;">Sin cuota de alta · sin permanencia</div>` : p.promo_setup === false ? `
-          <div style="font-size:13px;color:${f?'rgba(255,255,255,.65)':'var(--text-3)'};margin-bottom:2px;">Instalación <strong>${p.setup.toLocaleString('es-ES')}€</strong> · pago único</div>` : `
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:2px;">
-            <span style="font-size:13px;text-decoration:line-through;color:${f?'rgba(255,255,255,.55)':'var(--text-3)'};font-weight:500;">Instalación ${p.setup.toLocaleString('es-ES')}€</span>
-            <span style="font-size:12px;font-weight:800;padding:2px 10px;border-radius:20px;background:${f?'#7c3aed':'var(--purple)'};color:#fff;white-space:nowrap;">🌞 GRATIS</span>
-          </div>
-          <div style="font-size:11px;color:${f?'rgba(255,255,255,.4)':'var(--text-4)'};margin-bottom:2px;">Te ahorras ${p.setup.toLocaleString('es-ES')}€ · Promo hasta el 31 agosto</div>`;
+          <div style="font-size:11px;color:${f?'rgba(255,255,255,.4)':'var(--text-4)'};margin-bottom:2px;">Sin permanencia</div>` : `
+          <div style="font-size:13px;color:${f?'rgba(255,255,255,.65)':'var(--text-3)'};margin-bottom:2px;">Instalación <strong>${p.setup.toLocaleString('es-ES')}€</strong> · pago único</div>`;
       const trialLine = p.trial === 0 ? `<div style="margin:10px 0 2px;padding:9px 12px;background:${trialBg};border-radius:8px;font-size:12px;color:${trialColor};font-weight:600;border:1px solid ${f?'rgba(196,181,253,.25)':'var(--border)'};line-height:1.5;">
             ✦ Primer mes de prueba<br><span style="font-weight:400;opacity:.75;">Sin permanencia · lo dejas cuando quieras</span>
           </div>` : `<div style="margin:10px 0 2px;padding:9px 12px;background:${trialBg};border-radius:8px;font-size:12px;color:${trialColor};font-weight:600;border:1px solid ${f?'rgba(196,181,253,.25)':'var(--border)'};line-height:1.5;">
@@ -3400,7 +3499,7 @@
             <span style="font-size:24px;flex-shrink:0;">⏳</span>
             <div>
               <div style="font-size:13px;font-weight:700;color:#92700a;margin-bottom:4px;">Software en construcción</div>
-              <p style="font-size:13px;color:#a16207;line-height:1.6;margin:0;">Estamos desarrollando este software ahora mismo. Si te apuntas hoy, serás de los primeros en acceder — y podrás optar a la <strong>oferta de verano</strong> (setup gratuito + 2 primeros meses al 50%) en el momento del lanzamiento, aunque la promo ya haya terminado.</p>
+              <p style="font-size:13px;color:#a16207;line-height:1.6;margin:0;">Estamos desarrollando este software ahora mismo. Si te apuntas hoy, serás de los primeros en acceder y en conocer el precio de lanzamiento.</p>
             </div>
           </div>
           <div style="font-family:var(--font-head);font-size:20px;font-weight:600;color:var(--text-1);margin-bottom:6px;">Lo que estamos construyendo:</div>
@@ -3415,12 +3514,12 @@
               <input class="sw-c-input full" id="swd-negocio" type="text" placeholder="Nombre de tu ${d.contact_label}" />
             </div>
             <button class="sw-c-submit" style="margin-top:16px;" onclick="submitSWDev()">Apuntarme al lanzamiento →</button>
-            <p style="font-size:11px;color:var(--text-4);margin-top:10px;">Sin compromisos · Te avisamos cuando esté listo · Oferta de verano garantizada · Al enviar aceptas la <a href="/privacidad" target="_blank" style="color:var(--purple);text-decoration:underline;">política de privacidad</a></p>
+            <p style="font-size:11px;color:var(--text-4);margin-top:10px;">Sin compromisos · Te avisamos cuando esté listo · Al enviar aceptas la <a href="/privacidad" target="_blank" style="color:var(--purple);text-decoration:underline;">política de privacidad</a></p>
           </div>
           <div id="sw-dev-success" style="display:none;text-align:center;padding:30px 0;">
             <div style="font-size:40px;margin-bottom:10px;">🎉</div>
             <p style="font-family:var(--font-head);font-size:22px;font-weight:600;color:var(--text-1);margin-bottom:6px;">¡Apuntado!</p>
-            <p style="font-size:14px;color:var(--text-3);">Te avisaremos en cuanto esté listo. La oferta de verano estará reservada para ti.</p>
+            <p style="font-size:14px;color:var(--text-3);">Te avisaremos en cuanto esté listo.</p>
           </div>
         </div>`;
     }
@@ -3448,20 +3547,12 @@
           <div style="padding:12px 16px;background:var(--purple-tint2);border:1px solid var(--border);border-radius:10px;font-size:12px;color:var(--text-3);line-height:1.6;margin-bottom:10px;">
             <strong style="color:var(--text-2);">¿Cuánto cuesta la parte de IA?</strong> Depende de cuántas integraciones quieras y de su complejidad — un chatbot básico no cuesta lo mismo que un sistema de captación de leads con CRM y recordatorios automáticos. Te hacemos una valoración personalizada sin compromiso.
           </div>
-          <div style="padding:10px 16px;background:linear-gradient(135deg,#7c3aed15,#a78bfa20);border:1px solid var(--purple-light);border-radius:10px;font-size:12px;color:var(--purple);font-weight:600;">
-            🌞 Promo verano · 2 primeros meses de mantenimiento gratuitos hasta el 31 agosto
-          </div>
         </div>` :
       d.from_price ? `
         <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-bottom:28px;padding:20px 24px;background:var(--purple-tint);border-radius:14px;border:1px solid var(--border);">
           <div>
             <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-4);margin-bottom:4px;">Precio orientativo</div>
             <div style="font-family:var(--font-head);font-size:36px;font-weight:600;color:var(--text-1);line-height:1;">desde ${d.from_price}€<span style="font-family:var(--font-body);font-size:14px;color:var(--text-4);font-weight:400;">/mes</span></div>
-          </div>
-          <div style="height:40px;width:1px;background:var(--border);flex-shrink:0;"></div>
-          <div>
-            <div style="font-size:12px;font-weight:700;color:var(--purple);margin-bottom:3px;">🌞 Promo verano — hasta el 31 agosto</div>
-            <div style="font-size:12px;color:var(--text-3);">Setup gratuito · 2 primeros meses al 50%</div>
           </div>
         </div>` : '';
       return `
