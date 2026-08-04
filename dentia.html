@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Dentia — El software dental que además trabaja solo | Marirrodriga IA</title>
-<meta name="description" content="Software de gestión para clínicas dentales en la nube con un asistente de IA que atiende a tus pacientes por WhatsApp, cierra presupuestos y lleva la contabilidad sola. Desde 59€/mes, sin cuota de alta y sin permanencia." />
+<meta name="description" content="Software de gestión para clínicas dentales en la nube con un asistente de IA que atiende a tus pacientes por WhatsApp, cierra presupuestos y lleva la contabilidad sola. Desde 59€/mes, sin permanencia y con 60 días de garantía de devolución." />
 <meta property="og:title" content="Dentia — El software dental que además trabaja solo" />
 <meta property="og:description" content="Gestión clínica completa + un asistente de IA que atiende a tus pacientes. Desde 59€/mes, sin permanencia." />
 <meta property="og:type" content="website" />
@@ -160,6 +160,15 @@
   .final .btn{background:#fff;color:var(--teal)}
   .final .eyebrow{background:rgba(255,255,255,.16);color:#fff}
   footer{padding:40px 0;text-align:center;color:var(--ink-4);font-size:13.5px}footer a{color:var(--teal)}
+  /* Submenú de funciones (recorre las secciones del software) */
+  .fn-wrap{position:relative}
+  .fn-wrap section{scroll-margin-top:128px}
+  .subnav{position:sticky;top:62px;z-index:40;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+  .subnav-in{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:10px 24px;max-width:1080px;margin:0 auto}
+  .subnav-in::-webkit-scrollbar{display:none}
+  .subnav a{flex:0 0 auto;font-size:12.5px;font-weight:600;color:var(--ink-3);padding:6px 13px;border-radius:20px;border:1px solid var(--border-2);background:#fff;white-space:nowrap;transition:all .15s}
+  .subnav a:hover{color:var(--teal);border-color:var(--accent)}
+  .subnav a.active{background:var(--teal);border-color:var(--teal);color:#fff}
   @media(max-width:860px){
     .stats,.prob-grid,.grid2,.plans,.obj-grid{grid-template-columns:1fr}
     .final{padding:40px 24px}section{padding:52px 0}
@@ -190,11 +199,11 @@
     <a class="btn" href="https://wa.me/34675148566" target="_blank" rel="noopener">Quiero una demo gratis →</a>
     <a class="btn ghost" href="#precios">Ver precios</a>
   </div>
-  <div class="hero-trust"><span>✦ <b>Sin cuota de alta</b></span><span>✦ <b>Sin permanencia</b></span><span>✦ <b>Migración incluida</b></span><span>✦ <b>100% en la nube</b></span></div>
+  <div class="hero-trust"><span>✦ <b>Garantía de 60 días</b></span><span>✦ <b>Sin permanencia</b></span><span>✦ <b>Migración incluida</b></span><span>✦ <b>100% en la nube</b></span></div>
   <div class="stats">
     <div class="stat"><div class="n">24/7</div><div class="l">tus pacientes reservan y preguntan aunque la clínica esté cerrada</div></div>
     <div class="stat"><div class="n">0</div><div class="l">llamadas del mostrador para confirmar las citas de mañana: se confirman solas</div></div>
-    <div class="stat"><div class="n">0 €</div><div class="l">de instalación, sin ordenador dedicado y sin permanencia</div></div>
+    <div class="stat"><div class="n">60</div><div class="l">días de garantía: si no ves resultado, te devolvemos todo lo pagado</div></div>
     <div class="stat"><div class="n">1ª</div><div class="l">serás de las primeras clínicas de tu ciudad en atender con IA, sin hacer esperar a nadie</div></div>
   </div>
 </div></header>
@@ -259,72 +268,53 @@
   </div>
 </div></section>
 
-<section><div class="wrap">
-  <span class="eyebrow">Comparativa</span>
-  <h2>Todo lo de siempre, <em>más lo que otros no traen</em></h2>
-  <p class="lead">Dentia tiene todo lo que esperas de un software dental — y encima nuestros añadidos con IA.</p>
-  <div class="cmp"><table>
-    <thead><tr><th>Función</th><th class="us">Dentia</th><th>Software dental tradicional</th></tr></thead>
-    <tbody>
-      <tr><td>Agenda y gestión de citas</td><td class="us">Sí</td><td class="yes">Sí</td></tr>
-      <tr><td>Ficha e historia clínica</td><td class="us">Sí</td><td class="yes">Sí</td></tr>
-      <tr><td>Odontograma digital</td><td class="us">Sí</td><td class="yes">Sí</td></tr>
-      <tr><td>Presupuestos, pagos y facturación</td><td class="us">Sí</td><td class="yes">Sí</td></tr>
-      <tr><td>Radiografías, fotos clínicas y documentos del paciente</td><td class="us">Sí</td><td class="yes">Sí</td></tr>
-      <tr><td>Roles y permisos de equipo</td><td class="us">Sí</td><td class="yes">Sí</td></tr>
-      <tr><td>Firma digital de consentimientos</td><td class="us">Sí</td><td class="no">Solo algunos</td></tr>
-      <tr><td>100% en la nube, desde cualquier dispositivo</td><td class="us">Sí</td><td class="no">A menudo Windows</td></tr>
-      <tr><td>Reserva online sin huecos muertos</td><td class="us">Sí</td><td class="no">Franjas fijas de media hora</td></tr>
-      <tr><td>Asistente de IA por WhatsApp</td><td class="us">Sí</td><td class="no">No</td></tr>
-      <tr><td>Acompañamiento de presupuestos con IA</td><td class="us">Sí</td><td class="no">No</td></tr>
-      <tr><td>Seguimiento autónomo + aviso de intervención</td><td class="us">Sí</td><td class="no">No</td></tr>
-      <tr><td>CRM kanban de seguimiento de pacientes</td><td class="us">Sí</td><td class="no">No</td></tr>
-      <tr><td>Seguimiento de presupuestos con su valor en juego</td><td class="us">Sí</td><td class="no">Solo listados</td></tr>
-      <tr><td>Contabilidad autónoma analizada por IA</td><td class="us">Sí</td><td class="no">No</td></tr>
-      <tr><td>Análisis IA de conversaciones y mejoras sugeridas</td><td class="us">Sí</td><td class="no">No</td></tr>
-      <tr><td>Sin cuota de alta ni permanencia</td><td class="us">Sí</td><td class="no">Varía</td></tr>
-      <tr><td>Convive con tu sistema en la transición</td><td class="us">Sí</td><td class="no">Migración brusca</td></tr>
-    </tbody>
-  </table></div>
-</div></section>
-
-<section class="soft"><div class="wrap">
-  <span class="eyebrow">Convivencia y transición</span>
-  <h2>No hay que cambiarlo <em>todo de golpe</em></h2>
-  <p class="lead">Sabemos que cambiar de sistema da miedo — datos perdidos, equipo desorientado, días de caos. Dentia entra sin sobresaltos, conviviendo con lo que ya usas el tiempo que haga falta.</p>
-  <div class="grid2">
-    <div class="card"><h3>🗓️ Con tu calendario actual</h3><p>Las citas pueden reflejarse en el calendario que usáis hoy durante la adaptación.</p></div>
-    <div class="card"><h3>🧾 Con tu facturación actual</h3><p>Sigues facturando como hasta ahora mientras adoptas Dentia a tu ritmo.</p></div>
-    <div class="card"><h3>✋ Lo manual y lo automático, juntos</h3><p>El equipo gestiona a mano lo que quiera; la IA trabaja en paralelo sobre los mismos datos.</p></div>
-    <div class="card"><h3>🚶 A tu ritmo</h3><p>Se empieza por lo que más alivia y se suman funciones según el equipo gana confianza.</p></div>
-  </div>
-</div></section>
-
 <!-- ═══════════ 2 · FUNCIONES ═══════════ -->
 <div class="sec-head" id="funciones"><div class="wrap">
   <div class="kicker">— funciones —</div>
   <h2>Todo lo que hace Dentia, <em>por dentro</em></h2>
 </div></div>
 
-<section><div class="wrap">
+<div class="fn-wrap">
+<nav class="subnav" aria-label="Secciones de Dentia"><div class="subnav-in">
+  <a href="#f-ficha">🦷 Ficha y odontograma</a>
+  <a href="#f-historial">📋 Historia clínica</a>
+  <a href="#f-reserva">📅 Reserva online</a>
+  <a href="#f-asistente">💬 Asistente IA</a>
+  <a href="#f-crm">🎯 Seguimiento y CRM</a>
+  <a href="#f-tareas">⚙️ Tareas automáticas</a>
+  <a href="#f-negocio">📈 Números del negocio</a>
+</div></nav>
+
+<section id="f-ficha"><div class="wrap">
   <span class="eyebrow">El corazón del programa</span>
   <h2>La ficha del paciente: <em>todo en una pantalla</em></h2>
   <p class="lead">Odontograma, historia clínica, tratamientos, presupuestos, pagos y seguimientos, sin saltar entre ventanas.</p>
   <div class="fig"><img src="dentia-img/ficha-paciente.png" alt="Ficha del paciente con odontograma e historial" loading="lazy" /></div>
   <div class="grid2">
-    <div class="card"><h3>🦷 Odontograma visual</h3><p>Los 32 dientes con sus estados en color. Un clic para editar.</p></div>
+    <div class="card"><h3>🦷 Odontograma por zonas</h3><p>Cada diente se dibuja con su forma anatómica y se abre con un clic, dividido en 9 zonas —oclusal, mesial, distal, vestibular, lingual y sus ángulos— para registrar exactamente en qué parte del diente se interviene.</p></div>
     <div class="card"><h3>📋 Historia clínica automática</h3><p>Cada visita queda registrada con sus tratamientos. Se construye sola.</p></div>
+  </div>
+  <p class="lead" style="margin-top:26px">El odontograma no se queda en la vista general: cada diente se abre y se marca zona a zona, igual que trabaja el dentista.</p>
+  <div class="duo">
+    <div>
+      <p class="cap">La arcada completa, <b>de un vistazo</b></p>
+      <div class="fig"><img src="dentia-img/odontograma.png" alt="Odontograma con dientes anatómicos y zonas en color" loading="lazy" /></div>
+    </div>
+    <div>
+      <p class="cap">Cada diente, <b>zona a zona</b></p>
+      <div class="fig"><img src="dentia-img/odontograma-diente.png" alt="Detalle de un diente dividido en 9 zonas para marcar intervenciones" loading="lazy" /></div>
+    </div>
   </div>
 </div></section>
 
-<section class="soft"><div class="wrap">
+<section class="soft" id="f-historial"><div class="wrap">
   <span class="eyebrow">Agenda e historia clínica</span>
   <h2>Lo que se apunta en la cita <em>queda en el historial</em></h2>
   <p class="lead">El dentista apunta en las notas de la cita lo que detecta y hace, y esas notas pasan solas a la historia clínica. Y si con las prisas se olvida, Dentia avisa con un 📝 recordatorio en las citas ya pasadas sin notas.</p>
   <div class="fig"><img src="dentia-img/agenda-recordatorio.png" alt="Agenda con recordatorio de añadir notas" loading="lazy" /></div>
 </div></section>
 
-<section><div class="wrap">
+<section id="f-reserva"><div class="wrap">
   <span class="eyebrow">Reserva online</span>
   <h2>Dos formas de coger cita, <em>una misma agenda</em></h2>
   <p class="lead">El paciente elige: cierra la cita conversando con el asistente, o toca el enlace y escoge él mismo el hueco desde el móvil, con el tipo de cita ya seleccionado. Los dos caminos trabajan sobre la misma agenda en tiempo real — y como cada cita dura lo que tiene que durar, se encajan unas detrás de otras sin huecos muertos.</p>
@@ -349,7 +339,7 @@
   </div>
 </div></section>
 
-<section class="soft"><div class="wrap">
+<section class="soft" id="f-asistente"><div class="wrap">
   <span class="eyebrow">La inteligencia artificial</span>
   <h2>Un asistente que <em>atiende, acompaña y cierra</em></h2>
   <p class="lead">Conversa con tus pacientes por WhatsApp, conoce su historial y gestiona citas de verdad. 24 horas al día.</p>
@@ -374,7 +364,7 @@
   <div class="note"><strong>El asistente sabe exactamente lo que tú decidas contarle.</strong> ¿Quieres que informe de opciones de pago, como en el ejemplo? Se configura. ¿Prefieres que ciertos temas (urgencias, dudas clínicas) se deriven a una llamada? También. <strong>Y su tono y forma de hablar son totalmente personalizables:</strong> más cercano o más formal, con el estilo de tu clínica. Tú marcas qué responde, qué deriva y cómo lo dice.</div>
 </div></section>
 
-<section class="rose"><div class="wrap">
+<section class="rose" id="f-crm"><div class="wrap">
   <span class="eyebrow">Seguimiento autónomo</span>
   <h2>La IA persigue; <em>tú solo cierras</em></h2>
   <p class="lead">El seguimiento de citas y presupuestos lo hace el asistente por su cuenta. Y en el momento exacto en que hace falta una persona, transfiere el caso a la clínica con su contexto, a una columna propia del CRM: <strong>"Requiere intervención"</strong>.</p>
@@ -383,7 +373,7 @@
   <div class="fig"><img src="dentia-img/crm-presupuestos.png" alt="Seguimiento de presupuestos" loading="lazy" /></div>
 </div></section>
 
-<section class="soft"><div class="wrap">
+<section class="soft" id="f-tareas"><div class="wrap">
   <span class="eyebrow">Lo que hace solo</span>
   <h2>Las tareas que <em>ya no hace nadie</em></h2>
   <ul class="clean">
@@ -395,12 +385,56 @@
   </ul>
 </div></section>
 
-<section><div class="wrap">
+<section id="f-negocio"><div class="wrap">
   <span class="eyebrow">La clínica aprende</span>
   <h2>Información de negocio que <em>hoy nadie recoge</em></h2>
   <p class="lead">La IA analiza las conversaciones (de forma anónima) y cada semana te dice las dudas repetidas, las objeciones de precio, las quejas y las ideas de mejora. Y las cuentas, sin Excel.</p>
   <div class="fig"><img src="dentia-img/mejoras.png" alt="Mejoras sugeridas por IA" loading="lazy" /></div>
   <div class="fig"><img src="dentia-img/contabilidad.png" alt="Panel económico" loading="lazy" /></div>
+</div></section>
+</div><!-- /fn-wrap -->
+
+<!-- ═══════════ COMPARATIVA Y TRANSICIÓN ═══════════ -->
+<section class="soft"><div class="wrap">
+  <span class="eyebrow">Comparativa</span>
+  <h2>Todo lo de siempre, <em>más lo que otros no traen</em></h2>
+  <p class="lead">Dentia tiene todo lo que esperas de un software dental — y encima nuestros añadidos con IA.</p>
+  <div class="cmp"><table>
+    <thead><tr><th>Función</th><th class="us">Dentia</th><th>Software dental tradicional</th></tr></thead>
+    <tbody>
+      <tr><td>Agenda y gestión de citas</td><td class="us">Sí</td><td class="yes">Sí</td></tr>
+      <tr><td>Ficha e historia clínica</td><td class="us">Sí</td><td class="yes">Sí</td></tr>
+      <tr><td>Odontograma por zonas del diente</td><td class="us">Sí</td><td class="yes">Sí</td></tr>
+      <tr><td>Presupuestos, pagos y facturación</td><td class="us">Sí</td><td class="yes">Sí</td></tr>
+      <tr><td>Radiografías, fotos clínicas y documentos del paciente</td><td class="us">Sí</td><td class="yes">Sí</td></tr>
+      <tr><td>Roles y permisos de equipo</td><td class="us">Sí</td><td class="yes">Sí</td></tr>
+      <tr><td>Firma digital de consentimientos</td><td class="us">Sí</td><td class="no">Solo algunos</td></tr>
+      <tr><td>100% en la nube, desde cualquier dispositivo</td><td class="us">Sí</td><td class="no">A menudo Windows</td></tr>
+      <tr><td>Reserva online sin huecos muertos</td><td class="us">Sí</td><td class="no">Franjas fijas de media hora</td></tr>
+      <tr><td>Asistente de IA por WhatsApp</td><td class="us">Sí</td><td class="no">No</td></tr>
+      <tr><td>Acompañamiento de presupuestos con IA</td><td class="us">Sí</td><td class="no">No</td></tr>
+      <tr><td>Seguimiento autónomo + aviso de intervención</td><td class="us">Sí</td><td class="no">No</td></tr>
+      <tr><td>CRM kanban de seguimiento de pacientes</td><td class="us">Sí</td><td class="no">No</td></tr>
+      <tr><td>Seguimiento de presupuestos con su valor en juego</td><td class="us">Sí</td><td class="no">Solo listados</td></tr>
+      <tr><td>Contabilidad autónoma analizada por IA</td><td class="us">Sí</td><td class="no">No</td></tr>
+      <tr><td>Análisis IA de conversaciones y mejoras sugeridas</td><td class="us">Sí</td><td class="no">No</td></tr>
+      <tr><td>Sin permanencia: pagas mes a mes</td><td class="us">Sí</td><td class="no">Varía</td></tr>
+      <tr><td>Garantía de devolución de 60 días</td><td class="us">Sí</td><td class="no">No</td></tr>
+      <tr><td>Convive con tu sistema en la transición</td><td class="us">Sí</td><td class="no">Migración brusca</td></tr>
+    </tbody>
+  </table></div>
+</div></section>
+
+<section><div class="wrap">
+  <span class="eyebrow">Convivencia y transición</span>
+  <h2>No hay que cambiarlo <em>todo de golpe</em></h2>
+  <p class="lead">Sabemos que cambiar de sistema da miedo — datos perdidos, equipo desorientado, días de caos. Dentia entra sin sobresaltos, conviviendo con lo que ya usas el tiempo que haga falta.</p>
+  <div class="grid2">
+    <div class="card"><h3>🗓️ Con tu calendario actual</h3><p>Las citas pueden reflejarse en el calendario que usáis hoy durante la adaptación.</p></div>
+    <div class="card"><h3>🧾 Con tu facturación actual</h3><p>Sigues facturando como hasta ahora mientras adoptas Dentia a tu ritmo.</p></div>
+    <div class="card"><h3>✋ Lo manual y lo automático, juntos</h3><p>El equipo gestiona a mano lo que quiera; la IA trabaja en paralelo sobre los mismos datos.</p></div>
+    <div class="card"><h3>🚶 A tu ritmo</h3><p>Se empieza por lo que más alivia y se suman funciones según el equipo gana confianza.</p></div>
+  </div>
 </div></section>
 
 <!-- ═══════════ 3 · OBJETIVOS ═══════════ -->
@@ -426,16 +460,15 @@
   <div class="center">
     <span class="eyebrow">Precios</span>
     <h2>Un precio <em>honesto</em> y sin sorpresas</h2>
-    <p class="lead">Sin cuota de alta ni permanencia, y con una puesta en marcha desde 249€ — si en 60 días no te convence, te devolvemos hasta el último euro, setup incluido.</p>
+    <p class="lead">Pagas mes a mes, sin permanencia, con una única puesta en marcha desde 249€ — y si en 60 días no te convence, te devolvemos hasta el último euro, puesta en marcha incluida.</p>
   </div>
 
-  <!-- Promo de verano -->
+  <!-- Garantía -->
   <div class="final" style="margin:40px auto 0;max-width:820px;padding:46px 40px;">
-    <span class="eyebrow">🌞 Promo de verano · solo 5 clínicas de Castilla y León</span>
+    <span class="eyebrow">Nuestra garantía</span>
     <h2>60 días con Dentia. Si no ves resultado,<br/><em>te devolvemos hasta el último euro</em>.</h2>
-    <p>Empiezas a usarlo pagando con normalidad, mes a mes. Lo montamos nosotros, formamos a tu equipo y lo mides con tus propios números. Si a los 60 días no ves la agenda más llena y menos trabajo en el mostrador, te devolvemos todo lo que hayas pagado —incluida la puesta en marcha— el riesgo lo ponemos nosotros. Y si sí, te quedas con el precio de la promo congelado para siempre.</p>
-    <a class="btn" href="https://wa.me/34675148566?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20la%20promo%20de%20verano%20de%20Dentia" target="_blank" rel="noopener">Quiero una de las 5 plazas →</a>
-    <p style="font-size:13px;color:rgba(255,255,255,.6);margin:14px auto 0;">Plazas limitadas de verdad: cuando se cubran las 5, esta oferta desaparece de la página.</p>
+    <p>Empiezas a usarlo pagando con normalidad, mes a mes. Lo montamos nosotros, formamos a tu equipo y lo mides con tus propios números. Si a los 60 días no ves la agenda más llena y menos trabajo en el mostrador, te devolvemos todo lo que hayas pagado —incluida la puesta en marcha—. El riesgo lo ponemos nosotros.</p>
+    <a class="btn" href="https://wa.me/34675148566?text=Hola%2C%20quiero%20probar%20Dentia%20con%20la%20garant%C3%ADa%20de%2060%20d%C3%ADas" target="_blank" rel="noopener">Quiero probar Dentia con garantía →</a>
   </div>
 
   <div class="plans">
@@ -482,7 +515,7 @@
   <div style="margin-top:36px">
     <details><summary>¿Tengo que instalar algo o cambiar de ordenador?</summary><p>No. Dentia funciona 100% en la nube: abres el navegador desde cualquier dispositivo y ya está.</p></details>
     <details><summary>¿Y mis datos actuales? ¿Pierdo el historial?</summary><p>No. La puesta en marcha incluye la migración de tus datos, y puedes exportarlos cuando quieras.</p></details>
-    <details><summary>¿Hay permanencia o cuota de alta?</summary><p>Ninguna de las dos. Pagas mes a mes y lo dejas cuando quieras — lo único que se paga una vez es la puesta en marcha (instalación, migración y formación incluidas), con el precio de cada plan aquí arriba, y también está cubierta por la garantía de devolución.</p></details>
+    <details><summary>¿Hay permanencia? ¿Qué se paga al empezar?</summary><p>Permanencia, ninguna: pagas mes a mes y lo dejas cuando quieras. Al empezar se paga una única puesta en marcha (instalación, migración de tus datos y formación del equipo incluidas), con el precio que ves en cada plan — y también está cubierta por la garantía de devolución de 60 días.</p></details>
     <details><summary>¿Cómo funciona exactamente la garantía de devolución?</summary><p>Desde que Dentia está funcionando en tu clínica, cuentan 60 días. Si al acabar no ves la agenda más llena y menos trabajo en el mostrador, nos lo dices por WhatsApp — sin justificar nada con números ni informes — y te devolvemos todo lo pagado en esos 60 días —incluida la puesta en marcha—, en un máximo de 7 días laborables. Solo pedimos que la hayáis tenido activa y en uso durante ese tiempo.</p></details>
     <details><summary>¿Puedo seguir usando mi calendario y mi facturación mientras me adapto?</summary><p>Sí. Dentia convive con tu sistema actual durante la transición; adoptas cada función a tu ritmo.</p></details>
     <details><summary>¿El asistente de IA sustituye a mi recepción?</summary><p>No: le quita el trabajo repetitivo (reservas y dudas fuera de horario, seguimiento de presupuestos) para que tu equipo dedique el tiempo a los pacientes que están en la clínica.</p></details>
@@ -503,6 +536,41 @@
   Dentia es un producto de <a href="/">Marirrodriga IA</a> · Automatización con IA para negocios que quieren crecer sin trabajar el doble.<br>
   <a href="https://wa.me/34675148566" target="_blank" rel="noopener">WhatsApp 675 148 566</a> · <a href="mailto:marirrodriga.ia@gmail.com">marirrodriga.ia@gmail.com</a>
 </div></footer>
+
+<script>
+(function(){
+  var links = Array.prototype.slice.call(document.querySelectorAll('.subnav a'));
+  if (!links.length) return;
+  var map = links.map(function(a){
+    return [document.querySelector(a.getAttribute('href')), a];
+  }).filter(function(p){ return p[0]; });
+  function spy(){
+    var current = null;
+    map.forEach(function(p){
+      if (p[0].getBoundingClientRect().top <= 150) current = p[1];
+    });
+    links.forEach(function(a){ a.classList.toggle('active', a === current); });
+  }
+  document.addEventListener('scroll', spy, {passive:true});
+  spy();
+  // Las imágenes lazy que cargan durante el desplazamiento mueven el objetivo:
+  // re-apuntamos al destino un par de veces hasta que el layout se estabiliza.
+  var t1, t2;
+  links.forEach(function(a){
+    a.addEventListener('click', function(ev){
+      var target = document.querySelector(a.getAttribute('href'));
+      if (!target) return;
+      ev.preventDefault();
+      history.replaceState(null, '', a.getAttribute('href'));
+      var go = function(){ target.scrollIntoView({behavior:'smooth', block:'start'}); };
+      go();
+      clearTimeout(t1); clearTimeout(t2);
+      t1 = setTimeout(go, 700);
+      t2 = setTimeout(go, 1500);
+    });
+  });
+})();
+</script>
 
 </body>
 </html>
