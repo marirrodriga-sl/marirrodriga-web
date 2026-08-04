@@ -120,6 +120,17 @@
   .duo .phone{margin:0 auto;max-width:360px}
   .duo .fig{margin:0 auto;max-width:340px}
   @media(max-width:860px){.duo{grid-template-columns:1fr;gap:26px}}
+  /* Odontograma: arcada apaisada a lo ancho + detalle del diente con texto */
+  .odo-arcada{margin:22px 0 0}
+  .odo-arcada .cap{font-size:13.5px;color:var(--ink-3);text-align:center;margin-bottom:12px;font-weight:700}
+  .odo-arcada .cap b{color:var(--teal)}
+  .odo-zoom{display:grid;grid-template-columns:360px 1fr;gap:44px;align-items:center;margin-top:40px}
+  .odo-zoom .fig{margin:0;max-width:360px}
+  .odo-zoom h3{font-family:var(--font-head);font-style:italic;font-size:26px;color:var(--ink);margin-bottom:14px;font-weight:600}
+  .odo-zoom ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+  .odo-zoom li{display:flex;gap:10px;font-size:15px;color:var(--ink-2);line-height:1.5}
+  .odo-zoom li .d{color:var(--teal);font-weight:700;flex-shrink:0}
+  @media(max-width:860px){.odo-zoom{grid-template-columns:1fr;gap:26px}.odo-zoom .fig{max-width:320px;margin:0 auto}}
   /* ── comparativa ── */
   .cmp{overflow-x:auto;margin-top:30px;border:1px solid var(--border);border-radius:16px}
   table{border-collapse:collapse;width:100%;min-width:620px;font-size:14.5px}
@@ -294,15 +305,20 @@
     <div class="card"><h3>🦷 Odontograma por zonas</h3><p>Cada diente se dibuja con su forma anatómica y se abre con un clic, dividido en 9 zonas —oclusal, mesial, distal, vestibular, lingual y sus ángulos— para registrar exactamente en qué parte del diente se interviene.</p></div>
     <div class="card"><h3>📋 Historia clínica automática</h3><p>Cada visita queda registrada con sus tratamientos. Se construye sola.</p></div>
   </div>
-  <p class="lead" style="margin-top:26px">El odontograma no se queda en la vista general: cada diente se abre y se marca zona a zona, igual que trabaja el dentista.</p>
-  <div class="duo">
+  <p class="lead" style="margin-top:26px">El odontograma no se queda en la vista general: la arcada completa se ve de un vistazo, y cada diente se abre y se marca zona a zona, igual que trabaja el dentista.</p>
+  <div class="odo-arcada">
+    <p class="cap">La arcada completa, <b>de un vistazo</b> — cada diente con su forma real y sus zonas en color</p>
+    <div class="fig"><img src="dentia-img/odontograma.png" alt="Odontograma con dientes anatómicos y zonas en color" loading="lazy" /></div>
+  </div>
+  <div class="odo-zoom">
+    <div class="fig"><img src="dentia-img/odontograma-diente.png" alt="Detalle de un diente dividido en 9 zonas para marcar intervenciones" loading="lazy" /></div>
     <div>
-      <p class="cap">La arcada completa, <b>de un vistazo</b></p>
-      <div class="fig"><img src="dentia-img/odontograma.png" alt="Odontograma con dientes anatómicos y zonas en color" loading="lazy" /></div>
-    </div>
-    <div>
-      <p class="cap">Cada diente, <b>zona a zona</b></p>
-      <div class="fig"><img src="dentia-img/odontograma-diente.png" alt="Detalle de un diente dividido en 9 zonas para marcar intervenciones" loading="lazy" /></div>
+      <h3>Cada diente, zona a zona</h3>
+      <ul>
+        <li><span class="d">✦</span><span>Al hacer clic, el diente se abre dividido en <b>9 zonas</b>: oclusal, vestibular, lingual, mesial, distal y sus cuatro ángulos.</span></li>
+        <li><span class="d">✦</span><span>Eliges el estado —caries, obturado…— y <b>tocas solo las zonas</b> donde se interviene. Queda registrado en qué parte exacta del diente, no en el diente entero.</span></li>
+        <li><span class="d">✦</span><span>Con la <b>orientación anatómica real</b>: lo vestibular hacia el labio, lo lingual hacia la lengua, según sea un diente de arriba o de abajo.</span></li>
+      </ul>
     </div>
   </div>
 </div></section>
