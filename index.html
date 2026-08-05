@@ -1367,12 +1367,6 @@
     </div>
   </nav>
 
-  <!-- ═══════════════════════════ BANNER DENTIA ═════════════ -->
-  <a href="/dentia" style="display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;padding:10px 20px;background:linear-gradient(90deg,#0d3d39,#0f766e);color:#fff;font-family:var(--font-body);font-size:13px;text-decoration:none;text-align:center;line-height:1.4;">
-    <span>🦷</span>
-    <span><b>Dentia, el software dental que trabaja solo</b> — 60 días de garantía: si no ves resultado, te devolvemos lo pagado.</span>
-    <span style="font-weight:700;white-space:nowrap;color:#2dd4bf;">Descúbrelo →</span>
-  </a>
 
   <!-- ═══════════════════════════════════ HERO ══════════════ -->
   <section id="inicio">
@@ -3396,8 +3390,6 @@
       const divCls = f ? 'light' : 'dark';
       const badge = f ? '<div class="sw-plan-badge">★ Más elegido</div>' : '';
       const ctaCls = f ? 'featured-cta' : 'normal-cta';
-      const trialColor = f ? '#e9d5ff' : 'var(--purple)';
-      const trialBg = f ? 'rgba(196,181,253,.15)' : 'var(--purple-tint)';
       const availBadge = p.available_from
         ? `<div style="display:inline-block;margin-bottom:10px;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:.05em;background:${f?'rgba(252,211,77,.18)':'#fffbeb'};border:1px solid ${f?'rgba(252,211,77,.4)':'#fcd34d'};color:${f?'#fde68a':'#92700a'};">⏳ Lanzamiento en ${p.available_from} — lista de espera abierta</div>` : '';
       const ctaText = p.available_from ? 'Reservar mi plaza →' : 'Solicitar información';
@@ -3413,11 +3405,6 @@
           </div>
           <div style="font-size:11px;color:${f?'rgba(255,255,255,.4)':'var(--text-4)'};margin-bottom:2px;">Sin permanencia</div>` : `
           <div style="font-size:13px;color:${f?'rgba(255,255,255,.65)':'var(--text-3)'};margin-bottom:2px;">Instalación <strong>${p.setup.toLocaleString('es-ES')}€</strong> · pago único</div>`;
-      const trialLine = p.trial === 0 ? `<div style="margin:10px 0 2px;padding:9px 12px;background:${trialBg};border-radius:8px;font-size:12px;color:${trialColor};font-weight:600;border:1px solid ${f?'rgba(196,181,253,.25)':'var(--border)'};line-height:1.5;">
-            ✦ Primer mes de prueba<br><span style="font-weight:400;opacity:.75;">Sin permanencia · lo dejas cuando quieras</span>
-          </div>` : `<div style="margin:10px 0 2px;padding:9px 12px;background:${trialBg};border-radius:8px;font-size:12px;color:${trialColor};font-weight:600;border:1px solid ${f?'rgba(196,181,253,.25)':'var(--border)'};line-height:1.5;">
-            ✦ 2 primeros meses a <strong>${p.trial}€/mes</strong><br><span style="font-weight:400;opacity:.75;">Luego ${p.monthly}€/mes · Sin permanencia</span>
-          </div>`;
       const feats = p.feats.map(ft => {
         const fc = ft.inh ? (f?'light inh':'dark inh') : ft.hi ? (f?'light hi':'dark hi') : (f?'light':'dark');
         const check = ft.inh ? (f?'rgba(255,255,255,.3)':'#ccc') : (f?'#c4b5fd':'var(--purple)');
@@ -3436,7 +3423,6 @@
           <p class="sw-plan-desc ${descCls}">${p.desc}</p>
           <div class="sw-plan-price ${priceCls}">${p.monthly}€<span class="sw-plan-price-unit ${unitCls}">/mes</span></div>
           ${setupLine}
-          ${trialLine}
           <div class="sw-plan-ideal ${idealCls}" style="margin-top:10px;">${p.ideal}</div>
           <div class="sw-plan-divider ${divCls}"></div>
           <div class="sw-plan-feats">${feats}</div>
