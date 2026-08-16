@@ -13,8 +13,11 @@ import { createHash } from 'node:crypto';
 const require = createRequire(import.meta.url);
 const { CATALOGO, cotiza, calculaSetup } = require('../assets/catalogo.js');
 
-const HUELLA_ESPERADA = '2eff1866c3bc8dc574dd603f532db0af';
-const N_ESPERADAS = 35;
+// Comprobado contra Supabase el 16-08 tras retirar (vigente=false) las dos
+// piezas de «profesionales ilimitados»: cobrar por número de profesionales
+// era un resto del modelo de planes. De 35 piezas a 33.
+const HUELLA_ESPERADA = '094f9d817a1695fc8b039abbef981269';
+const N_ESPERADAS = 33;
 
 let fallos = 0;
 const check = (ok, etiqueta, detalle = '') => {
@@ -51,11 +54,13 @@ const EJEMPLOS = [
   ['Peluquería mínima', 64.00, ['agenda-reserva-publica', 'iris-0']],
   ['Peluquería que empieza', 79.00, ['agenda-reserva-publica', 'iris-0', 'recordatorios-confirmacion']],
   ['Peluquería con volumen', 98.10, ['agenda-reserva-publica', 'iris-0', 'recordatorios-confirmacion', 'reactivacion-dormidos', 'insights-semanales']],
-  ['Negocio de citas completo', 224.80, [...CATALOGO.piezas.filter(p => p.cat === 'citas').map(p => p.slug), 'iris-0']],
+  // 185,60 y 232,00 recalculados en Supabase con catalogo_cotiza() el 16-08,
+  // al retirar «profesionales ilimitados» de los dos conjuntos completos.
+  ['Negocio de citas completo', 185.60, [...CATALOGO.piezas.filter(p => p.cat === 'citas').map(p => p.slug), 'iris-0']],
   ['Clínica dental mínima', 73.00, ['dental-agenda', 'dental-ficha-historia']],
   ['Clínica dental que empieza', 132.30, ['dental-agenda', 'dental-ficha-historia', 'dental-odontograma', 'dental-presupuestos', 'dental-facturacion']],
   ['Clínica dental con asistente', 184.80, ['dental-agenda', 'dental-ficha-historia', 'dental-odontograma', 'dental-presupuestos', 'dental-facturacion', 'dental-asistente-pacientes', 'dental-acompanamiento-presupuestos', 'dental-seguimiento-resenas', 'dental-analisis-conversaciones']],
-  ['Clínica dental completa', 271.20, CATALOGO.piezas.filter(p => p.cat === 'dental').map(p => p.slug)],
+  ['Clínica dental completa', 232.00, CATALOGO.piezas.filter(p => p.cat === 'dental').map(p => p.slug)],
   ['Tienda online (caso Fer)', 79.00, ['iris-0', 'modulo-seguimiento-pedidos']],
 ];
 
