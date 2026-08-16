@@ -1,0 +1,8 @@
+# Los ficheros de la web se guardan y se sacan siempre con finales LF.
+# Motivo: el 16-08 se destruyeron dos veces catalogo.js y hero.js editandolos
+# por indice de linea con los finales mezclados (CRLF y LF en el mismo fichero).
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.webp binary
+*.svg text eol=lf
