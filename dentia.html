@@ -1,604 +1,337 @@
 <!DOCTYPE html>
 <html lang="es">
+<!-- ==========================================================================
+     GENERADO por scripts/generar-paginas.cjs — NO EDITAR A MANO.
+     Textos en scripts/datos-soluciones.cjs · precios en scripts/soluciones.cjs
+     ========================================================================== -->
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<!-- noindex 20-08: esta pagina vende con los precios de antes de agosto, que ya no
-     son los vigentes. Sigue abierta para quien tenga el enlace (la campana de las 93
-     clinicas apunta aqui) pero se saca de Google para que nadie llegue nuevo a un
-     precio caducado. Se quita cuando se actualice o se convierta en caso. -->
-  <meta name="robots" content="noindex, follow">
-<title>Dentia — El software dental que además trabaja solo | Marirrodriga IA</title>
-<meta name="description" content="Software de gestión para clínicas dentales en la nube con un asistente de IA que atiende a tus pacientes por WhatsApp, cierra presupuestos y lleva la contabilidad sola. Desde 59€/mes, sin permanencia y con 60 días de garantía de devolución." />
-<meta property="og:title" content="Dentia — El software dental que además trabaja solo" />
-<meta property="og:description" content="Gestión clínica completa + un asistente de IA que atiende a tus pacientes. Desde 59€/mes, sin permanencia." />
-<meta property="og:type" content="website" />
-<link rel="icon" href="/favicon.svg" />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-  :root{
-    /* Paleta Dentia — teal del producto real (sidebar #0d3d39, botones #0f766e, acento #2dd4bf) */
-    --teal:#0f766e;--teal-d:#0d3d39;--accent:#2dd4bf;
-    --tint:#e0f2ef;--tint2:#f6fbfa;
-    --ink:#141420;--ink-2:#3a3a4d;--ink-3:#6b6b80;--ink-4:#9a9aad;
-    --rose-tint:#fdeef1;
-    --bg:#fff;--bg-soft:#f8fafc;--border:#e8eeec;--border-2:#dbe6e3;
-    --ok:#0e8a6e;--shadow:0 1px 3px rgba(20,20,32,.06),0 8px 30px rgba(20,20,32,.05);
-    --font-head:'Cormorant Garamond',Georgia,serif;
-    --font-body:'Plus Jakarta Sans',system-ui,sans-serif;
-  }
-  *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
-  body{font-family:var(--font-body);color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
-  img{max-width:100%;display:block}a{color:inherit;text-decoration:none}
-  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
-  .narrow{max-width:760px;margin:0 auto}
-  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;font-family:var(--font-body);font-weight:700;font-size:15px;padding:13px 24px;border-radius:12px;border:none;cursor:pointer;transition:transform .15s,box-shadow .15s;box-shadow:0 6px 20px rgba(15,118,110,.28)}
-  .btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(15,118,110,.36)}
-  .btn.ghost{background:#fff;color:var(--teal);border:1.5px solid var(--border-2);box-shadow:none}
-  .btn.ghost:hover{border-color:var(--teal);background:var(--tint2)}
-  .eyebrow{display:inline-block;font-family:var(--font-body);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);background:var(--tint);padding:6px 14px;border-radius:20px;margin-bottom:20px}
-  section{padding:70px 0}
-  h1{font-family:var(--font-head);font-size:clamp(42px,6.4vw,72px);line-height:1.05;letter-spacing:-.01em;font-weight:600}
-  h2{font-family:var(--font-head);font-size:clamp(32px,4.4vw,46px);line-height:1.12;letter-spacing:-.01em;font-weight:600;margin-bottom:14px}
-  h1 em,h2 em{font-style:italic;font-weight:500;color:var(--teal)}
-  h3{font-family:var(--font-body)}
-  .lead{font-size:18px;color:var(--ink-2);max-width:680px;font-weight:400}
-  .center{text-align:center}.center .lead{margin:0 auto}
-  /* ── NAV ── */
-  nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
-  .nav-in{display:flex;align-items:center;justify-content:space-between;gap:14px;height:62px}
-  .brand{font-family:var(--font-body);font-weight:800;font-size:19px;letter-spacing:-.01em;white-space:nowrap}
-  .brand span{color:var(--teal)}
-  .brand small{display:block;font-size:9.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-4);margin-top:-3px}
-  .nav-links{display:flex;gap:26px;overflow-x:auto;scrollbar-width:none}
-  .nav-links::-webkit-scrollbar{display:none}
-  .nav-links a{font-size:13px;font-weight:600;color:var(--ink-3);white-space:nowrap;padding:4px 0;border-bottom:2px solid transparent;transition:color .15s}
-  .nav-links a:hover{color:var(--teal);border-bottom-color:var(--accent)}
-  .nav-cta{font-size:13.5px;padding:9px 18px;white-space:nowrap}
-  /* ── HERO ── */
-  .hero{background:radial-gradient(1200px 500px at 50% -10%,var(--tint),transparent),var(--bg);padding-top:64px;text-align:center}
-  .hero h1 em{background:linear-gradient(120deg,var(--teal),var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-style:italic}
-  .hero .lead{margin:22px auto 0}
-  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:32px}
-  .hero-trust{margin-top:22px;font-size:14px;color:var(--ink-3);display:flex;gap:18px;flex-wrap:wrap;justify-content:center}
-  .hero-trust b{color:var(--ink)}
-  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:56px;text-align:left}
-  .stat{background:var(--bg-soft);border:1px solid var(--border);border-radius:16px;padding:24px 20px}
-  .stat .n{font-family:var(--font-head);font-size:34px;font-weight:600;color:var(--teal);letter-spacing:-.02em;line-height:1}
-  .stat .l{font-size:13.5px;color:var(--ink-3);margin-top:8px}
-  /* ── CARDS / GRIDS ── */
-  .prob-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px}
-  .prob{background:#fff;border:1px solid var(--border);border-radius:16px;padding:26px;box-shadow:var(--shadow)}
-  .prob .ic{font-size:26px;margin-bottom:12px}.prob h3{font-size:17px;font-weight:700;margin-bottom:6px}.prob p{font-size:14.5px;color:var(--ink-3)}
-  .fig{margin:26px 0;border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:0 10px 40px rgba(20,20,32,.08)}
-  .soft{background:var(--bg-soft);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-  .rose{background:var(--rose-tint);border-top:1px solid #f6d5de;border-bottom:1px solid #f6d5de}
-  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:22px}
-  .card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:22px}
-  .card h3{font-size:16px;font-weight:700;margin-bottom:5px}.card p{font-size:14px;color:var(--ink-3)}
-  .note{border-left:3px solid var(--teal);background:var(--tint2);padding:14px 18px;border-radius:0 10px 10px 0;margin:20px 0;font-size:15px;color:var(--ink-2)}
-  ul.clean{list-style:none;margin:20px 0}
-  ul.clean li{background:#fff;border:1px solid var(--border);border-radius:11px;padding:14px 18px;margin-bottom:10px;font-size:15px;color:var(--ink-2);display:flex;gap:12px}
-  ul.clean li b{color:var(--ink)}ul.clean .d{color:var(--teal);font-weight:800}
-  /* ── banda distintivo IA ── */
-  .ia-band{background:linear-gradient(165deg,var(--teal-d),#0b5b54);color:#fff}
-  .ia-band h2{color:#fff}
-  .ia-band h2 em{color:var(--accent)}
-  .ia-band .lead{color:rgba(255,255,255,.8)}
-  .ia-band .eyebrow{background:rgba(255,255,255,.14);color:#fff}
-  .ia-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:40px}
-  .ia-row{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:22px}
-  .ia-row .mod{display:flex;align-items:center;gap:10px;font-weight:700;font-size:16px;margin-bottom:10px}
-  .ia-row .sin{font-size:13.5px;color:rgba(255,255,255,.55);margin-bottom:10px}
-  .ia-row .sin b{color:rgba(255,255,255,.78);font-weight:600}
-  .ia-row .con{font-size:14.5px;color:#fff;border-left:3px solid var(--accent);padding-left:12px;line-height:1.55}
-  .ia-row .con b{color:var(--accent)}
-  @media(max-width:860px){.ia-grid{grid-template-columns:1fr}}
-  /* ── divisor de sección del menú ── */
-  .sec-head{text-align:center;padding:64px 0 0}
-  .sec-head .kicker{font-family:var(--font-head);font-style:italic;font-size:20px;color:var(--teal)}
-  /* ── OBJETIVOS ── */
-  .obj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:40px}
-  .obj{background:#fff;border:1px solid var(--border);border-radius:18px;padding:26px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px}
-  .obj .ic{font-size:28px}
-  .obj h3{font-size:18px;font-weight:700}
-  .obj p{font-size:14.5px;color:var(--ink-3)}
-  .obj .kpi{margin-top:auto;padding-top:12px;font-size:12.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--teal)}
-  /* ── WhatsApp mockup ── */
-  .phone{max-width:400px;margin:26px auto;border:10px solid #111820;border-radius:36px;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.22)}
-  .wa-top{background:#075e54;color:#fff;padding:12px 16px;display:flex;align-items:center;gap:10px}
-  .wa-av{width:34px;height:34px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;font-size:16px}
-  .wa-top .nm{font-size:14px;font-weight:600;line-height:1.2}.wa-top .st{font-size:11px;color:#b7d8d3}
-  .wa-body{background:#e5ddd5;padding:14px 12px}
-  .bubble{max-width:82%;padding:7px 11px;border-radius:9px;font-size:14px;margin-bottom:5px;line-height:1.45;box-shadow:0 1px 1px rgba(0,0,0,.08)}
-  .b-user{background:#dcf8c6;color:#1b2b20;margin-left:auto;border-top-right-radius:2px}
-  .b-bot{background:#fff;color:#2b3038;margin-right:auto;border-top-left-radius:2px}
-  .bubble .t{display:block;font-size:10px;color:#8aa;text-align:right;margin-top:2px}
-  .grp{margin-bottom:10px}.mock-lbl{font-size:12.5px;color:var(--ink-4);text-align:center;margin:0 auto 4px;font-style:italic;max-width:560px}
-  .lnk{color:var(--teal);text-decoration:underline;word-break:break-all}
-  /* dúo: chat previo + captura de la reserva */
-  .duo{display:grid;grid-template-columns:1fr 1fr;gap:34px;margin-top:30px;align-items:start}
-  .duo .cap{font-size:13.5px;color:var(--ink-3);text-align:center;margin-bottom:12px;font-weight:700}
-  .duo .cap b{color:var(--teal)}
-  .duo .phone{margin:0 auto;max-width:360px}
-  .duo .fig{margin:0 auto;max-width:340px}
-  @media(max-width:860px){.duo{grid-template-columns:1fr;gap:26px}}
-  /* Odontograma: arcada apaisada a lo ancho + detalle del diente con texto */
-  .odo-arcada{margin:22px 0 0}
-  .odo-arcada .cap{font-size:13.5px;color:var(--ink-3);text-align:center;margin-bottom:12px;font-weight:700}
-  .odo-arcada .cap b{color:var(--teal)}
-  .odo-zoom{display:grid;grid-template-columns:360px 1fr;gap:44px;align-items:center;margin-top:40px}
-  .odo-zoom .fig{margin:0;max-width:360px}
-  .odo-zoom h3{font-family:var(--font-head);font-style:italic;font-size:26px;color:var(--ink);margin-bottom:14px;font-weight:600}
-  .odo-zoom ul{list-style:none;display:flex;flex-direction:column;gap:12px}
-  .odo-zoom li{display:flex;gap:10px;font-size:15px;color:var(--ink-2);line-height:1.5}
-  .odo-zoom li .d{color:var(--teal);font-weight:700;flex-shrink:0}
-  @media(max-width:860px){.odo-zoom{grid-template-columns:1fr;gap:26px}.odo-zoom .fig{max-width:320px;margin:0 auto}}
-  /* ── comparativa ── */
-  .cmp{overflow-x:auto;margin-top:30px;border:1px solid var(--border);border-radius:16px}
-  table{border-collapse:collapse;width:100%;min-width:620px;font-size:14.5px}
-  th,td{padding:12px 18px;text-align:left;border-bottom:1px solid var(--border)}
-  thead th{background:var(--bg-soft);font-size:13px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-3);font-weight:700}
-  th.us{color:var(--teal)}td.us{color:var(--teal);font-weight:700;background:var(--tint2)}
-  tbody tr:last-child td{border-bottom:none}.yes{color:var(--ok);font-weight:700}.no{color:var(--ink-4)}
-  /* ── precios ── */
-  .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px;align-items:start}
-  .plan{background:#fff;border:1px solid var(--border-2);border-radius:20px;padding:30px 26px;position:relative}
-  .plan.featured{border:2px solid var(--teal);box-shadow:0 20px 50px rgba(15,118,110,.16)}
-  .plan-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--teal);color:#fff;font-size:12px;font-weight:800;padding:5px 16px;border-radius:20px;white-space:nowrap}
-  .plan .pl{font-size:13px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--teal)}
-  .plan .pn{font-size:19px;font-weight:800;margin:6px 0 10px}
-  .plan .pd{font-size:14px;color:var(--ink-3);min-height:66px}
-  .plan .price{font-family:var(--font-head);font-size:48px;font-weight:600;letter-spacing:-.02em;margin:12px 0 2px}
-  .plan .price span{font-family:var(--font-body);font-size:16px;font-weight:600;color:var(--ink-3)}
-  .plan .setup{font-size:13px;color:var(--ink-3);margin-bottom:18px}.plan .setup b{color:var(--ok)}
-  .plan ul{list-style:none;margin:18px 0;display:flex;flex-direction:column;gap:10px}
-  .plan li{font-size:13.5px;color:var(--ink-2);display:flex;gap:9px;align-items:flex-start}
-  .plan li::before{content:"✓";color:var(--teal);font-weight:800;flex-shrink:0}
-  .plan li.hi{font-weight:600;color:var(--ink)}.plan .btn{width:100%;justify-content:center;margin-top:4px}
-  .medida{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-top:26px;background:linear-gradient(155deg,var(--teal),var(--teal-d));color:#fff;border-radius:20px;padding:26px 30px}
-  .medida .em{font-size:30px;flex-shrink:0}
-  .medida .tx{flex:1;min-width:280px}
-  .medida .tx h3{font-family:var(--font-head);font-size:22px;font-weight:600;color:#fff;margin-bottom:5px}
-  .medida .tx p{font-size:14.5px;color:rgba(255,255,255,.82)}
-  .medida .tx strong{color:var(--accent);font-weight:600}
-  .medida .btn{background:#fff;color:var(--teal);white-space:nowrap}
-  @media(max-width:700px){.medida{flex-direction:column;align-items:flex-start}}
-  details{background:var(--bg-soft);border:1px solid var(--border);border-radius:12px;padding:18px 22px;margin-bottom:12px}
-  summary{font-weight:700;font-size:15.5px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px}
-  summary::-webkit-details-marker{display:none}summary::after{content:"+";color:var(--teal);font-size:22px}
-  details[open] summary::after{content:"–"}details p{margin-top:12px;color:var(--ink-3);font-size:14.5px}
-  .final{background:linear-gradient(155deg,var(--teal),var(--teal-d));color:#fff;border-radius:28px;padding:60px;text-align:center;margin:0 24px}
-  .final h2{color:#fff}.final h2 em{color:var(--accent)}
-  .final p{color:rgba(255,255,255,.85);font-size:18px;max-width:600px;margin:14px auto 30px}
-  .final .btn{background:#fff;color:var(--teal)}
-  .final .eyebrow{background:rgba(255,255,255,.16);color:#fff}
-  footer{padding:40px 0;text-align:center;color:var(--ink-4);font-size:13.5px}footer a{color:var(--teal)}
-  /* Submenú de funciones (recorre las secciones del software) */
-  .fn-wrap{position:relative}
-  .fn-wrap section{scroll-margin-top:128px}
-  .subnav{position:sticky;top:62px;z-index:40;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
-  .subnav-in{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:10px 24px;max-width:1080px;margin:0 auto}
-  .subnav-in::-webkit-scrollbar{display:none}
-  .subnav a{flex:0 0 auto;font-size:12.5px;font-weight:600;color:var(--ink-3);padding:6px 13px;border-radius:20px;border:1px solid var(--border-2);background:#fff;white-space:nowrap;transition:all .15s}
-  .subnav a:hover{color:var(--teal);border-color:var(--accent)}
-  .subnav a.active{background:var(--teal);border-color:var(--teal);color:#fff}
-  @media(max-width:860px){
-    .stats,.prob-grid,.grid2,.plans,.obj-grid{grid-template-columns:1fr}
-    .final{padding:40px 24px}section{padding:52px 0}
-    .brand small{display:none}.nav-cta{display:none}
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dentia — Software para clínicas dentales | Marirrodriga IA</title>
+  <meta name="description" content="Agenda, ficha de paciente, odontograma, presupuestos y facturación en un solo sitio, con un asistente que contesta a los pacientes por WhatsApp. Desde 73 €/mes, con su límite al lado.">
+  <link rel="canonical" href="https://www.marirrodriga-ia.com/dentia">
+  <meta name="theme-color" content="#7C3AED">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Marirrodriga IA">
+  <meta property="og:title" content="La clínica funcionando cuando tú no estás.">
+  <meta property="og:description" content="Agenda, historia clínica, odontograma, presupuestos y facturación en un mismo sitio. Y encima, si lo quieres, un asistente que contesta a los pacientes por WhatsApp y les recuerda la cita.">
+  <meta property="og:url" content="https://www.marirrodriga-ia.com/dentia">
+  <meta property="og:image" content="https://www.marirrodriga-ia.com/og-image.png">
+  <meta property="og:locale" content="es_ES">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="La clínica funcionando cuando tú no estás.">
+  <meta name="twitter:description" content="Agenda, historia clínica, odontograma, presupuestos y facturación en un mismo sitio. Y encima, si lo quieres, un asistente que contesta a los pacientes por WhatsApp y les recuerda la cita.">
+  <meta name="twitter:image" content="https://www.marirrodriga-ia.com/og-image.png">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Tengo que migrar todo lo que ya tengo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No de golpe. Se empieza por la agenda y la ficha, que es lo que más duele, y lo demás se va metiendo cuando haga falta. Lo que ya tengas en otro programa lo pasamos nosotros en el montaje."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Los datos de salud dónde están?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "En servidores de la Unión Europea, cifrados, con copia diaria. Firmamos el acuerdo de encargado de tratamiento que exige el artículo 28 del RGPD antes de tocar un solo dato."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿El asistente da consejo médico?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nunca. Coge citas, resuelve dudas de horario y precio y hace seguimiento. Cualquier cosa clínica la deriva a la clínica, y se identifica siempre como IA, que lo exige el artículo 50 del Reglamento Europeo de IA."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Y si somos más de dos profesionales?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El tramo de entrada cubre dos. A partir de ahí se amplía, y te decimos el precio antes de montarlo — nunca aparece en una factura sin que lo hayas aprobado."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Hay permanencia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Te vas cuando quieras avisando con 30 días, y tus datos se los llevas exportados. El montaje se paga 50 % al empezar y 50 % al entregar."
+      }
+    }
+  ]
+}
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/base.css">
+  <link rel="stylesheet" href="/assets/atencion.css">
+  <link rel="stylesheet" href="/assets/solucion.css">
 </head>
 <body>
 
-<!-- ═══════════ NAV ═══════════ -->
-<nav><div class="wrap nav-in">
-  <div class="brand">🦷 Dentia<small>by Marirrodriga IA</small></div>
+<nav class="nav">
+  <a class="nav-logo" href="/">
+    <img src="/assets/img/logo.png" alt="" width="256" height="256">
+    <span>Marirrodriga<b>.IA</b></span>
+  </a>
   <div class="nav-links">
-    <a href="#que-es">Qué es Dentia</a>
-    <a href="#funciones">Funciones</a>
-    <a href="#objetivos">Objetivos</a>
-    <a href="#precios">Precios</a>
+    <a class="nav-link" href="#lo-que-hace">Lo que hace</a>
+    <a class="nav-link" href="#precio">Precio</a>
+    <a class="nav-link" href="#preguntas">Preguntas</a>
   </div>
-  <a class="btn nav-cta" href="https://wa.me/34675148566" target="_blank" rel="noopener">Pedir una demo</a>
-</div></nav>
+  <a class="btn btn-1 nav-cta" href="https://cal.com/marirrodriga-ia/llamada" target="_blank" rel="noopener">Asesoría gratuita</a>
+</nav>
 
-<!-- ═══════════ 1 · QUÉ ES DENTIA ═══════════ -->
-<header class="hero" id="que-es"><div class="wrap">
-  <span class="eyebrow">🦷 Software de gestión dental con IA</span>
-  <h1>El software dental que además <em>trabaja solo</em></h1>
-  <p class="lead">Dentia gestiona tu clínica en la nube —agenda, historia clínica, odontograma, presupuestos y facturación— y le suma un asistente de IA que atiende a tus pacientes por WhatsApp, cierra presupuestos, hace el seguimiento que hoy nadie tiene tiempo de hacer y hasta te lleva la contabilidad sola. <strong>Sin contratar a nadie más</strong>, aunque tu equipo odie la tecnología. Por menos de lo que cuesta el software dental de siempre.</p>
-  <div class="hero-cta">
-    <a class="btn" href="https://wa.me/34675148566" target="_blank" rel="noopener">Quiero una demo gratis →</a>
-    <a class="btn ghost" href="#precios">Ver precios</a>
-  </div>
-  <div class="hero-trust"><span>✦ <b>Garantía de 60 días</b></span><span>✦ <b>Sin permanencia</b></span><span>✦ <b>Migración incluida</b></span><span>✦ <b>100% en la nube</b></span></div>
-  <div class="stats">
-    <div class="stat"><div class="n">24/7</div><div class="l">tus pacientes reservan y preguntan aunque la clínica esté cerrada</div></div>
-    <div class="stat"><div class="n">0</div><div class="l">llamadas del mostrador para confirmar las citas de mañana: se confirman solas</div></div>
-    <div class="stat"><div class="n">60</div><div class="l">días de garantía: si no ves resultado, te devolvemos todo lo pagado</div></div>
-    <div class="stat"><div class="n">1ª</div><div class="l">serás de las primeras clínicas de tu ciudad en atender con IA, sin hacer esperar a nadie</div></div>
-  </div>
-</div></header>
-
-<section><div class="wrap">
-  <span class="eyebrow">El problema</span>
-  <h2>Cada semana tu clínica <em>pierde dinero</em> sin darse cuenta</h2>
-  <p class="lead">No es por falta de trabajo. Es por las tareas que nadie tiene tiempo de hacer.</p>
-  <div class="prob-grid">
-    <div class="prob"><div class="ic">📉</div><h3>El sillón vacío</h3><p>El paciente que no confirma y no aparece. Esa hora no se recupera — y si era una endodoncia, son cientos de euros tirados.</p></div>
-    <div class="prob"><div class="ic">💸</div><h3>Presupuestos que se enfrían</h3><p>Se lo lleva "para pensarlo" y nadie vuelve a llamarle, porque recepción no da abasto. Implantes y ortodoncias muriendo en un cajón.</p></div>
-    <div class="prob"><div class="ic">📵</div><h3>Llamadas sin atender</h3><p>El paciente llama a las 20:30, cuando por fin tiene un minuto. No lo coge nadie… y llama a la siguiente clínica de Google.</p></div>
-  </div>
-</div></section>
-
-<section class="soft"><div class="wrap">
-  <span class="eyebrow">Qué es Dentia</span>
-  <h2>Dos cosas en una: <em>tu gestión</em> y <em>tu asistente</em></h2>
-  <p class="lead">Dentia es un software de gestión clínica completo — y encima automatiza lo que en otras clínicas hace una persona. La IA no es un chatbot genérico añadido por encima: es parte del software desde el primer día, con acceso a la agenda y al historial reales.</p>
-  <div class="fig"><img src="dentia-img/dashboard.png" alt="Panel de inicio de Dentia" loading="lazy" /></div>
-  <p class="lead" style="margin-top:6px">La pantalla de inicio te muestra el día de un golpe de vista: citas de hoy, seguimientos, presupuestos abiertos e ingresos. Sencillo desde el primer día, sin manuales.</p>
-</div></section>
-
-<!-- ── Distintivo: la IA módulo a módulo ── -->
-<section class="ia-band"><div class="wrap">
-  <div class="center">
-    <span class="eyebrow">✦ Nuestro distintivo</span>
-    <h2>El software completo de siempre…<br/>que además <em>piensa</em></h2>
-    <p class="lead">Debajo de cada módulo normal hay una IA trabajando. Esto es exactamente lo que añade en cada sitio — y lo que ganas tú.</p>
-  </div>
-  <div class="ia-grid">
-    <div class="ia-row">
-      <div class="mod">📅 Agenda y citas</div>
-      <div class="sin"><b>Lo de siempre:</b> agenda por profesional, tipos de cita, estados.</div>
-      <div class="con">✦ La IA recuerda cada cita el día antes y el paciente confirma con un toque; el hueco del que cancela se detecta al momento. <b>Ganas:</b> menos sillones vacíos sin que nadie del mostrador llame.</div>
+<header class="hero-s" style="--hero:url('/assets/img/hero-dentia.jpg')">
+  <div class="hero-s-fondo"></div>
+  <div class="hero-s-centro">
+    <span class="hero-s-pill"><i></i> Software para clínicas dentales</span>
+    <h1 class="t-h1">La clínica funcionando<br><span class="acento">cuando tú no estás.</span></h1>
+    <p class="t-lead">Agenda, historia clínica, odontograma, presupuestos y facturación en un mismo sitio. Y encima, si lo quieres, un asistente que contesta a los pacientes por WhatsApp y les recuerda la cita.</p>
+    <div class="hero-botones">
+      <a class="btn btn-1" href="https://cal.com/marirrodriga-ia/llamada" target="_blank" rel="noopener">Asesoría gratuita de 30 min</a>
+      <a class="btn btn-2" href="#precio">Ver qué cuesta</a>
     </div>
-    <div class="ia-row">
-      <div class="mod">💶 Presupuestos</div>
-      <div class="sin"><b>Lo de siempre:</b> los creas, los imprimes y los controlas por estado y valor.</div>
-      <div class="con">✦ La IA los persigue sola: resuelve las dudas del paciente por WhatsApp y le acompaña hasta la decisión. <b>Ganas:</b> presupuestos que antes morían en un cajón, cerrados.</div>
+    <p class="t-micro">Precios sin IVA, cada uno con su límite al lado. Sin permanencia.</p>
+  </div>
+</header>
+
+<section class="seccion">
+  <div class="envoltura">
+    <div class="envoltura-txt centrado" style="padding:0">
+      <span class="t-eyebrow">Por qué existe esto</span>
+      <h2 class="t-h2" style="margin:14px 0 16px">Tres cosas que pasan<br><span class="acento">todas las semanas.</span></h2>
     </div>
-    <div class="ia-row">
-      <div class="mod">🗂 Ficha del paciente</div>
-      <div class="sin"><b>Lo de siempre:</b> odontograma, historia clínica, radiografías y documentos.</div>
-      <div class="con">✦ La IA vigila las fichas: detecta al que lleva un año sin venir y le invita a volver antes de que acabe en otra clínica. <b>Ganas:</b> pacientes recuperados sin listas a mano.</div>
+    <div class="dolores aparece">
+      <div class="dolor"><h3>El teléfono a media cura</h3><p>Suena mientras estás con un paciente en el sillón. O lo coges y le dejas a medias, o lo pierdes. Elegir eso quince veces al día no es trabajo clínico.</p></div>
+      <div class="dolor"><h3>Presupuestos que se enfrían</h3><p>Se lo das, dice que se lo piensa y no vuelve. No porque no quiera: porque nadie le escribió a los cinco días para preguntarle si le había quedado alguna duda.</p></div>
+      <div class="dolor"><h3>Datos en cuatro sitios</h3><p>La agenda en un programa, las fotos en el móvil, los presupuestos en Word y la facturación en una hoja. Y cuando falta algo, a buscarlo.</p></div>
     </div>
-    <div class="ia-row">
-      <div class="mod">📞 Atención al paciente</div>
-      <div class="sin"><b>Lo de siempre:</b> el teléfono de recepción, en horario de recepción.</div>
-      <div class="con">✦ El asistente atiende por WhatsApp 24/7 conociendo el historial, y reserva o cancela citas reales. <b>Ganas:</b> la cita de las 21:00 ya no se va a la siguiente clínica de Google.</div>
-    </div>
-    <div class="ia-row">
-      <div class="mod">🧾 Facturación y contabilidad</div>
-      <div class="sin"><b>Lo de siempre:</b> factura en un clic con numeración correlativa.</div>
-      <div class="con">✦ La IA analiza las cuentas y te sirve la foto del negocio, sin Excel ni gestorías de por medio. <b>Ganas:</b> decidir con números, no con sensaciones.</div>
-    </div>
-    <div class="ia-row">
-      <div class="mod">⭐ Reputación y mejora continua</div>
-      <div class="sin"><b>Lo de siempre:</b> esto los programas clásicos directamente no lo tocan.</div>
-      <div class="con">✦ Tras cada visita la IA se interesa por el paciente: si está bien, le pide la reseña; si no, avisa a la clínica. Y cada semana te sugiere mejoras leyendo las conversaciones. <b>Ganas:</b> más reseñas y una clínica que aprende.</div>
-    </div>
-  </div>
-</div></section>
-
-<!-- ═══════════ 2 · FUNCIONES ═══════════ -->
-<div class="sec-head" id="funciones"><div class="wrap">
-  <div class="kicker">— funciones —</div>
-  <h2>Todo lo que hace Dentia, <em>por dentro</em></h2>
-</div></div>
-
-<div class="fn-wrap">
-<nav class="subnav" aria-label="Secciones de Dentia"><div class="subnav-in">
-  <a href="#f-ficha">🦷 Ficha y odontograma</a>
-  <a href="#f-historial">📋 Historia clínica</a>
-  <a href="#f-reserva">📅 Reserva online</a>
-  <a href="#f-asistente">💬 Asistente IA</a>
-  <a href="#f-crm">🎯 Seguimiento y CRM</a>
-  <a href="#f-tareas">⚙️ Tareas automáticas</a>
-  <a href="#f-negocio">📈 Números del negocio</a>
-</div></nav>
-
-<section id="f-ficha"><div class="wrap">
-  <span class="eyebrow">El corazón del programa</span>
-  <h2>La ficha del paciente: <em>todo en una pantalla</em></h2>
-  <p class="lead">Odontograma, historia clínica, tratamientos, presupuestos, pagos y seguimientos, sin saltar entre ventanas.</p>
-  <div class="fig"><img src="dentia-img/ficha-paciente.png" alt="Ficha del paciente con odontograma e historial" loading="lazy" /></div>
-  <div class="grid2">
-    <div class="card"><h3>🦷 Odontograma por zonas</h3><p>Cada diente se dibuja con su forma anatómica y se abre con un clic, dividido en 9 zonas —oclusal, mesial, distal, vestibular, lingual y sus ángulos— para registrar exactamente en qué parte del diente se interviene.</p></div>
-    <div class="card"><h3>📋 Historia clínica automática</h3><p>Cada visita queda registrada con sus tratamientos. Se construye sola.</p></div>
-  </div>
-  <p class="lead" style="margin-top:26px">El odontograma no se queda en la vista general: la arcada completa se ve de un vistazo, y cada diente se abre y se marca zona a zona, igual que trabaja el dentista.</p>
-  <div class="odo-arcada">
-    <p class="cap">La arcada completa, <b>de un vistazo</b> — cada diente con su forma real y sus zonas en color</p>
-    <div class="fig"><img src="dentia-img/odontograma.png" alt="Odontograma con dientes anatómicos y zonas en color" loading="lazy" /></div>
-  </div>
-  <div class="odo-zoom">
-    <div class="fig"><img src="dentia-img/odontograma-diente.png" alt="Detalle de un diente dividido en 9 zonas para marcar intervenciones" loading="lazy" /></div>
-    <div>
-      <h3>Cada diente, zona a zona</h3>
-      <ul>
-        <li><span class="d">✦</span><span>Al hacer clic, el diente se abre dividido en <b>9 zonas</b>: oclusal, vestibular, lingual, mesial, distal y sus cuatro ángulos.</span></li>
-        <li><span class="d">✦</span><span>Eliges el estado —caries, obturado…— y <b>tocas solo las zonas</b> donde se interviene. Queda registrado en qué parte exacta del diente, no en el diente entero.</span></li>
-        <li><span class="d">✦</span><span>Con la <b>orientación anatómica real</b>: lo vestibular hacia el labio, lo lingual hacia la lengua, según sea un diente de arriba o de abajo.</span></li>
-      </ul>
-    </div>
-  </div>
-</div></section>
-
-<section class="soft" id="f-historial"><div class="wrap">
-  <span class="eyebrow">Agenda e historia clínica</span>
-  <h2>Lo que se apunta en la cita <em>queda en el historial</em></h2>
-  <p class="lead">El dentista apunta en las notas de la cita lo que detecta y hace, y esas notas pasan solas a la historia clínica —fechadas, con el profesional y los tratamientos de ese día—. Y si con las prisas se olvida, Dentia avisa con un 📝 recordatorio en las citas ya pasadas sin notas.</p>
-  <div class="odo-arcada">
-    <p class="cap">1 · En la cita <b>se apunta</b> — y si con las prisas falta, la agenda avisa con un 📝</p>
-    <div class="fig"><img src="dentia-img/agenda-recordatorio.png" alt="Agenda con recordatorio de añadir notas en las citas pasadas" loading="lazy" /></div>
-  </div>
-  <div class="odo-arcada" style="margin-top:34px">
-    <p class="cap">2 · En el historial <b>aparece solo</b> — fechado, con el profesional y los tratamientos de ese día</p>
-    <div class="fig"><img src="dentia-img/historial-clinico.png" alt="Historial clínico con las visitas fechadas, sus notas y los tratamientos vinculados" loading="lazy" /></div>
-  </div>
-</div></section>
-
-<section id="f-reserva"><div class="wrap">
-  <span class="eyebrow">Reserva online</span>
-  <h2>Dos formas de coger cita, <em>una misma agenda</em></h2>
-  <p class="lead">El paciente elige: cierra la cita conversando con el asistente, o toca el enlace y escoge él mismo el hueco desde el móvil, con el tipo de cita ya seleccionado. Los dos caminos trabajan sobre la misma agenda en tiempo real — y como cada cita dura lo que tiene que durar, se encajan unas detrás de otras sin huecos muertos.</p>
-  <div class="duo">
-    <div>
-      <p class="cap">1 · Por WhatsApp: <b>el asistente se lo resuelve</b>…</p>
-      <div class="phone">
-        <div class="wa-top"><div class="wa-av">🦷</div><div><div class="nm">Clínica Dental</div><div class="st">en línea</div></div></div>
-        <div class="wa-body">
-          <div class="grp"><div class="bubble b-user">Hola, quería pedir cita<span class="t">12:40</span></div></div>
-          <div class="grp"><div class="bubble b-bot">¡Hola! Claro. ¿Es para una revisión, una limpieza o tienes alguna molestia?<span class="t">12:40</span></div></div>
-          <div class="grp"><div class="bubble b-user">una revisión<span class="t">12:41</span></div></div>
-          <div class="grp"><div class="bubble b-bot">Perfecto. Esta semana tengo el miércoles a las 18:00 o el jueves a las 12:00. ¿Te reservo alguna?<span class="t">12:41</span></div><div class="bubble b-bot">Y si prefieres verlo tú, aquí tienes el calendario con la revisión ya seleccionada: <span class="lnk">tuclinica.dentia.app/reservar</span><span class="t">12:41</span></div></div>
-          <div class="grp"><div class="bubble b-user">Miro el enlace, ¡gracias!<span class="t">12:42</span></div></div>
-        </div>
-      </div>
-    </div>
-    <div>
-      <p class="cap">2 · …o por el enlace: <b>elige él mismo el hueco</b></p>
-      <div class="fig"><img src="dentia-img/reserva-movil.png" alt="Página de reserva online con el tipo de cita ya seleccionado" loading="lazy" /></div>
-    </div>
-  </div>
-</div></section>
-
-<section class="soft" id="f-asistente"><div class="wrap">
-  <span class="eyebrow">La inteligencia artificial</span>
-  <h2>Un asistente que <em>atiende, acompaña y cierra</em></h2>
-  <p class="lead">Conversa con tus pacientes por WhatsApp, conoce su historial y gestiona citas de verdad. 24 horas al día.</p>
-  <div class="grid2">
-    <div class="card"><h3>Reserva citas conversando</h3><p>Consulta huecos reales y cierra la cita, aunque sea de noche.</p></div>
-    <div class="card"><h3>Conoce al paciente</h3><p>Accede a su historial para dar respuestas personales, no genéricas.</p></div>
-    <div class="card"><h3>Acompaña presupuestos</h3><p>Resuelve dudas del que decide y cierra el presupuesto por chat.</p></div>
-    <div class="card"><h3>Cuida el post-tratamiento</h3><p>Se interesa por el paciente y avisa a la clínica si algo va mal.</p></div>
-  </div>
-  <p class="mock-lbl" style="margin-top:30px">Mensajes naturales, en varias líneas, y entiende varios mensajes seguidos antes de responder:</p>
-  <div class="phone">
-    <div class="wa-top"><div class="wa-av">🦷</div><div><div class="nm">Clínica Dental</div><div class="st">en línea</div></div></div>
-    <div class="wa-body">
-      <div class="grp"><div class="bubble b-user">Hola buenas 🙂<span class="t">10:32</span></div><div class="bubble b-user">quería preguntar una cosa del presupuesto que me distéis<span class="t">10:32</span></div></div>
-      <div class="grp"><div class="bubble b-bot">¡Hola! Claro, dime<span class="t">10:32</span></div><div class="bubble b-bot">Tu presupuesto pendiente es de 1.850€: implante del 46, corona y una revisión de control.<span class="t">10:32</span></div><div class="bubble b-bot">¿Qué querías saber?<span class="t">10:32</span></div></div>
-      <div class="grp"><div class="bubble b-user">es que el implante me da un poco de miedo 😅<span class="t">10:33</span></div></div>
-      <div class="grp"><div class="bubble b-bot">Te entiendo, es una duda muy habitual.<span class="t">10:33</span></div><div class="bubble b-bot">La intervención es con anestesia local, así que no notas dolor.<span class="t">10:33</span></div><div class="bubble b-bot">Y el postoperatorio es más llevadero de lo que la gente espera. ¿Alguna duda más?<span class="t">10:33</span></div></div>
-      <div class="grp"><div class="bubble b-user">ya, y de pagarlo…<span class="t">10:34</span></div><div class="bubble b-user">¿se puede a plazos?<span class="t">10:34</span></div></div>
-      <div class="grp"><div class="bubble b-bot">Sí, la clínica ofrece pago fraccionado.<span class="t">10:34</span></div><div class="bubble b-bot">Aviso al equipo para que te llamen hoy y te expliquen las opciones, ¿te parece?<span class="t">10:34</span></div></div>
-    </div>
-  </div>
-  <div class="note"><strong>El asistente sabe exactamente lo que tú decidas contarle.</strong> ¿Quieres que informe de opciones de pago, como en el ejemplo? Se configura. ¿Prefieres que ciertos temas (urgencias, dudas clínicas) se deriven a una llamada? También. <strong>Y su tono y forma de hablar son totalmente personalizables:</strong> más cercano o más formal, con el estilo de tu clínica. Tú marcas qué responde, qué deriva y cómo lo dice.</div>
-</div></section>
-
-<section class="rose" id="f-crm"><div class="wrap">
-  <span class="eyebrow">Seguimiento autónomo</span>
-  <h2>La IA persigue; <em>tú solo cierras</em></h2>
-  <p class="lead">El seguimiento de citas y presupuestos lo hace el asistente por su cuenta. Y en el momento exacto en que hace falta una persona, transfiere el caso a la clínica con su contexto, a una columna propia del CRM: <strong>"Requiere intervención"</strong>.</p>
-  <div class="fig"><img src="dentia-img/crm.png" alt="CRM con la columna Requiere intervención" loading="lazy" /></div>
-  <p class="lead" style="margin-top:20px">Y los presupuestos, todos controlados con su valor en juego, para que ninguno se quede en el olvido.</p>
-  <div class="fig"><img src="dentia-img/crm-presupuestos.png" alt="Seguimiento de presupuestos" loading="lazy" /></div>
-</div></section>
-
-<section class="soft" id="f-tareas"><div class="wrap">
-  <span class="eyebrow">Lo que hace solo</span>
-  <h2>Las tareas que <em>ya no hace nadie</em></h2>
-  <ul class="clean">
-    <li><span class="d">✦</span><span><b>Recuerda las citas</b> el día antes, con confirmar o cancelar por enlace.</span></li>
-    <li><span class="d">✦</span><span><b>Se interesa tras la visita</b>; si hay molestias, avisa a la clínica; si va bien, pide reseña en Google.</span></li>
-    <li><span class="d">✦</span><span><b>Persigue los presupuestos</b> sin respuesta, ayudando a decidir sin agobiar.</span></li>
-    <li><span class="d">✦</span><span><b>Recupera pacientes</b> que llevan meses sin venir.</span></li>
-    <li><span class="d">✦</span><span><b>Avisa de lo importante</b>: cobros pendientes, tratamientos a medias y caja semanal.</span></li>
-  </ul>
-</div></section>
-
-<section id="f-negocio"><div class="wrap">
-  <span class="eyebrow">La clínica aprende</span>
-  <h2>Información de negocio que <em>hoy nadie recoge</em></h2>
-  <p class="lead">La IA analiza las conversaciones (de forma anónima) y cada semana te dice las dudas repetidas, las objeciones de precio, las quejas y las ideas de mejora. Y las cuentas, sin Excel.</p>
-  <div class="fig"><img src="dentia-img/mejoras.png" alt="Mejoras sugeridas por IA" loading="lazy" /></div>
-  <div class="fig"><img src="dentia-img/contabilidad.png" alt="Panel económico" loading="lazy" /></div>
-</div></section>
-</div><!-- /fn-wrap -->
-
-<!-- ═══════════ COMPARATIVA Y TRANSICIÓN ═══════════ -->
-<section class="soft"><div class="wrap">
-  <span class="eyebrow">Comparativa</span>
-  <h2>Todo lo de siempre, <em>más lo que otros no traen</em></h2>
-  <p class="lead">Dentia tiene todo lo que esperas de un software dental — y encima nuestros añadidos con IA.</p>
-  <div class="cmp"><table>
-    <thead><tr><th>Función</th><th class="us">Dentia</th><th>Software dental tradicional</th></tr></thead>
-    <tbody>
-      <tr><td>Agenda y gestión de citas</td><td class="us">Sí</td><td class="yes">Sí</td></tr>
-      <tr><td>Ficha e historia clínica</td><td class="us">Sí</td><td class="yes">Sí</td></tr>
-      <tr><td>Odontograma por zonas del diente</td><td class="us">Sí</td><td class="yes">Sí</td></tr>
-      <tr><td>Presupuestos, pagos y facturación</td><td class="us">Sí</td><td class="yes">Sí</td></tr>
-      <tr><td>Radiografías, fotos clínicas y documentos del paciente</td><td class="us">Sí</td><td class="yes">Sí</td></tr>
-      <tr><td>Roles y permisos de equipo</td><td class="us">Sí</td><td class="yes">Sí</td></tr>
-      <tr><td>Firma digital de consentimientos</td><td class="us">Sí</td><td class="no">Solo algunos</td></tr>
-      <tr><td>100% en la nube, desde cualquier dispositivo</td><td class="us">Sí</td><td class="no">A menudo Windows</td></tr>
-      <tr><td>Reserva online sin huecos muertos</td><td class="us">Sí</td><td class="no">Franjas fijas de media hora</td></tr>
-      <tr><td>Asistente de IA por WhatsApp</td><td class="us">Sí</td><td class="no">No</td></tr>
-      <tr><td>Acompañamiento de presupuestos con IA</td><td class="us">Sí</td><td class="no">No</td></tr>
-      <tr><td>Seguimiento autónomo + aviso de intervención</td><td class="us">Sí</td><td class="no">No</td></tr>
-      <tr><td>CRM kanban de seguimiento de pacientes</td><td class="us">Sí</td><td class="no">No</td></tr>
-      <tr><td>Seguimiento de presupuestos con su valor en juego</td><td class="us">Sí</td><td class="no">Solo listados</td></tr>
-      <tr><td>Contabilidad autónoma analizada por IA</td><td class="us">Sí</td><td class="no">No</td></tr>
-      <tr><td>Análisis IA de conversaciones y mejoras sugeridas</td><td class="us">Sí</td><td class="no">No</td></tr>
-      <tr><td>Sin permanencia: pagas mes a mes</td><td class="us">Sí</td><td class="no">Varía</td></tr>
-      <tr><td>Garantía de devolución de 60 días</td><td class="us">Sí</td><td class="no">No</td></tr>
-      <tr><td>Convive con tu sistema en la transición</td><td class="us">Sí</td><td class="no">Migración brusca</td></tr>
-    </tbody>
-  </table></div>
-</div></section>
-
-<section><div class="wrap">
-  <span class="eyebrow">Convivencia y transición</span>
-  <h2>No hay que cambiarlo <em>todo de golpe</em></h2>
-  <p class="lead">Sabemos que cambiar de sistema da miedo — datos perdidos, equipo desorientado, días de caos. Dentia entra sin sobresaltos, conviviendo con lo que ya usas el tiempo que haga falta.</p>
-  <div class="grid2">
-    <div class="card"><h3>🗓️ Con tu calendario actual</h3><p>Las citas pueden reflejarse en el calendario que usáis hoy durante la adaptación.</p></div>
-    <div class="card"><h3>🧾 Con tu facturación actual</h3><p>Sigues facturando como hasta ahora mientras adoptas Dentia a tu ritmo.</p></div>
-    <div class="card"><h3>✋ Lo manual y lo automático, juntos</h3><p>El equipo gestiona a mano lo que quiera; la IA trabaja en paralelo sobre los mismos datos.</p></div>
-    <div class="card"><h3>🚶 A tu ritmo</h3><p>Se empieza por lo que más alivia y se suman funciones según el equipo gana confianza.</p></div>
-  </div>
-</div></section>
-
-<!-- ═══════════ 3 · OBJETIVOS ═══════════ -->
-<section class="soft" id="objetivos"><div class="wrap">
-  <div class="center">
-    <div class="kicker" style="font-family:var(--font-head);font-style:italic;font-size:20px;color:var(--teal)">— objetivos —</div>
-    <h2>Lo que Dentia viene a <em>cambiar</em> en tu clínica</h2>
-    <p class="lead">No instalamos software por instalar software. Cada función existe para mover un número concreto de tu clínica — y ese número se mide, con un antes y un después.</p>
-  </div>
-  <div class="obj-grid">
-    <div class="obj"><div class="ic">🪑</div><h3>Menos sillones vacíos</h3><p>Recordatorio automático el día antes con confirmación en un toque. El hueco del que cancela se detecta a tiempo, no cuando ya nadie lo puede llenar.</p><div class="kpi">Se mide en: no-shows por semana</div></div>
-    <div class="obj"><div class="ic">💶</div><h3>Más presupuestos aceptados</h3><p>Ningún presupuesto se queda en el cajón: la IA acompaña la decisión del paciente, resuelve sus dudas y avisa a la clínica en el momento de cerrar.</p><div class="kpi">Se mide en: % de presupuestos aceptados</div></div>
-    <div class="obj"><div class="ic">🔁</div><h3>Pacientes que vuelven</h3><p>El que lleva más de un año sin venir ya no se pierde en silencio: el sistema lo detecta y le invita a volver antes de que acabe en otra clínica.</p><div class="kpi">Se mide en: pacientes recuperados al mes</div></div>
-    <div class="obj"><div class="ic">📵</div><h3>Un mostrador liberado</h3><p>Reservas, confirmaciones y dudas frecuentes se atienden solas, también a las 20:30 y el sábado. Tu equipo dedica el tiempo al paciente que tiene delante — y deja de sentirse desbordado.</p><div class="kpi">Se mide en: horas de teléfono a la semana</div></div>
-    <div class="obj"><div class="ic">⭐</div><h3>Una clínica con mejor reputación</h3><p>Al paciente que sale contento se le pide la reseña en el momento justo. Tus pacientes notarán que sois más ágiles que la clínica de al lado — y Google también.</p><div class="kpi">Se mide en: reseñas nuevas en Google</div></div>
-    <div class="obj"><div class="ic">📈</div><h3>Decisiones con datos, no sensaciones</h3><p>Cada semana sabes qué preguntan tus pacientes, qué objeciones se repiten y cómo va la caja. Información que hoy nadie recoge, servida sin Excel.</p><div class="kpi">Se mide en: informe semanal de negocio</div></div>
-  </div>
-  <div class="note" style="max-width:760px;margin:36px auto 0"><strong>Por eso podemos ofrecerte los 60 días de prueba de abajo:</strong> como todo se mide desde el primer día con tus propios números, a los 60 días no hay que creerse nada — se mira el antes y el después, y decides tú.</div>
-</div></section>
-
-<!-- ═══════════ 4 · PRECIOS ═══════════ -->
-<section id="precios"><div class="wrap">
-  <div class="center">
-    <span class="eyebrow">Precios</span>
-    <h2>Un precio <em>honesto</em> y sin sorpresas</h2>
-    <p class="lead">Pagas mes a mes, sin permanencia, con una única puesta en marcha desde 249€ — y si en 60 días no te convence, te devolvemos hasta el último euro, puesta en marcha incluida.</p>
-  </div>
-
-  <!-- Garantía -->
-  <div class="final" style="margin:40px auto 0;max-width:820px;padding:46px 40px;">
-    <span class="eyebrow">Nuestra garantía</span>
-    <h2>60 días con Dentia. Si no ves resultado,<br/><em>te devolvemos hasta el último euro</em>.</h2>
-    <p>Empiezas a usarlo pagando con normalidad, mes a mes. Lo montamos nosotros, formamos a tu equipo y lo mides con tus propios números. Si a los 60 días no ves la agenda más llena y menos trabajo en el mostrador, te devolvemos todo lo que hayas pagado —incluida la puesta en marcha—. El riesgo lo ponemos nosotros.</p>
-    <a class="btn" href="https://wa.me/34675148566?text=Hola%2C%20quiero%20probar%20Dentia%20con%20la%20garant%C3%ADa%20de%2060%20d%C3%ADas" target="_blank" rel="noopener">Quiero probar Dentia con garantía →</a>
-  </div>
-
-  <div class="plans">
-    <div class="plan">
-      <div class="pl">Esencial</div><div class="pn">Gestiona tu clínica</div>
-      <div class="pd">Todo tu software dental en la nube: gestión completa, facturación y reserva online.</div>
-      <div class="price">59€<span>/mes</span></div>
-      <div class="setup"><b>249€</b> de puesta en marcha · sin permanencia</div>
-      <ul><li>Agenda, ficha, odontograma e historia clínica</li><li>Presupuestos, pagos y facturación en un clic</li><li>Reserva online 24/7 + recordatorios con confirmación</li><li>Hasta 2 profesionales · 25 GB de almacenamiento</li><li>Soporte en 48h laborables</li></ul>
-      <a class="btn ghost" href="https://wa.me/34675148566" target="_blank" rel="noopener">Empezar con Esencial</a>
-    </div>
-    <div class="plan featured">
-      <div class="plan-badge">★ El más elegido</div>
-      <div class="pl">Profesional</div><div class="pn">La IA trabaja con tus pacientes</div>
-      <div class="pd">Todo Dentia más el asistente que atiende por WhatsApp, cierra presupuestos y no deja escapar a nadie.</div>
-      <div class="price">99€<span>/mes</span></div>
-      <div class="setup"><b>299€</b> de puesta en marcha · sin permanencia</div>
-      <ul><li>Todo lo del plan Esencial</li><li class="hi">Asistente de IA por WhatsApp con historial del paciente</li><li class="hi">Acompañamiento y cierre de presupuestos por chat</li><li>Seguimiento autónomo + post-visita + reseñas Google</li><li class="hi">Mejoras sugeridas: la IA analiza las conversaciones y te dice qué mejorar</li><li>Hasta 4 profesionales · 100 GB · soporte en 24h</li></ul>
-      <a class="btn" href="https://wa.me/34675148566" target="_blank" rel="noopener">Quiero el Profesional</a>
-    </div>
-    <div class="plan">
-      <div class="pl">Clínica</div><div class="pn">Dirige el negocio con datos</div>
-      <div class="pd">Para clínicas con varios sillones que quieren la foto completa del negocio, no solo la agenda.</div>
-      <div class="price">149€<span>/mes</span></div>
-      <div class="setup"><b>399€</b> de puesta en marcha · sin permanencia</div>
-      <ul><li>Todo lo del plan Profesional</li><li class="hi">Contabilidad autónoma analizada por IA</li><li class="hi">Firma digital de consentimientos</li><li>Profesionales ilimitados</li><li>500 GB de almacenamiento</li><li>Soporte prioritario (&lt;4h)</li></ul>
-      <a class="btn ghost" href="https://wa.me/34675148566" target="_blank" rel="noopener">Hablar del plan Clínica</a>
-    </div>
-  </div>
-  <p class="center" style="margin-top:28px;font-size:13.5px;color:var(--ink-4)">Precios sin IVA. ¿No sabes cuál encaja con tu clínica? Escríbenos y te lo decimos en 5 minutos.</p>
-
-  <div class="medida">
-    <div class="em">🛠️</div>
-    <div class="tx">
-      <h3>¿Te falta algo? ¿Te sobra algo?</h3>
-      <p>Estos planes son nuestro software <strong>prediseñado</strong>, listo para entregar. Pero no es una caja cerrada: podemos <strong>añadir las funciones</strong> que tu clínica necesite o <strong>quitar las que no uses</strong>, y montarte un Dentia a tu medida. Cuéntanos cómo trabajáis.</p>
-    </div>
-    <a class="btn" href="https://wa.me/34675148566?text=Hola%2C%20quiero%20un%20Dentia%20a%20medida%20para%20mi%20cl%C3%ADnica" target="_blank" rel="noopener">Pedir algo a medida →</a>
-  </div>
-</div></section>
-
-<section class="soft"><div class="wrap narrow">
-  <div class="center"><span class="eyebrow">Dudas frecuentes</span><h2>Lo que suelen preguntarnos</h2></div>
-  <div style="margin-top:36px">
-    <details><summary>¿Tengo que instalar algo o cambiar de ordenador?</summary><p>No. Dentia funciona 100% en la nube: abres el navegador desde cualquier dispositivo y ya está.</p></details>
-    <details><summary>¿Y mis datos actuales? ¿Pierdo el historial?</summary><p>No. La puesta en marcha incluye la migración de tus datos, y puedes exportarlos cuando quieras.</p></details>
-    <details><summary>¿Hay permanencia? ¿Qué se paga al empezar?</summary><p>Permanencia, ninguna: pagas mes a mes y lo dejas cuando quieras. Al empezar se paga una única puesta en marcha (instalación, migración de tus datos y formación del equipo incluidas), con el precio que ves en cada plan — y también está cubierta por la garantía de devolución de 60 días.</p></details>
-    <details><summary>¿Cómo funciona exactamente la garantía de devolución?</summary><p>Desde que Dentia está funcionando en tu clínica, cuentan 60 días. Si al acabar no ves la agenda más llena y menos trabajo en el mostrador, nos lo dices por WhatsApp — sin justificar nada con números ni informes — y te devolvemos todo lo pagado en esos 60 días —incluida la puesta en marcha—, en un máximo de 7 días laborables. Solo pedimos que la hayáis tenido activa y en uso durante ese tiempo.</p></details>
-    <details><summary>¿Puedo seguir usando mi calendario y mi facturación mientras me adapto?</summary><p>Sí. Dentia convive con tu sistema actual durante la transición; adoptas cada función a tu ritmo.</p></details>
-    <details><summary>¿El asistente de IA sustituye a mi recepción?</summary><p>No: le quita el trabajo repetitivo (reservas y dudas fuera de horario, seguimiento de presupuestos) para que tu equipo dedique el tiempo a los pacientes que están en la clínica.</p></details>
-    <details><summary>¿Qué sabe decir el asistente?</summary><p>Exactamente lo que tú decidas. Le das la información que quieras que maneje (horarios, tratamientos, pagos…) y marcas qué temas debe derivar a una llamada con la clínica.</p></details>
-    <details><summary>¿En qué es Dentia peor que el software de siempre?</summary><p>Somos más nuevos: no llevamos 20 años en el mercado como los programas clásicos. Pero precisamente por eso Dentia está construido para la nube y el WhatsApp de hoy, no para el Windows de 2005 — y por eso no te pedimos fe: te pedimos 60 días y tus propios números.</p></details>
-  </div>
-</div></section>
-
-<section style="padding-top:20px">
-  <div class="final">
-    <h2>¿Vemos Dentia funcionando <em>con los datos de tu clínica</em>?</h2>
-    <p>Una demo real, sin PowerPoint: la agenda, el odontograma, una cita reservada por el asistente delante de ti. 20 minutos, y te decimos con honestidad si Dentia encaja con cómo trabajáis.</p>
-    <a class="btn" href="https://wa.me/34675148566" target="_blank" rel="noopener">Pedir mi demo gratis por WhatsApp →</a>
   </div>
 </section>
 
-<footer><div class="wrap">
-  Dentia es un producto de <a href="/">Marirrodriga IA</a> · Automatización con IA para negocios que quieren crecer sin trabajar el doble.<br>
-  <a href="https://wa.me/34675148566" target="_blank" rel="noopener">WhatsApp 675 148 566</a> · <a href="mailto:marirrodriga.ia@gmail.com">marirrodriga.ia@gmail.com</a>
-</div></footer>
+<section class="seccion seccion-cream" id="lo-que-hace">
+  <div class="envoltura">
+    <div class="envoltura-txt centrado" style="padding:0">
+      <span class="t-eyebrow">Lo que hace</span>
+      <h2 class="t-h2" style="margin:14px 0 16px">Esto no es una maqueta.<br><span class="acento">Es el programa funcionando.</span></h2>
+      <p class="t-lead">Las capturas de abajo son de la aplicación de verdad, la que usan los clientes que ya lo tienen montado.</p>
+    </div>
+    <div class="vistas">
+      <article class="vista aparece">
+        <div class="vista-texto">
+          <span class="t-eyebrow">La agenda</span>
+          <h3>Se reserva sola, y sin que nadie se registre</h3>
+          <p>El paciente entra desde tu web, ve tus huecos <strong>reales</strong> y cierra la cita sin crear cuenta ni descargar nada. La víspera le llega el recordatorio y puede confirmar o mover con un toque.</p>
+          <div class="vista-lista"><span>Reserva pública sin login</span><span>Recordatorio por WhatsApp o Telegram</span><span>El hueco liberado vuelve a estar disponible</span></div>
+        </div>
+        <div class="vista-img"><img src="/dentia-img/agenda-recordatorio.png" alt="Se reserva sola, y sin que nadie se registre" loading="lazy"></div>
+      </article>
+      <article class="vista aparece">
+        <div class="vista-texto">
+          <span class="t-eyebrow">La ficha</span>
+          <h3>Toda la historia del paciente en una pantalla</h3>
+          <p>Lo que se le hizo, cuándo, con qué, y las fotos. Sin abrir tres programas ni buscar en una carpeta que se llama «pacientes 2023 definitivo».</p>
+          <div class="vista-lista"><span>Historia clínica con evolución</span><span>Fotos y documentos por paciente</span><span>Consentimientos firmados digitalmente</span></div>
+        </div>
+        <div class="vista-img"><img src="/dentia-img/historial-clinico.png" alt="Toda la historia del paciente en una pantalla" loading="lazy"></div>
+      </article>
+      <article class="vista aparece">
+        <div class="vista-texto">
+          <span class="t-eyebrow">El odontograma</span>
+          <h3>Notación FDI, y clicando en el diente</h3>
+          <p>Caries, obturado, extracción, corona, implante, endodoncia, puente. Marcas la zona del diente y queda registrado en la historia, no en un papel que se pierde.</p>
+          <div class="vista-lista"><span>Notación FDI estándar</span><span>Por zonas del diente, no por diente entero</span><span>Enlazado a la historia clínica</span></div>
+        </div>
+        <div class="vista-img"><img src="/dentia-img/odontograma.png" alt="Notación FDI, y clicando en el diente" loading="lazy"></div>
+      </article>
+      <article class="vista aparece">
+        <div class="vista-texto">
+          <span class="t-eyebrow">Los presupuestos</span>
+          <h3>Y alguien que pregunta si quedó alguna duda</h3>
+          <p>Los haces desde la ficha y se quedan en seguimiento. El asistente escribe a los días para saber si el paciente lo está pensando o ya lo ha descartado — y te dice cuál es cuál.</p>
+          <div class="vista-lista"><span>Presupuesto desde la ficha del paciente</span><span>Seguimiento automático a los días</span><span>Te reporta quién se ha caído y por qué</span></div>
+        </div>
+        <div class="vista-img"><img src="/dentia-img/crm-presupuestos.png" alt="Y alguien que pregunta si quedó alguna duda" loading="lazy"></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="seccion" id="precio">
+  <div class="envoltura">
+    <div class="envoltura-txt centrado" style="padding:0">
+      <span class="t-eyebrow">El precio</span>
+      <h2 class="t-h2" style="margin:14px 0 16px">Cuatro puntos de partida.<br><span class="acento">Se sube cuando hace falta.</span></h2>
+      <p class="t-lead">No son planes cerrados: son las combinaciones que montamos más a menudo. Puedes quitar o añadir piezas, y el precio se recalcula con la misma cuenta.</p>
+    </div>
+
+    <div class="tramos aparece">
+      <article class="tramo">
+        
+        <h3>Lo mínimo</h3>
+        <p class="tramo-gancho">Para dejar de llevar la agenda en papel.</p>
+        <div class="tramo-precio"><b>73,00 €<span>/mes</span></b></div>
+        <div class="tramo-alta">+ 300 € de montaje, una sola vez</div>
+        <div class="tramo-bonif">2 piezas</div>
+        <div class="tramo-incluye"><span>Agenda con reserva online y recordatorios</span><span>Ficha de paciente con su historia clínica</span></div>
+        <a class="btn btn-2" href="https://cal.com/marirrodriga-ia/llamada" target="_blank" rel="noopener">Verlo en 30 min</a>
+      </article>
+      <article class="tramo tramo-destacado">
+        <span class="tramo-etiq">El más montado</span>
+        <h3>La clínica que empieza</h3>
+        <p class="tramo-gancho">La que montamos casi siempre.</p>
+        <div class="tramo-precio"><b>132,30 €<span>/mes</span></b></div>
+        <div class="tramo-alta">+ 300 € de montaje, una sola vez</div>
+        <div class="tramo-bonif">5 piezas juntas · −10 % ya aplicado</div>
+        <div class="tramo-incluye"><span>Todo lo anterior</span><span>Odontograma</span><span>Presupuestos</span><span>Facturación</span></div>
+        <a class="btn btn-1" href="https://cal.com/marirrodriga-ia/llamada" target="_blank" rel="noopener">Verlo en 30 min</a>
+      </article>
+      <article class="tramo">
+        
+        <h3>Con asistente de pacientes</h3>
+        <p class="tramo-gancho">Cuando el teléfono no para.</p>
+        <div class="tramo-precio"><b>175,10 €<span>/mes</span></b></div>
+        <div class="tramo-alta">+ 450 € de montaje, una sola vez</div>
+        <div class="tramo-bonif">8 piezas juntas · −18,9 % ya aplicado</div>
+        <div class="tramo-incluye"><span>Todo lo anterior</span><span>Asistente de pacientes por WhatsApp</span><span>Seguimiento de presupuestos</span><span>Peticiones de reseña</span></div>
+        <a class="btn btn-2" href="https://cal.com/marirrodriga-ia/llamada" target="_blank" rel="noopener">Verlo en 30 min</a>
+      </article>
+      <article class="tramo">
+        
+        <h3>La clínica entera</h3>
+        <p class="tramo-gancho">Sin nada fuera.</p>
+        <div class="tramo-precio"><b>232,00 €<span>/mes</span></b></div>
+        <div class="tramo-alta">+ 450 € de montaje, una sola vez</div>
+        <div class="tramo-bonif">11 piezas juntas · −20 % ya aplicado</div>
+        <div class="tramo-incluye"><span>Todo lo anterior</span><span>Contabilidad asistida</span><span>Firma digital de consentimientos</span><span>Análisis de conversaciones</span></div>
+        <a class="btn btn-2" href="https://cal.com/marirrodriga-ia/llamada" target="_blank" rel="noopener">Verlo en 30 min</a>
+      </article>
+    </div>
+
+    <p class="tramos-pie">
+      Todos los precios <strong>sin IVA</strong>. El montaje se paga <strong>50 % al empezar y 50 % al entregar</strong>,
+      e incluye pasar lo que ya tengas. La cuota lleva dentro los ajustes y una reunión al mes.
+      <strong>Sin permanencia:</strong> te vas cuando quieras avisando con 30 días.
+      Cuantas más piezas juntas, menos cuesta cada una — la bonificación ya va aplicada en las cifras de arriba.
+    </p>
+  </div>
+</section>
+
+<section class="seccion seccion-cream" id="preguntas">
+  <div class="envoltura-txt">
+    <span class="t-eyebrow">Preguntas</span>
+    <h2 class="t-h2" style="margin:14px 0 0">Lo que nos preguntan<br><span class="acento">antes de decir que sí.</span></h2>
+    <div class="faq">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">¿Tengo que migrar todo lo que ya tengo?
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="faq-a"><div><p>No de golpe. Se empieza por la agenda y la ficha, que es lo que más duele, y lo demás se va metiendo cuando haga falta. Lo que ya tengas en otro programa lo pasamos nosotros en el montaje.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">¿Los datos de salud dónde están?
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="faq-a"><div><p>En servidores de la Unión Europea, cifrados, con copia diaria. Firmamos el acuerdo de encargado de tratamiento que exige el artículo 28 del RGPD antes de tocar un solo dato.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">¿El asistente da consejo médico?
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="faq-a"><div><p>Nunca. Coge citas, resuelve dudas de horario y precio y hace seguimiento. Cualquier cosa clínica la deriva a la clínica, y se identifica siempre como IA, que lo exige el artículo 50 del Reglamento Europeo de IA.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">¿Y si somos más de dos profesionales?
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="faq-a"><div><p>El tramo de entrada cubre dos. A partir de ahí se amplía, y te decimos el precio antes de montarlo — nunca aparece en una factura sin que lo hayas aprobado.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">¿Hay permanencia?
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="faq-a"><div><p>No. Te vas cuando quieras avisando con 30 días, y tus datos se los llevas exportados. El montaje se paga 50 % al empezar y 50 % al entregar.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cierre">
+  <div class="envoltura-txt">
+    <h2 class="t-h2">Media hora, y te decimos<br>si esto te encaja.</h2>
+    <p>O que no te encaja. Si con lo que ya tienes te apañas, te lo decimos en la llamada y nos ahorramos los dos el tiempo.</p>
+    <div class="hero-botones">
+      <a class="btn btn-2" href="https://cal.com/marirrodriga-ia/llamada" target="_blank" rel="noopener">Reservar la asesoría gratuita</a>
+      <a class="btn btn-3" style="color:rgba(255,255,255,.6)" href="/">Ver todo lo que montamos →</a>
+    </div>
+  </div>
+</section>
+
+<footer class="pie">
+  <div class="envoltura">
+    <div class="pie-fila">
+      <div>
+        <div class="pie-marca"><img src="/assets/img/logo.png" alt="" width="256" height="256"> Marirrodriga.IA</div>
+        <p style="margin-top:12px;max-width:280px;font-size:13.5px">Software con IA montado por piezas, con su precio y su límite públicos.</p>
+      </div>
+      <div class="pie-cols">
+        <div class="pie-col">
+          <h4>Soluciones</h4>
+          <a href="/dentia">Dentia · clínicas dentales</a>
+          <a href="/bookia">Bookia · negocios de citas</a>
+          <a href="/atencion-al-cliente">Atención al Cliente</a>
+        </div>
+        <div class="pie-col">
+          <h4>Contacto</h4>
+          <a href="https://cal.com/marirrodriga-ia/llamada" target="_blank" rel="noopener">Asesoría gratuita</a>
+          <a href="mailto:marirrodriga.ia@gmail.com">marirrodriga.ia@gmail.com</a>
+          <a href="https://wa.me/34675148566" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+        <div class="pie-col">
+          <h4>Legal</h4>
+          <a href="/aviso-legal">Aviso legal</a>
+          <a href="/privacidad">Privacidad</a>
+        </div>
+      </div>
+    </div>
+    <div class="pie-legal"><span>© 2026 Marirrodriga IA</span><span>Todos los precios sin IVA</span></div>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/34675148566" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.1s-.8 1-.9 1.2c-.2.2-.3.2-.6.1a8 8 0 01-4-3.5c-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5L9.3 7c-.2-.5-.4-.5-.6-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 1.9.8 2.7.9 3.6.8.6-.1 1.8-.7 2-1.5.3-.7.3-1.3.2-1.4-.1-.2-.3-.3-.6-.4z"/><path d="M12 2a10 10 0 00-8.5 15.2L2 22l4.9-1.4A10 10 0 1012 2zm0 18.2c-1.6 0-3.2-.4-4.5-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2z"/></svg>
+</a>
 
 <script>
-(function(){
-  var links = Array.prototype.slice.call(document.querySelectorAll('.subnav a'));
-  if (!links.length) return;
-  var map = links.map(function(a){
-    return [document.querySelector(a.getAttribute('href')), a];
-  }).filter(function(p){ return p[0]; });
-  function spy(){
-    var current = null;
-    map.forEach(function(p){
-      if (p[0].getBoundingClientRect().top <= 150) current = p[1];
+  document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('click', function (e) {
+      var q = e.target.closest('.faq-q'); if (!q) return;
+      var abierto = q.getAttribute('aria-expanded') === 'true';
+      q.setAttribute('aria-expanded', String(!abierto));
+      q.nextElementSibling.classList.toggle('abierta', !abierto);
     });
-    links.forEach(function(a){ a.classList.toggle('active', a === current); });
-  }
-  document.addEventListener('scroll', spy, {passive:true});
-  spy();
-  // Las imágenes lazy que cargan durante el desplazamiento mueven el objetivo:
-  // re-apuntamos al destino un par de veces hasta que el layout se estabiliza.
-  var t1, t2;
-  links.forEach(function(a){
-    a.addEventListener('click', function(ev){
-      var target = document.querySelector(a.getAttribute('href'));
-      if (!target) return;
-      ev.preventDefault();
-      history.replaceState(null, '', a.getAttribute('href'));
-      var go = function(){ target.scrollIntoView({behavior:'smooth', block:'start'}); };
-      go();
-      clearTimeout(t1); clearTimeout(t2);
-      t1 = setTimeout(go, 700);
-      t2 = setTimeout(go, 1500);
-    });
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add('dentro'); io.unobserve(x.target); } });
+    }, { threshold: .1, rootMargin: '0px 0px -6% 0px' });
+    document.querySelectorAll('.aparece').forEach(function (el) { io.observe(el); });
+    var nav = document.querySelector('.nav');
+    if (nav) {
+      var marca = function () { nav.classList.toggle('pegada', window.scrollY > 24); };
+      marca(); addEventListener('scroll', marca, { passive: true });
+    }
   });
-})();
 </script>
-
+<script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>

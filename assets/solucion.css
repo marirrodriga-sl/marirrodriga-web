@@ -1,0 +1,182 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   PÁGINAS DE SOLUCIÓN — Dentia y Bookia (y sus seis sectores)
+   ───────────────────────────────────────────────────────────────────────────
+   Depende de base.css. Reutiliza el tratamiento ya validado del hero de la
+   global: foto oscura a sangre, texto blanco, bloque a la izquierda.
+
+   La diferencia con las landings de departamento: aquí NO hay configurador.
+   Estas páginas venden una solución preset por tramos, y su fuerza son las
+   capturas reales del producto, que valen más que cualquier ilustración.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─── HERO ───────────────────────────────────────────────────────────────── */
+.hero-s {
+  position: relative; min-height: 92vh;
+  display: grid; justify-items: start; align-content: center;
+  padding: 150px 0 92px; overflow: hidden; isolation: isolate;
+}
+.hero-s-fondo {
+  position: absolute; inset: 0; z-index: -2;
+  background:
+    linear-gradient(100deg,
+      rgba(10,8,16,.72) 0%, rgba(10,8,16,.56) 28%, rgba(10,8,16,.26) 52%,
+      rgba(10,8,16,.05) 70%, rgba(10,8,16,0) 84%),
+    linear-gradient(180deg,
+      rgba(10,8,16,.46) 0%, rgba(10,8,16,.10) 30%,
+      rgba(10,8,16,.24) 68%, rgba(255,255,255,.84) 95%, #ffffff 100%),
+    var(--hero) center / cover no-repeat,
+    #14111c;
+}
+.hero-s-centro {
+  position: relative; z-index: 2;
+  max-width: 720px; margin-right: auto;
+  padding: 0 28px 0 clamp(32px, 8.5vw, 124px);
+}
+.hero-s h1 {
+  font-size: clamp(38px, 4.0vw, 55px); color: #fff;
+  text-shadow: 0 2px 30px rgba(10,8,16,.62), 0 1px 3px rgba(10,8,16,.35);
+  margin-bottom: 18px;
+}
+.hero-s .acento { color: #c9b6ff; }
+.hero-s .t-lead {
+  max-width: 540px; margin: 0 auto 30px 0; font-size: 17px;
+  color: rgba(255,255,255,.88); text-shadow: 0 1px 14px rgba(10,8,16,.55);
+}
+.hero-s .hero-botones { justify-content: flex-start; }
+.hero-s .t-micro { color: rgba(255,255,255,.62); margin-top: 16px; }
+.hero-s .btn-2 { background: rgba(255,255,255,.94); color: var(--ink); box-shadow: none; }
+.hero-s .btn-2:hover { background: #fff; }
+
+.hero-s-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 7px 16px 7px 12px; margin-bottom: 20px;
+  background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.26);
+  border-radius: var(--r-pill);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  font-size: 12.5px; font-weight: 600; color: rgba(255,255,255,.92); letter-spacing: -.01em;
+}
+.hero-s-pill i { width: 6px; height: 6px; border-radius: 50%; background: #c9b6ff; flex: none; }
+
+@media (max-width: 900px) {
+  .hero-s { justify-items: center; text-align: center; min-height: 0; padding: 128px 0 72px; }
+  .hero-s-centro { padding-inline: 28px; margin: 0 auto; }
+  .hero-s .t-lead { margin-inline: auto; }
+  .hero-s .hero-botones { justify-content: center; }
+}
+
+/* ─── EL PROBLEMA ────────────────────────────────────────────────────────── */
+.dolores {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+  background: var(--line); border: 1px solid var(--line);
+  border-radius: var(--r-panel); overflow: hidden; margin-top: 52px;
+}
+.dolor { background: var(--white); padding: 36px 32px; }
+.dolor h3 {
+  font-family: var(--font-head); font-size: 24px; font-weight: 600;
+  line-height: 1.2; letter-spacing: -.015em; margin-bottom: 10px;
+}
+.dolor p { font-size: 15px; line-height: 1.7; color: var(--ink-2); }
+@media (max-width: 820px) { .dolores { grid-template-columns: 1fr; } }
+
+/* ─── LAS CAPTURAS ───────────────────────────────────────────────────────
+   Son de la aplicación de verdad, no maquetas. Por eso van grandes y con
+   marco de ventana: se leen como prueba, no como ilustración. */
+.vistas { display: flex; flex-direction: column; gap: 68px; margin-top: 56px; }
+.vista { display: grid; grid-template-columns: 1fr 1.35fr; gap: 44px; align-items: center; }
+.vista:nth-child(even) .vista-texto { order: 2; }
+.vista-texto h3 {
+  font-family: var(--font-head); font-size: clamp(26px, 2.6vw, 34px); font-weight: 600;
+  letter-spacing: -.02em; line-height: 1.15; margin: 10px 0 14px;
+}
+.vista-texto p { font-size: 16px; line-height: 1.75; color: var(--ink-2); }
+.vista-texto p strong { color: var(--ink); font-weight: 650; }
+.vista-lista { margin-top: 16px; display: flex; flex-direction: column; gap: 8px; }
+.vista-lista span { font-size: 14.5px; color: var(--ink-2); padding-left: 18px; position: relative; }
+.vista-lista span::before {
+  content: ''; position: absolute; left: 0; top: 9px;
+  width: 6px; height: 6px; border-radius: 50%; background: var(--purple);
+}
+.vista-img {
+  border-radius: var(--r-card); overflow: hidden;
+  border: 1px solid var(--line); background: var(--white);
+  box-shadow: var(--sh-3);
+}
+.vista-img img { width: 100%; height: auto; display: block; }
+@media (max-width: 900px) {
+  .vista { grid-template-columns: 1fr; gap: 26px; }
+  .vista:nth-child(even) .vista-texto { order: 0; }
+}
+
+/* ─── LOS TRAMOS DE PRECIO ───────────────────────────────────────────────
+   Las cifras las calcula scripts/soluciones.cjs con el mismo motor que el
+   resto de la web. No se escribe ni una a mano. */
+.tramos {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 52px;
+}
+.tramo {
+  display: flex; flex-direction: column;
+  background: var(--white); border: 1px solid var(--line);
+  border-radius: var(--r-panel); padding: 30px 26px 26px;
+  transition: transform .2s cubic-bezier(.2,.8,.3,1), box-shadow .2s, border-color .2s;
+}
+.tramo:hover { transform: translateY(-2px); box-shadow: var(--sh-2); }
+.tramo-destacado { border-color: rgba(124,58,237,.34); box-shadow: var(--sh-2); position: relative; }
+.tramo-etiq {
+  position: absolute; top: -11px; left: 26px;
+  font-size: 10px; font-weight: 700; letter-spacing: .11em; text-transform: uppercase;
+  color: #fff; background: var(--purple); padding: 5px 11px; border-radius: var(--r-pill);
+}
+.tramo h3 {
+  font-family: var(--font-head); font-size: 23px; font-weight: 600;
+  letter-spacing: -.018em; line-height: 1.2;
+}
+.tramo-gancho { font-size: 13.5px; color: var(--ink-3); margin-top: 5px; }
+.tramo-precio { margin: 18px 0 4px; }
+.tramo-precio b {
+  font-size: 31px; font-weight: 700; color: var(--purple); letter-spacing: -.03em;
+}
+.tramo-precio b span { font-size: 15px; font-weight: 600; color: var(--ink-3); }
+.tramo-alta { font-size: 12.5px; color: var(--ink-3); }
+.tramo-bonif { margin-top: 8px; font-size: 12px; font-weight: 650; color: var(--purple); }
+.tramo-incluye {
+  margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line-soft);
+  display: flex; flex-direction: column; gap: 7px; flex: 1;
+}
+.tramo-incluye span { font-size: 13.5px; line-height: 1.5; color: var(--ink-2); padding-left: 16px; position: relative; }
+.tramo-incluye span::before {
+  content: ''; position: absolute; left: 0; top: 8px;
+  width: 5px; height: 5px; border-radius: 50%; background: var(--purple-pale, #c4b5fd);
+}
+.tramo .btn { margin-top: 20px; width: 100%; }
+
+@media (max-width: 1060px) { .tramos { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px)  { .tramos { grid-template-columns: 1fr; } }
+
+.tramos-pie {
+  margin: 28px auto 0; max-width: 760px; text-align: center;
+  font-size: 14px; line-height: 1.7; color: var(--ink-3);
+}
+.tramos-pie strong { color: var(--ink-2); font-weight: 650; }
+
+/* ─── NAV SOBRE EL HERO OSCURO ───────────────────────────────────────────
+   Igual que en la global: con la pastilla blanca fija parecía una barra
+   pegada encima de la foto. Se vuelve sólida al bajar.
+   ──────────────────────────────────────────────────────────────────────── */
+body:has(.hero-s) .nav {
+  background: transparent; border-color: transparent; box-shadow: none;
+  -webkit-backdrop-filter: none; backdrop-filter: none;
+}
+body:has(.hero-s) .nav .nav-logo   { color: #fff; }
+body:has(.hero-s) .nav .nav-logo b { color: #c9b6ff; }
+body:has(.hero-s) .nav .nav-link   { color: rgba(255,255,255,.76); }
+body:has(.hero-s) .nav .nav-link:hover { color: #fff; }
+
+body:has(.hero-s) .nav.pegada {
+  background: rgba(255,255,255,.9); border-color: rgba(255,255,255,.7);
+  box-shadow: var(--sh-2);
+  -webkit-backdrop-filter: blur(16px) saturate(1.6); backdrop-filter: blur(16px) saturate(1.6);
+}
+body:has(.hero-s) .nav.pegada .nav-logo   { color: var(--ink); }
+body:has(.hero-s) .nav.pegada .nav-logo b { color: var(--purple); }
+body:has(.hero-s) .nav.pegada .nav-link   { color: var(--ink-2); }
+body:has(.hero-s) .nav.pegada .nav-link:hover { color: var(--purple); }

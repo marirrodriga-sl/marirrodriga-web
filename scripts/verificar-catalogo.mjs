@@ -123,6 +123,23 @@ for (let i = 1; i <= todos.length; i++) {
 }
 check(altaMonotona, 'añadir una herramienta nunca abarata el montaje');
 
+// ── 5. Los tramos de las páginas de solución ──────────────────────────────
+// Dentia y Bookia publican cuatro tramos cada una. Las cifras salen de
+// soluciones.cjs, pero si alguien mueve un precio en Supabase estas páginas
+// quedan mintiendo sin que nada avise. Aquí se fija lo que deben decir.
+const SOL = require('./soluciones.cjs');
+const TRAMOS = {
+  DENTIA: [[73, 300], [132.30, 300], [175.10, 450], [232, 450]],
+  BOOKIA: [[64, 250], [79, 250], [98.10, 250], [185.60, 350]],
+};
+for (const [nombre, esperados] of Object.entries(TRAMOS)) {
+  const reales = SOL[nombre].map(t => [t.cuota, t.alta]);
+  const igual = JSON.stringify(reales) === JSON.stringify(esperados);
+  check(igual, `tramos publicados de ${nombre}`,
+        reales.map(([c, a]) => `${c}€+${a}`).join(' · '));
+}
+
+
 // Ninguna pieza que salga a la web debería enseñar 0 € de alta sin quererlo.
 // Del 16 al 19-08 esta comprobación FALLABA a propósito, para que no se publicaran las
 // cuatro piezas sin precio de instalación. Ya tienen precio, así que ahora debe pasar:
