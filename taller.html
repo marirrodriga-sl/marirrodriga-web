@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- ==========================================================================
+     TALLER — NO ES UNA PÁGINA PUBLICADA. NO ENLAZAR DESDE NINGÚN SITIO.
+
+     Es el one-pager de cinco departamentos del 16-08. Se retiró el 19-08 al
+     cambiar la estrategia a una landing por departamento, pero se conserva
+     entero porque contiene los textos, los esquemas SVG y los configuradores
+     de Ventas, Finanzas, Datos y Marketing: es la materia prima de las cuatro
+     landings que quedan por hacer.
+
+     Atención al Cliente ya salió de aquí: vive en atencion-al-cliente.html.
+     ========================================================================== -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Taller — materia prima de las landings por departamento (no publicar)</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Software a medida montado por piezas, con su precio y su límite públicos. Empiezas por una cosa, y solo creces cuando lo anterior se haya pagado solo.">
+  <meta name="theme-color" content="#7C3AED">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Marirrodriga IA">
+  <meta property="og:title" content="Marirrodriga IA — Tu negocio, funcionando sin ti">
+  <meta property="og:description" content="Software a medida montado por piezas, con su precio y su límite públicos. Empiezas por una cosa, y solo creces cuando lo anterior se haya pagado solo.">
+  <meta property="og:url" content="https://www.marirrodriga-ia.com/">
+  <meta property="og:image" content="https://www.marirrodriga-ia.com/og-image.png">
+  <meta property="og:locale" content="es_ES">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Marirrodriga IA — Tu negocio, funcionando sin ti">
+  <meta name="twitter:description" content="Software a medida montado por piezas, con su precio y su límite públicos. Empiezas por una cosa, y solo creces cuando lo anterior se haya pagado solo.">
+  <meta name="twitter:image" content="https://www.marirrodriga-ia.com/og-image.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Marirrodriga IA",
+    "url": "https://www.marirrodriga-ia.com/",
+    "logo": "https://www.marirrodriga-ia.com/apple-touch-icon.png",
+    "description": "Software a medida montado por piezas, con su precio y su límite públicos. Empiezas por una cosa, y solo creces cuando lo anterior se haya pagado solo.",
+    "areaServed": "ES",
+    "sameAs": [],
+    "contactPoint": { "@type": "ContactPoint", "telephone": "+34675148566", "contactType": "customer service", "areaServed": "ES" }
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════ NAV ═══════════════ -->
+  <nav class="nav">
+    <div class="nav-logo">
+      <svg viewBox="0 0 64 64">
+        <circle cx="32" cy="32" r="28" fill="none" stroke="#7c6eec" stroke-width="1" opacity="0.35"/>
+        <circle cx="32" cy="32" r="18" fill="none" stroke="#7c6eec" stroke-width="1" opacity="0.5"/>
+        <circle cx="32" cy="32" r="9"  fill="none" stroke="#7c6eec" stroke-width="1.5"/>
+        <line x1="32" y1="32" x2="32" y2="25" stroke="#7c6eec" stroke-width="1.8" stroke-linecap="round"/>
+        <line x1="32" y1="32" x2="37" y2="35" stroke="#7c6eec" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="32" cy="32" r="1.5" fill="#7c6eec"/>
+        <line x1="32" y1="4"  x2="32" y2="14" stroke="#7c6eec" stroke-width="0.8" opacity="0.3"/>
+        <line x1="32" y1="50" x2="32" y2="60" stroke="#7c6eec" stroke-width="0.8" opacity="0.3"/>
+        <line x1="4"  y1="32" x2="14" y2="32" stroke="#7c6eec" stroke-width="0.8" opacity="0.3"/>
+        <line x1="50" y1="32" x2="60" y2="32" stroke="#7c6eec" stroke-width="0.8" opacity="0.3"/>
+        <circle cx="32" cy="4"  r="3.5" fill="#7c6eec" opacity="0.8"/>
+        <circle cx="56" cy="20" r="2.5" fill="#7c6eec" opacity="0.6"/>
+        <circle cx="56" cy="44" r="2"   fill="#7c6eec" opacity="0.5"/>
+        <circle cx="8"  cy="44" r="2.5" fill="#7c6eec" opacity="0.6"/>
+        <circle cx="14" cy="16" r="2"   fill="#7c6eec" opacity="0.5"/>
+        <path d="M4 32 Q10 26 16 32 Q22 38 28 32 Q34 26 40 32 Q46 38 52 32 Q58 26 60 32" fill="none" stroke="#7c6eec" stroke-width="1" opacity="0.4"/>
+      </svg>
+      <span>Marirrodriga<b>.IA</b></span>
+    </div>
+    <div class="nav-links">
+      <button class="nav-link" onclick="document.getElementById('inicio').scrollIntoView({behavior:'smooth'})">Inicio</button>
+      <button class="nav-link" onclick="document.getElementById('los-departamentos').scrollIntoView({behavior:'smooth'})">Qué montamos</button>
+      <button class="nav-link" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Contacto</button>
+    </div>
+    <div style="display:flex;gap:10px;align-items:center;">
+      <button class="nav-cta" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Hablar con nosotros</button>
+    </div>
+  </nav>
+
+
+  <!-- ═══════════════════════════════════ HERO ══════════════ -->
+  <section id="inicio">
+    <div class="hero">
+      <div class="hero-inner">
+
+        <!-- Izquierda -->
+        <div class="hero-left">
+          <div class="hero-badge">
+            <div class="hero-badge-dot"></div>
+            Software a medida, montado por piezas
+          </div>
+          <h1>No vendemos programas.<br />Te montamos <em>el tuyo.</em></h1>
+          <p class="hero-sub">
+            Cada precio de esta página lleva su límite al lado y su montaje debajo. Mira lo que se puede llegar a
+            montar, quita lo que no vayas a usar y llévate la cuenta hecha — sin dejarnos tu correo para verla.
+          </p>
+          <div class="hero-trust">
+            <div class="hero-trust-item"><div class="hero-trust-dot"></div> Precios públicos, con sus límites</div>
+            <div class="hero-trust-item"><div class="hero-trust-dot"></div> Sin permanencia</div>
+            <div class="hero-trust-item"><div class="hero-trust-dot"></div> Ajustes ilimitados</div>
+          </div>
+        </div>
+
+        <!-- Derecha: las cinco puertas -->
+        <div class="hero-right">
+          <p class="puertas-pregunta">¿Qué te está robando el tiempo?</p>
+          <div class="puertas" id="hero-puertas"></div>
+          <button class="btn-primary puertas-cta" onclick="bookCall()">Media hora y te decimos por dónde empezar — o que no empieces →</button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ LA BASE ═══════════════ -->
+  <section class="base-section" id="la-base"></section>
+
+  <!-- ═══════════════════════════════════ DEPARTAMENTOS ═════════ -->
+  <div id="los-departamentos"></div>
+
+
+
+
+
+
+
+  <!-- ═══════════════════════════════════ EL FRENO ═════════════ -->
+  <section class="freno-section">
+    <div class="seccion-inner">
+      <p class="freno-titulo">No te proponemos nada nuevo hasta que lo que ya tienes se haya pagado solo.</p>
+      <p class="freno-cuerpo">El cálculo lo hacemos juntos en la reunión del mes, con tus números, no con los
+      nuestros. Si no sale, no subes. Y quedarte donde estás también está bien: hay negocios que con una sola cosa
+      ya tienen bastante.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ NIVEL 2 ══════════════ -->
+  <section class="nivel-section" id="se-hablan">
+    <div class="seccion-inner">
+      <span class="dep-etiqueta">Cuando dos cosas se hablan</span>
+      <h2 class="dep-titulo">Lo interesante empieza cuando dejan de ir por su cuenta.</h2>
+      <p class="dep-resumen">Una pieza suelta te quita una tarea. Dos que se hablan te quitan el trabajo de
+      enlazarlas, que suele ser el que de verdad te come el día.</p>
+      <ul class="cadena">
+        <li><strong>La agenda</strong> apunta que Marta vino el martes</li>
+        <li><strong>El asistente</strong> le escribe dos días después y le pide la reseña</li>
+        <li><strong>La facturación</strong> emite la suya sin que nadie la teclee</li>
+        <li><strong>El panel</strong> sabe ya que Marta viene cada cinco semanas y cuánto vale al año</li>
+      </ul>
+      <p class="dep-nota">Ninguna de esas cuatro cosas es nueva: son piezas que ya has visto arriba. Lo que cambia
+      es que se pasan el dato entre ellas en vez de esperarte a ti.</p>
+      <p class="entrar-software">¿Prefieres verlo antes de hablar?
+        <a href="/bookia">Entra en uno de verdad →</a></p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ NIVEL 3 ══════════════ -->
+  <section class="nivel-section nivel-obra" id="departamento-entero">
+    <div class="seccion-inner">
+      <span class="dep-etiqueta">Cuando lo lleva un departamento entero</span>
+      <h2 class="dep-titulo">El techo: que no tengas que entrar tú.</h2>
+      <p class="dep-resumen">Cuando ya no son piezas sueltas sino un departamento funcionando solo, esto deja de
+      comprarse por catálogo y pasa a construirse. Se cierra en un anexo antes de empezar.</p>
+      <p class="obra-precio"><strong>Empieza en 2.500 €</strong> por cada mes de construcción.</p>
+      <p class="dep-nota">Casi seguro que no es para ti todavía. Y te lo diremos.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ EL CATÁLOGO ══════════ -->
+  <section class="catalogo-section" id="el-catalogo"></section>
+
+  <!-- ═══════════════════════════════════ QUIÉNES SOMOS ════════ -->
+  <section class="quienes-section" id="quienes">
+    <div class="seccion-inner">
+      <span class="dep-etiqueta">Quiénes somos</span>
+      <h2 class="dep-titulo">Somos dos. Con quien hables es quien lo va a montar.</h2>
+      <p class="dep-resumen">Isma monta las automatizaciones, Marco el código. No hay comercial de por medio ni
+      cuenta que te pasen. Llevamos tres o cuatro negocios a la vez porque los montamos nosotros: si ahora no hay
+      hueco te lo decimos en la llamada y te damos fecha, no te dejamos en una lista.</p>
+      <p class="dep-nota">No te enseñamos logos de clientes. Te dejamos entrar en el software.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ CONTACTO ════════════ -->
+  <section class="contact-section" id="contacto">
+    <div class="section-inner">
+      <div class="contact-grid">
+
+        <div class="contact-left">
+          <div class="section-label">Contacto directo</div>
+          <h2>Cuéntanos tu caso.<br />No pierdas <em>tu tiempo.</em></h2>
+          <div class="divider"></div>
+          <p>No esperas, no formularios largos, no intermediarios. Escríbenos por WhatsApp o déjanos tu contacto y te respondemos en menos de 24h.</p>
+
+          <div class="contact-info-items">
+            <div class="contact-info-item">
+              <div class="contact-info-icon">💬</div>
+              <div>
+                <div class="contact-info-title">WhatsApp — Respuesta directa</div>
+                <div class="contact-info-sub">Escríbenos al 675 148 566. Sin esperas, sin intermediarios.</div>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <div class="contact-info-icon">📧</div>
+              <div>
+                <div class="contact-info-title">Email</div>
+                <div class="contact-info-sub"><a href="mailto:marirrodriga.ia@gmail.com" style="color:inherit;">marirrodriga.ia@gmail.com</a> · Te respondemos en menos de 24h.</div>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <div class="contact-info-icon">📞</div>
+              <div>
+                <div class="contact-info-title">Media hora, por vídeo o por teléfono</div>
+                <div class="contact-info-sub">Nos cuentas cómo trabajas hoy; te decimos qué te montaríamos, qué no, y cuánto. Si no hay nada que merezca la pena, te lo decimos y no volvemos a llamar.</div>
+              </div>
+            </div>
+          </div>
+
+          <br />
+          <a class="btn-primary" style="width: fit-content;" href="https://wa.me/34675148566" target="_blank" rel="noopener">Escribir por WhatsApp →</a>
+        </div>
+
+        <div class="contact-form-wrap">
+          <div id="contact-form-content">
+            <div class="form-title">Déjanos tu contacto</div>
+            <input type="text" name="website" style="display:none !important;position:absolute;left:-9999px;" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <div class="form-row">
+              <div class="form-field">
+                <label class="form-label">Nombre *</label>
+                <input class="form-input" id="contact-nombre" type="text" placeholder="Tu nombre" />
+              </div>
+              <div class="form-field">
+                <label class="form-label">Email *</label>
+                <input class="form-input" id="contact-email" type="email" placeholder="tu@email.com" />
+              </div>
+            </div>
+            <div class="form-field" style="margin-bottom: 14px;">
+              <label class="form-label">¿Qué quieres automatizar? <span style="color: var(--text-4); font-weight: 400;">(opcional)</span></label>
+              <textarea class="form-textarea" id="contact-mensaje" rows="4" placeholder="Ej: Quiero automatizar la gestión de citas de mi clínica..."></textarea>
+            </div>
+            <label style="display:flex;align-items:flex-start;gap:9px;font-size:12px;color:var(--text-3);margin-bottom:14px;cursor:pointer;line-height:1.5;">
+              <input type="checkbox" id="contact-privacidad" style="margin-top:2px;accent-color:var(--purple);width:16px;height:16px;flex-shrink:0;">
+              <span>He leído y acepto la <a href="/privacidad" target="_blank" style="color:var(--purple);text-decoration:underline;">política de privacidad</a> *</span>
+            </label>
+            <button class="form-submit" onclick="submitContact()">Enviar y que me contacten →</button>
+            <p class="form-disclaimer">Sin spam · Te respondemos en menos de 24h</p>
+          </div>
+          <div id="contact-success" style="display:none; text-align:center; padding: 48px 24px;">
+            <div style="font-size:48px; margin-bottom:14px;">🎉</div>
+            <p style="font-family:var(--font-head); font-size:24px; font-weight:600; color:var(--text-1); margin-bottom:8px;">¡Mensaje enviado!</p>
+            <p style="font-size:14px; color:var(--text-3); line-height:1.7;">Te respondemos en menos de 24h. Si tienes prisa, escríbenos directamente por WhatsApp.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ FOOTER ══════════════ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">Marirrodriga <em>IA</em></div>
+        <p class="footer-tagline">Automatización con IA para negocios<br />que quieren crecer sin trabajar el doble.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Servicios</div>
+        <a class="footer-link" href="#los-departamentos" onclick="event.preventDefault();document.getElementById('los-departamentos').scrollIntoView({behavior:'smooth'})">Qué montamos</a>
+      </div>
+      <div>
+        <div class="footer-col-title">Lo que hemos montado</div>
+        <a class="footer-link" href="/bookia">Negocios de citas</a>
+      </div>
+      <div>
+        <div class="footer-col-title">Empresa</div>
+        <a class="footer-link" href="#contacto" onclick="event.preventDefault();document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Contacto</a>
+        <a class="footer-link" href="https://wa.me/34675148566" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="footer-link" href="mailto:marirrodriga.ia@gmail.com">marirrodriga.ia@gmail.com</a>
+        <a class="footer-link" href="/privacidad">Política de privacidad</a>
+        <a class="footer-link" href="/aviso-legal">Aviso legal</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Marirrodriga IA. Todos los derechos reservados.</span>
+      <span class="footer-trust">Hecho con IA · Para negocios reales</span>
+    </div>
+  </footer>
+
+
+
+
+
+  <!-- ═══════════════════════════════════ CART MODAL ═══════════ -->
+
+
+  <!-- ═══════════════════════════════════ ONBOARDING MODAL ════ -->
+
+
+  <!-- ═══════════════════════════════════ WHATSAPP FLOTANTE ═══ -->
+  <a href="https://wa.me/34675148566" target="_blank" rel="noopener" class="wa-float" id="wa-float" aria-label="Escríbenos por WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.004 2c-5.523 0-10 4.477-10 10 0 1.77.46 3.435 1.267 4.876L2 22l5.25-1.375A9.955 9.955 0 0012.004 22c5.523 0 10-4.477 10-10s-4.477-10-10-10zm0 18.2a8.17 8.17 0 01-4.166-1.14l-.299-.177-3.111.816.83-3.034-.194-.312a8.19 8.19 0 01-1.26-4.353c0-4.522 3.678-8.2 8.2-8.2 4.523 0 8.2 3.678 8.2 8.2 0 4.523-3.677 8.2-8.2 8.2z"/></svg>
+  </a>
+
+  <script src="/assets/catalogo.js"></script>
+  <script src="/assets/departamentos.js"></script>
+  <script src="/assets/app.js"></script>
+  <script src="/assets/hero.js"></script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

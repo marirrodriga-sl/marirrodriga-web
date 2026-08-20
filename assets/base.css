@@ -1,0 +1,202 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   BASE — tokens, reset, navegación, botones y pie. COMPARTIDO por las landings.
+   ───────────────────────────────────────────────────────────────────────────
+   Dirección de arte del 19-08, destilada de arlo.sh (direccion-arte/referencias).
+
+   El cambio de fondo respecto a styles.css: allí el morado era el ambiente
+   —texto morado, bordes morados, fondos morados— y por eso la página se leía
+   plana: no destacaba nada porque destacaba todo. Aquí el morado es SOLO el
+   acento (CTA, la cursiva del titular, las cifras de precio) y el resto va en
+   tinta casi negra sobre blanco, con un crema cálido para alternar.
+
+   styles.css sigue vivo y sin tocar: lo usa taller.html.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Tinta — antes era #1e0b40 (morado). Ahora casi negro con una gota de violeta */
+  --ink:        #17141f;
+  --ink-2:      #56525f;
+  --ink-3:      #8d8996;
+  --ink-4:      #b8b5be;
+
+  /* Superficies */
+  --white:      #ffffff;
+  --cream:      #faf8f5;   /* el #FAF7F0 de Arlo, calentado */
+  --cream-deep: #f4f1ec;
+
+  /* Acento — la marca. Se usa poco a propósito */
+  --purple:      #7C3AED;
+  --purple-deep: #5b21b6;
+  --purple-tint: #f5f3ff;
+
+  --line:      rgba(23,20,31,.10);
+  --line-soft: rgba(23,20,31,.055);
+
+  --font-head: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+
+  /* Sombras de Arlo: propagación negativa, muy poco contraste */
+  --sh-1: 0 4px 12px -6px rgba(23,20,31,.18);
+  --sh-2: 0 7px 17px -3.5px rgba(38,28,13,.14);
+  --sh-3: 0 24px 48px -20px rgba(23,20,31,.20);
+
+  --r-card:  16px;
+  --r-panel: 28px;
+  --r-pill:  999px;
+
+  --w-text: 760px;   /* el ancho de Arlo para texto */
+  --w-wide: 1120px;  /* para el configurador, que necesita más */
+  --air:    96px;    /* Arlo usa 76; el español es más largo */
+}
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--white);
+  color: var(--ink);
+  font-size: 16.5px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a { text-decoration: none; color: inherit; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+img, svg { max-width: 100%; display: block; }
+
+/* ─── ESCALA TIPOGRÁFICA ─────────────────────────────────────────────────
+   Salto titular-cuerpo ×3.4, el de Arlo. Cormorant pesa menos que Fraunces,
+   así que va a 600 donde Arlo usa 500: a 400 se deshace en pantalla grande. */
+
+.t-display, .t-h1 {
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: clamp(42px, 6.2vw, 68px);
+  line-height: 1.06;
+  letter-spacing: -.022em;
+  text-wrap: balance;
+}
+.t-h2 {
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: clamp(32px, 4.3vw, 50px);
+  line-height: 1.1;
+  letter-spacing: -.02em;
+  text-wrap: balance;
+}
+.t-h3 {
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: clamp(23px, 2.4vw, 30px);
+  line-height: 1.2;
+  letter-spacing: -.015em;
+}
+/* La cursiva de acento: el gesto que ya tenía la marca y que Arlo también usa */
+.acento { font-style: italic; color: var(--purple); }
+
+.t-lead   { font-size: clamp(17px, 1.5vw, 19.5px); line-height: 1.6; color: var(--ink-2); }
+.t-body   { font-size: 16.5px; line-height: 1.7; color: var(--ink-2); }
+.t-small  { font-size: 14px;   line-height: 1.6; color: var(--ink-3); }
+.t-micro  { font-size: 12.5px; line-height: 1.5; color: var(--ink-3); }
+
+.t-eyebrow {
+  font-size: 11.5px; font-weight: 700;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--purple);
+}
+
+/* ─── LAYOUT ─────────────────────────────────────────────────────────────── */
+.envoltura      { width: 100%; max-width: var(--w-wide); margin: 0 auto; padding: 0 28px; }
+.envoltura-txt  { width: 100%; max-width: var(--w-text); margin: 0 auto; padding: 0 28px; }
+.seccion        { padding: var(--air) 0; }
+.seccion-cream  { background: var(--cream); }
+.seccion-ink    { background: var(--ink); color: var(--white); }
+.centrado       { text-align: center; }
+
+/* ─── BOTONES ────────────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+  font-size: 15px; font-weight: 600; letter-spacing: -.01em;
+  padding: 14px 28px; border-radius: var(--r-pill);
+  transition: transform .18s cubic-bezier(.2,.8,.3,1), box-shadow .18s, background .18s, color .18s;
+  white-space: nowrap;
+}
+.btn:active { transform: translateY(1px); }
+
+.btn-1 { background: var(--purple); color: #fff; box-shadow: var(--sh-2); }
+.btn-1:hover { background: var(--purple-deep); box-shadow: var(--sh-3); transform: translateY(-1px); }
+
+.btn-2 { background: rgba(255,255,255,.9); color: var(--ink); box-shadow: inset 0 0 0 1px var(--line), var(--sh-1); }
+.btn-2:hover { background: #fff; box-shadow: inset 0 0 0 1px rgba(23,20,31,.2), var(--sh-2); transform: translateY(-1px); }
+
+.btn-3 { background: transparent; color: var(--ink-2); padding: 14px 8px; }
+.btn-3:hover { color: var(--purple); }
+
+/* ─── NAV — pastilla flotante con desenfoque, como Arlo ──────────────────── */
+.nav {
+  position: fixed; z-index: 200;
+  top: 16px; left: 50%; transform: translateX(-50%);
+  width: calc(100% - 40px); max-width: 1180px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 20px; padding: 9px 9px 9px 22px;
+  background: rgba(255,255,255,.74);
+  backdrop-filter: blur(16px) saturate(1.6);
+  -webkit-backdrop-filter: blur(16px) saturate(1.6);
+  border: 1px solid rgba(255,255,255,.7);
+  border-radius: var(--r-pill);
+  box-shadow: var(--sh-1);
+  transition: box-shadow .25s, background .25s, border-color .25s;
+}
+.nav.pegada { background: rgba(255,255,255,.9); box-shadow: var(--sh-2); }
+
+.nav-logo { display: flex; align-items: center; gap: 9px; font-size: 15.5px; font-weight: 700; letter-spacing: -.03em; }
+/* El isotipo original: reloj y órbitas. Va algo mayor que el SVG que había
+   porque sus anillos son muy finos y por debajo de 30 px se emborronan. */
+.nav-logo img { width: 32px; height: 32px; flex: none; }
+.nav-logo span { display: inline-flex; align-items: baseline; }
+.nav-logo b { color: var(--purple); font-weight: 800; margin-left: 1px; }
+.nav-links { display: flex; align-items: center; gap: 30px; }
+.nav-link { font-size: 13.5px; font-weight: 500; color: var(--ink-2); transition: color .18s; }
+.nav-link:hover { color: var(--purple); }
+.nav-cta { font-size: 13.5px; padding: 11px 21px; }
+
+@media (max-width: 860px) {
+  .nav { padding: 8px 8px 8px 18px; }
+  .nav-links { display: none; }
+}
+
+/* ─── PIE ────────────────────────────────────────────────────────────────── */
+.pie { background: var(--ink); color: rgba(255,255,255,.62); padding: 64px 0 40px; font-size: 14px; }
+.pie a { color: rgba(255,255,255,.62); transition: color .18s; }
+.pie a:hover { color: #fff; }
+.pie-fila { display: flex; flex-wrap: wrap; gap: 32px; justify-content: space-between; align-items: flex-start; }
+.pie-marca { display: flex; align-items: center; gap: 9px; color: #fff; font-weight: 700; font-size: 15.5px; letter-spacing: -.03em; }
+.pie-marca img { width: 30px; height: 30px; }
+.pie-cols { display: flex; flex-wrap: wrap; gap: 56px; }
+.pie-col { display: flex; flex-direction: column; gap: 10px; }
+.pie-col h4 { color: rgba(255,255,255,.4); font-size: 11.5px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; margin-bottom: 2px; }
+.pie-legal { margin-top: 44px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,.1); display: flex; flex-wrap: wrap; gap: 18px; justify-content: space-between; font-size: 12.5px; color: rgba(255,255,255,.42); }
+
+/* ─── APARICIÓN AL HACER SCROLL ──────────────────────────────────────────── */
+.aparece { opacity: 0; transform: translateY(18px); transition: opacity .7s cubic-bezier(.2,.8,.3,1), transform .7s cubic-bezier(.2,.8,.3,1); }
+.aparece.dentro { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .aparece { opacity: 1; transform: none; transition: none; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
+
+/* ─── WHATSAPP FLOTANTE ──────────────────────────────────────────────────── */
+.wa {
+  position: fixed; right: 22px; bottom: 22px; z-index: 150;
+  width: 54px; height: 54px; border-radius: var(--r-pill);
+  background: #25D366; display: grid; place-items: center;
+  box-shadow: 0 8px 24px -6px rgba(37,211,102,.5);
+  transition: transform .2s cubic-bezier(.2,.8,.3,1);
+}
+.wa:hover { transform: scale(1.07); }
+.wa svg { width: 28px; height: 28px; fill: #fff; }

@@ -1,0 +1,513 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   ATENCIÓN AL CLIENTE — landing de departamento
+   Depende de base.css. Estructura tomada de arlo.sh: hero a 100vh con el
+   producto funcionando ALREDEDOR del titular, no debajo.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─── HERO ───────────────────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 118px 0 64px;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* ┌─ LA FOTO DEL HERO ─────────────────────────────────────────────────────┐
+   │  Suelta el archivo en  assets/img/hero-atencion.jpg  y aparece sola.   │
+   │  No hay que tocar nada más. El prompt para generarla está en           │
+   │  docs/PROMPTS-IMAGENES.md.                                            │
+   │                                                                        │
+   │  Los degradados van ENCIMA de la foto y con alfa, no opacos: por eso   │
+   │  la foto se ve a través y el texto negro sigue leyéndose. Si el        │
+   │  archivo no existe, el navegador ignora esa capa y quedan solo los     │
+   │  degradados — la página no se cae ni enseña un hueco roto.             │
+   │                                                                        │
+   │  ¿Muy tapada o muy visible? Toca el primer valor de cada rgba():       │
+   │  más alto = más velo blanco = foto más suave.                          │
+   └────────────────────────────────────────────────────────────────────────┘ */
+.hero-fondo {
+  position: absolute; inset: 0; z-index: -2;
+  background:
+    /* Igual que en la global: el velo protege el centro y suelta los bordes.
+       Aquí además hay burbujas blancas flotando a los lados, así que las
+       esquinas llevan algo más de velo que en la global. */
+    /* Velo casi retirado (20-08): Ismael quiere ver el color real del paisaje.
+       Solo queda un halo tenue tras el titular y el desvanecido del pie, que
+       es lo que cose el hero con la sección siguiente. */
+    radial-gradient(46% 30% at 50% 26%,
+      rgba(255,255,255,.62) 0%, rgba(255,255,255,.30) 55%, rgba(255,255,255,0) 100%),
+    linear-gradient(180deg,
+      rgba(255,255,255,0) 0%,   rgba(255,255,255,0) 56%,
+      rgba(255,255,255,.55) 68%, rgba(255,255,255,.94) 78%, #ffffff 84%),
+    url('/assets/img/hero-atencion.jpg') center / cover no-repeat,
+    linear-gradient(180deg, #ffffff 0%, #faf8f5 100%);
+}
+/* Neblina inferior: despega el hero de la sección siguiente sin una línea dura */
+.hero-fondo::after {
+  content: ''; position: absolute; inset-inline: 0; bottom: 0; height: 34%;
+  background: linear-gradient(180deg, rgba(255,255,255,0) 0%, #ffffff 92%);
+}
+/* Grano finísimo — quita el aspecto de degradado de plantilla */
+.hero-grano {
+  position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  opacity: .5; mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/></filter><rect width='140' height='140' filter='url(%23n)' opacity='.16'/></svg>");
+}
+
+.hero-centro { position: relative; z-index: 3; text-align: center; max-width: 720px; margin: 0 auto; padding: 0 28px; }
+
+.hero-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 7px 16px 7px 12px; margin-bottom: 20px;
+  background: rgba(255,255,255,.8); border: 1px solid var(--line);
+  border-radius: var(--r-pill); box-shadow: var(--sh-1);
+  font-size: 12.5px; font-weight: 600; color: var(--ink-2); letter-spacing: -.01em;
+}
+.hero-pill i { width: 6px; height: 6px; border-radius: 50%; background: var(--purple); flex: none; }
+
+.hero h1 { margin-bottom: 18px; font-size: clamp(40px, 5.4vw, 60px); }
+.hero .t-lead { max-width: 545px; margin: 0 auto 28px; font-size: 17px; }
+.hero-botones { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+/* Fila de canales, el equivalente al «Messages / Slack» de Arlo */
+.hero-canales {
+  margin-top: 30px; display: inline-flex; align-items: center; gap: 4px;
+  padding: 5px; background: rgba(255,255,255,.72); border: 1px solid var(--line);
+  border-radius: var(--r-pill); box-shadow: var(--sh-1);
+  -webkit-backdrop-filter: blur(10px);   /* Safari e iOS lo necesitan con prefijo */
+  backdrop-filter: blur(10px);
+}
+.hero-canal {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 8px 15px; border-radius: var(--r-pill);
+  font-size: 13px; font-weight: 600; color: var(--ink-3);
+  transition: background .2s, color .2s;
+}
+.hero-canal.on { background: #fff; color: var(--ink); box-shadow: var(--sh-1); }
+.hero-canal svg { width: 15px; height: 15px; }
+
+/* ─── LA CONVERSACIÓN FLOTANTE ───────────────────────────────────────────
+   Es HTML, no una captura: no se queda desactualizada, pesa nada y es
+   literalmente el producto. Para un chatbot es la demo más honesta que hay. */
+.burbujas { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+
+.burbuja {
+  position: absolute; width: max-content; max-width: 290px;
+  padding: 12px 16px; border-radius: 20px;
+  font-size: 14.5px; line-height: 1.5; letter-spacing: -.01em;
+  box-shadow: var(--sh-2);
+  opacity: 0; animation: burbujaEntra .75s cubic-bezier(.2,.8,.3,1) forwards;
+}
+.burbuja small { display: block; margin-top: 5px; font-size: 11px; opacity: .55; font-weight: 500; }
+
+.burbuja-cliente {
+  background: #fff; color: var(--ink);
+  border: 1px solid var(--line); border-bottom-left-radius: 6px;
+}
+.burbuja-bot {
+  background: var(--purple); color: #fff;
+  border-bottom-right-radius: 6px;
+  box-shadow: 0 10px 26px -10px rgba(124,58,237,.55);
+}
+.burbuja-bot small { opacity: .7; }
+
+.burbuja-etiq {
+  position: absolute; font-size: 11px; font-weight: 600;
+  color: var(--ink-3); letter-spacing: .02em;
+  opacity: 0; animation: burbujaEntra .6s ease forwards;
+}
+
+/* Izquierda: el cliente. Derecha: el asistente. */
+.b1 { top: 27%; left: 3.2%; animation-delay: .5s; }
+.b2 { top: 39%; left: 5.5%; animation-delay: 1.6s; }
+.e1 { top: calc(27% - 19px); left: 4.4%; animation-delay: .4s; }
+
+@keyframes burbujaEntra {
+  from { opacity: 0; transform: translateY(14px) scale(.965); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Por debajo de 1240px las burbujas pisan el titular: se bajan y se ponen en
+   fila debajo, que sigue contando la misma historia. */
+@media (max-width: 1240px) {
+  /* De grid centrado a columna: hace falta para poder ORDENAR. En el DOM las
+     burbujas van antes que el titular (para que se pinten a los lados en
+     escritorio), y sin `order` aparecerían encima del h1 en móvil. */
+  .hero { display: flex; flex-direction: column; align-items: center; min-height: 0; padding-bottom: 96px; }
+  .hero-centro { order: 1; }
+  .burbujas { order: 2; }
+
+  .burbujas {
+    position: static; width: 100%; max-width: 470px; margin: 52px auto 0;
+    display: flex; flex-direction: column; gap: 10px; padding: 0 28px;
+  }
+  /* `width: max-content` es lo que las hace flotar bien en escritorio y lo que
+     las desborda aquí: la columna se estira al contenido y se sale de pantalla.
+     `overflow-x:hidden` del body lo escondía en vez de arreglarlo. */
+  .burbuja { position: static; width: auto; max-width: 100%; animation: none; opacity: 1; }
+  .burbuja-cliente { align-self: flex-start; }
+  .burbuja-bot { align-self: flex-end; }
+  .burbuja-etiq { display: none; }
+}
+
+/* ─── EL PROBLEMA ────────────────────────────────────────────────────────── */
+.problema { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--r-panel); overflow: hidden; margin-top: 52px; }
+.problema-celda { background: var(--white); padding: 38px 32px; }
+.problema-celda h3 { font-family: var(--font-head); font-size: 25px; font-weight: 600; line-height: 1.2; letter-spacing: -.015em; margin-bottom: 10px; }
+@media (max-width: 820px) { .problema { grid-template-columns: 1fr; } }
+
+/* ─── ESQUEMA ────────────────────────────────────────────────────────────── */
+.esquema { margin: 0 auto; max-width: 900px; }
+.esquema svg { width: 100%; height: auto; }
+.esq-linea { fill: none; stroke: var(--purple); stroke-width: 1.2; opacity: .3; stroke-dasharray: 4 5; animation: fluir 2.6s linear infinite; }
+@keyframes fluir { to { stroke-dashoffset: -18; } }
+.esq-nodo { fill: #fff; stroke: var(--purple); stroke-width: 1.3; }
+.esq-txt { font-family: var(--font-body); font-size: 12.5px; font-weight: 500; fill: var(--ink-2); }
+.esq-txt-c { font-family: var(--font-head); font-size: 17px; font-weight: 600; fill: var(--ink); }
+.esq-rot { font-family: var(--font-body); font-size: 10.5px; font-weight: 700; fill: var(--ink-4); letter-spacing: .12em; text-transform: uppercase; }
+.esq-halo { fill: var(--purple); opacity: .06; animation: latir 3.4s ease-in-out infinite; transform-origin: center; }
+@keyframes latir { 0%,100% { transform: scale(1); opacity: .06; } 50% { transform: scale(1.12); opacity: .11; } }
+
+/* ─── DOS COLUMNAS DE TEXTO ──────────────────────────────────────────────── */
+.dos-col { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; margin-top: 48px; }
+.dos-col h3 { font-size: 11.5px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; color: var(--purple); margin-bottom: 14px; }
+@media (max-width: 820px) { .dos-col { grid-template-columns: 1fr; gap: 34px; } }
+
+/* ─── CAPACIDADES ────────────────────────────────────────────────────────── */
+.capacidades { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; margin-top: 52px; }
+.cap {
+  background: var(--white); border: 1px solid var(--line); border-radius: var(--r-card);
+  padding: 26px 24px; transition: transform .2s cubic-bezier(.2,.8,.3,1), box-shadow .2s, border-color .2s;
+}
+.cap:hover { transform: translateY(-2px); box-shadow: var(--sh-2); border-color: rgba(124,58,237,.28); }
+.cap-ico { width: 34px; height: 34px; border-radius: 10px; background: var(--purple-tint); display: grid; place-items: center; margin-bottom: 15px; }
+.cap-ico svg { width: 17px; height: 17px; stroke: var(--purple); fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.cap h3 { font-size: 16px; font-weight: 700; letter-spacing: -.015em; margin-bottom: 7px; line-height: 1.35; }
+.cap p { font-size: 14.5px; line-height: 1.6; color: var(--ink-2); }
+.cap-precio { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line-soft); font-size: 13px; font-weight: 700; color: var(--purple); }
+.cap-precio span { font-weight: 500; color: var(--ink-3); }
+
+/* ─── DEMO ───────────────────────────────────────────────────────────────── */
+.demo {
+  margin-top: 48px; aspect-ratio: 16/9; border-radius: var(--r-panel);
+  border: 1px dashed var(--line); background: var(--cream);
+  display: grid; place-items: center; text-align: center; padding: 24px;
+}
+
+/* ═══ EL CONFIGURADOR ═══════════════════════════════════════════════════════
+   Rescatado del one-pager y repintado con los tokens nuevos. La cuenta la
+   hace catalogo.js, que es un port exacto de catalogo_cotiza() de Supabase y
+   está verificado contra los 9 ejemplos del catálogo. Aquí solo se dibuja. */
+
+.productos { display: flex; flex-direction: column; gap: 26px; margin-top: 52px; }
+
+.prod {
+  background: var(--white); border: 1px solid var(--line);
+  border-radius: var(--r-panel); overflow: hidden; box-shadow: var(--sh-1);
+}
+.prod-cab { padding: 32px 34px 26px; display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; flex-wrap: wrap; }
+.prod-cab h3 { font-family: var(--font-head); font-size: clamp(28px, 3vw, 36px); font-weight: 600; letter-spacing: -.02em; line-height: 1.1; }
+.prod-precio { text-align: right; flex: none; }
+.prod-precio b { font-size: 30px; font-weight: 700; color: var(--purple); letter-spacing: -.03em; }
+.prod-precio b span { font-size: 15px; font-weight: 600; color: var(--ink-3); }
+.prod-precio small { display: block; font-size: 12.5px; color: var(--ink-3); margin-top: 3px; }
+.prod-nucleo { padding: 0 34px 26px; font-size: 15.5px; line-height: 1.7; color: var(--ink-2); }
+.prod-nucleo strong { color: var(--ink); font-weight: 600; }
+
+/* La banda morada */
+.magia {
+  display: flex; align-items: center; gap: 14px; width: 100%;
+  padding: 19px 34px; text-align: left;
+  background: linear-gradient(100deg, var(--purple-deep) 0%, var(--purple) 100%);
+  color: #fff; transition: filter .2s;
+}
+.magia:hover { filter: brightness(1.08); }
+.magia-ico { width: 19px; height: 19px; flex: none; opacity: .9; }
+.magia-txt { flex: 1; }
+.magia-txt b { display: block; font-family: var(--font-head); font-size: 23px; font-weight: 600; letter-spacing: -.015em; line-height: 1.2; }
+.magia-txt span { font-size: 12.5px; opacity: .78; }
+.magia-flecha { transition: transform .28s cubic-bezier(.2,.8,.3,1); flex: none; }
+.magia[aria-expanded="true"] .magia-flecha { transform: rotate(180deg); }
+
+.opciones { display: grid; grid-template-rows: 1fr; transition: grid-template-rows .32s cubic-bezier(.2,.8,.3,1); }
+.opciones[hidden] { display: grid; grid-template-rows: 0fr; }
+.opciones-int { overflow: hidden; }
+.opciones-lista { padding: 12px 22px 4px; display: flex; flex-direction: column; gap: 2px; }
+
+.opcion { display: flex; gap: 13px; padding: 15px 13px; border-radius: 12px; cursor: pointer; transition: background .16s; }
+.opcion:hover { background: var(--purple-tint); }
+.opcion input { appearance: none; width: 19px; height: 19px; flex: none; margin-top: 2px; border: 1.6px solid var(--ink-4); border-radius: 6px; cursor: pointer; transition: background .16s, border-color .16s; position: relative; }
+.opcion input:checked { background: var(--purple); border-color: var(--purple); }
+.opcion input:checked::after { content: ''; position: absolute; left: 6px; top: 2px; width: 5px; height: 10px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(43deg); }
+.opcion input:focus-visible { outline: 2px solid var(--purple); outline-offset: 2px; }
+.opcion-cuerpo { flex: 1; min-width: 0; }
+.opcion-cuerpo b { font-size: 15px; font-weight: 650; letter-spacing: -.01em; }
+.opcion-cuerpo p { font-size: 14px; line-height: 1.55; color: var(--ink-2); margin-top: 3px; }
+.opcion-limite { font-size: 12px; color: var(--ink-4); margin-top: 6px; }
+.opcion-aviso { margin-top: 9px; padding: 9px 12px; background: var(--purple-tint); border-radius: 9px; font-size: 12.5px; line-height: 1.5; color: var(--ink-2); }
+.opcion-precio { flex: none; text-align: right; }
+.opcion-precio b { display: block; font-size: 14.5px; font-weight: 700; color: var(--purple); }
+.opcion-precio small { font-size: 11.5px; color: var(--ink-3); }
+
+/* La cuenta */
+.cuenta { margin: 14px 22px 22px; border: 1px solid var(--line); border-radius: var(--r-card); overflow: hidden; }
+.cuenta-fila { display: flex; justify-content: space-between; align-items: baseline; gap: 18px; padding: 12px 20px; font-size: 14.5px; color: var(--ink-2); }
+.cuenta-fila + .cuenta-fila { border-top: 1px solid var(--line-soft); }
+.cuenta-fila b { font-weight: 600; color: var(--ink); }
+.cuenta-bonif { color: var(--purple); font-weight: 600; }
+.cuenta-nota { padding: 2px 20px 12px; font-size: 12px; line-height: 1.5; color: var(--ink-3); }
+.cuenta-total { background: var(--purple-tint); padding: 17px 20px; }
+.cuenta-total b:first-child { font-size: 16px; }
+.cuenta-total .cifra { font-family: var(--font-body); font-size: 27px; font-weight: 700; color: var(--purple); letter-spacing: -.03em; }
+.cuenta-total .cifra span { font-size: 14px; font-weight: 600; color: var(--ink-3); }
+.cuenta-pie { padding: 13px 20px; background: var(--cream); font-size: 11.5px; line-height: 1.6; color: var(--ink-3); border-top: 1px solid var(--line-soft); }
+.cuenta-pie strong { color: var(--ink-2); font-weight: 650; }
+
+.prod-cierre { padding: 0 22px 26px; }
+.prod-cierre .btn { width: 100%; }
+
+/* Lo que no está empaquetado */
+.obra { margin: 4px 22px 0; padding: 18px 22px; border: 1px dashed var(--line); border-radius: var(--r-card); background: var(--cream); }
+.obra > span { font-size: 10.5px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; color: var(--ink-4); }
+.obra-item { display: flex; justify-content: space-between; gap: 18px; padding: 11px 0; }
+.obra-item + .obra-item { border-top: 1px solid var(--line-soft); }
+.obra-item b { font-size: 14.5px; font-weight: 650; }
+.obra-item p { font-size: 13.5px; color: var(--ink-2); line-height: 1.5; margin-top: 2px; }
+.obra-item > span { flex: none; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-4); }
+
+@media (max-width: 640px) {
+  .prod-cab, .prod-nucleo, .magia { padding-inline: 22px; }
+  .opciones-lista, .cuenta, .prod-cierre, .obra { margin-inline: 12px; padding-inline: 12px; }
+  .prod-precio { text-align: left; }
+}
+
+/* ─── FAQ ────────────────────────────────────────────────────────────────── */
+.faq { margin-top: 48px; border-top: 1px solid var(--line); }
+.faq-item { border-bottom: 1px solid var(--line); }
+.faq-q { width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 24px 4px; text-align: left; font-size: 17px; font-weight: 650; letter-spacing: -.015em; transition: color .18s; }
+.faq-q:hover { color: var(--purple); }
+.faq-q svg { flex: none; transition: transform .28s cubic-bezier(.2,.8,.3,1); }
+.faq-q[aria-expanded="true"] svg { transform: rotate(45deg); }
+.faq-a { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .3s cubic-bezier(.2,.8,.3,1); }
+.faq-a.abierta { grid-template-rows: 1fr; }
+.faq-a > div { overflow: hidden; }
+.faq-a p { padding: 0 4px 26px; font-size: 15.5px; line-height: 1.7; color: var(--ink-2); max-width: 640px; }
+
+/* ─── CIERRE ─────────────────────────────────────────────────────────────── */
+.cierre { padding: 132px 0; text-align: center; background: var(--ink); color: #fff; }
+.cierre h2 { color: #fff; margin-bottom: 18px; }
+.cierre p { color: rgba(255,255,255,.62); max-width: 520px; margin: 0 auto 34px; font-size: 17.5px; line-height: 1.6; }
+.cierre .btn-2 { background: #fff; color: var(--ink); box-shadow: none; }
+.cierre .btn-2:hover { background: rgba(255,255,255,.9); }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   EL MÓVIL DEL HERO — la conversación funcionando, no una captura
+   ───────────────────────────────────────────────────────────────────────────
+   Idea tomada de arlo.sh: paisaje en calma detrás y el producto trabajando
+   delante. El teléfono se corta por abajo a propósito — es la señal de que la
+   página sigue, y evita que ocupe media pantalla.
+
+   Todo el hilo comparte UN reloj de 16s con fotogramas propios por mensaje.
+   Se hizo así porque con `animation-delay` sobre una animación en bucle cada
+   mensaje reinicia en un momento distinto y a la segunda vuelta el diálogo
+   aparece desordenado.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.movil { margin: 26px 0 30px; }   /* entero, entre el titular y el texto */
+
+.movil-marco {
+  position: relative; width: 236px; height: 428px; margin: 0 auto;
+  background: #1a1720; border-radius: 34px; padding: 7px;
+  box-shadow: 0 34px 70px -26px rgba(23,20,31,.55),
+              0 0 0 1px rgba(23,20,31,.22),
+              inset 0 0 0 1.5px rgba(255,255,255,.14);
+}
+.movil-isla {
+  position: absolute; top: 16px; left: 50%; transform: translateX(-50%);
+  width: 68px; height: 19px; background: #0d0b11; border-radius: var(--r-pill); z-index: 3;
+}
+.movil-pantalla {
+  width: 100%; height: 100%; border-radius: 28px; overflow: hidden;
+  background: #ece7e2; display: flex; flex-direction: column;
+}
+
+.chat-cab {
+  display: flex; align-items: center; gap: 10px;
+  padding: 36px 12px 10px; background: #f6f3f0;
+  border-bottom: 1px solid rgba(23,20,31,.08); flex: none;
+}
+.chat-avatar {
+  width: 28px; height: 28px; border-radius: 50%; flex: none;
+  background: linear-gradient(140deg, var(--purple), var(--purple-deep));
+  color: #fff; display: grid; place-items: center;
+  font-size: 14px; font-weight: 700;
+}
+.chat-quien { display: flex; flex-direction: column; line-height: 1.25; }
+.chat-quien b { font-size: 13.5px; font-weight: 650; letter-spacing: -.01em; }
+.chat-quien small { font-size: 10.5px; color: var(--ink-3); }
+
+.chat-hilo {
+  flex: 1; padding: 11px 10px; display: flex; flex-direction: column; justify-content: flex-end;
+  background: #ece7e2;
+}
+
+.msg {
+  max-width: 84%; padding: 0 10px; border-radius: 13px;
+  font-size: 11.6px; line-height: 1.4; letter-spacing: -.005em;
+  box-shadow: 0 1px 2px rgba(23,20,31,.10);
+  /* Arranca plegado y sin alto: si los mensajes que aún no han llegado
+     ocuparan sitio, el hilo se vería medio vacío por arriba en vez de irse
+     llenando desde abajo como una conversación de verdad. */
+  opacity: 0; max-height: 0; margin-bottom: 0; overflow: hidden;
+  animation: 16s cubic-bezier(.2,.8,.3,1) infinite;
+}
+.msg span { display: block; margin-top: 3px; font-size: 11px; opacity: .72; }
+.msg-ent { align-self: flex-start; background: #fff; color: var(--ink); border-bottom-left-radius: 4px; }
+.msg-sal { align-self: flex-end;  background: var(--purple); color: #fff; border-bottom-right-radius: 4px; }
+
+/* «Escribiendo…» */
+.msg-esc { display: flex; gap: 4px; padding: 12px; }
+.msg-esc i { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,.85); animation: escribe 1.2s ease-in-out infinite; }
+.msg-esc i:nth-child(2) { animation-delay: .18s; }
+.msg-esc i:nth-child(3) { animation-delay: .36s; }
+@keyframes escribe { 0%,100% { opacity: .3; transform: translateY(0); } 50% { opacity: 1; transform: translateY(-3px); } }
+
+/* Un reloj común: cada mensaje entra en su momento y todos se van juntos */
+.m1 { animation-name: e1 }  .m2 { animation-name: e2 }  .m3 { animation-name: e3 }
+.m4 { animation-name: e4 }  .m5 { animation-name: e5 }  .m6 { animation-name: e6 }
+
+@keyframes e1 { 0%,3% {opacity:0;transform:translateY(8px);max-height:0;padding-top:0;padding-bottom:0;margin-bottom:0} 7%,95% {opacity:1;transform:none;max-height:200px;padding-top:7px;padding-bottom:7px;margin-bottom:7px} 99%,100% {opacity:0;transform:translateY(8px);max-height:0;padding-top:0;padding-bottom:0;margin-bottom:0} }
+@keyframes e2 { 0%,15% {opacity:0;transform:translateY(8px);max-height:0;padding-top:0;padding-bottom:0;margin-bottom:0} 19%,30% {opacity:1;transform:none;max-height:200px;padding-top:7px;padding-bottom:7px;margin-bottom:7px} 33%,100% {opacity:0;transform:translateY(8px);max-height:0;padding-top:0;padding-bottom:0;margin-bottom:0} }
+@keyframes e3 { 0%,32% {opacity:0;transform:translateY(8px);max-height:0;padding-top:0;padding-bottom:0;margin-bottom:0} 36%,95% {opacity:1;transform:none;max-height:200px;padding-top:7px;padding-bottom:7px;margin-bottom:7px} 99%,100% {opacity:0;transform:translateY(8px);max-height:0;padding-top:0;padding-bottom:0;margin-bottom:0} }
+@keyframes e4 { 0%,48% {opacity:0;transform:translateY(8px);max-height:0;padding-top:0;padding-bottom:0;margin-bottom:0} 52%,95% {opacity:1;transform:none;max-height:200px;padding-top:7px;padding-bottom:7px;margin-bottom:7px} 99%,100% {opacity:0;transform:translateY(8px);max-height:0;padding-top:0;padding-bottom:0;margin-bottom:0} }
+@keyframes e5 { 0%,62% {opacity:0;transform:translateY(8px);max-height:0;padding-top:0;padding-bottom:0;margin-bottom:0} 66%,95% {opacity:1;transform:none;max-height:200px;padding-top:7px;padding-bottom:7px;margin-bottom:7px} 99%,100% {opacity:0;transform:translateY(8px);max-height:0;padding-top:0;padding-bottom:0;margin-bottom:0} }
+@keyframes e6 { 0%,78% {opacity:0;transform:translateY(8px);max-height:0;padding-top:0;padding-bottom:0;margin-bottom:0} 82%,95% {opacity:1;transform:none;max-height:200px;padding-top:7px;padding-bottom:7px;margin-bottom:7px} 99%,100% {opacity:0;transform:translateY(8px);max-height:0;padding-top:0;padding-bottom:0;margin-bottom:0} }
+
+/* Sin animación: se enseña la conversación entera y quieta */
+@media (prefers-reduced-motion: reduce) {
+  .msg { opacity: 1; animation: none; max-height: none; padding: 7px 10px; margin-bottom: 7px; }
+  .msg-esc { display: none; }
+}
+
+
+@media (max-width: 420px) {
+  .movil-marco { width: 268px; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   CUADRO BASE + NOTA DE PIEZAS  (20-08)
+   El configurador salió de la landing y se fue a calculadora.html, que es
+   interna. Aquí el precio se enseña quieto: una tarjeta por pieza, y delante
+   de todas la del núcleo, que es la que va siempre.
+   ⚠️ El CSS del configurador (.prod, .magia, .opcion, .cuenta, .obra) SIGUE
+   HACIENDO FALTA: lo usa calculadora.html. No borrarlo.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.cap-base {
+  grid-column: 1 / -1;
+  border-color: rgba(124,58,237,.34);
+  background: linear-gradient(168deg, var(--purple-tint) 0%, #fff 62%);
+  box-shadow: var(--sh-2);
+  position: relative;
+}
+.cap-base h3 { font-family: var(--font-head); font-size: 27px; font-weight: 600; letter-spacing: -.02em; line-height: 1.15; }
+.cap-base p  { font-size: 15.5px; max-width: 62ch; }
+.cap-base strong { color: var(--ink); font-weight: 650; }
+
+.cap-etiq {
+  position: absolute; top: 22px; right: 22px;
+  font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--purple); background: #fff;
+  padding: 5px 11px; border-radius: var(--r-pill);
+  box-shadow: inset 0 0 0 1px rgba(124,58,237,.24);
+}
+
+.cap-limite { margin-top: 11px; font-size: 12.5px; color: var(--ink-4); }
+.cap-aviso {
+  margin-top: 12px; padding: 10px 13px; border-radius: 10px;
+  background: var(--purple-tint); font-size: 12.5px; line-height: 1.55; color: var(--ink-2);
+}
+.cap-base .cap-aviso { background: #fff; box-shadow: inset 0 0 0 1px var(--line); }
+.cap-precio-base { font-size: 19px; }
+.cap-precio-base span { font-size: 13px; }
+
+/* La explicación de que se elige a la carta y de que juntar abarata */
+.nota-piezas {
+  margin: 26px auto 0; max-width: 780px;
+  display: grid; gap: 14px;
+  padding: 26px 30px; border: 1px dashed var(--line); border-radius: var(--r-panel);
+  background: var(--cream);
+}
+.nota-piezas p { font-size: 15px; line-height: 1.7; color: var(--ink-2); }
+.nota-piezas strong { color: var(--ink); font-weight: 650; }
+
+@media (max-width: 640px) {
+  .cap-etiq { position: static; display: inline-block; margin-bottom: 10px; }
+  .nota-piezas { padding: 22px; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   LA BANDEJA DE ENTRADA — el segundo producto, detrás del móvil
+   ───────────────────────────────────────────────────────────────────────────
+   El hero no decía nada del correo. En vez de meterlo como cuarto canal —que
+   habría hecho creer que entra por 5 €/mes cuando es un producto aparte de
+   49 €— se enseña como lo que es: otra pantalla, más pequeña y detrás, para
+   que la jerarquía se lea sola sin tener que escribirla.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.escena { position: relative; display: flex; justify-content: center; }
+
+.bandeja {
+  position: absolute; z-index: 1;          /* por debajo del móvil */
+  left: calc(50% + 104px); top: 66px; width: 300px;
+  padding: 13px; border-radius: 16px;
+  background: rgba(255,255,255,.90);
+  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,.8);
+  box-shadow: 0 26px 54px -24px rgba(23,20,31,.34), 0 0 0 1px rgba(23,20,31,.05);
+  transform: rotate(2.2deg);
+}
+.movil { position: relative; z-index: 2; }
+
+.bandeja-cab { display: flex; justify-content: space-between; align-items: baseline; padding: 0 4px 10px; border-bottom: 1px solid var(--line-soft); }
+.bandeja-cab b { font-size: 12.5px; font-weight: 700; letter-spacing: -.01em; }
+.bandeja-cab span { font-size: 10.5px; color: var(--ink-3); }
+
+.bandeja-fila {
+  display: grid; grid-template-columns: 1fr auto; gap: 2px 8px;
+  align-items: center; padding: 9px 4px;
+}
+.bandeja-fila + .bandeja-fila { border-top: 1px solid var(--line-soft); }
+.bandeja-de     { grid-column: 1; font-size: 11.5px; font-weight: 650; letter-spacing: -.01em; }
+.bandeja-asunto { grid-column: 1; font-size: 11px; color: var(--ink-3); line-height: 1.35;
+                  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bandeja-fila.apagada .bandeja-de, .bandeja-fila.apagada .bandeja-asunto { color: var(--ink-4); }
+
+/* Las etiquetas son lo que se anima: entran una a una, que es justo lo que
+   hace el agente — ir clasificando lo que cae. */
+.etq {
+  grid-column: 2; grid-row: 1 / 3; align-self: center;
+  font-size: 9.5px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase;
+  padding: 4px 8px; border-radius: var(--r-pill); white-space: nowrap;
+  opacity: 0; animation: 16s cubic-bezier(.2,.8,.3,1) infinite;
+}
+.etq-urgente { background: #fdeaea; color: #b4232a; }
+.etq-venta   { background: var(--purple-tint); color: var(--purple-deep); }
+.etq-hecho   { background: #e6f6ec; color: #1a7a41; }
+.etq-spam    { background: #f0eef2; color: var(--ink-4); }
+
+@keyframes etq { 0%,8% {opacity:0;transform:translateX(7px) scale(.92)} 14%,92% {opacity:1;transform:none} 98%,100% {opacity:0} }
+.b-f1 .etq { animation-name: etq; animation-delay: .6s; }
+.b-f2 .etq { animation-name: etq; animation-delay: 2.1s; }
+.b-f3 .etq { animation-name: etq; animation-delay: 3.9s; }
+.b-f4 .etq { animation-name: etq; animation-delay: 5.2s; }
+
+@media (prefers-reduced-motion: reduce) { .etq { opacity: 1; animation: none; } }
+
+/* Por debajo de 1180px la bandeja pisa el móvil: se pone debajo y recta */
+@media (max-width: 1180px) {
+  .escena { flex-direction: column; align-items: center; gap: 22px; }
+  .bandeja { position: static; width: min(340px, 100%); transform: none; }
+}

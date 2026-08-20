@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- ==========================================================================
+     CALCULADORA INTERNA — NO ES UNA PÁGINA PÚBLICA. NO ENLAZAR DESDE NINGÚN SITIO.
+
+     Es el configurador que estuvo en la landing de Atención al Cliente hasta el
+     20-08. Se retiró de la landing porque para cerrar en llamada un catálogo
+     abierto estorba más que ayuda — decisión de Ismael. Pero la cuenta es buena
+     y está verificada contra Supabase, así que se conserva como herramienta de
+     uso interno: marcas piezas en la llamada y cantas cuota e instalación.
+
+     La cuenta la hace assets/catalogo.js, port exacto de catalogo_cotiza().
+     ========================================================================== -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de precios (uso interno)</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/base.css">
+  <link rel="stylesheet" href="/assets/atencion.css">
+</head>
+<body>
+
+<section class="seccion" style="padding-top:56px">
+  <div class="envoltura">
+    <div class="envoltura-txt centrado" style="padding:0">
+      <span class="t-eyebrow">Uso interno</span>
+      <h1 class="t-h2" style="margin:14px 0 16px">Calculadora de precios</h1>
+      <p class="t-lead">Marca piezas y canta la cuota y la instalación. La cuenta es la misma que
+        la de Supabase, con su bonificación, su guarda de monotonía y el suelo de 49 €.
+        <strong>Esta página no está enlazada desde ningún sitio y lleva <code>noindex</code>.</strong></p>
+    </div>
+
+    <div class="productos" id="productos"></div>
+
+    <p class="t-small centrado" style="margin-top:28px">
+      Bonificación por acumulación: <strong>4-5 piezas −10 %</strong> · <strong>6-7 −15 %</strong> ·
+      <strong>8 o más hasta −20 %</strong>, también sobre la instalación. El porcentaje que sale
+      arriba es el efectivo, no el de esta tabla: cuando actúa la guarda de monotonía no coinciden.
+    </p>
+  </div>
+</section>
+
+<script src="/assets/catalogo.js"></script>
+<script src="/assets/departamentos.js"></script>
+<script src="/assets/atencion.js"></script>
+</body>
+</html>

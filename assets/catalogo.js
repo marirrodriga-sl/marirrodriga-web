@@ -6,7 +6,7 @@
    catalogo_cotiza(). Este fichero es su copia para que la web funcione sin
    servidor.
 
-   Huella de las 33 piezas publicables y vigentes: 094f9d817a1695fc8b039abbef981269
+   Huella de las 33 piezas publicables y vigentes: 7eac22c47e4e1d706bd9a19b44e66e61
    (md5 de slug|eur|alta|nombre|limite ordenado por slug; la comprueba
    scripts/verificar-catalogo.mjs contra lo que diga la base)
 
@@ -15,7 +15,7 @@
    ═════════════════════════════════════════════════════════════════════════ */
 
 const CATALOGO = {
-  generado: '2026-08-16',
+  generado: '2026-08-19',
   suelo: 49,
   // [piezas_min, piezas_max, bonificación %]  ·  tope 20 %
   escala: [[1,3,0],[4,5,10],[6,7,15],[8,null,20]],
@@ -37,22 +37,22 @@ const CATALOGO = {
       canales: 'el mismo canal del producto; si no hay, email',
       integra: 'la agenda propia · enlace a tu ficha de Google',
       excluye: 'SMS (coste por mensaje, aparte) · llamadas de voz · responder reseñas · reputación en otras plataformas · incentivos por reseña (lo prohíbe Google)' },
-    { slug: 'reactivacion-dormidos', nombre: 'Reactivación de dormidos', cat: 'citas', regimen: 'preset', base: 'bookia', eur: 15,
+    { slug: 'reactivacion-dormidos', nombre: 'Reactivación de dormidos', cat: 'citas', regimen: 'preset', base: 'bookia', eur: 15, setup: 40,
       limite: 'hasta 200 contactos/mes · 1 campaña/mes',
       canales: 'el del asistente',
       integra: 'agenda propia',
       excluye: 'segmentación a medida · ofertas personalizadas por cliente · campañas fuera de calendario' },
-    { slug: 'insights-semanales', nombre: 'Insights semanales', cat: 'citas', regimen: 'preset', base: 'bookia', eur: 15,
+    { slug: 'insights-semanales', nombre: 'Insights semanales', cat: 'citas', regimen: 'preset', base: 'bookia', eur: 15, setup: 50,
       limite: '1 informe/semana',
       canales: 'email o Telegram',
       integra: 'solo datos propios del sistema',
       excluye: 'cuadro de mando en vivo (es el Panel de negocio) · fuentes externas · informes a medida' },
-    { slug: 'landing-conectada-bookia', nombre: 'Landing conectada', cat: 'citas', regimen: 'preset', base: 'bookia', eur: 49,
+    { slug: 'landing-conectada-bookia', nombre: 'Landing conectada', cat: 'citas', regimen: 'preset', base: 'bookia', eur: 49, setup: 200,
       limite: 'hasta 5 secciones · 1 idioma · 1 revisión de diseño al año',
       canales: 'web',
       integra: 'reserva propia + formulario de contacto',
       excluye: 'blog · tienda · varios idiomas · el dominio lo paga el cliente · redacción de textos largos · SEO activo' },
-    { slug: 'panel-negocio', nombre: 'Panel de negocio', cat: 'citas', regimen: 'preset', base: 'bookia', eur: 49,
+    { slug: 'panel-negocio', nombre: 'Panel de negocio', cat: 'citas', regimen: 'preset', base: 'bookia', eur: 49, setup: 150,
       limite: 'histórico de 24 meses',
       canales: 'web',
       integra: 'solo datos propios',

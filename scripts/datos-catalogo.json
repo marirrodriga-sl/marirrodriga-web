@@ -1,5 +1,5 @@
 {
-  "generado": "2026-08-16",
+  "generado": "2026-08-19",
   "suelo": 49,
   "escala": [
     [
@@ -222,7 +222,7 @@
       "regimen": "preset",
       "base": "bookia",
       "eur": 15,
-      "setup": null,
+      "setup": 40,
       "limite": "hasta 200 contactos/mes · 1 campaña/mes",
       "canales": "el del asistente",
       "integra": "agenda propia",
@@ -235,7 +235,7 @@
       "regimen": "preset",
       "base": "bookia",
       "eur": 15,
-      "setup": null,
+      "setup": 50,
       "limite": "1 informe/semana",
       "canales": "email o Telegram",
       "integra": "solo datos propios del sistema",
@@ -248,7 +248,7 @@
       "regimen": "preset",
       "base": "bookia",
       "eur": 49,
-      "setup": null,
+      "setup": 200,
       "limite": "hasta 5 secciones · 1 idioma · 1 revisión de diseño al año",
       "canales": "web",
       "integra": "reserva propia + formulario de contacto",
@@ -261,7 +261,7 @@
       "regimen": "preset",
       "base": "bookia",
       "eur": 49,
-      "setup": null,
+      "setup": 150,
       "limite": "histórico de 24 meses",
       "canales": "web",
       "integra": "solo datos propios",

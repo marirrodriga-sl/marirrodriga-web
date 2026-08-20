@@ -13,10 +13,12 @@ import { createHash } from 'node:crypto';
 const require = createRequire(import.meta.url);
 const { CATALOGO, cotiza, calculaSetup } = require('../assets/catalogo.js');
 
-// Comprobado contra Supabase el 16-08 tras retirar (vigente=false) las dos
-// piezas de «profesionales ilimitados»: cobrar por número de profesionales
-// era un resto del modelo de planes. De 35 piezas a 33.
-const HUELLA_ESPERADA = '094f9d817a1695fc8b039abbef981269';
+// Comprobado contra Supabase el 19-08 tras fijar el alta de las cuatro piezas que
+// salían a 0 €. Siguen siendo 33: no se ha añadido ni retirado ninguna, solo se les
+// ha puesto precio de instalación.
+// OJO: la consulta del encabezado necesita «where publicable and vigente». Solo con
+// «publicable» devuelve 37 piezas y una huella que no cuadra con la del generador.
+const HUELLA_ESPERADA = '7eac22c47e4e1d706bd9a19b44e66e61';
 const N_ESPERADAS = 33;
 
 let fallos = 0;
@@ -44,10 +46,14 @@ check(sinLimite.length === 0, 'ninguna pieza sin su límite', sinLimite.map(p =>
 // ── 2b. Las altas que se publican son las que dice la base ───────────────
 const ALTAS = { 'iris-0': 150, 'modulo-seguimiento-pedidos': 70, 'hermes-seguimiento-presupuestos': 200,
   'hermes-acompanamiento-conversacional': 50, 'abaco-facturacion-mensaje': 200,
-  'abaco-contabilidad-asistida': 650, 'abaco-gestion-documental': 300, 'presencia-web-landing': 400, 'agenda-reserva-publica': 50, 'recordatorios-confirmacion': 30, 'ficha-cliente': 100, 'captacion-leads': 600, 'canal-adicional': 30, 'voz-telefono': 100, 'correo-clasificacion': 70, 'correo-respuesta-derivacion': 70, 'correo-buzon-adicional': 30, 'correo-extraccion-crm': 100 };
+  'abaco-contabilidad-asistida': 650, 'abaco-gestion-documental': 300, 'presencia-web-landing': 400, 'agenda-reserva-publica': 50, 'recordatorios-confirmacion': 30, 'ficha-cliente': 100, 'captacion-leads': 600, 'canal-adicional': 30, 'voz-telefono': 100, 'correo-clasificacion': 70, 'correo-respuesta-derivacion': 70, 'correo-buzon-adicional': 30, 'correo-extraccion-crm': 100,
+  // Validadas por Ismael el 19-08. Criterio: el alta ya era 2-4x la cuota en las piezas
+  // de verdad, y estas cuatro se han encajado en esa horquilla.
+  'reactivacion-dormidos': 40, 'insights-semanales': 50, 'panel-negocio': 150,
+  'landing-conectada-bookia': 200 };
 const altasMal = CATALOGO.piezas.filter(p => p.setup !== undefined && ALTAS[p.slug] !== p.setup);
-check(altasMal.length === 0, 'las altas fijadas el 16-08 coinciden',
-      altasMal.map(p => `${p.slug}=${p.setup}`).join(', ') || 'las 8 cuadran');
+check(altasMal.length === 0, 'las altas fijadas coinciden con la base',
+      altasMal.map(p => `${p.slug}=${p.setup}`).join(', ') || `las ${Object.keys(ALTAS).length} cuadran`);
 
 // ── 3. La cuenta da igual que en SQL: los 9 ejemplos del catálogo ─────────
 const EJEMPLOS = [
@@ -117,7 +123,10 @@ for (let i = 1; i <= todos.length; i++) {
 }
 check(altaMonotona, 'añadir una herramienta nunca abarata el montaje');
 
-// ⚠️ Ninguna pieza que salga a la web debería enseñar 0 € de alta sin quererlo
+// Ninguna pieza que salga a la web debería enseñar 0 € de alta sin quererlo.
+// Del 16 al 19-08 esta comprobación FALLABA a propósito, para que no se publicaran las
+// cuatro piezas sin precio de instalación. Ya tienen precio, así que ahora debe pasar:
+// lo correcto pasa de «1 FALLOS» a «0 FALLOS».
 const sinAlta = CATALOGO.piezas.filter(p => p.cat !== 'dental' && !p.setup);
 check(sinAlta.length === 0, 'ninguna pieza de la web sin alta fijada',
       sinAlta.map(p => p.slug).join(', ') || 'todas la llevan');

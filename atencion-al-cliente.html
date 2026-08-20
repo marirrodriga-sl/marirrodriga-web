@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asistente de atención al cliente con IA | Marirrodriga IA</title>
+  <meta name="description" content="Un asistente que contesta por WhatsApp, Telegram o el chat de tu web, mira tu agenda de verdad y cierra la cita. Desde 49 €/mes + 150 €, con su límite al lado. Monta el tuyo y llévate la cuenta hecha.">
+  <link rel="canonical" href="https://www.marirrodriga-ia.com/atencion-al-cliente">
+  <meta name="theme-color" content="#7C3AED">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Marirrodriga IA">
+  <meta property="og:title" content="Contesta a las once de la noche. Y también los domingos.">
+  <meta property="og:description" content="Un asistente que atiende, entiende y reserva en el canal donde ya te escriben tus clientes. Desde 49 €/mes, con su límite al lado.">
+  <meta property="og:url" content="https://www.marirrodriga-ia.com/atencion-al-cliente">
+  <meta property="og:image" content="https://www.marirrodriga-ia.com/og-image.png">
+  <meta property="og:locale" content="es_ES">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contesta a las once de la noche. Y también los domingos.">
+  <meta name="twitter:description" content="Un asistente que atiende, entiende y reserva. Desde 49 €/mes, con su límite al lado.">
+  <meta name="twitter:image" content="https://www.marirrodriga-ia.com/og-image.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "¿Se nota que es un bot?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí, y a propósito: se identifica siempre como IA. Lo exige el artículo 50 del Reglamento Europeo de IA desde agosto de 2026, y además mentir en eso sale caro cuando el cliente lo descubre." } },
+      { "@type": "Question", "name": "¿Qué pasa cuando no sabe algo?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Deja de contestar y te pasa la conversación. No improvisa, no promete plazos y no cierra ventas con cobro. Si el cliente se enfada, también te lo pasa." } },
+      { "@type": "Question", "name": "¿Necesito una cuenta de WhatsApp Business?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí, y va a tu nombre: Meta te factura a ti directamente. No revendemos mensajería. Por eso el canal adicional cuesta 5 €/mes: lo que pagas es la conexión, no el consumo." } },
+      { "@type": "Question", "name": "¿Y si me quedo corto de conversaciones?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Te avisamos al 80 % del límite y te proponemos subir. Nunca cortamos el servicio ni te facturamos el exceso por sorpresa." } },
+      { "@type": "Question", "name": "¿Hay permanencia?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. Te vas cuando quieras avisando con 30 días. La instalación se paga 50 % al empezar y 50 % al entregar." } }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/base.css">
+  <link rel="stylesheet" href="/assets/atencion.css">
+</head>
+<body>
+
+<!-- ─── NAV ─────────────────────────────────────────────────────────────── -->
+<nav class="nav">
+  <a class="nav-logo" href="/">
+    <img src="/assets/img/logo.png" alt="" width="256" height="256">
+    <span>Marirrodriga<b>.IA</b></span>
+  </a>
+  <div class="nav-links">
+    <a class="nav-link" href="#chatbot">El chatbot</a>
+    <a class="nav-link" href="#correo">Por correo</a>
+    <a class="nav-link" href="#preguntas">Preguntas</a>
+  </div>
+  <a class="btn btn-1 nav-cta" href="https://cal.com/marirrodriga-ia/llamada" target="_blank" rel="noopener">Asesoría gratuita</a>
+</nav>
+
+<!-- ─── HERO ────────────────────────────────────────────────────────────── -->
+<header class="hero">
+  <div class="hero-fondo"></div>
+  <div class="hero-grano"></div>
+
+  <!-- La conversación funcionando alrededor del titular. Es HTML, no una
+       captura: no se queda vieja y es literalmente el producto. -->
+  <!-- Las laterales enseñan capacidades que el móvil NO está enseñando: el
+       seguimiento de pedidos y el momento en que deja de contestar y te lo pasa.
+       Si repitieran la conversación del teléfono, sobrarían. -->
+  <div class="burbujas" aria-hidden="true">
+    <span class="burbuja-etiq e1">Otro cliente · 02:14</span>
+    <div class="burbuja burbuja-cliente b1">¿Dónde está mi pedido?</div>
+    <div class="burbuja burbuja-bot b2">Salió ayer y llega mañana antes de las 14:00.<small>Consultando tu tienda, sin tocar nada</small></div>
+  </div>
+
+  <div class="hero-centro">
+    <span class="hero-pill"><i></i> Atención al Cliente</span>
+    <h1 class="t-h1">Contesta a las once<br>de la noche.<br><span class="acento">Y también los domingos.</span></h1>
+    <!-- El móvil con la conversación funcionando, entre el titular y el resto.
+         Va ENTERO, sin recortar: colocación pedida por Ismael el 20-08. -->
+    <div class="escena" aria-hidden="true">
+    <div class="movil">
+      <div class="movil-marco">
+        <span class="movil-isla"></span>
+        <div class="movil-pantalla">
+          <div class="chat-cab">
+            <span class="chat-avatar">V</span>
+            <span class="chat-quien"><b>Tu negocio</b><small>en línea · responde al momento</small></span>
+          </div>
+          <div class="chat-hilo">
+            <div class="msg msg-ent m1">Hola, ¿os queda hueco mañana por la tarde?</div>
+            <div class="msg msg-sal msg-esc m2"><i></i><i></i><i></i></div>
+            <div class="msg msg-sal m3">Sí — mañana tengo las 17:30 y las 19:00 libres. ¿Cuál te viene mejor?</div>
+            <div class="msg msg-ent m4">La de las 19:00</div>
+            <div class="msg msg-sal m5">Hecho, reservado ✓<br><span>Te aviso la víspera por si tienes que moverla.</span></div>
+            <div class="msg msg-ent m6">¡Gracias!</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <!-- El correo, detrás y a un lado: se ven los dos productos a la vez y la
+           jerarquía queda clara sin tener que explicarla. -->
+      <div class="bandeja">
+        <div class="bandeja-cab"><b>Tu bandeja de entrada</b><span>ordenándose sola</span></div>
+        <div class="bandeja-fila b-f1">
+          <span class="bandeja-de">Laura M.</span>
+          <span class="bandeja-asunto">Mi pedido no ha llegado y ya van tres…</span>
+          <span class="etq etq-urgente">Reclamación</span>
+        </div>
+        <div class="bandeja-fila b-f2">
+          <span class="bandeja-de">Distribuciones Vela</span>
+          <span class="bandeja-asunto">Solicitud de presupuesto para 200 uds.</span>
+          <span class="etq etq-venta">Oportunidad</span>
+        </div>
+        <div class="bandeja-fila b-f3">
+          <span class="bandeja-de">Javier R.</span>
+          <span class="bandeja-asunto">¿Cuál es vuestro horario los sábados?</span>
+          <span class="etq etq-hecho">Contestado ✓</span>
+        </div>
+        <div class="bandeja-fila b-f4 apagada">
+          <span class="bandeja-de">newsletter@…</span>
+          <span class="bandeja-asunto">🔥 ÚLTIMAS HORAS: 70 % de descuento</span>
+          <span class="etq etq-spam">Spam</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="t-lead">Un asistente que entiende lo que le escriben, mira tu agenda de verdad y cierra la cita él mismo. En el canal donde tus clientes ya te escriben, no en uno nuevo que tengan que aprender.</p>
+    <div class="hero-botones">
+      <a class="btn btn-1" href="https://cal.com/marirrodriga-ia/llamada" target="_blank" rel="noopener">Asesoría gratuita de 30 min</a>
+      <a class="btn btn-2" href="#chatbot">Ver qué sabe hacer y qué cuesta</a>
+    </div>
+
+    <div class="hero-canales">
+      <span class="hero-canal on">
+        <svg viewBox="0 0 24 24" fill="#25D366"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2z"/></svg>
+        WhatsApp</span>
+      <span class="hero-canal">
+        <svg viewBox="0 0 24 24" fill="#229ED9"><path d="M22 3L2 10.5l5.5 2L20 6l-9.5 9v5l3-3.5 4.5 3.5z"/></svg>
+        Telegram</span>
+      <span class="hero-canal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="19" height="14" rx="2.5"/><path d="M7 21h10"/></svg>
+        El chat de tu web</span>
+    </div>
+    <p class="t-micro" style="margin-top:14px">Uno incluido, el que tú elijas. Cada canal de más, 5 €/mes.</p>
+
+  </div>
+</header>
+
+<!-- ─── EL PROBLEMA ─────────────────────────────────────────────────────── -->
+<section class="seccion">
+  <div class="envoltura">
+    <div class="envoltura-txt centrado" style="padding:0">
+      <span class="t-eyebrow">El agujero</span>
+      <h2 class="t-h2" style="margin:14px 0 16px">Lo que se pierde no es una llamada.<br>Es la que no vuelve a llamar.</h2>
+      <p class="t-lead">Quien escribe fuera de horario no espera a mañana: escribe al siguiente. El problema de no contestar no es el mensaje perdido, es que no te enteras de que lo has perdido.</p>
+    </div>
+
+    <div class="problema aparece">
+      <div class="problema-celda">
+        <h3>Fuera de horario</h3>
+        <p class="t-body">El mensaje entra a las once de la noche, un domingo o en agosto. Tú lo lees el lunes. Para entonces ya han reservado en otro sitio.</p>
+      </div>
+      <div class="problema-celda">
+        <h3>Mientras trabajas</h3>
+        <p class="t-body">Estás atendiendo a alguien delante. El teléfono suena, el WhatsApp se acumula y elegir a quién dejas tirado es parte del día.</p>
+      </div>
+      <div class="problema-celda">
+        <h3>Lo de siempre</h3>
+        <p class="t-body">Precio, horario, dónde estáis, si queda hueco. Las mismas cinco preguntas, contestadas a mano, una por una, todos los días.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── EL CHATBOT ────────────────────────────── -->
+<section class="seccion" id="chatbot">
+  <div class="envoltura">
+    <div class="envoltura-txt centrado" style="padding:0">
+      <span class="t-eyebrow">El chatbot</span>
+      <h2 class="t-h2" style="margin:14px 0 16px">Empieza contestando.<br><span class="acento">Y va aprendiendo oficios.</span></h2>
+      <p class="t-lead">Abajo tienes el chatbot en su versión mínima: lo que montamos siempre. A partir de ahí le enchufas encima solo lo que necesites, ni una pieza más.</p>
+    </div>
+
+    <div class="capacidades aparece">
+      <div class="cap cap-base">
+        <span class="cap-etiq">Va siempre</span>
+        <h3>El chatbot</h3>
+        <p>Contesta las preguntas de siempre con lo que tú le hayas contado de tu negocio. Va con <strong>un canal incluido, el que tú elijas</strong>: el chat de tu web, WhatsApp o Telegram. Se identifica como IA y te pasa la conversación cuando no le toca a él.</p>
+        <div class="cap-limite">500 conversaciones al mes · 1 canal</div>
+        <div class="cap-precio cap-precio-base">49 €/mes <span>· 150 € de instalación</span></div>
+      </div>
+      <div class="cap">
+        <div class="cap-ico"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 01-9 8.4 8.5 8.5 0 01-3.9-.9L3 20.5l1.5-4.6A8.4 8.4 0 0112 3.1a8.4 8.4 0 019 8.4z"/></svg></div>
+        <h3>Un canal más</h3>
+        <p>El primero va incluido y lo eliges tú. Cada canal de más — WhatsApp, Telegram, Instagram — se suma aparte.</p>
+        <div class="cap-limite">1 canal por unidad</div>
+        <div class="cap-precio">+5 €/mes <span>· +30 € de alta</span></div>
+      </div>
+      <div class="cap">
+        <div class="cap-ico"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M16 3v4M8 3v4M3 11h18"/></svg></div>
+        <h3>Acceso a tu agenda: reservar, cambiar y cancelar</h3>
+        <p>Deja de contestar y empieza a hacer: mira los huecos reales y cierra la cita él mismo.</p>
+        <div class="cap-limite">hasta 400 citas/mes</div>
+        <div class="cap-precio">+15 €/mes <span>· +50 € de alta</span></div>
+      </div>
+      <div class="cap">
+        <div class="cap-ico"><svg viewBox="0 0 24 24"><path d="M12 22a2 2 0 002-2h-4a2 2 0 002 2zM18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9z"/></svg></div>
+        <h3>Recordatorios anti no-show y reseñas</h3>
+        <p>Avisa la víspera y deja confirmar o cancelar con un toque. Cuando la visita ha pasado pregunta qué tal fue: si fue bien pide la reseña de Google, y si fue mal te avisa a ti.</p>
+        <div class="cap-limite">hasta 800 envíos/mes</div>
+        <div class="cap-precio">+15 €/mes <span>· +30 € de alta</span></div>
+      </div>
+      <div class="cap">
+        <div class="cap-ico"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.9"/></svg></div>
+        <h3>Base de datos de clientes</h3>
+        <p>Que sepa quién le escribe, qué le hiciste la última vez y qué hablasteis hace tres meses, en vez de empezar de cero cada vez.</p>
+        <div class="cap-limite">2.000 fichas · 5 GB de fotos</div>
+        <div class="cap-precio">+25 €/mes <span>· +100 € de alta</span></div>
+      </div>
+      <div class="cap">
+        <div class="cap-ico"><svg viewBox="0 0 24 24"><path d="M3 7h13v10H3zM16 10h4l1 3v4h-5z"/><circle cx="7" cy="19" r="1.6"/><circle cx="18" cy="19" r="1.6"/></svg></div>
+        <h3>Seguimiento de pedidos</h3>
+        <p>Responde al «¿dónde está lo mío?» consultando tu tienda. Solo lee: ni toca ni cancela.</p>
+        <div class="cap-limite">se acopla al asistente</div>
+        <div class="cap-precio">+30 €/mes <span>· +70 € de alta</span></div>
+      </div>
+      <div class="cap">
+        <div class="cap-ico"><svg viewBox="0 0 24 24"><path d="M3 17l5-5 4 3 8-8"/><path d="M15 7h5v5"/></svg></div>
+        <h3>Monitoreo de clientes potenciales</h3>
+        <p>Sigue a los que preguntaron y no cerraron: intenta cerrarlos, y cuando alguno se cae te reporta por qué se ha caído.</p>
+        <div class="cap-limite">300 conversaciones/mes</div>
+        <div class="cap-precio">+49 €/mes <span>· +50 € de alta</span></div>
+      </div>
+      <div class="cap">
+        <div class="cap-ico"><svg viewBox="0 0 24 24"><path d="M12 2a3 3 0 013 3v6a3 3 0 01-6 0V5a3 3 0 013-3z"/><path d="M19 10a7 7 0 01-14 0M12 17v5"/></svg></div>
+        <h3>Función de voz: que coja el teléfono</h3>
+        <p>Que atienda hablando, no solo escribiendo. Mismo cerebro y mismos datos que el de texto.</p>
+        <div class="cap-limite">comparte el volumen del chatbot</div>
+        <div class="cap-aviso">La telefonía y los minutos van a tu nombre y a tu cargo, igual que la cuenta de WhatsApp. Por eso el mensual es tan bajo: el consumo no pasa por nosotros.</div>
+        <div class="cap-precio">+15 €/mes <span>· +100 € de alta</span></div>
+      </div>
+    </div>
+
+    <div class="nota-piezas aparece">
+      <p><strong>Eliges tú, una a una.</strong> Ninguna arrastra a otra: puedes llevarte el chatbot solo, o el chatbot con la agenda y nada más. Lo que no marques, ni se monta ni se cobra.</p>
+      <p><strong>Y cuantas más montes de una vez, menos cuesta cada una.</strong> A partir de cuatro piezas entra la bonificación —hasta un 20 %— y se aplica <strong>también a la instalación</strong>, porque montarlas juntas nos lleva menos que montarlas sueltas. En la llamada te lo calculamos con tus piezas delante.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ATENCIÓN POR CORREO ─────────────────────── -->
+<section class="seccion seccion-cream" id="correo">
+  <div class="envoltura">
+    <div class="envoltura-txt centrado" style="padding:0">
+      <span class="t-eyebrow">Atención por correo</span>
+      <h2 class="t-h2" style="margin:14px 0 16px">El otro sitio donde<br><span class="acento">se te acumula el trabajo.</span></h2>
+      <p class="t-lead">Lo mismo que hace el chatbot en el chat, pero dentro de tu bandeja de entrada. Se monta aparte y funciona igual: una base que va siempre y encima lo que quieras.</p>
+    </div>
+
+    <div class="capacidades aparece">
+      <div class="cap cap-base">
+        <span class="cap-etiq">Va siempre</span>
+        <h3>El organizador del buzón</h3>
+        <p>Un agente que vive dentro de tu correo y ordena lo que entra: esto es spam, esto una reclamación, esto una propuesta, esto un pedido. <strong>Tú decides las etiquetas.</strong> Va siempre, porque es lo que hace que lo demás sepa qué está mirando.</p>
+        <div class="cap-limite">hasta 1.000 correos al mes · 1 buzón · solo lee, no escribe</div>
+        <div class="cap-precio cap-precio-base">49 €/mes <span>· 70 € de instalación</span></div>
+        <div class="cap-aviso">Si ya llevas el chatbot, esto se te queda en <strong>15 €/mes más</strong>: el mínimo por solución ya lo estás pagando.</div>
+      </div>
+      <div class="cap">
+        <div class="cap-ico"><svg viewBox="0 0 24 24"><path d="M4 5h16v5a2 2 0 000 4v5H4v-5a2 2 0 000-4z"/><path d="M12 5v14" stroke-dasharray="2 3"/></svg></div>
+        <h3>Que conteste, abra ticket y te avise</h3>
+        <p>Responde los correos que tú hayas decidido que se contestan solos; del resto abre un ticket y se lo asigna a quien le toque. Y lo que no puede esperar —una reclamación, un cabreo— te lo pasa al momento en vez de dejarlo en la bandeja. Nada se queda sin dueño.</p>
+        <div class="cap-limite">hasta 300 respuestas, derivaciones o avisos/mes</div>
+        <div class="cap-precio">+15 €/mes <span>· +70 € de alta</span></div>
+      </div>
+      <div class="cap">
+        <div class="cap-ico"><svg viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M3 7l9 6 9-6"/></svg></div>
+        <h3>Un buzón más</h3>
+        <p>El primero va incluido. Si tienes info@, ventas@ y soporte@ por separado, cada uno de más se suma aparte.</p>
+        <div class="cap-limite">1 buzón por unidad</div>
+        <div class="cap-precio">+5 €/mes <span>· +30 € de alta</span></div>
+      </div>
+      <div class="cap">
+        <div class="cap-ico"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></div>
+        <h3>Que lo lleve a tu CRM</h3>
+        <p>Del correo salen los datos que importan — quién pregunta, por qué y cómo contactarle — y acaban en tu CRM en vez de en tu cabeza.</p>
+        <div class="cap-limite">hasta 300 fichas al mes</div>
+        <div class="cap-aviso">Cuenta con que ya tienes un CRM y con que deja escribir desde fuera. Si no tienes, montarlo se presupuesta aparte.</div>
+        <div class="cap-precio">+20 €/mes <span>· +100 € de alta</span></div>
+      </div>
+      <div class="cap">
+        <div class="cap-ico"><svg viewBox="0 0 24 24"><path d="M3 7h13v10H3zM16 10h4l1 3v4h-5z"/><circle cx="7" cy="19" r="1.6"/><circle cx="18" cy="19" r="1.6"/></svg></div>
+        <h3>Seguimiento de pedidos</h3>
+        <p>El «¿dónde está mi pedido?» que llega por correo lo resuelve él consultando tu tienda, igual que hace el chatbot.</p>
+        <div class="cap-limite">se acopla al asistente</div>
+        <div class="cap-precio">+30 €/mes <span>· +70 € de alta</span></div>
+      </div>
+    </div>
+
+    <p class="t-small centrado" style="margin-top:30px">
+      Todos los precios <strong>sin IVA</strong>. La instalación se paga <strong>50 % al empezar y 50 % al entregar</strong>.
+      Sin permanencia: te vas cuando quieras avisando con 30 días.
+    </p>
+  </div>
+</section>
+
+<!-- ─── PREGUNTAS ───────────────────────────────────────────────────────── -->
+<section class="seccion" id="preguntas">
+  <div class="envoltura-txt">
+    <span class="t-eyebrow">Preguntas</span>
+    <h2 class="t-h2" style="margin:14px 0 0">Lo que nos preguntan<br>antes de decir que sí.</h2>
+
+    <div class="faq">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">¿Se nota que es un bot?
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="faq-a"><div><p>Sí, y a propósito: se identifica siempre como IA. Lo exige el artículo 50 del Reglamento Europeo de IA desde agosto de 2026, y además mentir en eso sale caro el día que el cliente lo descubre. Lo que no se nota es que sea malo.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">¿Qué pasa cuando no sabe algo?
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="faq-a"><div><p>Deja de contestar y te pasa la conversación. No improvisa, no promete plazos y no cierra ventas con cobro. Si el cliente se enfada, también te lo pasa: la escalada a una persona es parte del diseño, no un fallo.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">¿Necesito una cuenta de WhatsApp Business?
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="faq-a"><div><p>Sí, y va a tu nombre: Meta te factura a ti directamente. No revendemos mensajería. Por eso un canal de más cuesta 5 €/mes — lo que pagas es la conexión, no el consumo.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">¿Y si me quedo corto de conversaciones?
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="faq-a"><div><p>Te avisamos al 80 % del límite y te proponemos subir. Nunca cortamos el servicio ni te facturamos el exceso por sorpresa. Un precio sin su límite al lado es una mentira o una trampa, así que aquí van siempre juntos.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">¿Hay permanencia?
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="faq-a"><div><p>No. Te vas cuando quieras avisando con 30 días. La instalación se paga 50 % al empezar y 50 % al entregar, y la cuota incluye los ajustes y una reunión al mes.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">¿Cuánto tarda en estar funcionando?
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="faq-a"><div><p>Depende de cuánto haya que contarle de tu negocio y de a cuántas cosas tuyas se tenga que conectar. En la llamada lo vemos y sales con una fecha concreta, no con un «pronto».</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CIERRE ──────────────────────────────────────────────────────────── -->
+<section class="cierre">
+  <div class="envoltura-txt">
+    <h2 class="t-h2">Media hora, y te decimos<br>por dónde empezar.</h2>
+    <p>O que no empieces. Si esto no te va a devolver lo que cuesta, te lo decimos en la llamada y nos ahorramos los dos el tiempo.</p>
+    <div class="hero-botones">
+      <a class="btn btn-2" href="https://cal.com/marirrodriga-ia/llamada" target="_blank" rel="noopener">Reservar la asesoría gratuita</a>
+      <a class="btn btn-3" style="color:rgba(255,255,255,.6)" href="/">Ver todo lo que montamos →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PIE ─────────────────────────────────────────────────────────────── -->
+<footer class="pie">
+  <div class="envoltura">
+    <div class="pie-fila">
+      <div>
+        <div class="pie-marca">
+          <img src="/assets/img/logo.png" alt="" width="256" height="256">
+          Marirrodriga.IA
+        </div>
+        <p style="margin-top:12px;max-width:280px;font-size:13.5px">Software con IA montado por piezas, con su precio y su límite públicos.</p>
+      </div>
+      <div class="pie-cols">
+        <div class="pie-col">
+          <h4>Departamentos</h4>
+          <a href="/atencion-al-cliente">Atención al Cliente</a>
+          <span style="opacity:.35">Ventas y Captación</span>
+          <span style="opacity:.35">Finanzas</span>
+          <span style="opacity:.35">Datos y Dirección</span>
+          <span style="opacity:.35">Marketing</span>
+        </div>
+        <div class="pie-col">
+          <h4>Contacto</h4>
+          <a href="https://cal.com/marirrodriga-ia/llamada" target="_blank" rel="noopener">Asesoría gratuita</a>
+          <a href="mailto:marirrodriga.ia@gmail.com">marirrodriga.ia@gmail.com</a>
+          <a href="https://wa.me/34675148566" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+        <div class="pie-col">
+          <h4>Legal</h4>
+          <a href="/aviso-legal">Aviso legal</a>
+          <a href="/privacidad">Privacidad</a>
+        </div>
+      </div>
+    </div>
+    <div class="pie-legal">
+      <span>© 2026 Marirrodriga IA</span>
+      <span>Todos los precios sin IVA</span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/34675148566" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.1s-.8 1-.9 1.2c-.2.2-.3.2-.6.1a8 8 0 01-4-3.5c-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5L9.3 7c-.2-.5-.4-.5-.6-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 1.9.8 2.7.9 3.6.8.6-.1 1.8-.7 2-1.5.3-.7.3-1.3.2-1.4-.1-.2-.3-.3-.6-.4z"/><path d="M12 2a10 10 0 00-8.5 15.2L2 22l4.9-1.4A10 10 0 1012 2zm0 18.2c-1.6 0-3.2-.4-4.5-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2z"/></svg>
+</a>
+
+<script src="/assets/catalogo.js"></script>
+<script src="/assets/departamentos.js"></script>
+<script src="/assets/atencion.js"></script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
