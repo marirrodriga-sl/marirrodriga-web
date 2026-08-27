@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- ==========================================================================
+     ASESORÍA — el formulario del regalo de RRSS.
+
+     A esta página llega quien pincha el enlace del primer comentario de un post.
+     No es una landing de venta: es el paso intermedio entre «me interesa» y
+     «tengo cita». Por eso no lleva navegación — de una página de conversión no
+     se sale por arriba.
+
+     SEIS PREGUNTAS Y NI UNA MÁS. Cada una se gana el sitio: dice si el lead está
+     caliente y qué hay que llevar preparado a la llamada. El razonamiento de por
+     qué estas y no otras está en rrss-agencia/docs/regalo.md — y sobre todo por
+     qué NO se pide el teléfono, ni los apellidos, ni el nivel de IA, ni cómo nos
+     has conocido (eso último ya viene en la URL).
+
+     El origen NO se pregunta: llega en ?p= (qué pieza) y ?c= (qué canal). Es lo
+     que contesta qué post trae clientes.
+
+     Los `name` de estos campos son el contrato con el flujo de n8n
+     «Clasificacion de leads Marirrodriga I.A.». Si cambias uno aquí, se cambia
+     allí el mismo día, o el lead se pierde en silencio.
+     ========================================================================== -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Media hora, y te digo si te sale a cuenta — Marirrodriga.IA</title>
+  <meta name="description" content="Treinta minutos para ver qué se puede automatizar en tu negocio, qué no, y por dónde se empieza. Gratis y sin compromiso.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/base.css">
+  <link rel="stylesheet" href="/assets/asesoria.css">
+</head>
+<body>
+
+<div class="as-cab">
+  <a class="as-logo" href="/">
+    <img src="/assets/img/logo.png" alt="" width="256" height="256">
+    <span>Marirrodriga<b>.IA</b></span>
+  </a>
+</div>
+
+<!-- ─── PASO 1: EL FORMULARIO ──────────────────────────────────────────── -->
+<main class="as-main" id="paso-form">
+  <div class="as-envoltura">
+
+    <header class="as-intro">
+      <span class="t-eyebrow">Asesoría gratuita · 30 minutos</span>
+      <h1 class="t-h2">Media hora, y te digo <em class="acento">si te sale a cuenta</em></h1>
+      <p class="t-lead">Miramos tu negocio y sales sabiendo tres cosas: qué se puede automatizar,
+        qué no merece la pena, y por dónde se empieza. Sin presentación y sin presupuesto sorpresa.</p>
+      <p class="as-honesto">Y si por lo que me cuentes creo que <strong>todavía no te compensa</strong>,
+        te lo digo en la propia llamada. Prefiero eso a venderte algo que no vas a usar.</p>
+    </header>
+
+    <form id="as-form" class="as-form" novalidate>
+
+      <!-- 1 · quién eres -->
+      <fieldset class="as-bloque">
+        <legend class="as-num"><span>1</span> Para poder escribirte</legend>
+        <div class="as-dos">
+          <label class="as-campo">
+            <span>Tu nombre</span>
+            <input type="text" name="nombre" autocomplete="given-name" required>
+          </label>
+          <label class="as-campo">
+            <span>Tu correo</span>
+            <input type="email" name="email" autocomplete="email" required>
+          </label>
+        </div>
+      </fieldset>
+
+      <!-- 2 · sector -->
+      <fieldset class="as-bloque">
+        <legend class="as-num"><span>2</span> ¿A qué te dedicas?</legend>
+        <p class="as-ayuda">Con el oficio y poco más me vale: «clínica dental», «peluquería», «asesoría».</p>
+        <label class="as-campo">
+          <input type="text" name="sector" placeholder="Tu negocio, en dos palabras" required>
+        </label>
+      </fieldset>
+
+      <!-- 3 · el dolor. La pregunta clave: dice a qué departamento entra -->
+      <fieldset class="as-bloque">
+        <legend class="as-num"><span>3</span> ¿Qué es lo que más tiempo te roba?</legend>
+        <p class="as-ayuda">Lo que harías desaparecer mañana si pudieras.</p>
+        <div class="as-ops">
+          <label class="as-op"><input type="radio" name="problema" value="mensajes" required><span>Contestar lo mismo mil veces<small>WhatsApp, mensajes, correo</small></span></label>
+          <label class="as-op"><input type="radio" name="problema" value="citas"><span>Coger el teléfono y cuadrar citas<small>Y los que luego no aparecen</small></span></label>
+          <label class="as-op"><input type="radio" name="problema" value="cobros"><span>Perseguir presupuestos y cobros<small>Recordar, insistir, volver a insistir</small></span></label>
+          <label class="as-op"><input type="radio" name="problema" value="papeleo"><span>El papeleo<small>Facturas, gastos, documentos</small></span></label>
+          <label class="as-op"><input type="radio" name="problema" value="clientes"><span>Buscar clientes<small>Encontrarlos y escribirles</small></span></label>
+          <label class="as-op"><input type="radio" name="problema" value="numeros"><span>Saber cómo va el negocio<small>Números, informes, cierres</small></span></label>
+          <label class="as-op"><input type="radio" name="problema" value="otra"><span>Otra cosa</span></label>
+        </div>
+        <label class="as-campo as-oculto" id="as-otro">
+          <span>Cuéntame cuál</span>
+          <input type="text" name="problema_otro">
+        </label>
+      </fieldset>
+
+      <!-- 4 · cuánto duele. Menos de 2 h no sale a cuenta, y se le dice -->
+      <fieldset class="as-bloque">
+        <legend class="as-num"><span>4</span> ¿Cuánto tiempo se te va en eso a la semana?</legend>
+        <p class="as-ayuda">A ojo. Sumando el tuyo y el de quien te ayude.</p>
+        <div class="as-ops as-ops-fila">
+          <label class="as-op as-op-corta"><input type="radio" name="horas" value="menos_2" required><span>Menos de 2 h</span></label>
+          <label class="as-op as-op-corta"><input type="radio" name="horas" value="2_5"><span>Entre 2 y 5 h</span></label>
+          <label class="as-op as-op-corta"><input type="radio" name="horas" value="5_10"><span>Entre 5 y 10 h</span></label>
+          <label class="as-op as-op-corta"><input type="radio" name="horas" value="mas_10"><span>Más de 10 h</span></label>
+        </div>
+      </fieldset>
+
+      <!-- 5 · quién decide. La que más filtra -->
+      <fieldset class="as-bloque">
+        <legend class="as-num"><span>5</span> Si decides hacerlo, ¿la decisión es tuya?</legend>
+        <div class="as-ops as-ops-fila">
+          <label class="as-op as-op-corta"><input type="radio" name="decide" value="yo" required><span>Decido yo</span></label>
+          <label class="as-op as-op-corta"><input type="radio" name="decide" value="compartida"><span>Lo decido con alguien más</span></label>
+          <label class="as-op as-op-corta"><input type="radio" name="decide" value="otra_persona"><span>Decide otra persona</span></label>
+        </div>
+      </fieldset>
+
+      <!-- 6 · qué ha probado ya. Cambia la llamada entera -->
+      <fieldset class="as-bloque">
+        <legend class="as-num"><span>6</span> ¿Has intentado ya arreglarlo con algo?</legend>
+        <p class="as-ayuda">Un programa, una app, alguien que te lo montó. Da igual si salió mal — de hecho, si salió mal me interesa más.</p>
+        <div class="as-ops as-ops-fila">
+          <label class="as-op as-op-corta"><input type="radio" name="intento" value="nada" required><span>No, todavía nada</span></label>
+          <label class="as-op as-op-corta"><input type="radio" name="intento" value="no_funciono"><span>Sí, y no funcionó</span></label>
+          <label class="as-op as-op-corta"><input type="radio" name="intento" value="a_medias"><span>Sí, y funciona a medias</span></label>
+        </div>
+      </fieldset>
+
+      <label class="as-privacidad">
+        <input type="checkbox" name="privacidad" required>
+        <span>He leído y acepto la <a href="/privacidad" target="_blank" rel="noopener">política de privacidad</a>.
+          Uso tus respuestas para preparar la llamada y para nada más.</span>
+      </label>
+
+      <p class="as-error" id="as-error" hidden></p>
+
+      <button type="submit" class="btn btn-1 as-enviar" id="as-enviar">
+        Ver los huecos que tengo
+      </button>
+      <p class="t-micro as-pie-form">Seis preguntas. Tardas menos de un minuto.</p>
+    </form>
+  </div>
+</main>
+
+<!-- ─── PASO 2: LA CITA ────────────────────────────────────────────────── -->
+<main class="as-main as-oculto" id="paso-cita">
+  <div class="as-envoltura">
+    <header class="as-intro">
+      <span class="t-eyebrow as-ok">✓ Recibido</span>
+      <h1 class="t-h2" id="as-titulo-cita">Ahora elige tú <em class="acento">el hueco</em></h1>
+      <p class="t-lead">Con lo que me has contado voy preparado, así que no gastamos la media hora
+        en ponernos al día. Coge el día y la hora que te venga.</p>
+    </header>
+    <!-- El calendario lo pinta el embed oficial de Cal.com, no un iframe a pelo:
+         un iframe directo carga en blanco. Lo arranca asesoria.js cuando toca,
+         con el nombre y el correo ya puestos. -->
+    <div class="as-cal" id="as-cal"></div>
+
+    <!-- La red de seguridad. Si a los ocho segundos Cal.com no ha avisado de que
+         ha pintado —bloqueador, red mala, o que se ha caído— esto aparece DEBAJO
+         y la cita se coge igual. Una cita perdida por un script que no carga es
+         una cita perdida. -->
+    <div class="as-respaldo as-oculto" id="as-respaldo">
+      <p>¿No te carga el calendario?</p>
+      <a class="btn btn-1" href="https://cal.com/marirrodriga-ia/llamada" target="_blank" rel="noopener">Abrirlo en otra pestaña</a>
+    </div>
+
+    <p class="t-micro centrado as-pie-form">
+      ¿Prefieres escribirme? <a href="mailto:contacto@marirrodriga-ia.com">contacto@marirrodriga-ia.com</a>
+    </p>
+  </div>
+</main>
+
+<footer class="as-pie">
+  <div class="as-envoltura">
+    <span>Marirrodriga.IA</span>
+    <span>
+      <a href="/privacidad">Privacidad</a> ·
+      <a href="/aviso-legal">Aviso legal</a> ·
+      <a href="mailto:contacto@marirrodriga-ia.com">contacto@marirrodriga-ia.com</a>
+    </span>
+  </div>
+</footer>
+
+<!-- Cargador oficial de Cal.com. Tal cual lo dan ellos; no se toca. -->
+<script>
+(function (C, A, L) { var p = function (a, ar) { a.q.push(ar); }; var d = C.document;
+  C.Cal = C.Cal || function () { var cal = C.Cal; var ar = arguments;
+    if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; }
+    if (ar[0] === L) { var api = function () { p(api, arguments); }; var namespace = ar[1]; api.q = api.q || [];
+      if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); }
+      else p(cal, ar); return; }
+    p(cal, ar); };
+})(window, "https://app.cal.com/embed/embed.js", "init");
+Cal("init", { origin: "https://cal.com" });
+</script>
+
+<script src="/assets/asesoria.js"></script>
+</body>
+</html>

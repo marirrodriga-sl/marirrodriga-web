@@ -1,0 +1,159 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   ASESORÍA — el formulario del regalo de RRSS.
+
+   Hereda todos los tokens de base.css: la tinta casi negra, el crema, y el
+   morado como acento y no como ambiente. Aquí eso importa más que en ninguna
+   otra página: en un formulario, si todo destaca, no se sabe dónde tocar.
+   El morado lo lleva SOLO la opción marcada y el botón. Nada más.
+
+   Las opciones son etiquetas grandes y el radio de verdad va escondido: el
+   objetivo es que en el móvil se conteste con el pulgar, sin apuntar a un
+   círculo de doce píxeles.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.as-envoltura { width: 100%; max-width: 720px; margin: 0 auto; padding: 0 22px; }
+.as-oculto    { display: none !important; }
+
+/* ─── CABECERA — solo el logo. Sin menú: de aquí no se sale por arriba ───── */
+.as-cab  { padding: 26px 0 0; }
+.as-logo { display: flex; align-items: center; gap: 10px; justify-content: center;
+           font-weight: 700; font-size: 16px; color: var(--ink); letter-spacing: -.02em; }
+.as-logo img { width: 26px; height: 26px; object-fit: contain; }
+.as-logo b   { color: var(--purple); font-weight: 700; }
+
+.as-main { padding: 40px 0 72px; }
+
+/* ─── INTRO ─────────────────────────────────────────────────────────────── */
+.as-intro    { text-align: center; margin-bottom: 46px; }
+.as-intro h1 { margin: 14px 0 16px; }
+.as-ok       { color: var(--purple); }
+
+/* La frase honesta. Va en crema y con filo morado porque es el diferencial de
+   la casa, no un descargo de responsabilidad. */
+.as-honesto {
+  margin: 22px auto 0; max-width: 560px;
+  background: var(--purple-tint); border-left: 3px solid var(--purple);
+  border-radius: 0 12px 12px 0; padding: 15px 20px;
+  font-size: 15px; line-height: 1.55; color: var(--ink-2); text-align: left;
+}
+
+/* ─── BLOQUES ───────────────────────────────────────────────────────────── */
+.as-form   { display: flex; flex-direction: column; gap: 34px; }
+.as-bloque { border: 0; }
+
+.as-num {
+  display: flex; align-items: center; gap: 11px;
+  font-size: 17px; font-weight: 700; letter-spacing: -.015em;
+  color: var(--ink); margin-bottom: 6px; padding: 0;
+}
+.as-num span {
+  flex: 0 0 26px; height: 26px; border-radius: 50%;
+  background: var(--ink); color: var(--white);
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700;
+}
+
+.as-ayuda { font-size: 14.5px; color: var(--ink-3); line-height: 1.5; margin-bottom: 14px; }
+.as-num + .as-ops, .as-num + .as-dos, .as-num + .as-campo { margin-top: 14px; }
+
+/* ─── CAMPOS DE TEXTO ───────────────────────────────────────────────────── */
+.as-dos   { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.as-campo { display: block; }
+.as-campo > span {
+  display: block; font-size: 13.5px; font-weight: 600;
+  color: var(--ink-2); margin-bottom: 7px;
+}
+.as-campo input {
+  width: 100%; font-family: var(--font-body); font-size: 16px; color: var(--ink);
+  background: var(--white); border: 1px solid var(--line);
+  border-radius: 12px; padding: 14px 16px;
+  transition: border-color .16s, box-shadow .16s;
+}
+.as-campo input::placeholder { color: var(--ink-4); }
+.as-campo input:focus {
+  outline: none; border-color: var(--purple);
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, .12);
+}
+#as-otro { margin-top: 14px; }
+
+/* ─── OPCIONES ──────────────────────────────────────────────────────────── */
+.as-ops      { display: flex; flex-direction: column; gap: 9px; }
+.as-ops-fila { flex-direction: row; flex-wrap: wrap; }
+
+.as-op { position: relative; display: block; cursor: pointer; }
+.as-op input {
+  position: absolute; opacity: 0; width: 0; height: 0;   /* el radio real, escondido */
+}
+.as-op > span {
+  display: block; background: var(--white);
+  border: 1px solid var(--line); border-radius: 13px;
+  padding: 15px 18px; font-size: 15.5px; font-weight: 500; color: var(--ink);
+  line-height: 1.35;
+  transition: border-color .16s, background .16s, box-shadow .16s, transform .16s;
+}
+.as-op > span small {
+  display: block; margin-top: 3px;
+  font-size: 13px; font-weight: 400; color: var(--ink-3);
+}
+.as-op:hover > span { border-color: rgba(23, 20, 31, .22); transform: translateY(-1px); }
+
+.as-op input:checked + span {
+  border-color: var(--purple); background: var(--purple-tint);
+  box-shadow: 0 0 0 1px var(--purple);
+}
+.as-op input:checked + span small { color: var(--purple-deep); }
+.as-op input:focus-visible + span { box-shadow: 0 0 0 3px rgba(124, 58, 237, .22); }
+
+.as-op-corta          { flex: 1 1 auto; }
+.as-op-corta > span   { padding: 13px 18px; text-align: center; white-space: nowrap; }
+
+/* ─── PRIVACIDAD, ERROR Y ENVÍO ─────────────────────────────────────────── */
+.as-privacidad {
+  display: flex; align-items: flex-start; gap: 11px; cursor: pointer;
+  font-size: 13.5px; line-height: 1.5; color: var(--ink-2);
+}
+.as-privacidad input { margin-top: 2px; width: 17px; height: 17px; accent-color: var(--purple); flex: 0 0 auto; }
+.as-privacidad a     { color: var(--purple); text-decoration: underline; }
+
+.as-error {
+  background: #fef2f2; border: 1px solid #fecaca; color: #991b1b;
+  border-radius: 11px; padding: 12px 15px; font-size: 14.5px; line-height: 1.45;
+}
+
+.as-enviar { width: 100%; padding: 17px 28px; font-size: 16px; }
+.as-enviar[disabled] { opacity: .55; cursor: progress; }
+.as-pie-form { text-align: center; color: var(--ink-3); margin-top: -6px; }
+
+/* ─── EL CALENDARIO ─────────────────────────────────────────────────────── */
+.as-cal {
+  min-height: 640px; border-radius: var(--r-panel); overflow: hidden;
+  background: var(--white); margin-bottom: 18px;
+}
+.as-cal iframe { display: block; width: 100%; border: 0; }
+
+.as-respaldo {
+  text-align: center; background: var(--cream);
+  border: 1px solid var(--line); border-radius: var(--r-card);
+  padding: 30px 24px; margin-bottom: 18px;
+}
+.as-respaldo p { color: var(--ink-2); font-size: 15px; margin-bottom: 16px; }
+
+/* ─── PIE ───────────────────────────────────────────────────────────────── */
+.as-pie { border-top: 1px solid var(--line-soft); padding: 26px 0 34px; }
+.as-pie .as-envoltura {
+  display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap;
+  font-size: 13px; color: var(--ink-3);
+}
+.as-pie a { color: var(--ink-3); }
+.as-pie a:hover { color: var(--purple); }
+
+/* ─── MÓVIL ─────────────────────────────────────────────────────────────── */
+@media (max-width: 620px) {
+  .as-dos { grid-template-columns: 1fr; }
+  .as-main { padding: 28px 0 56px; }
+  .as-intro { margin-bottom: 34px; }
+  .as-form { gap: 28px; }
+  .as-ops-fila { flex-direction: column; }
+  .as-op-corta > span { text-align: left; white-space: normal; }
+  .as-cal { min-height: 560px; }
+}
