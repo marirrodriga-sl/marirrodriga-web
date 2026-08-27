@@ -129,7 +129,18 @@
 
     document.getElementById('paso-form').classList.add('as-oculto');
     document.getElementById('paso-cita').classList.remove('as-oculto');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // El hero se retira: ya ha hecho su trabajo, y dejarlo puesto era lo que
+    // hacia que al enviar el formulario la pagina te devolviera arriba del todo
+    // -- a la portada otra vez -- y el calendario quedara fuera de pantalla,
+    // esperando a que volvieras a bajar. Sin hero, arriba ES el calendario.
+    var hero = document.querySelector('.as-hero');
+    if (hero) hero.classList.add('as-oculto');
+    // El logo estaba en blanco para el hero oscuro: sin hero hay que devolverlo
+    // a tinta o se queda invisible sobre el fondo claro.
+    document.body.classList.add('sin-hero');
+
+    window.scrollTo({ top: 0, behavior: 'auto' });
 
     pintarCalendario(datos);
   }

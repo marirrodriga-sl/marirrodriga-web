@@ -47,10 +47,13 @@
     #14111c;
 }
 
-/* 560 y no 720: el titular llegaba hasta la protagonista de la foto y perdia
-   contraste justo en la linea mas importante. Aqui vive entero dentro del
-   tercio izquierdo, que es donde el degradado tapa de verdad. */
-.as-hero-txt  { max-width: 560px; text-align: left; padding-top: 56px; }
+/* OJO CON ESTE ANCHO. Hereda .as-envoltura, que son 720px centrados: en una
+   pantalla ancha eso deja el bloque en mitad de la pantalla, aunque por dentro
+   el texto este alineado a la izquierda. Se veia centrado y no lo estaba.
+   Aqui se ensancha al ancho del resto de la web (1120) para que el bloque
+   ARRANQUE a la izquierda; quien limita la linea son el titular y la entrada,
+   que llevan su propio tope. */
+.as-hero-txt  { max-width: var(--w-wide); text-align: left; padding-top: 56px; }
 .as-hero .t-eyebrow { color: #c9b6ff; }
 .as-hero h1 {
   font-family: var(--font-head); font-weight: 500;
@@ -59,7 +62,7 @@
   text-shadow: 0 2px 30px rgba(10,8,16,.62), 0 1px 3px rgba(10,8,16,.35);
 }
 .as-hero .acento  { color: #c9b6ff; font-style: italic; }
-.as-hero .t-lead  { color: rgba(255,255,255,.9); max-width: 460px; margin-bottom: 28px;
+.as-hero .t-lead  { color: rgba(255,255,255,.9); max-width: 480px; margin-bottom: 28px;
                     text-shadow: 0 1px 14px rgba(10,8,16,.55); }
 .as-hero .t-lead strong { color: #fff; font-weight: 650; }
 .as-hero-btn  { padding: 16px 32px; }
@@ -70,7 +73,7 @@
 /* El logo va a la izquierda y no centrado: en el centro cae sobre la pared
    clara de la foto y el blanco se pierde. A la izquierda esta el degradado. */
 .as-cab  { padding: 26px 0 0; position: relative; z-index: 2; }
-.as-cab .as-envoltura { padding: 0 22px; }
+.as-cab .as-envoltura { max-width: var(--w-wide); padding: 0 22px; }
 .as-logo { display: inline-flex; align-items: center; gap: 10px;
            font-weight: 700; font-size: 16px; color: #fff; letter-spacing: -.02em;
            text-shadow: 0 1px 12px rgba(10,8,16,.6); }
@@ -81,6 +84,12 @@
    foto del hero -- su tono dominante es #633290 -- para que la pagina se lea
    como una sola pieza y no como un hero pegado encima de un formulario.
    Muy bajo de saturacion a proposito: tiene que sostener el texto, no competir. */
+/* Cuando el hero se retira -- al pasar al calendario -- el logo se queda blanco
+   sobre fondo claro y desaparece. Vuelve a tinta. */
+body.sin-hero .as-logo   { color: var(--ink); text-shadow: none; }
+body.sin-hero .as-logo b { color: var(--purple); }
+body.sin-hero .as-cab    { padding-bottom: 8px; }
+
 .as-main {
   padding: 8px 0 72px;
   background:
