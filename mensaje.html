@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- ==========================================================================
+     REDACTAR EL PRIVADO — HERRAMIENTA INTERNA. NO ENLAZAR DESDE NINGÚN SITIO.
+
+     Para cuando alguien comenta la palabra de un post en LinkedIn. Le das su
+     nombre, a qué se dedica y de qué iba el post, y te devuelve el mensaje
+     escrito con el catálogo y los casos de verdad, listo para copiar.
+
+     POR QUÉ ES UNA PÁGINA Y NO UN BOT DE TELEGRAM: porque ISMABOT ya escucha ese
+     bot y dos disparadores sobre el mismo se pelean por el webhook. Y porque
+     cuando contestas comentarios estás en el navegador, con LinkedIn en la
+     pestaña de al lado — mandarte el texto al móvil para volver a copiarlo al
+     ordenador es peor.
+
+     No automatiza LinkedIn ni lo toca: escribe el texto y lo pegas tú. Que es
+     lo único que se puede hacer sin jugarse la cuenta.
+
+     Quien escribe de verdad es `MUSA · Redactar el privado de LinkedIn` en n8n.
+     ========================================================================== -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redactar el privado (uso interno)</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/base.css">
+  <link rel="stylesheet" href="/assets/asesoria.css">
+</head>
+<body>
+
+<div class="as-cab">
+  <a class="as-logo" href="/">
+    <img src="/assets/img/logo.png" alt="" width="256" height="256">
+    <span>Marirrodriga<b>.IA</b></span>
+  </a>
+</div>
+
+<main class="as-main">
+  <div class="as-envoltura">
+
+    <header class="as-intro">
+      <span class="t-eyebrow">Uso interno</span>
+      <h1 class="t-h2">Redactar el <em class="acento">privado</em></h1>
+      <p class="t-lead">Alguien ha comentado la palabra de un post. Dime quién es y te escribo
+        el mensaje con el catálogo y los casos de verdad — precios y límites incluidos.</p>
+      <p class="as-honesto"><strong>Esta página no toca LinkedIn.</strong> Escribe el texto y lo
+        pegas tú, que es lo único que se puede hacer sin jugarse la cuenta.</p>
+    </header>
+
+    <form id="ms-form" class="as-form" novalidate>
+      <fieldset class="as-bloque">
+        <legend class="as-num"><span>1</span> Quién ha comentado</legend>
+        <div class="as-dos">
+          <label class="as-campo">
+            <span>Su nombre</span>
+            <input type="text" name="nombre" placeholder="Marta" required>
+          </label>
+          <label class="as-campo">
+            <span>A qué se dedica</span>
+            <input type="text" name="sector" placeholder="Clínica dental">
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset class="as-bloque">
+        <legend class="as-num"><span>2</span> De qué iba el post</legend>
+        <p class="as-ayuda">Es lo que decide qué piezas del catálogo se miran.</p>
+        <div class="as-ops as-ops-fila">
+          <label class="as-op as-op-corta"><input type="radio" name="tema" value="mensajes" checked><span>Contestar mensajes</span></label>
+          <label class="as-op as-op-corta"><input type="radio" name="tema" value="citas"><span>Citas y teléfono</span></label>
+          <label class="as-op as-op-corta"><input type="radio" name="tema" value="cobros"><span>Presupuestos y cobros</span></label>
+          <label class="as-op as-op-corta"><input type="radio" name="tema" value="papeleo"><span>Papeleo</span></label>
+          <label class="as-op as-op-corta"><input type="radio" name="tema" value="clientes"><span>Buscar clientes</span></label>
+          <label class="as-op as-op-corta"><input type="radio" name="tema" value="numeros"><span>Números del negocio</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="as-bloque">
+        <legend class="as-num"><span>3</span> Qué comentó</legend>
+        <p class="as-ayuda">Pégalo tal cual. Si escribió algo más que la palabra, mejor: el mensaje sale más suyo.</p>
+        <label class="as-campo">
+          <input type="text" name="palabra" placeholder="La palabra: AGENDA">
+        </label>
+        <label class="as-campo" style="margin-top:14px">
+          <textarea name="comentario" rows="3" placeholder="Su comentario entero, si dijo más"></textarea>
+        </label>
+      </fieldset>
+
+      <p class="as-error" id="ms-error" hidden></p>
+
+      <button type="submit" class="btn btn-1 as-enviar" id="ms-enviar">Escribir el mensaje</button>
+    </form>
+
+    <!-- ─── EL RESULTADO ──────────────────────────────────────────────── -->
+    <section class="ms-salida as-oculto" id="ms-salida">
+      <div class="ms-barra">
+        <span class="t-eyebrow" id="ms-para"></span>
+        <button type="button" class="btn btn-2" id="ms-copiar">Copiar</button>
+      </div>
+      <div class="ms-avisos as-oculto" id="ms-avisos"></div>
+      <textarea class="ms-texto" id="ms-texto" rows="16" spellcheck="false"></textarea>
+      <p class="t-micro" style="margin-top:10px;color:var(--ink-3)">
+        Puedes editarlo aquí antes de copiar. <strong>Recuerda:</strong> si no es contacto de
+        primer grado, primero responde a su comentario y mándale invitación — el privado va
+        cuando la acepte.
+      </p>
+      <button type="button" class="btn btn-3" id="ms-otro" style="margin-top:8px">← Escribir otro</button>
+    </section>
+
+  </div>
+</main>
+
+<script src="/assets/mensaje.js"></script>
+</body>
+</html>
