@@ -107,15 +107,15 @@
       <!-- 3 · el dolor. La pregunta clave: dice a qué departamento entra -->
       <fieldset class="as-bloque">
         <legend class="as-num"><span>3</span> ¿Qué es lo que más tiempo te roba?</legend>
-        <p class="as-ayuda">Lo que harías desaparecer mañana si pudieras.</p>
+        <p class="as-ayuda">Lo que harías desaparecer mañana si pudieras. <strong>Marca todas las que te pasen.</strong></p>
         <div class="as-ops">
-          <label class="as-op"><input type="radio" name="problema" value="mensajes" required><span>Contestar lo mismo mil veces<small>WhatsApp, mensajes, correo</small></span></label>
-          <label class="as-op"><input type="radio" name="problema" value="citas"><span>Coger el teléfono y cuadrar citas<small>Y los que luego no aparecen</small></span></label>
-          <label class="as-op"><input type="radio" name="problema" value="cobros"><span>Perseguir presupuestos y cobros<small>Recordar, insistir, volver a insistir</small></span></label>
-          <label class="as-op"><input type="radio" name="problema" value="papeleo"><span>El papeleo<small>Facturas, gastos, documentos</small></span></label>
-          <label class="as-op"><input type="radio" name="problema" value="clientes"><span>Buscar clientes<small>Encontrarlos y escribirles</small></span></label>
-          <label class="as-op"><input type="radio" name="problema" value="numeros"><span>Saber cómo va el negocio<small>Números, informes, cierres</small></span></label>
-          <label class="as-op"><input type="radio" name="problema" value="otra"><span>Otra cosa</span></label>
+          <label class="as-op"><input type="checkbox" name="problema" value="mensajes"><span>Contestar lo mismo mil veces<small>WhatsApp, mensajes, correo</small></span></label>
+          <label class="as-op"><input type="checkbox" name="problema" value="citas"><span>Coger el teléfono y cuadrar citas<small>Y los que luego no aparecen</small></span></label>
+          <label class="as-op"><input type="checkbox" name="problema" value="cobros"><span>Perseguir presupuestos y cobros<small>Recordar, insistir, volver a insistir</small></span></label>
+          <label class="as-op"><input type="checkbox" name="problema" value="papeleo"><span>El papeleo<small>Facturas, gastos, documentos</small></span></label>
+          <label class="as-op"><input type="checkbox" name="problema" value="clientes"><span>Buscar clientes<small>Encontrarlos y escribirles</small></span></label>
+          <label class="as-op"><input type="checkbox" name="problema" value="numeros"><span>Saber cómo va el negocio<small>Números, informes, cierres</small></span></label>
+          <label class="as-op"><input type="checkbox" name="problema" value="otra"><span>Otra cosa</span></label>
         </div>
         <label class="as-campo as-oculto" id="as-otro">
           <span>Cuéntame cuál</span>
@@ -167,8 +167,15 @@
       <button type="submit" class="btn btn-1 as-enviar" id="as-enviar">
         Ver los huecos que tengo
       </button>
-      <p class="t-micro as-pie-form">Seis preguntas. Tardas menos de un minuto.</p>
+      <p class="t-micro as-pie-form">Las seis cuentan: si me llega una a medias, llego a la llamada a medias.</p>
     </form>
+
+    <!-- Salida. Antes de esto, quien no queria pedir cita solo podia irse con el
+         boton de atras: se iba de la web entera, no solo de esta pagina. -->
+    <footer class="as-salida">
+      <p>¿Prefieres mirar antes lo que hacemos?</p>
+      <a class="btn btn-2" href="/">Ver Marirrodriga.IA</a>
+    </footer>
   </div>
 </main>
 

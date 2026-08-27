@@ -35,10 +35,13 @@
   /* ─── «Otra cosa» abre su campo ─────────────────────────────────────── */
   form.addEventListener('change', function (e) {
     if (e.target.name !== 'problema') return;
-    var esOtra = e.target.value === 'otra';
-    otro.classList.toggle('as-oculto', !esOtra);
-    if (esOtra) otro.querySelector('input').focus();
-    else otro.querySelector('input').value = '';
+    // Ya no es un radio: "Otra cosa" convive con las demas, asi que el campo se
+    // abre cuando ESA casilla esta marcada y se cierra cuando se desmarca.
+    var otraCasilla = form.querySelector('[name=problema][value=otra]');
+    var abierta = otraCasilla && otraCasilla.checked;
+    otro.classList.toggle('as-oculto', !abierta);
+    if (abierta && e.target.value === 'otra') otro.querySelector('input').focus();
+    if (!abierta) otro.querySelector('input').value = '';
   });
 
   /* ─── Validación, en el idioma de la pregunta ───────────────────────── */
@@ -46,7 +49,7 @@
     nombre:   'tu nombre',
     email:    'tu correo',
     sector:   'a qué te dedicas',
-    problema: 'qué es lo que más tiempo te roba',
+    problema: 'marcar al menos una cosa de las que te roban tiempo',
     horas:    'cuánto tiempo se te va a la semana',
     decide:   'si la decisión es tuya',
     intento:  'si ya has intentado arreglarlo'
@@ -55,7 +58,9 @@
   function faltan(datos) {
     var falta = [];
     Object.keys(ETIQUETAS).forEach(function (campo) {
-      if (!datos[campo]) falta.push(ETIQUETAS[campo]);
+      var v = datos[campo];
+      var vacio = Array.isArray(v) ? v.length === 0 : !v;
+      if (vacio) falta.push(ETIQUETAS[campo]);
     });
     if (datos.email && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(datos.email)) {
       falta.push('un correo que se pueda escribir');
@@ -78,11 +83,15 @@
 
     var f = new FormData(form);
     var datos = {};
-    ['nombre', 'email', 'sector', 'problema', 'problema_otro', 'horas', 'decide', 'intento']
+    ['nombre', 'email', 'sector', 'problema_otro', 'horas', 'decide', 'intento']
       .forEach(function (k) { datos[k] = (f.get(k) || '').toString().trim(); });
 
+    // La 3 admite varias desde el 27-08. Viaja como lista, siempre: que a veces
+    // sea texto y a veces lista es como se rompen los flujos en silencio.
+    datos.problema = f.getAll('problema').map(function (v) { return v.toString(); });
+
     var pendientes = faltan(datos);
-    if (datos.problema === 'otra' && !datos.problema_otro) {
+    if (datos.problema.indexOf('otra') !== -1 && !datos.problema_otro) {
       pendientes.push('cuál es esa otra cosa');
     }
     if (!f.get('privacidad')) {

@@ -77,7 +77,17 @@
 .as-logo img { width: 26px; height: 26px; object-fit: contain; }
 .as-logo b   { color: #c9b6ff; font-weight: 700; }
 
-.as-main { padding: 8px 0 72px; }
+/* El formulario ya no va sobre blanco. Difuminado violeta sacado de la propia
+   foto del hero -- su tono dominante es #633290 -- para que la pagina se lea
+   como una sola pieza y no como un hero pegado encima de un formulario.
+   Muy bajo de saturacion a proposito: tiene que sostener el texto, no competir. */
+.as-main {
+  padding: 8px 0 72px;
+  background:
+    radial-gradient(120% 60% at 12% 0%, rgba(99,50,144,.13) 0%, rgba(99,50,144,0) 62%),
+    radial-gradient(90% 50% at 100% 24%, rgba(124,58,237,.10) 0%, rgba(124,58,237,0) 58%),
+    linear-gradient(180deg, #ffffff 0%, #fbfaff 34%, #f7f4fd 100%);
+}
 
 /* ─── INTRO ─────────────────────────────────────────────────────────────── */
 .as-intro    { text-align: center; margin-bottom: 46px; }
@@ -121,7 +131,7 @@
 }
 .as-campo input {
   width: 100%; font-family: var(--font-body); font-size: 16px; color: var(--ink);
-  background: var(--white); border: 1px solid var(--line);
+  background: var(--white); border: 1px solid rgba(99,50,144,.16);
   border-radius: 12px; padding: 14px 16px;
   transition: border-color .16s, box-shadow .16s;
 }
@@ -142,7 +152,7 @@
 }
 .as-op > span {
   display: block; background: var(--white);
-  border: 1px solid var(--line); border-radius: 13px;
+  border: 1px solid rgba(99,50,144,.16); border-radius: 13px;
   padding: 15px 18px; font-size: 15.5px; font-weight: 500; color: var(--ink);
   line-height: 1.35;
   transition: border-color .16s, background .16s, box-shadow .16s, transform .16s;
@@ -156,6 +166,19 @@
 .as-op input:checked + span {
   border-color: var(--purple); background: var(--purple-tint);
   box-shadow: 0 0 0 1px var(--purple);
+}
+/* Con varias marcadas hace falta verlas de un vistazo, no leerlas una a una:
+   la palomita a la derecha hace justo eso. */
+.as-op input[type="checkbox"] + span { position: relative; padding-right: 46px; }
+.as-op input[type="checkbox"] + span::after {
+  content: ""; position: absolute; right: 17px; top: 50%;
+  width: 19px; height: 19px; margin-top: -10px;
+  border: 1.5px solid rgba(99,50,144,.28); border-radius: 6px;
+  transition: background .16s, border-color .16s;
+}
+.as-op input[type="checkbox"]:checked + span::after {
+  background: var(--purple) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 8.5l3.2 3.2L13 5'/%3E%3C/svg%3E") center / 13px no-repeat;
+  border-color: var(--purple);
 }
 .as-op input:checked + span small { color: var(--purple-deep); }
 .as-op input:focus-visible + span { box-shadow: 0 0 0 3px rgba(124, 58, 237, .22); }
@@ -179,6 +202,15 @@
 .as-enviar { width: 100%; padding: 17px 28px; font-size: 16px; }
 .as-enviar[disabled] { opacity: .55; cursor: progress; }
 .as-pie-form { text-align: center; color: var(--ink-3); margin-top: -6px; }
+
+/* ─── LA SALIDA ─────────────────────────────────────────────────────────────
+   Discreta y al final: quien ha llegado hasta aqui y no pide cita, que pueda
+   irse a la web en vez de cerrar la pestaña. */
+.as-salida {
+  margin-top: 52px; padding-top: 34px; border-top: 1px solid rgba(99,50,144,.13);
+  text-align: center;
+}
+.as-salida p { font-size: 15px; color: var(--ink-3); margin-bottom: 16px; }
 
 /* ─── EL CALENDARIO ─────────────────────────────────────────────────────── */
 .as-cal {
@@ -216,44 +248,3 @@
   .as-op-corta > span { text-align: left; white-space: normal; }
   .as-cal { min-height: 560px; }
 }
-
-/* ═══════════════════════════════════════════════════════════════════════════
-   Añadido para /mensaje, la herramienta interna que redacta el privado de
-   LinkedIn. Va aquí y no en su propio fichero porque reutiliza entero el
-   formulario de arriba: campos, opciones y botones son los mismos.
-   ═══════════════════════════════════════════════════════════════════════════ */
-
-.as-campo textarea {
-  width: 100%; font-family: var(--font-body); font-size: 16px; color: var(--ink);
-  background: var(--white); border: 1px solid var(--line);
-  border-radius: 12px; padding: 14px 16px; resize: vertical; line-height: 1.5;
-  transition: border-color .16s, box-shadow .16s;
-}
-.as-campo textarea::placeholder { color: var(--ink-4); }
-.as-campo textarea:focus {
-  outline: none; border-color: var(--purple);
-  box-shadow: 0 0 0 3px rgba(124, 58, 237, .12);
-}
-
-.ms-salida { margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--line); }
-.ms-barra  { display: flex; justify-content: space-between; align-items: center;
-             gap: 14px; margin-bottom: 14px; flex-wrap: wrap; }
-
-/* El mensaje sale editable: casi siempre está bien, pero quien lo manda es una
-   persona y tiene que poder quitarle una frase antes de pegarlo. */
-.ms-texto {
-  width: 100%; font-family: var(--font-body); font-size: 15.5px; line-height: 1.6;
-  color: var(--ink); background: var(--cream);
-  border: 1px solid var(--line); border-radius: var(--r-card);
-  padding: 20px 22px; resize: vertical;
-}
-.ms-texto:focus { outline: none; border-color: var(--purple); background: var(--white); }
-
-/* Ámbar, no rojo: aquí nada bloquea. Lo lee una persona antes de mandarlo. */
-.ms-avisos {
-  background: #fffbeb; border: 1px solid #fde68a; color: #78350f;
-  border-radius: 11px; padding: 13px 16px; font-size: 14px;
-  line-height: 1.5; margin-bottom: 14px;
-}
-.ms-avisos ul { margin: 7px 0 0 18px; }
-.ms-avisos li { margin-bottom: 3px; }
