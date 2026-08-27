@@ -37,23 +37,45 @@
 <body>
 
 <div class="as-cab">
-  <a class="as-logo" href="/">
-    <img src="/assets/img/logo.png" alt="" width="256" height="256">
-    <span>Marirrodriga<b>.IA</b></span>
-  </a>
+  <div class="as-envoltura">
+    <a class="as-logo" href="/">
+      <img src="/assets/img/logo.png" alt="" width="256" height="256">
+      <span>Marirrodriga<b>.IA</b></span>
+    </a>
+  </div>
 </div>
+
+<!-- ─── EL HERO ────────────────────────────────────────────────────────────
+     Mismo mecanismo que el de index.html: la foto va DENTRO del degradado, con
+     alfa, de modo que si el archivo faltara quedan solo los degradados y la
+     pagina no se rompe ni enseña un hueco.
+
+     La foto es del mismo registro que la del hero global -- el dueño tranquilo
+     mientras su equipo trabaja -- porque es la tesis de la casa hecha imagen:
+     no vendemos tecnologia, vendemos que a esa persona le sobre el rato.
+     El texto va a la izquierda, que es donde la foto tiene ventana y no cara.
+     ──────────────────────────────────────────────────────────────────────── -->
+<header class="as-hero">
+  <div class="as-hero-fondo"></div>
+  <div class="as-envoltura as-hero-txt">
+    <span class="t-eyebrow">Asesoría gratuita · 30 minutos</span>
+    <h1>Media hora, y te digo <em class="acento">si te sale a cuenta</em></h1>
+    <p class="t-lead">Miramos tu negocio y sales sabiendo tres cosas: <strong>qué se puede
+      automatizar, qué no merece la pena y por dónde se empieza.</strong> Sin presentación
+      y sin presupuesto sorpresa.</p>
+    <a class="btn btn-1 as-hero-btn" href="#empezar">Pedir la llamada</a>
+    <p class="t-micro as-hero-pie">Seis preguntas · menos de un minuto</p>
+  </div>
+</header>
 
 <!-- ─── PASO 1: EL FORMULARIO ──────────────────────────────────────────── -->
 <main class="as-main" id="paso-form">
   <div class="as-envoltura">
 
-    <header class="as-intro">
-      <span class="t-eyebrow">Asesoría gratuita · 30 minutos</span>
-      <h1 class="t-h2">Media hora, y te digo <em class="acento">si te sale a cuenta</em></h1>
-      <p class="t-lead">Miramos tu negocio y sales sabiendo tres cosas: qué se puede automatizar,
-        qué no merece la pena, y por dónde se empieza. Sin presentación y sin presupuesto sorpresa.</p>
+    <header class="as-intro" id="empezar">
       <p class="as-honesto">Y si por lo que me cuentes creo que <strong>todavía no te compensa</strong>,
-        te lo digo en la propia llamada. Prefiero eso a venderte algo que no vas a usar.</p>
+        te lo digo en la propia llamada. Prefiero eso a venderte algo que no vas a usar
+        — es la mitad del trabajo, y la que nadie hace.</p>
     </header>
 
     <form id="as-form" class="as-form" novalidate>
