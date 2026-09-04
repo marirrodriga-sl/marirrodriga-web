@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Captación de clientes y seguimiento de ventas con IA | Marirrodriga IA</title>
+  <meta name="description" content="Un sistema que sale a buscar negocios que encajan contigo y te los deja puntuados, con el motivo y el primer mensaje escrito. Y otro que persigue tus presupuestos y acompaña al que duda. Desde 49 €/mes, con su límite al lado.">
+  <link rel="canonical" href="https://www.marirrodriga-ia.com/ventas-y-captacion">
+  <meta name="theme-color" content="#7C3AED">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Marirrodriga IA">
+  <meta property="og:title" content="Encontrar a quien no te conoce. Y no perder a quien ya te preguntó.">
+  <meta property="og:description" content="Captación de clientes con nota y motivo, y seguimiento de presupuestos que nadie hace. Desde 49 €/mes, con su límite al lado.">
+  <meta property="og:url" content="https://www.marirrodriga-ia.com/ventas-y-captacion">
+  <meta property="og:image" content="https://www.marirrodriga-ia.com/og-image.png">
+  <meta property="og:locale" content="es_ES">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Encontrar a quien no te conoce. Y no perder a quien ya te preguntó.">
+  <meta name="twitter:description" content="Captación de clientes con nota y motivo, y seguimiento de presupuestos. Desde 49 €/mes, con su límite al lado.">
+  <meta name="twitter:image" content="https://www.marirrodriga-ia.com/og-image.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "¿Escribe a los negocios en mi nombre?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. Te deja la lista puntuada y el primer mensaje redactado, pero el botón de enviar lo pulsas tú. La base legal del artículo 21 de la LSSI es de quien manda el correo, y esa responsabilidad no la asumimos por ti." } },
+      { "@type": "Question", "name": "¿De dónde saca los negocios?",
+        "acceptedAnswer": { "@type": "Answer", "text": "De fuentes públicas: la ficha de Google del negocio y su propia web. No compramos bases de datos ni verificamos por teléfono." } },
+      { "@type": "Question", "name": "¿Cuántos de los 150 valen de verdad?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Depende del sector y de la zona, y por eso cada uno lleva su nota y su motivo escrito. En nuestra propia cola, de 265 negocios rastreados solo 98 tenían un correo al que escribir. Te lo decimos antes de empezar, no después." } },
+      { "@type": "Question", "name": "¿Y si no tengo CRM?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Te lo entregamos en una hoja de cálculo, con el aviso semanal igual. Montar un CRM se presupuesta aparte, y solo te lo recomendamos cuando ya tienes volumen que volcar." } },
+      { "@type": "Question", "name": "¿El seguimiento negocia el precio?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. Escribe, resuelve dudas, marca calientes y fríos y te pasa a ti los que merecen llamada. Que negocie dentro de unos límites que fijes tú se construye aparte, con tus reglas por escrito." } },
+      { "@type": "Question", "name": "¿Hay permanencia?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. Te vas cuando quieras avisando con 30 días. La instalación se paga 50 % al empezar y 50 % al entregar, y la cuota incluye los ajustes y una reunión al mes." } }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/base.css">
+  <!-- El molde de la landing de departamento vive en atencion.css; ventas.css
+       solo lleva lo que cambia. Se juntan en un landing.css con la tercera. -->
+  <link rel="stylesheet" href="/assets/atencion.css">
+  <link rel="stylesheet" href="/assets/ventas.css">
+</head>
+<body>
+
+<!-- ─── NAV ─────────────────────────────────────────────────────────────── -->
+<nav class="nav">
+  <a class="nav-logo" href="/">
+    <img src="/assets/img/logo.png" alt="" width="256" height="256">
+    <span>Marirrodriga<b>.IA</b></span>
+  </a>
+  <div class="nav-links">
+    <a class="nav-link" href="#captacion">La captación</a>
+    <a class="nav-link" href="#seguimiento">El seguimiento</a>
+    <a class="nav-link" href="#preguntas">Preguntas</a>
+  </div>
+  <a class="btn btn-1 nav-cta" href="https://cal.com/marirrodriga-ia/llamada" target="_blank" rel="noopener">Asesoría gratuita</a>
+</nav>
+
+<!-- ─── HERO ────────────────────────────────────────────────────────────── -->
+<header class="hero">
+  <div class="hero-fondo"></div>
+  <div class="hero-grano"></div>
+
+  <!-- Las burbujas cuentan el seguimiento; la lista del centro, la captación.
+       Las dos mitades del titular, funcionando a la vez. -->
+  <div class="burbujas" aria-hidden="true">
+    <span class="burbuja-etiq e1">Un presupuesto abierto · jueves 10:02</span>
+    <div class="burbuja burbuja-bot b1">Hola Marta, el lunes te pasamos el presupuesto. Lo que más suele frenar es el pago: se puede hacer en 12 meses. ¿Te lo cuento?<small>Tercer día sin respuesta · escribe él</small></div>
+    <div class="burbuja burbuja-cliente b2">Ah, pensaba que era más. ¿Y el plazo?</div>
+
+    <span class="burbuja-etiq e2">Y a ti, a las 10:04</span>
+    <div class="burbuja burbuja-bot b3">Marta ha contestado y pregunta por el plazo: está caliente. Luis abrió el presupuesto tres veces y no dice nada, llámale tú.<small>Solo te llegan los que merecen una llamada</small></div>
+  </div>
+
+  <div class="hero-centro">
+    <span class="hero-pill"><i></i> Ventas y Captación</span>
+    <h1 class="t-h1">Encontrar a quien<br>no te conoce.<br><span class="acento">Y no perder a quien ya te preguntó.</span></h1>
+
+    <!-- La lista del lunes: lo que entrega la captación, en HTML y no en captura -->
+    <div class="lista" aria-hidden="true">
+      <div class="lista-cab"><b>La lista del lunes</b><span>clínicas dentales · Valladolid · 150 rastreadas</span></div>
+      <div class="lista-fila f1"><span class="lista-de">Clínica Dental Duero</span><span class="lista-por">Sin reserva online · 4,8 con 212 reseñas · web sin candado</span><span class="nota nota-alta">98 <small>llamar</small></span></div>
+      <div class="lista-fila f2"><span class="lista-de">Dental Arlanza</span><span class="lista-por">Solo se pide hora por teléfono · 96 reseñas, la última hace 7 meses</span><span class="nota nota-alta">94 <small>llamar</small></span></div>
+      <div class="lista-fila f3"><span class="lista-de">Clínica Pisuerga</span><span class="lista-por">Web de 2016 sin móvil · ficha de Google con horario mal</span><span class="nota nota-alta">91 <small>llamar</small></span></div>
+      <div class="lista-fila f4"><span class="lista-de">Sonrisa Esgueva</span><span class="lista-por">Ya tiene reserva online y recordatorios</span><span class="nota nota-media">61 <small>después</small></span></div>
+      <div class="lista-fila f5 apagada"><span class="lista-de">Dental Cega</span><span class="lista-por">Cerrada · ficha sin actividad desde 2024</span><span class="nota nota-baja">12 <small>descartar</small></span></div>
+      <div class="lista-pie">Nombres inventados. La nota y el motivo, así de concretos, son lo que llega de verdad.</div>
+    </div>
+
+    <p class="t-lead">Un sistema que sale a buscar a los que todavía no te conocen y te los deja puntuados, con el motivo y el primer mensaje escrito. Y otro que persigue los presupuestos que mandas y acompaña al que duda. Tú solo hablas con los que merecen la llamada.</p>
+    <div class="hero-botones">
+      <a class="btn btn-1" href="https://cal.com/marirrodriga-ia/llamada" target="_blank" rel="noopener">Asesoría gratuita de 30 min</a>
+      <a class="btn btn-2" href="#captacion">Ver qué hace y qué cuesta</a>
+    </div>
+    <p class="t-micro" style="margin-top:22px">Cada precio con su límite al lado. Sin permanencia.</p>
+  </div>
+</header>
+
+<!-- ─── EL PROBLEMA ─────────────────────────────────────────────────────── -->
+<section class="seccion">
+  <div class="envoltura">
+    <div class="envoltura-txt centrado" style="padding:0">
+      <span class="t-eyebrow">El agujero</span>
+      <h2 class="t-h2" style="margin:14px 0 16px">Vender no es difícil.<br>Lo difícil es hacerlo todos los días.</h2>
+      <p class="t-lead">Buscar clientes se come el tiempo de atenderlos. Y los que ya preguntaron se enfrían mientras tú estás con el siguiente. Ninguna de las dos cosas es complicada; lo complicado es que no se te pase ni un día.</p>
+    </div>
+
+    <div class="problema aparece">
+      <div class="problema-celda">
+        <h3>El día que se va buscando</h3>
+        <p class="t-body">Abrir Google, mirar fichas, apuntar teléfonos, adivinar cuál merece la pena. Tres horas para encontrar cinco a los que llamar, y ninguna para llamarlos.</p>
+      </div>
+      <div class="problema-celda">
+        <h3>El presupuesto que se enfría</h3>
+        <p class="t-body">Lo mandas el lunes. El jueves no ha dicho nada y tú no escribes por no parecer pesado. A los quince días ya ha comprado en otro sitio, y no te has enterado.</p>
+      </div>
+      <div class="problema-celda">
+        <h3>El que preguntó y no volvió</h3>
+        <p class="t-body">Pidió precio por WhatsApp, le contestaste, y ahí se quedó. No dijo que no: se le pasó. Nadie le volvió a escribir, porque nadie tenía eso apuntado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── LA CAPTACIÓN ────────────────────────────────────────────────────── -->
+<section class="seccion" id="captacion">
+  <div class="envoltura">
+    <div class="envoltura-txt centrado" style="padding:0">
+      <span class="t-eyebrow">La captación</span>
+      <h2 class="t-h2" style="margin:14px 0 16px">Salir a buscar<br><span class="acento">sin que te cueste el día.</span></h2>
+      <p class="t-lead">Es el mismo sistema con el que nos buscamos los clientes nosotros. Abajo lo tienes funcionando de verdad, en nuestro propio panel.</p>
+    </div>
+
+    <div class="capacidades aparece">
+      <div class="cap cap-base">
+        <span class="cap-etiq">Va siempre</span>
+        <h3>Captación de clientes potenciales</h3>
+        <p>Rastrea negocios que encajan con tu cliente ideal en fuentes públicas, mira qué tienen y qué les falta, les pone nota y te los entrega ordenados de mejor a peor <strong>con el motivo escrito y el primer mensaje ya redactado</strong>. Tú te sientas a decidir a quién escribes, no a buscar a quién.</p>
+        <div class="ejemplo"><b>Un caso de esta semana, en nuestra cola</b>Una peluquería con 4,9 estrellas y 204 reseñas entra con un 98 sobre 100. El motivo, escrito: su web va sin candado y para pedir hora hay que llamar. El borrador ya está redactado con ese motivo dentro. Se lee, se toca si hace falta, y se le da a enviar.</div>
+        <div class="cap-limite" data-limite="captacion-leads">150 negocios cualificados al mes · 1 sector y 1 zona a elegir · entrega en tu CRM o en una hoja de cálculo, más un aviso semanal</div>
+        <div class="cap-aviso">Te deja la lista y el borrador; <strong>el mensaje lo mandas tú</strong>. La base legal del artículo 21 de la LSSI es de quien lo manda, y esa responsabilidad no la asumimos por ti. Tampoco compramos bases de datos ni verificamos por teléfono.</div>
+        <div class="cap-precio cap-precio-base" data-pieza="captacion-leads">199 €/mes <span>· 600 € de instalación</span></div>
+      </div>
+
+      <figure class="captura">
+        <img src="/assets/img/crm-captacion.jpg" alt="La bandeja de captación de nuestro panel: a la izquierda la cola de negocios con su nota, en el centro el motivo de la nota y los problemas detectados, a la derecha el correo ya redactado con el botón de enviar" width="1800" height="1589" loading="lazy">
+        <div class="captura-marcas">
+          <span class="captura-marca"><i></i>La cola, de mejor a peor</span>
+          <span class="captura-marca"><i></i>El motivo de la nota, escrito</span>
+          <span class="captura-marca"><i></i>Qué le falta a ese negocio</span>
+          <span class="captura-marca"><i></i>El primer correo, redactado y editable</span>
+          <span class="captura-marca"><i></i>El botón de enviar lo pulsa una persona</span>
+        </div>
+        <figcaption><strong>Nuestro panel, un lunes cualquiera.</strong> De 265 negocios rastreados, 98 tienen un correo al que escribir: eso también se dice. Los nombres, correos y webs de la captura son ficticios; el resto es tal cual.</figcaption>
+      </figure>
+
+      <div class="cap cap-obra">
+        <div class="cap-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg></div>
+        <h3>Otro sector, u otra zona</h3>
+        <p>El rastreo va afinado a un sector y una zona. Abrir un segundo frente se presupuesta según lo que haya que rastrear.</p>
+        <div class="ejemplo"><b>Ejemplo</b>Empiezas con clínicas dentales en Valladolid. A los tres meses quieres también fisios, o quieres Burgos. Eso es otro rastreador afinado, y se cotiza aparte.</div>
+        <div class="cap-precio">Se presupuesta</div>
+      </div>
+      <div class="cap cap-obra">
+        <div class="cap-ico"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 01-9 8.4 8.5 8.5 0 01-3.9-.9L3 20.5l1.5-4.6A8.4 8.4 0 0112 3.1a8.4 8.4 0 019 8.4z"/></svg></div>
+        <h3>Que te avise por WhatsApp de los mejores</h3>
+        <p>Hoy el aviso semanal llega por correo o al panel. Si prefieres que los de nota alta te lleguen al móvil el mismo día, se monta.</p>
+        <div class="ejemplo"><b>Ejemplo</b><q>Ha entrado uno de 97: clínica en León, sin reserva online, 180 reseñas. Tienes el borrador en el panel.</q></div>
+        <div class="cap-precio">Se presupuesta</div>
+      </div>
+      <div class="cap cap-enlace">
+        <div class="cap-ico"><svg viewBox="0 0 24 24"><path d="M3 17l5-5 4 3 8-8"/><path d="M15 7h5v5"/></svg></div>
+        <h3>Y cuando contesten, el seguimiento</h3>
+        <p>Lo que pasa después del primer mensaje no lo lleva la captación: lo lleva el producto de abajo. Juntos son la venta entera.</p>
+        <div class="cap-limite">captación + seguimiento de presupuestos</div>
+        <div class="cap-precio" data-cotiza="captacion-leads,hermes-seguimiento-presupuestos">248 €/mes <span>· 800 € de instalación</span> · <a href="#seguimiento">ver el seguimiento ↓</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── EL SEGUIMIENTO ──────────────────────────────────────────────────── -->
+<section class="seccion seccion-cream" id="seguimiento">
+  <div class="envoltura">
+    <div class="envoltura-txt centrado" style="padding:0">
+      <span class="t-eyebrow">El seguimiento</span>
+      <h2 class="t-h2" style="margin:14px 0 16px">Lo que nadie hace<br><span class="acento">todos los días.</span></h2>
+      <p class="t-lead">Persigue lo que ya tienes abierto, acompaña al que duda, recupera al que se fue y te pasa a ti solo los calientes. Cada pieza trabaja en un momento distinto de la venta: el ejemplo de cada una es para que se vea cuál.</p>
+    </div>
+
+    <div class="capacidades aparece">
+      <div class="cap cap-base">
+        <span class="cap-etiq">Va siempre</span>
+        <h3>Seguimiento de presupuestos</h3>
+        <p>Trabaja sobre <strong>presupuestos que ya has mandado</strong>. Sabe cuáles siguen abiertos, escribe a los días justos con la duda más probable ya resuelta, y te dice cuáles se han enfriado y cuáles merecen una llamada tuya. Ni negocia precio ni aplica descuentos.</p>
+        <div class="ejemplo"><b>Ejemplo</b>Mandaste el presupuesto de la ortodoncia el lunes. El jueves, sin respuesta, escribe él: <q>Hola Marta, el lunes te pasamos el presupuesto. Lo que más suele frenar es el pago: se puede hacer en 12 meses sin intereses. ¿Te lo cuento?</q> A los diez días, si sigue en silencio, lo marca como frío y a ti te llega: <q>Marta y Jorge no han contestado a dos toques. Luis ha abierto el presupuesto tres veces: llámale tú.</q></div>
+        <div class="cap-limite" data-limite="hermes-seguimiento-presupuestos">200 presupuestos activos · email + un canal de mensajería (WhatsApp o Telegram)</div>
+        <div class="cap-aviso">Lee tus presupuestos en tu sistema solo si tiene API. Si es un programa cerrado, se valora aparte antes de empezar, no después.</div>
+        <div class="cap-precio cap-precio-base" data-pieza="hermes-seguimiento-presupuestos">49 €/mes <span>· 200 € de instalación</span></div>
+      </div>
+
+      <div class="cap">
+        <div class="cap-ico"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 01-9 8.4 8.5 8.5 0 01-3.9-.9L3 20.5l1.5-4.6A8.4 8.4 0 0112 3.1a8.4 8.4 0 019 8.4z"/></svg></div>
+        <h3>Que acompañe al que preguntó y no cerró</h3>
+        <p>Trabaja <strong>antes del presupuesto</strong>: con quien pidió información y no volvió. Sigue la conversación, resuelve la duda que le frena, intenta cerrarlo y, si se cae, te apunta por qué.</p>
+        <div class="ejemplo"><b>Ejemplo</b>Alguien pregunta por WhatsApp el precio del blanqueamiento y no vuelve a escribir. Dos días después: <q>¿Te quedó alguna duda?</q> Ella contesta que le da miedo la sensibilidad. Le explica cómo se controla y le propone hora. Si al final dice que no, en tu panel queda: <q>se cae por miedo a la sensibilidad</q>, no por precio.<span class="dif">La diferencia con la base: la base persigue un papel que ya enviaste; esta conversa con quien aún no ha llegado a papel.</span></div>
+        <div class="cap-limite" data-limite="hermes-acompanamiento-conversacional">300 conversaciones/mes</div>
+        <div class="cap-precio" data-pieza="hermes-acompanamiento-conversacional">+49 €/mes <span>· +50 € de alta</span></div>
+      </div>
+
+      <div class="cap">
+        <div class="cap-ico"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/><path d="M12 8v4l3 2"/></svg></div>
+        <h3>Que recupere a los que dejaron de venir</h3>
+        <p>Trabaja con <strong>clientes que ya eran tuyos</strong> y llevan meses sin aparecer. Va a quien tiene sentido, con lo que ya sabes de él. No es una campaña a toda la base.</p>
+        <div class="ejemplo"><b>Ejemplo</b>Una clienta venía cada seis semanas al color y lleva cuatro meses sin pisar. Le escribe: <q>Hace tiempo que no te vemos. ¿Te guardo hueco el jueves por la tarde para el color?</q> Al que vino una vez hace dos años no le escribe: no tiene sentido y molesta.<span class="dif">La diferencia: no persigue una venta abierta ni una pregunta reciente. Busca a quien se fue sin decir nada.</span></div>
+        <div class="cap-limite" data-limite="reactivacion-dormidos">hasta 200 contactos/mes · 1 campaña/mes</div>
+        <div class="cap-precio" data-pieza="reactivacion-dormidos">+15 €/mes <span>· +40 € de alta</span></div>
+      </div>
+
+      <div class="cap">
+        <div class="cap-ico"><svg viewBox="0 0 24 24"><path d="M12 22a2 2 0 002-2h-4a2 2 0 002 2zM18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9z"/></svg></div>
+        <h3>Que avise de la cita y luego pida la reseña</h3>
+        <p>Trabaja <strong>después de cerrar</strong>: cuida la cita para que no te planten y convierte la visita buena en una reseña de Google.</p>
+        <div class="ejemplo"><b>Ejemplo</b>La víspera: <q>Mañana a las 17:30 tienes cita. ¿Confirmas, o la movemos?</q> Si cancela, el hueco vuelve a tiempo para otro. Al día siguiente de la visita: <q>¿Qué tal fue?</q> Si contesta bien, le manda el enlace de Google. Si contesta mal, no pide nada y te avisa a ti.<span class="dif">La diferencia: las otras tres venden. Esta cuida lo ya vendido y trae la siguiente venta por reputación.</span></div>
+        <div class="cap-limite" data-limite="recordatorios-confirmacion">hasta 800 envíos/mes, sumando recordatorios y peticiones de reseña · sin SMS ni llamadas</div>
+        <div class="cap-precio" data-pieza="recordatorios-confirmacion">+15 €/mes <span>· +30 € de alta</span></div>
+      </div>
+
+      <div class="cap cap-enlace">
+        <div class="cap-ico"><svg viewBox="0 0 24 24"><rect x="2.5" y="4" width="19" height="14" rx="2.5"/><path d="M7 21h10"/></svg></div>
+        <h3>¿Y que conteste al que entra nuevo?</h3>
+        <p>Eso es el chatbot de Atención al Cliente: contesta, cualifica y da cita al que escribe por primera vez. Vive en su página, no se repite aquí.</p>
+        <div class="ejemplo"><b>Ejemplo</b>Un desconocido escribe a las once de la noche: <q>¿Hacéis implantes? ¿Cuánto cuesta una primera visita?</q> Le contesta, le pregunta lo justo y le da hora. Desde ahí, si le mandas presupuesto, ya lo coge el seguimiento.</div>
+        <div class="cap-limite" data-limite="iris-0">500 conversaciones/mes · 1 canal</div>
+        <div class="cap-precio" data-pieza="iris-0">49 €/mes <span>· 150 € de instalación</span> · <a href="/atencion-al-cliente">verlo en Atención al Cliente →</a></div>
+      </div>
+
+      <div class="cap cap-obra">
+        <div class="cap-ico"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="M4 10h16M9 10v9"/></svg></div>
+        <h3>Que lea tu sistema aunque no tenga API</h3>
+        <p>Programas de escritorio, hojas sueltas, un CRM sin conexión. Se puede, pero es obra: se mira lo que tienes y se presupuesta.</p>
+        <div class="ejemplo"><b>Ejemplo</b>Tus presupuestos viven en un programa de gestión de 2015 que solo exporta a Excel. Se monta un puente que lea ese Excel cada noche, y ahí sí puede hacer el seguimiento.</div>
+        <div class="cap-precio">Se presupuesta</div>
+      </div>
+
+      <div class="cap cap-obra">
+        <div class="cap-ico"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h10M4 17h7"/><circle cx="18" cy="16" r="3"/></svg></div>
+        <h3>Que negocie dentro de los límites que le fijes</h3>
+        <p>Un margen de descuento, un plazo, una condición. Hoy no negocia nada: si lo quieres, se construye con tus reglas por escrito.</p>
+        <div class="ejemplo"><b>Ejemplo</b>Tú fijas: <q>hasta un 5 % si cierra esta semana, y nunca por debajo</q>. Cuando Marta dice que le parece caro, él puede ofrecer ese 5 % y nada más. Lo que se salga de la regla te lo pasa a ti.</div>
+        <div class="cap-precio">Se presupuesta</div>
+      </div>
+    </div>
+
+    <div class="nota-piezas aparece">
+      <p><strong>Eliges tú, una a una.</strong> Ninguna arrastra a otra: puedes llevarte solo el seguimiento de presupuestos, o solo la captación. Lo que no marques, ni se monta ni se cobra.</p>
+      <p><strong>Y cuantas más montes de una vez, menos cuesta cada una.</strong> A partir de cuatro piezas entra la bonificación —hasta un 20 %— y se aplica <strong>también a la instalación</strong>, porque montarlas juntas nos lleva menos que montarlas sueltas. En la llamada te lo calculamos con tus piezas delante.</p>
+    </div>
+
+    <p class="t-small centrado" style="margin-top:30px">
+      Todos los precios <strong>sin IVA</strong>. La instalación se paga <strong>50 % al empezar y 50 % al entregar</strong>.
+      Sin permanencia: te vas cuando quieras avisando con 30 días.
+    </p>
+  </div>
+</section>
+
+<!-- ─── LO QUE VIENE ────────────────────────────────────────────────────── -->
+<section class="seccion" id="radar">
+  <div class="envoltura">
+    <div class="envoltura-txt centrado" style="padding:0">
+      <span class="t-eyebrow">Lo que viene</span>
+      <h2 class="t-h2" style="margin:14px 0 16px">Mirar también<br><span class="acento">a la competencia.</span></h2>
+      <p class="t-lead">El mismo rastreador que busca clientes sabe mirar a los de tu sector. Está construido para un cliente y todavía no está empaquetado con precio y límite: se presupuesta.</p>
+    </div>
+    <div class="radar aparece">
+      <div class="cap cap-obra">
+        <div class="cap-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/></svg></div>
+        <h3>Radar de competencia y precios</h3>
+        <p>Vigila a los competidores que le digas: qué cobran, qué han cambiado, qué ofrecen nuevo, qué dicen de ellos. Y te lo resume con lo que ha cambiado desde la última vez, no con una tabla que tengas que leer entera.</p>
+        <div class="ejemplo"><b>Ejemplo</b><q>Esta semana: dos de tus cinco competidores han bajado la primera visita a 39 €. Uno ha empezado a ofrecer financiación. A otro le han entrado 14 reseñas malas por esperas.</q></div>
+        <div class="cap-precio">Se presupuesta</div>
+      </div>
+      <div class="cap cap-obra">
+        <div class="cap-ico"><svg viewBox="0 0 24 24"><path d="M3 17l5-5 4 3 8-8"/><path d="M15 7h5v5"/></svg></div>
+        <h3>Variaciones de precio en tu mercado</h3>
+        <p>Para quien vende producto: seguir los precios de los mismos artículos en otras tiendas y avisarte cuando alguien se mueve, para que la decisión de mover el tuyo sea tuya y a tiempo.</p>
+        <div class="ejemplo"><b>Ejemplo</b><q>El modelo X ha bajado un 8 % en dos tiendas desde el martes. Tú sigues 12 € por encima de la más barata.</q></div>
+        <div class="cap-precio">Se presupuesta</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PREGUNTAS ───────────────────────────────────────────────────────── -->
+<section class="seccion seccion-cream" id="preguntas">
+  <div class="envoltura-txt">
+    <span class="t-eyebrow">Preguntas</span>
+    <h2 class="t-h2" style="margin:14px 0 0">Lo que nos preguntan<br>antes de decir que sí.</h2>
+
+    <div class="faq">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">¿Escribe a los negocios en mi nombre?
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="faq-a"><div><p>No. Te deja la lista puntuada y el primer mensaje redactado, pero el botón de enviar lo pulsas tú. La base legal del artículo 21 de la LSSI es de quien manda el correo, y esa responsabilidad no la asumimos por ti. Es la misma regla que seguimos nosotros con nuestra propia cola.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">¿De dónde saca los negocios?
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="faq-a"><div><p>De fuentes públicas: la ficha de Google del negocio y su propia web. Ahí es donde se ve si tiene reserva online, si su web va sin candado o cuántas reseñas le han entrado en el último año. No compramos bases de datos ni verificamos por teléfono.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">¿Cuántos de los 150 valen de verdad?
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="faq-a"><div><p>Depende del sector y de la zona, y por eso cada uno lleva su nota y su motivo escrito: los de arriba son a los que merece la pena escribir hoy. En nuestra propia cola, de 265 negocios rastreados solo 98 tenían un correo al que escribir. Te lo decimos antes de empezar, no después.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">¿Y si no tengo CRM?
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="faq-a"><div><p>Te lo entregamos en una hoja de cálculo, con el aviso semanal igual. Montar un CRM se presupuesta aparte, y de entrada no te lo recomendamos: un CRM sin volumen dentro es una hoja vacía que da trabajo y no devuelve nada.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">¿El seguimiento negocia el precio?
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="faq-a"><div><p>No. Escribe, resuelve dudas, marca calientes y fríos y te pasa a ti los que merecen llamada. Que negocie dentro de unos límites que fijes tú se construye aparte, con tus reglas por escrito, y lo que se salga de la regla te lo pasa igual.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">¿Se nota que es un bot?
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="faq-a"><div><p>Cuando conversa con alguien se identifica como asistente, que es lo que exige el artículo 50 del Reglamento Europeo de IA desde agosto de 2026. Escribe con tu tono y desde tu negocio, y cuando no sabe algo o la conversación se pone seria, deja de contestar y te la pasa a ti.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">¿Hay permanencia?
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="faq-a"><div><p>No. Te vas cuando quieras avisando con 30 días. La instalación se paga 50 % al empezar y 50 % al entregar, y la cuota incluye los ajustes y una reunión al mes. Y si te acercas al límite de tu pieza, te avisamos al 80 % y te proponemos subir: nunca cortamos ni facturamos el exceso por sorpresa.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CIERRE ──────────────────────────────────────────────────────────── -->
+<section class="cierre">
+  <div class="envoltura-txt">
+    <h2 class="t-h2">Media hora, y te decimos<br>por dónde empezar.</h2>
+    <p>O que no empieces. Si esto no te va a devolver lo que cuesta, te lo decimos en la llamada y nos ahorramos los dos el tiempo.</p>
+    <div class="hero-botones">
+      <a class="btn btn-2" href="https://cal.com/marirrodriga-ia/llamada" target="_blank" rel="noopener">Reservar la asesoría gratuita</a>
+      <a class="btn btn-3" style="color:rgba(255,255,255,.6)" href="/">Ver todo lo que montamos →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PIE ─────────────────────────────────────────────────────────────── -->
+<footer class="pie">
+  <div class="envoltura">
+    <div class="pie-fila">
+      <div>
+        <div class="pie-marca">
+          <img src="/assets/img/logo.png" alt="" width="256" height="256">
+          Marirrodriga.IA
+        </div>
+        <p style="margin-top:12px;max-width:280px;font-size:13.5px">Software con IA montado por piezas, con su precio y su límite públicos.</p>
+      </div>
+      <div class="pie-cols">
+        <div class="pie-col">
+          <h4>Departamentos</h4>
+          <a href="/atencion-al-cliente">Atención al Cliente</a>
+          <a href="/ventas-y-captacion">Ventas y Captación</a>
+          <span style="opacity:.35">Finanzas</span>
+          <span style="opacity:.35">Datos y Dirección</span>
+          <span style="opacity:.35">Marketing</span>
+        </div>
+        <div class="pie-col">
+          <h4>Contacto</h4>
+          <a href="https://cal.com/marirrodriga-ia/llamada" target="_blank" rel="noopener">Asesoría gratuita</a>
+          <a href="mailto:contacto@marirrodriga-ia.com">contacto@marirrodriga-ia.com</a>
+          <a href="https://wa.me/34675148566" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+        <div class="pie-col">
+          <h4>Legal</h4>
+          <a href="/aviso-legal">Aviso legal</a>
+          <a href="/privacidad">Privacidad</a>
+        </div>
+      </div>
+    </div>
+    <div class="pie-legal">
+      <span>© 2026 Marirrodriga IA</span>
+      <span>Todos los precios sin IVA</span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/34675148566" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.2-1.8-.9-2-1-.3-.1-.5-.2-.7.1s-.8 1-.9 1.2c-.2.2-.3.2-.6.1a8 8 0 01-4-3.5c-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5L9.3 7c-.2-.5-.4-.5-.6-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 1.9.8 2.7.9 3.6.8.6-.1 1.8-.7 2-1.5.3-.7.3-1.3.2-1.4-.1-.2-.3-.3-.6-.4z"/><path d="M12 2a10 10 0 00-8.5 15.2L2 22l4.9-1.4A10 10 0 1012 2zm0 18.2c-1.6 0-3.2-.4-4.5-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2z"/></svg>
+</a>
+
+<script src="/assets/ventas.js"></script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

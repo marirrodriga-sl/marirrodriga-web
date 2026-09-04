@@ -1,0 +1,133 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   VENTAS Y CAPTACIÓN — landing de departamento (04-09-2026)
+   ───────────────────────────────────────────────────────────────────────────
+   Va ENCIMA de base.css y de atencion.css. La segunda landing reutiliza el
+   molde de la primera tal cual (hero, el agujero, cuadro base + tarjetas,
+   FAQ, cierre) y aquí solo va lo que cambia: la foto del hero, la lista del
+   lunes que sustituye al móvil, la captura del CRM y los ejemplos.
+
+   Decisión del spec del 19-08: el generador de landings no se construye
+   hasta la tercera. Cuando llegue, lo compartido entre atencion.css y este
+   fichero (.hero, .problema, .cap*, .faq, .cierre, .nota-piezas) se muda a
+   un landing.css común. Hasta entonces, se enlazan los dos.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─── LA FOTO DEL HERO ─────────────────────────────────────────────────────
+   assets/img/hero-ventas.jpg · Magnific, 04-09. Un mostrador a primera hora
+   con la agenda y los presupuestos en los bordes y el centro vacío.
+   Luminosidad media 175, la misma familia que hero-atencion.jpg. */
+.hero-fondo {
+  background:
+    radial-gradient(46% 30% at 50% 26%,
+      rgba(255,255,255,.62) 0%, rgba(255,255,255,.30) 55%, rgba(255,255,255,0) 100%),
+    linear-gradient(180deg,
+      rgba(255,255,255,0) 0%,   rgba(255,255,255,0) 56%,
+      rgba(255,255,255,.55) 68%, rgba(255,255,255,.94) 78%, #ffffff 84%),
+    url('/assets/img/hero-ventas.jpg') center / cover no-repeat,
+    linear-gradient(180deg, #ffffff 0%, #faf8f5 100%);
+}
+
+/* ─── LA LISTA DEL LUNES — el producto funcionando, en HTML ────────────────
+   Sustituye al móvil de Atención. Es literalmente lo que entrega la
+   captación: la cola con la nota y el motivo. Las notas entran una a una,
+   que es lo que hace el sistema: ir puntuando lo que rastrea. */
+.lista {
+  position: relative; width: min(560px, 100%); margin: 26px auto 30px;
+  padding: 14px 16px 10px; border-radius: 18px; text-align: left;
+  background: rgba(255,255,255,.92);
+  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,.85);
+  box-shadow: 0 30px 60px -26px rgba(23,20,31,.40), 0 0 0 1px rgba(23,20,31,.06);
+}
+.lista-cab { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 0 4px 10px; border-bottom: 1px solid var(--line-soft); }
+.lista-cab b { font-size: 13.5px; font-weight: 700; letter-spacing: -.01em; }
+.lista-cab span { font-size: 11px; color: var(--ink-3); }
+
+.lista-fila {
+  display: grid; grid-template-columns: 1fr auto; gap: 1px 12px; align-items: center;
+  padding: 10px 4px;
+}
+.lista-fila + .lista-fila { border-top: 1px solid var(--line-soft); }
+.lista-de  { grid-column: 1; font-size: 13px; font-weight: 650; letter-spacing: -.01em; }
+.lista-por { grid-column: 1; font-size: 11.5px; color: var(--ink-3); line-height: 1.35; }
+.lista-fila.apagada .lista-de, .lista-fila.apagada .lista-por { color: var(--ink-4); }
+
+.nota {
+  grid-column: 2; grid-row: 1 / 3; align-self: center;
+  display: inline-flex; align-items: baseline; gap: 4px;
+  font-size: 12px; font-weight: 700; letter-spacing: -.01em;
+  padding: 5px 10px; border-radius: var(--r-pill); white-space: nowrap;
+  opacity: 0; animation: notaEntra 14s cubic-bezier(.2,.8,.3,1) infinite;
+}
+.nota small { font-size: 9.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; opacity: .7; }
+.nota-alta  { background: var(--purple); color: #fff; }
+.nota-media { background: #fdf1e2; color: #9a5a0c; }
+.nota-baja  { background: #f0eef2; color: var(--ink-4); }
+
+/* Entran pronto y se quedan casi todo el ciclo: la página en reposo (una
+   miniatura, un enlace pegado) tiene que enseñar las notas, no una lista muda. */
+@keyframes notaEntra { 0%,2% {opacity:0;transform:translateX(7px) scale(.92)} 6%,94% {opacity:1;transform:none} 98%,100% {opacity:0} }
+.f1 .nota { animation-delay: .2s; }
+.f2 .nota { animation-delay: .9s; }
+.f3 .nota { animation-delay: 1.6s; }
+.f4 .nota { animation-delay: 2.3s; }
+.f5 .nota { animation-delay: 3.0s; }
+
+.lista-pie { padding: 9px 4px 2px; font-size: 11px; color: var(--ink-3); border-top: 1px solid var(--line-soft); }
+
+@media (prefers-reduced-motion: reduce) { .nota { opacity: 1; animation: none; } }
+
+/* Las burbujas laterales de Atención cuentan el seguimiento aquí: mismo CSS,
+   otro texto. Solo se ajusta la de la derecha, que en Atención no existía. */
+.b3 { top: 30%; right: 3.2%; left: auto; animation-delay: .9s; }
+.b4 { top: 43%; right: 5.5%; left: auto; animation-delay: 2.2s; }
+.e2 { top: calc(30% - 19px); right: 4.4%; left: auto; animation-delay: .8s; }
+@media (max-width: 1240px) {
+  .b3, .b4, .e2 { position: static; }
+}
+
+/* ─── EL EJEMPLO DENTRO DE CADA TARJETA ───────────────────────────────────
+   Cada pieza del seguimiento lleva uno. Es lo que dice en qué momento de la
+   venta trabaja y en qué se diferencia de las demás: sin él parecían iguales. */
+.ejemplo {
+  margin-top: 12px; padding: 11px 13px 11px 15px;
+  border-left: 3px solid var(--purple); border-radius: 0 10px 10px 0;
+  background: var(--cream); font-size: 13.5px; line-height: 1.55; color: var(--ink-2);
+}
+.ejemplo b { display: block; font-size: 10.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--purple); margin-bottom: 5px; }
+.ejemplo q { font-style: italic; color: var(--ink); quotes: "«" "»"; }
+.ejemplo .dif { display: block; margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--line); color: var(--ink-3); font-size: 12.5px; }
+.cap-base .ejemplo { background: #fff; max-width: 74ch; }
+.seccion-cream .cap .ejemplo { background: var(--cream-deep); }
+.seccion-cream .cap-base .ejemplo { background: #fff; }
+
+/* Tarjetas que no tienen precio de catálogo: se presupuestan */
+.cap-obra { border-style: dashed; background: var(--cream); }
+.seccion-cream .cap-obra { background: #fff; }
+.cap-obra .cap-precio { color: var(--ink-3); font-weight: 700; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; }
+.cap-obra .ejemplo { background: #fff; }
+
+/* Tarjeta que enlaza a otra pieza de otro departamento */
+.cap-enlace { background: var(--cream); }
+.seccion-cream .cap-enlace { background: #fff; }
+.cap-enlace .cap-precio { color: var(--ink-2); }
+.cap-enlace .cap-precio a { color: var(--purple); font-weight: 700; }
+
+/* ─── LA CAPTURA DEL CRM ──────────────────────────────────────────────────
+   Una sola, la bandeja entera: se ve la cola, el motivo y el borrador de una
+   vez. Los nombres, correos y webs de los negocios son ficticios: se
+   sustituyeron en pantalla antes de capturar (decisión de Ismael, 04-09). */
+.captura {
+  grid-column: 1 / -1; margin: 0;
+  padding: 14px; border-radius: var(--r-panel);
+  background: var(--cream); border: 1px solid var(--line);
+}
+.captura img { width: 100%; height: auto; border-radius: 12px; box-shadow: var(--sh-3); }
+.captura figcaption { padding: 14px 8px 2px; font-size: 14px; line-height: 1.55; color: var(--ink-2); }
+.captura figcaption strong { color: var(--ink); }
+.captura-marcas { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px 8px 4px; }
+.captura-marca { font-size: 11.5px; font-weight: 600; color: var(--ink-2); padding: 5px 11px; border-radius: var(--r-pill); background: #fff; box-shadow: inset 0 0 0 1px var(--line); }
+.captura-marca i { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--purple); margin-right: 6px; vertical-align: 1px; }
+
+/* ─── LO QUE VIENE: el radar ─────────────────────────────────────────────── */
+.radar { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; margin-top: 40px; }
