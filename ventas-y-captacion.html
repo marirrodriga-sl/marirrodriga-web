@@ -63,6 +63,7 @@
   <div class="nav-links">
     <a class="nav-link" href="#captacion">La captación</a>
     <a class="nav-link" href="#seguimiento">El seguimiento</a>
+    <a class="nav-link" href="#radar">El radar</a>
     <a class="nav-link" href="#preguntas">Preguntas</a>
   </div>
   <a class="btn btn-1 nav-cta" href="https://cal.com/marirrodriga-ia/llamada" target="_blank" rel="noopener">Asesoría gratuita</a>
@@ -104,7 +105,22 @@
       <a class="btn btn-1" href="https://cal.com/marirrodriga-ia/llamada" target="_blank" rel="noopener">Asesoría gratuita de 30 min</a>
       <a class="btn btn-2" href="#captacion">Ver qué hace y qué cuesta</a>
     </div>
-    <p class="t-micro" style="margin-top:22px">Cada precio con su límite al lado. Sin permanencia.</p>
+    <!-- Los tres productos de la página, para moverse entre ellos sin bajar a ciegas -->
+    <nav class="hero-productos" aria-label="Los tres productos de este departamento">
+      <a class="hero-producto" href="#captacion">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/></svg>
+        <span><b>La captación</b><small>Encontrar a quien no te conoce</small></span>
+      </a>
+      <a class="hero-producto" href="#seguimiento">
+        <svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 01-9 8.4 8.5 8.5 0 01-3.9-.9L3 20.5l1.5-4.6A8.4 8.4 0 0112 3.1a8.4 8.4 0 019 8.4z"/></svg>
+        <span><b>El seguimiento</b><small>No perder a quien ya preguntó</small></span>
+      </a>
+      <a class="hero-producto" href="#radar">
+        <svg viewBox="0 0 24 24"><path d="M12 12L19 5"/><path d="M12 21a9 9 0 110-18"/><path d="M12 17a5 5 0 110-10"/><circle cx="12" cy="12" r="1.2"/></svg>
+        <span><b>El radar</b><small>Saber qué hace tu competencia</small></span>
+      </a>
+    </nav>
+    <p class="t-micro" style="margin-top:18px">Cada precio con su límite al lado. Sin permanencia.</p>
   </div>
 </header>
 
@@ -154,16 +170,21 @@
         <div class="cap-precio cap-precio-base" data-pieza="captacion-leads">199 €/mes <span>· 600 € de instalación</span></div>
       </div>
 
+      <div class="captura-intro">
+        <span class="t-eyebrow">Un resultado en producción</span>
+        <h3 class="t-h3">Esta es nuestra sección de captación,<br>tal y como la usamos cada semana.</h3>
+        <p class="t-body">Es el panel con el que nos buscamos los clientes nosotros. Lo que ves abajo es una captura real de un lunes, con lo que hace el sistema por cada negocio que rastrea:</p>
+        <ul class="captura-lista">
+          <li><b>Filtra por ciudad</b> y separa los negocios <b>contactables por correo</b> de los que hay que buscar por otra vía.</li>
+          <li><b>Pone nota a cada uno</b> y escribe el motivo: por qué ese negocio y no otro.</li>
+          <li><b>Detecta los dolores</b> del negocio y propone el <b>ángulo de venta</b>: por dónde entrarle.</li>
+          <li><b>Redacta el primer correo</b>, editable, con ese motivo dentro y en tu tono.</li>
+          <li><b>Deja el botón de enviar listo.</b> Lo pulsa una persona, no el sistema.</li>
+        </ul>
+      </div>
       <figure class="captura">
         <img src="/assets/img/crm-captacion.jpg" alt="La bandeja de captación de nuestro panel: a la izquierda la cola de negocios con su nota, en el centro el motivo de la nota y los problemas detectados, a la derecha el correo ya redactado con el botón de enviar" width="1800" height="1589" loading="lazy">
-        <div class="captura-marcas">
-          <span class="captura-marca"><i></i>La cola, de mejor a peor</span>
-          <span class="captura-marca"><i></i>El motivo de la nota, escrito</span>
-          <span class="captura-marca"><i></i>Qué le falta a ese negocio</span>
-          <span class="captura-marca"><i></i>El primer correo, redactado y editable</span>
-          <span class="captura-marca"><i></i>El botón de enviar lo pulsa una persona</span>
-        </div>
-        <figcaption><strong>Nuestro panel, un lunes cualquiera.</strong> De 265 negocios rastreados, 98 tienen un correo al que escribir: eso también se dice. Los nombres, correos y webs de la captura son ficticios; el resto es tal cual.</figcaption>
+        <figcaption><strong>De 265 negocios rastreados, 98 tienen un correo al que escribir.</strong> Eso también se dice, antes de empezar. Los nombres, correos y webs de la captura son ficticios; el resto es tal cual.</figcaption>
       </figure>
 
       <div class="cap cap-obra">
@@ -276,28 +297,59 @@
   </div>
 </section>
 
-<!-- ─── LO QUE VIENE ────────────────────────────────────────────────────── -->
+<!-- ─── EL RADAR ────────────────────────────────────────────────────────── -->
 <section class="seccion" id="radar">
   <div class="envoltura">
     <div class="envoltura-txt centrado" style="padding:0">
-      <span class="t-eyebrow">Lo que viene</span>
+      <span class="t-eyebrow">El radar</span>
       <h2 class="t-h2" style="margin:14px 0 16px">Mirar también<br><span class="acento">a la competencia.</span></h2>
-      <p class="t-lead">El mismo rastreador que busca clientes sabe mirar a los de tu sector. Está construido para un cliente y todavía no está empaquetado con precio y límite: se presupuesta.</p>
+      <p class="t-lead">Lo que tu competencia hace en público dice mucho de lo que te conviene hacer a ti. El mismo rastreador que busca clientes sabe mirarla, y te cuenta solo lo que ha cambiado desde la última vez.</p>
     </div>
-    <div class="radar aparece">
-      <div class="cap cap-obra">
-        <div class="cap-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/></svg></div>
-        <h3>Radar de competencia y precios</h3>
-        <p>Vigila a los competidores que le digas: qué cobran, qué han cambiado, qué ofrecen nuevo, qué dicen de ellos. Y te lo resume con lo que ha cambiado desde la última vez, no con una tabla que tengas que leer entera.</p>
-        <div class="ejemplo"><b>Ejemplo</b><q>Esta semana: dos de tus cinco competidores han bajado la primera visita a 39 €. Uno ha empezado a ofrecer financiación. A otro le han entrado 14 reseñas malas por esperas.</q></div>
-        <div class="cap-precio">Se presupuesta</div>
+
+    <div class="capacidades aparece">
+      <div class="cap cap-base">
+        <span class="cap-etiq">Se monta sobre lo que quieras vigilar</span>
+        <h3>Radar de competencia</h3>
+        <p>Le dices a quién mirar y qué te importa de ellos. Cada semana rastrea sus webs, sus fichas de Google y sus redes, compara con la semana anterior y te manda <strong>un resumen corto de lo que ha cambiado</strong>, no una tabla que tengas que leer entera. Lo que no cambia, no te lo cuenta.</p>
+        <div class="ejemplo"><b>Ejemplo del informe del lunes</b><q>Dos de tus cinco competidores han bajado la primera visita a 39 €. Uno ha empezado a ofrecer financiación en 12 meses. Al de la calle Mayor le han entrado 14 reseñas malas por esperas: es tu argumento. Y sus vídeos de antes y después consiguen cuatro veces más que sus fotos de producto.</q></div>
+        <div class="cap-limite">se acota en la llamada: a quién se vigila, qué fuentes y cada cuánto · solo fuentes públicas · nunca zonas con contraseña</div>
+        <div class="cap-aviso">Está construido para un cliente y funciona. Como cada radar se monta sobre competidores y fuentes distintas, <strong>el precio y el límite se cierran en la llamada, antes de empezar</strong>, con la misma regla que todo lo demás: sin límite escrito, no hay precio.</div>
+        <div class="cap-precio cap-precio-base">Se presupuesta <span>· cuota mensual + instalación, como el resto</span></div>
       </div>
-      <div class="cap cap-obra">
+
+      <div class="cap">
+        <div class="cap-ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="3.5"/><path d="M17 7h.01"/></svg></div>
+        <h3>Qué les funciona en redes</h3>
+        <p>Qué publican, con qué frecuencia y qué formatos y temas les traen más respuesta. Para copiar lo que funciona y no perder tiempo en lo que no.</p>
+        <div class="ejemplo"><b>Ejemplo</b><q>Los vídeos cortos de antes y después de X consiguen cuatro veces más comentarios que sus fotos de producto. Publican martes y jueves. Y llevan tres semanas sin publicar: hueco para ti.</q></div>
+      </div>
+
+      <div class="cap">
+        <div class="cap-ico"><svg viewBox="0 0 24 24"><path d="M12 2v20M17 6.5c0-1.9-2.2-3-5-3s-5 1.1-5 3 2.2 3 5 3 5 1.1 5 3-2.2 3-5 3-5-1.1-5-3"/></svg></div>
+        <h3>Sus precios y sus ofertas</h3>
+        <p>Primera visita, promociones, financiación, packs. Cuándo suben, cuándo bajan y qué regalan. Para decidir el tuyo con datos y a tiempo, no cuando ya te lo cuenta un cliente.</p>
+        <div class="ejemplo"><b>Ejemplo</b><q>Tres de tus cinco competidores han bajado la primera visita a 39 €. Tú sigues en 60. Uno ha añadido «revisión gratis el primer año».</q></div>
+      </div>
+
+      <div class="cap">
+        <div class="cap-ico"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.7 1.5 6.8L12 17l-6.1 3.5 1.5-6.8L2.2 9l6.9-.7z"/></svg></div>
+        <h3>Qué dicen sus clientes</h3>
+        <p>De qué se quejan y qué elogian en las reseñas de la competencia. Lo que a ellos les falla es tu argumento; lo que a ellos les alaban es lo que tú tienes que igualar.</p>
+        <div class="ejemplo"><b>Ejemplo</b><q>A X le han entrado 14 reseñas malas este mes por esperas de más de media hora. A Y le alaban que contesta el WhatsApp al momento.</q></div>
+      </div>
+
+      <div class="cap">
+        <div class="cap-ico"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-5h6v5"/></svg></div>
+        <h3>Quién se mueve en tu zona</h3>
+        <p>Aperturas, cierres, servicios nuevos, cambios de horario y ofertas de empleo: la señal de quién crece y quién se apaga en tu mismo sector y tu misma ciudad.</p>
+        <div class="ejemplo"><b>Ejemplo</b><q>Ha abierto una clínica nueva a 400 metros y busca dos higienistas. X ha quitado la ortodoncia invisible de su web. Y ha ampliado horario a los sábados.</q></div>
+      </div>
+
+      <div class="cap">
         <div class="cap-ico"><svg viewBox="0 0 24 24"><path d="M3 17l5-5 4 3 8-8"/><path d="M15 7h5v5"/></svg></div>
-        <h3>Variaciones de precio en tu mercado</h3>
-        <p>Para quien vende producto: seguir los precios de los mismos artículos en otras tiendas y avisarte cuando alguien se mueve, para que la decisión de mover el tuyo sea tuya y a tiempo.</p>
-        <div class="ejemplo"><b>Ejemplo</b><q>El modelo X ha bajado un 8 % en dos tiendas desde el martes. Tú sigues 12 € por encima de la más barata.</q></div>
-        <div class="cap-precio">Se presupuesta</div>
+        <h3>Los mismos productos en otras tiendas</h3>
+        <p>Para quien vende producto: seguir el precio de los mismos artículos en las tiendas que le digas y avisar cuando alguien se mueve, para que mover el tuyo sea decisión tuya y a tiempo.</p>
+        <div class="ejemplo"><b>Ejemplo</b><q>El modelo X ha bajado un 8 % en dos tiendas desde el martes. Tú sigues 12 € por encima de la más barata. En el resto del catálogo no hay cambios.</q></div>
       </div>
     </div>
   </div>
