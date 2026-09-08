@@ -25,18 +25,78 @@ const WA = 'https://wa.me/34675148566';
 
 /* ─── PIEZAS DE PLANTILLA ────────────────────────────────────────────────── */
 
+/* ─── MENÚ DE DOS EJES ───────────────────────────────────────────────────
+   Por sector y por departamento, porque la misma pieza se busca de las dos
+   maneras. Estas listas tienen que coincidir con las de las páginas escritas
+   a mano (index, atención, ventas): si añades un sector, va en los dos sitios.
+
+   Hasta el 08-09 el nav solo llevaba anclas de la propia página y las seis
+   landings de sector no recibían un enlace de nadie. */
+const SECTORES_MENU = [
+  ['Clínicas dentales', '/dentia'],
+  ['Peluquería', '/bookia-peluqueria'],
+  ['Estética', '/bookia-estetica'],
+  ['Uñas', '/bookia-unas'],
+  ['Tatuajes', '/bookia-tatuajes'],
+  ['Fisioterapia', '/bookia-fisioterapia'],
+  ['Podología', '/bookia-podologia'],
+];
+
+const DEPTOS_MENU = [
+  ['Atención al Cliente', '/atencion-al-cliente', 'Contesta, mira tu agenda y cierra la cita'],
+  ['Ventas y Captación', '/ventas-y-captacion', 'Busca clientes y persigue los presupuestos'],
+  ['Finanzas', null, 'Próximamente'],
+  ['Datos y Dirección', null, 'Próximamente'],
+  ['Marketing y Presencia', null, 'Próximamente'],
+];
+
+const itemSector = (s, i) => `<a class="nav-item" href="${i}"><b>${s}</b></a>`;
+const itemDepto = ([n, r, d]) => r
+  ? `<a class="nav-item" href="${r}"><b>${n}</b><span>${d}</span></a>`
+  : `<span class="nav-item apagado"><b>${n}</b><span>${d}</span></span>`;
+
+const ANCLAS = [
+  ['#lo-que-hace', 'Lo que hace'],
+  ['#precio', 'Precio'],
+  ['#preguntas', 'Preguntas'],
+];
+
 const nav = () => `<nav class="nav">
   <a class="nav-logo" href="/">
     ${LOGO}
     <span>Marirrodriga<b>.IA</b></span>
   </a>
   <div class="nav-links">
-    <a class="nav-link" href="#lo-que-hace">Lo que hace</a>
-    <a class="nav-link" href="#precio">Precio</a>
-    <a class="nav-link" href="#preguntas">Preguntas</a>
+    <div class="nav-grupo">
+      <button class="nav-grupo-btn" type="button" aria-expanded="false" aria-controls="menu-sectores">Sectores</button>
+      <div class="nav-panel nav-panel-doble" id="menu-sectores">
+        ${SECTORES_MENU.map(([s, i]) => itemSector(s, i)).join('\n        ')}
+        <a class="nav-panel-pie" href="/bookia">Bookia — el software de citas, para cualquier sector →</a>
+      </div>
+    </div>
+    <div class="nav-grupo">
+      <button class="nav-grupo-btn" type="button" aria-expanded="false" aria-controls="menu-departamentos">Departamentos</button>
+      <div class="nav-panel" id="menu-departamentos">
+        ${DEPTOS_MENU.map(itemDepto).join('\n        ')}
+      </div>
+    </div>
+    ${ANCLAS.map(([h, t]) => `<a class="nav-link" href="${h}">${t}</a>`).join('\n    ')}
   </div>
   <a class="btn btn-1 nav-cta" href="${CAL}" target="_blank" rel="noopener">Asesoría gratuita</a>
-</nav>`;
+  <button class="nav-burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-movil">
+    <i></i><i></i><i></i>
+  </button>
+</nav>
+<div class="nav-movil" id="nav-movil">
+  <h5>Sectores</h5>
+  ${SECTORES_MENU.map(([s, i]) => itemSector(s, i)).join('\n  ')}
+  <a class="nav-item" href="/bookia"><b>Bookia</b><span>El software de citas, para cualquier sector</span></a>
+  <h5>Departamentos</h5>
+  ${DEPTOS_MENU.map(itemDepto).join('\n  ')}
+  <h5>En esta página</h5>
+  ${ANCLAS.map(([h, t]) => `<a class="nav-item" href="${h}"><b>${t}</b></a>`).join('\n  ')}
+  <a class="btn btn-1" href="${CAL}" target="_blank" rel="noopener">Asesoría gratuita</a>
+</div>`;
 
 const hero = p => `<header class="hero-s" style="--hero:url('/assets/img/${p.hero}')">
   <div class="hero-s-fondo"></div>
@@ -151,15 +211,22 @@ const pie = () => `<footer class="pie">
       </div>
       <div class="pie-cols">
         <div class="pie-col">
-          <h4>Soluciones</h4>
-          <a href="/dentia">Dentia · clínicas dentales</a>
-          <a href="/bookia">Bookia · negocios de citas</a>
+          <h4>Sectores</h4>
+          ${SECTORES_MENU.map(([s, i]) => `<a href="${i}">${s}</a>`).join('\n          ')}
+          <a href="/bookia">Bookia · cualquier sector</a>
+        </div>
+        <div class="pie-col">
+          <h4>Departamentos</h4>
           <a href="/atencion-al-cliente">Atención al Cliente</a>
+          <a href="/ventas-y-captacion">Ventas y Captación</a>
+          <span style="opacity:.35">Finanzas</span>
+          <span style="opacity:.35">Datos y Dirección</span>
+          <span style="opacity:.35">Marketing</span>
         </div>
         <div class="pie-col">
           <h4>Contacto</h4>
           <a href="${CAL}" target="_blank" rel="noopener">Asesoría gratuita</a>
-          <a href="mailto:marirrodriga.ia@gmail.com">marirrodriga.ia@gmail.com</a>
+          <a href="mailto:contacto@marirrodriga-ia.com">contacto@marirrodriga-ia.com</a>
           <a href="${WA}" target="_blank" rel="noopener">WhatsApp</a>
         </div>
         <div class="pie-col">
@@ -199,8 +266,11 @@ function pagina(p, tramos) {
   <meta name="description" content="${esc(p.descripcion)}">
   <link rel="canonical" href="https://www.marirrodriga-ia.com${p.ruta}">
   <meta name="theme-color" content="#7C3AED">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Marirrodriga IA">
@@ -262,6 +332,7 @@ ${pie()}
     }
   });
 </script>
+<script defer src="/assets/nav.js"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>

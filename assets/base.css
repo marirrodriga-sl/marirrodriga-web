@@ -163,9 +163,117 @@ img, svg { max-width: 100%; display: block; }
 .nav-link:hover { color: var(--purple); }
 .nav-cta { font-size: 13.5px; padding: 11px 21px; }
 
+/* ─── MENÚ DE PRODUCTO ────────────────────────────────────────────────────
+   Dos ejes: por sector y por departamento. La misma pieza se busca de las dos
+   maneras — el dueño de la clínica busca «software para clínicas», el jefe de
+   atención busca «automatizar el teléfono» — así que las dos entradas existen.
+
+   Cada grupo lleva una frase debajo del nombre. Sin ella, un panel de nueve
+   enlaces obliga a leerlos todos para saber cuál es el tuyo.
+   ───────────────────────────────────────────────────────────────────────── */
+.nav-grupo { position: relative; display: flex; align-items: center; }
+
+.nav-grupo-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  font: 500 13.5px/1 var(--font-body); color: var(--ink-2);
+  background: none; border: 0; padding: 0; cursor: pointer;
+  transition: color .18s;
+}
+.nav-grupo-btn::after {
+  content: ''; width: 5px; height: 5px; margin-top: -3px;
+  border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg); transition: transform .2s;
+}
+.nav-grupo-btn:hover,
+.nav-grupo[data-abierto] .nav-grupo-btn { color: var(--purple); }
+.nav-grupo[data-abierto] .nav-grupo-btn::after { transform: rotate(-135deg); margin-top: 2px; }
+
+/* Anclado a la izquierda del botón, no centrado: con el panel doble (460 px) y
+   «Sectores» pegado al logo, centrarlo lo sacaba por el borde izquierdo. */
+.nav-panel {
+  position: absolute; top: calc(100% + 18px); left: 0; transform: translateY(-6px);
+  min-width: 300px; padding: 10px;
+  background: var(--white);
+  border: 1px solid var(--line); border-radius: var(--r-card);
+  box-shadow: var(--sh-3);
+  opacity: 0; visibility: hidden; transition: opacity .18s, transform .18s, visibility .18s;
+}
+.nav-grupo[data-abierto] .nav-panel { opacity: 1; visibility: visible; transform: translateY(0); }
+/* El puente invisible evita que el panel se cierre al cruzar el hueco con el ratón */
+.nav-panel::before { content: ''; position: absolute; left: 0; right: 0; top: -18px; height: 18px; }
+
+.nav-panel-doble { min-width: 460px; display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+/* El enlace de cierre cruza las dos columnas; si no, ocupa media fila */
+.nav-panel-doble .nav-panel-pie { grid-column: 1 / -1; }
+
+.nav-item { display: block; padding: 9px 12px; border-radius: 10px; transition: background .15s; }
+.nav-item:hover { background: var(--purple-tint); }
+.nav-item b { display: block; font-size: 13.5px; font-weight: 600; color: var(--ink); letter-spacing: -.01em; }
+.nav-item span { display: block; margin-top: 2px; font-size: 12px; line-height: 1.35; color: var(--ink-3); }
+.nav-item.apagado { pointer-events: none; }
+.nav-item.apagado b { color: var(--ink-4); font-weight: 500; }
+.nav-item.apagado span { color: var(--ink-4); }
+
+.nav-panel-pie {
+  margin: 8px -10px -10px; padding: 11px 22px;
+  border-top: 1px solid var(--line-soft); border-radius: 0 0 var(--r-card) var(--r-card);
+  background: var(--cream);
+  font-size: 12.5px; font-weight: 600; color: var(--purple);
+}
+.nav-panel-pie:hover { background: var(--cream-deep); }
+
+/* ─── HAMBURGUESA Y PANEL MÓVIL ───────────────────────────────────────────
+   Hasta hoy .nav-links se ocultaba en móvil y no había nada que lo sustituyera:
+   en un teléfono la web se quedaba sin navegación. Esto es ese reemplazo.
+   ───────────────────────────────────────────────────────────────────────── */
+.nav-burger {
+  display: none; width: 40px; height: 40px; flex: none;
+  align-items: center; justify-content: center; gap: 4px; flex-direction: column;
+  background: none; border: 0; cursor: pointer; border-radius: var(--r-pill);
+}
+.nav-burger i { display: block; width: 17px; height: 1.6px; background: var(--ink); border-radius: 2px; transition: transform .22s, opacity .18s; }
+.nav-burger[aria-expanded="true"] i:nth-child(1) { transform: translateY(5.6px) rotate(45deg); }
+.nav-burger[aria-expanded="true"] i:nth-child(2) { opacity: 0; }
+.nav-burger[aria-expanded="true"] i:nth-child(3) { transform: translateY(-5.6px) rotate(-45deg); }
+
+.nav-movil {
+  position: fixed; z-index: 199; inset: 78px 20px auto;
+  max-height: calc(100vh - 96px); overflow-y: auto;
+  padding: 14px;
+  background: var(--white); border: 1px solid var(--line);
+  border-radius: var(--r-panel); box-shadow: var(--sh-3);
+  opacity: 0; visibility: hidden; transform: translateY(-8px);
+  transition: opacity .2s, transform .2s, visibility .2s;
+}
+.nav-movil[data-abierto] { opacity: 1; visibility: visible; transform: translateY(0); }
+.nav-movil h5 {
+  font: 600 11px/1 var(--font-body); text-transform: uppercase; letter-spacing: .09em;
+  color: var(--ink-3); padding: 14px 12px 7px;
+}
+.nav-movil h5:first-child { padding-top: 4px; }
+.nav-movil .btn { width: 100%; justify-content: center; margin-top: 14px; }
+
+/* Entre 861 y 1080 no caben los dos desplegables MÁS las anclas de la página.
+   Se van las anclas: llevan a sitios de esta misma página, a los que se llega
+   bajando. Los desplegables son la única puerta al resto del catálogo. */
+@media (min-width: 861px) and (max-width: 1080px) {
+  .nav-links { gap: 22px; }
+  .nav-links > .nav-link { display: none; }
+}
+
 @media (max-width: 860px) {
-  .nav { padding: 8px 8px 8px 18px; }
+  .nav { padding: 8px 8px 8px 18px; gap: 10px; }
   .nav-links { display: none; }
+  .nav-burger { display: flex; }
+  /* En pantallas muy estrechas el botón de la nav estorba: lo lleva el panel */
+  .nav-cta { display: none; }
+}
+@media (min-width: 861px) {
+  .nav-movil { display: none; }
+}
+@media (min-width: 521px) and (max-width: 860px) {
+  .nav-cta { display: inline-flex; }
+  .nav-movil .btn { display: none; }
 }
 
 /* ─── PIE ────────────────────────────────────────────────────────────────── */

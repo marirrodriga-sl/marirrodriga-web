@@ -13,9 +13,10 @@ const DENTIA = {
   ruta: '/dentia',
   hero: 'hero-dentia.jpg',
   pill: 'Software para clínicas dentales',
-  titulo: 'Dentia — Software para clínicas dentales | Marirrodriga IA',
+  titulo: 'Software para clínicas dentales | Dentia',
+  // 187 caracteres se cortaban en Google a mitad de frase. En 148 cabe entera.
   descripcion: 'Agenda, ficha de paciente, odontograma, presupuestos y facturación en un solo sitio, ' +
-    'con un asistente que contesta a los pacientes por WhatsApp. Desde 73 €/mes, con su límite al lado.',
+    'con un asistente que contesta por WhatsApp. Desde 73 €/mes.',
   h1: ['La clínica funcionando', 'cuando tú no estás.'],
   lead: 'Agenda, historia clínica, odontograma, presupuestos y facturación en un mismo sitio. Y encima, ' +
     'si lo quieres, un asistente que contesta a los pacientes por WhatsApp y les recuerda la cita.',
@@ -160,9 +161,23 @@ const SECTORES = [
     ] },
 ];
 
+// El title lo manda el `pill`, no el h1. El h1 («Sillón nunca parado») funciona
+// dentro de la página, pero como título de buscador no dice el sector: quien busca
+// «software citas peluquería» no casa con él. Además el h1 repetía título entre
+// fisioterapia y podología (los dos «Camilla nunca parada») y entre estética y
+// tatuajes (los dos «Cabina»): dos pares de duplicados exactos para Google.
+// La descripción se arma con el sector + la segunda frase del lead. La primera
+// frase («Agenda, reserva online sin registro…») es igual en casi todos los
+// sectores: cortar por ahí dejaba cuatro descripciones idénticas. La que
+// distingue es la segunda («mientras tienes las manos en un tinte», «mientras
+// tatúas»). Sale en ~120 caracteres, por debajo de los ~155 donde Google corta.
 const BOOKIA = SECTORES.map(s => Object.assign({}, BOOKIA_BASE, s, {
-  titulo: `Bookia — ${s.h1.join(' ')} | Marirrodriga IA`.replace(/,/g, ''),
-  descripcion: s.lead + ' Desde 64 €/mes, con su límite al lado.',
+  titulo: `${s.pill} | Bookia`,
+  descripcion: (() => {
+    const frases = s.lead.split('. ').filter(Boolean);
+    const distintiva = (frases[1] || frases[0]).replace(/\.$/, '');
+    return `${s.pill}. ${distintiva}. Desde 64 €/mes.`;
+  })(),
 }));
 
 module.exports = { DENTIA, BOOKIA, CAL };

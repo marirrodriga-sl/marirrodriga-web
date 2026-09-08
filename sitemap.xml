@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Solo páginas indexables. Quedan fuera a propósito:
+    /taller       archivo interno (noindex) — materia prima de las landings pendientes
+    /asesoria     conversión de campaña (noindex) — se llega desde redes
+    /calculadora  herramienta interna (noindex) — no es pública
+    /aviso-legal /privacidad  (noindex, follow)
+  Listar una página noindex aquí es una señal contradictoria: no se hace.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://www.marirrodriga-ia.com/</loc>
+    <priority>1.0</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <!-- Landings por departamento -->
+  <url>
+    <loc>https://www.marirrodriga-ia.com/atencion-al-cliente</loc>
+    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.marirrodriga-ia.com/ventas-y-captacion</loc>
+    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <!-- Productos -->
+  <url>
+    <loc>https://www.marirrodriga-ia.com/bookia</loc>
+    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.marirrodriga-ia.com/dentia</loc>
+    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <!-- Bookia por especialidad -->
+  <url>
+    <loc>https://www.marirrodriga-ia.com/bookia-peluqueria</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.marirrodriga-ia.com/bookia-estetica</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.marirrodriga-ia.com/bookia-unas</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.marirrodriga-ia.com/bookia-tatuajes</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.marirrodriga-ia.com/bookia-fisioterapia</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.marirrodriga-ia.com/bookia-podologia</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+</urlset>
