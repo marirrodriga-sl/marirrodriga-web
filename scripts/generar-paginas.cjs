@@ -96,7 +96,7 @@ const nav = () => `<nav class="nav">
     </div>
     ${ANCLAS.map(([h, t]) => `<a class="nav-link" href="${h}">${t}</a>`).join('\n    ')}
   </div>
-  <a class="btn btn-1 nav-cta" href="${CAL}" target="_blank" rel="noopener">Asesoría gratuita</a>
+  <a class="btn btn-1 nav-cta" href="${CAL}" target="_blank" rel="noopener">Pide una demo gratuita</a>
   <button class="nav-burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-movil">
     <i></i><i></i><i></i>
   </button>
@@ -111,7 +111,7 @@ const nav = () => `<nav class="nav">
   ${SOBRE_MENU.map(itemDepto).join('\n  ')}
   <h5>En esta página</h5>
   ${ANCLAS.map(([h, t]) => `<a class="nav-item" href="${h}"><b>${t}</b></a>`).join('\n  ')}
-  <a class="btn btn-1" href="${CAL}" target="_blank" rel="noopener">Asesoría gratuita</a>
+  <a class="btn btn-1" href="${CAL}" target="_blank" rel="noopener">Pide una demo gratuita</a>
 </div>`;
 
 const hero = p => `<header class="hero-s" style="--hero:url('/assets/img/${p.hero}')">

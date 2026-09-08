@@ -86,7 +86,7 @@
       </div>
     </div>
   </div>
-  <a class="btn btn-1 nav-cta" href="https://cal.com/marirrodriga-ia/llamada" target="_blank" rel="noopener">Asesoría gratuita</a>
+  <a class="btn btn-1 nav-cta" href="https://cal.com/marirrodriga-ia/llamada" target="_blank" rel="noopener">Pide una demo gratuita</a>
   <button class="nav-burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-movil">
     <i></i><i></i><i></i>
   </button>
@@ -112,7 +112,7 @@
   <a class="nav-item" href="/#como"><b>Cómo funciona</b><span>Se empieza por una pieza, y solo crece si funciona</span></a>
   <a class="nav-item" href="/#proyectos"><b>Nuestros proyectos</b><span>Lo que hemos montado cuando nos lo han pedido</span></a>
   <a class="nav-item" href="/#contacto"><b>Contacto</b><span>Media hora gratis, y te decimos por dónde empezar</span></a>
-  <a class="btn btn-1" href="https://cal.com/marirrodriga-ia/llamada" target="_blank" rel="noopener">Asesoría gratuita</a>
+  <a class="btn btn-1" href="https://cal.com/marirrodriga-ia/llamada" target="_blank" rel="noopener">Pide una demo gratuita</a>
 </div>
 <!-- ─── HERO ────────────────────────────────────────────────────────────── -->
 <header class="hero-g">
@@ -122,21 +122,69 @@
     <circle cx="200" cy="200" r="108"/><circle cx="200" cy="200" r="64"/>
   </svg>
 
-  <div class="hero-g-centro">
-    <h1 class="t-h1">Tú, a lo tuyo.<br><span class="acento">La IA, a todo lo demás.</span></h1>
-    <p class="t-lead">Montamos IA dentro de tu negocio para que dediques el día a aquello en lo que consiste tu profesión. El papeleo, los mensajes, el seguimiento y los números los lleva ella. <strong>La IA ya es una ventaja en cualquier negocio: la pregunta es por dónde empezar.</strong></p>
-    <div class="hero-botones">
-      <a class="btn btn-1" href="https://cal.com/marirrodriga-ia/llamada" target="_blank" rel="noopener">Asesoría gratuita de 30 min</a>
-      <a class="btn btn-2" href="#servicios">Ver lo que montamos</a>
+  <div class="hero-g-rejilla">
+
+    <div class="hero-g-centro">
+      <h1 class="t-h1">Tú, a lo tuyo.<br><span class="acento">La IA, a todo lo demás.</span></h1>
+      <p class="t-lead">Montamos IA dentro de tu negocio para que dediques el día a aquello en lo que consiste tu profesión. El papeleo, los mensajes, el seguimiento y los números los lleva ella. <strong>La IA ya es una ventaja en cualquier negocio: la pregunta es por dónde empezar.</strong></p>
     </div>
 
-    <div class="hero-g-marcas">
-      <a class="hero-g-marca" href="/atencion-al-cliente"><i></i> Atención al Cliente</a>
-      <a class="hero-g-marca" href="/ventas-y-captacion"><i></i> Ventas y Captación</a>
-      <span class="hero-g-marca apagada"><i></i> Finanzas</span>
-      <span class="hero-g-marca apagada"><i></i> Datos y Dirección</span>
-      <span class="hero-g-marca apagada"><i></i> Marketing</span>
+    <!-- ─── VITRINA ─────────────────────────────────────────────────────────
+         Sustituye a los dos botones del centro y a las cinco pastillas de
+         departamento. Aquellas nombraban; esta enseña. Cada tarjeta lleva su
+         foto y su puerta propia.
+         Pasa sola cada 6 s y se para al pasar el ratón, al enfocar con el
+         teclado y si el sistema pide menos movimiento.
+         Añadir una: duplicar un elemento de la lista y su botón en
+         .hero-vitrina-puntos (el texto de aria-label es lo que lee el lector).
+         ─────────────────────────────────────────────────────────────────── -->
+    <div class="hero-vitrina" aria-roledescription="carrusel" aria-label="Lo que montamos">
+      <ul class="hero-vitrina-pista">
+        <li class="hero-tarjeta" data-activa>
+          <img src="/assets/img/hero-atencion.jpg" alt="Colinas en bruma al amanecer, la calma de un negocio que ya no depende de que alguien coja el teléfono" width="2880" height="1920">
+          <div class="hero-tarjeta-texto">
+            <span class="hero-tarjeta-etiqueta">Departamento</span>
+            <h2>Atención al Cliente</h2>
+            <p>Contesta por WhatsApp, mira tu agenda de verdad y cierra la cita. También a las once de la noche.</p>
+            <a class="hero-tarjeta-btn" href="/atencion-al-cliente">Ver más <span aria-hidden="true">→</span></a>
+          </div>
+        </li>
+        <li class="hero-tarjeta">
+          <img src="/assets/img/hero-ventas.jpg" alt="El mostrador de un negocio a primera hora, con la agenda y los presupuestos del día" width="2880" height="1920" loading="lazy">
+          <div class="hero-tarjeta-texto">
+            <span class="hero-tarjeta-etiqueta">Departamento</span>
+            <h2>Ventas y Captación</h2>
+            <p>Encuentra a quien no te conoce y persigue los presupuestos que se enfrían.</p>
+            <a class="hero-tarjeta-btn" href="/ventas-y-captacion">Ver más <span aria-hidden="true">→</span></a>
+          </div>
+        </li>
+        <li class="hero-tarjeta">
+          <img src="/assets/img/hero-bookia.jpg" alt="Un negocio de cita previa con la agenda del día en pantalla" width="2880" height="1920" loading="lazy">
+          <div class="hero-tarjeta-texto">
+            <span class="hero-tarjeta-etiqueta">Software montado</span>
+            <h2>Bookia</h2>
+            <p>Agenda, reserva desde el móvil sin registro y recordatorios que evitan el hueco vacío.</p>
+            <a class="hero-tarjeta-btn" href="/bookia">Ver más <span aria-hidden="true">→</span></a>
+          </div>
+        </li>
+        <li class="hero-tarjeta">
+          <img src="/assets/img/hero-dentia.jpg" alt="El gabinete de una clínica dental preparado entre pacientes" width="2880" height="1920" loading="lazy">
+          <div class="hero-tarjeta-texto">
+            <span class="hero-tarjeta-etiqueta">Software montado</span>
+            <h2>Dentia</h2>
+            <p>Agenda, historia clínica, odontograma, presupuestos y facturación en un mismo sitio.</p>
+            <a class="hero-tarjeta-btn" href="/dentia">Ver más <span aria-hidden="true">→</span></a>
+          </div>
+        </li>
+      </ul>
+      <div class="hero-vitrina-puntos" role="tablist" aria-label="Elegir">
+        <button type="button" role="tab" aria-selected="true"  aria-label="Atención al Cliente"></button>
+        <button type="button" role="tab" aria-selected="false" aria-label="Ventas y Captación"></button>
+        <button type="button" role="tab" aria-selected="false" aria-label="Bookia"></button>
+        <button type="button" role="tab" aria-selected="false" aria-label="Dentia"></button>
+      </div>
     </div>
+
   </div>
 </header>
 
@@ -461,6 +509,52 @@
     if (nav) {
       var marca = function () { nav.classList.toggle('pegada', window.scrollY > 24); };
       marca(); addEventListener('scroll', marca, { passive: true });
+    }
+
+    // ─── VITRINA DEL HERO ────────────────────────────────────────────────
+    // Pasa sola cada 6 s. Se para al pasar el ratón, al enfocar con el
+    // teclado y con la pestaña en segundo plano — un carrusel corriendo
+    // detrás gasta batería y no lo ve nadie.
+    var vitrina = document.querySelector('.hero-vitrina');
+    if (vitrina) {
+      var tarjetas = [].slice.call(vitrina.querySelectorAll('.hero-tarjeta'));
+      var puntos = [].slice.call(vitrina.querySelectorAll('.hero-vitrina-puntos button'));
+      var quieto = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var i = 0, reloj = null;
+
+      var ir = function (n) {
+        i = (n + tarjetas.length) % tarjetas.length;
+        tarjetas.forEach(function (t, k) {
+          if (k === i) t.setAttribute('data-activa', ''); else t.removeAttribute('data-activa');
+          // El enlace de una tarjeta oculta no debe poder recibir el foco
+          var a = t.querySelector('a');
+          if (a) { if (k === i) a.removeAttribute('tabindex'); else a.setAttribute('tabindex', '-1'); }
+        });
+        puntos.forEach(function (p, k) { p.setAttribute('aria-selected', k === i ? 'true' : 'false'); });
+      };
+
+      var arrancar = function () {
+        if (quieto || reloj) return;
+        reloj = setInterval(function () { ir(i + 1); }, 6000);
+      };
+      var parar = function () { clearInterval(reloj); reloj = null; };
+
+      puntos.forEach(function (p, k) {
+        p.addEventListener('click', function () { ir(k); parar(); arrancar(); });
+      });
+
+      vitrina.addEventListener('mouseenter', parar);
+      vitrina.addEventListener('mouseleave', arrancar);
+      vitrina.addEventListener('focusin', parar);
+      vitrina.addEventListener('focusout', function (e) {
+        if (!vitrina.contains(e.relatedTarget)) arrancar();
+      });
+      document.addEventListener('visibilitychange', function () {
+        if (document.hidden) parar(); else arrancar();
+      });
+
+      ir(0);
+      arrancar();
     }
   });
 </script>
