@@ -50,6 +50,14 @@ const DEPTOS_MENU = [
   ['Marketing y Presencia', null, 'Próximamente'],
 ];
 
+/* Rutas absolutas a la home: desde una landing tienen que llevar allí y bajar */
+const SOBRE_MENU = [
+  ['Quiénes somos', '/#quienes', 'Marco escribe el código, Isma monta la IA'],
+  ['Cómo funciona', '/#como', 'Se empieza por una pieza, y solo crece si funciona'],
+  ['Nuestros proyectos', '/#proyectos', 'Lo que hemos montado cuando nos lo han pedido'],
+  ['Contacto', '/#contacto', 'Media hora gratis, y te decimos por dónde empezar'],
+];
+
 const itemSector = (s, i) => `<a class="nav-item" href="${i}"><b>${s}</b></a>`;
 const itemDepto = ([n, r, d]) => r
   ? `<a class="nav-item" href="${r}"><b>${n}</b><span>${d}</span></a>`
@@ -80,6 +88,12 @@ const nav = () => `<nav class="nav">
         ${DEPTOS_MENU.map(itemDepto).join('\n        ')}
       </div>
     </div>
+    <div class="nav-grupo">
+      <button class="nav-grupo-btn" type="button" aria-expanded="false" aria-controls="menu-sobre">Sobre nosotros</button>
+      <div class="nav-panel" id="menu-sobre">
+        ${SOBRE_MENU.map(itemDepto).join('\n        ')}
+      </div>
+    </div>
     ${ANCLAS.map(([h, t]) => `<a class="nav-link" href="${h}">${t}</a>`).join('\n    ')}
   </div>
   <a class="btn btn-1 nav-cta" href="${CAL}" target="_blank" rel="noopener">Asesoría gratuita</a>
@@ -93,6 +107,8 @@ const nav = () => `<nav class="nav">
   <a class="nav-item" href="/bookia"><b>Bookia</b><span>El software de citas, para cualquier sector</span></a>
   <h5>Departamentos</h5>
   ${DEPTOS_MENU.map(itemDepto).join('\n  ')}
+  <h5>Sobre nosotros</h5>
+  ${SOBRE_MENU.map(itemDepto).join('\n  ')}
   <h5>En esta página</h5>
   ${ANCLAS.map(([h, t]) => `<a class="nav-item" href="${h}"><b>${t}</b></a>`).join('\n  ')}
   <a class="btn btn-1" href="${CAL}" target="_blank" rel="noopener">Asesoría gratuita</a>

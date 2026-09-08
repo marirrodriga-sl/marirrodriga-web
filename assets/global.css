@@ -30,9 +30,13 @@
 .hero-g-fondo {
   position: absolute; inset: 0; z-index: -2;
   background:
+    /* El velo llegaba al 3 % en el 68 % del ancho y a cero en el 82 %. El
+       titular termina justo ahí, encima de la ventana iluminada, y «demás»
+       se perdía. Ahora la caída es más larga: protege hasta el 72 % y sigue
+       dejando limpia la parte derecha, que es donde está la escena. */
     linear-gradient(100deg,
-      rgba(10,8,16,.62) 0%, rgba(10,8,16,.46) 28%, rgba(10,8,16,.20) 50%,
-      rgba(10,8,16,.03) 68%, rgba(10,8,16,0) 82%),
+      rgba(10,8,16,.66) 0%, rgba(10,8,16,.54) 30%, rgba(10,8,16,.34) 52%,
+      rgba(10,8,16,.15) 72%, rgba(10,8,16,0) 88%),
     linear-gradient(180deg,
       rgba(10,8,16,.34) 0%, rgba(10,8,16,0) 26%,
       rgba(10,8,16,0) 66%, rgba(255,255,255,.80) 94%, #ffffff 100%),
@@ -47,8 +51,10 @@
 .hero-g .hero-botones { justify-content: flex-start; }
 .hero-g-marcas { justify-content: flex-start; }
 
-.hero-g h1 { font-size: clamp(38px, 4.0vw, 55px); color: #ffffff; text-shadow: 0 2px 30px rgba(10,8,16,.62), 0 1px 3px rgba(10,8,16,.35); }
-.hero-g .acento { color: #c9b6ff; }
+.hero-g h1 { font-size: clamp(38px, 4.0vw, 55px); color: #ffffff; text-shadow: 0 2px 30px rgba(10,8,16,.62), 0 1px 3px rgba(10,8,16,.45), 0 0 20px rgba(10,8,16,.40); }
+/* Un punto más claro que el #c9b6ff anterior y con halo propio: la cursiva es
+   fina y el morado claro sobre la zona iluminada de la foto se deshacía. */
+.hero-g .acento { color: #d8caff; text-shadow: 0 2px 26px rgba(10,8,16,.72), 0 1px 3px rgba(10,8,16,.55), 0 0 16px rgba(10,8,16,.5); }
 .hero-g .t-lead { color: rgba(255,255,255,.88); text-shadow: 0 1px 14px rgba(10,8,16,.55); }
 .hero-g .t-lead strong { color: #ffffff; font-weight: 650; }
 .hero-g .t-micro { color: rgba(255,255,255,.62); }
@@ -236,6 +242,12 @@ body:has(.hero-g) .nav .nav-logo   { color: #fff; }
 body:has(.hero-g) .nav .nav-logo b { color: #c9b6ff; }
 body:has(.hero-g) .nav .nav-link   { color: rgba(255,255,255,.76); }
 body:has(.hero-g) .nav .nav-link:hover { color: #fff; }
+/* Los botones de los desplegables son <button>, no .nav-link: sin esto se
+   quedaban en gris oscuro sobre la foto oscura y no se leían. */
+body:has(.hero-g) .nav .nav-grupo-btn { color: rgba(255,255,255,.76); }
+body:has(.hero-g) .nav .nav-grupo-btn:hover,
+body:has(.hero-g) .nav .nav-grupo[data-abierto] .nav-grupo-btn { color: #fff; }
+body:has(.hero-g) .nav .nav-burger i { background: #fff; }
 
 body:has(.hero-g) .nav.pegada {
   background: rgba(255,255,255,.9); border-color: rgba(255,255,255,.7);
@@ -246,6 +258,10 @@ body:has(.hero-g) .nav.pegada .nav-logo   { color: var(--ink); }
 body:has(.hero-g) .nav.pegada .nav-logo b { color: var(--purple); }
 body:has(.hero-g) .nav.pegada .nav-link   { color: var(--ink-2); }
 body:has(.hero-g) .nav.pegada .nav-link:hover { color: var(--purple); }
+body:has(.hero-g) .nav.pegada .nav-grupo-btn { color: var(--ink-2); }
+body:has(.hero-g) .nav.pegada .nav-grupo-btn:hover,
+body:has(.hero-g) .nav.pegada .nav-grupo[data-abierto] .nav-grupo-btn { color: var(--purple); }
+body:has(.hero-g) .nav.pegada .nav-burger i { background: var(--ink); }
 
 /* ─── CÓMO FUNCIONA, EN TRES PASOS ───────────────────────────────────────
    Hueco detectado al revisar twin.so: la página decía qué hacemos y qué

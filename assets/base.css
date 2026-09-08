@@ -192,7 +192,7 @@ img, svg { max-width: 100%; display: block; }
    «Sectores» pegado al logo, centrarlo lo sacaba por el borde izquierdo. */
 .nav-panel {
   position: absolute; top: calc(100% + 18px); left: 0; transform: translateY(-6px);
-  min-width: 300px; padding: 10px;
+  min-width: 340px; padding: 10px;
   background: var(--white);
   border: 1px solid var(--line); border-radius: var(--r-card);
   box-shadow: var(--sh-3);
@@ -253,11 +253,12 @@ img, svg { max-width: 100%; display: block; }
 .nav-movil h5:first-child { padding-top: 4px; }
 .nav-movil .btn { width: 100%; justify-content: center; margin-top: 14px; }
 
-/* Entre 861 y 1080 no caben los dos desplegables MÁS las anclas de la página.
-   Se van las anclas: llevan a sitios de esta misma página, a los que se llega
-   bajando. Los desplegables son la única puerta al resto del catálogo. */
-@media (min-width: 861px) and (max-width: 1080px) {
-  .nav-links { gap: 22px; }
+/* Por debajo de 1240 no caben los TRES desplegables más las anclas de la
+   página. Se van las anclas: llevan a sitios de esta misma página, a los que
+   se llega bajando. Los desplegables son la única puerta al resto del sitio,
+   y siguen estando enteros en el panel móvil. */
+@media (min-width: 861px) and (max-width: 1240px) {
+  .nav-links { gap: 20px; }
   .nav-links > .nav-link { display: none; }
 }
 
