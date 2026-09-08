@@ -135,32 +135,48 @@ img, svg { max-width: 100%; display: block; }
 .btn-3 { background: transparent; color: var(--ink-2); padding: 14px 8px; }
 .btn-3:hover { color: var(--purple); }
 
-/* ─── NAV — pastilla flotante con desenfoque, como Arlo ──────────────────── */
+/* ─── NAV — pastilla flotante con desenfoque, como Arlo ──────────────────
+   ─── LA BARRA ─────────────────────────────────────────────────────────────
+   Fondo de tinta fijo, no cristal translúcido.
+
+   El cristal era blanco al 74 % y dejaba pasar lo que hubiera detrás. Con el
+   texto en tinta sobre una sección blanca —que es la mitad de la web— el nav
+   se disolvía: al bajar por la página, «Marirrodriga» desaparecía. La variante
+   clara del hero oscuro y la clase .pegada eran dos parches para el mismo
+   agujero, y cada uno arrastraba su propia lista de excepciones de color.
+
+   Con la píldora oscura siempre, el contraste no depende de nada: da igual que
+   detrás haya foto, crema o blanco. Una regla en vez de tres juegos de reglas.
+   ───────────────────────────────────────────────────────────────────────── */
 .nav {
   position: fixed; z-index: 200;
   top: 16px; left: 50%; transform: translateX(-50%);
   width: calc(100% - 40px); max-width: 1180px;
   display: flex; align-items: center; justify-content: space-between;
   gap: 20px; padding: 9px 9px 9px 22px;
-  background: rgba(255,255,255,.74);
-  backdrop-filter: blur(16px) saturate(1.6);
-  -webkit-backdrop-filter: blur(16px) saturate(1.6);
-  border: 1px solid rgba(255,255,255,.7);
+  background: rgba(23,20,31,.90);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  backdrop-filter: blur(16px) saturate(1.4);
+  border: 1px solid rgba(255,255,255,.10);
   border-radius: var(--r-pill);
-  box-shadow: var(--sh-1);
-  transition: box-shadow .25s, background .25s, border-color .25s;
+  box-shadow: 0 8px 26px -12px rgba(10,8,16,.5);
+  transition: box-shadow .25s, background .25s;
 }
-.nav.pegada { background: rgba(255,255,255,.9); box-shadow: var(--sh-2); }
+/* Al bajar se cierra del todo y pesa un poco más */
+.nav.pegada {
+  background: rgba(20,17,28,.97);
+  box-shadow: 0 14px 34px -14px rgba(10,8,16,.62);
+}
 
-.nav-logo { display: flex; align-items: center; gap: 9px; font-size: 15.5px; font-weight: 700; letter-spacing: -.03em; }
+.nav-logo { display: flex; align-items: center; gap: 9px; font-size: 15.5px; font-weight: 700; letter-spacing: -.03em; color: #fff; }
 /* El isotipo original: reloj y órbitas. Va algo mayor que el SVG que había
    porque sus anillos son muy finos y por debajo de 30 px se emborronan. */
 .nav-logo img { width: 32px; height: 32px; flex: none; }
 .nav-logo span { display: inline-flex; align-items: baseline; }
-.nav-logo b { color: var(--purple); font-weight: 800; margin-left: 1px; }
+.nav-logo b { color: #c9b6ff; font-weight: 800; margin-left: 1px; }
 .nav-links { display: flex; align-items: center; gap: 30px; }
-.nav-link { font-size: 13.5px; font-weight: 500; color: var(--ink-2); transition: color .18s; }
-.nav-link:hover { color: var(--purple); }
+.nav-link { font-size: 13.5px; font-weight: 500; color: rgba(255,255,255,.76); transition: color .18s; }
+.nav-link:hover { color: #fff; }
 .nav-cta { font-size: 13.5px; padding: 11px 21px; }
 
 /* ─── MENÚ DE PRODUCTO ────────────────────────────────────────────────────
@@ -175,7 +191,7 @@ img, svg { max-width: 100%; display: block; }
 
 .nav-grupo-btn {
   display: inline-flex; align-items: center; gap: 5px;
-  font: 500 13.5px/1 var(--font-body); color: var(--ink-2);
+  font: 500 13.5px/1 var(--font-body); color: rgba(255,255,255,.76);
   background: none; border: 0; padding: 0; cursor: pointer;
   transition: color .18s;
 }
@@ -185,7 +201,7 @@ img, svg { max-width: 100%; display: block; }
   transform: rotate(45deg); transition: transform .2s;
 }
 .nav-grupo-btn:hover,
-.nav-grupo[data-abierto] .nav-grupo-btn { color: var(--purple); }
+.nav-grupo[data-abierto] .nav-grupo-btn { color: #fff; }
 .nav-grupo[data-abierto] .nav-grupo-btn::after { transform: rotate(-135deg); margin-top: 2px; }
 
 /* Anclado a la izquierda del botón, no centrado: con el panel doble (460 px) y
@@ -231,7 +247,7 @@ img, svg { max-width: 100%; display: block; }
   align-items: center; justify-content: center; gap: 4px; flex-direction: column;
   background: none; border: 0; cursor: pointer; border-radius: var(--r-pill);
 }
-.nav-burger i { display: block; width: 17px; height: 1.6px; background: var(--ink); border-radius: 2px; transition: transform .22s, opacity .18s; }
+.nav-burger i { display: block; width: 17px; height: 1.6px; background: #fff; border-radius: 2px; transition: transform .22s, opacity .18s; }
 .nav-burger[aria-expanded="true"] i:nth-child(1) { transform: translateY(5.6px) rotate(45deg); }
 .nav-burger[aria-expanded="true"] i:nth-child(2) { opacity: 0; }
 .nav-burger[aria-expanded="true"] i:nth-child(3) { transform: translateY(-5.6px) rotate(-45deg); }

@@ -97,6 +97,15 @@
   font-size: 11px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase;
   color: #d8caff;
 }
+/* Finanzas, Datos y Marketing todavía no tienen página propia. Se dice, y su
+   botón lleva a la sección de la home donde sí están descritos. */
+.hero-tarjeta-tag {
+  display: inline-block; margin: 0 0 9px 9px; padding: 3px 9px;
+  border-radius: var(--r-pill);
+  background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.24);
+  font-size: 10.5px; font-weight: 600; letter-spacing: .04em;
+  color: rgba(255,255,255,.8); text-transform: none; vertical-align: 1px;
+}
 .hero-tarjeta h2 {
   font-family: var(--font-head); font-size: clamp(27px, 2.5vw, 34px);
   font-weight: 600; letter-spacing: -.01em; line-height: 1.1;
@@ -265,39 +274,6 @@
   .asesoria { padding: 52px 26px; }
   .asesoria-lista { grid-template-columns: 1fr; gap: 20px; }
 }
-
-/* ─── NAV SOBRE EL HERO OSCURO ───────────────────────────────────────────
-   Solo en esta página: su hero es foto oscura. La landing de Atención al
-   Cliente tiene hero claro y ahí el nav va como en base.css.
-   ──────────────────────────────────────────────────────────────────────── */
-body:has(.hero-g) .nav {
-  background: transparent; border-color: transparent; box-shadow: none;
-  -webkit-backdrop-filter: none; backdrop-filter: none;
-}
-body:has(.hero-g) .nav .nav-logo   { color: #fff; }
-body:has(.hero-g) .nav .nav-logo b { color: #c9b6ff; }
-body:has(.hero-g) .nav .nav-link   { color: rgba(255,255,255,.76); }
-body:has(.hero-g) .nav .nav-link:hover { color: #fff; }
-/* Los botones de los desplegables son <button>, no .nav-link: sin esto se
-   quedaban en gris oscuro sobre la foto oscura y no se leían. */
-body:has(.hero-g) .nav .nav-grupo-btn { color: rgba(255,255,255,.76); }
-body:has(.hero-g) .nav .nav-grupo-btn:hover,
-body:has(.hero-g) .nav .nav-grupo[data-abierto] .nav-grupo-btn { color: #fff; }
-body:has(.hero-g) .nav .nav-burger i { background: #fff; }
-
-body:has(.hero-g) .nav.pegada {
-  background: rgba(255,255,255,.9); border-color: rgba(255,255,255,.7);
-  box-shadow: var(--sh-2);
-  -webkit-backdrop-filter: blur(16px) saturate(1.6); backdrop-filter: blur(16px) saturate(1.6);
-}
-body:has(.hero-g) .nav.pegada .nav-logo   { color: var(--ink); }
-body:has(.hero-g) .nav.pegada .nav-logo b { color: var(--purple); }
-body:has(.hero-g) .nav.pegada .nav-link   { color: var(--ink-2); }
-body:has(.hero-g) .nav.pegada .nav-link:hover { color: var(--purple); }
-body:has(.hero-g) .nav.pegada .nav-grupo-btn { color: var(--ink-2); }
-body:has(.hero-g) .nav.pegada .nav-grupo-btn:hover,
-body:has(.hero-g) .nav.pegada .nav-grupo[data-abierto] .nav-grupo-btn { color: var(--purple); }
-body:has(.hero-g) .nav.pegada .nav-burger i { background: var(--ink); }
 
 /* ─── CÓMO FUNCIONA, EN TRES PASOS ───────────────────────────────────────
    Hueco detectado al revisar twin.so: la página decía qué hacemos y qué
