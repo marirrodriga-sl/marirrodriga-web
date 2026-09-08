@@ -55,7 +55,11 @@ html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 
 body {
   font-family: var(--font-body);
-  background: var(--white);
+  /* Crema, no blanco (09-09). Todas las tarjetas de la web —.persona, .paso,
+     .serv, .proy, .vista— tienen fondo blanco: sobre una página blanca no se
+     ven, y sobre el crema se despegan solas. El cambio de fondo hace el trabajo
+     que iban a hacer las sombras. */
+  background: var(--cream);
   color: var(--ink);
   font-size: 16.5px;
   line-height: 1.65;
@@ -112,7 +116,7 @@ img, svg { max-width: 100%; display: block; }
 .envoltura      { width: 100%; max-width: var(--w-wide); margin: 0 auto; padding: 0 28px; }
 .envoltura-txt  { width: 100%; max-width: var(--w-text); margin: 0 auto; padding: 0 28px; }
 .seccion        { padding: var(--air) 0; }
-.seccion-cream  { background: var(--cream); }
+.seccion-cream  { background: var(--cream-deep); }  /* un tono por debajo del fondo */
 .seccion-ink    { background: var(--ink); color: var(--white); }
 .centrado       { text-align: center; }
 

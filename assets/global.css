@@ -225,6 +225,29 @@
   transition: transform .22s cubic-bezier(.2,.8,.3,1), box-shadow .22s, border-color .22s;
 }
 .serv-viva:hover { transform: translateY(-3px); box-shadow: var(--sh-3); border-color: rgba(124,58,237,.35); }
+/* ─── LA FOTO DE CADA DEPARTAMENTO ───────────────────────────────────────
+   Los márgenes negativos son exactamente el padding de .serv (34/32/30): así
+   la foto llega a los bordes y el overflow:hidden de la tarjeta la recorta con
+   el mismo radio. Si cambias el padding, cambia también esto.
+
+   NO son las mismas fotos que la vitrina del hero, a propósito. Repetir una
+   imagen entre páginas está bien —confirma que has llegado donde pinchaste—,
+   pero repetirla dos veces en el mismo scroll es lo que canta. Las del hero
+   son el ambiente del departamento; estas son el trabajo: unas manos, un
+   montón de facturas, un móvil que se enciende cuando ya has cerrado.
+   ───────────────────────────────────────────────────────────────────────── */
+.serv-foto {
+  width: calc(100% + 64px);
+  margin: -34px -32px 22px;
+  aspect-ratio: 3 / 2; height: auto;
+  object-fit: cover;
+  transition: transform .5s cubic-bezier(.2,.8,.3,1);
+}
+.serv-viva:hover .serv-foto { transform: scale(1.035); }
+/* Los tres que aún no existen: la foto se apaga, no se quita. Enseña adónde
+   va a ir sin fingir que ya está. */
+.serv-apagada .serv-foto { filter: grayscale(.6) brightness(.92); opacity: .72; }
+
 .serv-num { font-family: var(--font-head); font-size: 15px; font-weight: 600; color: var(--ink-4); }
 .serv h3 { font-family: var(--font-head); font-size: 30px; font-weight: 600; letter-spacing: -.02em; line-height: 1.15; margin: 8px 0 12px; }
 .serv p { font-size: 15px; line-height: 1.65; color: var(--ink-2); }
@@ -400,3 +423,48 @@
 .predis-pie svg { transition: transform .22s cubic-bezier(.2,.8,.3,1); }
 
 @media (max-width: 820px) { .predis-cajas { grid-template-columns: 1fr; } }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   PALETA POR APARTADOS  (09-09-2026)
+   ───────────────────────────────────────────────────────────────────────────
+   El fondo dejó de ser blanco y pasó a crema en base.css. Aquí cada sección de
+   la home coge además su propio tono, y cada uno responde a una pregunta:
+
+     quiénes     crema        el tono de la casa, para empezar
+     cómo        crema hondo  un escalón: cambia el tema
+     servicios   blanco       el catálogo respira; es lo único que se lee en frío
+     proyectos   tinta        los casos pesan, y riman con el hero
+     ChatGPT     crema hondo  vuelve al ritmo tras el bloque oscuro
+     contacto    morado claro el único sitio donde se actúa, y se nota
+
+   Antes había dos secciones blancas seguidas —servicios y proyectos— que
+   rompían la alternancia sin querer.
+
+   Las tarjetas no se tocan: siguen blancas, y es el fondo el que las despega.
+   ═══════════════════════════════════════════════════════════════════════════ */
+#quienes   { background: var(--cream); }
+#como      { background: var(--cream-deep); }
+#servicios { background: var(--white); }
+#proyectos { background: var(--ink); }
+#chatgpt   { background: var(--cream-deep); }
+#contacto  { background: var(--purple-tint); }
+
+/* ─── PROYECTOS EN TINTA ─────────────────────────────────────────────────
+   Al girar el fondo hay que girar todo lo que estaba pensado para leerse en
+   tinta sobre claro. Si falta alguna regla aquí, el texto desaparece. */
+#proyectos .t-h2,
+#proyectos h3            { color: #fff; }
+#proyectos .t-lead,
+#proyectos p             { color: rgba(255,255,255,.72); }
+#proyectos .t-eyebrow,
+#proyectos .acento       { color: #d8caff; }
+#proyectos .proy {
+  background: rgba(255,255,255,.055);
+  border-color: rgba(255,255,255,.13);
+}
+#proyectos .proy:hover   { background: rgba(255,255,255,.085); border-color: rgba(255,255,255,.22); }
+#proyectos .proy-sector,
+#proyectos .proy-gancho  { color: rgba(255,255,255,.6); }
+#proyectos .proy-tag-cliente { background: rgba(255,255,255,.10); color: rgba(255,255,255,.72); }
+#proyectos .proy-tag-propio  { background: rgba(216,202,255,.16); color: #d8caff; }
+#proyectos .proy-enlace  { color: #d8caff; }
