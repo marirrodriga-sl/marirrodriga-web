@@ -125,13 +125,30 @@
 }
 .hero-tarjeta-btn:hover { background: rgba(255,255,255,.26); border-color: rgba(255,255,255,.5); gap: 11px; }
 
-.hero-vitrina-puntos { display: flex; gap: 8px; justify-content: center; margin-top: 18px; }
+/* Los mandos van debajo, no encima de la foto: flanqueando los puntos ocupan
+   una fila propia y no tapan la escena ni pelean con el texto de la tarjeta. */
+.hero-vitrina-mandos {
+  display: flex; align-items: center; justify-content: center; gap: 14px;
+  margin-top: 18px;
+}
+.hero-vitrina-flecha {
+  width: 32px; height: 32px; flex: none; padding: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 50%; cursor: pointer;
+  background: rgba(255,255,255,.10); border: 1px solid rgba(255,255,255,.20);
+  color: rgba(255,255,255,.75);
+  transition: background .18s, border-color .18s, color .18s;
+}
+.hero-vitrina-flecha:hover { background: rgba(255,255,255,.22); border-color: rgba(255,255,255,.42); color: #fff; }
+.hero-vitrina-flecha svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 2; fill: none; }
+
+.hero-vitrina-puntos { display: flex; gap: 8px; justify-content: center; }
 .hero-vitrina-puntos button {
-  width: 30px; height: 4px; padding: 0; border: 0; border-radius: 2px; cursor: pointer;
+  width: 26px; height: 4px; padding: 0; border: 0; border-radius: 2px; cursor: pointer;
   background: rgba(255,255,255,.24); transition: background .25s, width .25s;
 }
 .hero-vitrina-puntos button:hover { background: rgba(255,255,255,.5); }
-.hero-vitrina-puntos button[aria-selected="true"] { background: #d8caff; width: 46px; }
+.hero-vitrina-puntos button[aria-selected="true"] { background: #d8caff; width: 40px; }
 
 @media (prefers-reduced-motion: reduce) {
   .hero-g-orbe { animation: none; }

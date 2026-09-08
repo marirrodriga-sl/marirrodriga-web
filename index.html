@@ -186,12 +186,20 @@
           </div>
         </li>
       </ul>
-      <div class="hero-vitrina-puntos" role="tablist" aria-label="Elegir departamento">
-        <button type="button" role="tab" aria-selected="true" aria-label="Atención al Cliente"></button>
-        <button type="button" role="tab" aria-selected="false" aria-label="Ventas y Captación"></button>
-        <button type="button" role="tab" aria-selected="false" aria-label="Finanzas"></button>
-        <button type="button" role="tab" aria-selected="false" aria-label="Datos y Dirección"></button>
-        <button type="button" role="tab" aria-selected="false" aria-label="Marketing y Presencia"></button>
+      <div class="hero-vitrina-mandos">
+        <button class="hero-vitrina-flecha" type="button" data-paso="-1" aria-label="Departamento anterior">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+        </button>
+        <div class="hero-vitrina-puntos" role="tablist" aria-label="Elegir departamento">
+          <button type="button" role="tab" aria-selected="true" aria-label="Atención al Cliente"></button>
+          <button type="button" role="tab" aria-selected="false" aria-label="Ventas y Captación"></button>
+          <button type="button" role="tab" aria-selected="false" aria-label="Finanzas"></button>
+          <button type="button" role="tab" aria-selected="false" aria-label="Datos y Dirección"></button>
+          <button type="button" role="tab" aria-selected="false" aria-label="Marketing y Presencia"></button>
+        </div>
+        <button class="hero-vitrina-flecha" type="button" data-paso="1" aria-label="Departamento siguiente">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+        </button>
       </div>
     </div>
 
@@ -549,8 +557,18 @@
       };
       var parar = function () { clearInterval(reloj); reloj = null; };
 
+      // Al tocar un mando se reinicia el reloj: si no, la tarjeta que acabas de
+      // elegir podría cambiar sola medio segundo después.
+      var manual = function (n) { ir(n); parar(); arrancar(); };
+
       puntos.forEach(function (p, k) {
-        p.addEventListener('click', function () { ir(k); parar(); arrancar(); });
+        p.addEventListener('click', function () { manual(k); });
+      });
+
+      vitrina.querySelectorAll('.hero-vitrina-flecha').forEach(function (f) {
+        f.addEventListener('click', function () {
+          manual(i + parseInt(f.getAttribute('data-paso'), 10));
+        });
       });
 
       vitrina.addEventListener('mouseenter', parar);
