@@ -820,20 +820,44 @@
    Qué hace cada parte, SIN precio. El precio va una sola vez, debajo, cuando
    ya sabes qué estás comprando. Antes cada pieza llevaba el suyo y la página
    se leía como una lista de la compra en vez de como una solución. */
-.desglose { max-width: 820px; margin: 0 auto 44px; }
+.desglose { max-width: var(--w-wide); margin: 0 auto 52px; }
 .desglose-titulo {
   font-family: var(--font-head); font-size: 26px; font-weight: 600;
-  letter-spacing: -.015em; text-align: center; margin-bottom: 28px;
+  letter-spacing: -.015em; text-align: center; margin-bottom: 36px;
 }
+
+/* Foto a un lado y explicación al otro, alternando: una a la derecha, la
+   siguiente a la izquierda. El zigzag hace que la vista sepa dónde empieza
+   cada parte sin necesidad de una línea que las separe.
+
+   Si una pieza no trae foto, .desglose-sinfoto la deja a una sola columna en
+   vez de dejar el hueco vacío: la sección funciona con fotos y sin ellas. */
 .desglose-pieza {
-  display: grid; grid-template-columns: 42px 1fr; gap: 16px;
-  padding: 22px 0;
-  border-top: 1px solid var(--line-soft);
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(24px, 4vw, 56px); align-items: center;
+  padding: clamp(26px, 3.4vw, 44px) 0;
 }
-.desglose-pieza:first-of-type { border-top: 0; padding-top: 0; }
+.desglose-pieza + .desglose-pieza { border-top: 1px solid var(--line-soft); }
+.desglose-vuelta .desglose-img { order: 2; }
+.desglose-sinfoto { grid-template-columns: 1fr; max-width: 760px; margin: 0 auto; }
+
+.desglose-img {
+  border-radius: var(--r-card); overflow: hidden;
+  box-shadow: var(--sh-2); border: 1px solid var(--line);
+}
+.desglose-img img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
+
 .desglose-num {
-  font-family: var(--font-head); font-size: 19px; font-weight: 600;
-  color: var(--purple); line-height: 1.5;
+  display: inline-block; margin-bottom: 9px;
+  font-family: var(--font-head); font-size: 17px; font-weight: 600;
+  color: var(--purple); line-height: 1;
+}
+
+@media (max-width: 780px) {
+  .desglose-pieza { grid-template-columns: 1fr; gap: 18px; }
+  /* En móvil la foto va siempre arriba: alternar en una sola columna no se
+     percibe como ritmo, solo descoloca. */
+  .desglose-vuelta .desglose-img { order: 0; }
 }
 .desglose-txt h4 {
   font-family: var(--font-head); font-size: 22px; font-weight: 600;
