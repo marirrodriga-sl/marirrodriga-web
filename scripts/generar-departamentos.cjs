@@ -142,8 +142,12 @@ const completo = p => {
 
     <div class="desglose aparece">
       <h3 class="desglose-titulo">Qué hace cada parte</h3>
-      ${dentro.map((z, n) => `<article class="desglose-pieza${n % 2 ? ' desglose-vuelta' : ''}${z.foto ? '' : ' desglose-sinfoto'}">
-        ${z.foto ? `<div class="desglose-img"><img src="/assets/img/${z.foto}" alt="${esc(z.fotoAlt || z.n)}" width="900" height="675" loading="lazy"></div>` : ''}
+      ${dentro.map((z, n) => `<article class="desglose-pieza${n % 2 ? ' desglose-vuelta' : ''}${z.foto || z.maqueta ? '' : ' desglose-sinfoto'}">
+        ${z.maqueta
+          ? `<div class="desglose-img desglose-maqueta">${z.maqueta}</div>`
+          : z.foto
+            ? `<div class="desglose-img"><img src="/assets/img/${z.foto}" alt="${esc(z.fotoAlt || z.n)}" width="900" height="675" loading="lazy"></div>`
+            : ''}
         <div class="desglose-txt">
           <span class="desglose-num">${String(n + 1).padStart(2, '0')}</span>
           <h4>${esc(z.n)}</h4>

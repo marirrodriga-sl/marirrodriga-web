@@ -491,8 +491,31 @@ const DEPARTAMENTOS = [
       lim: 'una ficha · revisión semanal' },
 
     { n: 'Reseñas: pedirlas y contestarlas', eur: 30, setup: 100,
-      foto: 'pz-pos-resenas.jpg',
-      fotoAlt: 'El mostrador de una peluqueria recien vaciado: el movil con la conversacion, el datafono con el ticket colgando y el peine',
+      /* Maqueta, no foto. Esta pieza ES la reseña: una foto del local donde
+         pasa no cuenta nada, y una reseña de Google generada con IA sale con
+         el texto reventado —además de ser una captura falsa de un producto
+         que no es nuestro. Dibujada por nosotros: texto legible, cero
+         créditos, y se ve de qué va sin leer el párrafo de al lado. */
+      maqueta: `<div class="mq mq-resenas">
+        <div class="mq-chat">
+          <p class="mq-burbuja mq-nuestra">¿Qué tal fue ayer con Marta? Si tienes veinte segundos, nos ayuda mucho saberlo.</p>
+          <p class="mq-burbuja mq-suya">Genial, muy contenta</p>
+        </div>
+        <div class="mq-ficha">
+          <div class="mq-cab">
+            <span class="mq-avatar">L</span>
+            <div>
+              <b>Lucía R.</b>
+              <span class="mq-estrellas" aria-label="Cinco estrellas">★★★★★ <i>hace 2 días</i></span>
+            </div>
+          </div>
+          <p class="mq-texto">Puntualísimos y me explicaron todo antes de empezar. Se nota que se lo curran. Repetiré seguro.</p>
+          <div class="mq-respuesta">
+            <b>Respuesta del negocio</b>
+            <p>Gracias, Lucía. Se lo decimos a Marta, que se va a alegrar. ¡Nos vemos en la próxima!</p>
+          </div>
+        </div>
+      </div>`,
       d: 'Un agente escribe al cliente cuando termina su cita y le pregunta qué tal fue. Si fue bien, le pasa el enlace de Google. Si fue mal, te avisa a ti antes de que lo publique. Y las que ya están publicadas, las contesta.',
       lim: 'hasta 300 peticiones/mes · respuestas sin tope',
       nota: 'Si llevas tu agenda con Bookia o Dentia, pedir reseñas ya te lo hace su pieza de recordatorios por 15 y 10 €/mes. Esta es para quien lleva la agenda en otro sitio — y para contestar, que aquellas no hacen.',
