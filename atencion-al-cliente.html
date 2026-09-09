@@ -77,11 +77,11 @@
       <div class="nav-panel" id="menu-departamentos">
         <a class="nav-item" href="/atencion-al-cliente"><b>Atención al Cliente</b><span>Contesta, mira tu agenda y cierra la cita</span></a>
         <a class="nav-item" href="/ventas-y-captacion"><b>Ventas y Captación</b><span>Busca clientes y persigue los presupuestos</span></a>
-        <span class="nav-item apagado"><b>Finanzas</b><span>Próximamente</span></span>
-        <span class="nav-item apagado"><b>Logística</b><span>Próximamente</span></span>
-        <span class="nav-item apagado"><b>Datos y Dirección</b><span>Próximamente</span></span>
-        <span class="nav-item apagado"><b>Marketing</b><span>Próximamente</span></span>
-        <span class="nav-item apagado"><b>Posicionamiento Online</b><span>Próximamente</span></span>
+        <a class="nav-item" href="/finanzas"><b>Finanzas</b><span>Factura sin abrir el programa y persigue lo vencido</span></a>
+        <a class="nav-item" href="/logistica"><b>Logística</b><span>Persigue al transportista y avisa antes de que pregunten</span></a>
+        <a class="nav-item" href="/datos-y-direccion"><b>Datos y Dirección</b><span>Por qué ha ido bien el mes, no solo que ha ido bien</span></a>
+        <a class="nav-item" href="/marketing"><b>Marketing</b><span>Publicaciones y newsletter con tu voz</span></a>
+        <a class="nav-item" href="/posicionamiento-online"><b>Posicionamiento Online</b><span>Que te encuentren, y que lo que vean esté bien</span></a>
       </div>
     </div>
     <div class="nav-grupo">
@@ -115,11 +115,11 @@
   <h5>Departamentos</h5>
   <a class="nav-item" href="/atencion-al-cliente"><b>Atención al Cliente</b><span>Contesta, mira tu agenda y cierra la cita</span></a>
   <a class="nav-item" href="/ventas-y-captacion"><b>Ventas y Captación</b><span>Busca clientes y persigue los presupuestos</span></a>
-  <span class="nav-item apagado"><b>Finanzas</b><span>Próximamente</span></span>
-  <span class="nav-item apagado"><b>Logística</b><span>Próximamente</span></span>
-  <span class="nav-item apagado"><b>Datos y Dirección</b><span>Próximamente</span></span>
-  <span class="nav-item apagado"><b>Marketing</b><span>Próximamente</span></span>
-  <span class="nav-item apagado"><b>Posicionamiento Online</b><span>Próximamente</span></span>
+  <a class="nav-item" href="/finanzas"><b>Finanzas</b><span>Factura sin abrir el programa y persigue lo vencido</span></a>
+  <a class="nav-item" href="/logistica"><b>Logística</b><span>Persigue al transportista y avisa antes de que pregunten</span></a>
+  <a class="nav-item" href="/datos-y-direccion"><b>Datos y Dirección</b><span>Por qué ha ido bien el mes, no solo que ha ido bien</span></a>
+  <a class="nav-item" href="/marketing"><b>Marketing</b><span>Publicaciones y newsletter con tu voz</span></a>
+  <a class="nav-item" href="/posicionamiento-online"><b>Posicionamiento Online</b><span>Que te encuentren, y que lo que vean esté bien</span></a>
   <h5>Sobre nosotros</h5>
   <a class="nav-item" href="/#quienes"><b>Quiénes somos</b><span>Marco escribe el código, Isma monta la IA</span></a>
   <a class="nav-item" href="/#como"><b>Cómo funciona</b><span>Se empieza por una pieza, y solo crece si funciona</span></a>
@@ -280,6 +280,77 @@
       <p class="no-es-bot-cierre">Por eso lo llamamos agente y no chatbot. No es
       una etiqueta más bonita: es que hacen cosas distintas.</p>
     </div>
+
+    <!-- ─── EL FLUJO, DIBUJADO ───────────────────────────────────────────
+         Va en HTML y no en una imagen a propósito. Es todo texto, y el texto
+         de una imagen ni se busca, ni se lee con lector de pantalla, ni se
+         traduce, ni se corrige cuando cambia un producto: habría que volver a
+         generarla. Aquí se edita una línea.
+         Pesa unos 3 KB frente a los 200 de una captura.
+
+         Ojo con lo que dice el paso de la agenda: lleva su marca de «pieza
+         aparte» porque NO va en los 49 €. El diagrama tiene que ser tan
+         honesto como el precio.
+         ─────────────────────────────────────────────────────────────────── -->
+    <figure class="flujo aparece">
+      <div class="flujo-marco">
+        <div class="flujo-lienzo">
+          <div class="flujo-ruta">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+            Agente de atención <span>›</span> Cómo va una conversación
+          </div>
+
+          <div class="flujo-disparadores">
+            <div class="flujo-nodo flujo-disp">
+              <i class="flujo-ico flujo-ico-wa"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 01-9 8.4 8.5 8.5 0 01-3.9-.9L3 20.5l1.5-4.6A8.4 8.4 0 0112 3.1a8.4 8.4 0 019 8.4z"/></svg></i>
+              WhatsApp
+            </div>
+            <div class="flujo-nodo flujo-disp">
+              <i class="flujo-ico flujo-ico-tg"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 4L2.5 11.2l5.4 1.9L19 6.5l-8.6 8.2.4 5.3 2.8-3.7 4.6 3.3z"/></svg></i>
+              Telegram
+            </div>
+            <div class="flujo-nodo flujo-disp">
+              <i class="flujo-ico flujo-ico-web"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v11H8l-4 4z"/></svg></i>
+              El chat de tu web
+            </div>
+          </div>
+
+          <div class="flujo-horquilla" aria-hidden="true"></div>
+
+          <div class="flujo-paso">
+            <i class="flujo-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 100 18 9 9 0 000-18zM9.5 9.5a2.5 2.5 0 015 0c0 1.7-2.5 2-2.5 3.5M12 17h.01"/></svg></i>
+            Entiende qué está pidiendo
+          </div>
+          <div class="flujo-hilo" aria-hidden="true"></div>
+
+          <div class="flujo-paso">
+            <i class="flujo-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 016.5 3H20v15H6.5A2.5 2.5 0 004 20.5zM8 8h8M8 12h5"/></svg></i>
+            Busca la respuesta en lo que le has contado de tu negocio
+          </div>
+          <div class="flujo-hilo" aria-hidden="true"></div>
+
+          <div class="flujo-paso flujo-paso-extra">
+            <i class="flujo-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v14H4zM4 10h16M8 3v4M16 3v4"/></svg></i>
+            Mira los huecos reales de tu agenda
+            <span class="flujo-tag">pieza aparte</span>
+          </div>
+          <div class="flujo-hilo flujo-hilo-corto" aria-hidden="true"></div>
+
+          <div class="flujo-bifurca">
+            <div class="flujo-nodo flujo-fin flujo-fin-ok">
+              <i class="flujo-ico flujo-ico-ok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg></i>
+              Contesta, y cierra la cita
+            </div>
+            <div class="flujo-nodo flujo-fin flujo-fin-humano">
+              <i class="flujo-ico flujo-ico-humano"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.4"/><path d="M5 20a7 7 0 0114 0"/></svg></i>
+              O te pasa la conversación a ti
+            </div>
+          </div>
+        </div>
+      </div>
+      <figcaption>Lo que hace con cada mensaje que entra. El paso de la agenda solo
+      aparece si le enchufas esa pieza; sin ella contesta, pero no reserva.</figcaption>
+    </figure>
 
     <div class="capacidades aparece">
       <div class="cap cap-base">

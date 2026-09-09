@@ -27,6 +27,32 @@
     <changefreq>monthly</changefreq>
   </url>
 
+  <url>
+    <loc>https://www.marirrodriga-ia.com/finanzas</loc>
+    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.marirrodriga-ia.com/logistica</loc>
+    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.marirrodriga-ia.com/datos-y-direccion</loc>
+    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.marirrodriga-ia.com/marketing</loc>
+    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.marirrodriga-ia.com/posicionamiento-online</loc>
+    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
   <!-- Productos -->
   <url>
     <loc>https://www.marirrodriga-ia.com/bookia</loc>

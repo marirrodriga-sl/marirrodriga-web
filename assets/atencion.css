@@ -546,3 +546,116 @@
   .no-es-bot { padding: 24px 22px; }
   .no-es-bot h3 { font-size: 23px; }
 }
+
+
+/* ─── EL FLUJO, DIBUJADO ─────────────────────────────────────────────────
+   El equivalente a la captura del constructor de flujos que enseña
+   HappyRobot, pero en HTML. Va así y no en imagen porque es todo texto: el
+   de una imagen ni se busca, ni lo lee un lector de pantalla, ni se corrige
+   cuando cambia un producto. Y pesa 3 KB en vez de 200.
+
+   Lo reutilizan las landings de departamento: cambia el contenido, no el
+   molde. */
+.flujo { margin: 0 auto 56px; max-width: 720px; }
+
+/* El marco degradado, que es lo que hace que parezca un pantallazo y no una
+   lista con bordes */
+.flujo-marco {
+  padding: clamp(14px, 2.4vw, 26px);
+  border-radius: var(--r-panel);
+  background: linear-gradient(150deg, #6d4bb8 0%, #8b6fd4 26%, #cbb9f0 58%, var(--cream-deep) 100%);
+  box-shadow: var(--sh-3);
+}
+.flujo-lienzo {
+  background: var(--white);
+  border-radius: var(--r-card);
+  padding: 20px clamp(16px, 2.4vw, 28px) 26px;
+  /* La cuadrícula de puntos del lienzo de un editor de flujos */
+  background-image: radial-gradient(rgba(23,20,31,.09) 1px, transparent 1px);
+  background-size: 15px 15px;
+}
+
+.flujo-ruta {
+  display: flex; align-items: center; gap: 8px;
+  padding-bottom: 13px; margin-bottom: 20px;
+  border-bottom: 1px solid var(--line-soft);
+  font-size: 12.5px; font-weight: 600; color: var(--ink-3);
+}
+.flujo-ruta svg { width: 14px; height: 14px; stroke: var(--ink-4); fill: none; stroke-width: 1.8; stroke-linecap: round; }
+.flujo-ruta span { color: var(--ink-4); }
+
+.flujo-nodo, .flujo-paso {
+  display: flex; align-items: center; gap: 11px;
+  padding: 12px 15px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  box-shadow: 0 2px 5px -2px rgba(23,20,31,.14);
+  font-size: 14px; font-weight: 550; color: var(--ink);
+  text-align: left;
+}
+.flujo-paso { max-width: 420px; margin: 0 auto; }
+
+.flujo-ico {
+  width: 26px; height: 26px; flex: none;
+  display: grid; place-items: center; border-radius: 7px;
+  background: var(--purple-tint);
+}
+.flujo-ico svg { width: 14px; height: 14px; stroke: var(--purple); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+/* Cada canal con su color, como en el original */
+.flujo-ico-wa     { background: #e7f6ec; } .flujo-ico-wa svg     { stroke: #1f9d55; }
+.flujo-ico-tg     { background: #e6f2fb; } .flujo-ico-tg svg     { stroke: #2b8ccc; }
+.flujo-ico-web    { background: #f0eefa; } .flujo-ico-web svg    { stroke: #6d4bb8; }
+.flujo-ico-ok     { background: #e7f6ec; } .flujo-ico-ok svg     { stroke: #1f9d55; }
+.flujo-ico-humano { background: #fdf0e4; } .flujo-ico-humano svg { stroke: #c47a24; }
+
+.flujo-disparadores {
+  display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
+}
+.flujo-disp { font-size: 13.5px; }
+
+/* La horquilla que junta los tres disparadores en un solo hilo */
+.flujo-horquilla {
+  height: 26px; margin: 0 auto; width: 62%;
+  border: 1px solid var(--ink-4); border-top: 0; border-radius: 0 0 10px 10px;
+  position: relative;
+}
+.flujo-horquilla::after {
+  content: ''; position: absolute; left: 50%; bottom: -13px;
+  width: 1px; height: 13px; background: var(--ink-4);
+}
+
+.flujo-hilo {
+  width: 1px; height: 26px; margin: 0 auto; background: var(--ink-4);
+  position: relative;
+}
+.flujo-hilo::after {
+  content: ''; position: absolute; left: 50%; bottom: 0; translate: -50% 0;
+  border: 4px solid transparent; border-top-color: var(--ink-4); border-bottom: 0;
+}
+.flujo-hilo-corto { height: 20px; }
+
+/* La pieza que no va incluida: se dibuja a rayas para que no se confunda */
+.flujo-paso-extra { border-style: dashed; background: var(--cream); }
+.flujo-tag {
+  margin-left: auto; padding: 3px 8px; border-radius: var(--r-pill);
+  background: var(--white); border: 1px solid var(--line);
+  font-size: 10.5px; font-weight: 600; color: var(--ink-3); white-space: nowrap;
+}
+
+.flujo-bifurca { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+.flujo-fin { font-size: 13.5px; }
+.flujo-fin-ok     { border-color: rgba(31,157,85,.34); }
+.flujo-fin-humano { border-color: rgba(196,122,36,.34); }
+
+.flujo figcaption {
+  margin-top: 15px; text-align: center;
+  font-size: 13px; line-height: 1.55; color: var(--ink-3);
+  max-width: 560px; margin-inline: auto;
+}
+
+@media (max-width: 560px) {
+  .flujo-nodo, .flujo-paso { font-size: 13px; padding: 11px 13px; }
+  .flujo-tag { display: none; }
+  .flujo-horquilla { width: 80%; }
+}

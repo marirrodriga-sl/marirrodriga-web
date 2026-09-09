@@ -45,11 +45,11 @@ const SECTORES_MENU = [
 const DEPTOS_MENU = [
   ['Atención al Cliente', '/atencion-al-cliente', 'Contesta, mira tu agenda y cierra la cita'],
   ['Ventas y Captación', '/ventas-y-captacion', 'Busca clientes y persigue los presupuestos'],
-  ['Finanzas', null, 'Próximamente'],
-  ['Logística', null, 'Próximamente'],
-  ['Datos y Dirección', null, 'Próximamente'],
-  ['Marketing', null, 'Próximamente'],
-  ['Posicionamiento Online', null, 'Próximamente'],
+  ['Finanzas', '/finanzas', 'Factura sin abrir el programa y persigue lo vencido'],
+  ['Logística', '/logistica', 'Persigue al transportista y avisa antes de que pregunten'],
+  ['Datos y Dirección', '/datos-y-direccion', 'Por qué ha ido bien el mes, no solo que ha ido bien'],
+  ['Marketing', '/marketing', 'Publicaciones y newsletter con tu voz'],
+  ['Posicionamiento Online', '/posicionamiento-online', 'Que te encuentren, y que lo que vean esté bien'],
 ];
 
 /* Rutas absolutas a la home: desde una landing tienen que llevar allí y bajar */
@@ -71,7 +71,7 @@ const ANCLAS = [
   ['#preguntas', 'Preguntas'],
 ];
 
-const nav = () => `<nav class="nav">
+const nav = (anclas = ANCLAS) => `<nav class="nav">
   <a class="nav-logo" href="/">
     ${LOGO}
     <span>Marirrodriga<b>.IA</b></span>
@@ -96,7 +96,7 @@ const nav = () => `<nav class="nav">
         ${SOBRE_MENU.map(itemDepto).join('\n        ')}
       </div>
     </div>
-    ${ANCLAS.map(([h, t]) => `<a class="nav-link" href="${h}">${t}</a>`).join('\n    ')}
+    ${anclas.map(([h, t]) => `<a class="nav-link" href="${h}">${t}</a>`).join('\n    ')}
   </div>
   <a class="btn btn-1 nav-cta" href="${CAL}" target="_blank" rel="noopener">Pide una demo gratuita</a>
   <button class="nav-burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-movil">
@@ -112,7 +112,7 @@ const nav = () => `<nav class="nav">
   <h5>Sobre nosotros</h5>
   ${SOBRE_MENU.map(itemDepto).join('\n  ')}
   <h5>En esta página</h5>
-  ${ANCLAS.map(([h, t]) => `<a class="nav-item" href="${h}"><b>${t}</b></a>`).join('\n  ')}
+  ${anclas.map(([h, t]) => `<a class="nav-item" href="${h}"><b>${t}</b></a>`).join('\n  ')}
   <a class="btn btn-1" href="${CAL}" target="_blank" rel="noopener">Pide una demo gratuita</a>
 </div>`;
 
@@ -237,11 +237,11 @@ const pie = () => `<footer class="pie">
           <h4>Departamentos</h4>
           <a href="/atencion-al-cliente">Atención al Cliente</a>
           <a href="/ventas-y-captacion">Ventas y Captación</a>
-          <span style="opacity:.35">Finanzas</span>
-          <span style="opacity:.35">Logística</span>
-          <span style="opacity:.35">Datos y Dirección</span>
-          <span style="opacity:.35">Marketing</span>
-          <span style="opacity:.35">Posicionamiento Online</span>
+          <a href="/finanzas">Finanzas</a>
+          <a href="/logistica">Logística</a>
+          <a href="/datos-y-direccion">Datos y Dirección</a>
+          <a href="/marketing">Marketing</a>
+          <a href="/posicionamiento-online">Posicionamiento Online</a>
         </div>
         <div class="pie-col">
           <h4>Contacto</h4>
@@ -359,11 +359,26 @@ ${pie()}
 `;
 }
 
+/* ─── LO QUE COMPARTE CON EL GENERADOR DE DEPARTAMENTOS ──────────────────
+   El nav y el pie viven SOLO aquí. generar-departamentos.cjs los importa en
+   vez de copiarlos, porque el 09-09 ya nos mordió la deriva: alguien tocó el
+   HTML sin tocar la plantilla, y al regenerar el favicon volvía a un fichero
+   que no existe y el email a la cuenta vieja. Con dos plantillas el riesgo se
+   duplicaba. Si cambias el nav, cambia en las trece páginas a la vez.
+
+   La guarda de abajo es lo que permite importarlo: sin ella, un require
+   regeneraba las ocho páginas de sector como efecto colateral. */
+module.exports = { nav, faq, cierre, pie, esc, LOGO, WA, CAL,
+                   SECTORES_MENU, DEPTOS_MENU, SOBRE_MENU, itemSector, itemDepto };
+
 /* ─── ESCRIBIR ───────────────────────────────────────────────────────────── */
-let n = 0;
-for (const [p, tramos] of [[DENTIA, SOL.DENTIA], ...BOOKIA.map(b => [b, SOL.BOOKIA])]) {
-  fs.writeFileSync(path.join(raiz, p.archivo), pagina(p, tramos), { encoding: 'utf8' });
-  console.log(`  ${p.archivo.padEnd(28)} ${tramos[0].cuota} – ${tramos[3].cuota} €/mes`);
-  n++;
+if (require.main === module) {
+  let n = 0;
+  for (const [p, tramos] of [[DENTIA, SOL.DENTIA], ...BOOKIA.map(b => [b, SOL.BOOKIA])]) {
+    fs.writeFileSync(path.join(raiz, p.archivo), pagina(p, tramos), { encoding: 'utf8' });
+    console.log(`  ${p.archivo.padEnd(28)} ${tramos[0].cuota} – ${tramos[3].cuota} €/mes`);
+    n++;
+  }
+  console.log(`\n${n} páginas generadas.`);
+
 }
-console.log(`\n${n} páginas generadas.`);
