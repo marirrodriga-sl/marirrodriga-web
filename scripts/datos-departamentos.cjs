@@ -29,15 +29,15 @@ const DEPARTAMENTOS = [
     ['El justificante que no aparece', 'El albarán, el certificado, el papel que pide la gestoría. Está en un correo de hace cuatro meses o no está.'],
   ],
   flujo: {
-    ruta: 'Recobro de facturas › Cómo va un cobro',
-    disparadores: [['reloj', 'La factura vence'], ['doc', 'Entra en la lista de pendientes']],
+    ruta: 'Persecución de documentos › La caza del trimestre',
+    disparadores: [['reloj', 'Empieza el trimestre'], ['doc', 'Tu lista de clientes']],
     pasos: [
-      ['ojo', 'Comprueba que sigue sin pagarse'],
-      ['msg', 'Escribe al cliente con el importe y el enlace de pago'],
-      ['reloj', 'Si no contesta, insiste a los días — sin repetir el mismo mensaje'],
+      ['msg', 'Escribe a cada uno pidiéndole lo suyo'],
+      ['ojo', 'Comprueba lo que llega: si está completo y si es lo que pedía'],
+      ['reloj', 'Al que no manda, le insiste — y sin repetirle el mismo mensaje'],
     ],
-    fin: [['ok', 'Cobrado, y lo apunta'], ['humano', 'O te lo pasa a ti con el histórico']],
-    pie: 'Lo que hace con cada factura que vence. Los plazos y el tono los fijas tú por escrito antes de empezar.',
+    fin: [['ok', 'Completo: lo archiva donde tú lo lleves'], ['humano', 'Incompleto: te dice qué falta y de quién']],
+    pie: 'La tarea más odiada de una asesoría, hecha sola. Los plazos, el tono y cuántas veces insiste los fijas tú antes de empezar.',
   },
   piezas: [
     { n: 'Facturación por mensaje', yaExiste: true, eur: 49, setup: 200,
@@ -46,26 +46,55 @@ const DEPARTAMENTOS = [
     { n: 'Recobro de facturas vencidas', eur: 79, setup: 250, destacada: true,
       d: 'Persigue lo que está vencido: escribe, insiste con criterio y te pasa a ti solo lo que necesita una llamada de verdad.',
       lim: 'hasta 200 avisos/mes' },
-    { n: 'Recuperación de documentos', yaExiste: true, eur: 79, setup: 300,
-      d: 'Persigue albaranes, justificantes y certificados hasta que llegan. Los guarda donde le digas y avisa de lo que falta.',
-      lim: 'hasta 300 documentos/mes' },
-    { n: 'Conciliación de cuentas', eur: 49, setup: 200,
-      d: 'Cruza lo cobrado con lo facturado, señala lo que no cuadra y persigue las partidas abiertas antes de que envejezcan.',
-      lim: 'hasta 500 apuntes/mes' },
+    /* Reenfocada el 09-09. Antes describía el producto sin decir para quién:
+       «albaranes, justificantes y certificados» le vale igual a una peluquería
+       que a una gestoría, y por eso no le hablaba a nadie. El comprador es la
+       propia gestoría, asesoría o aseguradora, cuyo dolor es perseguir a
+       cuarenta clientes cada trimestre. Con el destinatario claro, los 79 € se
+       pagan con un solo trámite que deja de atascarse. */
+    { n: 'Persecución de documentos', yaExiste: true, eur: 79, setup: 300,
+      d: 'Para quien no puede cerrar un trámite hasta que llega un papel que tiene otro. Escribe, insiste con criterio, comprueba que está completo y te dice qué falta y de quién.',
+      lim: 'hasta 300 documentos/mes',
+      lista: [
+        'La caza del trimestre: las facturas de cada cliente para el IVA',
+        'Albaranes firmados que bloquean el cobro de una expedición',
+        'Partes y peritajes que la aseguradora no paga sin ellos',
+        'Certificados que caducan: Hacienda, Seguridad Social, seguros',
+      ] },
+
+    /* El segundo peldaño, que propuso Isma. La persecución resuelve que el
+       papel LLEGUE; esto resuelve que llegue ORDENADO. Se vende después, no
+       antes: primero se demuestra que la persecución funciona.
+       El precio escala por volumen, pero el tramo de entrada va público —si
+       no, se rompe la promesa de «precio y límite al lado», que es media
+       marca. */
+    { n: 'Fichas listas para validar', eur: 149, setup: 600,
+      d: 'El paso siguiente, cuando la persecución ya funciona: lo que llega se lee, se ordena por cliente y se deja preparado para una sola revisión humana. Se cierra el trámite mirando una ficha, no una carpeta.',
+      lim: 'desde 500 documentos/mes · escala por tramos',
+      lista: [
+        'Una ficha por cliente, con todo lo suyo del periodo',
+        'Lo que falta, señalado antes de que lo busques',
+        'Lo que no cuadra, marcado para que lo mires tú',
+      ] },
     /* Era «Contabilidad asistida» a 169 €/mes + 650 € y solo ordenaba para la
        gestoría. Isma lo tumbó con un argumento que no tiene vuelta: una
        gestoría cuesta unos 50 €/mes, así que pagar 169 para entregarle el
        trabajo ordenado no sale a cuenta. Lo que sí sale es que además te
-       explique tu propio dinero. Se amplía el alcance, baja a 99 + 450. */
+       explique tu propio dinero. Se amplía el alcance, baja a 99 + 450.
+       El 09-09 se le funde además la conciliación, que iba suelta a 49 €: si
+       esta pieza ya da previsión de caja y días de cobro, cruzar cobros con
+       facturas está a un paso, y tener las dos obligaba al cliente a decidir
+       algo que no sabe decidir. */
     { n: 'Contabilidad y cuadro financiero', eur: 99, setup: 450,
-      d: 'Clasifica gastos e ingresos y, con esas mismas facturas, monta el cuadro que ningún programa pequeño te da: qué vas a cobrar, quién te hace esperar y cuánto te falta para cubrir el mes.',
-      lim: 'hasta 800 apuntes/mes · 5 indicadores',
+      d: 'Clasifica gastos e ingresos, cruza lo cobrado con lo facturado y, con esas mismas facturas, monta el cuadro que ningún programa pequeño te da: qué vas a cobrar, quién te hace esperar y cuánto te falta para cubrir el mes.',
+      lim: 'hasta 800 apuntes/mes · 6 indicadores',
       lista: [
         'Previsión de caja a 60 días, semana a semana',
         'Días medios de cobro — y qué clientes los suben',
         'Concentración: cuánto dependes de tu mayor cliente',
         'Punto muerto: lo que falta por facturar este mes',
         'Gastos recurrentes vivos y lo que llevas pagado',
+        'Cobros cruzados con facturas: lo que no cuadra, señalado',
       ] },
   ],
   faq: [
