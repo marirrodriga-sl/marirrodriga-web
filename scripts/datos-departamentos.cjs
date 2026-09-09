@@ -156,9 +156,6 @@ const DEPARTAMENTOS = [
     { n: 'Gestión de incidencias', eur: 49, setup: 200,
       d: 'Cuando algo se rompe, se pierde o llega mal: recoge lo que ha pasado, abre el parte y persigue la resolución.',
       lim: 'hasta 150 incidencias/mes' },
-    { n: 'Comunicación con proveedores', eur: 49, setup: 150,
-      d: 'Confirma pedidos, pide plazos y persigue lo que no ha llegado. Sin que tengas que acordarte tú.',
-      lim: 'hasta 200 gestiones/mes' },
   ],
   faq: [
     ['¿Necesito un programa de logística?', 'No. Funciona contra lo que ya uses, aunque sea una hoja de cálculo. Si tienes un programa con API, mejor: escribe directamente en él.'],
