@@ -134,9 +134,22 @@ const DEPARTAMENTOS = [
     { n: 'Seguimiento de entregas', eur: 79, setup: 250, destacada: true,
       d: 'Persigue a cada transportista hasta sacarle la fecha real, lo apunta y te avisa solo de lo que se ha torcido.',
       lim: 'hasta 400 envíos/mes' },
-    { n: 'Aviso al cliente antes de que pregunte', eur: 30, setup: 100,
-      d: 'Cuando hay fecha, se la manda al cliente. Cuando cambia, se lo cuenta. La llamada que te ahorras es la suya.',
-      lim: 'hasta 800 avisos/mes' },
+    /* Choca de nombre con «Módulo · Seguimiento de pedidos» de Atención
+       (30 €/mes + 70 €), que lo vio Isma. La diferencia es real pero no se
+       deduce del nombre, así que se dice en el texto:
+         · el de Atención es REACTIVO — el cliente pregunta y el agente mira la
+           tienda. Se acopla al asistente, y por eso el alta es de 70 €.
+         · este es PROACTIVO — avisa sin que nadie pregunte, lee al
+           transportista y no necesita al agente. Monta su propio canal, y de
+           ahí los 100 € de alta.
+       Se pueden tener los dos y se complementan; tener solo uno también vale. */
+    { n: 'Avisar antes de que pregunten', eur: 30, setup: 100,
+      d: 'Cuando hay fecha, se la manda al cliente. Cuando cambia, se lo cuenta. No espera a que pregunte: ese es todo el truco, y es la llamada que te ahorras.',
+      lim: 'hasta 800 avisos/mes',
+      lista: [
+        'Funciona solo: no necesita tener montado el agente de Atención',
+        'Si además lo tienes, aquel contesta al que pregunta y este avisa antes',
+      ] },
     { n: 'Citas de carga y descarga', eur: 49, setup: 150,
       d: 'Cuadra la hora con el transportista y con tu almacén, confirma a los dos y avisa si uno se cae.',
       lim: 'hasta 200 citas/mes' },
