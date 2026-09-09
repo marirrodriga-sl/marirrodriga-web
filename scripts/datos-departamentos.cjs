@@ -351,7 +351,7 @@ const DEPARTAMENTOS = [
       lim: 'hasta 150 facturas/mes' },
     { n: 'Recobro de facturas vencidas', eur: 79, setup: 250, destacada: true,
       foto: 'pz-fin-recobro.jpg',
-      fotoAlt: 'Un montón de facturas impresas sobre la mesa de una oficina pequeña, junto al portátil con el correo abierto',
+      fotoAlt: 'Un taco de facturas con su pinza sobre la mesa de una oficina pequeña, junto al portátil y con los archivadores en la balda del fondo',
       d: 'Persigue lo que está vencido: escribe, insiste con criterio y te pasa a ti solo lo que necesita una llamada de verdad.',
       lim: 'hasta 200 avisos/mes' },
     /* Reenfocada el 09-09. Antes describía el producto sin decir para quién:
