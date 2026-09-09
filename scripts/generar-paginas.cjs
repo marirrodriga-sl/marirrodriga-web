@@ -42,14 +42,17 @@ const SECTORES_MENU = [
   ['Podología', '/bookia-podologia'],
 ];
 
+/* El cuarto valor es el ancla de las piezas sueltas de cada uno. Atención y
+   Ventas no salen del generador y tienen las suyas propias; las cinco que sí
+   salen usan #piezas. */
 const DEPTOS_MENU = [
-  ['Atención al Cliente', '/atencion-al-cliente', 'Contesta, mira tu agenda y cierra la cita'],
-  ['Ventas y Captación', '/ventas-y-captacion', 'Busca clientes y persigue los presupuestos'],
-  ['Finanzas', '/finanzas', 'Factura sin abrir el programa y persigue lo vencido'],
-  ['Logística', '/logistica', 'Persigue al transportista y avisa antes de que pregunten'],
-  ['Datos y Dirección', '/datos-y-direccion', 'Por qué ha ido bien el mes, no solo que ha ido bien'],
-  ['Marketing', '/marketing', 'Publicaciones y newsletter con tu voz'],
-  ['Posicionamiento Online', '/posicionamiento-online', 'Que te encuentren, y que lo que vean esté bien'],
+  ['Atención al Cliente', '/atencion-al-cliente', 'Contesta, mira tu agenda y cierra la cita', '#agente'],
+  ['Ventas y Captación', '/ventas-y-captacion', 'Busca clientes y persigue los presupuestos', '#captacion'],
+  ['Finanzas', '/finanzas', 'Factura sin abrir el programa y persigue lo vencido', '#piezas'],
+  ['Logística', '/logistica', 'Persigue al transportista y avisa antes de que pregunten', '#piezas'],
+  ['Datos y Dirección', '/datos-y-direccion', 'Por qué ha ido bien el mes, no solo que ha ido bien', '#piezas'],
+  ['Marketing', '/marketing', 'Publicaciones, fotos y vídeos con tu marca', '#piezas'],
+  ['Posicionamiento Online', '/posicionamiento-online', 'Que te encuentren, y que lo que vean esté bien', '#piezas'],
 ];
 
 /* Rutas absolutas a la home: desde una landing tienen que llevar allí y bajar */
@@ -64,6 +67,18 @@ const itemSector = (s, i) => `<a class="nav-item" href="${i}"><b>${s}</b></a>`;
 const itemDepto = ([n, r, d]) => r
   ? `<a class="nav-item" href="${r}"><b>${n}</b><span>${d}</span></a>`
   : `<span class="nav-item apagado"><b>${n}</b><span>${d}</span></span>`;
+
+/* Cada departamento se vende de dos maneras y el menú lo dice en vez de
+   obligar a entrar para enterarse: la completa (que es la que recomendamos) o
+   pieza a pieza. En el panel móvil se usa la fila simple: las dos vías por
+   siete departamentos no caben en una pantalla de teléfono. */
+const itemDeptoVias = ([n, r, d, ancla]) => `<div class="nav-dep">
+          <a class="nav-item" href="${r}"><b>${n}</b><span>${d}</span></a>
+          <div class="nav-dep-vias">
+            <a href="${r}#completo">Solución completa <i>recomendado</i></a>
+            <a href="${r}${ancla}">Por piezas</a>
+          </div>
+        </div>`;
 
 const ANCLAS = [
   ['#lo-que-hace', 'Lo que hace'],
@@ -87,7 +102,7 @@ const nav = (anclas = ANCLAS) => `<nav class="nav">
     <div class="nav-grupo">
       <button class="nav-grupo-btn" type="button" aria-expanded="false" aria-controls="menu-departamentos">Departamentos</button>
       <div class="nav-panel" id="menu-departamentos">
-        ${DEPTOS_MENU.map(itemDepto).join('\n        ')}
+        ${DEPTOS_MENU.map(itemDeptoVias).join('\n        ')}
       </div>
     </div>
     <div class="nav-grupo">

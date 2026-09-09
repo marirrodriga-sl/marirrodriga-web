@@ -37,6 +37,7 @@ const DEPARTAMENTOS = [
       'Cobrado sin perseguir',
       'Las cuentas explicadas',
     ],
+    comoVa: 'Lo que factura una alimenta lo que cobra la siguiente, y lo cobrado entra en el cuadro sin que nadie lo teclee.',
     pie: 'No es comprar las cuatro piezas: es montarlas conectadas entre sí, para que lo que sale de una entre en la siguiente.',
   },
   dolores: [
@@ -144,6 +145,7 @@ const DEPARTAMENTOS = [
       'El cliente, avisado',
       'La incidencia, cerrada',
     ],
+    comoVa: 'La fecha que saca el seguimiento es la que el aviso le cuenta a tu cliente, y si no llega, abre la incidencia sola.',
     pie: 'Las cuatro piezas comparten lo que aprenden: lo que el seguimiento saca del transportista es lo que el aviso le cuenta a tu cliente.',
   },
   dolores: [
@@ -220,6 +222,7 @@ const DEPARTAMENTOS = [
       'El porqué del mes',
       'El aviso cuando algo cambia',
     ],
+    comoVa: 'Cada fuente entra una vez y sirve para las tres: el panel la enseña, el asistente la explica y el aviso la vigila.',
     pie: 'El valor está en el cruce, así que este es el departamento donde montarlo entero cambia más las cosas: con una sola fuente no hay nada que cruzar.',
   },
   dolores: [
@@ -299,6 +302,7 @@ const DEPARTAMENTOS = [
       'Fotos y vídeos con tu marca',
       'La campaña, entera',
     ],
+    comoVa: 'La identidad se fija una vez y la respetan las cuatro, así que el vídeo y la foto del martes se parecen entre sí.',
     pie: 'La identidad se fija una vez y la respetan las cuatro. Comprándolas sueltas, cada una habría que ajustarla por separado.',
   },
   dolores: [
@@ -401,6 +405,7 @@ const DEPARTAMENTOS = [
       'La ficha, al día',
       'Las reseñas, pedidas y contestadas',
     ],
+    comoVa: 'Las páginas traen gente a la web, la web pide la reseña y la reseña sube la ficha. Es un círculo, no cuatro tareas.',
     pie: 'Las páginas de captación llevan a la web, la web pide la reseña y la reseña sube la ficha. Sueltas, cada una empuja por su lado.',
   },
   dolores: [

@@ -329,3 +329,28 @@ img, svg { max-width: 100%; display: block; }
 }
 .wa:hover { transform: scale(1.07); }
 .wa svg { width: 28px; height: 28px; fill: #fff; }
+
+
+/* ─── LAS DOS VÍAS DE CADA DEPARTAMENTO ──────────────────────────────────
+   Cada uno se vende entero o pieza a pieza, y el menú lo dice en vez de
+   obligar a entrar para enterarse. Va solo en el panel de escritorio: las
+   dos vías por siete departamentos no caben en una pantalla de teléfono, y
+   allí la fila simple lleva a la página, que empieza por la completa. */
+.nav-dep { border-radius: 10px; transition: background .15s; }
+.nav-dep:hover { background: var(--purple-tint); }
+.nav-dep .nav-item { padding-bottom: 3px; }
+.nav-dep .nav-item:hover { background: none; }
+
+.nav-dep-vias { display: flex; gap: 6px; padding: 0 12px 9px; }
+.nav-dep-vias a {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 4px 9px; border-radius: var(--r-pill);
+  background: var(--cream); border: 1px solid var(--line-soft);
+  font-size: 11.5px; font-weight: 600; color: var(--ink-2);
+  transition: background .15s, border-color .15s, color .15s;
+}
+.nav-dep-vias a:hover { background: var(--white); border-color: var(--line); color: var(--ink); }
+.nav-dep-vias i {
+  font-style: normal; font-size: 9.5px; font-weight: 700;
+  letter-spacing: .05em; text-transform: uppercase; color: var(--purple);
+}

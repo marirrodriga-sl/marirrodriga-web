@@ -804,3 +804,13 @@
 @media (max-width: 560px) {
   .herramienta { font-size: 12px; padding: 7px 12px; }
 }
+
+
+/* La frase que dice cómo se encadenan las piezas. Es lo que convierte el mapa
+   de «una lista de cosas» en «un circuito». */
+.mapa-explica {
+  margin-top: 13px; padding-top: 12px;
+  border-top: 1px solid var(--line-soft);
+  font-size: 12.5px !important; line-height: 1.55; color: var(--ink-2) !important;
+  text-align: center;
+}

@@ -75,13 +75,55 @@
     <div class="nav-grupo">
       <button class="nav-grupo-btn" type="button" aria-expanded="false" aria-controls="menu-departamentos">Departamentos</button>
       <div class="nav-panel" id="menu-departamentos">
-        <a class="nav-item" href="/atencion-al-cliente"><b>Atención al Cliente</b><span>Contesta, mira tu agenda y cierra la cita</span></a>
-        <a class="nav-item" href="/ventas-y-captacion"><b>Ventas y Captación</b><span>Busca clientes y persigue los presupuestos</span></a>
-        <a class="nav-item" href="/finanzas"><b>Finanzas</b><span>Factura sin abrir el programa y persigue lo vencido</span></a>
-        <a class="nav-item" href="/logistica"><b>Logística</b><span>Persigue al transportista y avisa antes de que pregunten</span></a>
-        <a class="nav-item" href="/datos-y-direccion"><b>Datos y Dirección</b><span>Por qué ha ido bien el mes, no solo que ha ido bien</span></a>
-        <a class="nav-item" href="/marketing"><b>Marketing</b><span>Publicaciones y newsletter con tu voz</span></a>
-        <a class="nav-item" href="/posicionamiento-online"><b>Posicionamiento Online</b><span>Que te encuentren, y que lo que vean esté bien</span></a>
+        <div class="nav-dep">
+          <a class="nav-item" href="/atencion-al-cliente"><b>Atención al Cliente</b><span>Contesta, mira tu agenda y cierra la cita</span></a>
+          <div class="nav-dep-vias">
+            <a href="/atencion-al-cliente#completo">Solución completa <i>recomendado</i></a>
+            <a href="/atencion-al-cliente#agente">Por piezas</a>
+          </div>
+        </div>
+        <div class="nav-dep">
+          <a class="nav-item" href="/ventas-y-captacion"><b>Ventas y Captación</b><span>Busca clientes y persigue los presupuestos</span></a>
+          <div class="nav-dep-vias">
+            <a href="/ventas-y-captacion#completo">Solución completa <i>recomendado</i></a>
+            <a href="/ventas-y-captacion#captacion">Por piezas</a>
+          </div>
+        </div>
+        <div class="nav-dep">
+          <a class="nav-item" href="/finanzas"><b>Finanzas</b><span>Factura sin abrir el programa y persigue lo vencido</span></a>
+          <div class="nav-dep-vias">
+            <a href="/finanzas#completo">Solución completa <i>recomendado</i></a>
+            <a href="/finanzas#piezas">Por piezas</a>
+          </div>
+        </div>
+        <div class="nav-dep">
+          <a class="nav-item" href="/logistica"><b>Logística</b><span>Persigue al transportista y avisa antes de que pregunten</span></a>
+          <div class="nav-dep-vias">
+            <a href="/logistica#completo">Solución completa <i>recomendado</i></a>
+            <a href="/logistica#piezas">Por piezas</a>
+          </div>
+        </div>
+        <div class="nav-dep">
+          <a class="nav-item" href="/datos-y-direccion"><b>Datos y Dirección</b><span>Por qué ha ido bien el mes, no solo que ha ido bien</span></a>
+          <div class="nav-dep-vias">
+            <a href="/datos-y-direccion#completo">Solución completa <i>recomendado</i></a>
+            <a href="/datos-y-direccion#piezas">Por piezas</a>
+          </div>
+        </div>
+        <div class="nav-dep">
+          <a class="nav-item" href="/marketing"><b>Marketing</b><span>Publicaciones, fotos y vídeos con tu marca</span></a>
+          <div class="nav-dep-vias">
+            <a href="/marketing#completo">Solución completa <i>recomendado</i></a>
+            <a href="/marketing#piezas">Por piezas</a>
+          </div>
+        </div>
+        <div class="nav-dep">
+          <a class="nav-item" href="/posicionamiento-online"><b>Posicionamiento Online</b><span>Que te encuentren, y que lo que vean esté bien</span></a>
+          <div class="nav-dep-vias">
+            <a href="/posicionamiento-online#completo">Solución completa <i>recomendado</i></a>
+            <a href="/posicionamiento-online#piezas">Por piezas</a>
+          </div>
+        </div>
       </div>
     </div>
     <div class="nav-grupo">
@@ -118,7 +160,7 @@
   <a class="nav-item" href="/finanzas"><b>Finanzas</b><span>Factura sin abrir el programa y persigue lo vencido</span></a>
   <a class="nav-item" href="/logistica"><b>Logística</b><span>Persigue al transportista y avisa antes de que pregunten</span></a>
   <a class="nav-item" href="/datos-y-direccion"><b>Datos y Dirección</b><span>Por qué ha ido bien el mes, no solo que ha ido bien</span></a>
-  <a class="nav-item" href="/marketing"><b>Marketing</b><span>Publicaciones y newsletter con tu voz</span></a>
+  <a class="nav-item" href="/marketing"><b>Marketing</b><span>Publicaciones, fotos y vídeos con tu marca</span></a>
   <a class="nav-item" href="/posicionamiento-online"><b>Posicionamiento Online</b><span>Que te encuentren, y que lo que vean esté bien</span></a>
   <h5>Sobre nosotros</h5>
   <a class="nav-item" href="/#quienes"><b>Quiénes somos</b><span>Marco escribe el código, Isma monta la IA</span></a>
@@ -231,6 +273,75 @@
   </div>
 </section>
 
+<!-- ─── EL DEPARTAMENTO ENTERO ───────────────────────────────────────────
+     Mismo molde que produce scripts/generar-departamentos.cjs. Esta página no
+     sale del generador (su hero es una maqueta), así que si cambia allí hay
+     que cambiarlo aquí también.
+     ────────────────────────────────────────────────────────────────────── -->
+<section class="seccion" id="completo">
+  <div class="envoltura">
+    <div class="envoltura-txt centrado" style="padding:0;margin-bottom:40px">
+      <span class="t-eyebrow">Lo que recomendamos</span>
+      <h2 class="t-h2" style="margin:14px 0 16px">El departamento entero,<br><span class="acento">montado a tu medida.</span></h2>
+      <p class="t-lead">Las siete piezas —el chat, la agenda, los recordatorios y el correo— con la misma cabeza detrás.</p>
+    </div>
+
+    <figure class="mapa aparece">
+      <div class="flujo-marco">
+        <div class="flujo-lienzo">
+          <div class="flujo-ruta">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+            Atención al Cliente <span>›</span> El montaje completo
+          </div>
+          <div class="mapa-rejilla">
+            <div class="mapa-lado">
+              <span class="mapa-titulo">Lo que entra</span>
+              <div class="flujo-nodo mapa-nodo">WhatsApp y Telegram</div>
+              <div class="flujo-nodo mapa-nodo">El chat de tu web</div>
+              <div class="flujo-nodo mapa-nodo">Tu bandeja de correo</div>
+            </div>
+            <div class="mapa-centro">
+              <div class="mapa-nucleo">
+                <span class="mapa-nucleo-et">Trabajando juntas</span>
+                <b>Atención al Cliente</b>
+                <div class="mapa-piezas">
+                  <span>El agente</span>
+                  <span>Un canal más</span>
+                  <span>Acceso a tu agenda</span>
+                  <span>Recordatorios y reseñas</span>
+                  <span>Seguimiento de pedidos</span>
+                  <span>El organizador del buzón</span>
+                  <span>Ningún correo sin dueño</span>
+                </div>
+              </div>
+              <p class="mapa-explica">No son siete programas: es uno con siete manos. El mismo que contesta el chat es el que mira la agenda y el que ordena el correo.</p>
+            </div>
+            <div class="mapa-lado">
+              <span class="mapa-titulo">Lo que sale</span>
+              <div class="flujo-nodo mapa-nodo mapa-nodo-fin">Contestado a cualquier hora</div>
+              <div class="flujo-nodo mapa-nodo mapa-nodo-fin">La cita, cerrada</div>
+              <div class="flujo-nodo mapa-nodo mapa-nodo-fin">Y lo que no le toca, en tus manos</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <figcaption>Montado entero, lo que aprende en un canal lo sabe en los demás. Comprando pieza a pieza, cada una empieza de cero.</figcaption>
+    </figure>
+
+    <div class="pack aparece">
+      <div class="pack-txt">
+        <h3>Atención al Cliente, montada entera</h3>
+        <p>Todas las piezas de abajo, conectadas entre sí y ajustadas a cómo trabajas tú. Con el alta un 30&nbsp;% por debajo de montarlas una a una.</p>
+      </div>
+      <div class="pack-precio">
+        <div class="pack-cuota">144 €<span>/mes</span></div>
+        <div class="pack-alta">330 € de instalación <s>470 €</s></div>
+        <div class="pack-nota">La cuota es la misma que sumando las piezas: lo que baja es el montaje, que es lo que de verdad se comparte.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ─── EL CHATBOT ────────────────────────────── -->
 <section class="seccion" id="agente">
   <div class="envoltura">
@@ -312,10 +423,9 @@
           </div>
           <div class="flujo-hilo" aria-hidden="true"></div>
 
-          <div class="flujo-paso flujo-paso-extra">
+          <div class="flujo-paso">
             <i class="flujo-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v14H4zM4 10h16M8 3v4M16 3v4"/></svg></i>
             Mira los huecos reales de tu agenda
-            <span class="flujo-tag">pieza aparte</span>
           </div>
           <div class="flujo-hilo flujo-hilo-corto" aria-hidden="true"></div>
 
@@ -331,8 +441,7 @@
           </div>
         </div>
       </div>
-      <figcaption>Lo que hace con cada mensaje que entra. El paso de la agenda solo
-      aparece si le enchufas esa pieza; sin ella contesta, pero no reserva.</figcaption>
+      <figcaption>Lo que hace con cada mensaje que entra: entiende, busca, mira tu agenda y cierra — o te lo pasa a ti cuando no le toca.</figcaption>
     </figure>
 
     <div class="capacidades aparece">

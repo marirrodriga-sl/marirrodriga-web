@@ -28,8 +28,8 @@ const raiz = path.join(__dirname, '..');
 const miles = n => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 
 const ANCLAS = [
-  ['#flujo', 'Cómo funciona'],
-  ['#piezas', 'Piezas y precio'],
+  ['#completo', 'La solución completa'],
+  ['#piezas', 'O por piezas'],
   ['#preguntas', 'Preguntas'],
 ];
 
@@ -58,7 +58,7 @@ const hero = p => `<header class="hero-s" style="--hero:url('/assets/img/${p.her
     <h1 class="t-h1">${esc(p.h1[0])}<br><span class="acento">${esc(p.h1[1])}</span></h1>
     <p class="t-lead">${p.lead}</p>
     <div class="hero-botones">
-      <a class="btn btn-2" href="#piezas">Ver las piezas y el precio</a>
+      <a class="btn btn-2" href="#completo">Ver la solución completa</a>
     </div>
     <p class="t-micro">Precios sin IVA, cada uno con su límite al lado. Sin permanencia.</p>
   </div>
@@ -163,6 +163,7 @@ const completo = p => {
                   ${p.piezas.map(z => `<span>${esc(z.n)}</span>`).join('\n                  ')}
                 </div>
               </div>
+              <p class="mapa-explica">${esc(k.comoVa)}</p>
             </div>
             <div class="mapa-lado">
               <span class="mapa-titulo">Lo que sale</span>
