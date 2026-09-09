@@ -20,7 +20,7 @@ const DEPARTAMENTOS = [
   archivo: 'finanzas.html', ruta: '/finanzas', hero: 'hero-finanzas.jpg',
   pill: 'Finanzas',
   titulo: 'Automatizar facturación y cobros | Marirrodriga IA',
-  descripcion: 'Facturar mandando un mensaje, perseguir las facturas vencidas y que las cuentas se ordenen solas. Desde 49 €/mes, con su límite al lado.',
+  descripcion: 'Facturar por mensaje, perseguir lo vencido y ver tu dinero explicado: caja, cobros y punto muerto. Desde 49 €/mes.',
   h1: ['Facturar sin abrir el programa.', 'Y cobrar sin perseguir.'],
   lead: 'El papeleo no se hace más rápido: se hace <strong>en otro momento</strong>, cuando ya has cerrado. Esto lo hace mientras trabajas, y te avisa solo cuando algo necesita que decidas tú.',
   dolores: [
@@ -52,9 +52,21 @@ const DEPARTAMENTOS = [
     { n: 'Conciliación de cuentas', eur: 49, setup: 200,
       d: 'Cruza lo cobrado con lo facturado, señala lo que no cuadra y persigue las partidas abiertas antes de que envejezcan.',
       lim: 'hasta 500 apuntes/mes' },
-    { n: 'Contabilidad asistida', yaExiste: true, eur: 169, setup: 650,
-      d: 'Clasifica gastos e ingresos, prepara lo del trimestre y deja a tu gestoría el trabajo hecho en vez de una carpeta.',
-      lim: 'hasta 800 apuntes/mes' },
+    /* Era «Contabilidad asistida» a 169 €/mes + 650 € y solo ordenaba para la
+       gestoría. Isma lo tumbó con un argumento que no tiene vuelta: una
+       gestoría cuesta unos 50 €/mes, así que pagar 169 para entregarle el
+       trabajo ordenado no sale a cuenta. Lo que sí sale es que además te
+       explique tu propio dinero. Se amplía el alcance, baja a 99 + 450. */
+    { n: 'Contabilidad y cuadro financiero', eur: 99, setup: 450,
+      d: 'Clasifica gastos e ingresos y, con esas mismas facturas, monta el cuadro que ningún programa pequeño te da: qué vas a cobrar, quién te hace esperar y cuánto te falta para cubrir el mes.',
+      lim: 'hasta 800 apuntes/mes · 5 indicadores',
+      lista: [
+        'Previsión de caja a 60 días, semana a semana',
+        'Días medios de cobro — y qué clientes los suben',
+        'Concentración: cuánto dependes de tu mayor cliente',
+        'Punto muerto: lo que falta por facturar este mes',
+        'Gastos recurrentes vivos y lo que llevas pagado',
+      ] },
   ],
   faq: [
     ['¿Manda la factura en mi nombre?', 'Sí, sale con tus datos y tu numeración. Pero la serie y el formato los fijamos contigo antes de empezar, y la primera semana revisas tú cada una antes de que salga.'],

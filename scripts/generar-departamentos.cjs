@@ -134,6 +134,9 @@ const piezas = p => `<section class="seccion" id="piezas">
         ${etiq}
         <h3>${esc(z.n)}</h3>
         <p>${esc(z.d)}</p>
+        ${z.lista ? `<ul class="cap-lista">
+          ${z.lista.map(x => `<li>${esc(x)}</li>`).join('\n          ')}
+        </ul>` : ''}
         <div class="cap-limite">${esc(z.lim)}</div>
         <div class="cap-precio${pre}">${z.eur} €/mes <span>· ${z.setup} € de instalación</span></div>
       </div>`;

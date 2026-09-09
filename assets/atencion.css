@@ -659,3 +659,20 @@
   .flujo-tag { display: none; }
   .flujo-horquilla { width: 80%; }
 }
+
+
+/* ─── LA LISTA DE UNA PIEZA ──────────────────────────────────────────────
+   Solo la usan las piezas donde el nombre no basta para saber qué compras.
+   La primera es la contabilidad: «cuadro financiero» no dice nada hasta que
+   ves que uno de los cinco indicadores es la previsión de caja a 60 días. */
+.cap-lista { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 7px; }
+.cap-lista li {
+  position: relative; padding-left: 19px;
+  font-size: 13.5px; line-height: 1.45; color: var(--ink-2);
+}
+.cap-lista li::before {
+  content: ''; position: absolute; left: 0; top: 7px;
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--purple); opacity: .55;
+}
+.cap-base .cap-lista li { color: var(--ink-2); }
