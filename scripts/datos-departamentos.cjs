@@ -171,9 +171,9 @@ const DEPARTAMENTOS = [
   archivo: 'datos-y-direccion.html', ruta: '/datos-y-direccion', hero: 'hero-datos.jpg',
   pill: 'Datos y Dirección',
   titulo: 'Cuadro de mando y análisis de negocio | Marirrodriga IA',
-  descripcion: 'Un panel con tus números y un informe que explica por qué ha ido así, no solo cómo ha ido. Desde 15 €/mes, con su límite al lado.',
+  descripcion: 'Tus datos juntos y cruzados, y un asistente al que preguntarle por qué ha ido así el mes. Desde 15 €/mes, con su límite al lado.',
   h1: ['Saber por qué ha ido bien.', 'No solo que ha ido bien.'],
-  lead: 'Un panel te dice que has facturado un 12 % menos. Eso no sirve de nada si no sabes qué hacer con ello. <strong>Lo que hace falta es la frase de después</strong>: por qué, y qué tocar.',
+  lead: 'Un panel te dice que has facturado un 12 % menos. Eso no sirve de nada si no sabes por qué. <strong>Y el porqué casi nunca está en un dato: está en el cruce de dos</strong> — la agenda contra la facturación, las conversaciones contra las citas.',
   dolores: [
     ['Decidir por sensación', 'Crees que el mes ha ido bien porque has estado ocupado. Estar ocupado y ganar dinero no son lo mismo, y la diferencia solo se ve en los números.'],
     ['Los números que nadie mira', 'El programa saca informes. Están ahí, y nadie los abre, porque abrirlos cuesta veinte minutos que no tienes.'],
@@ -191,18 +191,34 @@ const DEPARTAMENTOS = [
     pie: 'No es un panel más: es la explicación que normalmente tendrías que sacar tú mirando el panel.',
   },
   piezas: [
-    { n: 'Informe mensual que explica el porqué', eur: 49, setup: 150, destacada: true,
-      d: 'No la tabla: la frase. Qué ha cambiado, por qué, y qué conviene tocar. En una página que se lee en dos minutos.',
-      lim: 'un informe al mes · hasta 3 fuentes' },
-    { n: 'Panel de negocio a medida', eur: 79, setup: 300,
-      d: 'Tus números en una pantalla, con dos años de histórico. Montado sobre lo que ya usas, no sobre un programa nuevo.',
-      lim: 'hasta 5 fuentes de datos' },
+    /* Rehecho el 09-09 con el angulo de Isma. Antes eran cuatro piezas que
+       solo INFORMABAN —informe, panel, insights, avisos— y ninguna resolvia
+       nada. El valor no es el informe: es tener los datos en un sitio y
+       alguien a quien preguntarles. Se funden los avisos dentro del asistente,
+       porque depende de a que fuentes lo conectes, no es una pieza aparte. */
+    { n: 'Tus datos en un sitio', eur: 49, setup: 150, desde: true, destacada: true,
+      d: 'Lo que hoy vive en cuatro sitios —la facturación, la agenda, las conversaciones— junta y cruzada. Porque lo que vale no es cada dato por separado: es lo que sale de cruzarlos.',
+      lim: 'desde 2 fuentes · el precio sube con el volumen y con cuántas conecte',
+      nota: 'Desde 49 €/mes porque no es lo mismo una peluquería con una agenda que una distribuidora con cuatro sistemas. Se cierra contigo antes de empezar, y va escrito.',
+      lista: [
+        'Cuánto deja cada hora de agenda ocupada, y qué servicio rinde más por hora',
+        'Cuántas conversaciones hacen falta para una cita: tu conversión real',
+        'Qué días y qué horas se quedan vacíos, y lo que cuesta ese hueco',
+        'Quién repite, quién dejó de venir y cuánto valía',
+      ] },
+
+    { n: 'Un asistente al que preguntarle', eur: 49, setup: 150,
+      d: 'Le preguntas en cristiano —«¿por qué ha bajado octubre?»— y te contesta con tus números delante. No decide por ti ni te dice qué hacer: te pone el dato para que decidas tú con algo más que la sensación.',
+      lim: 'preguntas sin tope · un informe escrito al mes',
+      lista: [
+        'Pregúntale lo que quieras sobre tu negocio, cuando quieras',
+        'Un informe al mes que explica qué ha cambiado y por qué',
+        'Y si algo se sale de lo normal, te escribe el día que pasa',
+      ] },
+
     { n: 'Insights semanales', yaExiste: true, eur: 15, setup: 50,
       d: 'Un correo el lunes con cómo fue la semana. No para mirarlo cada día: para enterarte cuando algo se tuerce.',
       lim: 'un envío semanal' },
-    { n: 'Aviso cuando algo se sale de lo normal', eur: 30, setup: 100,
-      d: 'Vigila lo que le digas —caída de citas, subida de cancelaciones, un gasto raro— y te escribe el día que pasa.',
-      lim: 'hasta 8 vigilancias' },
   ],
   faq: [
     ['¿De dónde saca los datos?', 'De donde ya los tengas: tu programa de gestión, tu hoja de cálculo, tu TPV o el panel de Bookia o Dentia si los usas. No hay que meter nada dos veces.'],

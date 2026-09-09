@@ -676,3 +676,15 @@
   background: var(--purple); opacity: .55;
 }
 .cap-base .cap-lista li { color: var(--ink-2); }
+
+
+/* ─── LA NOTA QUE ACOMPAÑA A UN PRECIO CON HORQUILLA ─────────────────────
+   Un «desde 49 €/mes» sin explicar es lo que hace desconfiar. Si el precio
+   varía, se dice por qué varía y cuándo se cierra. Es lo mismo que ya se hace
+   con los límites: el número va, y al lado va su condición. */
+.cap-nota {
+  margin-top: 10px; padding-top: 10px;
+  border-top: 1px solid var(--line-soft);
+  font-size: 12.5px !important; line-height: 1.5; color: var(--ink-3) !important;
+}
+.cap-base .cap-nota { border-top-color: rgba(255,255,255,.14); }
