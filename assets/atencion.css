@@ -688,3 +688,119 @@
   font-size: 12.5px !important; line-height: 1.5; color: var(--ink-3) !important;
 }
 .cap-base .cap-nota { border-top-color: rgba(255,255,255,.14); }
+
+
+/* ─── EL MAPA DEL DEPARTAMENTO ───────────────────────────────────────────
+   Lo que entra · las piezas trabajando juntas · lo que sale. Reutiliza el
+   marco y el lienzo del diagrama de flujo, así que si cambia aquel cambian
+   los dos a la vez, que es lo que se quiere.
+
+   Tres columnas en escritorio y una sola en móvil, donde las flechas giran
+   noventa grados. */
+.mapa { margin: 0 auto 44px; max-width: 880px; }
+
+.mapa-rejilla {
+  display: grid; grid-template-columns: 1fr 1.25fr 1fr;
+  gap: clamp(14px, 2.6vw, 30px); align-items: center;
+}
+
+.mapa-lado { display: grid; gap: 9px; }
+.mapa-titulo {
+  font-size: 10.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--ink-3); margin-bottom: 3px;
+}
+.mapa-nodo { font-size: 13px; padding: 10px 13px; }
+.mapa-nodo-fin { border-color: rgba(31,157,85,.32); }
+
+/* La flecha entre columnas, dibujada con el borde de la propia columna */
+.mapa-centro { position: relative; }
+.mapa-centro::before, .mapa-centro::after {
+  content: ''; position: absolute; top: 50%; width: clamp(10px, 2vw, 22px); height: 1px;
+  background: var(--ink-4);
+}
+.mapa-centro::before { left: calc(clamp(14px, 2.6vw, 30px) * -1); }
+.mapa-centro::after  { right: calc(clamp(14px, 2.6vw, 30px) * -1); }
+
+.mapa-nucleo {
+  padding: 20px 18px; border-radius: var(--r-card);
+  background: linear-gradient(160deg, var(--purple-tint), #fff);
+  border: 1px solid rgba(124,58,237,.26);
+  box-shadow: 0 6px 18px -8px rgba(124,58,237,.35);
+  text-align: center;
+}
+.mapa-nucleo-et {
+  display: block; font-size: 10.5px; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--purple);
+}
+.mapa-nucleo b {
+  display: block; margin: 6px 0 12px;
+  font-family: var(--font-head); font-size: 22px; font-weight: 600; letter-spacing: -.015em;
+}
+.mapa-piezas { display: flex; flex-wrap: wrap; gap: 5px; justify-content: center; }
+.mapa-piezas span {
+  padding: 5px 10px; border-radius: var(--r-pill);
+  background: var(--white); border: 1px solid rgba(124,58,237,.2);
+  font-size: 11.5px; font-weight: 550; color: var(--ink-2); line-height: 1.3;
+}
+
+@media (max-width: 720px) {
+  .mapa-rejilla { grid-template-columns: 1fr; gap: 22px; }
+  .mapa-centro::before, .mapa-centro::after {
+    top: auto; left: 50%; right: auto; width: 1px; height: 12px;
+  }
+  .mapa-centro::before { top: -17px; }
+  .mapa-centro::after  { bottom: -17px; }
+}
+
+/* ─── EL BLOQUE DE PRECIO DEL PACK ───────────────────────────────────────
+   El alta tachada al lado de la nueva es lo único que enseña el ahorro sin
+   tener que explicarlo. Y la nota dice por qué la cuota NO baja: si no, el
+   que compara piensa que se le ha olvidado el descuento. */
+.pack {
+  display: grid; grid-template-columns: 1.3fr 1fr; gap: clamp(20px, 3vw, 44px);
+  align-items: center;
+  max-width: 880px; margin: 0 auto;
+  padding: clamp(24px, 3vw, 38px);
+  background: var(--ink); color: #fff;
+  border-radius: var(--r-panel); box-shadow: var(--sh-3);
+}
+.pack-txt h3 {
+  font-family: var(--font-head); font-size: clamp(24px, 2.6vw, 31px);
+  font-weight: 600; letter-spacing: -.015em; line-height: 1.15; margin-bottom: 10px;
+}
+.pack-txt p { font-size: 15px; line-height: 1.6; color: rgba(255,255,255,.76); }
+.pack-precio { text-align: right; }
+.pack-cuota { font-family: var(--font-head); font-size: clamp(38px, 4.6vw, 52px); font-weight: 600; letter-spacing: -.02em; line-height: 1; }
+.pack-cuota span { font-family: var(--font-body); font-size: 17px; font-weight: 500; color: rgba(255,255,255,.6); letter-spacing: 0; }
+.pack-alta { margin-top: 9px; font-size: 15px; font-weight: 600; color: #d8caff; }
+.pack-alta s { margin-left: 7px; font-weight: 400; color: rgba(255,255,255,.42); }
+.pack-nota { margin-top: 14px; font-size: 12.5px; line-height: 1.5; color: rgba(255,255,255,.55); }
+
+@media (max-width: 720px) {
+  .pack { grid-template-columns: 1fr; text-align: center; }
+  .pack-precio { text-align: center; }
+}
+
+
+/* ─── SOBRE QUÉ ACTÚA EL AGENTE ──────────────────────────────────────────
+   Sustituye a la fila de canales que había aquí. Aquella decía POR DÓNDE
+   habla, que es lo de menos; esta dice SOBRE QUÉ actúa, que es la diferencia
+   con un chatbot y lo que sostiene el precio. */
+.herramientas {
+  display: flex; flex-wrap: wrap; gap: 9px; justify-content: center;
+  margin-top: 30px;
+}
+.herramienta {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 9px 15px; border-radius: var(--r-pill);
+  background: rgba(255,255,255,.10); border: 1px solid rgba(255,255,255,.22);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  font-size: 13px; font-weight: 550; color: rgba(255,255,255,.9);
+}
+.herramienta svg {
+  width: 15px; height: 15px; flex: none;
+  stroke: #d8caff; fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round;
+}
+@media (max-width: 560px) {
+  .herramienta { font-size: 12px; padding: 7px 12px; }
+}

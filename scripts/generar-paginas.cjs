@@ -98,7 +98,7 @@ const nav = (anclas = ANCLAS) => `<nav class="nav">
     </div>
     ${anclas.map(([h, t]) => `<a class="nav-link" href="${h}">${t}</a>`).join('\n    ')}
   </div>
-  <a class="btn btn-1 nav-cta" href="${CAL}" target="_blank" rel="noopener">Pide una demo gratuita</a>
+  <a class="btn btn-1 nav-cta" href="${CAL}" target="_blank" rel="noopener">Pide una demo</a>
   <button class="nav-burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-movil">
     <i></i><i></i><i></i>
   </button>
@@ -113,7 +113,7 @@ const nav = (anclas = ANCLAS) => `<nav class="nav">
   ${SOBRE_MENU.map(itemDepto).join('\n  ')}
   <h5>En esta página</h5>
   ${anclas.map(([h, t]) => `<a class="nav-item" href="${h}"><b>${t}</b></a>`).join('\n  ')}
-  <a class="btn btn-1" href="${CAL}" target="_blank" rel="noopener">Pide una demo gratuita</a>
+  <a class="btn btn-1" href="${CAL}" target="_blank" rel="noopener">Pide una demo</a>
 </div>`;
 
 const hero = p => `<header class="hero-s" style="--hero:url('/assets/img/${p.hero}')">
@@ -123,7 +123,6 @@ const hero = p => `<header class="hero-s" style="--hero:url('/assets/img/${p.her
     <h1 class="t-h1">${esc(p.h1[0])}<br><span class="acento">${esc(p.h1[1])}</span></h1>
     <p class="t-lead">${p.lead}</p>
     <div class="hero-botones">
-      <a class="btn btn-1" href="${CAL}" target="_blank" rel="noopener">Asesoría gratuita de 30 min</a>
       <a class="btn btn-2" href="#precio">Ver qué cuesta</a>
     </div>
     <p class="t-micro">Precios sin IVA, cada uno con su límite al lado. Sin permanencia.</p>
@@ -182,7 +181,6 @@ const precio = (p, tramos) => `<section class="seccion" id="precio">
           ? `<div class="tramo-bonif">${t.piezas} piezas juntas · −${pct(t.bonificacion)} % ya aplicado</div>`
           : `<div class="tramo-bonif">${t.piezas} piezas${t.sueloAplicado ? ' · mínimo por solución' : ''}</div>`}
         <div class="tramo-incluye">${t.incluye.map(x => `<span>${esc(x)}</span>`).join('')}</div>
-        <a class="btn ${i === 1 ? 'btn-1' : 'btn-2'}" href="${CAL}" target="_blank" rel="noopener">Verlo en 30 min</a>
       </article>`).join('\n      ')}
     </div>
 
@@ -214,7 +212,7 @@ const cierre = p => `<section class="cierre">
     <h2 class="t-h2">Media hora, y te decimos<br>si esto te encaja.</h2>
     <p>O que no te encaja. Si con lo que ya tienes te apañas, te lo decimos en la llamada y nos ahorramos los dos el tiempo.</p>
     <div class="hero-botones">
-      <a class="btn btn-2" href="${CAL}" target="_blank" rel="noopener">Reservar la asesoría gratuita</a>
+      <a class="btn btn-2" href="${CAL}" target="_blank" rel="noopener">Pide una demo</a>
       <a class="btn btn-3" style="color:rgba(255,255,255,.6)" href="/">Ver todo lo que montamos →</a>
     </div>
   </div>

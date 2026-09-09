@@ -23,6 +23,22 @@ const DEPARTAMENTOS = [
   descripcion: 'Facturar por mensaje, perseguir lo vencido y ver tu dinero explicado: caja, cobros y punto muerto. Desde 49 €/mes.',
   h1: ['Facturar sin abrir el programa.', 'Y cobrar sin perseguir.'],
   lead: 'El papeleo no se hace más rápido: se hace <strong>en otro momento</strong>, cuando ya has cerrado. Esto lo hace mientras trabajas, y te avisa solo cuando algo necesita que decidas tú.',
+  pack: {
+    nombre: 'Finanzas, montado entero',
+    gancho: 'Las cuatro piezas trabajando juntas y ajustadas a cómo facturas tú, no a un molde.',
+    cuota: 306, alta: 840, altaSuelta: 1200,
+    entra: [
+      'Las facturas que emites',
+      'Las que te llegan',
+      'Los vencimientos',
+    ],
+    sale: [
+      'Facturado sin abrir nada',
+      'Cobrado sin perseguir',
+      'Las cuentas explicadas',
+    ],
+    pie: 'No es comprar las cuatro piezas: es montarlas conectadas entre sí, para que lo que sale de una entre en la siguiente.',
+  },
   dolores: [
     ['La factura del domingo', 'Se hacen a última hora, cuando ya no queda nadie. Y la que se olvida no la reclama nadie hasta que el cliente llama por otra cosa.'],
     ['El que no paga y nadie llama', 'La factura vence, pasa un mes, pasan dos. Reclamar da pereza y se pospone — y cuanto más tarde se reclama, menos se cobra.'],
@@ -114,6 +130,22 @@ const DEPARTAMENTOS = [
   descripcion: 'Persigue al transportista, saca la fecha real y avisa a tu cliente antes de que pregunte. Desde 30 €/mes, con su límite al lado.',
   h1: ['Deja de llamar al transportista.', 'Llama él.'],
   lead: 'La pregunta que más veces se hace en un negocio que mueve mercancía es <strong>«¿por dónde va?»</strong>. Y la respuesta cuesta dos llamadas y media mañana. Esto la consigue solo, y avisa antes de que nadie pregunte.',
+  pack: {
+    nombre: 'Logística, montada entera',
+    gancho: 'Todo lo que se mueve, seguido y avisado, sin que nadie coja el teléfono.',
+    cuota: 207, alta: 490, altaSuelta: 700,
+    entra: [
+      'Los pedidos que salen',
+      'Los transportistas',
+      'Lo que se tuerce',
+    ],
+    sale: [
+      'La fecha real, sabida',
+      'El cliente, avisado',
+      'La incidencia, cerrada',
+    ],
+    pie: 'Las cuatro piezas comparten lo que aprenden: lo que el seguimiento saca del transportista es lo que el aviso le cuenta a tu cliente.',
+  },
   dolores: [
     ['La llamada de las diez', 'Llamar al transportista para saber dónde va el pedido. Y volver a llamar porque no lo cogen. Y otra vez mañana.'],
     ['El cliente que pregunta primero', 'Te enteras del retraso porque llama el cliente enfadado, no porque lo hayas visto venir. Ya vas tarde y encima con la culpa.'],
@@ -174,6 +206,22 @@ const DEPARTAMENTOS = [
   descripcion: 'Tus datos juntos y cruzados, y un asistente al que preguntarle por qué ha ido así el mes. Desde 15 €/mes, con su límite al lado.',
   h1: ['Saber por qué ha ido bien.', 'No solo que ha ido bien.'],
   lead: 'Un panel te dice que has facturado un 12 % menos. Eso no sirve de nada si no sabes por qué. <strong>Y el porqué casi nunca está en un dato: está en el cruce de dos</strong> — la agenda contra la facturación, las conversaciones contra las citas.',
+  pack: {
+    nombre: 'Datos y Dirección, montado entero',
+    gancho: 'Tus datos juntos, un panel para verlos y alguien a quien preguntarles.',
+    cuota: 113, alta: 240, altaSuelta: 350,
+    entra: [
+      'Tu facturación',
+      'Tu agenda',
+      'Tus conversaciones',
+    ],
+    sale: [
+      'El panel al día',
+      'El porqué del mes',
+      'El aviso cuando algo cambia',
+    ],
+    pie: 'El valor está en el cruce, así que este es el departamento donde montarlo entero cambia más las cosas: con una sola fuente no hay nada que cruzar.',
+  },
   dolores: [
     ['Decidir por sensación', 'Crees que el mes ha ido bien porque has estado ocupado. Estar ocupado y ganar dinero no son lo mismo, y la diferencia solo se ve en los números.'],
     ['Los números que nadie mira', 'El programa saca informes. Están ahí, y nadie los abre, porque abrirlos cuesta veinte minutos que no tienes.'],
@@ -237,6 +285,22 @@ const DEPARTAMENTOS = [
   descripcion: 'Fotos y vídeos de tu marca, generados y publicados en la red que elijas. Desde 29 €/mes, con su límite al lado.',
   h1: ['Publicar sin que', 'te robe la semana.'],
   lead: 'No es que no sepas qué contar: es que hacer la foto, escribir el pie y subirlo cuesta una hora que no tienes, y por eso pasan tres semanas sin publicar. <strong>Esto lo hace y lo publica, con tu identidad y sin que tú abras nada.</strong>',
+  pack: {
+    nombre: 'Marketing, montado entero',
+    gancho: 'Texto, foto, vídeo y campaña, con una sola identidad y un solo calendario.',
+    cuota: 306, alta: 660, altaSuelta: 950,
+    entra: [
+      'Lo que pasa en tu negocio',
+      'Tu identidad de marca',
+      'El calendario del mes',
+    ],
+    sale: [
+      'Publicado en LinkedIn',
+      'Fotos y vídeos con tu marca',
+      'La campaña, entera',
+    ],
+    pie: 'La identidad se fija una vez y la respetan las cuatro. Comprándolas sueltas, cada una habría que ajustarla por separado.',
+  },
   dolores: [
     ['La semana sin publicar', 'Empiezas el lunes con la intención y llega el viernes sin nada. No por dejadez: por el mostrador.'],
     ['El folio en blanco', 'Sabes que hay que publicar. No sabes de qué. Y decidirlo cuesta más que escribirlo.'],
@@ -323,6 +387,22 @@ const DEPARTAMENTOS = [
   descripcion: 'Que te encuentren al buscar lo que haces, y que la web, la ficha y las reseñas estén cuidadas. Desde 30 €/mes, con su límite al lado.',
   h1: ['Que te encuentren.', 'Y que lo que vean esté bien.'],
   lead: 'Antes de escribirte, la gente te busca. Mira tu web, tu ficha de Google y lo que dicen otros. <strong>Esos tres sitios deciden si te escriben o siguen buscando</strong>, y casi nadie los cuida.',
+  pack: {
+    nombre: 'Posicionamiento, montado entero',
+    gancho: 'La web, las páginas que traen gente, la ficha y las reseñas — tirando del mismo hilo.',
+    cuota: 228, alta: 520, altaSuelta: 750,
+    entra: [
+      'Quien te busca en Google',
+      'Quien termina una cita',
+      'Tu web de hoy',
+    ],
+    sale: [
+      'Te encuentran',
+      'La ficha, al día',
+      'Las reseñas, pedidas y contestadas',
+    ],
+    pie: 'Las páginas de captación llevan a la web, la web pide la reseña y la reseña sube la ficha. Sueltas, cada una empuja por su lado.',
+  },
   dolores: [
     ['No sales al buscar lo tuyo', 'Escribes en Google lo que haces y en tu ciudad, y no apareces. Aparecen tres que lo hacen peor y una guía que cobra por listarte.'],
     ['La ficha a medias', 'Horarios viejos, dos fotos de hace cuatro años y preguntas sin contestar. Es lo primero que ve el 80 % de los que te buscan.'],

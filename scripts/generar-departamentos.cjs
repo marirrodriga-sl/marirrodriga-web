@@ -23,6 +23,10 @@ const { nav, faq, cierre, pie, esc, CAL } = require('./generar-paginas.cjs');
 
 const raiz = path.join(__dirname, '..');
 
+/* toLocaleString('es-ES') devuelve «1200» en este Node: le falta el ICU con
+   español. Se formatea a mano para no depender de cómo esté compilado. */
+const miles = n => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
 const ANCLAS = [
   ['#flujo', 'Cómo funciona'],
   ['#piezas', 'Piezas y precio'],
@@ -54,7 +58,6 @@ const hero = p => `<header class="hero-s" style="--hero:url('/assets/img/${p.her
     <h1 class="t-h1">${esc(p.h1[0])}<br><span class="acento">${esc(p.h1[1])}</span></h1>
     <p class="t-lead">${p.lead}</p>
     <div class="hero-botones">
-      <a class="btn btn-1" href="${CAL}" target="_blank" rel="noopener">Asesoría gratuita de 30 min</a>
       <a class="btn btn-2" href="#piezas">Ver las piezas y el precio</a>
     </div>
     <p class="t-micro">Precios sin IVA, cada uno con su límite al lado. Sin permanencia.</p>
@@ -117,12 +120,81 @@ const flujo = p => {
 </section>`;
 };
 
+/* ─── EL DEPARTAMENTO ENTERO ─────────────────────────────────────────────
+   Va ANTES de las piezas sueltas, por decisión de Isma: el primer producto
+   que se enseña es el completo, y las piezas quedan para quien solo quiere
+   una parte.
+
+   El precio, tal y como lo fijó: la cuota NO lleva descuento —es la suma de
+   las piezas— y el alta lleva un 30 %. Tiene sentido: el ahorro real de
+   montarlo todo a la vez está en el montaje, que se comparte, no en el
+   servicio mensual, que no.
+
+   El mapa es HTML por lo mismo que el diagrama de flujo: es todo texto, se
+   corrige en una línea y pesa 2 KB. */
+const completo = p => {
+  const k = p.pack;
+  const dto = Math.round((1 - k.alta / k.altaSuelta) * 100);
+  return `<section class="seccion" id="completo">
+  <div class="envoltura">
+    <div class="envoltura-txt centrado" style="padding:0;margin-bottom:40px">
+      <span class="t-eyebrow">Lo que recomendamos</span>
+      <h2 class="t-h2" style="margin:14px 0 16px">El departamento entero,<br><span class="acento">montado a tu medida.</span></h2>
+      <p class="t-lead">${esc(k.gancho)}</p>
+    </div>
+
+    <figure class="mapa aparece">
+      <div class="flujo-marco">
+        <div class="flujo-lienzo">
+          <div class="flujo-ruta">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+            ${esc(p.pill)} <span>›</span> El montaje completo
+          </div>
+          <div class="mapa-rejilla">
+            <div class="mapa-lado">
+              <span class="mapa-titulo">Lo que entra</span>
+              ${k.entra.map(x => `<div class="flujo-nodo mapa-nodo">${esc(x)}</div>`).join('\n              ')}
+            </div>
+            <div class="mapa-centro">
+              <div class="mapa-nucleo">
+                <span class="mapa-nucleo-et">Trabajando juntas</span>
+                <b>${esc(p.pill)}</b>
+                <div class="mapa-piezas">
+                  ${p.piezas.map(z => `<span>${esc(z.n)}</span>`).join('\n                  ')}
+                </div>
+              </div>
+            </div>
+            <div class="mapa-lado">
+              <span class="mapa-titulo">Lo que sale</span>
+              ${k.sale.map(x => `<div class="flujo-nodo mapa-nodo mapa-nodo-fin">${esc(x)}</div>`).join('\n              ')}
+            </div>
+          </div>
+        </div>
+      </div>
+      <figcaption>${esc(k.pie)}</figcaption>
+    </figure>
+
+    <div class="pack aparece">
+      <div class="pack-txt">
+        <h3>${esc(k.nombre)}</h3>
+        <p>Todas las piezas de abajo, conectadas entre sí y ajustadas a cómo trabajas tú. Con el alta un ${dto}&nbsp;% por debajo de montarlas una a una.</p>
+      </div>
+      <div class="pack-precio">
+        <div class="pack-cuota">${k.cuota} €<span>/mes</span></div>
+        <div class="pack-alta">${miles(k.alta)} € de instalación <s>${miles(k.altaSuelta)} €</s></div>
+        <div class="pack-nota">La cuota es la misma que sumando las piezas: lo que baja es el montaje, que es lo que de verdad se comparte.</div>
+      </div>
+    </div>
+  </div>
+</section>`;
+};
+
 const piezas = p => `<section class="seccion" id="piezas">
   <div class="envoltura">
     <div class="envoltura-txt centrado" style="padding:0">
       <span class="t-eyebrow">Las piezas</span>
-      <h2 class="t-h2" style="margin:14px 0 16px">Se empieza por una.<br><span class="acento">Y solo crece si funciona.</span></h2>
-      <p class="t-lead">Cada pieza con su precio y su límite al lado. No hay paquete mínimo ni permanencia: montas la que te duela y ya veremos si hace falta una segunda.</p>
+      <h2 class="t-h2" style="margin:14px 0 16px">O solo la pieza<br><span class="acento">que te duela.</span></h2>
+      <p class="t-lead">Si no quieres el departamento entero, cada pieza se vende suelta con su precio y su límite al lado. Sin paquete mínimo y sin permanencia.</p>
     </div>
     <div class="capacidades aparece">
       ${p.piezas.map(z => {
@@ -208,6 +280,8 @@ ${hero(p)}
 ${dolores(p)}
 
 ${flujo(p)}
+
+${completo(p)}
 
 ${piezas(p)}
 
