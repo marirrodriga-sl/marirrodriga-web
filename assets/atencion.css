@@ -939,55 +939,72 @@
 
 /* ─── MAQUETAS EN EL DESGLOSE ────────────────────────────────────────────
    Algunas piezas no son una escena, son una pantalla: la reseña, la ficha,
-   la web, el correo del lunes. Fotografiar la habitación donde pasan no
-   cuenta nada, y generarlas con IA sale con el texto reventado —además de
-   ser una captura falsa de un producto que no es nuestro.
+   la web, el correo del lunes. Fotografiar la habitación donde ocurren no
+   cuenta nada, y generarlas con IA sale con el texto reventado.
 
-   Así que van dibujadas. Ocupan el mismo hueco que la foto y respetan el
-   4:3 para que la alternancia izquierda/derecha no se descuadre. No imitan
-   la interfaz de nadie: es nuestra manera de enseñarlo.
+   Van dibujadas, en el mismo hueco que la foto y con el mismo 4:3 para que
+   la alternancia izquierda/derecha no se descuadre.
    ───────────────────────────────────────────────────────────────────────── */
 .desglose-maqueta {
   aspect-ratio: 4 / 3;
-  display: grid; align-content: center; gap: 12px;
-  padding: 22px;
+  display: grid; align-content: center;
+  padding: 20px;
   background: linear-gradient(160deg, var(--cream) 0%, var(--cream-deep) 100%);
   border: 1px solid var(--line-soft);
   overflow: hidden;
 }
-.mq { display: grid; gap: 12px; font-size: 12.5px; line-height: 1.45; }
 
-/* El mensaje que abre la conversación, y lo que contesta el cliente */
-.mq-chat { display: grid; gap: 6px; justify-items: start; }
-.mq-burbuja { max-width: 84%; padding: 9px 13px; border-radius: 14px; }
-.mq-nuestra { background: var(--white); border: 1px solid var(--line-soft); border-bottom-left-radius: 4px; color: var(--ink-2); }
-.mq-suya { justify-self: end; background: var(--purple-tint); border: 1px solid #e4dcff; border-bottom-right-radius: 4px; color: var(--ink); }
-
-/* La reseña, con la respuesta colgando debajo */
-.mq-ficha {
-  padding: 14px 15px; border-radius: var(--r-card);
-  background: var(--white); border: 1px solid var(--line);
-  box-shadow: 0 6px 18px -12px rgba(10,8,16,.35);
+/* ─── El panel de reseñas ──────────────────────────────────────────────────
+   Se imita el de Google porque es lo que el lector reconoce sin leer nada.
+   El negocio es inventado a propósito: ver más arriba, en la pieza. */
+.mq-google {
+  display: grid; gap: 11px;
+  padding: 15px 16px; border-radius: 12px;
+  background: #fff; border: 1px solid #dadce0;
+  box-shadow: 0 8px 22px -14px rgba(10,8,16,.4);
+  font-family: var(--font-body); font-size: 12.5px; line-height: 1.45;
+  color: #202124;
 }
-.mq-cab { display: flex; align-items: center; gap: 10px; margin-bottom: 9px; }
-.mq-avatar {
-  width: 30px; height: 30px; flex: none; border-radius: var(--r-pill);
+.mq-g-cab { display: flex; align-items: center; gap: 10px; }
+.mq-g-logo { width: 22px; height: 22px; flex: none; }
+.mq-g-cab b { display: block; font-size: 13.5px; font-weight: 600; letter-spacing: -.01em; }
+.mq-g-cab span { display: block; font-size: 11.5px; color: #5f6368; }
+
+/* La nota media y el reparto por estrellas, uno al lado del otro */
+.mq-g-nota {
+  display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: center;
+  padding-bottom: 11px; border-bottom: 1px solid #e8eaed;
+}
+.mq-g-cifra { text-align: center; }
+.mq-g-cifra b { display: block; font-size: 30px; font-weight: 400; line-height: 1.05; }
+.mq-g-cifra i { display: block; font-style: normal; font-size: 11px; color: #5f6368; margin-top: 1px; }
+.mq-g-estrellas { color: #fbbc04; font-size: 12.5px; letter-spacing: .5px; }
+.mq-g-mini { font-size: 10.5px; }
+
+.mq-g-barras { display: grid; grid-template-columns: auto 1fr; gap: 3px 7px; align-items: center; }
+.mq-g-barras span { font-size: 10.5px; color: #5f6368; }
+.mq-g-barras b { display: block; height: 7px; border-radius: 4px; background: #e8eaed; overflow: hidden; }
+.mq-g-barras i { display: block; height: 100%; background: #fbbc04; }
+
+.mq-g-quien { display: flex; align-items: center; gap: 9px; margin-bottom: 7px; }
+.mq-g-avatar {
+  width: 28px; height: 28px; flex: none; border-radius: 999px;
   display: grid; place-items: center;
-  background: var(--purple); color: #fff; font-weight: 700; font-size: 13px;
+  background: #7C3AED; color: #fff; font-weight: 600; font-size: 12.5px;
 }
-.mq-cab b { display: block; font-size: 13px; color: var(--ink); letter-spacing: -.01em; }
-.mq-estrellas { display: block; font-size: 11.5px; color: #f0a020; letter-spacing: .08em; }
-.mq-estrellas i { font-style: normal; color: var(--ink-4); letter-spacing: 0; margin-left: 4px; }
-.mq-texto { color: var(--ink-2); }
-.mq-respuesta {
-  margin: 11px -15px -14px; padding: 11px 15px;
-  border-top: 1px solid var(--line-soft); background: var(--cream);
-  border-radius: 0 0 var(--r-card) var(--r-card);
+.mq-g-quien b { display: block; font-size: 12.5px; font-weight: 600; }
+.mq-g-quien > div > span { display: block; font-size: 10.5px; color: #5f6368; }
+.mq-g-resena > p { color: #3c4043; }
+
+/* La respuesta es lo que de verdad vende la pieza: se separa para que se vea
+   que la escribe el negocio, no el cliente */
+.mq-g-respuesta {
+  margin-top: 9px; padding: 9px 11px;
+  border-left: 3px solid #dadce0; background: #f8f9fa; border-radius: 0 8px 8px 0;
 }
-.mq-respuesta b { display: block; font-size: 10.5px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--ink-4); margin-bottom: 4px; }
-.mq-respuesta p { color: var(--ink-2); }
+.mq-g-respuesta b { display: block; font-size: 10.5px; font-weight: 600; color: #5f6368; margin-bottom: 3px; }
+.mq-g-respuesta p { color: #3c4043; }
 
 @media (max-width: 620px) {
-  .desglose-maqueta { aspect-ratio: auto; padding: 16px; }
-  .mq { font-size: 12px; }
+  .desglose-maqueta { aspect-ratio: auto; padding: 14px; }
 }

@@ -491,28 +491,59 @@ const DEPARTAMENTOS = [
       lim: 'una ficha · revisión semanal' },
 
     { n: 'Reseñas: pedirlas y contestarlas', eur: 30, setup: 100,
-      /* Maqueta, no foto. Esta pieza ES la reseña: una foto del local donde
-         pasa no cuenta nada, y una reseña de Google generada con IA sale con
-         el texto reventado —además de ser una captura falsa de un producto
-         que no es nuestro. Dibujada por nosotros: texto legible, cero
-         créditos, y se ve de qué va sin leer el párrafo de al lado. */
-      maqueta: `<div class="mq mq-resenas">
-        <div class="mq-chat">
-          <p class="mq-burbuja mq-nuestra">¿Qué tal fue ayer con Marta? Si tienes veinte segundos, nos ayuda mucho saberlo.</p>
-          <p class="mq-burbuja mq-suya">Genial, muy contenta</p>
+      /* Maqueta, no foto. Esta pieza ES la resena: fotografiar la peluqueria
+         donde pasa no contaba nada, y una resena generada con IA sale con el
+         texto reventado. Se imita el panel de Google porque es lo que el
+         lector reconoce de un vistazo — pero el negocio es INVENTADO.
+
+         Y ahi esta la linea, que conviene dejar escrita para el proximo que
+         lo toque: poner aqui a Marirrodriga con una nota media y comentarios
+         que no existen seria una resena falsa de una empresa real, en el
+         sitio donde el visitante espera la de verdad. Ley 3/1991 de
+         Competencia Desleal y el articulo de resenas falsas que la reforma
+         de 2022 metio en la LGDCU. Con un negocio de ejemplo no se afirma
+         nada de nadie y se entiende igual. */
+      maqueta: `<div class="mq-google">
+        <div class="mq-g-cab">
+          <svg class="mq-g-logo" viewBox="0 0 48 48" aria-hidden="true">
+            <path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/>
+            <path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/>
+            <path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24s.85 6.91 2.34 9.88l7.35-5.7z"/>
+            <path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/>
+          </svg>
+          <div>
+            <b>Clínica Dental Arenal</b>
+            <span>Reseñas</span>
+          </div>
         </div>
-        <div class="mq-ficha">
-          <div class="mq-cab">
-            <span class="mq-avatar">L</span>
+
+        <div class="mq-g-nota">
+          <div class="mq-g-cifra">
+            <b>4,8</b>
+            <span class="mq-g-estrellas">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <i>127 reseñas</i>
+          </div>
+          <div class="mq-g-barras">
+            <span>5</span><b><i style="width:88%"></i></b>
+            <span>4</span><b><i style="width:9%"></i></b>
+            <span>3</span><b><i style="width:2%"></i></b>
+            <span>2</span><b><i style="width:1%"></i></b>
+            <span>1</span><b><i style="width:0%"></i></b>
+          </div>
+        </div>
+
+        <div class="mq-g-resena">
+          <div class="mq-g-quien">
+            <span class="mq-g-avatar">L</span>
             <div>
               <b>Lucía R.</b>
-              <span class="mq-estrellas" aria-label="Cinco estrellas">★★★★★ <i>hace 2 días</i></span>
+              <span><span class="mq-g-estrellas mq-g-mini">&#9733;&#9733;&#9733;&#9733;&#9733;</span> hace 2 días</span>
             </div>
           </div>
-          <p class="mq-texto">Puntualísimos y me explicaron todo antes de empezar. Se nota que se lo curran. Repetiré seguro.</p>
-          <div class="mq-respuesta">
-            <b>Respuesta del negocio</b>
-            <p>Gracias, Lucía. Se lo decimos a Marta, que se va a alegrar. ¡Nos vemos en la próxima!</p>
+          <p>Puntualísimos y me explicaron todo antes de empezar. Se nota que se lo curran.</p>
+          <div class="mq-g-respuesta">
+            <b>Respuesta del propietario</b>
+            <p>Gracias, Lucía. Se lo decimos a Marta, que se va a alegrar.</p>
           </div>
         </div>
       </div>`,
