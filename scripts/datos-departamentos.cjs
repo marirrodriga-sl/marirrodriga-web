@@ -174,6 +174,8 @@ const DEPARTAMENTOS = [
   },
   piezas: [
     { n: 'Seguimiento de entregas', eur: 79, setup: 250, destacada: true,
+      foto: 'pz-log-entregas.jpg',
+      fotoAlt: 'La oficina de un almacen: el pincho de albaranes, el escaner de codigos y la pizarra de rutas junto a la ventana del muelle',
       d: 'Persigue a cada transportista hasta sacarle la fecha real, lo apunta y te avisa solo de lo que se ha torcido.',
       lim: 'hasta 400 envíos/mes' },
     /* Choca de nombre con «Módulo · Seguimiento de pedidos» de Atención
@@ -186,6 +188,8 @@ const DEPARTAMENTOS = [
            ahí los 100 € de alta.
        Se pueden tener los dos y se complementan; tener solo uno también vale. */
     { n: 'Avisar antes de que pregunten', eur: 30, setup: 100,
+      foto: 'pz-log-avisos.jpg',
+      fotoAlt: 'Una mano con el movil escribiendo un mensaje delante de un palet ya retractilado, con la persiana del muelle abierta',
       d: 'Cuando hay fecha, se la manda al cliente. Cuando cambia, se lo cuenta. No espera a que pregunte: ese es todo el truco, y es la llamada que te ahorras.',
       lim: 'hasta 800 avisos/mes',
       lista: [
@@ -193,9 +197,13 @@ const DEPARTAMENTOS = [
         'Si además lo tienes, aquel contesta al que pregunta y este avisa antes',
       ] },
     { n: 'Citas de carga y descarga', eur: 49, setup: 150,
+      foto: 'pz-log-citas.jpg',
+      fotoAlt: 'Un camion dado marcha atras contra el porton de una nave, con los palets esperando fuera sobre el asfalto mojado',
       d: 'Cuadra la hora con el transportista y con tu almacén, confirma a los dos y avisa si uno se cae.',
       lim: 'hasta 200 citas/mes' },
     { n: 'Gestión de incidencias', eur: 49, setup: 200,
+      foto: 'pz-log-incidencias.jpg',
+      fotoAlt: 'Una caja de carton reventada en el suelo del almacen, con el producto abollado dentro y el albaran encima',
       d: 'Cuando algo se rompe, se pierde o llega mal: recoge lo que ha pasado, abre el parte y persigue la resolución.',
       lim: 'hasta 150 incidencias/mes' },
   ],
@@ -256,6 +264,8 @@ const DEPARTAMENTOS = [
        alguien a quien preguntarles. Se funden los avisos dentro del asistente,
        porque depende de a que fuentes lo conectes, no es una pieza aparte. */
     { n: 'Tus datos en un sitio', eur: 49, setup: 150, desde: true, destacada: true,
+      foto: 'pz-dat-fuentes.jpg',
+      fotoAlt: 'Dos monitores con dos programas distintos en la mesa de una oficina pequena, rodeados de papeles y un libro de registro',
       d: 'Lo que hoy vive en cuatro sitios —la facturación, la agenda, las conversaciones— junta y cruzada. Porque lo que vale no es cada dato por separado: es lo que sale de cruzarlos.',
       lim: 'desde 2 fuentes · el precio sube con el volumen y con cuántas conecte',
       nota: 'Desde 49 €/mes porque no es lo mismo una peluquería con una agenda que una distribuidora con cuatro sistemas. Se cierra contigo antes de empezar, y va escrito.',
@@ -267,6 +277,8 @@ const DEPARTAMENTOS = [
       ] },
 
     { n: 'Un asistente al que preguntarle', eur: 49, setup: 150,
+      foto: 'pz-dat-asistente.jpg',
+      fotoAlt: 'Un mecanico consulta el movil en el banco de trabajo, con un taco de hojas de servicio en la otra mano',
       d: 'Le preguntas en cristiano —«¿por qué ha bajado octubre?»— y te contesta con tus números delante. No decide por ti ni te dice qué hacer: te pone el dato para que decidas tú con algo más que la sensación.',
       lim: 'preguntas sin tope · un informe escrito al mes',
       lista: [
@@ -276,6 +288,8 @@ const DEPARTAMENTOS = [
       ] },
 
     { n: 'Insights semanales', yaExiste: true, eur: 15, setup: 50,
+      foto: 'pz-dat-insights.jpg',
+      fotoAlt: 'Un movil apoyado en el cafe sobre la barra de un bar de barrio, con el correo abierto en la pantalla',
       d: 'Un correo el lunes con cómo fue la semana. No para mirarlo cada día: para enterarte cuando algo se tuerce.',
       lim: 'un envío semanal' },
   ],
@@ -345,6 +359,8 @@ const DEPARTAMENTOS = [
        son lo único de la web que depende de un proveedor. */
 
     { n: 'Publicación automática en LinkedIn', eur: 29, setup: 100,
+      foto: 'pz-mkt-linkedin.jpg',
+      fotoAlt: 'Un portatil abierto en un despacho de poligono, con la persiana veneciana y la mesa vacia alrededor',
       d: 'La red donde tener presencia cuesta menos y rinde más si eres B2B. Escribe y publica con tu voz a partir de lo que pasa en tu negocio. Sin imagen generada: texto, que es lo que funciona ahí.',
       lim: 'hasta 20 publicaciones/mes · solo LinkedIn',
       lista: [
@@ -354,6 +370,8 @@ const DEPARTAMENTOS = [
       ] },
 
     { n: 'Fotos de marca, publicadas', eur: 49, setup: 150, destacada: true,
+      foto: 'pz-mkt-fotos.jpg',
+      fotoAlt: 'Una mano fotografiando con el movil un producto colocado sobre el mostrador de una tienda de barrio',
       d: 'Genera la imagen con tu identidad —tus colores, tu tipo de escena— y la publica en la red que elijas. No banco de imágenes: fotos hechas para ti y para lo que estás contando ese día.',
       lim: 'hasta 20 fotos/mes · una red incluida',
       nota: 'Cada red de más, +10 €/mes. El límite sale del coste real de generar: 20 imágenes son unos 3 € de los 49, y así el precio aguanta sin sorpresas.',
@@ -364,6 +382,8 @@ const DEPARTAMENTOS = [
       ] },
 
     { n: 'Vídeos cortos, publicados', eur: 79, setup: 250,
+      foto: 'pz-mkt-videos.jpg',
+      fotoAlt: 'Un movil sujeto en un tripode barato con un aro de luz al lado, sobre la mesa de una trastienda',
       d: 'De cinco a diez segundos, en vertical, para lo que hoy más se ve: reels y stories. Se genera, se monta y se publica en la red que elijas.',
       lim: 'hasta 8 vídeos de 5 a 10 s al mes · una red incluida',
       nota: 'Ocho vídeos son unos 16 € de generación de los 79. Por eso son ocho y no veinte: el vídeo cuesta diez veces más que una foto y decirlo es más honesto que prometer de más.',
@@ -374,6 +394,8 @@ const DEPARTAMENTOS = [
       ] },
 
     { n: 'Campañas: diseño y publicación', eur: 149, setup: 450,
+      foto: 'pz-mkt-campanas.jpg',
+      fotoAlt: 'Un planificador mensual pegado a la pared de una oficina, cubierto de posits de colores y aspas de rotulador',
       d: 'Una campaña no son publicaciones sueltas: es una idea contada por partes durante unas semanas. Se diseña, se produce entera y se publica con su calendario.',
       lim: 'una campaña al mes · hasta 12 piezas entre fotos y vídeos · 2 redes',
       lista: [
@@ -440,6 +462,8 @@ const DEPARTAMENTOS = [
        gobierna— y la segunda es solo la cara que ve el visitante. Sin decirlo,
        parecían la misma cosa a dos precios. */
     { n: 'Tu web, con panel para llevarla tú', yaExiste: true, eur: 119, setup: 400,
+      foto: 'pz-pos-web.jpg',
+      fotoAlt: 'La pantalla del mostrador de recepcion de un negocio pequeno con una pagina web abierta, junto al datafono y la agenda',
       d: 'Una web de verdad, no una plantilla con tu logo: la parte que ve el cliente y el panel desde el que la llevas tú. Cambiar textos, ver quién ha escrito, mirar qué funciona — sin llamar a nadie y sin pagar por cada cambio.',
       lim: 'una web · panel incluido · formulario conectado a tu sistema',
       lista: [
@@ -449,6 +473,8 @@ const DEPARTAMENTOS = [
       ] },
 
     { n: 'Páginas de captación por sector y zona', eur: 49, setup: 150, destacada: true,
+      foto: 'pz-pos-captacion.jpg',
+      fotoAlt: 'El movil en el soporte del salpicadero de una furgoneta de trabajo, con una busqueda abierta y la calle delante',
       d: 'Una página por cada cosa que tu cliente busca de verdad en Google, apuntando a su sector y a su zona. No un blog: páginas hechas para traer a quien ya quiere comprar.',
       lim: 'hasta 12 páginas · sin panel',
       nota: 'Estas son solo la cara: traen y captan, pero no se gobiernan desde un panel. Si lo que quieres es una web que además lleves tú, esa es la pieza de arriba.',
@@ -459,10 +485,14 @@ const DEPARTAMENTOS = [
       ] },
 
     { n: 'Ficha de Google al día', eur: 30, setup: 100,
+      foto: 'pz-pos-ficha.jpg',
+      fotoAlt: 'El escaparate de una tienda de barrio abierta, con el horario en vinilo en el cristal y el caballete en la acera',
       d: 'Horarios, fotos, servicios y las preguntas que la gente deja sin contestar. Es el escaparate que más gente ve antes de escribirte, y el que menos se cuida.',
       lim: 'una ficha · revisión semanal' },
 
     { n: 'Reseñas: pedirlas y contestarlas', eur: 30, setup: 100,
+      foto: 'pz-pos-resenas.jpg',
+      fotoAlt: 'El mostrador de una peluqueria recien vaciado: el movil con la conversacion, el datafono con el ticket colgando y el peine',
       d: 'Un agente escribe al cliente cuando termina su cita y le pregunta qué tal fue. Si fue bien, le pasa el enlace de Google. Si fue mal, te avisa a ti antes de que lo publique. Y las que ya están publicadas, las contesta.',
       lim: 'hasta 300 peticiones/mes · respuestas sin tope',
       nota: 'Si llevas tu agenda con Bookia o Dentia, pedir reseñas ya te lo hace su pieza de recordatorios por 15 y 10 €/mes. Esta es para quien lleva la agenda en otro sitio — y para contestar, que aquellas no hacen.',
