@@ -171,9 +171,9 @@
       "base": null,
       "eur": 5,
       "setup": 30,
-      "limite": "1 canal por unidad · comparte el volumen de conversaciones del chatbot",
+      "limite": "1 canal por unidad · comparte el volumen de conversaciones del agente",
       "canales": "WhatsApp, Telegram o Instagram",
-      "integra": "el mismo del chatbot",
+      "integra": "el mismo del agente",
       "excluye": "la cuenta de WhatsApp es del cliente y Meta le factura a él directamente"
     },
     {
@@ -184,9 +184,9 @@
       "base": null,
       "eur": 15,
       "setup": 100,
-      "limite": "comparte el volumen de conversaciones del chatbot",
+      "limite": "comparte el volumen de conversaciones del agente",
       "canales": "teléfono",
-      "integra": "el mismo cerebro y los mismos datos que el chatbot de texto",
+      "integra": "el mismo cerebro y los mismos datos que el agente de texto",
       "excluye": "la telefonía y los minutos van a tu nombre y a tu cargo, como la cuenta de WhatsApp"
     },
     {

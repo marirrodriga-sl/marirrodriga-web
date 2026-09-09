@@ -46,8 +46,10 @@ const DEPTOS_MENU = [
   ['Atención al Cliente', '/atencion-al-cliente', 'Contesta, mira tu agenda y cierra la cita'],
   ['Ventas y Captación', '/ventas-y-captacion', 'Busca clientes y persigue los presupuestos'],
   ['Finanzas', null, 'Próximamente'],
+  ['Logística', null, 'Próximamente'],
   ['Datos y Dirección', null, 'Próximamente'],
-  ['Marketing y Presencia', null, 'Próximamente'],
+  ['Marketing', null, 'Próximamente'],
+  ['Posicionamiento Online', null, 'Próximamente'],
 ];
 
 /* Rutas absolutas a la home: desde una landing tienen que llevar allí y bajar */
@@ -236,8 +238,10 @@ const pie = () => `<footer class="pie">
           <a href="/atencion-al-cliente">Atención al Cliente</a>
           <a href="/ventas-y-captacion">Ventas y Captación</a>
           <span style="opacity:.35">Finanzas</span>
+          <span style="opacity:.35">Logística</span>
           <span style="opacity:.35">Datos y Dirección</span>
           <span style="opacity:.35">Marketing</span>
+          <span style="opacity:.35">Posicionamiento Online</span>
         </div>
         <div class="pie-col">
           <h4>Contacto</h4>

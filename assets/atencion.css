@@ -511,3 +511,38 @@
   .escena { flex-direction: column; align-items: center; gap: 22px; }
   .bandeja { position: static; width: min(340px, 100%); transform: none; }
 }
+
+
+/* ─── «ESTO NO ES UN CHATBOT» ────────────────────────────────────────────
+   El bloque que dice en qué se diferencia de lo que el cliente ya ha visto.
+   Va antes de las piezas a propósito: primero se deshace el prejuicio, y solo
+   después se enseña el catálogo y el precio.
+
+   Panel con filo morado a la izquierda, no tarjeta oscura: en esta página ya
+   hay un bloque de tinta al final (la llamada) y dos compiten. */
+.no-es-bot {
+  max-width: 720px; margin: 0 auto 52px;
+  padding: 30px 34px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--purple);
+  border-radius: 6px var(--r-card) var(--r-card) 6px;
+  box-shadow: var(--sh-1);
+}
+.no-es-bot h3 {
+  font-family: var(--font-head); font-size: 27px; font-weight: 600;
+  letter-spacing: -.015em; margin-bottom: 14px;
+}
+.no-es-bot p { font-size: 15.5px; line-height: 1.68; color: var(--ink-2); }
+.no-es-bot p + p { margin-top: 13px; }
+.no-es-bot strong { color: var(--ink); font-weight: 650; }
+.no-es-bot-cierre {
+  margin-top: 18px !important; padding-top: 15px;
+  border-top: 1px solid var(--line-soft);
+  font-weight: 600; color: var(--ink) !important;
+}
+
+@media (max-width: 620px) {
+  .no-es-bot { padding: 24px 22px; }
+  .no-es-bot h3 { font-size: 23px; }
+}

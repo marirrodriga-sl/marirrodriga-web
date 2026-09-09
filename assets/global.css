@@ -238,9 +238,12 @@
    ───────────────────────────────────────────────────────────────────────── */
 .serv-foto {
   width: calc(100% + 64px);
+  /* El reset de base.css pone max-width:100% a toda imagen y le comía los
+     64 px de más: la foto se quedaba corta por la derecha. */
+  max-width: none;
   margin: -34px -32px 22px;
   aspect-ratio: 3 / 2; height: auto;
-  object-fit: cover;
+  object-fit: cover; object-position: center 42%;
   transition: transform .5s cubic-bezier(.2,.8,.3,1);
 }
 .serv-viva:hover .serv-foto { transform: scale(1.035); }
