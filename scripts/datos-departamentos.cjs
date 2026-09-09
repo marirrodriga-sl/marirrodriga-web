@@ -85,7 +85,7 @@ const DEPARTAMENTOS = [
        El precio escala por volumen, pero el tramo de entrada va público —si
        no, se rompe la promesa de «precio y límite al lado», que es media
        marca. */
-    { n: 'Fichas listas para validar', eur: 149, setup: 600,
+    { n: 'Fichas listas para validar', eur: 149, setup: 600, fueraDelPack: true,
       d: 'El paso siguiente, cuando la persecución ya funciona: lo que llega se lee, se ordena por cliente y se deja preparado para una sola revisión humana. Se cierra el trámite mirando una ficha, no una carpeta.',
       lim: 'desde 500 documentos/mes · escala por tramos',
       lista: [

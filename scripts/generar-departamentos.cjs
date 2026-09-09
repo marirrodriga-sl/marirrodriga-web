@@ -79,61 +79,26 @@ const dolores = p => `<section class="seccion">
 /* El diagrama. Va en HTML y no en imagen porque es todo texto: el de una
    imagen ni se busca, ni lo lee un lector de pantalla, ni se corrige cuando
    cambia un producto. Y pesa 3 KB en vez de 200. */
-const flujo = p => {
-  const f = p.flujo;
-  return `<section class="seccion seccion-cream" id="flujo">
-  <div class="envoltura">
-    <div class="envoltura-txt centrado" style="padding:0;margin-bottom:44px">
-      <span class="t-eyebrow">Cómo funciona</span>
-      <h2 class="t-h2" style="margin:14px 0 16px">Esto es lo que hace,<br><span class="acento">paso por paso.</span></h2>
-      <p class="t-lead">Sin cajas negras: cada paso está aquí, y cada uno se puede cambiar. Si algo no encaja con cómo trabajas, se ajusta antes de montarlo.</p>
-    </div>
-    <figure class="flujo aparece">
-      <div class="flujo-marco">
-        <div class="flujo-lienzo">
-          <div class="flujo-ruta">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
-            ${esc(f.ruta).replace('›', '<span>›</span>')}
-          </div>
+/* ─── LA SOLUCIÓN COMPLETA ───────────────────────────────────────────────
+   Reordenado el 09-09 con el criterio de Isma: hasta entonces las piezas
+   sueltas ocupaban más página que la solución completa, que es justo lo que
+   queremos vender. Ahora la página vende UNA cosa —el departamento entero— y
+   las piezas sueltas quedan al final, en una tabla, para quien las busque.
 
-          <div class="flujo-disparadores">
-            ${f.disparadores.map(([k, t]) =>
-              `<div class="flujo-nodo flujo-disp">${ico(k)}${esc(t)}</div>`).join('\n            ')}
-          </div>
+   El orden importa y es deliberado:
+     1. el mapa      · qué entra, qué sale y cómo se encadena
+     2. el desglose  · qué hace cada parte, SIN precio
+     3. el precio    · una sola vez, cuando ya sabes qué estás comprando
 
-          <div class="flujo-horquilla" aria-hidden="true"></div>
-
-          ${f.pasos.map(([k, t], i) =>
-            `<div class="flujo-paso">${ico(k)}${esc(t)}</div>
-          <div class="flujo-hilo${i === f.pasos.length - 1 ? ' flujo-hilo-corto' : ''}" aria-hidden="true"></div>`
-          ).join('\n          ')}
-
-          <div class="flujo-bifurca">
-            ${f.fin.map(([k, t]) =>
-              `<div class="flujo-nodo flujo-fin flujo-fin-${k === 'ok' ? 'ok' : 'humano'}">${ico(k, ' flujo-ico-' + (k === 'ok' ? 'ok' : 'humano'))}${esc(t)}</div>`).join('\n            ')}
-          </div>
-        </div>
-      </div>
-      <figcaption>${esc(f.pie)}</figcaption>
-    </figure>
-  </div>
-</section>`;
-};
-
-/* ─── EL DEPARTAMENTO ENTERO ─────────────────────────────────────────────
-   Va ANTES de las piezas sueltas, por decisión de Isma: el primer producto
-   que se enseña es el completo, y las piezas quedan para quien solo quiere
-   una parte.
-
-   El precio, tal y como lo fijó: la cuota NO lleva descuento —es la suma de
-   las piezas— y el alta lleva un 30 %. Tiene sentido: el ahorro real de
-   montarlo todo a la vez está en el montaje, que se comparte, no en el
-   servicio mensual, que no.
-
-   El mapa es HTML por lo mismo que el diagrama de flujo: es todo texto, se
-   corrige en una línea y pesa 2 KB. */
+   Poner el precio antes del desglose obligaba a decidir sin saber qué se
+   compra; ponerlo por pieza convertía la página en una lista de la compra. */
 const completo = p => {
   const k = p.pack;
+  /* Alguna pieza puede quedar fuera del plan completo a propósito —en Finanzas,
+     las fichas listas para validar son el segundo peldaño y se venden después—.
+     El mapa y el desglose enseñan lo que SÍ entra; la tabla de abajo las
+     enseña todas, porque sueltas se pueden comprar igual. */
+  const dentro = p.piezas.filter(z => !z.fueraDelPack);
   const dto = Math.round((1 - k.alta / k.altaSuelta) * 100);
   return `<section class="seccion" id="completo">
   <div class="envoltura">
@@ -160,7 +125,7 @@ const completo = p => {
                 <span class="mapa-nucleo-et">Trabajando juntas</span>
                 <b>${esc(p.pill)}</b>
                 <div class="mapa-piezas">
-                  ${p.piezas.map(z => `<span>${esc(z.n)}</span>`).join('\n                  ')}
+                  ${dentro.map(z => `<span>${esc(z.n)}</span>`).join('\n                  ')}
                 </div>
               </div>
               <p class="mapa-explica">${esc(k.comoVa)}</p>
@@ -175,46 +140,63 @@ const completo = p => {
       <figcaption>${esc(k.pie)}</figcaption>
     </figure>
 
+    <div class="desglose aparece">
+      <h3 class="desglose-titulo">Qué hace cada parte</h3>
+      ${dentro.map((z, n) => `<article class="desglose-pieza">
+        <span class="desglose-num">${String(n + 1).padStart(2, '0')}</span>
+        <div class="desglose-txt">
+          <h4>${esc(z.n)}</h4>
+          <p>${esc(z.d)}</p>
+          ${z.lista ? `<ul class="desglose-lista">
+            ${z.lista.map(x => `<li>${esc(x)}</li>`).join('\n            ')}
+          </ul>` : ''}
+        </div>
+      </article>`).join('\n      ')}
+    </div>
+
     <div class="pack aparece">
       <div class="pack-txt">
         <h3>${esc(k.nombre)}</h3>
-        <p>Todas las piezas de abajo, conectadas entre sí y ajustadas a cómo trabajas tú. Con el alta un ${dto}&nbsp;% por debajo de montarlas una a una.</p>
+        <p>Todo lo de arriba, conectado entre sí y ajustado a cómo trabajas tú. Sin permanencia: te vas cuando quieras avisando con 30 días.</p>
       </div>
       <div class="pack-precio">
         <div class="pack-cuota">${k.cuota} €<span>/mes</span></div>
-        <div class="pack-alta">${miles(k.alta)} € de instalación <s>${miles(k.altaSuelta)} €</s></div>
-        <div class="pack-nota">La cuota es la misma que sumando las piezas: lo que baja es el montaje, que es lo que de verdad se comparte.</div>
+        <div class="pack-alta">${miles(k.alta)} € de instalación <s>${miles(k.altaSuelta)} €</s> <i>−${dto}&nbsp;%</i></div>
+        <div class="pack-nota">El descuento va en el montaje, que es lo que de verdad se comparte al hacerlo todo a la vez. La cuota mensual es la misma que sumando las piezas: no te cobramos de más por juntarlas ni te prometemos un descuento que no existe.</div>
       </div>
     </div>
   </div>
 </section>`;
 };
 
-const piezas = p => `<section class="seccion" id="piezas">
+/* ─── O SOLO UNA PIEZA ───────────────────────────────────────────────────
+   Tabla, no tarjetas. Lo que hace cada una ya se ha explicado arriba, así que
+   aquí solo hace falta el número: nombre, hasta dónde llega y cuánto cuesta.
+   Con tarjetas volvía a ocupar más que la solución completa, que era el
+   problema que se venía a arreglar. */
+const sueltas = p => `<section class="seccion seccion-cream" id="piezas">
   <div class="envoltura">
-    <div class="envoltura-txt centrado" style="padding:0">
-      <span class="t-eyebrow">Las piezas</span>
-      <h2 class="t-h2" style="margin:14px 0 16px">O solo la pieza<br><span class="acento">que te duela.</span></h2>
-      <p class="t-lead">Si no quieres el departamento entero, cada pieza se vende suelta con su precio y su límite al lado. Sin paquete mínimo y sin permanencia.</p>
+    <div class="envoltura-txt centrado" style="padding:0;margin-bottom:36px">
+      <span class="t-eyebrow">O solo una parte</span>
+      <h2 class="t-h2" style="margin:14px 0 16px">Si prefieres empezar<br><span class="acento">por una sola pieza.</span></h2>
+      <p class="t-lead">Cada una se vende suelta, con su precio y su límite al lado. Sin paquete mínimo y sin permanencia — lo que no lleva es el descuento del montaje conjunto.</p>
     </div>
-    <div class="capacidades aparece">
-      ${p.piezas.map(z => {
-        const base = z.destacada ? ' cap-base' : '';
-        const etiq = z.destacada ? '<span class="cap-etiq">La que más se nota</span>'
-                   : z.yaExiste  ? '<span class="cap-etiq">Ya montada</span>' : '';
-        const pre  = z.destacada ? ' cap-precio-base' : '';
-        return `<div class="cap${base}">
-        ${etiq}
-        <h3>${esc(z.n)}</h3>
-        <p>${esc(z.d)}</p>
-        ${z.lista ? `<ul class="cap-lista">
-          ${z.lista.map(x => `<li>${esc(x)}</li>`).join('\n          ')}
-        </ul>` : ''}
-        <div class="cap-limite">${esc(z.lim)}</div>
-        <div class="cap-precio${pre}">${z.desde ? 'desde ' : ''}${z.eur} €/mes <span>· ${z.setup} € de instalación</span></div>
-        ${z.nota ? `<p class="cap-nota">${esc(z.nota)}</p>` : ''}
-      </div>`;
-      }).join('\n      ')}
+    <div class="tabla-piezas">
+      <div class="tp-cab">
+        <span>Pieza</span><span>Hasta dónde llega</span><span>Al mes</span><span>Instalación</span>
+      </div>
+      ${p.piezas.map(z => `<div class="tp-fila">
+        <span class="tp-n">${esc(z.n)}${z.fueraDelPack ? '<em>fuera del plan completo</em>' : ''}</span>
+        <span class="tp-lim">${esc(z.lim)}</span>
+        <span class="tp-eur">${z.desde ? 'desde ' : ''}${z.eur} €</span>
+        <span class="tp-alta">${miles(z.setup)} €</span>
+      </div>`).join('\n      ')}
+      <div class="tp-pie">
+        <span>Las ${p.piezas.filter(z => !z.fueraDelPack).length} del plan completo</span>
+        <span>El departamento entero, a tu medida</span>
+        <span class="tp-eur">${p.pack.cuota} €</span>
+        <span class="tp-alta"><s>${miles(p.pack.altaSuelta)} €</s> ${miles(p.pack.alta)} €</span>
+      </div>
     </div>
   </div>
 </section>`;
@@ -280,11 +262,9 @@ ${hero(p)}
 
 ${dolores(p)}
 
-${flujo(p)}
-
 ${completo(p)}
 
-${piezas(p)}
+${sueltas(p)}
 
 ${faq(p)}
 
