@@ -96,14 +96,16 @@
     <div class="nav-grupo">
       <button class="nav-grupo-btn" type="button" aria-expanded="false" aria-controls="menu-sectores">Sectores</button>
       <div class="nav-panel nav-panel-sectores" id="menu-sectores">
-        <a class="nav-item" href="/dentia"><b>Clínicas dentales</b></a>
-        <a class="nav-item" href="/bookia-peluqueria"><b>Peluquería</b></a>
-        <a class="nav-item" href="/bookia-estetica"><b>Estética</b></a>
-        <a class="nav-item" href="/bookia-unas"><b>Uñas</b></a>
-        <a class="nav-item" href="/bookia-tatuajes"><b>Tatuajes</b></a>
-        <a class="nav-item" href="/bookia-fisioterapia"><b>Fisioterapia</b></a>
-        <a class="nav-item" href="/bookia-podologia"><b>Podología</b></a>
-        <a class="nav-panel-pie" href="/bookia">Bookia — el software de citas, para cualquier sector →</a>
+        <div class="nav-sector">
+          <a class="nav-item" href="/bookia"><b>Negocios de citas</b><span>Agenda, reserva sin registro y recordatorios</span></a>
+          <div class="nav-oficios">
+            <a href="/bookia#peluqueria">Peluquería</a><a href="/bookia#estetica">Estética</a><a href="/bookia#unas">Uñas</a><a href="/bookia#tatuajes">Tatuajes</a><a href="/bookia#fisioterapia">Fisioterapia</a><a href="/bookia#podologia">Podología</a>
+          </div>
+        </div>
+        <div class="nav-sector">
+          <a class="nav-item" href="/dentia"><b>Clínicas dentales</b><span>Odontograma, historia clínica y consentimientos</span></a>
+          
+        </div>
       </div>
     </div>
     <div class="nav-grupo">
@@ -138,14 +140,8 @@
 </nav>
 <div class="nav-movil" id="nav-movil">
   <h5>Sectores</h5>
-  <a class="nav-item" href="/dentia"><b>Clínicas dentales</b></a>
-  <a class="nav-item" href="/bookia-peluqueria"><b>Peluquería</b></a>
-  <a class="nav-item" href="/bookia-estetica"><b>Estética</b></a>
-  <a class="nav-item" href="/bookia-unas"><b>Uñas</b></a>
-  <a class="nav-item" href="/bookia-tatuajes"><b>Tatuajes</b></a>
-  <a class="nav-item" href="/bookia-fisioterapia"><b>Fisioterapia</b></a>
-  <a class="nav-item" href="/bookia-podologia"><b>Podología</b></a>
-  <a class="nav-item" href="/bookia"><b>Bookia</b><span>El software de citas, para cualquier sector</span></a>
+  <a class="nav-item" href="/bookia"><b>Negocios de citas</b><span>Agenda, reserva sin registro y recordatorios</span></a>
+  <a class="nav-item" href="/dentia"><b>Clínicas dentales</b><span>Odontograma, historia clínica y consentimientos</span></a>
   <h5>Departamentos</h5>
   <a class="nav-item" href="/atencion-al-cliente"><b>Atención al Cliente</b><span>Contesta, mira tu agenda y cierra la cita</span></a>
   <a class="nav-item" href="/ventas-y-captacion"><b>Ventas y Captación</b><span>Busca clientes y persigue los presupuestos</span></a>
@@ -235,6 +231,72 @@
           <div class="vista-lista"><span>Panel con dos años de histórico</span><span>Informe semanal por correo</span><span>Retención y valor por cliente</span></div>
         </div>
         <div class="vista-img"><img src="/bookia-img/dashboard.png" alt="Y el lunes, un correo con cómo fue la semana" loading="lazy"></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="seccion seccion-cream" id="sectores">
+  <div class="envoltura">
+    <div class="envoltura-txt centrado" style="padding:0;margin-bottom:40px">
+      <span class="t-eyebrow">¿Vale para lo tuyo?</span>
+      <h2 class="t-h2" style="margin:14px 0 16px">Es el mismo programa.<br><span class="acento">Lo que cambia es tu día.</span></h2>
+      <p class="t-lead">La agenda, la reserva y los recordatorios son iguales para todos. Lo que no es igual es qué se te cae, qué te preguntan y cuándo toca que vuelvan — y eso se configura contigo antes de empezar.</p>
+    </div>
+    <div class="sectores">
+      <article class="sector aparece" id="peluqueria">
+        <span class="sector-sitio">El sillón</span>
+        <h3>Peluquerías</h3>
+        <ul>
+          <li><b>El hueco que no se llena</b><span>Cancelan un color de dos horas a última hora y ese rato ya no lo recupera nadie. Es el dinero que más se nota al final del mes.</span></li>
+          <li><b>Contestar con las manos en un tinte</b><span>Te escriben por Instagram mientras estás con una clienta. O paras, o contestas dos horas después, cuando ya ha reservado en otro sitio.</span></li>
+          <li><b>Las que no vuelven</b><span>Vinieron dos veces y desaparecieron. No se enfadaron: nadie les volvió a escribir cuando tocaba retoque.</span></li>
+        </ul>
+      </article>
+      <article class="sector aparece" id="fisioterapia">
+        <span class="sector-sitio">La camilla</span>
+        <h3>Fisioterapia</h3>
+        <ul>
+          <li><b>El hueco que no se llena</b><span>Un paciente cancela la sesión de la tarde y esa hora ya no la recupera nadie, aunque tengas a tres esperando fecha.</span></li>
+          <li><b>Contestar en mitad de una sesión</b><span>Suena el móvil con las manos puestas. O paras el tratamiento, o devuelves la llamada al final del día.</span></li>
+          <li><b>Los que dejan el tratamiento a medias</b><span>Vienen tres sesiones de las diez y desaparecen. Nadie les escribió para preguntar cómo iban.</span></li>
+        </ul>
+      </article>
+      <article class="sector aparece" id="estetica">
+        <span class="sector-sitio">La cabina</span>
+        <h3>Centros de estética</h3>
+        <ul>
+          <li><b>El hueco que no se llena</b><span>Cancelan un tratamiento largo a última hora y esa cabina se queda parada toda la tarde.</span></li>
+          <li><b>Contestar desde la cabina</b><span>Te escriben por Instagram mientras trabajas. Contestar tarde es perder la cita.</span></li>
+          <li><b>Las que no completan el bono</b><span>Compraron cinco sesiones, hicieron dos y no volvieron. Nadie les recordó que les quedaban tres.</span></li>
+        </ul>
+      </article>
+      <article class="sector aparece" id="unas">
+        <span class="sector-sitio">El puesto</span>
+        <h3>Centros de uñas</h3>
+        <ul>
+          <li><b>El hueco que no se llena</b><span>Cancelan y ese rato se pierde. Con servicios de hora y media, dos cancelaciones son media tarde.</span></li>
+          <li><b>Contestar mientras limas</b><span>La mayoría te escribe por Instagram, y casi siempre mientras tienes a alguien delante.</span></li>
+          <li><b>Las que no vuelven al relleno</b><span>A las tres semanas toca relleno y nadie se lo recuerda. Se van a la que sí lo hace.</span></li>
+        </ul>
+      </article>
+      <article class="sector aparece" id="podologia">
+        <span class="sector-sitio">La camilla</span>
+        <h3>Podología</h3>
+        <ul>
+          <li><b>El hueco que no se llena</b><span>Una quiropodia cancelada a última hora es una hora perdida que no vuelve.</span></li>
+          <li><b>Contestar en mitad de la consulta</b><span>Suena el teléfono con el paciente en la camilla. Siempre pierde alguien.</span></li>
+          <li><b>Los que no vuelven a revisión</b><span>La quiropodia toca cada dos meses. Si nadie avisa, el paciente lo deja pasar hasta que le duele.</span></li>
+        </ul>
+      </article>
+      <article class="sector aparece" id="tatuajes">
+        <span class="sector-sitio">La cabina</span>
+        <h3>Estudios de tatuaje</h3>
+        <ul>
+          <li><b>La sesión que se cae</b><span>Una sesión de cuatro horas cancelada la víspera es un día entero perdido.</span></li>
+          <li><b>Las mismas cinco preguntas</b><span>Cuánto cuesta, cuánto tarda, duele, cómo se cura, hay que dejar señal. Todos los días, por Instagram, mientras tatúas.</span></li>
+          <li><b>Los proyectos a medias</b><span>Empezaron una manga y no cerraron la siguiente sesión. Nadie les escribió.</span></li>
+        </ul>
       </article>
     </div>
   </div>
@@ -355,14 +417,8 @@
       <div class="pie-cols">
         <div class="pie-col">
           <h4>Sectores</h4>
+          <a href="/bookia">Negocios de citas</a>
           <a href="/dentia">Clínicas dentales</a>
-          <a href="/bookia-peluqueria">Peluquería</a>
-          <a href="/bookia-estetica">Estética</a>
-          <a href="/bookia-unas">Uñas</a>
-          <a href="/bookia-tatuajes">Tatuajes</a>
-          <a href="/bookia-fisioterapia">Fisioterapia</a>
-          <a href="/bookia-podologia">Podología</a>
-          <a href="/bookia">Bookia · cualquier sector</a>
         </div>
         <div class="pie-col">
           <h4>Departamentos</h4>

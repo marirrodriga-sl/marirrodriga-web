@@ -4,11 +4,55 @@
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "geolocation=(), microphone=(), camera=()" }
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "geolocation=(), microphone=(), camera=()"
+        }
       ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/bookia-peluqueria",
+      "destination": "/bookia#peluqueria",
+      "permanent": true
+    },
+    {
+      "source": "/bookia-fisioterapia",
+      "destination": "/bookia#fisioterapia",
+      "permanent": true
+    },
+    {
+      "source": "/bookia-estetica",
+      "destination": "/bookia#estetica",
+      "permanent": true
+    },
+    {
+      "source": "/bookia-unas",
+      "destination": "/bookia#unas",
+      "permanent": true
+    },
+    {
+      "source": "/bookia-podologia",
+      "destination": "/bookia#podologia",
+      "permanent": true
+    },
+    {
+      "source": "/bookia-tatuajes",
+      "destination": "/bookia#tatuajes",
+      "permanent": true
     }
   ]
 }

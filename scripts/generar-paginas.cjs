@@ -11,7 +11,7 @@
 */
 const fs = require('node:fs');
 const path = require('node:path');
-const { DENTIA, BOOKIA, CAL } = require('./datos-soluciones.cjs');
+const { DENTIA, BOOKIA, SECTORES, CAL } = require('./datos-soluciones.cjs');
 const SOL = require('./soluciones.cjs');
 
 const raiz = path.join(__dirname, '..');
@@ -32,14 +32,17 @@ const WA = 'https://wa.me/34675148566';
 
    Hasta el 08-09 el nav solo llevaba anclas de la propia página y las seis
    landings de sector no recibían un enlace de nadie. */
+/* Dos entradas, no siete. Hasta el 09-09 había una por sector y cada una era
+   una página que compartía el 84-91 % de sus palabras con las demás. Ahora
+   los oficios cuelgan de Bookia y llevan a su trozo dentro de /bookia: el
+   menú sigue diciéndole a la peluquera que esto es para ella, que era lo
+   único que aquellas páginas hacían bien. */
 const SECTORES_MENU = [
-  ['Clínicas dentales', '/dentia'],
-  ['Peluquería', '/bookia-peluqueria'],
-  ['Estética', '/bookia-estetica'],
-  ['Uñas', '/bookia-unas'],
-  ['Tatuajes', '/bookia-tatuajes'],
-  ['Fisioterapia', '/bookia-fisioterapia'],
-  ['Podología', '/bookia-podologia'],
+  ['Negocios de citas', '/bookia', 'Agenda, reserva sin registro y recordatorios',
+   [['Peluquería', '/bookia#peluqueria'], ['Estética', '/bookia#estetica'],
+    ['Uñas', '/bookia#unas'], ['Tatuajes', '/bookia#tatuajes'],
+    ['Fisioterapia', '/bookia#fisioterapia'], ['Podología', '/bookia#podologia']]],
+  ['Clínicas dentales', '/dentia', 'Odontograma, historia clínica y consentimientos', []],
 ];
 
 const DEPTOS_MENU = [
@@ -60,7 +63,12 @@ const SOBRE_MENU = [
   ['Contacto', '/#contacto', 'Media hora gratis, y te decimos por dónde empezar'],
 ];
 
-const itemSector = (s, i) => `<a class="nav-item" href="${i}"><b>${s}</b></a>`;
+const itemSector = ([n, r, d, oficios]) => `<div class="nav-sector">
+          <a class="nav-item" href="${r}"><b>${n}</b><span>${d}</span></a>
+          ${oficios.length ? `<div class="nav-oficios">
+            ${oficios.map(([o, h]) => `<a href="${h}">${o}</a>`).join('')}
+          </div>` : ''}
+        </div>`;
 const itemDepto = ([n, r, d]) => r
   ? `<a class="nav-item" href="${r}"><b>${n}</b><span>${d}</span></a>`
   : `<span class="nav-item apagado"><b>${n}</b><span>${d}</span></span>`;
@@ -80,8 +88,7 @@ const nav = (anclas = ANCLAS) => `<nav class="nav">
     <div class="nav-grupo">
       <button class="nav-grupo-btn" type="button" aria-expanded="false" aria-controls="menu-sectores">Sectores</button>
       <div class="nav-panel nav-panel-sectores" id="menu-sectores">
-        ${SECTORES_MENU.map(([s, i]) => itemSector(s, i)).join('\n        ')}
-        <a class="nav-panel-pie" href="/bookia">Bookia — el software de citas, para cualquier sector →</a>
+        ${SECTORES_MENU.map(itemSector).join('\n        ')}
       </div>
     </div>
     <div class="nav-grupo">
@@ -105,8 +112,7 @@ const nav = (anclas = ANCLAS) => `<nav class="nav">
 </nav>
 <div class="nav-movil" id="nav-movil">
   <h5>Sectores</h5>
-  ${SECTORES_MENU.map(([s, i]) => itemSector(s, i)).join('\n  ')}
-  <a class="nav-item" href="/bookia"><b>Bookia</b><span>El software de citas, para cualquier sector</span></a>
+  ${SECTORES_MENU.map(([n, r, d]) => itemDepto([n, r, d])).join('\n  ')}
   <h5>Departamentos</h5>
   ${DEPTOS_MENU.map(itemDepto).join('\n  ')}
   <h5>Sobre nosotros</h5>
@@ -127,6 +133,35 @@ const hero = p => `<header class="hero-s" style="--hero:url('/assets/img/${p.her
     </div>
   </div>
 </header>`;
+
+/* ─── ¿VALE PARA LO TUYO? ─────────────────────────────────────────────────
+   Aquí vive el vocabulario que antes se repartía en seis páginas casi
+   idénticas. Junto en una, hace lo contrario de lo que hacían por separado:
+   en vez de seis páginas peleándose por la misma búsqueda, una que nombra la
+   camilla, la cabina y el sillón y cuenta el dolor de cada oficio.
+
+   Cada bloque lleva su ancla porque el menú apunta aquí dentro, y porque las
+   seis URLs viejas redirigen a su trozo en vez de a la portada de la página:
+   quien buscaba «software citas podología» aterriza donde se le habla a él.
+   Solo va en Bookia — Dentia no tiene sectores debajo. */
+const sectores = () => `<section class="seccion seccion-cream" id="sectores">
+  <div class="envoltura">
+    <div class="envoltura-txt centrado" style="padding:0;margin-bottom:40px">
+      <span class="t-eyebrow">¿Vale para lo tuyo?</span>
+      <h2 class="t-h2" style="margin:14px 0 16px">Es el mismo programa.<br><span class="acento">Lo que cambia es tu día.</span></h2>
+      <p class="t-lead">La agenda, la reserva y los recordatorios son iguales para todos. Lo que no es igual es qué se te cae, qué te preguntan y cuándo toca que vuelvan — y eso se configura contigo antes de empezar.</p>
+    </div>
+    <div class="sectores">
+      ${SECTORES.filter(x => x.ancla).map(x => `<article class="sector aparece" id="${x.ancla}">
+        <span class="sector-sitio">${esc(x.sitio)}</span>
+        <h3>${esc(x.sector[0].toUpperCase() + x.sector.slice(1))}</h3>
+        <ul>
+          ${x.dolores.map(([h, t]) => `<li><b>${esc(h)}</b><span>${esc(t)}</span></li>`).join('\n          ')}
+        </ul>
+      </article>`).join('\n      ')}
+    </div>
+  </div>
+</section>`;
 
 const dolores = p => `<section class="seccion">
   <div class="envoltura">
@@ -228,8 +263,7 @@ const pie = () => `<footer class="pie">
       <div class="pie-cols">
         <div class="pie-col">
           <h4>Sectores</h4>
-          ${SECTORES_MENU.map(([s, i]) => `<a href="${i}">${s}</a>`).join('\n          ')}
-          <a href="/bookia">Bookia · cualquier sector</a>
+          ${SECTORES_MENU.map(([n, r]) => `<a href="${r}">${n}</a>`).join('\n          ')}
         </div>
         <div class="pie-col">
           <h4>Departamentos</h4>
@@ -322,6 +356,8 @@ ${hero(p)}
 ${dolores(p)}
 
 ${vistas(p)}
+
+${p.marca === 'Bookia' ? sectores() : ''}
 
 ${precio(p, tramos)}
 

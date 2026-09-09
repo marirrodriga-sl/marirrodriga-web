@@ -93,8 +93,20 @@ const BOOKIA_BASE = {
   ],
 };
 
-/* Lo único que cambia entre sectores: el nombre del sitio donde se trabaja,
-   el dolor concreto y el vocabulario. La estructura y los precios, idénticos. */
+/* ⚠️ SOLO SE PUBLICA EL PRIMERO. Los seis de abajo dejaron de tener página
+   propia el 09-09: se midió y compartían entre el 84 % y el 91 % de sus
+   palabras — la única diferencia real era el sustantivo, «la silla» → «el
+   sillón» → «la camilla». Eso son doorway pages de manual, y eran seis de
+   las dieciséis páginas indexables del sitio compitiendo entre ellas por la
+   misma búsqueda. Las seis URLs redirigen a /bookia con un 301.
+
+   Lo que NO se tira es esto: el vocabulario de cada sector, que es bueno y
+   específico, se muda dentro de /bookia como una sección propia. Una página
+   que nombra la camilla, la cabina y el sillón, y cuenta el dolor de cada
+   oficio, pelea por esas búsquedas mejor que seis que se copian entre sí.
+
+   `archivo` y `ruta` se conservan a propósito: los usa el generador para
+   saber cuál se escribe, y las redirecciones de vercel.json salen de aquí. */
 const SECTORES = [
   { archivo: 'bookia.html', ruta: '/bookia', sector: null,
     pill: 'Software de citas para tu negocio', sitio: 'La silla',
@@ -105,7 +117,7 @@ const SECTORES = [
       ['Contestar con las manos ocupadas', 'Te escriben mientras estás trabajando. O paras, o contestas dos horas después — y para entonces han reservado en otro sitio.'],
       ['Los que no vuelven', 'Vinieron dos veces y desaparecieron. No se enfadaron: simplemente nadie les volvió a escribir.'],
     ] },
-  { archivo: 'bookia-peluqueria.html', ruta: '/bookia-peluqueria', sector: 'peluquerías',
+  { archivo: 'bookia-peluqueria.html', ruta: '/bookia-peluqueria', ancla: 'peluqueria', sector: 'peluquerías',
     pill: 'Software de citas para peluquerías', sitio: 'El sillón',
     h1: ['Sillón nunca parado,', 'la agenda siempre llena.'],
     lead: 'Agenda, reserva desde Instagram sin registro y recordatorios que evitan el hueco vacío. Con un asistente que contesta mientras tienes las manos en un tinte.',
@@ -114,7 +126,7 @@ const SECTORES = [
       ['Contestar con las manos en un tinte', 'Te escriben por Instagram mientras estás con una clienta. O paras, o contestas dos horas después, cuando ya ha reservado en otro sitio.'],
       ['Las que no vuelven', 'Vinieron dos veces y desaparecieron. No se enfadaron: nadie les volvió a escribir cuando tocaba retoque.'],
     ] },
-  { archivo: 'bookia-fisioterapia.html', ruta: '/bookia-fisioterapia', sector: 'fisioterapia',
+  { archivo: 'bookia-fisioterapia.html', ruta: '/bookia-fisioterapia', ancla: 'fisioterapia', sector: 'fisioterapia',
     pill: 'Software de citas para fisioterapia', sitio: 'La camilla',
     h1: ['Camilla nunca parada,', 'la agenda siempre llena.'],
     lead: 'Agenda, reserva online sin registro y recordatorios que evitan el hueco vacío. Con un asistente que contesta mientras estás tratando a alguien.',
@@ -123,7 +135,7 @@ const SECTORES = [
       ['Contestar en mitad de una sesión', 'Suena el móvil con las manos puestas. O paras el tratamiento, o devuelves la llamada al final del día.'],
       ['Los que dejan el tratamiento a medias', 'Vienen tres sesiones de las diez y desaparecen. Nadie les escribió para preguntar cómo iban.'],
     ] },
-  { archivo: 'bookia-estetica.html', ruta: '/bookia-estetica', sector: 'centros de estética',
+  { archivo: 'bookia-estetica.html', ruta: '/bookia-estetica', ancla: 'estetica', sector: 'centros de estética',
     pill: 'Software de citas para estética', sitio: 'La cabina',
     h1: ['Cabina nunca parada,', 'la agenda siempre llena.'],
     lead: 'Agenda, reserva desde Instagram sin registro y recordatorios que evitan el hueco vacío. Con un asistente que contesta mientras estás en cabina.',
@@ -132,7 +144,7 @@ const SECTORES = [
       ['Contestar desde la cabina', 'Te escriben por Instagram mientras trabajas. Contestar tarde es perder la cita.'],
       ['Las que no completan el bono', 'Compraron cinco sesiones, hicieron dos y no volvieron. Nadie les recordó que les quedaban tres.'],
     ] },
-  { archivo: 'bookia-unas.html', ruta: '/bookia-unas', sector: 'centros de uñas',
+  { archivo: 'bookia-unas.html', ruta: '/bookia-unas', ancla: 'unas', sector: 'centros de uñas',
     pill: 'Software de citas para centros de uñas', sitio: 'El puesto',
     h1: ['Puesto nunca parado,', 'la agenda siempre llena.'],
     lead: 'Agenda, reserva desde Instagram sin registro y recordatorios que evitan el hueco vacío. Con un asistente que contesta mientras estás limando.',
@@ -141,7 +153,7 @@ const SECTORES = [
       ['Contestar mientras limas', 'La mayoría te escribe por Instagram, y casi siempre mientras tienes a alguien delante.'],
       ['Las que no vuelven al relleno', 'A las tres semanas toca relleno y nadie se lo recuerda. Se van a la que sí lo hace.'],
     ] },
-  { archivo: 'bookia-podologia.html', ruta: '/bookia-podologia', sector: 'podología',
+  { archivo: 'bookia-podologia.html', ruta: '/bookia-podologia', ancla: 'podologia', sector: 'podología',
     pill: 'Software de citas para podología', sitio: 'La camilla',
     h1: ['Camilla nunca parada,', 'la agenda siempre llena.'],
     lead: 'Agenda, reserva online sin registro y recordatorios que evitan el hueco vacío. Con un asistente que contesta mientras estás con un paciente.',
@@ -150,7 +162,7 @@ const SECTORES = [
       ['Contestar en mitad de la consulta', 'Suena el teléfono con el paciente en la camilla. Siempre pierde alguien.'],
       ['Los que no vuelven a revisión', 'La quiropodia toca cada dos meses. Si nadie avisa, el paciente lo deja pasar hasta que le duele.'],
     ] },
-  { archivo: 'bookia-tatuajes.html', ruta: '/bookia-tatuajes', sector: 'estudios de tatuaje',
+  { archivo: 'bookia-tatuajes.html', ruta: '/bookia-tatuajes', ancla: 'tatuajes', sector: 'estudios de tatuaje',
     pill: 'Software de citas para estudios de tatuaje', sitio: 'La cabina',
     h1: ['Cabina nunca parada,', 'la agenda siempre llena.'],
     lead: 'Agenda, reserva online sin registro y recordatorios que evitan el hueco vacío. Con un asistente que contesta las dudas de siempre mientras tatúas.',
@@ -171,7 +183,9 @@ const SECTORES = [
 // sectores: cortar por ahí dejaba cuatro descripciones idénticas. La que
 // distingue es la segunda («mientras tienes las manos en un tinte», «mientras
 // tatúas»). Sale en ~120 caracteres, por debajo de los ~155 donde Google corta.
-const BOOKIA = SECTORES.map(s => Object.assign({}, BOOKIA_BASE, s, {
+/* Solo el primero se convierte en página. Los demás viven como datos: los
+   consume la sección de sectores de /bookia y las redirecciones. */
+const BOOKIA = SECTORES.filter(s => !s.ancla).map(s => Object.assign({}, BOOKIA_BASE, s, {
   titulo: `${s.pill} | Bookia`,
   descripcion: (() => {
     const frases = s.lead.split('. ').filter(Boolean);
@@ -180,4 +194,4 @@ const BOOKIA = SECTORES.map(s => Object.assign({}, BOOKIA_BASE, s, {
   })(),
 }));
 
-module.exports = { DENTIA, BOOKIA, CAL };
+module.exports = { DENTIA, BOOKIA, SECTORES, CAL };

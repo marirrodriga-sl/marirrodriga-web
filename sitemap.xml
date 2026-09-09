@@ -66,35 +66,5 @@
   </url>
 
   <!-- Bookia por especialidad -->
-  <url>
-    <loc>https://www.marirrodriga-ia.com/bookia-peluqueria</loc>
-    <priority>0.7</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://www.marirrodriga-ia.com/bookia-estetica</loc>
-    <priority>0.7</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://www.marirrodriga-ia.com/bookia-unas</loc>
-    <priority>0.7</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://www.marirrodriga-ia.com/bookia-tatuajes</loc>
-    <priority>0.7</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://www.marirrodriga-ia.com/bookia-fisioterapia</loc>
-    <priority>0.7</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://www.marirrodriga-ia.com/bookia-podologia</loc>
-    <priority>0.7</priority>
-    <changefreq>monthly</changefreq>
-  </url>
 
 </urlset>

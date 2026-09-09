@@ -170,3 +170,30 @@
    nav es una píldora de tinta siempre, en base.css, y el contraste no depende
    de qué haya detrás. Si vuelve a aparecer una variante aquí, es que alguien
    está resolviendo dos veces el mismo problema. */
+
+/* ─── ¿VALE PARA LO TUYO? ──────────────────────────────────────────────────
+   Los seis oficios que antes eran seis páginas casi idénticas. Juntos aquí
+   hacen lo contrario de lo que hacían separados: en vez de competir entre
+   ellos por la misma búsqueda, dan a una sola página el vocabulario de los
+   seis. Cada uno lleva su ancla porque las URLs viejas redirigen a su trozo.
+   ───────────────────────────────────────────────────────────────────────── */
+.sectores {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 16px;
+}
+.sector {
+  padding: 22px 22px 20px; border-radius: var(--r-card);
+  background: var(--white); border: 1px solid var(--line);
+  scroll-margin-top: 110px;
+}
+.sector-sitio {
+  display: inline-block; margin-bottom: 9px;
+  padding: 4px 11px; border-radius: var(--r-pill);
+  background: var(--purple-tint); border: 1px solid #e4dcff;
+  font-size: 11px; font-weight: 700; letter-spacing: .04em; color: var(--purple);
+}
+.sector h3 { font: 600 19px/1.2 var(--font-title); color: var(--ink); letter-spacing: -.02em; margin-bottom: 14px; }
+.sector ul { display: grid; gap: 11px; }
+.sector li { display: grid; gap: 2px; }
+.sector li b { font-size: 13px; font-weight: 700; color: var(--ink); }
+.sector li span { font-size: 13px; line-height: 1.5; color: var(--ink-3); }
