@@ -97,8 +97,9 @@
   font-size: 11px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase;
   color: #d8caff;
 }
-/* Finanzas, Datos y Marketing todavía no tienen página propia. Se dice, y su
-   botón lleva a la sección de la home donde sí están descritos. */
+/* Marcaba los departamentos sin página. Desde el 09-09 los siete están
+   abiertos, así que no se usa — se conserva por si vuelve a hacer falta al
+   anunciar uno antes de tenerlo. */
 .hero-tarjeta-tag {
   display: inline-block; margin: 0 0 9px 9px; padding: 3px 9px;
   border-radius: var(--r-pill);
@@ -466,8 +467,10 @@
   border-color: rgba(255,255,255,.13);
 }
 #proyectos .proy:hover   { background: rgba(255,255,255,.085); border-color: rgba(255,255,255,.22); }
-#proyectos .proy-sector,
-#proyectos .proy-gancho  { color: rgba(255,255,255,.6); }
+#proyectos .proy-sector   { color: rgba(255,255,255,.6); }
+/* .proy-gancho lleva `color: var(--ink) !important` en su regla original, y sin
+   otro !important aquí se quedaba negro sobre el fondo de tinta: invisible. */
+#proyectos .proy-gancho   { color: rgba(255,255,255,.82) !important; border-left-color: #d8caff; }
 #proyectos .proy-tag-cliente { background: rgba(255,255,255,.10); color: rgba(255,255,255,.72); }
 #proyectos .proy-tag-propio  { background: rgba(216,202,255,.16); color: #d8caff; }
 #proyectos .proy-enlace  { color: #d8caff; }

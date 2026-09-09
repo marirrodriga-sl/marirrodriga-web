@@ -23,7 +23,7 @@
       rgba(10,8,16,.05) 70%, rgba(10,8,16,0) 84%),
     linear-gradient(180deg,
       rgba(10,8,16,.46) 0%, rgba(10,8,16,.10) 30%,
-      rgba(10,8,16,.24) 68%, rgba(255,255,255,.84) 95%, #ffffff 100%),
+      rgba(10,8,16,.24) 68%, rgba(250,248,245,.84) 95%, var(--cream) 100%),
     var(--hero) center / cover no-repeat,
     #14111c;
 }
