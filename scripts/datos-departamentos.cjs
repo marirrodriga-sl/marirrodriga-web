@@ -234,9 +234,9 @@ const DEPARTAMENTOS = [
   archivo: 'marketing.html', ruta: '/marketing', hero: 'hero-marketing.jpg',
   pill: 'Marketing',
   titulo: 'Contenido para redes y newsletter | Marirrodriga IA',
-  descripcion: 'Publicaciones y newsletter escritas con tu voz y con lo que pasa en tu negocio. Desde 20 €/mes, con su límite al lado.',
+  descripcion: 'Fotos y vídeos de tu marca, generados y publicados en la red que elijas. Desde 29 €/mes, con su límite al lado.',
   h1: ['Publicar sin que', 'te robe la semana.'],
-  lead: 'No es que no sepas qué contar: es que contarlo cuesta una hora que no tienes, y por eso pasan tres semanas sin publicar. <strong>Esto escribe con tu voz y con lo que ya pasa en tu negocio.</strong>',
+  lead: 'No es que no sepas qué contar: es que hacer la foto, escribir el pie y subirlo cuesta una hora que no tienes, y por eso pasan tres semanas sin publicar. <strong>Esto lo hace y lo publica, con tu identidad y sin que tú abras nada.</strong>',
   dolores: [
     ['La semana sin publicar', 'Empiezas el lunes con la intención y llega el viernes sin nada. No por dejadez: por el mostrador.'],
     ['El folio en blanco', 'Sabes que hay que publicar. No sabes de qué. Y decidirlo cuesta más que escribirlo.'],
@@ -254,18 +254,57 @@ const DEPARTAMENTOS = [
     pie: 'Nada se publica sin que lo veas tú. La primera semana revisas todo; después, lo que quieras.',
   },
   piezas: [
-    { n: 'Publicaciones con tu voz', eur: 79, setup: 250, destacada: true,
-      d: 'Escribe y programa lo del mes a partir de lo que pasa en tu negocio, con tus fotos y tu manera de hablar. Tú das el visto bueno.',
-      lim: 'hasta 20 publicaciones/mes · 2 canales' },
-    { n: 'Newsletter', eur: 49, setup: 200,
-      d: 'La periódica a tus clientes: qué hay de nuevo, qué conviene y qué se acaba. Escrita y mandada, no un recordatorio para que la escribas tú.',
-      lim: 'hasta 2 envíos/mes · 2.000 destinatarios' },
-    { n: 'Calendario editorial', eur: 30, setup: 100,
-      d: 'Propone de qué publicar y cuándo, por temporada y por sector. Se acabó el folio en blanco del lunes.',
-      lim: 'un calendario al mes' },
-    { n: 'Una pieza, varios formatos', eur: 20, setup: 70,
-      d: 'Lo que escribes una vez se adapta solo a cada sitio: no es lo mismo un texto para Instagram que para tu web.',
-      lim: 'hasta 40 adaptaciones/mes' },
+    /* Rehecho el 09-09. Las cuatro anteriores —publicaciones, newsletter,
+       calendario, adaptaciones— las tumbó Isma enteras: vendían «contenido»
+       en abstracto y competían con un community manager en su terreno. Estas
+       venden PIEZAS CONCRETAS publicadas en un sitio concreto.
+
+       LOS LÍMITES NO SON INVENTADOS. Salen del coste real de generación
+       medido el 09-09 contra la API:
+         · imagen 2k .................. 0,15 €
+         · vídeo 5 s (Seedance 480p) .. 0,68 €
+         · vídeo 5 s (Kling 720p) ..... 1,36 €
+       El tope de cada pieza deja la generación por debajo del 20-25 % del
+       precio. Si Magnific cambia su tarifa, estos números hay que rehacerlos:
+       son lo único de la web que depende de un proveedor. */
+
+    { n: 'Publicación automática en LinkedIn', eur: 29, setup: 100,
+      d: 'La red donde tener presencia cuesta menos y rinde más si eres B2B. Escribe y publica con tu voz a partir de lo que pasa en tu negocio. Sin imagen generada: texto, que es lo que funciona ahí.',
+      lim: 'hasta 20 publicaciones/mes · solo LinkedIn',
+      lista: [
+        'Publica solo, en los días y las horas que fijes',
+        'Con tu manera de hablar, sacada de lo que ya has escrito',
+        'Tú lo ves antes de que salga, siempre que quieras',
+      ] },
+
+    { n: 'Fotos de marca, publicadas', eur: 49, setup: 150, destacada: true,
+      d: 'Genera la imagen con tu identidad —tus colores, tu tipo de escena— y la publica en la red que elijas. No banco de imágenes: fotos hechas para ti y para lo que estás contando ese día.',
+      lim: 'hasta 20 fotos/mes · una red incluida',
+      nota: 'Cada red de más, +10 €/mes. El límite sale del coste real de generar: 20 imágenes son unos 3 € de los 49, y así el precio aguanta sin sorpresas.',
+      lista: [
+        'La identidad se fija una vez y se respeta en todas',
+        'Publicada en Instagram, Facebook o LinkedIn, la que elijas',
+        'Nada sale sin que lo hayas visto',
+      ] },
+
+    { n: 'Vídeos cortos, publicados', eur: 79, setup: 250,
+      d: 'De cinco a diez segundos, en vertical, para lo que hoy más se ve: reels y stories. Se genera, se monta y se publica en la red que elijas.',
+      lim: 'hasta 8 vídeos de 5 a 10 s al mes · una red incluida',
+      nota: 'Ocho vídeos son unos 16 € de generación de los 79. Por eso son ocho y no veinte: el vídeo cuesta diez veces más que una foto y decirlo es más honesto que prometer de más.',
+      lista: [
+        'Vertical, que es donde se ven',
+        'Con tu identidad, igual que las fotos',
+        'Publicado o entregado, como prefieras',
+      ] },
+
+    { n: 'Campañas: diseño y publicación', eur: 149, setup: 450,
+      d: 'Una campaña no son publicaciones sueltas: es una idea contada por partes durante unas semanas. Se diseña, se produce entera y se publica con su calendario.',
+      lim: 'una campaña al mes · hasta 12 piezas entre fotos y vídeos · 2 redes',
+      lista: [
+        'Se decide contigo qué se cuenta y a quién',
+        'Las piezas salen todas del mismo hilo, no sueltas',
+        'Y al acabar, qué ha funcionado de la campaña',
+      ] },
   ],
   faq: [
     ['¿Publica sin que yo lo vea?', 'Solo si tú lo decides. De salida, todo pasa por tu visto bueno. Muchos clientes lo dejan así siempre, y nos parece bien.'],
