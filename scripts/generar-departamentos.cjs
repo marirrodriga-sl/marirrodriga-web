@@ -3,10 +3,17 @@
 
    Uso:  node scripts/generar-departamentos.cjs
 
-   Atención al Cliente y Ventas y Captación NO salen de aquí: son páginas
-   escritas a mano con heros de maqueta (el móvil con su conversación, la
-   bandeja ordenándose) que no salen de un molde. Estas cinco usan el hero con
-   foto y dejan que la pieza visual sea el diagrama de flujo.
+   Desde el 09-09 salen de aquí las SIETE, Atención al Cliente y Ventas y
+   Captación incluidas. Estaban fuera porque sus heros son maquetas dibujadas
+   a mano y no salían de un molde; ahora el molde admite `heroHtml` y se
+   acabó el problema. Estar fuera les costaba caro: arrastraban el menú de
+   hace tres cambios y no tenían la estructura nueva.
+
+   Las dos traen además material propio que aquí no tiene hueco —«esto no es
+   un chatbot», la captura del panel de captación funcionando, el analista de
+   competencia— y entra por `antesDePiezas` y `despuesDePiezas`. Se conserva
+   a propósito: aplicar el orden nuevo no puede costar perder la única prueba
+   publicada de un producto nuestro en producción.
 
    El nav, el pie, el FAQ y el cierre se IMPORTAN de generar-paginas.cjs. No se
    copian: el 09-09 la plantilla de aquel se desincronizó del HTML publicado y
@@ -60,7 +67,6 @@ const hero = p => `<header class="hero-s" style="--hero:url('/assets/img/${p.her
     <div class="hero-botones">
       <a class="btn btn-2" href="#completo">Ver la solución completa</a>
     </div>
-    <p class="t-micro">Precios sin IVA, cada uno con su límite al lado. Sin permanencia.</p>
   </div>
 </header>`;
 
@@ -68,7 +74,10 @@ const dolores = p => `<section class="seccion">
   <div class="envoltura">
     <div class="envoltura-txt centrado" style="padding:0">
       <span class="t-eyebrow">El agujero</span>
-      <h2 class="t-h2" style="margin:14px 0 16px">Tres cosas que pasan<br><span class="acento">todas las semanas.</span></h2>
+      <h2 class="t-h2" style="margin:14px 0 16px">${p.doloresTitulo
+        ? `${esc(p.doloresTitulo[0])}<br><span class="acento">${esc(p.doloresTitulo[1])}</span>`
+        : 'Tres cosas que pasan<br><span class="acento">todas las semanas.</span>'}</h2>
+      ${p.doloresLead ? `<p class="t-lead">${p.doloresLead}</p>` : ''}
     </div>
     <div class="dolores aparece">
       ${p.dolores.map(([h, t]) => `<div class="dolor"><h3>${esc(h)}</h3><p>${esc(t)}</p></div>`).join('\n      ')}
@@ -167,6 +176,7 @@ const completo = p => {
       <div class="pack-precio">
         <div class="pack-cuota">${k.cuota} €<span>/mes</span></div>
         <div class="pack-alta">${miles(k.alta)} € de instalación <s>${miles(k.altaSuelta)} €</s> <i>−${dto}&nbsp;%</i></div>
+        <div class="sin-iva">Precios sin IVA</div>
         <div class="pack-nota">El descuento va en el montaje, que es lo que de verdad se comparte al hacerlo todo a la vez. La cuota mensual es la misma que sumando las piezas: no te cobramos de más por juntarlas ni te prometemos un descuento que no existe.</div>
       </div>
     </div>
@@ -188,9 +198,9 @@ const sueltas = p => `<section class="seccion seccion-cream" id="piezas">
     </div>
     <div class="tabla-piezas">
       <div class="tp-cab">
-        <span>Pieza</span><span>Hasta dónde llega</span><span>Al mes</span><span>Instalación</span>
+        <span>Pieza</span><span>Hasta dónde llega</span><span>Al mes<em>sin IVA</em></span><span>Instalación<em>sin IVA</em></span>
       </div>
-      ${p.piezas.map(z => `<div class="tp-fila">
+      ${p.piezas.map(z => `<div class="tp-fila"${z.slug ? ` data-pieza="${z.slug}" data-limite="${z.slug}"` : ''}>
         <span class="tp-n">${esc(z.n)}${z.fueraDelPack ? '<em>fuera del plan completo</em>' : ''}</span>
         <span class="tp-lim">${esc(z.lim)}</span>
         <span class="tp-eur">${z.desde ? 'desde ' : ''}${z.eur} €</span>
@@ -257,19 +267,24 @@ ${JSON.stringify(jsonld, null, 2)}
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/base.css">
   <link rel="stylesheet" href="/assets/atencion.css">
-  <link rel="stylesheet" href="/assets/solucion.css">
+  <link rel="stylesheet" href="/assets/solucion.css">${(p.css || []).map(h => `
+  <link rel="stylesheet" href="/assets/${h}">`).join('')}
 </head>
 <body>
 
 ${nav(ANCLAS)}
 
-${hero(p)}
+${p.heroHtml || hero(p)}
 
 ${dolores(p)}
 
 ${completo(p)}
 
+${p.antesDePiezas || ''}
+
 ${sueltas(p)}
+
+${p.despuesDePiezas || ''}
 
 ${faq(p)}
 

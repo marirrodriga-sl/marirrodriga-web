@@ -1,10 +1,9 @@
 /* Vuelca el menú del generador en las dos páginas escritas a mano.
    ─────────────────────────────────────────────────────────────────────────
-   Atención y Ventas no salen de generar-paginas.cjs porque sus heros son
-   maquetas hechas a mano. El menú, en cambio, tiene que ser el mismo en las
-   veintiuna páginas, y hasta hoy se quedaba atrás cada vez que cambiaba: el
-   09-09 se le quitaron las dos vías por departamento y estas dos siguieron
-   enseñándolas.
+   Queda solo la home. Atención y Ventas estaban aquí hasta que el 09-09
+   entraron en generar-departamentos.cjs; ya no hacen falta. El menú tiene
+   que ser el mismo en las veintiuna páginas, y hasta hoy se quedaba atrás
+   cada vez que cambiaba.
 
    Cada vez que se toque nav() en generar-paginas.cjs, se corre esto detrás.
    Las anclas de cada página son suyas y se conservan.
@@ -18,10 +17,6 @@ const RAIZ = path.join(__dirname, '..');
 const ANCLAS = {
   // La home no lleva anclas en el menú: a sus apartados se llega por «Sobre nosotros»
   'index.html': [],
-  'atencion-al-cliente.html': [['#agente', 'El agente'], ['#correo', 'Por correo'],
-                               ['#preguntas', 'Preguntas']],
-  'ventas-y-captacion.html': [['#captacion', 'La captación'], ['#seguimiento', 'El seguimiento'],
-                              ['#competencia', 'Analista de competencia'], ['#preguntas', 'Preguntas']],
 };
 
 for (const [f, anclas] of Object.entries(ANCLAS)) {

@@ -365,3 +365,15 @@ img, svg { max-width: 100%; display: block; }
 }
 .wa:hover { transform: scale(1.07); }
 .wa svg { width: 28px; height: 28px; fill: #fff; }
+
+/* ─── «SIN IVA» JUNTO AL PRECIO ────────────────────────────────────────────
+   Va donde está la cifra, no solo en el pie de la sección. Quien mira un
+   precio decide ahí mismo, y enterarse del IVA tres pantallas más abajo es
+   enterarse tarde. Fuera de los heros a propósito: allí no hay ninguna cifra
+   que aclarar y solo ensucia el titular.
+   ───────────────────────────────────────────────────────────────────────── */
+.sin-iva {
+  margin-top: 6px;
+  font-size: 11px; font-weight: 600; letter-spacing: .04em;
+  color: var(--ink-4);
+}

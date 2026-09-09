@@ -13,7 +13,294 @@
 
 const CAL = 'https://cal.com/marirrodriga-ia/llamada';
 
+const T = require('./trozos-a-mano.cjs');
+
 const DEPARTAMENTOS = [
+  /* ─── ATENCIÓN AL CLIENTE ─────────────────────────────────────────────────
+     Entra en el generador el 09-09. Hasta hoy era una página a mano, y salía
+     caro: arrastraba el menú de hace tres cambios y no tenía la estructura
+     nueva. El hero y el bloque «esto no es un chatbot» se conservan tal cual
+     desde trozos-a-mano.cjs.
+
+     El reparto entre el plan completo y lo que queda fuera no es una opinión:
+     sale de la aritmética del pack que validó Isma. 49+5+15+15+30+15+15 = 144
+     y 150+30+50+30+70+70+70 = 470. Las cinco piezas de abajo no caben en esa
+     cuenta, así que van sueltas. */
+  {
+    archivo: 'atencion-al-cliente.html', ruta: '/atencion-al-cliente',
+    heroHtml: T.heroAtencion,
+    antesDePiezas: T.noEsBot,
+    pill: 'Atención al Cliente',
+    titulo: 'Asistente de atención al cliente con IA | Marirrodriga IA',
+    descripcion: 'Un asistente que contesta por WhatsApp, Telegram o el chat de tu web, mira tu agenda de verdad y cierra la cita. Desde 49 €/mes + 150 € de instalación.',
+    h1: ['Contesta a las once de la noche.', 'Y también los domingos.'],
+    lead: 'Un asistente que entiende lo que le escriben, mira tu agenda de verdad y cierra la cita él mismo. En el canal donde tus clientes ya te escriben, no en uno nuevo que tengan que aprender.',
+    doloresTitulo: ['Lo que se pierde no es una llamada.', 'Es la que no vuelve a llamar.'],
+    doloresLead: 'Quien escribe fuera de horario no espera a mañana: escribe al siguiente. El problema de no contestar no es el mensaje perdido, es que no te enteras de que lo has perdido.',
+    pack: {
+      nombre: 'Atención al Cliente, montada entera',
+      gancho: 'Las siete piezas —el chat, la agenda, los recordatorios y el correo— con la misma cabeza detrás.',
+      cuota: 144, alta: 330, altaSuelta: 470,
+      entra: ['WhatsApp y Telegram', 'El chat de tu web', 'Tu bandeja de correo'],
+      sale: ['Contestado a cualquier hora', 'La cita, cerrada', 'Y lo que no le toca, en tus manos'],
+      comoVa: 'No son siete programas: es uno con siete manos. El mismo que contesta el chat es el que mira la agenda y el que ordena el correo.',
+      pie: 'Montado entero, lo que aprende en un canal lo sabe en los demás. Comprando pieza a pieza, cada una empieza de cero.',
+    },
+
+    dolores: [
+      ['Fuera de horario', 'El mensaje entra a las once de la noche, un domingo o en agosto. Tú lo lees el lunes. Para entonces ya han reservado en otro sitio.'],
+      ['Mientras trabajas', 'Estás atendiendo a alguien delante. El teléfono suena, el WhatsApp se acumula y elegir a quién dejas tirado es parte del día.'],
+      ['Lo de siempre', 'Precio, horario, dónde estáis, si queda hueco. Las mismas cinco preguntas, contestadas a mano, una por una, todos los días.'],
+    ],
+    piezas: [
+    { n: 'El agente', slug: 'iris-0', eur: 49, setup: 150, yaExiste: true,
+      maqueta: `<div class="mq-agente">
+        <div class="mq-a-cab"><span class="mq-a-punto"></span>WhatsApp · tu negocio</div>
+        <div class="mq-a-hilo">
+          <p class="mq-a-tuya">Buenas, ¿tenéis hueco esta semana para una revisión?</p>
+          <div class="mq-a-suya">
+            <p>Buenas noches. Sí: el jueves a las 17:30 o el viernes a las 10:00.</p>
+            <p class="mq-a-pie">Soy el asistente de la clínica — una IA. Si prefieres hablar con alguien, te paso.</p>
+          </div>
+          <p class="mq-a-tuya">El jueves me viene bien</p>
+          <div class="mq-a-suya">
+            <p>Hecho, <b>jueves 17:30</b>. Te aviso la víspera por si hay que moverla.</p>
+          </div>
+        </div>
+        <div class="mq-a-caja"><span>23:41 · contestado en 4 segundos</span><em>✓</em></div>
+      </div>`,
+      d: 'Contesta las preguntas de siempre con lo que tú le hayas contado de tu negocio. Va con un canal incluido, el que tú elijas: el chat de tu web, WhatsApp o Telegram. Se identifica como IA y te pasa la conversación cuando no le toca a él.',
+      lim: '500 conversaciones al mes · 1 canal' },
+
+    { n: 'Un canal más', slug: 'canal-adicional', eur: 5, setup: 30,
+      maqueta: `<div class="mq-lista">
+        <div class="mq-l-cab">Por dónde contesta</div>
+        <ul>
+          <li class="mq-l-nuevo"><span class="mq-eti mq-eti-v">Incluido</span><i>WhatsApp · el que has elegido tú</i></li>
+          <li><span class="mq-eti">+5 €</span><i>Telegram</i></li>
+          <li><span class="mq-eti">+5 €</span><i>Instagram</i></li>
+          <li><span class="mq-eti">+5 €</span><i>El chat de tu web</i></li>
+        </ul>
+        <p class="mq-l-pie">El mismo agente en todos: lo que aprende en uno lo sabe en los demás.</p>
+      </div>`,
+      d: 'El primero va incluido y lo eliges tú. Cada canal de más — WhatsApp, Telegram, Instagram — se suma aparte.',
+      lim: '1 canal por unidad' },
+
+    { n: 'Acceso a tu agenda: reservar, cambiar y cancelar', slug: 'agenda-reserva-publica', eur: 15, setup: 50, destacada: true,
+      maqueta: `<div class="mq-lista">
+        <div class="mq-l-cab">Jueves 14 · huecos reales</div>
+        <ul>
+          <li class="mq-l-lleno"><span>09:00</span><i>María G. · revisión</i></li>
+          <li class="mq-l-lleno"><span>11:30</span><i>Jorge P. · limpieza</i></li>
+          <li class="mq-l-libre"><span>17:30</span><i>libre</i></li>
+          <li class="mq-l-nuevo"><span>17:30</span><i>reservado por el agente · hace 1 min</i></li>
+          <li class="mq-l-libre"><span>19:00</span><i>libre</i></li>
+        </ul>
+        <p class="mq-l-pie">Mira el hueco de verdad antes de ofrecerlo. No promete lo que no hay.</p>
+      </div>`,
+      d: 'Deja de contestar y empieza a hacer: mira los huecos reales y cierra la cita él mismo.',
+      lim: 'hasta 400 citas/mes' },
+
+    { n: 'Recordatorios anti no-show y reseñas', slug: 'recordatorios-confirmacion', eur: 15, setup: 30,
+      maqueta: `<div class="mq-agente">
+        <div class="mq-a-cab"><span class="mq-a-punto"></span>La víspera, y el día después</div>
+        <div class="mq-a-hilo">
+          <div class="mq-a-suya">
+            <p>Mañana a las <b>17:30</b> tienes cita. ¿La confirmas o la movemos?</p>
+            <div class="mq-a-botones"><span>Confirmar</span><span>Cambiarla</span></div>
+          </div>
+          <p class="mq-a-tuya">Confirmada</p>
+          <div class="mq-a-suya">
+            <p>¿Qué tal fue ayer?</p>
+            <p class="mq-a-pie">Si contesta bien, le manda el enlace de Google. Si contesta mal, no pide nada y te avisa a ti.</p>
+          </div>
+        </div>
+      </div>`,
+      d: 'Avisa la víspera y deja confirmar o cancelar con un toque. Cuando la visita ha pasado pregunta qué tal fue: si fue bien pide la reseña de Google, y si fue mal te avisa a ti.',
+      lim: 'hasta 800 envíos/mes',
+      nota: 'Para contestar las reseñas ya publicadas, eso vive en Posicionamiento Online.' },
+
+    { n: 'Seguimiento de pedidos', slug: 'modulo-seguimiento-pedidos', eur: 30, setup: 70,
+      maqueta: `<div class="mq-agente">
+        <div class="mq-a-cab"><span class="mq-a-punto"></span>«Y lo mío, ¿dónde está?»</div>
+        <div class="mq-a-hilo">
+          <p class="mq-a-tuya">Buenas, pedí el martes y no sé nada</p>
+          <div class="mq-a-suya">
+            <p>Lo tengo: salió ayer y entra en reparto <b>mañana por la mañana</b>.</p>
+            <div class="mq-a-pasos"><span class="hecho">Pagado</span><span class="hecho">Preparado</span><span class="hecho">En camino</span><span>Entregado</span></div>
+            <p class="mq-a-pie">Consulta tu tienda y solo lee: ni toca el pedido ni lo cancela.</p>
+          </div>
+        </div>
+      </div>`,
+      d: 'Responde al «¿dónde está lo mío?» consultando tu tienda. Solo lee: ni toca ni cancela.',
+      lim: 'se acopla al asistente',
+      nota: 'Si lo que quieres es avisar antes de que pregunten, eso vive en Logística.' },
+
+    { n: 'El organizador del buzón', slug: 'correo-clasificacion', eur: 15, setup: 70,
+      maqueta: `<div class="mq-lista">
+        <div class="mq-l-cab">Tu bandeja, a las 8:05</div>
+        <ul>
+          <li><span class="mq-eti mq-eti-r">Reclamación</span><i>Pedido 4412 — llegó roto</i></li>
+          <li><span class="mq-eti mq-eti-p">Pedido</span><i>Confirmación de 3 unidades</i></li>
+          <li><span class="mq-eti mq-eti-o">Propuesta</span><i>Colaboración con un proveedor</i></li>
+          <li class="mq-l-gris"><span class="mq-eti">Spam</span><i>Posicionamiento garantizado en Google</i></li>
+        </ul>
+        <p class="mq-l-pie">Las etiquetas las decides tú. Solo lee y ordena: no escribe.</p>
+      </div>`,
+      d: 'Un agente que vive dentro de tu correo y ordena lo que entra: esto es spam, esto una reclamación, esto una propuesta, esto un pedido. Tú decides las etiquetas. Va siempre, porque es lo que hace que lo demás sepa qué está mirando.',
+      lim: 'hasta 1.000 correos al mes · 1 buzón · solo lee, no escribe' },
+
+    { n: 'Ningún correo se queda sin dueño', slug: 'correo-respuesta-derivacion', eur: 15, setup: 70,
+      maqueta: `<div class="mq-lista">
+        <div class="mq-l-cab">Lo que entra, repartido</div>
+        <ul>
+          <li><span class="mq-eti mq-eti-v">Contestado solo</span><i>«Horario de los sábados»</i></li>
+          <li><span class="mq-eti mq-eti-p">Ticket → Marta</span><i>Cambio de una factura</i></li>
+          <li><span class="mq-eti mq-eti-r">A ti, ahora</span><i>Cliente enfadado por una espera</i></li>
+        </ul>
+        <p class="mq-l-pie">Lo que puede esperar, se reparte. Lo que no, te llega al momento.</p>
+      </div>`,
+      d: 'Responde los correos que tú hayas decidido que se contestan solos; del resto abre un ticket y se lo asigna a quien le toque. Y lo que no puede esperar —una reclamación, un cabreo— te lo pasa al momento en vez de dejarlo en la bandeja.',
+      lim: 'hasta 300 respuestas, derivaciones o avisos/mes',
+      nota: 'Esto reparte lo que entra en tu buzón. Perseguir un problema con un tercero hasta cerrarlo es la gestión de incidencias, en Logística.' },
+
+    { n: 'Base de datos de clientes', slug: 'ficha-cliente', eur: 25, setup: 100, fueraDelPack: true,
+      d: 'Que sepa quién le escribe, qué le hiciste la última vez y qué hablasteis hace tres meses, en vez de empezar de cero cada vez.',
+      lim: '2.000 fichas · 5 GB de fotos' },
+
+    { n: 'Monitoreo de clientes potenciales', slug: 'hermes-acompanamiento-conversacional', eur: 49, setup: 50, fueraDelPack: true,
+      d: 'Sigue a los que preguntaron y no cerraron: intenta cerrarlos, y cuando alguno se cae te reporta por qué se ha caído.',
+      lim: '300 conversaciones/mes' },
+
+    { n: 'Función de voz: que coja el teléfono', slug: 'voz-telefono', eur: 15, setup: 100, fueraDelPack: true,
+      d: 'Que atienda hablando, no solo escribiendo. Mismo cerebro y mismos datos que el de texto.',
+      lim: 'comparte el volumen del agente',
+      nota: 'La telefonía y los minutos van a tu nombre y a tu cargo, igual que la cuenta de WhatsApp. Por eso el mensual es tan bajo: el consumo no pasa por nosotros.' },
+
+    { n: 'Un buzón más', slug: 'correo-buzon-adicional', eur: 5, setup: 30, fueraDelPack: true,
+      d: 'El primero va incluido. Si tienes info@, ventas@ y soporte@ por separado, cada uno de más se suma aparte.',
+      lim: '1 buzón por unidad' },
+
+    { n: 'Que lo lleve a tu CRM', slug: 'correo-extraccion-crm', eur: 20, setup: 100, fueraDelPack: true,
+      d: 'Del correo salen los datos que importan — quién pregunta, por qué y cómo contactarle — y acaban en tu CRM en vez de en tu cabeza.',
+      lim: 'hasta 300 fichas al mes',
+      nota: 'Cuenta con que ya tienes un CRM y con que deja escribir desde fuera. Si no tienes, montarlo se presupuesta aparte.' },
+    ],
+    faq: [
+      ['¿Se nota que es un bot?', 'Sí, y a propósito: se identifica siempre como IA. Lo exige el artículo 50 del Reglamento Europeo de IA desde agosto de 2026, y además mentir en eso sale caro el día que el cliente lo descubre. Lo que no se nota es que sea malo.'],
+      ['¿Qué pasa cuando no sabe algo?', 'Deja de contestar y te pasa la conversación. No improvisa, no promete plazos y no cierra ventas con cobro. Si el cliente se enfada, también te lo pasa: la escalada a una persona es parte del diseño, no un fallo.'],
+      ['¿Necesito una cuenta de WhatsApp Business?', 'Sí, y va a tu nombre: Meta te factura a ti directamente. No revendemos mensajería. Por eso un canal de más cuesta 5 €/mes — lo que pagas es la conexión, no el consumo.'],
+      ['¿Y si me quedo corto de conversaciones?', 'Te avisamos al 80 % del límite y te proponemos subir. Nunca cortamos el servicio ni te facturamos el exceso por sorpresa. Un precio sin su límite al lado es una mentira o una trampa, así que aquí van siempre juntos.'],
+      ['¿Hay permanencia?', 'No. Te vas cuando quieras avisando con 30 días. La instalación se paga 50 % al empezar y 50 % al entregar, y la cuota incluye los ajustes y una reunión al mes.'],
+      ['¿Cuánto tarda en estar funcionando?', 'Depende de cuánto haya que contarle de tu negocio y de a cuántas cosas tuyas se tenga que conectar. En la llamada lo vemos y sales con una fecha concreta, no con un «pronto».'],
+    ],
+  },
+
+  /* ─── VENTAS Y CAPTACIÓN ──────────────────────────────────────────────────
+     Entra en el generador el 09-09, por lo mismo que Atención. Conserva su
+     hero, la captura del panel de captación funcionando —la única prueba
+     publicada de un producto nuestro en producción— y el analista de
+     competencia entero, que es un producto aparte y no cabe en la tabla.
+
+     Aritmética del pack: 199+49+15 = 263 y 600+200+40 = 840. */
+  {
+    archivo: 'ventas-y-captacion.html', ruta: '/ventas-y-captacion',
+    css: ['ventas.css'],
+    heroHtml: T.heroVentas,
+    despuesDePiezas: T.capturaVentas + T.competenciaVentas,
+    pill: 'Ventas y Captación',
+    titulo: 'Captación de clientes con IA | Marirrodriga IA',
+    descripcion: 'Sale a buscar negocios que encajan contigo y te los deja puntuados, con el primer mensaje escrito. Y persigue los presupuestos que se enfrían. Desde 49 €/mes.',
+    h1: ['Encontrar a quien no te conoce.', 'Y no perder a quien ya te preguntó.'],
+    lead: 'Salir a buscar clientes y perseguir lo que ya tienes abierto son dos trabajos distintos, y los dos se hacen todos los días o no se hacen. Estos los hacen solos.',
+    doloresTitulo: ['Vender no es difícil.', 'Lo difícil es hacerlo todos los días.'],
+    doloresLead: 'Buscar clientes se come el tiempo de atenderlos. Y los que ya preguntaron se enfrían mientras tú estás con el siguiente. Ninguna de las dos cosas es complicada; lo complicado es que no se te pase ni un día.',
+    pack: {
+      nombre: 'Ventas y Captación, montado entero',
+      gancho: 'Salir a buscar, no perder al que preguntó y recuperar al que se fue — con una sola cola.',
+      cuota: 263, alta: 590, altaSuelta: 840,
+      entra: ['Tu sector y tu zona', 'Los presupuestos que mandas', 'Los que dejaron de venir'],
+      sale: ['La cola puntuada, con su motivo', 'Ningún presupuesto sin seguir', 'Los dormidos, despertados'],
+      comoVa: 'Las tres beben de la misma ficha: lo que el seguimiento aprende de un cliente lo aprovecha la reactivación dos meses después.',
+      pie: 'Es la diferencia entre tres herramientas sueltas y un embudo: el que entra por captación sale por reactivación sin que nadie lo mueva a mano.',
+    },
+
+    dolores: [
+      ['El día que se va buscando', 'Abrir Google, mirar fichas, apuntar teléfonos, adivinar cuál merece la pena. Tres horas para encontrar cinco a los que llamar, y ninguna para llamarlos.'],
+      ['El presupuesto que se enfría', 'Lo mandas el lunes. El jueves no ha dicho nada y tú no escribes por no parecer pesado. A los quince días ya ha comprado en otro sitio, y no te has enterado.'],
+      ['El que preguntó y no volvió', 'Pidió precio por WhatsApp, le contestaste, y ahí se quedó. No dijo que no: se le pasó. Nadie le volvió a escribir, porque nadie tenía eso apuntado.'],
+    ],
+    piezas: [
+    { n: 'Captación de clientes potenciales', slug: 'captacion-leads', eur: 199, setup: 600, destacada: true,
+      maqueta: `<div class="mq-lista">
+        <div class="mq-l-cab">Tu cola del lunes · ordenada por nota</div>
+        <ul>
+          <li><span class="mq-nota mq-nota-a">98</span><i>Peluquería · 4,9★ y 204 reseñas — web sin candado, hora solo por teléfono</i></li>
+          <li><span class="mq-nota mq-nota-a">91</span><i>Clínica · sin reserva online, 180 reseñas</i></li>
+          <li><span class="mq-nota mq-nota-b">74</span><i>Taller · ficha sin horario ni fotos</i></li>
+          <li class="mq-l-gris"><span class="mq-nota">41</span><i>Descartado · ya tiene montado lo que vendemos</i></li>
+        </ul>
+        <p class="mq-l-pie">Con el motivo escrito y el primer mensaje redactado. El botón de enviar lo pulsas tú.</p>
+      </div>`,
+      d: 'Rastrea negocios que encajan con tu cliente ideal en fuentes públicas, mira qué tienen y qué les falta, les pone nota y te los entrega ordenados de mejor a peor con el motivo escrito y el primer mensaje ya redactado. Tú te sientas a decidir a quién escribes, no a buscar a quién.',
+      lim: '150 negocios cualificados al mes · 1 sector y 1 zona a elegir · entrega en tu CRM o en una hoja de cálculo, más un aviso semanal',
+      nota: 'Te deja la lista y el borrador; el mensaje lo mandas tú. La base legal del artículo 21 de la LSSI es de quien lo manda, y esa responsabilidad no la asumimos por ti. Tampoco compramos bases de datos ni verificamos por teléfono.' },
+
+    { n: 'Seguimiento de presupuestos', slug: 'hermes-seguimiento-presupuestos', eur: 49, setup: 200,
+      maqueta: `<div class="mq-agente">
+        <div class="mq-a-cab"><span class="mq-a-punto"></span>Jueves · tres días sin respuesta</div>
+        <div class="mq-a-hilo">
+          <div class="mq-a-suya">
+            <p>Hola Marta, el lunes te pasamos el presupuesto. Lo que más suele frenar es el pago: se puede hacer en <b>12 meses sin intereses</b>. ¿Te lo cuento?</p>
+          </div>
+          <div class="mq-a-aviso">
+            <b>A los diez días, en tu panel</b>
+            <p>Marta y Jorge no han contestado a dos toques. Luis ha abierto el presupuesto tres veces: llámale tú.</p>
+          </div>
+        </div>
+      </div>`,
+      d: 'Trabaja sobre presupuestos que ya has mandado. Sabe cuáles siguen abiertos, escribe a los días justos con la duda más probable ya resuelta, y te dice cuáles se han enfriado y cuáles merecen una llamada tuya. Ni negocia precio ni aplica descuentos.',
+      lim: '200 presupuestos activos · email + un canal de mensajería (WhatsApp o Telegram)',
+      nota: 'Lee tus presupuestos en tu sistema solo si tiene API. Si es un programa cerrado, se valora aparte antes de empezar, no después.' },
+
+    { n: 'Reactivación de dormidos', slug: 'reactivacion-dormidos', eur: 15, setup: 40,
+      maqueta: `<div class="mq-lista">
+        <div class="mq-l-cab">A quién sí, y a quién no</div>
+        <ul>
+          <li><span class="mq-eti mq-eti-v">Escribirle</span><i>Venía cada 6 semanas al color · lleva 4 meses sin pisar</i></li>
+          <li><span class="mq-eti mq-eti-v">Escribirle</span><i>Dos tratamientos el año pasado · nada desde marzo</i></li>
+          <li class="mq-l-gris"><span class="mq-eti">Dejarlo</span><i>Vino una vez hace dos años · escribirle molesta</i></li>
+        </ul>
+        <p class="mq-l-pie">«Hace tiempo que no te vemos. ¿Te guardo hueco el jueves por la tarde?»</p>
+      </div>`,
+      d: 'Trabaja con clientes que ya eran tuyos y llevan meses sin aparecer. Va a quien tiene sentido, con lo que ya sabes de él. No es una campaña a toda la base.',
+      lim: 'hasta 200 contactos/mes · 1 campaña/mes' },
+
+    { n: 'Que acompañe al que preguntó y no cerró', slug: 'hermes-acompanamiento-conversacional', eur: 49, setup: 50, fueraDelPack: true,
+      d: 'Trabaja antes del presupuesto: con quien pidió información y no volvió. Sigue la conversación, resuelve la duda que le frena, intenta cerrarlo y, si se cae, te apunta por qué.',
+      lim: '300 conversaciones/mes',
+      nota: 'La diferencia con el seguimiento: aquel persigue un papel que ya enviaste; esta conversa con quien aún no ha llegado a papel.' },
+
+    { n: 'Que avise de la cita y luego pida la reseña', slug: 'recordatorios-confirmacion', eur: 15, setup: 30, fueraDelPack: true,
+      d: 'Trabaja después de cerrar: cuida la cita para que no te planten y convierte la visita buena en una reseña de Google.',
+      lim: 'hasta 800 envíos/mes, sumando recordatorios y peticiones de reseña · sin SMS ni llamadas',
+      nota: 'Las otras venden. Esta cuida lo ya vendido y trae la siguiente venta por reputación.' },
+
+    { n: 'Y que conteste al que entra nuevo', slug: 'iris-0', eur: 49, setup: 150, fueraDelPack: true,
+      d: 'Contesta, cualifica y da cita al que escribe por primera vez. Desde ahí, si le mandas presupuesto, ya lo coge el seguimiento.',
+      lim: '500 conversaciones/mes · 1 canal',
+      nota: 'Es el agente de Atención al Cliente. Vive en su página y no se repite aquí.' },
+    ],
+    faq: [
+      ['¿Escribe a los negocios en mi nombre?', 'No. Te deja la lista puntuada y el primer mensaje redactado, pero el botón de enviar lo pulsas tú. La base legal del artículo 21 de la LSSI es de quien manda el correo, y esa responsabilidad no la asumimos por ti. Es la misma regla que seguimos nosotros con nuestra propia cola.'],
+      ['¿De dónde saca los negocios?', 'De fuentes públicas: la ficha de Google del negocio y su propia web. Ahí es donde se ve si tiene reserva online, si su web va sin candado o cuántas reseñas le han entrado en el último año. No compramos bases de datos ni verificamos por teléfono.'],
+      ['¿Cuántos de los 150 valen de verdad?', 'Depende del sector y de la zona, y por eso cada uno lleva su nota y su motivo escrito: los de arriba son a los que merece la pena escribir hoy. En nuestra propia cola, de 265 negocios rastreados solo 98 tenían un correo al que escribir. Te lo decimos antes de empezar, no después.'],
+      ['¿Y si no tengo CRM?', 'Te lo entregamos en una hoja de cálculo, con el aviso semanal igual. Montar un CRM se presupuesta aparte, y de entrada no te lo recomendamos: un CRM sin volumen dentro es una hoja vacía que da trabajo y no devuelve nada.'],
+      ['¿El seguimiento negocia el precio?', 'No. Escribe, resuelve dudas, marca calientes y fríos y te pasa a ti los que merecen llamada. Que negocie dentro de unos límites que fijes tú se construye aparte, con tus reglas por escrito, y lo que se salga de la regla te lo pasa igual.'],
+      ['¿Se nota que es un bot?', 'Cuando conversa con alguien se identifica como asistente, que es lo que exige el artículo 50 del Reglamento Europeo de IA desde agosto de 2026. Escribe con tu tono y desde tu negocio, y cuando no sabe algo o la conversación se pone seria, deja de contestar y te la pasa a ti.'],
+      ['¿Hay permanencia?', 'No. Te vas cuando quieras avisando con 30 días. La instalación se paga 50 % al empezar y 50 % al entregar, y la cuota incluye los ajustes y una reunión al mes. Y si te acercas al límite de tu pieza, te avisamos al 80 % y te proponemos subir: nunca cortamos ni facturamos el exceso por sorpresa.'],
+    ],
+  },
 
 /* ═══ FINANZAS ═══════════════════════════════════════════════════════════ */
 {

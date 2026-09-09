@@ -125,7 +125,6 @@ const hero = p => `<header class="hero-s" style="--hero:url('/assets/img/${p.her
     <div class="hero-botones">
       <a class="btn btn-2" href="#precio">Ver qué cuesta</a>
     </div>
-    <p class="t-micro">Precios sin IVA, cada uno con su límite al lado. Sin permanencia.</p>
   </div>
 </header>`;
 
@@ -177,6 +176,7 @@ const precio = (p, tramos) => `<section class="seccion" id="precio">
         <p class="tramo-gancho">${esc(t.gancho)}</p>
         <div class="tramo-precio"><b>${eur(t.cuota)} €<span>/mes</span></b></div>
         <div class="tramo-alta">+ ${ent(t.alta)} € de montaje, una sola vez</div>
+        <div class="sin-iva">Precios sin IVA</div>
         ${t.bonificacion > 0
           ? `<div class="tramo-bonif">${t.piezas} piezas juntas · −${pct(t.bonificacion)} % ya aplicado</div>`
           : `<div class="tramo-bonif">${t.piezas} piezas${t.sueloAplicado ? ' · mínimo por solución' : ''}</div>`}

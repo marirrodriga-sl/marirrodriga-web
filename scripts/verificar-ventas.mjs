@@ -18,6 +18,12 @@ const { CATALOGO, cotiza, calculaSetup } = require('../assets/catalogo.js');
 const pieza = s => CATALOGO.piezas.find(p => p.slug === s);
 
 let fallos = 0;
+/* El recuento va global y no por página: los cinco departamentos que se
+   abrieron el 09-09 venden piezas que todavía no están en el catálogo, así
+   que exigirle a cada página que tenga alguna marcada saltaba en las cinco
+   sin que hubiera nada roto. Lo que sí hay que garantizar es que alguna
+   página contrasta, para que esto no pase en verde sin comprobar nada. */
+let marcados = 0;
 const check = (ok, etiqueta, detalle = '') => {
   console.log(`${ok ? '  OK  ' : ' FALLA'} ${etiqueta}${detalle ? ' — ' + detalle : ''}`);
   if (!ok) fallos++;
@@ -26,7 +32,12 @@ const numeros = texto => (texto.replace(/<[^>]+>/g, ' ').match(/\d+(?:[.,]\d+)?/
   .map(n => Number(n.replace('.', '').replace(',', '.')));
 const fmt = n => Number.isInteger(n) ? String(n) : n.toFixed(2).replace('.', ',');
 
-for (const fichero of ['ventas-y-captacion.html']) {
+/* Desde el 09-09 las siete landings salen del generador y su tabla de piezas
+   marca con data-pieza las que existen en el catálogo, así que la
+   comprobación deja de ser solo de Ventas y cubre las siete. */
+for (const fichero of ['ventas-y-captacion.html', 'atencion-al-cliente.html', 'finanzas.html',
+                       'logistica.html', 'datos-y-direccion.html', 'marketing.html',
+                       'posicionamiento-online.html']) {
   const html = readFileSync(new URL('../' + fichero, import.meta.url), 'utf8');
   console.log(`\n${fichero}`);
 
@@ -40,7 +51,8 @@ for (const fichero of ['ventas-y-captacion.html']) {
     const nums = numeros(m[2]);
     check(nums.includes(p.eur) && nums.includes(p.setup), `${m[1]} · ${p.eur} €/mes + ${p.setup} €`, nums.join(' '));
   }
-  check(n > 0, 'hay precios marcados con data-pieza', String(n));
+  marcados += n;
+  if (n) check(true, 'precios contrastados con el catálogo', String(n));
 
   // data-cotiza: varias piezas juntas
   const rc = /<[^>]+data-cotiza="([^"]+)"[^>]*>([\s\S]*?)<\/div>/g;
@@ -69,5 +81,9 @@ for (const fichero of ['ventas-y-captacion.html']) {
   check(coladas.length === 0, 'ninguna pieza no publicable con precio', coladas.join(', ') || 'ninguna');
 }
 
+console.log('');
+check(marcados > 0, 'alguna página contrasta precios contra el catálogo', String(marcados));
+
 console.log(fallos ? `\n${fallos} FALLOS` : '\nTodo cuadra.');
+
 process.exit(fallos ? 1 : 0);

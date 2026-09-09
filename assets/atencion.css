@@ -1157,3 +1157,75 @@
   font-style: normal; width: 24px; height: 24px; flex: none; border-radius: 999px;
   display: grid; place-items: center; background: var(--purple); color: #fff; font-size: 13px;
 }
+
+/* ─── Piezas del kit de maquetas ───────────────────────────────────────────
+   Atención y Ventas venden conversaciones y colas, no escenas: se dibujan.
+   Dos componentes cubren las diez piezas — un hilo de mensajes y una lista
+   etiquetada — en vez de una maqueta distinta por pieza. */
+.mq-a-botones { display: flex; gap: 6px; margin-top: 8px; }
+.mq-a-botones span {
+  padding: 5px 11px; border-radius: 999px;
+  border: 1px solid var(--line); background: var(--white);
+  font-size: 11px; font-weight: 600; color: var(--ink-2);
+}
+.mq-a-pasos { display: flex; gap: 4px; margin: 9px 0 4px; }
+.mq-a-pasos span {
+  flex: 1; text-align: center; padding: 4px 2px; border-radius: 6px;
+  background: var(--white); border: 1px solid var(--line-soft);
+  font-size: 9.5px; font-weight: 600; color: var(--ink-4);
+}
+.mq-a-pasos .hecho { background: var(--purple-tint); border-color: #e4dcff; color: var(--purple); }
+.mq-a-aviso {
+  margin-top: 4px; padding: 10px 12px; border-radius: 10px;
+  background: var(--ink); color: rgba(255,255,255,.82);
+}
+.mq-a-aviso b { display: block; font-size: 10px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: #c9b6ff; margin-bottom: 4px; }
+
+.mq-lista {
+  display: grid; gap: 9px; align-content: start;
+  padding: 13px; border-radius: 12px;
+  background: #fff; border: 1px solid var(--line);
+  box-shadow: 0 10px 26px -16px rgba(10,8,16,.45);
+  font-size: 12px; line-height: 1.4;
+}
+.mq-l-cab {
+  padding-bottom: 9px; border-bottom: 1px solid var(--line-soft);
+  font-size: 10.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3);
+}
+.mq-lista ul { display: grid; gap: 5px; }
+.mq-lista li { display: flex; align-items: center; gap: 9px; padding: 6px 8px; border-radius: 8px; background: var(--cream); }
+.mq-lista li i { font-style: normal; color: var(--ink-2); min-width: 0; }
+.mq-lista li > span { flex: none; }
+.mq-l-gris { opacity: .5; }
+.mq-l-libre { background: var(--white); border: 1px dashed var(--line); }
+.mq-l-lleno > span, .mq-l-libre > span, .mq-l-nuevo > span { font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
+.mq-l-nuevo { background: var(--purple-tint); border: 1px solid #e4dcff; }
+.mq-l-nuevo i { color: var(--purple); font-weight: 600; }
+.mq-l-pie { font-size: 11px; color: var(--ink-4); }
+
+.mq-eti {
+  padding: 3px 8px; border-radius: 999px;
+  font-size: 10px; font-weight: 700; letter-spacing: .02em;
+  background: #e8eaed; color: var(--ink-4);
+}
+.mq-eti-r { background: #fde8e6; color: #b3261e; }
+.mq-eti-p { background: #e6f0fd; color: #1a4fa0; }
+.mq-eti-o { background: #fef3d9; color: #8a5a00; }
+.mq-eti-v { background: #e3f5e9; color: #14713b; }
+
+.mq-nota {
+  width: 30px; height: 26px; border-radius: 7px;
+  display: grid; place-items: center;
+  font-size: 12px; font-weight: 800; font-variant-numeric: tabular-nums;
+  background: #e8eaed; color: var(--ink-4);
+}
+.mq-nota-a { background: #e3f5e9; color: #14713b; }
+.mq-nota-b { background: #fef3d9; color: #8a5a00; }
+
+/* En la tabla el aviso va en las dos columnas de dinero, no en una nota al pie */
+.tp-cab em {
+  display: block; font-style: normal;
+  font-size: 9.5px; font-weight: 600; letter-spacing: .05em;
+  color: var(--ink-4); margin-top: 1px;
+}
+.pack .sin-iva { color: rgba(255,255,255,.5); }
