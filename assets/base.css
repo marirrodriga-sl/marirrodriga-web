@@ -191,7 +191,9 @@ img, svg { max-width: 100%; display: block; }
    Cada grupo lleva una frase debajo del nombre. Sin ella, un panel de nueve
    enlaces obliga a leerlos todos para saber cuál es el tuyo.
    ───────────────────────────────────────────────────────────────────────── */
-.nav-grupo { position: relative; display: flex; align-items: center; }
+/* Estático a propósito: el panel se ancla a la barra, no al botón, y para eso
+   el único bloque contenedor por encima tiene que ser .nav (que es fixed). */
+.nav-grupo { position: static; display: flex; align-items: center; }
 
 .nav-grupo-btn {
   display: inline-flex; align-items: center; gap: 5px;
@@ -208,23 +210,42 @@ img, svg { max-width: 100%; display: block; }
 .nav-grupo[data-abierto] .nav-grupo-btn { color: #fff; }
 .nav-grupo[data-abierto] .nav-grupo-btn::after { transform: rotate(-135deg); margin-top: 2px; }
 
-/* Anclado a la izquierda del botón, no centrado: con el panel doble (460 px) y
-   «Sectores» pegado al logo, centrarlo lo sacaba por el borde izquierdo. */
+/* ─── EL PANEL ES LA BARRA, ESTIRADA ──────────────────────────────────────
+   Era una tarjeta blanca colgando del botón, y se leía como un pegote: fondo
+   distinto, ancho distinto y borde propio, encima de una barra oscura. Ahora
+   la barra se abre hacia abajo —mismo fondo, mismo ancho, mismos bordes— y
+   los sectores se reparten en rejilla. Un bloque, no dos.
+
+   Por eso .nav-grupo es estático: el panel se posiciona contra .nav.
+   ───────────────────────────────────────────────────────────────────────── */
 .nav-panel {
-  position: absolute; top: calc(100% + 18px); left: 0; transform: translateY(-6px);
-  min-width: 340px; padding: 10px;
-  background: var(--white);
-  border: 1px solid var(--line); border-radius: var(--r-card);
-  box-shadow: var(--sh-3);
-  opacity: 0; visibility: hidden; transition: opacity .18s, transform .18s, visibility .18s;
+  position: absolute; top: 100%; left: -1px; right: -1px;
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 2px; padding: 12px;
+  background: rgba(23,20,31,.90);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  backdrop-filter: blur(16px) saturate(1.4);
+  border: 1px solid rgba(255,255,255,.10); border-top: 0;
+  border-radius: 0 0 var(--r-panel) var(--r-panel);
+  box-shadow: 0 18px 40px -18px rgba(10,8,16,.6);
+  opacity: 0; visibility: hidden; transform: translateY(-6px);
+  transition: opacity .18s, transform .18s, visibility .18s;
 }
 .nav-grupo[data-abierto] .nav-panel { opacity: 1; visibility: visible; transform: translateY(0); }
-/* El puente invisible evita que el panel se cierre al cruzar el hueco con el ratón */
-.nav-panel::before { content: ''; position: absolute; left: 0; right: 0; top: -18px; height: 18px; }
 
-.nav-panel-doble { min-width: 460px; display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
-/* El enlace de cierre cruza las dos columnas; si no, ocupa media fila */
-.nav-panel-doble .nav-panel-pie { grid-column: 1 / -1; }
+/* Con un panel abierto la píldora se corta por abajo, para que barra y panel
+   sean una sola pieza. Sin :has() el navegador se queda con la píldora entera
+   y el panel debajo: menos fino, pero legible. */
+.nav:has(.nav-grupo[data-abierto]) {
+  border-radius: var(--r-pill) var(--r-pill) 0 0;
+  border-bottom-color: rgba(255,255,255,.07);
+}
+.nav.pegada .nav-panel { background: rgba(20,17,28,.97); }
+
+/* Los sectores son solo nombres, sin frase debajo, así que caben todos en una
+   fila. auto-fit en vez de un número fijo: si mañana hay ocho, se recoloca
+   solo en lugar de dejar uno huérfano abajo. */
+.nav-panel-sectores { grid-template-columns: repeat(auto-fit, minmax(148px, 1fr)); }
 
 .nav-item { display: block; padding: 9px 12px; border-radius: 10px; transition: background .15s; }
 .nav-item:hover { background: var(--purple-tint); }
@@ -234,13 +255,24 @@ img, svg { max-width: 100%; display: block; }
 .nav-item.apagado b { color: var(--ink-4); font-weight: 500; }
 .nav-item.apagado span { color: var(--ink-4); }
 
+/* Sobre el fondo oscuro del panel se invierten. Fuera de él —el panel móvil,
+   que es blanco— siguen valiendo las de arriba. */
+.nav-panel .nav-item:hover { background: rgba(255,255,255,.07); }
+.nav-panel .nav-item b { color: #fff; }
+.nav-panel .nav-item span { color: rgba(255,255,255,.55); }
+.nav-panel .nav-item.apagado b { color: rgba(255,255,255,.4); }
+.nav-panel .nav-item.apagado span { color: rgba(255,255,255,.28); }
+
 .nav-panel-pie {
-  margin: 8px -10px -10px; padding: 11px 22px;
-  border-top: 1px solid var(--line-soft); border-radius: 0 0 var(--r-card) var(--r-card);
-  background: var(--cream);
-  font-size: 12.5px; font-weight: 600; color: var(--purple);
+  grid-column: 1 / -1;
+  margin: 10px -12px -12px; padding: 12px 22px;
+  border-top: 1px solid rgba(255,255,255,.09);
+  border-radius: 0 0 var(--r-panel) var(--r-panel);
+  background: rgba(255,255,255,.035);
+  font-size: 12.5px; font-weight: 600; color: #c9b6ff;
+  transition: background .15s;
 }
-.nav-panel-pie:hover { background: var(--cream-deep); }
+.nav-panel-pie:hover { background: rgba(255,255,255,.07); }
 
 /* ─── HAMBURGUESA Y PANEL MÓVIL ───────────────────────────────────────────
    Hasta hoy .nav-links se ocultaba en móvil y no había nada que lo sustituyera:
@@ -329,28 +361,3 @@ img, svg { max-width: 100%; display: block; }
 }
 .wa:hover { transform: scale(1.07); }
 .wa svg { width: 28px; height: 28px; fill: #fff; }
-
-
-/* ─── LAS DOS VÍAS DE CADA DEPARTAMENTO ──────────────────────────────────
-   Cada uno se vende entero o pieza a pieza, y el menú lo dice en vez de
-   obligar a entrar para enterarse. Va solo en el panel de escritorio: las
-   dos vías por siete departamentos no caben en una pantalla de teléfono, y
-   allí la fila simple lleva a la página, que empieza por la completa. */
-.nav-dep { border-radius: 10px; transition: background .15s; }
-.nav-dep:hover { background: var(--purple-tint); }
-.nav-dep .nav-item { padding-bottom: 3px; }
-.nav-dep .nav-item:hover { background: none; }
-
-.nav-dep-vias { display: flex; gap: 6px; padding: 0 12px 9px; }
-.nav-dep-vias a {
-  display: inline-flex; align-items: center; gap: 5px;
-  padding: 4px 9px; border-radius: var(--r-pill);
-  background: var(--cream); border: 1px solid var(--line-soft);
-  font-size: 11.5px; font-weight: 600; color: var(--ink-2);
-  transition: background .15s, border-color .15s, color .15s;
-}
-.nav-dep-vias a:hover { background: var(--white); border-color: var(--line); color: var(--ink); }
-.nav-dep-vias i {
-  font-style: normal; font-size: 9.5px; font-weight: 700;
-  letter-spacing: .05em; text-transform: uppercase; color: var(--purple);
-}
