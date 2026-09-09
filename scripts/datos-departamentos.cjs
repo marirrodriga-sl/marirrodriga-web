@@ -335,7 +335,7 @@ const DEPARTAMENTOS = [
       ['msg', 'Le pregunta qué tal ha ido — sin pedirle nada todavía'],
       ['ojo', 'Lee la respuesta y separa lo bueno de lo que no lo es'],
     ],
-    fin: [['ok', 'Fue bien: le pasa el enlace de Google'], ['aviso', 'Fue mal: te avisa a ti antes de que lo publique']],
+    fin: [['ok', 'Fue bien: le pasa el enlace de Google'], ['aviso', 'Fue mal: te llega a ti antes que a Google']],
     pie: 'La diferencia está en preguntar primero. Pedir la reseña a ciegas es lo que llena Google de estrellas malas.',
   },
   piezas: [
@@ -348,9 +348,23 @@ const DEPARTAMENTOS = [
     { n: 'Ficha de Google al día', eur: 30, setup: 100,
       d: 'Horarios, fotos, servicios y las preguntas que dejan sin contestar. Es el escaparate que más gente ve y el que menos se cuida.',
       lim: 'una ficha · revisión semanal' },
-    { n: 'Peticiones y gestión de reseñas', eur: 30, setup: 100,
-      d: 'Pregunta qué tal fue. Si fue bien, pide la reseña; si fue mal, te avisa a ti antes de que se publique.',
-      lim: 'hasta 300 peticiones/mes' },
+    /* Ya se vende dos veces: «Recordatorios y reseñas» en Bookia (15 €/mes +
+       30 €) y «Seguimiento autónomo y reseñas» en Dentia (10 €/mes). Pero las
+       dos integran «la agenda propia» —solo valen si el cliente lleva su
+       agenda con nosotros— y las dos EXCLUYEN responder reseñas.
+       Ahí están las dos razones de esta: funciona con cualquier agenda, y
+       contesta. Sin eso serían 30 € por lo mismo que cuesta 15, y el cliente
+       lo notaría. */
+    { n: 'Reseñas: pedirlas y contestarlas', eur: 30, setup: 100,
+      d: 'Un agente escribe al cliente cuando termina su cita y le pregunta qué tal fue. Si fue bien, le pasa el enlace de Google. Si fue mal, te avisa a ti antes de que lo publique. Y las que ya están publicadas, las contesta.',
+      lim: 'hasta 300 peticiones/mes · respuestas sin tope',
+      nota: 'Si llevas tu agenda con Bookia o Dentia, pedir reseñas ya te lo hace su pieza de recordatorios por 15 y 10 €/mes. Esta es para quien lleva la agenda en otro sitio — y para contestar, que aquellas no hacen.',
+      lista: [
+        'Pregunta primero, y solo pide la reseña si la respuesta es buena',
+        'La mala te llega a ti antes que a Google',
+        'Contesta las publicadas, con lo que tú hayas fijado que se dice',
+        'Funciona con la agenda que uses, no hace falta la nuestra',
+      ] },
     { n: 'Vigilancia de menciones', eur: 20, setup: 70,
       d: 'Te avisa cuando alguien te nombra: una reseña nueva, un foro, un grupo del barrio. Enterarse tarde es lo que hace daño.',
       lim: 'hasta 10 términos vigilados' },
