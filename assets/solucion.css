@@ -161,22 +161,12 @@
 /* ─── NAV SOBRE EL HERO OSCURO ───────────────────────────────────────────
    Igual que en la global: con la pastilla blanca fija parecía una barra
    pegada encima de la foto. Se vuelve sólida al bajar.
-   ──────────────────────────────────────────────────────────────────────── */
-body:has(.hero-s) .nav {
-  background: transparent; border-color: transparent; box-shadow: none;
-  -webkit-backdrop-filter: none; backdrop-filter: none;
-}
-body:has(.hero-s) .nav .nav-logo   { color: #fff; }
-body:has(.hero-s) .nav .nav-logo b { color: #c9b6ff; }
-body:has(.hero-s) .nav .nav-link   { color: rgba(255,255,255,.76); }
-body:has(.hero-s) .nav .nav-link:hover { color: #fff; }
+/* ─── EL NAV YA NO SE TOCA AQUÍ ──────────────────────────────────────────
+   Había una variante que dejaba el nav transparente sobre el hero y lo volvía
+   BLANCO al bajar (.pegada). Con el fondo claro de la página, el logo y los
+   enlaces se disolvían: en Finanzas no se leía nada.
 
-body:has(.hero-s) .nav.pegada {
-  background: rgba(255,255,255,.9); border-color: rgba(255,255,255,.7);
-  box-shadow: var(--sh-2);
-  -webkit-backdrop-filter: blur(16px) saturate(1.6); backdrop-filter: blur(16px) saturate(1.6);
-}
-body:has(.hero-s) .nav.pegada .nav-logo   { color: var(--ink); }
-body:has(.hero-s) .nav.pegada .nav-logo b { color: var(--purple); }
-body:has(.hero-s) .nav.pegada .nav-link   { color: var(--ink-2); }
-body:has(.hero-s) .nav.pegada .nav-link:hover { color: var(--purple); }
+   Es el mismo parche que se quitó de global.css el 09-09. Desde entonces el
+   nav es una píldora de tinta siempre, en base.css, y el contraste no depende
+   de qué haya detrás. Si vuelve a aparecer una variante aquí, es que alguien
+   está resolviendo dos veces el mismo problema. */
