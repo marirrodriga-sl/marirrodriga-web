@@ -462,8 +462,31 @@ const DEPARTAMENTOS = [
        gobierna— y la segunda es solo la cara que ve el visitante. Sin decirlo,
        parecían la misma cosa a dos precios. */
     { n: 'Tu web, con panel para llevarla tú', yaExiste: true, eur: 119, setup: 400,
-      foto: 'pz-pos-web.jpg',
-      fotoAlt: 'La pantalla del mostrador de recepcion de un negocio pequeno con una pagina web abierta, junto al datafono y la agenda',
+      /* Maqueta, no foto. Lo que se vende es una web CON panel, y eso es
+         justo lo que una foto de la recepcion no ensena: la anterior era un
+         mostrador vacio con la pantalla reventada de reflejos. Aqui se ven
+         las dos capas, que es el argumento entero de la pieza. */
+      maqueta: `<div class="mq-capas">
+        <div class="mq-sitio">
+          <div class="mq-barra"><i></i><i></i><i></i><span></span></div>
+          <div class="mq-sitio-cuerpo">
+            <div class="mq-sitio-nav"><b>Clínica Dental Arenal</b><span></span><span></span><em></em></div>
+            <div class="mq-sitio-hero">
+              <h6>Tu cita, sin llamar</h6>
+              <p>Ortodoncia, implantes y urgencias en Chamberí.</p>
+              <em>Pedir cita</em>
+            </div>
+          </div>
+        </div>
+        <div class="mq-panel">
+          <div class="mq-panel-cab"><b>Panel</b><span>lo llevas tú</span></div>
+          <ul>
+            <li><b>Textos de la home</b><i>editar</i></li>
+            <li><b>Mensajes recibidos</b><i class="mq-al">3 nuevos</i></li>
+            <li><b>Visitas esta semana</b><i>1.240</i></li>
+          </ul>
+        </div>
+      </div>`,
       d: 'Una web de verdad, no una plantilla con tu logo: la parte que ve el cliente y el panel desde el que la llevas tú. Cambiar textos, ver quién ha escrito, mirar qué funciona — sin llamar a nadie y sin pagar por cada cambio.',
       lim: 'una web · panel incluido · formulario conectado a tu sistema',
       lista: [
@@ -473,8 +496,20 @@ const DEPARTAMENTOS = [
       ] },
 
     { n: 'Páginas de captación por sector y zona', eur: 49, setup: 150, destacada: true,
-      foto: 'pz-pos-captacion.jpg',
-      fotoAlt: 'El movil en el soporte del salpicadero de una furgoneta de trabajo, con una busqueda abierta y la calle delante',
+      /* Maqueta, no foto. La pieza es «una pagina por cada cosa que tu
+         cliente busca, con su sector y su zona»: se entiende viendo las
+         paginas, no viendo la furgoneta desde la que alguien busca.
+         A proposito NO se dibujan resultados de Google con nosotros
+         arriba: eso prometeria una posicion que no se puede prometer. */
+      maqueta: `<div class="mq-paginas">
+        <span class="mq-pag mq-pag-3"><b>Urgencias dentales en Chamartín</b></span>
+        <span class="mq-pag mq-pag-2"><b>Implantes dentales en Salamanca</b></span>
+        <div class="mq-pag mq-pag-1">
+          <b>Ortodoncia invisible en Chamberí</b>
+          <p>Primera visita y estudio sin coste. A cinco minutos de Quevedo.</p>
+          <div class="mq-form"><span>Tu teléfono</span><em>Que me llamen</em></div>
+        </div>
+      </div>`,
       d: 'Una página por cada cosa que tu cliente busca de verdad en Google, apuntando a su sector y a su zona. No un blog: páginas hechas para traer a quien ya quiere comprar.',
       lim: 'hasta 12 páginas · sin panel',
       nota: 'Estas son solo la cara: traen y captan, pero no se gobiernan desde un panel. Si lo que quieres es una web que además lleves tú, esa es la pieza de arriba.',
@@ -485,8 +520,36 @@ const DEPARTAMENTOS = [
       ] },
 
     { n: 'Ficha de Google al día', eur: 30, setup: 100,
-      foto: 'pz-pos-ficha.jpg',
-      fotoAlt: 'El escaparate de una tienda de barrio abierta, con el horario en vinilo en el cristal y el caballete en la acera',
+      /* Maqueta, no foto. Se imita la ficha de Google porque es lo que el
+         lector reconoce de un vistazo — la foto anterior era un escaparate
+         cualquiera y no decia nada. Mismo negocio inventado que en Resenas,
+         para que el departamento se lea como un solo caso. Y por lo mismo
+         que alli: con un negocio de ejemplo no se afirma nada de nadie. */
+      maqueta: `<div class="mq-google mq-ficha">
+        <div class="mq-g-cab">
+          <svg class="mq-g-logo" viewBox="0 0 48 48" aria-hidden="true">
+            <path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/>
+            <path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/>
+            <path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24s.85 6.91 2.34 9.88l7.35-5.7z"/>
+            <path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/>
+          </svg>
+          <div>
+            <b>Clínica Dental Arenal</b>
+            <span>Clínica dental · Chamberí</span>
+          </div>
+        </div>
+        <div class="mq-f-nota">
+          <b>4,8</b><span class="mq-g-estrellas">&#9733;&#9733;&#9733;&#9733;&#9733;</span><i>127 reseñas</i>
+        </div>
+        <p class="mq-f-abierto"><em>Abierto</em> · cierra a las 20:00</p>
+        <div class="mq-f-botones"><span>Llamar</span><span>Cómo llegar</span><span>Web</span></div>
+        <div class="mq-f-fotos"><i></i><i></i><i></i><i></i></div>
+        <ul class="mq-f-lista">
+          <li><b>Horario</b><i class="mq-ok">al día</i></li>
+          <li><b>Servicios</b><i class="mq-ok">12 publicados</i></li>
+          <li><b>Preguntas</b><i class="mq-ok">4 respondidas</i></li>
+        </ul>
+      </div>`,
       d: 'Horarios, fotos, servicios y las preguntas que la gente deja sin contestar. Es el escaparate que más gente ve antes de escribirte, y el que menos se cuida.',
       lim: 'una ficha · revisión semanal' },
 
