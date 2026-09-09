@@ -59,12 +59,12 @@ const DEPARTAMENTOS = [
   piezas: [
     { n: 'Facturación por mensaje', yaExiste: true, eur: 49, setup: 200,
       foto: 'pz-fin-facturacion.jpg',
-      fotoAlt: 'Un móvil sobre el banco de trabajo junto a una impresora pequeña que acaba de sacar un recibo',
+      fotoAlt: 'Una mano escribiendo en el móvil sobre el mostrador de una tienda, con el datáfono y una libreta al lado',
       d: 'Le dices por WhatsApp a quién y de qué, y la factura sale hecha, numerada y enviada. Sin abrir el programa.',
       lim: 'hasta 150 facturas/mes' },
     { n: 'Recobro de facturas vencidas', eur: 79, setup: 250, destacada: true,
       foto: 'pz-fin-recobro.jpg',
-      fotoAlt: 'Un calendario de mesa con una fecha rodeada en rojo y un sobre lacrado apoyado al lado',
+      fotoAlt: 'Un montón de facturas impresas sobre la mesa de una oficina pequeña, junto al portátil con el correo abierto',
       d: 'Persigue lo que está vencido: escribe, insiste con criterio y te pasa a ti solo lo que necesita una llamada de verdad.',
       lim: 'hasta 200 avisos/mes' },
     /* Reenfocada el 09-09. Antes describía el producto sin decir para quién:
@@ -75,7 +75,7 @@ const DEPARTAMENTOS = [
        pagan con un solo trámite que deja de atascarse. */
     { n: 'Persecución de documentos', yaExiste: true, eur: 79, setup: 300,
       foto: 'pz-fin-documentos.jpg',
-      fotoAlt: 'Un casillero de madera con papeles y carpetas en cada hueco, con luz de tarde',
+      fotoAlt: 'Carpetas de plástico y archivadores apilados en la mesa de una asesoría',
       d: 'Para quien no puede cerrar un trámite hasta que llega un papel que tiene otro. Escribe, insiste con criterio, comprueba que está completo y te dice qué falta y de quién.',
       lim: 'hasta 300 documentos/mes',
       lista: [
@@ -110,7 +110,7 @@ const DEPARTAMENTOS = [
        algo que no sabe decidir. */
     { n: 'Contabilidad y cuadro financiero', eur: 99, setup: 450,
       foto: 'pz-fin-contabilidad.jpg',
-      fotoAlt: 'Un libro de cuentas abierto junto a una tableta que muestra una gráfica, con el flexo encendido',
+      fotoAlt: 'Un portátil con un panel de gráficas junto a una libreta abierta, con luz de ventana',
       d: 'Clasifica gastos e ingresos, cruza lo cobrado con lo facturado y, con esas mismas facturas, monta el cuadro que ningún programa pequeño te da: qué vas a cobrar, quién te hace esperar y cuánto te falta para cubrir el mes.',
       lim: 'hasta 800 apuntes/mes · 6 indicadores',
       lista: [

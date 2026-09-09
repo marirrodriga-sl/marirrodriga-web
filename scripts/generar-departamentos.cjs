@@ -149,10 +149,10 @@ const completo = p => {
           <h4>${esc(z.n)}</h4>
           <p>${esc(z.d)}</p>
           ${z.lista ? `<ul class="desglose-lista">
-            ${z.lista.map(x => `<li>${esc(x)}</li>`).join('\n            ')}}
+            ${z.lista.map(x => `<li>${esc(x)}</li>`).join('\n            ')}
           </ul>` : ''}
         </div>
-      </article>`).join('\n      ')}}
+      </article>`).join('\n      ')}
     </div>
 
     <div class="pack aparece">
