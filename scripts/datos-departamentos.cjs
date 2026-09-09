@@ -320,7 +320,7 @@ const DEPARTAMENTOS = [
   archivo: 'posicionamiento-online.html', ruta: '/posicionamiento-online', hero: 'hero-posicionamiento.jpg',
   pill: 'Posicionamiento Online',
   titulo: 'SEO local, ficha de Google y reseñas | Marirrodriga IA',
-  descripcion: 'Que te encuentren al buscar lo que haces, y que la web, la ficha y las reseñas estén cuidadas. Desde 20 €/mes, con su límite al lado.',
+  descripcion: 'Que te encuentren al buscar lo que haces, y que la web, la ficha y las reseñas estén cuidadas. Desde 30 €/mes, con su límite al lado.',
   h1: ['Que te encuentren.', 'Y que lo que vean esté bien.'],
   lead: 'Antes de escribirte, la gente te busca. Mira tu web, tu ficha de Google y lo que dicen otros. <strong>Esos tres sitios deciden si te escriben o siguen buscando</strong>, y casi nadie los cuida.',
   dolores: [
@@ -339,22 +339,36 @@ const DEPARTAMENTOS = [
     pie: 'La diferencia está en preguntar primero. Pedir la reseña a ciegas es lo que llena Google de estrellas malas.',
   },
   piezas: [
-    { n: 'Páginas de captación por sector y zona', eur: 79, setup: 300, destacada: true,
-      d: 'Una página por cada cosa que la gente busca de verdad, con lo que buscan y donde lo buscan. No un blog: páginas que traen a quien ya quiere comprar.',
-      lim: 'hasta 12 páginas' },
-    { n: 'Presencia web · Landing conectada', yaExiste: true, eur: 119, setup: 400,
-      d: 'Una página que trabaja: enseña lo que haces, recoge al que pregunta y lo mete en tu sistema. No un folleto con tu teléfono.',
-      lim: 'una landing · formulario conectado' },
+    /* El orden importa: primero la web, que es el sitio donde aterriza todo lo
+       demás, y después lo que trae gente a ella.
+
+       La diferencia entre estas dos la marcó Isma el 09-09 y es la que
+       justifica los 119 frente a los 49: la primera lleva panel —el cliente la
+       gobierna— y la segunda es solo la cara que ve el visitante. Sin decirlo,
+       parecían la misma cosa a dos precios. */
+    { n: 'Tu web, con panel para llevarla tú', yaExiste: true, eur: 119, setup: 400,
+      d: 'Una web de verdad, no una plantilla con tu logo: la parte que ve el cliente y el panel desde el que la llevas tú. Cambiar textos, ver quién ha escrito, mirar qué funciona — sin llamar a nadie y sin pagar por cada cambio.',
+      lim: 'una web · panel incluido · formulario conectado a tu sistema',
+      lista: [
+        'La cara: lo que ve tu cliente y por donde te escribe',
+        'El panel: donde tú cambias lo que quieras, cuando quieras',
+        'Conectada a lo que ya tengas montado, no una isla',
+      ] },
+
+    { n: 'Páginas de captación por sector y zona', eur: 49, setup: 150, destacada: true,
+      d: 'Una página por cada cosa que tu cliente busca de verdad en Google, apuntando a su sector y a su zona. No un blog: páginas hechas para traer a quien ya quiere comprar.',
+      lim: 'hasta 12 páginas · sin panel',
+      nota: 'Estas son solo la cara: traen y captan, pero no se gobiernan desde un panel. Si lo que quieres es una web que además lleves tú, esa es la pieza de arriba.',
+      lista: [
+        'Cada página apunta a una búsqueda concreta, no a «mi sector»',
+        'El que llega ya está buscando lo que haces',
+        'Se pueden montar sobre tu web actual, sin rehacerla',
+      ] },
+
     { n: 'Ficha de Google al día', eur: 30, setup: 100,
-      d: 'Horarios, fotos, servicios y las preguntas que dejan sin contestar. Es el escaparate que más gente ve y el que menos se cuida.',
+      d: 'Horarios, fotos, servicios y las preguntas que la gente deja sin contestar. Es el escaparate que más gente ve antes de escribirte, y el que menos se cuida.',
       lim: 'una ficha · revisión semanal' },
-    /* Ya se vende dos veces: «Recordatorios y reseñas» en Bookia (15 €/mes +
-       30 €) y «Seguimiento autónomo y reseñas» en Dentia (10 €/mes). Pero las
-       dos integran «la agenda propia» —solo valen si el cliente lleva su
-       agenda con nosotros— y las dos EXCLUYEN responder reseñas.
-       Ahí están las dos razones de esta: funciona con cualquier agenda, y
-       contesta. Sin eso serían 30 € por lo mismo que cuesta 15, y el cliente
-       lo notaría. */
+
     { n: 'Reseñas: pedirlas y contestarlas', eur: 30, setup: 100,
       d: 'Un agente escribe al cliente cuando termina su cita y le pregunta qué tal fue. Si fue bien, le pasa el enlace de Google. Si fue mal, te avisa a ti antes de que lo publique. Y las que ya están publicadas, las contesta.',
       lim: 'hasta 300 peticiones/mes · respuestas sin tope',
@@ -365,9 +379,6 @@ const DEPARTAMENTOS = [
         'Contesta las publicadas, con lo que tú hayas fijado que se dice',
         'Funciona con la agenda que uses, no hace falta la nuestra',
       ] },
-    { n: 'Vigilancia de menciones', eur: 20, setup: 70,
-      d: 'Te avisa cuando alguien te nombra: una reseña nueva, un foro, un grupo del barrio. Enterarse tarde es lo que hace daño.',
-      lim: 'hasta 10 términos vigilados' },
   ],
   faq: [
     ['¿Esto es SEO del de siempre?', 'La parte de páginas de captación, sí, pero centrada en lo que se busca con intención de comprar y no en tráfico por tráfico. Lo demás —ficha y reseñas— es lo que más rinde en negocio local y casi nadie lo trabaja.'],

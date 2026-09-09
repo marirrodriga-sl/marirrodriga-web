@@ -139,16 +139,16 @@
     },
     {
       "slug": "presencia-web-landing",
-      "nombre": "Presencia web · Landing conectada",
+      "nombre": "Tu web, con panel para llevarla tú",
       "cat": "a_medida",
       "regimen": "a_medida",
       "base": null,
       "eur": 119,
       "setup": 400,
-      "limite": "hasta 8 secciones · 1 idioma · 1 revisión de diseño al año",
+      "limite": "hasta 8 secciones · 1 idioma · panel de gestión incluido",
       "canales": null,
       "integra": null,
-      "excluye": "tienda · blog · varios idiomas · dominio a cargo del cliente · redacción de contenidos · SEO activo"
+      "excluye": "tienda · varios idiomas · dominio a cargo del cliente · redacción de contenidos · SEO activo"
     },
     {
       "slug": "captacion-leads",
