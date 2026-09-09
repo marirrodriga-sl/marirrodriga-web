@@ -1099,3 +1099,61 @@
   font-style: normal; padding: 6px 12px; border-radius: 999px;
   background: var(--purple); color: #fff; font-size: 10.5px; font-weight: 600; white-space: nowrap;
 }
+
+/* ─── Capturas de nuestras propias páginas ─────────────────────────────────
+   Para «tu web» y «páginas de captación» no hace falta inventar nada: las
+   nuestras son exactamente eso. Van dentro de un marco de navegador para que
+   se lean como lo que son —una página, no una foto— y encajen en el 4:3 sin
+   deformar la captura. */
+.mq-captura {
+  border-radius: 10px; overflow: hidden;
+  background: #fff; border: 1px solid var(--line);
+  box-shadow: 0 12px 30px -18px rgba(10,8,16,.5);
+  display: flex; flex-direction: column; height: 100%;
+}
+.mq-captura img { flex: 1; width: 100%; min-height: 0; object-fit: cover; object-position: top center; display: block; }
+
+/* ─── El agente al que le preguntas ────────────────────────────────────────
+   Contesta con el dato y el desglose, y no recomienda nada: es lo que promete
+   el texto de al lado. Si aquí decidiera por el lector, la pieza se
+   contradiría en la misma pantalla. */
+.mq-agente {
+  display: grid; gap: 9px; align-content: start;
+  padding: 13px; border-radius: 12px;
+  background: #fff; border: 1px solid var(--line);
+  box-shadow: 0 10px 26px -16px rgba(10,8,16,.45);
+  font-size: 12px; line-height: 1.45;
+}
+.mq-a-cab {
+  display: flex; align-items: center; gap: 7px;
+  padding-bottom: 9px; border-bottom: 1px solid var(--line-soft);
+  font-size: 10.5px; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; color: var(--ink-3);
+}
+.mq-a-punto { width: 7px; height: 7px; flex: none; border-radius: 999px; background: #2fbf71; }
+.mq-a-hilo { display: grid; gap: 8px; }
+.mq-a-tuya {
+  justify-self: end; max-width: 78%; padding: 8px 12px;
+  border-radius: 14px 14px 4px 14px;
+  background: var(--purple); color: #fff;
+}
+.mq-a-suya {
+  max-width: 92%; padding: 10px 12px;
+  border-radius: 14px 14px 14px 4px;
+  background: var(--cream); border: 1px solid var(--line-soft); color: var(--ink-2);
+}
+.mq-a-suya b { color: var(--ink); font-weight: 700; }
+.mq-a-suya ul { display: grid; gap: 3px; margin: 8px 0; }
+.mq-a-suya li { display: flex; justify-content: space-between; gap: 12px; font-size: 11.5px; }
+.mq-a-suya li span { color: var(--ink-3); }
+.mq-a-suya li i { font-style: normal; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
+.mq-a-pie { font-size: 11.5px; color: var(--ink-3); }
+.mq-a-caja {
+  display: flex; align-items: center; gap: 8px;
+  padding: 7px 8px 7px 13px; border-radius: 999px;
+  border: 1px solid var(--line); background: var(--white);
+}
+.mq-a-caja span { flex: 1; font-size: 11.5px; color: var(--ink-4); }
+.mq-a-caja em {
+  font-style: normal; width: 24px; height: 24px; flex: none; border-radius: 999px;
+  display: grid; place-items: center; background: var(--purple); color: #fff; font-size: 13px;
+}

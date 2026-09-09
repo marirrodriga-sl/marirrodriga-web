@@ -277,8 +277,32 @@ const DEPARTAMENTOS = [
       ] },
 
     { n: 'Un asistente al que preguntarle', eur: 49, setup: 150,
-      foto: 'pz-dat-asistente.jpg',
-      fotoAlt: 'Un mecanico consulta el movil en el banco de trabajo, con un taco de hojas de servicio en la otra mano',
+      /* Maqueta, no foto. La anterior era un mecanico mirando el movil en el
+         banco de trabajo: ensenaba a alguien consultando algo, que es lo
+         mismo que no ensenar nada. Lo que vende esta pieza es la
+         CONVERSACION — preguntar en cristiano y que conteste con tus
+         numeros — asi que se dibuja la conversacion.
+
+         Y contesta con el dato y el desglose, sin decirle a nadie que hacer:
+         es literalmente lo que promete el texto de al lado, «no decide por
+         ti». Si la maqueta le hiciera recomendar algo, la pieza se estaria
+         contradiciendo a si misma en la misma pantalla. */
+      maqueta: `<div class="mq-agente">
+        <div class="mq-a-cab"><span class="mq-a-punto"></span>Habla con tu negocio</div>
+        <div class="mq-a-hilo">
+          <p class="mq-a-tuya">¿Por qué ha bajado octubre?</p>
+          <div class="mq-a-suya">
+            <p>Octubre cerró un <b>12 % por debajo</b> de septiembre. No es el precio: es volumen.</p>
+            <ul>
+              <li><span>Citas atendidas</span><i>− 8 %</i></li>
+              <li><span>Ticket medio</span><i>− 4 %</i></li>
+              <li><span>Huecos sin cubrir</span><i>+ 31</i></li>
+            </ul>
+            <p class="mq-a-pie">Casi todo el hueco está en las tardes de martes y miércoles.</p>
+          </div>
+        </div>
+        <div class="mq-a-caja"><span>Pregúntale lo que quieras…</span><em>↑</em></div>
+      </div>`,
       d: 'Le preguntas en cristiano —«¿por qué ha bajado octubre?»— y te contesta con tus números delante. No decide por ti ni te dice qué hacer: te pone el dato para que decidas tú con algo más que la sensación.',
       lim: 'preguntas sin tope · un informe escrito al mes',
       lista: [
@@ -461,38 +485,30 @@ const DEPARTAMENTOS = [
        justifica los 119 frente a los 49: la primera lleva panel —el cliente la
        gobierna— y la segunda es solo la cara que ve el visitante. Sin decirlo,
        parecían la misma cosa a dos precios. */
-    { n: 'Tu web, con panel para llevarla tú', yaExiste: true, eur: 119, setup: 400,
-      /* Maqueta, no foto. Lo que se vende es una web CON panel, y eso es
-         justo lo que una foto de la recepcion no ensena: la anterior era un
-         mostrador vacio con la pantalla reventada de reflejos. Aqui se ven
-         las dos capas, que es el argumento entero de la pieza. */
-      maqueta: `<div class="mq-capas">
-        <div class="mq-sitio">
-          <div class="mq-barra"><i></i><i></i><i></i><span></span></div>
-          <div class="mq-sitio-cuerpo">
-            <div class="mq-sitio-nav"><b>Clínica Dental Arenal</b><span></span><span></span><em></em></div>
-            <div class="mq-sitio-hero">
-              <h6>Tu cita, sin llamar</h6>
-              <p>Ortodoncia, implantes y urgencias en Chamberí.</p>
-              <em>Pedir cita</em>
-            </div>
-          </div>
-        </div>
-        <div class="mq-panel">
-          <div class="mq-panel-cab"><b>Panel</b><span>lo llevas tú</span></div>
-          <ul>
-            <li><b>Textos de la home</b><i>editar</i></li>
-            <li><b>Mensajes recibidos</b><i class="mq-al">3 nuevos</i></li>
-            <li><b>Visitas esta semana</b><i>1.240</i></li>
-          </ul>
-        </div>
-      </div>`,
-      d: 'Una web de verdad, no una plantilla con tu logo: la parte que ve el cliente y el panel desde el que la llevas tú. Cambiar textos, ver quién ha escrito, mirar qué funciona — sin llamar a nadie y sin pagar por cada cambio.',
-      lim: 'una web · panel incluido · formulario conectado a tu sistema',
+    { n: 'Tu web, hecha y llevada por nosotros', yaExiste: true, eur: 119, setup: 400,
+      /* Cambio de PRODUCTO, no de foto — 09-09, decision de Isma. Antes se
+         vendia «una web con panel para que la lleves tu», y ese no es el
+         negocio: lo que se vende es una web profesional con su frontend y su
+         backend, gestionada por nosotros de principio a fin. El servidor, el
+         soporte, los cambios y las integraciones posteriores son nuestros.
+
+         El limite esta escrito a proposito. «Cambios incluidos» sin frontera
+         convierte 119 EUR/mes en un cheque abierto: integrar una pasarela o
+         un producto nuevo es desarrollo, no mantenimiento. Se incluye el
+         mantenimiento y el contenido; lo que se construye nuevo, se
+         presupuesta. Es la misma disciplina del resto del catalogo — precio y
+         limite al lado. */
+      maqueta: `<figure class="mq-captura">
+        <div class="mq-barra"><i></i><i></i><i></i><span></span></div>
+        <img src="/assets/img/cap-web-home.jpg" alt="La portada de marirrodriga.com: el titular, el texto de entrada y la vitrina de departamentos" width="1200" height="900" loading="lazy">
+      </figure>`,
+      d: 'Una web profesional de verdad: la cara que ve tu cliente y el motor que la mueve por detrás. Y no te la dejamos con un manual — la llevamos nosotros: el servidor, los arreglos, los textos y lo que haya que integrarle después.',
+      lim: 'una web · servidor, mantenimiento y cambios de contenido incluidos',
       lista: [
-        'La cara: lo que ve tu cliente y por donde te escribe',
-        'El panel: donde tú cambias lo que quieras, cuando quieras',
-        'Conectada a lo que ya tengas montado, no una isla',
+        'Frontend y backend: lo que se ve y lo que lo mueve, no una plantilla con tu logo',
+        'El servidor y las actualizaciones, de nuestra cuenta — tú no tocas nada',
+        'Los cambios de texto, precio o foto entran en la cuota, sin contarlos',
+        'Integrarle algo nuevo después no obliga a rehacerla; se presupuesta y se monta',
       ] },
 
     { n: 'Páginas de captación por sector y zona', eur: 49, setup: 150, destacada: true,
@@ -501,17 +517,12 @@ const DEPARTAMENTOS = [
          paginas, no viendo la furgoneta desde la que alguien busca.
          A proposito NO se dibujan resultados de Google con nosotros
          arriba: eso prometeria una posicion que no se puede prometer. */
-      maqueta: `<div class="mq-paginas">
-        <span class="mq-pag mq-pag-3"><b>Urgencias dentales en Chamartín</b></span>
-        <span class="mq-pag mq-pag-2"><b>Implantes dentales en Salamanca</b></span>
-        <div class="mq-pag mq-pag-1">
-          <b>Ortodoncia invisible en Chamberí</b>
-          <p>Primera visita y estudio sin coste. A cinco minutos de Quevedo.</p>
-          <div class="mq-form"><span>Tu teléfono</span><em>Que me llamen</em></div>
-        </div>
-      </div>`,
+      maqueta: `<figure class="mq-captura">
+        <div class="mq-barra"><i></i><i></i><i></i><span></span></div>
+        <img src="/assets/img/cap-landing-asesoria.jpg" alt="Una página de captación nuestra: titular, la promesa en tres líneas, el botón y el formulario debajo" width="1200" height="900" loading="lazy">
+      </figure>`,
       d: 'Una página por cada cosa que tu cliente busca de verdad en Google, apuntando a su sector y a su zona. No un blog: páginas hechas para traer a quien ya quiere comprar.',
-      lim: 'hasta 12 páginas · sin panel',
+      lim: 'hasta 12 páginas · solo captación, sin backend',
       nota: 'Estas son solo la cara: traen y captan, pero no se gobiernan desde un panel. Si lo que quieres es una web que además lleves tú, esa es la pieza de arriba.',
       lista: [
         'Cada página apunta a una búsqueda concreta, no a «mi sector»',
