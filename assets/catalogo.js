@@ -57,7 +57,7 @@ const CATALOGO = {
       canales: 'web',
       integra: 'solo datos propios',
       excluye: 'TPV, contabilidad y otras fuentes externas · métricas a medida · exportación automática' },
-    { slug: 'ficha-cliente', nombre: 'Ficha de cliente', cat: 'citas', regimen: 'preset', base: 'bookia', eur: 25, setup: 100,
+    { slug: 'ficha-cliente', nombre: 'Ficha de cliente', cat: 'citas', regimen: 'preset', base: 'bookia', eur: 35, setup: 100,
       limite: '2.000 fichas · 5 GB de fotos',
       canales: 'web',
       integra: null,

@@ -26,32 +26,32 @@
   "redirects": [
     {
       "source": "/bookia-peluqueria",
-      "destination": "/bookia#peluqueria",
+      "destination": "/bookia",
       "permanent": true
     },
     {
       "source": "/bookia-fisioterapia",
-      "destination": "/bookia#fisioterapia",
+      "destination": "/bookia",
       "permanent": true
     },
     {
       "source": "/bookia-estetica",
-      "destination": "/bookia#estetica",
+      "destination": "/bookia",
       "permanent": true
     },
     {
       "source": "/bookia-unas",
-      "destination": "/bookia#unas",
+      "destination": "/bookia",
       "permanent": true
     },
     {
       "source": "/bookia-podologia",
-      "destination": "/bookia#podologia",
+      "destination": "/bookia",
       "permanent": true
     },
     {
       "source": "/bookia-tatuajes",
-      "destination": "/bookia#tatuajes",
+      "destination": "/bookia",
       "permanent": true
     }
   ]

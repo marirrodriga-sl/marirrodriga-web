@@ -164,9 +164,16 @@ const DEPARTAMENTOS = [
       lim: 'hasta 300 respuestas, derivaciones o avisos/mes',
       nota: 'Esto reparte lo que entra en tu buzón. Perseguir un problema con un tercero hasta cerrarlo es la gestión de incidencias, en Logística.' },
 
-    { n: 'Base de datos de clientes', slug: 'ficha-cliente', eur: 25, setup: 100, fueraDelPack: true,
-      d: 'Que sepa quién le escribe, qué le hiciste la última vez y qué hablasteis hace tres meses, en vez de empezar de cero cada vez.',
-      lim: '2.000 fichas · 5 GB de fotos' },
+    /* 35 EUR, no 25, y el nombre cambia. Habia dos cosas distintas bajo el
+       mismo titulo y se confundian: lo que el agente SABE de tu negocio
+       —precios, horarios, como trabajas— va dentro del agente y no se cobra
+       aparte; esto otro es el archivo de tus clientes, con su historial y sus
+       fotos, que ocupa disco y cuesta dinero todos los meses. Por debajo de
+       35 no cubre el almacenamiento. */
+    { n: 'El archivo de tus clientes', slug: 'ficha-cliente', eur: 35, setup: 100, fueraDelPack: true,
+      d: 'Una ficha por cliente con su historial: quién es, qué le hiciste la última vez y qué hablasteis hace tres meses. Así el agente no empieza de cero cada vez que alguien escribe.',
+      lim: '2.000 fichas · 5 GB de fotos',
+      nota: 'No confundir con lo que el agente sabe de tu negocio —precios, horarios, cómo trabajas—: eso va dentro del agente y no se paga aparte. Esto es el archivo de tus clientes, que ocupa disco.' },
 
     { n: 'Monitoreo de clientes potenciales', slug: 'hermes-acompanamiento-conversacional', eur: 49, setup: 50, fueraDelPack: true,
       d: 'Sigue a los que preguntaron y no cerraron: intenta cerrarlos, y cuando alguno se cae te reporta por qué se ha caído.',
@@ -779,23 +786,23 @@ const DEPARTAMENTOS = [
          backend, gestionada por nosotros de principio a fin. El servidor, el
          soporte, los cambios y las integraciones posteriores son nuestros.
 
-         El limite esta escrito a proposito. «Cambios incluidos» sin frontera
-         convierte 119 EUR/mes en un cheque abierto: integrar una pasarela o
-         un producto nuevo es desarrollo, no mantenimiento. Se incluye el
-         mantenimiento y el contenido; lo que se construye nuevo, se
-         presupuesta. Es la misma disciplina del resto del catalogo — precio y
-         limite al lado. */
+         Sobre el limite: se aviso de que «cambios incluidos» sin frontera
+         convierte 119 EUR/mes en un cheque abierto, e Isma lo decidio igual
+         el 10-09 — el desarrollo nuevo entra en los 400 EUR de instalacion y
+         no se presupuesta aparte. Queda escrito aqui para que la proxima vez
+         que alguien pida integrar algo grande se sepa que la respuesta es que
+         si, y que es deliberado. */
       maqueta: `<figure class="mq-captura">
         <div class="mq-barra"><i></i><i></i><i></i><span></span></div>
         <img src="/assets/img/cap-web-home.jpg" alt="La portada de marirrodriga.com: el titular, el texto de entrada y la vitrina de departamentos" width="1200" height="900" loading="lazy">
       </figure>`,
       d: 'Una web profesional de verdad: la cara que ve tu cliente y el motor que la mueve por detrás. Y no te la dejamos con un manual — la llevamos nosotros: el servidor, los arreglos, los textos y lo que haya que integrarle después.',
-      lim: 'una web · servidor, mantenimiento y cambios de contenido incluidos',
+      lim: 'una web · servidor, mantenimiento, cambios y desarrollo nuevo incluidos',
       lista: [
         'Frontend y backend: lo que se ve y lo que lo mueve, no una plantilla con tu logo',
         'El servidor y las actualizaciones, de nuestra cuenta — tú no tocas nada',
         'Los cambios de texto, precio o foto entran en la cuota, sin contarlos',
-        'Integrarle algo nuevo después no obliga a rehacerla; se presupuesta y se monta',
+        'Integrarle algo nuevo después —una pasarela, tu agenda, tu ficha— entra en lo ya pagado',
       ] },
 
     { n: 'Páginas de captación por sector y zona', eur: 49, setup: 150, destacada: true,

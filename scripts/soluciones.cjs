@@ -67,7 +67,7 @@ const DENTIA = [
 ];
 
 /* ─── BOOKIA ─────────────────────────────────────────────────────────────
-   Mismos ejemplos verificados: 64 · 79 · 98,10 · 185,60 €/mes.
+   Mismos ejemplos verificados: 64 · 79 · 98,10 · 193,60 €/mes.
    Llevan `iris-0` porque el chatbot va dentro del producto de citas. */
 const BOOKIA = [
   tramo('bookia', 'Lo mínimo',

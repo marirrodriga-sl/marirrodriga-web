@@ -18,7 +18,10 @@ const { CATALOGO, cotiza, calculaSetup } = require('../assets/catalogo.js');
 // ha puesto precio de instalación.
 // OJO: la consulta del encabezado necesita «where publicable and vigente». Solo con
 // «publicable» devuelve 37 piezas y una huella que no cuadra con la del generador.
-const HUELLA_ESPERADA = '7eac22c47e4e1d706bd9a19b44e66e61';
+/* Cambió el 10-09 al subir ficha-cliente de 25 a 35 €/mes. ⚠️ Esa subida está
+   hecha en el JSON y en assets/catalogo.js, pero NO en Supabase: hay que
+   replicarla allí o la próxima exportación la deshace. */
+const HUELLA_ESPERADA = 'a594c3973da128235f042cfcd201d98e';
 const N_ESPERADAS = 33;
 
 let fallos = 0;
@@ -60,9 +63,12 @@ const EJEMPLOS = [
   ['Peluquería mínima', 64.00, ['agenda-reserva-publica', 'iris-0']],
   ['Peluquería que empieza', 79.00, ['agenda-reserva-publica', 'iris-0', 'recordatorios-confirmacion']],
   ['Peluquería con volumen', 98.10, ['agenda-reserva-publica', 'iris-0', 'recordatorios-confirmacion', 'reactivacion-dormidos', 'insights-semanales']],
-  // 185,60 y 232,00 recalculados en Supabase con catalogo_cotiza() el 16-08,
+  // 232,00 recalculado en Supabase con catalogo_cotiza() el 16-08. El tramo
+  // completo de Bookia paso de 185,60 a 193,60 el 10-09 al subir
+  // ficha-cliente de 25 a 35: son 10 € que la bonificacion deja en 8.
+  // ⚠️ Ese recalculo NO esta hecho en Supabase todavia.
   // al retirar «profesionales ilimitados» de los dos conjuntos completos.
-  ['Negocio de citas completo', 185.60, [...CATALOGO.piezas.filter(p => p.cat === 'citas').map(p => p.slug), 'iris-0']],
+  ['Negocio de citas completo', 193.60, [...CATALOGO.piezas.filter(p => p.cat === 'citas').map(p => p.slug), 'iris-0']],
   ['Clínica dental mínima', 73.00, ['dental-agenda', 'dental-ficha-historia']],
   ['Clínica dental que empieza', 132.30, ['dental-agenda', 'dental-ficha-historia', 'dental-odontograma', 'dental-presupuestos', 'dental-facturacion']],
   ['Clínica dental con asistente', 184.80, ['dental-agenda', 'dental-ficha-historia', 'dental-odontograma', 'dental-presupuestos', 'dental-facturacion', 'dental-asistente-pacientes', 'dental-acompanamiento-presupuestos', 'dental-seguimiento-resenas', 'dental-analisis-conversaciones']],
@@ -130,7 +136,7 @@ check(altaMonotona, 'añadir una herramienta nunca abarata el montaje');
 const SOL = require('./soluciones.cjs');
 const TRAMOS = {
   DENTIA: [[73, 300], [132.30, 300], [175.10, 450], [232, 450]],
-  BOOKIA: [[64, 250], [79, 250], [98.10, 250], [185.60, 350]],
+  BOOKIA: [[64, 250], [79, 250], [98.10, 250], [193.60, 350]],
 };
 for (const [nombre, esperados] of Object.entries(TRAMOS)) {
   const reales = SOL[nombre].map(t => [t.cuota, t.alta]);

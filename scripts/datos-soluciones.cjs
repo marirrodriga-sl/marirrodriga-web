@@ -106,7 +106,13 @@ const BOOKIA_BASE = {
    oficio, pelea por esas búsquedas mejor que seis que se copian entre sí.
 
    `archivo` y `ruta` se conservan a propósito: los usa el generador para
-   saber cuál se escribe, y las redirecciones de vercel.json salen de aquí. */
+   saber cuál se escribe, y las redirecciones de vercel.json salen de aquí.
+
+   Las redirecciones van a /bookia a secas, NO al ancla del oficio. Se probó
+   con ancla y aterrizabas al 63 % de la página, en una tarjeta suelta, sin
+   haber visto qué es Bookia ni cuánto cuesta — y desde un resultado de Google
+   nadie sube. El ancla sí vale para el menú, donde el visitante ya está
+   dentro y sabe dónde está. Dos trabajos distintos, dos destinos. */
 const SECTORES = [
   { archivo: 'bookia.html', ruta: '/bookia', sector: null,
     pill: 'Software de citas para tu negocio', sitio: 'La silla',

@@ -20,6 +20,23 @@ const ent = n => n.toLocaleString('es-ES');
 const pct = n => n.toLocaleString('es-ES', { maximumFractionDigits: 1 });
 const esc = s => String(s).replace(/&(?![a-z]+;|#)/g, '&amp;');
 
+/* Las capturas de producto iban sin width ni height, y eso rompia las anclas:
+   el navegador saltaba a #peluqueria, luego cargaban cuatro imagenes de 2.560
+   px sin sitio reservado, todo se desplazaba hacia abajo y el visitante se
+   quedaba tirado a mitad de pagina. Justo lo que pasaba al redirigir desde las
+   URLs viejas de sector.
+
+   Se leen del propio PNG al generar en vez de escribirlas a mano: asi no se
+   quedan obsoletas el dia que alguien reemplace una captura. La cabecera IHDR
+   trae el ancho en el byte 16 y el alto en el 20. */
+const medidasPNG = ruta => {
+  try {
+    const b = fs.readFileSync(path.join(raiz, ruta));
+    if (b.length < 24 || b.readUInt32BE(12) !== 0x49484452) return null;   // 'IHDR'
+    return { w: b.readUInt32BE(16), h: b.readUInt32BE(20) };
+  } catch { return null; }
+};
+
 const LOGO = '<img src="/assets/img/logo.png" alt="" width="256" height="256">';
 const WA = 'https://wa.me/34675148566';
 
@@ -191,7 +208,7 @@ const vistas = p => `<section class="seccion seccion-cream" id="lo-que-hace">
           <p>${v.p}</p>
           <div class="vista-lista">${v.lista.map(x => `<span>${esc(x)}</span>`).join('')}</div>
         </div>
-        <div class="vista-img"><img src="/${v.img}" alt="${esc(v.h)}" loading="lazy"></div>
+        <div class="vista-img"><img src="/${v.img}" alt="${esc(v.h)}"${(m => m ? ` width="${m.w}" height="${m.h}"` : '')(medidasPNG(v.img))} loading="lazy"></div>
       </article>`).join('\n      ')}
     </div>
   </div>
