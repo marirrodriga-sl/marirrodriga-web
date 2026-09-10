@@ -86,13 +86,14 @@ const nav = (anclas = ANCLAS) => `<nav class="nav">
   </a>
   <div class="nav-links">
     <div class="nav-grupo">
-      <button class="nav-grupo-btn" type="button" aria-expanded="false" aria-controls="menu-sectores">Sectores</button>
+      <button class="nav-grupo-btn" type="button" aria-expanded="false" aria-controls="menu-sectores">Software para tu negocio</button>
       <div class="nav-panel nav-panel-sectores" id="menu-sectores">
         ${SECTORES_MENU.map(itemSector).join('\n        ')}
+        <a class="nav-panel-pie" href="${CAL}" target="_blank" rel="noopener">Si el tuyo no está aquí no es que no lo hagamos: es que se monta a tu medida →</a>
       </div>
     </div>
     <div class="nav-grupo">
-      <button class="nav-grupo-btn" type="button" aria-expanded="false" aria-controls="menu-departamentos">Departamentos</button>
+      <button class="nav-grupo-btn" type="button" aria-expanded="false" aria-controls="menu-departamentos">IA por departamento</button>
       <div class="nav-panel" id="menu-departamentos">
         ${DEPTOS_MENU.map(itemDepto).join('\n        ')}
       </div>
@@ -111,9 +112,10 @@ const nav = (anclas = ANCLAS) => `<nav class="nav">
   </button>
 </nav>
 <div class="nav-movil" id="nav-movil">
-  <h5>Sectores</h5>
+  <h5>Software para tu negocio</h5>
   ${SECTORES_MENU.map(([n, r, d]) => itemDepto([n, r, d])).join('\n  ')}
-  <h5>Departamentos</h5>
+  <a class="nav-movil-nota" href="${CAL}" target="_blank" rel="noopener">Si el tuyo no está aquí no es que no lo hagamos: es que se monta a tu medida →</a>
+  <h5>IA por departamento</h5>
   ${DEPTOS_MENU.map(itemDepto).join('\n  ')}
   <h5>Sobre nosotros</h5>
   ${SOBRE_MENU.map(itemDepto).join('\n  ')}
@@ -259,11 +261,11 @@ const pie = () => `<footer class="pie">
       </div>
       <div class="pie-cols">
         <div class="pie-col">
-          <h4>Sectores</h4>
+          <h4>Software</h4>
           ${SECTORES_MENU.map(([n, r]) => `<a href="${r}">${n}</a>`).join('\n          ')}
         </div>
         <div class="pie-col">
-          <h4>Departamentos</h4>
+          <h4>IA por departamento</h4>
           <a href="/atencion-al-cliente">Atención al Cliente</a>
           <a href="/ventas-y-captacion">Ventas y Captación</a>
           <a href="/finanzas">Finanzas</a>
