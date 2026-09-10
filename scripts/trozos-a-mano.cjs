@@ -54,9 +54,6 @@ const heroAtencion = `<header class="hero">
     </div>
 
     <p class="t-lead">Un asistente que entiende lo que le escriben, mira tu agenda de verdad y cierra la cita él mismo. En el canal donde tus clientes ya te escriben, no en uno nuevo que tengan que aprender.</p>
-    <div class="hero-botones">
-      <a class="btn btn-2" href="#agente">Ver qué sabe hacer y qué cuesta</a>
-    </div>
 
     <!-- ─── SOBRE QUÉ ACTÚA ──────────────────────────────────────────────
          Lo que faltaba contar. La conversación del móvil enseña que CONTESTA,
@@ -203,9 +200,6 @@ const heroVentas = `<header class="hero">
     </div>
 
     <p class="t-lead">Un sistema que sale a buscar a los que todavía no te conocen y te los deja puntuados, con el motivo y el primer mensaje escrito. Y otro que persigue los presupuestos que mandas y acompaña al que duda. Tú solo hablas con los que merecen la llamada.</p>
-    <div class="hero-botones">
-      <a class="btn btn-2" href="#captacion">Ver qué hace y qué cuesta</a>
-    </div>
     <!-- Los tres productos de la página, para moverse entre ellos sin bajar a ciegas -->
     <nav class="hero-productos" aria-label="Los tres productos de este departamento">
       <a class="hero-producto" href="#captacion">

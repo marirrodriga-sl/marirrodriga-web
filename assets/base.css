@@ -327,17 +327,34 @@ img, svg { max-width: 100%; display: block; }
 }
 
 @media (max-width: 860px) {
-  .nav { padding: 8px 8px 8px 18px; gap: 10px; }
+  .nav { padding: 8px 8px 8px 16px; gap: 8px; }
   .nav-links { display: none; }
   .nav-burger { display: flex; }
-  /* En pantallas muy estrechas el botón de la nav estorba: lo lleva el panel */
-  .nav-cta { display: none; }
 }
 @media (min-width: 861px) {
   .nav-movil { display: none; }
 }
-@media (min-width: 521px) and (max-width: 860px) {
-  .nav-cta { display: inline-flex; }
+
+/* El botón NO se esconde en el panel, y esto era un fallo de verdad: por
+   debajo de 520 px se metia dentro del desplegable, asi que quien entraba
+   desde el movil —que es casi todo el mundo— leia un servicio, le gustaba, y
+   no tenia a la vista ninguna forma de dar el siguiente paso. Hay que abrir
+   un menu para encontrar el unico sitio al que queremos que vaya.
+
+   Se queda en la barra siempre. Para que quepa junto al logo y la
+   hamburguesa se encoge todo un punto, y por debajo de 400 px el nombre de
+   la marca cede el sitio al isotipo: identifica igual y el boton importa
+   mas. El duplicado del panel sobra en cuanto el de arriba esta a la vista. */
+@media (max-width: 520px) {
+  .nav-cta { font-size: 12.5px; padding: 9px 15px; }
+  .nav-logo { font-size: 14px; gap: 7px; }
+  .nav-logo img { width: 27px; height: 27px; }
+  .nav-burger { width: 34px; height: 34px; }
+}
+@media (max-width: 400px) {
+  .nav-logo span { display: none; }
+}
+@media (max-width: 860px) {
   .nav-movil .btn { display: none; }
 }
 

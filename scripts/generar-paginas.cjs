@@ -128,9 +128,6 @@ const hero = p => `<header class="hero-s" style="--hero:url('/assets/img/${p.her
     <span class="hero-s-pill"><i></i> ${esc(p.pill)}</span>
     <h1 class="t-h1">${esc(p.h1[0])}<br><span class="acento">${esc(p.h1[1])}</span></h1>
     <p class="t-lead">${p.lead}</p>
-    <div class="hero-botones">
-      <a class="btn btn-2" href="#precio">Ver qué cuesta</a>
-    </div>
   </div>
 </header>`;
 
