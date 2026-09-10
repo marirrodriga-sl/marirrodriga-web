@@ -208,7 +208,7 @@ const vistas = p => `<section class="seccion seccion-cream" id="lo-que-hace">
           <p>${v.p}</p>
           <div class="vista-lista">${v.lista.map(x => `<span>${esc(x)}</span>`).join('')}</div>
         </div>
-        <div class="vista-img"><img src="/${v.img}" alt="${esc(v.h)}"${(m => m ? ` width="${m.w}" height="${m.h}"` : '')(medidasPNG(v.img))} loading="lazy"></div>
+        ${(m => `<div class="vista-img${m && m.h > m.w ? ' vista-img-alta' : ''}"><img src="/${v.img}" alt="${esc(v.h)}"${m ? ` width="${m.w}" height="${m.h}"` : ''} loading="lazy"></div>`)(medidasPNG(v.img))}
       </article>`).join('\n      ')}
     </div>
   </div>

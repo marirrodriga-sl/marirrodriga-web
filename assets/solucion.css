@@ -197,3 +197,22 @@
 .sector li { display: grid; gap: 2px; }
 .sector li b { font-size: 13px; font-weight: 700; color: var(--ink); }
 .sector li span { font-size: 13px; line-height: 1.5; color: var(--ink-3); }
+
+/* Una captura de móvil entre cuatro de escritorio salía más de tres veces más
+   alta que las demás: a ancho completo, una imagen de 1170×2532 ocupa lo que
+   tres de 2560×1720. Las verticales se tratan como lo que son —la pantalla de
+   un teléfono— y se enseñan a tamaño de teléfono, centradas sobre el fondo de
+   la tarjeta. La marca la pone el generador leyendo el PNG, así que vale para
+   cualquier captura que se añada mañana. */
+.vista-img-alta {
+  display: grid; place-items: center;
+  padding: 26px; background: var(--cream-deep);
+}
+.vista-img-alta img {
+  width: auto; max-width: 58%; max-height: 520px;
+  border-radius: 18px; border: 1px solid var(--line);
+  box-shadow: 0 14px 34px -18px rgba(10,8,16,.5);
+}
+@media (max-width: 900px) {
+  .vista-img-alta img { max-width: 46%; }
+}
