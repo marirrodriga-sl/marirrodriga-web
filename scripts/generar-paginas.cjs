@@ -95,6 +95,7 @@ const nav = (anclas = ANCLAS) => `<nav class="nav">
     <div class="nav-grupo">
       <button class="nav-grupo-btn" type="button" aria-expanded="false" aria-controls="menu-departamentos">IA por departamento</button>
       <div class="nav-panel" id="menu-departamentos">
+        <p class="nav-panel-intro">Añade IA a un departamento de tu negocio: para aliviar el trabajo, para hacerlo mejor, o para dejar de hacerlo tú.</p>
         ${DEPTOS_MENU.map(itemDepto).join('\n        ')}
       </div>
     </div>
@@ -116,6 +117,7 @@ const nav = (anclas = ANCLAS) => `<nav class="nav">
   ${SECTORES_MENU.map(([n, r, d]) => itemDepto([n, r, d])).join('\n  ')}
   <a class="nav-movil-nota" href="${CAL}" target="_blank" rel="noopener">Si el tuyo no está aquí no es que no lo hagamos: es que se monta a tu medida →</a>
   <h5>IA por departamento</h5>
+  <p class="nav-movil-intro">Añade IA a un departamento de tu negocio: para aliviar el trabajo, para hacerlo mejor, o para dejar de hacerlo tú.</p>
   ${DEPTOS_MENU.map(itemDepto).join('\n  ')}
   <h5>Sobre nosotros</h5>
   ${SOBRE_MENU.map(itemDepto).join('\n  ')}
