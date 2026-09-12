@@ -115,6 +115,11 @@ const BOOKIA_BASE = {
    dentro y sabe dónde está. Dos trabajos distintos, dos destinos. */
 const SECTORES = [
   { archivo: 'bookia.html', ruta: '/bookia', sector: null,
+    /* Puestos a mano el 12-09: la descripcion se calculaba del lead y no
+       nombraba ningun oficio. Ahora que los seis viven dentro de esta
+       pagina, nombrarlos aqui es justo lo que la hace encontrable. */
+    tituloSeo: 'Software de citas para tu negocio | Bookia',
+    descripcionSeo: 'Agenda, reserva sin registro y recordatorios contra el hueco vacío. Para peluquería, estética, uñas, tatuajes, fisioterapia y podología. Desde 64 €/mes.',
     pill: 'Software de citas para tu negocio', sitio: 'La silla',
     h1: ['La silla nunca parada,', 'la agenda siempre llena.'],
     lead: 'Agenda, reserva online sin registro y recordatorios que evitan el hueco vacío. Con un asistente que contesta cuando tú tienes las manos ocupadas.',
@@ -192,8 +197,8 @@ const SECTORES = [
 /* Solo el primero se convierte en página. Los demás viven como datos: los
    consume la sección de sectores de /bookia y las redirecciones. */
 const BOOKIA = SECTORES.filter(s => !s.ancla).map(s => Object.assign({}, BOOKIA_BASE, s, {
-  titulo: `${s.pill} | Bookia`,
-  descripcion: (() => {
+  titulo: s.tituloSeo || `${s.pill} | Bookia`,
+  descripcion: s.descripcionSeo || (() => {
     const frases = s.lead.split('. ').filter(Boolean);
     const distintiva = (frases[1] || frases[0]).replace(/\.$/, '');
     return `${s.pill}. ${distintiva}. Desde 64 €/mes.`;

@@ -32,7 +32,7 @@ const DEPARTAMENTOS = [
     antesDePiezas: T.noEsBot,
     pill: 'Atención al Cliente',
     titulo: 'Asistente de atención al cliente con IA | Marirrodriga IA',
-    descripcion: 'Un asistente que contesta por WhatsApp, Telegram o el chat de tu web, mira tu agenda de verdad y cierra la cita. Desde 49 €/mes + 150 € de instalación.',
+    descripcion: 'Contesta por WhatsApp, Telegram o el chat de tu web, mira tu agenda y cierra la cita. Y en tu correo, clasifica y reparte lo que entra. Desde 49 €/mes.',
     h1: ['Contesta a las once de la noche.', 'Y también los domingos.'],
     lead: 'Un asistente que entiende lo que le escriben, mira tu agenda de verdad y cierra la cita él mismo. En el canal donde tus clientes ya te escriben, no en uno nuevo que tengan que aprender.',
     doloresTitulo: ['Lo que se pierde no es una llamada.', 'Es la que no vuelve a llamar.'],
@@ -217,7 +217,7 @@ const DEPARTAMENTOS = [
     despuesDePiezas: T.capturaVentas + T.competenciaVentas,
     pill: 'Ventas y Captación',
     titulo: 'Captación de clientes con IA | Marirrodriga IA',
-    descripcion: 'Sale a buscar negocios que encajan contigo y te los deja puntuados, con el primer mensaje escrito. Y persigue los presupuestos que se enfrían. Desde 49 €/mes.',
+    descripcion: 'Sale a buscar negocios que encajan contigo y te los deja puntuados, con el mensaje escrito. Y persigue tus presupuestos abiertos. Desde 49 €/mes.',
     h1: ['Encontrar a quien no te conoce.', 'Y no perder a quien ya te preguntó.'],
     lead: 'Salir a buscar clientes y perseguir lo que ya tienes abierto son dos trabajos distintos, y los dos se hacen todos los días o no se hacen. Estos los hacen solos.',
     doloresTitulo: ['Vender no es difícil.', 'Lo difícil es hacerlo todos los días.'],
@@ -314,7 +314,7 @@ const DEPARTAMENTOS = [
   archivo: 'finanzas.html', ruta: '/finanzas', hero: 'hero-finanzas.jpg',
   pill: 'Finanzas',
   titulo: 'Automatizar facturación y cobros | Marirrodriga IA',
-  descripcion: 'Facturar por mensaje, perseguir lo vencido y ver tu dinero explicado: caja, cobros y punto muerto. Desde 49 €/mes.',
+  descripcion: 'Factura por mensaje, persigue lo vencido, reclama los papeles que faltan y mira tu dinero explicado: caja, cobros y punto muerto. Desde 49 €/mes.',
   h1: ['Facturar sin abrir el programa.', 'Y cobrar sin perseguir.'],
   lead: 'El papeleo no se hace más rápido: se hace <strong>en otro momento</strong>, cuando ya has cerrado. Esto lo hace mientras trabajas, y te avisa solo cuando algo necesita que decidas tú.',
   pack: {
@@ -430,7 +430,7 @@ const DEPARTAMENTOS = [
   archivo: 'logistica.html', ruta: '/logistica', hero: 'hero-logistica.jpg',
   pill: 'Logística',
   titulo: 'Seguimiento de entregas con IA | Marirrodriga IA',
-  descripcion: 'Persigue al transportista, saca la fecha real y avisa a tu cliente antes de que pregunte. Desde 30 €/mes, con su límite al lado.',
+  descripcion: 'Persigue al transportista, avisa a tu cliente antes de que pregunte, cuadra las citas de carga y lleva cada incidencia hasta cerrarla. Desde 30 €/mes.',
   h1: ['Deja de llamar al transportista.', 'Llama él.'],
   lead: 'La pregunta que más veces se hace en un negocio que mueve mercancía es <strong>«¿por dónde va?»</strong>. Y la respuesta cuesta dos llamadas y media mañana. Esto la consigue solo, y avisa antes de que nadie pregunte.',
   pack: {
@@ -515,7 +515,7 @@ const DEPARTAMENTOS = [
   archivo: 'datos-y-direccion.html', ruta: '/datos-y-direccion', hero: 'hero-datos.jpg',
   pill: 'Datos y Dirección',
   titulo: 'Cuadro de mando y análisis de negocio | Marirrodriga IA',
-  descripcion: 'Tus datos juntos y cruzados, y un asistente al que preguntarle por qué ha ido así el mes. Desde 15 €/mes, con su límite al lado.',
+  descripcion: 'Tus datos juntos y cruzados, un asistente al que preguntarle por qué ha ido así el mes, y un correo el lunes con lo que se ha torcido. Desde 15 €/mes.',
   h1: ['Saber por qué ha ido bien.', 'No solo que ha ido bien.'],
   lead: 'Un panel te dice que has facturado un 12 % menos. Eso no sirve de nada si no sabes por qué. <strong>Y el porqué casi nunca está en un dato: está en el cruce de dos</strong> — la agenda contra la facturación, las conversaciones contra las citas.',
   pack: {
@@ -624,8 +624,8 @@ const DEPARTAMENTOS = [
 {
   archivo: 'marketing.html', ruta: '/marketing', hero: 'hero-marketing.jpg',
   pill: 'Marketing',
-  titulo: 'Contenido para redes y newsletter | Marirrodriga IA',
-  descripcion: 'Fotos y vídeos de tu marca, generados y publicados en la red que elijas. Desde 29 €/mes, con su límite al lado.',
+  titulo: 'Publicaciones, fotos y vídeos para redes | Marirrodriga IA',
+  descripcion: 'Publica en LinkedIn con tu voz, genera fotos y vídeos con tu marca y monta campañas enteras con su calendario. Desde 29 €/mes, con su límite al lado.',
   h1: ['Publicar sin que', 'te robe la semana.'],
   lead: 'No es que no sepas qué contar: es que hacer la foto, escribir el pie y subirlo cuesta una hora que no tienes, y por eso pasan tres semanas sin publicar. <strong>Esto lo hace y lo publica, con tu identidad y sin que tú abras nada.</strong>',
   pack: {
@@ -735,8 +735,8 @@ const DEPARTAMENTOS = [
 {
   archivo: 'posicionamiento-online.html', ruta: '/posicionamiento-online', hero: 'hero-posicionamiento.jpg',
   pill: 'Posicionamiento Online',
-  titulo: 'SEO local, ficha de Google y reseñas | Marirrodriga IA',
-  descripcion: 'Que te encuentren al buscar lo que haces, y que la web, la ficha y las reseñas estén cuidadas. Desde 30 €/mes, con su límite al lado.',
+  titulo: 'Tu web, SEO local y reseñas de Google | Marirrodriga IA',
+  descripcion: 'Una web profesional que llevamos nosotros, páginas por sector y zona, tu ficha de Google al día y las reseñas pedidas y contestadas. Desde 30 €/mes.',
   h1: ['Que te encuentren.', 'Y que lo que vean esté bien.'],
   lead: 'Antes de escribirte, la gente te busca. Mira tu web, tu ficha de Google y lo que dicen otros. <strong>Esos tres sitios deciden si te escriben o siguen buscando</strong>, y casi nadie los cuida.',
   pack: {
