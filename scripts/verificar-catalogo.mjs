@@ -18,9 +18,9 @@ const { CATALOGO, cotiza, calculaSetup } = require('../assets/catalogo.js');
 // ha puesto precio de instalación.
 // OJO: la consulta del encabezado necesita «where publicable and vigente». Solo con
 // «publicable» devuelve 37 piezas y una huella que no cuadra con la del generador.
-/* Cambió el 10-09 al subir ficha-cliente de 25 a 35 €/mes. ⚠️ Esa subida está
-   hecha en el JSON y en assets/catalogo.js, pero NO en Supabase: hay que
-   replicarla allí o la próxima exportación la deshace. */
+/* Cambió el 10-09 al subir ficha-cliente de 25 a 35 €/mes. Replicado en
+   Supabase el 13-09: la misma huella calculada sobre catalogo_piezas da este
+   valor, así que base y web vuelven a coincidir. */
 const HUELLA_ESPERADA = 'a594c3973da128235f042cfcd201d98e';
 const N_ESPERADAS = 33;
 
@@ -66,7 +66,7 @@ const EJEMPLOS = [
   // 232,00 recalculado en Supabase con catalogo_cotiza() el 16-08. El tramo
   // completo de Bookia paso de 185,60 a 193,60 el 10-09 al subir
   // ficha-cliente de 25 a 35: son 10 € que la bonificacion deja en 8.
-  // ⚠️ Ese recalculo NO esta hecho en Supabase todavia.
+  // Comprobado el 13-09 con catalogo_cotiza() en Supabase: 193,60.
   // al retirar «profesionales ilimitados» de los dos conjuntos completos.
   ['Negocio de citas completo', 193.60, [...CATALOGO.piezas.filter(p => p.cat === 'citas').map(p => p.slug), 'iris-0']],
   ['Clínica dental mínima', 73.00, ['dental-agenda', 'dental-ficha-historia']],
