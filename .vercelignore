@@ -1,0 +1,11 @@
+# Lo que NO sube al despliegue.
+#
+# El repositorio es publico a proposito, asi que esto no esconde nada: lo que
+# evita es que el codigo fuente y las notas internas se sirvan DESDE el dominio
+# y acaben indexados en Google junto a las paginas de venta. La web son HTML ya
+# generados; nada de esto hace falta en tiempo de ejecucion.
+
+scripts/
+docs/
+.claude/
+*.md
