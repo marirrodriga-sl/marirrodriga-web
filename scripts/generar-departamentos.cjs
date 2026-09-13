@@ -61,8 +61,10 @@ const ico = (k, extra = '') =>
 const hero = p => `<header class="hero-s" style="--hero:url('/assets/img/${p.hero}')">
   <div class="hero-s-fondo"></div>
   <div class="hero-s-centro">
-    <span class="hero-s-pill"><i></i> ${esc(p.pill)}</span>
-    <h1 class="t-h1">${esc(p.h1[0])}<br><span class="acento">${esc(p.h1[1])}</span></h1>
+    ${p.h1Busqueda
+      ? `<h1 class="hero-s-pill"><i></i> ${esc(p.h1Busqueda)}</h1>`
+      : `<span class="hero-s-pill"><i></i> ${esc(p.pill)}</span>`}
+    <${p.h1Busqueda ? 'p' : 'h1'} class="t-h1">${esc(p.h1[0])}<br><span class="acento">${esc(p.h1[1])}</span></${p.h1Busqueda ? 'p' : 'h1'}>
     <p class="t-lead">${p.lead}</p>
   </div>
 </header>`;

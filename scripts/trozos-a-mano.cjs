@@ -23,8 +23,8 @@ const heroAtencion = `<header class="hero">
   
 
   <div class="hero-centro">
-    <span class="hero-pill"><i></i> Atención al Cliente</span>
-    <h1 class="t-h1">Contesta a las once<br>de la noche.<br><span class="acento">Y también los domingos.</span></h1>
+    <h1 class="hero-pill"><i></i> Asistente de IA para WhatsApp Business y tu web</h1>
+    <p class="t-h1">Contesta a las once<br>de la noche.<br><span class="acento">Y también los domingos.</span></p>
     <!-- El móvil con la conversación funcionando, entre el titular y el resto.
          Va ENTERO, sin recortar: colocación pedida por Ismael el 20-08. -->
     <div class="escena" aria-hidden="true">
@@ -185,8 +185,8 @@ const heroVentas = `<header class="hero">
   </div>
 
   <div class="hero-centro">
-    <span class="hero-pill"><i></i> Ventas y Captación</span>
-    <h1 class="t-h1">Encontrar a quien<br>no te conoce.<br><span class="acento">Y no perder a quien ya te preguntó.</span></h1>
+    <h1 class="hero-pill"><i></i> Captación de clientes y seguimiento de presupuestos</h1>
+    <p class="t-h1">Encontrar a quien<br>no te conoce.<br><span class="acento">Y no perder a quien ya te preguntó.</span></p>
 
     <!-- La lista del lunes: lo que entrega la captación, en HTML y no en captura -->
     <div class="lista" aria-hidden="true">

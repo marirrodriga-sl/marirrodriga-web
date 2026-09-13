@@ -13,7 +13,8 @@ const DENTIA = {
   ruta: '/dentia',
   hero: 'hero-dentia.jpg',
   pill: 'Software para clínicas dentales',
-  titulo: 'Software para clínicas dentales | Dentia',
+  h1Busqueda: 'Software de gestión para clínicas dentales',
+  titulo: 'Software de gestión para clínicas dentales | Dentia',
   // 187 caracteres se cortaban en Google a mitad de frase. En 148 cabe entera.
   descripcion: 'Agenda, ficha de paciente, odontograma, presupuestos y facturación en un solo sitio, ' +
     'con un asistente que contesta por WhatsApp. Desde 73 €/mes.',
@@ -52,6 +53,8 @@ const DENTIA = {
      'Nunca. Coge citas, resuelve dudas de horario y precio y hace seguimiento. Cualquier cosa clínica la deriva a la clínica, y se identifica siempre como IA, que lo exige el artículo 50 del Reglamento Europeo de IA.'],
     ['¿Y si somos más de dos profesionales?',
      'El tramo de entrada cubre dos. A partir de ahí se amplía, y te decimos el precio antes de montarlo — nunca aparece en una factura sin que lo hayas aprobado.'],
+    ['¿Hay versión gratis?',
+     'No. Detrás hay un programa, un servidor y los ajustes que hacemos nosotros, y por eso cada pieza lleva su cuota con su límite al lado. Lo que sí es gratis es la demo: media hora con la agenda de tu clínica delante y sin compromiso.'],
     ['¿Hay permanencia?',
      'No. Te vas cuando quieras avisando con 30 días, y tus datos se los llevas exportados. El montaje se paga 50 % al empezar y 50 % al entregar.'],
   ],
