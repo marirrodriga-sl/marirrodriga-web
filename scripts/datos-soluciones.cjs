@@ -208,4 +208,24 @@ const BOOKIA = SECTORES.filter(s => !s.ancla).map(s => Object.assign({}, BOOKIA_
   })(),
 }));
 
-module.exports = { DENTIA, BOOKIA, SECTORES, CAL };
+/* ─── LANDINGS DE ANUNCIOS (/l/…) ───────────────────────────────────────────
+   14-09-2026 · Google Ads. Una por grupo de anuncios: la MISMA página que
+   /bookia —mismos textos revisados y mismos precios del catálogo— con tres
+   cambios y nada más:
+     · el título y la píldora-H1 dicen lo que se buscó;
+     · noindex: no compite en Google con /bookia (casi idéntica = duplicado);
+     · no entra en sitemap.xml (que es a mano: no hay que tocarlo).
+   No es un sitio para experimentar con textos: si una variante necesita otro
+   discurso, eso se decide primero con la prueba de 800 € delante
+   (marirrodriga/publicidad/viabilidad.md).
+   bookia.html NO se toca hasta revisar Search Console el 30-09. */
+const ANUNCIOS = [
+  Object.assign({}, BOOKIA[0], {
+    archivo: 'l/software-peluqueria.html', ruta: '/l/software-peluqueria',
+    noindex: true,
+    h1Busqueda: 'Software para peluquerías y centros de estética',
+    titulo: 'Software para peluquerías y centros de estética | Bookia',
+  }),
+];
+
+module.exports = { DENTIA, BOOKIA, ANUNCIOS, SECTORES, CAL };

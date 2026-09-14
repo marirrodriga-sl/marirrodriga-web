@@ -27,7 +27,7 @@ Tres generadores, cada uno con su fichero de datos al lado:
 | Generador | Qué escribe | Textos y precios en |
 |---|---|---|
 | `scripts/generar-departamentos.cjs` | Las **7 landings de departamento** | `scripts/datos-departamentos.cjs` |
-| `scripts/generar-paginas.cjs` | `bookia.html` y `dentia.html` | `scripts/datos-soluciones.cjs` |
+| `scripts/generar-paginas.cjs` | `bookia.html`, `dentia.html` y las **landings de anuncios `l/*.html`** (`noindex`, fuera del sitemap; son /bookia con otro título) | `scripts/datos-soluciones.cjs` (`ANUNCIOS`) |
 | `scripts/sincronizar-menu.cjs` | Solo el **menú** de `index.html` | — (lo copia del generador) |
 
 `index.html` y `asesoria.html` se escriben a mano; de ellas solo el menú sale

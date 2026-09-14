@@ -11,7 +11,7 @@
 */
 const fs = require('node:fs');
 const path = require('node:path');
-const { DENTIA, BOOKIA, SECTORES, CAL } = require('./datos-soluciones.cjs');
+const { DENTIA, BOOKIA, ANUNCIOS, SECTORES, CAL } = require('./datos-soluciones.cjs');
 const SOL = require('./soluciones.cjs');
 
 const raiz = path.join(__dirname, '..');
@@ -335,7 +335,8 @@ function pagina(p, tramos) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${esc(p.titulo)}</title>
-  <meta name="description" content="${esc(p.descripcion)}">
+  <meta name="description" content="${esc(p.descripcion)}">${p.noindex ? `
+  <meta name="robots" content="noindex, follow">` : ''}
   <link rel="canonical" href="https://www.marirrodriga-ia.com${p.ruta}">
   <meta name="theme-color" content="#7C3AED">
   <link rel="icon" href="/favicon.ico" sizes="any">
@@ -430,7 +431,9 @@ module.exports = { nav, faq, cierre, pie, esc, LOGO, WA, CAL,
 /* ─── ESCRIBIR ───────────────────────────────────────────────────────────── */
 if (require.main === module) {
   let n = 0;
-  for (const [p, tramos] of [[DENTIA, SOL.DENTIA], ...BOOKIA.map(b => [b, SOL.BOOKIA])]) {
+  for (const [p, tramos] of [[DENTIA, SOL.DENTIA], ...BOOKIA.map(b => [b, SOL.BOOKIA]),
+                             ...ANUNCIOS.map(a => [a, SOL.BOOKIA])]) {
+    fs.mkdirSync(path.dirname(path.join(raiz, p.archivo)), { recursive: true });
     fs.writeFileSync(path.join(raiz, p.archivo), pagina(p, tramos), { encoding: 'utf8' });
     console.log(`  ${p.archivo.padEnd(28)} ${tramos[0].cuota} – ${tramos[3].cuota} €/mes`);
     n++;
