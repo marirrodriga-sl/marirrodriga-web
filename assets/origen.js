@@ -17,9 +17,32 @@
 
    Va en su propio fichero y no dentro de nav.js porque asesoria.html no
    carga el menú y sí tiene botón de reserva.
+
+   14-09-2026 · GOOGLE ADS. Si la visita llega de un anuncio, la URL trae el
+   identificador del clic (gclid, o gbraid/wbraid desde iPhone) y las utm_* del
+   sufijo de la cuenta. Van pegadas al mismo campo oculto, detrás de la página:
+   «/l/software-peluqueria?gclid=…&utm_campaign=…». Así Cal.com no se toca, y
+   n8n («MUSA · La cita de Cal.com al CRM») lo separa y lo guarda en
+   leads.atribucion, de donde sale la conversión que se devuelve a Google.
+   No se guarda nada en el navegador: solo vale si reserva desde la misma
+   página a la que llegó, que es justo lo que hace una landing de anuncio.
    ───────────────────────────────────────────────────────────────────────── */
 (function () {
   var origen = location.pathname.replace(/\/+$/, '') || '/';
+
+  var CLAVES = ['gclid', 'gbraid', 'wbraid', 'utm_source', 'utm_medium',
+                'utm_campaign', 'utm_term', 'utm_content'];
+  try {
+    var entrada = new URLSearchParams(location.search);
+    var campana = new URLSearchParams();
+    CLAVES.forEach(function (k) {
+      var v = entrada.get(k);
+      if (v) campana.set(k, v.slice(0, 200));
+    });
+    if (campana.toString()) origen += '?' + campana.toString();
+  } catch (e) {
+    /* Sin URLSearchParams se queda solo la página, que es lo que había. */
+  }
 
   var enlaces = document.querySelectorAll('a[href*="cal.com/marirrodriga-ia"]');
   Array.prototype.forEach.call(enlaces, function (a) {
