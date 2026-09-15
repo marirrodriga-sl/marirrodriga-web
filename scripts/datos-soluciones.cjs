@@ -226,6 +226,19 @@ const ANUNCIOS = [
     h1Busqueda: 'Software para peluquerías y centros de estética',
     titulo: 'Software para peluquerías y centros de estética | Bookia',
   }),
+  /* 15-09-2026 · Fisioterapia sustituye a barbería en la campaña de Bookia: su
+     previsión da 65 clics a 2,37 € con 5 €/día. Aquí sí se usan el eslogan, el
+     lead y los dolores del oficio (la camilla, la sesión a medias): ya estaban
+     escritos en SECTORES y hablan como habla un fisio.
+     ⚠️ Sanidad: la ficha de un paciente de fisio son datos de salud (art. 9).
+     Un cliente de fisio pide la base aparte y el anexo de encargado sanitario. */
+  Object.assign({}, BOOKIA_BASE, SECTORES.find(s => s.ancla === 'fisioterapia'), {
+    archivo: 'l/software-fisioterapia.html', ruta: '/l/software-fisioterapia',
+    noindex: true,
+    h1Busqueda: 'Software para clínicas de fisioterapia',
+    titulo: 'Software para clínicas de fisioterapia | Bookia',
+    descripcion: 'Agenda, reserva online sin registro y recordatorios para clínicas de fisioterapia. Con un asistente que contesta mientras tratas. Desde 64 €/mes.',
+  }),
 ];
 
 module.exports = { DENTIA, BOOKIA, ANUNCIOS, SECTORES, CAL };
