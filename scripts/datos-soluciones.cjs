@@ -232,6 +232,15 @@ const ANUNCIOS = [
      escritos en SECTORES y hablan como habla un fisio.
      ⚠️ Sanidad: la ficha de un paciente de fisio son datos de salud (art. 9).
      Un cliente de fisio pide la base aparte y el anexo de encargado sanitario. */
+  /* 15-09-2026 · Estética, para su grupo de anuncios: la cabina, el tratamiento
+     largo cancelado, el bono a medias. Mismo patrón que la de fisio. */
+  Object.assign({}, BOOKIA_BASE, SECTORES.find(s => s.ancla === 'estetica'), {
+    archivo: 'l/software-estetica.html', ruta: '/l/software-estetica',
+    noindex: true,
+    h1Busqueda: 'Software para centros de estética',
+    titulo: 'Software para centros de estética | Bookia',
+    descripcion: 'Agenda, reserva desde Instagram sin registro y recordatorios para centros de estética. Con un asistente que contesta mientras estás en cabina.',
+  }),
   Object.assign({}, BOOKIA_BASE, SECTORES.find(s => s.ancla === 'fisioterapia'), {
     archivo: 'l/software-fisioterapia.html', ruta: '/l/software-fisioterapia',
     noindex: true,
