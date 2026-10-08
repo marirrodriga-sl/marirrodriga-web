@@ -20,8 +20,18 @@ const { CATALOGO, cotiza, calculaSetup } = require('../assets/catalogo.js');
 // «publicable» devuelve 37 piezas y una huella que no cuadra con la del generador.
 /* Cambió el 10-09 al subir ficha-cliente de 25 a 35 €/mes. Replicado en
    Supabase el 13-09: la misma huella calculada sobre catalogo_piezas da este
-   valor, así que base y web vuelven a coincidir. */
-const HUELLA_ESPERADA = 'a594c3973da128235f042cfcd201d98e';
+   valor, así que base y web vuelven a coincidir.
+
+   Cambió otra vez el 08-10 al bajar el panel dental a precio de mercado (agenda 49→35,
+   ficha 24→20, odontograma 19→15, presupuestos 25→20, facturación 30→25, firma 24→15).
+   Replicado en catalogo_piezas el mismo día.
+
+   ⚠️ Base y web ya NO dan la misma huella, y no es por los precios: cuatro piezas tienen
+   el nombre o el límite distintos porque se retocó el texto en la web y nunca se replicó
+   en la base — canal-adicional y voz-telefono dicen «chatbot» en la base y «agente» en la
+   web, y correo-respuesta-derivacion y presencia-web-landing están renombradas en la web.
+   Esta huella es la de la web. Al cuadrar esos cuatro textos, volverán a coincidir. */
+const HUELLA_ESPERADA = '7f91becf05b6c6044bd94351bb21960a';
 const N_ESPERADAS = 33;
 
 let fallos = 0;
@@ -69,10 +79,10 @@ const EJEMPLOS = [
   // Comprobado el 13-09 con catalogo_cotiza() en Supabase: 193,60.
   // al retirar «profesionales ilimitados» de los dos conjuntos completos.
   ['Negocio de citas completo', 193.60, [...CATALOGO.piezas.filter(p => p.cat === 'citas').map(p => p.slug), 'iris-0']],
-  ['Clínica dental mínima', 73.00, ['dental-agenda', 'dental-ficha-historia']],
-  ['Clínica dental que empieza', 132.30, ['dental-agenda', 'dental-ficha-historia', 'dental-odontograma', 'dental-presupuestos', 'dental-facturacion']],
-  ['Clínica dental con asistente', 184.80, ['dental-agenda', 'dental-ficha-historia', 'dental-odontograma', 'dental-presupuestos', 'dental-facturacion', 'dental-asistente-pacientes', 'dental-acompanamiento-presupuestos', 'dental-seguimiento-resenas', 'dental-analisis-conversaciones']],
-  ['Clínica dental completa', 232.00, CATALOGO.piezas.filter(p => p.cat === 'dental').map(p => p.slug)],
+  ['Clínica dental mínima', 55.00, ['dental-agenda', 'dental-ficha-historia']],
+  ['Clínica dental que empieza', 103.50, ['dental-agenda', 'dental-ficha-historia', 'dental-odontograma', 'dental-presupuestos', 'dental-facturacion']],
+  ['Clínica dental con asistente', 159.20, ['dental-agenda', 'dental-ficha-historia', 'dental-odontograma', 'dental-presupuestos', 'dental-facturacion', 'dental-asistente-pacientes', 'dental-acompanamiento-presupuestos', 'dental-seguimiento-resenas', 'dental-analisis-conversaciones']],
+  ['Clínica dental completa', 199.20, CATALOGO.piezas.filter(p => p.cat === 'dental').map(p => p.slug)],
   ['Tienda online (caso Fer)', 79.00, ['iris-0', 'modulo-seguimiento-pedidos']],
 ];
 
@@ -86,8 +96,8 @@ const escalera = ['dental-agenda', 'dental-ficha-historia', 'dental-odontograma'
   'dental-facturacion', 'dental-asistente-pacientes', 'dental-acompanamiento-presupuestos'];
 const siete = cotiza(escalera);
 const ocho = cotiza([...escalera, 'dental-seguimiento-resenas']);
-check(siete.cuota === 175.10, 'escalera dental · 7 piezas', String(siete.cuota));
-check(ocho.cuota === 175.10 && ocho.guardaAplicada, 'escalera dental · 8 piezas no baja la factura',
+check(siete.cuota === 147.90, 'escalera dental · 7 piezas', String(siete.cuota));
+check(ocho.cuota === 147.90 && ocho.guardaAplicada, 'escalera dental · 8 piezas no baja la factura',
   `${ocho.cuota} (sin guarda serían ${ocho.subtotal})`);
 
 // Añadir una pieza nunca baja la cuota, en ninguna combinación acumulativa
@@ -135,7 +145,7 @@ check(altaMonotona, 'añadir una herramienta nunca abarata el montaje');
 // quedan mintiendo sin que nada avise. Aquí se fija lo que deben decir.
 const SOL = require('./soluciones.cjs');
 const TRAMOS = {
-  DENTIA: [[73, 300], [132.30, 300], [175.10, 450], [232, 450]],
+  DENTIA: [[55, 300], [103.50, 300], [147.90, 450], [199.20, 450]],
   BOOKIA: [[64, 250], [79, 250], [98.10, 250], [193.60, 350]],
 };
 for (const [nombre, esperados] of Object.entries(TRAMOS)) {
