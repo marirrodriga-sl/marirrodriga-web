@@ -68,7 +68,7 @@ const DENTIA = {
 /* ─── CITIA (antes Bookia; renombrada el 16-10-2026) ─────────────────────────────────────────────────────────────── */
 const BOOKIA_BASE = {
   /* El producto se llama Citia desde el 16-10-2026. Los ficheros, las URL
-     (/bookia, /l/software-*) y las carpetas de imágenes siguen con el nombre
+     (/citia, /l/software-*) y las carpetas de imágenes siguen con el nombre
      viejo a propósito: hay anuncios y posicionamiento apuntando a ellas. */
   marca: 'Citia',
   hero: 'hero-bookia.jpg',
@@ -111,23 +111,23 @@ const BOOKIA_BASE = {
    palabras — la única diferencia real era el sustantivo, «la silla» → «el
    sillón» → «la camilla». Eso son doorway pages de manual, y eran seis de
    las dieciséis páginas indexables del sitio compitiendo entre ellas por la
-   misma búsqueda. Las seis URLs redirigen a /bookia con un 301.
+   misma búsqueda. Las seis URLs redirigen a /citia con un 301.
 
    Lo que NO se tira es esto: el vocabulario de cada sector, que es bueno y
-   específico, se muda dentro de /bookia como una sección propia. Una página
+   específico, se muda dentro de /citia como una sección propia. Una página
    que nombra la camilla, la cabina y el sillón, y cuenta el dolor de cada
    oficio, pelea por esas búsquedas mejor que seis que se copian entre sí.
 
    `archivo` y `ruta` se conservan a propósito: los usa el generador para
    saber cuál se escribe, y las redirecciones de vercel.json salen de aquí.
 
-   Las redirecciones van a /bookia a secas, NO al ancla del oficio. Se probó
+   Las redirecciones van a /citia a secas, NO al ancla del oficio. Se probó
    con ancla y aterrizabas al 63 % de la página, en una tarjeta suelta, sin
    haber visto qué es Citia ni cuánto cuesta — y desde un resultado de Google
    nadie sube. El ancla sí vale para el menú, donde el visitante ya está
    dentro y sabe dónde está. Dos trabajos distintos, dos destinos. */
 const SECTORES = [
-  { archivo: 'bookia.html', ruta: '/bookia', sector: null,
+  { archivo: 'citia.html', ruta: '/citia', sector: null,
     /* Puestos a mano el 12-09: la descripcion se calculaba del lead y no
        nombraba ningun oficio. Ahora que los seis viven dentro de esta
        pagina, nombrarlos aqui es justo lo que la hace encontrable. */
@@ -208,7 +208,7 @@ const SECTORES = [
 // distingue es la segunda («mientras tienes las manos en un tinte», «mientras
 // tatúas»). Sale en ~120 caracteres, por debajo de los ~155 donde Google corta.
 /* Solo el primero se convierte en página. Los demás viven como datos: los
-   consume la sección de sectores de /bookia y las redirecciones. */
+   consume la sección de sectores de /citia y las redirecciones. */
 const BOOKIA = SECTORES.filter(s => !s.ancla).map(s => Object.assign({}, BOOKIA_BASE, s, {
   titulo: s.tituloSeo || `${s.pill} | Citia`,
   descripcion: s.descripcionSeo || (() => {
@@ -220,10 +220,10 @@ const BOOKIA = SECTORES.filter(s => !s.ancla).map(s => Object.assign({}, BOOKIA_
 
 /* ─── LANDINGS DE ANUNCIOS (/l/…) ───────────────────────────────────────────
    14-09-2026 · Google Ads. Una por grupo de anuncios: la MISMA página que
-   /bookia —mismos textos revisados y mismos precios del catálogo— con tres
+   /citia —mismos textos revisados y mismos precios del catálogo— con tres
    cambios y nada más:
      · el título y la píldora-H1 dicen lo que se buscó;
-     · noindex: no compite en Google con /bookia (casi idéntica = duplicado);
+     · noindex: no compite en Google con /citia (casi idéntica = duplicado);
      · no entra en sitemap.xml (que es a mano: no hay que tocarlo).
    No es un sitio para experimentar con textos: si una variante necesita otro
    discurso, eso se decide primero con la prueba de 800 € delante

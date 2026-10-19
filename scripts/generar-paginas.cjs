@@ -1,4 +1,4 @@
-/* Genera dentia.html, bookia.html (Citia; el fichero conserva el nombre viejo) y las landings de anuncios.
+/* Genera dentia.html, citia.html (antes bookia.html: /bookia redirige con 301 a /citia desde el 19-10-2026) y las landings de anuncios.
    Uso:  node scripts/generar-paginas.cjs
 
    Existe porque hasta el 20-08 eran ocho ficheros de ~600 líneas cada uno,
@@ -52,14 +52,14 @@ const WA = 'https://wa.me/34675148566';
    landings de sector no recibían un enlace de nadie. */
 /* Dos entradas, no siete. Hasta el 09-09 había una por sector y cada una era
    una página que compartía el 84-91 % de sus palabras con las demás. Ahora
-   los oficios cuelgan de Bookia y llevan a su trozo dentro de /bookia: el
+   los oficios cuelgan de Bookia y llevan a su trozo dentro de /citia: el
    menú sigue diciéndole a la peluquera que esto es para ella, que era lo
    único que aquellas páginas hacían bien. */
 const SECTORES_MENU = [
-  ['Negocios de citas', '/bookia', 'Agenda, reserva sin registro y recordatorios',
-   [['Peluquería', '/bookia#peluqueria'], ['Estética', '/bookia#estetica'],
-    ['Uñas', '/bookia#unas'], ['Tatuajes', '/bookia#tatuajes'],
-    ['Fisioterapia', '/bookia#fisioterapia'], ['Podología', '/bookia#podologia']]],
+  ['Negocios de citas', '/citia', 'Agenda, reserva sin registro y recordatorios',
+   [['Peluquería', '/citia#peluqueria'], ['Estética', '/citia#estetica'],
+    ['Uñas', '/citia#unas'], ['Tatuajes', '/citia#tatuajes'],
+    ['Fisioterapia', '/citia#fisioterapia'], ['Podología', '/citia#podologia']]],
   ['Clínicas dentales', '/dentia', 'Odontograma, historia clínica y consentimientos', []],
 ];
 
