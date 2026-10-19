@@ -136,6 +136,15 @@ const DEPARTAMENTOS = [
       lim: 'se acopla al asistente',
       nota: 'Si lo que quieres es avisar antes de que pregunten, eso vive en Logística.' },
 
+    /* 19-10-2026 · Añadido de la pieza de arriba: solo se vende con el
+       seguimiento de pedidos, porque usa la misma conexión de solo lectura a
+       la tienda. Va FUERA del plan completo a propósito: el pack de Atención
+       (144 €/mes + 330 €, decisión de Isma) no cambia por añadirla. */
+    { n: 'Consulta de stock', slug: 'consulta-stock', eur: 15, setup: 50, fueraDelPack: true,
+      etiqueta: 'solo con el seguimiento de pedidos',
+      d: 'Contesta si un producto está disponible, si quedan pocas unidades o si está agotado, por talla y color. Sin dar cantidades exactas.',
+      lim: 'se acopla al seguimiento de pedidos' },
+
     { n: 'El organizador del buzón', slug: 'correo-clasificacion', eur: 15, setup: 70,
       maqueta: `<div class="mq-lista">
         <div class="mq-l-cab">Tu bandeja, a las 8:05</div>
@@ -198,7 +207,7 @@ const DEPARTAMENTOS = [
       ['¿Qué pasa cuando no sabe algo?', 'Deja de contestar y te pasa la conversación. No improvisa, no promete plazos y no cierra ventas con cobro. Si el cliente se enfada, también te lo pasa: la escalada a una persona es parte del diseño, no un fallo.'],
       ['¿Necesito una cuenta de WhatsApp Business?', 'Sí, y va a tu nombre: Meta te factura a ti directamente. No revendemos mensajería. Por eso un canal de más cuesta 5 €/mes — lo que pagas es la conexión, no el consumo.'],
       ['¿Y si me quedo corto de conversaciones?', 'Te avisamos al 80 % del límite y te proponemos subir. Nunca cortamos el servicio ni te facturamos el exceso por sorpresa. Un precio sin su límite al lado es una mentira o una trampa, así que aquí van siempre juntos.'],
-      ['¿Hay permanencia?', 'No. Te vas cuando quieras avisando con 30 días. La instalación se paga 50 % al empezar y 50 % al entregar, y la cuota incluye los ajustes y una reunión al mes.'],
+      ['¿Hay permanencia?', 'No. Te vas cuando quieras avisando con 30 días. La instalación se paga 50 % al empezar y 50 % al entregar, y la cuota incluye los ajustes y las reuniones que hagan falta.'],
       ['¿Contesta fuera de horario?', 'Sí: las 24 horas, fines de semana incluidos. Lo que no le toca a él —algo que no sabe, un cliente enfadado, una venta con cobro— te lo deja pasado para cuando vuelvas.'],
       ['¿Cuánto cuesta el asistente de WhatsApp Business?', 'Cada pieza lleva su precio y su límite en la tabla de esta página, sin IVA. Lo que Meta cobre por tu cuenta de WhatsApp Business va aparte y a tu nombre: no pasa por nosotros.'],
       ['¿Hay versión gratis?', 'No. Detrás de cada pieza hay un modelo de IA, un servidor y los ajustes que hacemos nosotros, y por eso cada una lleva su cuota con su límite al lado. Lo que sí es gratis es la demo: media hora con tu caso delante y sin compromiso.'],
@@ -217,22 +226,23 @@ const DEPARTAMENTOS = [
     archivo: 'ventas-y-captacion.html', ruta: '/ventas-y-captacion',
     css: ['ventas.css'],
     heroHtml: T.heroVentas,
+    antesDeCompleto: T.crmVentas,
     despuesDePiezas: T.capturaVentas + T.competenciaVentas,
     pill: 'Ventas y Captación',
-    titulo: 'Captación de clientes con IA | Marirrodriga IA',
-    descripcion: 'Sale a buscar negocios que encajan contigo y te los deja puntuados, con el mensaje escrito. Y persigue tus presupuestos abiertos. Desde 49 €/mes.',
-    h1: ['Encontrar a quien no te conoce.', 'Y no perder a quien ya te preguntó.'],
-    lead: 'Salir a buscar clientes y perseguir lo que ya tienes abierto son dos trabajos distintos, y los dos se hacen todos los días o no se hacen. Estos los hacen solos.',
+    titulo: 'CRM a medida y captación de clientes con IA | Marirrodriga IA',
+    descripcion: 'Un CRM con la ficha de cada cliente y lo hablado con él, conectado a lo que ya usas. Y encima, salir a buscar y no perder al que preguntó. Desde 149 €/mes.',
+    h1: ['Todo lo de cada cliente en un sitio.', 'Y la máquina de traer más, encima.'],
+    lead: 'Primero ordenar lo que ya tienes: una ficha por cliente, con lo hablado y lo pendiente, que se rellena sola. Y encima de eso, lo que sale a buscar a quien no te conoce y persigue al que ya te preguntó.',
     doloresTitulo: ['Vender no es difícil.', 'Lo difícil es hacerlo todos los días.'],
     doloresLead: 'Buscar clientes se come el tiempo de atenderlos. Y los que ya preguntaron se enfrían mientras tú estás con el siguiente. Ninguna de las dos cosas es complicada; lo complicado es que no se te pase ni un día.',
     pack: {
-      nombre: 'Ventas y Captación, montado entero',
-      gancho: 'Salir a buscar, no perder al que preguntó y recuperar al que se fue — con una sola cola.',
+      nombre: 'Lo que se monta encima del CRM',
+      gancho: 'Salir a buscar, no perder al que preguntó y recuperar al que se fue — todo contra la misma ficha.',
       cuota: 263, alta: 590, altaSuelta: 840,
       entra: ['Tu sector y tu zona', 'Los presupuestos que mandas', 'Los que dejaron de venir'],
       sale: ['La cola puntuada, con su motivo', 'Ningún presupuesto sin seguir', 'Los dormidos, despertados'],
-      comoVa: 'Las tres beben de la misma ficha: lo que el seguimiento aprende de un cliente lo aprovecha la reactivación dos meses después.',
-      pie: 'Es la diferencia entre tres herramientas sueltas y un embudo: el que entra por captación sale por reactivación sin que nadie lo mueva a mano.',
+      comoVa: 'Las tres escriben en la ficha del CRM y leen de ella: lo que el seguimiento aprende de un cliente lo aprovecha la reactivación dos meses después.',
+      pie: 'Se pueden contratar sin el CRM y funcionan igual, pero es con él donde dejan de ser tres herramientas sueltas: el que entra por captación acaba siendo una ficha, y de ahí sale por reactivación sin que nadie lo mueva a mano.',
     },
 
     dolores: [
@@ -241,6 +251,17 @@ const DEPARTAMENTOS = [
       ['El que preguntó y no volvió', 'Pidió precio por WhatsApp, le contestaste, y ahí se quedó. No dijo que no: se le pasó. Nadie le volvió a escribir, porque nadie tenía eso apuntado.'],
     ],
     piezas: [
+    /* El CRM va fuera del pack a propósito, y no porque sea secundario: es al
+       revés. El pack son las TRES piezas de captación (199+49+15 = 263 y
+       600+200+40 = 840) y esa aritmética tiene que seguir cuadrando. El CRM es
+       la base, tiene su propia sección arriba con su precio, y se contrata con
+       el pack o sin él. De ahí la etiqueta propia en vez del «fuera del plan
+       completo» que pone el molde por defecto. */
+    { n: 'El CRM de tu negocio', slug: 'crm-panel', eur: 149, setup: 900, fueraDelPack: true,
+      etiqueta: 'la base · se contrata con el plan o sin él', desde: true, desdeAlta: true,
+      lim: 'hasta 5 personas usándolo · hasta 2.000 fichas de cliente · dos sistemas conectados, si tienen API',
+      nota: 'Es un «desde»: la instalación sube con cada sistema que haya que conectar, y los que no tienen API se valoran aparte antes de empezar. No sustituye a tu programa de gestión: lo lee.' },
+
     { n: 'Captación de clientes potenciales', slug: 'captacion-leads', eur: 199, setup: 600, destacada: true,
       maqueta: `<div class="mq-lista">
         <div class="mq-l-cab">Tu cola del lunes · ordenada por nota</div>
@@ -305,11 +326,13 @@ const DEPARTAMENTOS = [
       ['¿Escribe a los negocios en mi nombre?', 'No. Te deja la lista puntuada y el primer mensaje redactado, pero el botón de enviar lo pulsas tú. La base legal del artículo 21 de la LSSI es de quien manda el correo, y esa responsabilidad no la asumimos por ti. Es la misma regla que seguimos nosotros con nuestra propia cola.'],
       ['¿De dónde saca los negocios?', 'De fuentes públicas: la ficha de Google del negocio y su propia web. Ahí es donde se ve si tiene reserva online, si su web va sin candado o cuántas reseñas le han entrado en el último año. No compramos bases de datos ni verificamos por teléfono.'],
       ['¿Cuántos de los 150 valen de verdad?', 'Depende del sector y de la zona, y por eso cada uno lleva su nota y su motivo escrito: los de arriba son a los que merece la pena escribir hoy. En nuestra propia cola, de 265 negocios rastreados solo 98 tenían un correo al que escribir. Te lo decimos antes de empezar, no después.'],
-      ['¿Y si no tengo CRM?', 'Te lo entregamos en una hoja de cálculo, con el aviso semanal igual. Montar un CRM se presupuesta aparte, y de entrada no te lo recomendamos: un CRM sin volumen dentro es una hoja vacía que da trabajo y no devuelve nada.'],
+      ['¿Y si no tengo CRM?', 'Entonces lo primero es ese, y es el producto principal de esta página: desde 149 €/mes y 900 € de instalación. Lo que no hacemos es montarte un CRM vacío que tengas que rellenar a mano, porque eso da trabajo y no devuelve nada: solo lo montamos conectado a lo que ya usas, para que nazca lleno. Y si prefieres no tenerlo, la captación te la entregamos en una hoja de cálculo con el aviso semanal igual.'],
+      ['¿En qué se diferencia de un CRM de los de siempre?', 'En que los de siempre te dan la estructura vacía y el trabajo de llenarla es tuyo: por eso tanta gente lo paga un año y acaba sin usarlo. Aquí el panel se conecta a tu correo, tu agenda y tu programa de gestión, y las fichas se escriben solas desde ahí. Lo que pagas de instalación es justo eso, conectar lo tuyo; de ahí que sea un «desde» y no un precio cerrado.'],
+      ['¿Me obliga a cambiar de programa?', 'No. El CRM lee tu programa de gestión, no lo sustituye ni escribe dentro de él, y lo que presentas ante la Administración lo sigues presentando desde donde lo haces hoy. Si tu programa no tiene forma de dejarse leer, te lo decimos antes de empezar y se valora aparte — no después.'],
       ['¿El seguimiento negocia el precio?', 'No. Escribe, resuelve dudas, marca calientes y fríos y te pasa a ti los que merecen llamada. Que negocie dentro de unos límites que fijes tú se construye aparte, con tus reglas por escrito, y lo que se salga de la regla te lo pasa igual.'],
       ['¿Se nota que es un bot?', 'Cuando conversa con alguien se identifica como asistente, que es lo que exige el artículo 50 del Reglamento Europeo de IA desde agosto de 2026. Escribe con tu tono y desde tu negocio, y cuando no sabe algo o la conversación se pone seria, deja de contestar y te la pasa a ti.'],
       ['¿Hay versión gratis?', 'No. Detrás de cada pieza hay un modelo de IA, un servidor y los ajustes que hacemos nosotros, y por eso cada una lleva su cuota con su límite al lado. Lo que sí es gratis es la demo: media hora con tu caso delante y sin compromiso.'],
-      ['¿Hay permanencia?', 'No. Te vas cuando quieras avisando con 30 días. La instalación se paga 50 % al empezar y 50 % al entregar, y la cuota incluye los ajustes y una reunión al mes. Y si te acercas al límite de tu pieza, te avisamos al 80 % y te proponemos subir: nunca cortamos ni facturamos el exceso por sorpresa.'],
+      ['¿Hay permanencia?', 'No. Te vas cuando quieras avisando con 30 días. La instalación se paga 50 % al empezar y 50 % al entregar, y la cuota incluye los ajustes y las reuniones que hagan falta. Y si te acercas al límite de tu pieza, te avisamos al 80 % y te proponemos subir: nunca cortamos ni facturamos el exceso por sorpresa.'],
     ],
   },
 
@@ -621,7 +644,7 @@ const DEPARTAMENTOS = [
       lim: 'un envío semanal' },
   ],
   faq: [
-    ['¿De dónde saca los datos?', 'De donde ya los tengas: tu programa de gestión, tu hoja de cálculo, tu TPV o el panel de Bookia o Dentia si los usas. No hay que meter nada dos veces.'],
+    ['¿De dónde saca los datos?', 'De donde ya los tengas: tu programa de gestión, tu hoja de cálculo, tu TPV o el panel de Citia o Dentia si los usas. No hay que meter nada dos veces.'],
     ['¿Necesito tener muchos datos?', 'No, pero sí unos meses de historia. Con dos semanas no se puede comparar nada y el informe sería palabrería.'],
     ['¿El informe lo escribe una IA?', 'Sí, y lo dice. Lee tus números, busca lo que ha cambiado y lo redacta. Lo que no hace es inventarse la causa: si no la puede saber, lo dice.'],
     ['¿Puedo pedir que vigile algo concreto?', 'Sí, para eso está la pieza de avisos. Le dices qué te preocupa y te escribe el día que pasa.'],
@@ -930,7 +953,7 @@ const DEPARTAMENTOS = [
       </div>`,
       d: 'Un agente escribe al cliente cuando termina su cita y le pregunta qué tal fue. Si fue bien, le pasa el enlace de Google. Si fue mal, te avisa a ti antes de que lo publique. Y las que ya están publicadas, las contesta.',
       lim: 'hasta 300 peticiones/mes · respuestas sin tope',
-      nota: 'Si llevas tu agenda con Bookia o Dentia, pedir reseñas ya te lo hace su pieza de recordatorios por 15 y 10 €/mes. Esta es para quien lleva la agenda en otro sitio — y para contestar, que aquellas no hacen.',
+      nota: 'Si llevas tu agenda con Citia o Dentia, pedir reseñas ya te lo hace su pieza de recordatorios por 11 y 10 €/mes. Esta es para quien lleva la agenda en otro sitio — y para contestar, que aquellas no hacen.',
       lista: [
         'Pregunta primero, y solo pide la reseña si la respuesta es buena',
         'La mala te llega a ti antes que a Google',

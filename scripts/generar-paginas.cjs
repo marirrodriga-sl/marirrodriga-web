@@ -1,4 +1,4 @@
-/* Genera dentia.html, bookia.html y las seis landings de sector.
+/* Genera dentia.html, bookia.html (Citia; el fichero conserva el nombre viejo) y las landings de anuncios.
    Uso:  node scripts/generar-paginas.cjs
 
    Existe porque hasta el 20-08 eran ocho ficheros de ~600 líneas cada uno,
@@ -13,6 +13,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { DENTIA, BOOKIA, ANUNCIOS, SECTORES, CAL } = require('./datos-soluciones.cjs');
 const SOL = require('./soluciones.cjs');
+const { lineaIva, euros } = require('./iva.cjs');
 
 const raiz = path.join(__dirname, '..');
 const eur = n => n.toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -163,7 +164,7 @@ const hero = p => `<header class="hero-s" style="--hero:url('/assets/img/${p.her
    Cada bloque lleva su ancla porque el menú apunta aquí dentro, y porque las
    seis URLs viejas redirigen a su trozo en vez de a la portada de la página:
    quien buscaba «software citas podología» aterriza donde se le habla a él.
-   Solo va en Bookia — Dentia no tiene sectores debajo. */
+   Solo va en Citia (antes Bookia) — Dentia no tiene sectores debajo. */
 const sectores = () => `<section class="seccion seccion-cream" id="sectores">
   <div class="envoltura">
     <div class="envoltura-txt centrado" style="padding:0;margin-bottom:40px">
@@ -230,18 +231,26 @@ const precio = (p, tramos) => `<section class="seccion" id="precio">
         <h3>${esc(t.nombre)}</h3>
         <p class="tramo-gancho">${esc(t.gancho)}</p>
         <div class="tramo-precio"><b>${eur(t.cuota)} €<span>/mes</span></b></div>
-        <div class="tramo-alta">+ ${ent(t.alta)} € de montaje, una sola vez</div>
-        <div class="sin-iva">Precios sin IVA</div>
+        <div class="iva-linea">${lineaIva(t.cuota)} al mes</div>
+        <div class="tramo-alta">+ ${euros(t.alta)} € de montaje, una sola vez</div>
+        <div class="iva-linea">${lineaIva(t.alta)} sobre el montaje</div>
+        <div class="sin-iva">Los precios de arriba van sin IVA</div>
         ${t.bonificacion > 0
           ? `<div class="tramo-bonif">${t.piezas} piezas juntas · −${pct(t.bonificacion)} % ya aplicado</div>`
-          : `<div class="tramo-bonif">${t.piezas} piezas${t.sueloAplicado ? ' · mínimo por solución' : ''}</div>`}
+          : `<div class="tramo-bonif">${t.piezas} pieza${t.piezas === 1 ? '' : 's'}${t.sueloAplicado ? ' · mínimo por solución' : ''}</div>`}
         <div class="tramo-incluye">${t.incluye.map(x => `<span>${esc(x)}</span>`).join('')}</div>
       </article>`).join('\n      ')}
     </div>
-
+${p.marca === 'Citia' ? `    <p class="tramos-abiertos">
+      <strong>Los planes no son cerrados.</strong> Eliges las piezas que te interesan —la agenda con el asistente
+      va siempre— y el precio es la suma de las suyas. Con cuatro o cinco piezas juntas la cuota baja
+      un 10 %, y con seis, un 15 %. El montaje lleva el mismo descuento, con una salvedad: añadir una pieza nunca lo
+      deja por debajo de lo que ya costaba; si el descuento lo bajaría, se queda como estaba.
+    </p>
+` : ''}
     <p class="tramos-pie">
       Todos los precios <strong>sin IVA</strong>. El montaje se paga <strong>50 % al empezar y 50 % al entregar</strong>,
-      e incluye pasar lo que ya tengas. La cuota lleva dentro los ajustes y una reunión al mes.
+      e incluye pasar lo que ya tengas. La cuota lleva dentro los ajustes y las reuniones que hagan falta.
       <strong>Sin permanencia:</strong> te vas cuando quieras avisando con 30 días.
       Cuantas más piezas juntas, menos cuesta cada una — la bonificación ya va aplicada en las cifras de arriba.
     </p>
@@ -308,7 +317,7 @@ const pie = () => `<footer class="pie">
         </div>
       </div>
     </div>
-    <div class="pie-legal"><span>© 2026 Marirrodriga IA</span><span>Todos los precios sin IVA</span></div>
+    <div class="pie-legal"><span>© 2026 Marirrodriga IA</span><span>Todos los precios sin IVA, con el IVA indicado junto a cada uno</span></div>
   </div>
 </footer>
 
@@ -379,7 +388,7 @@ ${dolores(p)}
 
 ${vistas(p)}
 
-${p.marca === 'Bookia' ? sectores() : ''}
+${p.marca === 'Citia' ? sectores() : ''}
 
 ${precio(p, tramos)}
 
@@ -431,8 +440,8 @@ module.exports = { nav, faq, cierre, pie, esc, LOGO, WA, CAL,
 /* ─── ESCRIBIR ───────────────────────────────────────────────────────────── */
 if (require.main === module) {
   let n = 0;
-  for (const [p, tramos] of [[DENTIA, SOL.DENTIA], ...BOOKIA.map(b => [b, SOL.BOOKIA]),
-                             ...ANUNCIOS.map(a => [a, SOL.BOOKIA])]) {
+  for (const [p, tramos] of [[DENTIA, SOL.DENTIA], ...BOOKIA.map(b => [b, SOL.CITIA]),
+                             ...ANUNCIOS.map(a => [a, SOL.CITIA])]) {
     fs.mkdirSync(path.dirname(path.join(raiz, p.archivo)), { recursive: true });
     fs.writeFileSync(path.join(raiz, p.archivo), pagina(p, tramos), { encoding: 'utf8' });
     console.log(`  ${p.archivo.padEnd(28)} ${tramos[0].cuota} – ${tramos[3].cuota} €/mes`);

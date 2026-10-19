@@ -49,7 +49,7 @@
         no llega al ${q.bonificacion} % de la tabla.</div>` : '') +
 
       (q.sueloAplicado ? fila(
-        'Mínimo por solución, con la reunión del mes y los ajustes dentro',
+        'Mínimo por solución, con los ajustes y las reuniones que hagan falta dentro',
         eur(CATALOGO.suelo)) : '') +
 
       `<div class="cuenta-fila cuenta-total"><b>Tu cuota</b>

@@ -1,12 +1,13 @@
-/* Los tramos de precio de Dentia y Bookia, calculados — nunca escritos a mano.
+/* Los tramos de precio de Dentia y Citia (antes Bookia), calculados — nunca escritos a mano.
    ───────────────────────────────────────────────────────────────────────────
-   Las páginas de Dentia y Bookia venden SOLUCIONES PRESET, no configuradores:
+   Las páginas de Dentia y Citia venden combinaciones hechas, no configuradores:
    el cliente elige un tramo, no marca piezas. Por eso:
 
      · la CUOTA la da cotiza(), igual que en todas partes (bonificación por
        acumulación, guarda de monotonía y suelo de 49 €);
-     · el ALTA sale de la tabla `setupPreset` (Bookia 250/350 €, Dentia
-       300/450 € según se pasen o no de 5 piezas), NO de sumar altas por pieza.
+     · en DENTIA el ALTA sale de la tabla `setupPreset` (300/450 € según se
+       pasen o no de 5 piezas), NO de sumar altas por pieza. Citia ya no usa
+       preset desde el 16-10-2026: ver más abajo.
        Las 11 piezas dentales no tienen alta propia justamente porque su alta
        es por solución montada.
 
@@ -32,7 +33,7 @@ function tramo(base, nombre, gancho, slugs, incluye) {
     cuota: q.cuota,
     bonificacion: q.suma ? Math.round((1 - q.cuota / q.suma) * 1000) / 10 : 0,
     sueloAplicado: q.sueloAplicado,
-    alta: altaPreset(base, q.nPiezas),
+    alta: base === 'citia' ? null : altaPreset(base, q.nPiezas),   // Citia la pone tramoCitia()
   };
 }
 
@@ -66,37 +67,59 @@ const DENTIA = [
      'Análisis de conversaciones']),
 ];
 
-/* ─── BOOKIA ─────────────────────────────────────────────────────────────
-   Mismos ejemplos verificados: 64 · 79 · 98,10 · 193,60 €/mes.
-   Llevan `iris-0` porque el chatbot va dentro del producto de citas. */
-const BOOKIA = [
-  tramo('bookia', 'Lo mínimo',
-    'Agenda y un asistente que contesta.',
-    ['agenda-reserva-publica', 'iris-0'],
-    ['Agenda y página de reserva pública', 'Asistente que contesta y reserva']),
+/* ─── CITIA (antes Bookia) ───────────────────────────────────────────────
+   16-10-2026 · Decisión de Ismael: Bookia pasa a llamarse Citia y cambia de
+   modelo. Ya no es una solución preset con alta fija por tramos (250/350 €):
+   son seis piezas propias, `citia-*`, cada una con su cuota y su montaje, y
+   el cliente elige las que quiere. Los cuatro planes de abajo son solo las
+   combinaciones más habituales, no planes cerrados.
 
-  tramo('bookia', 'El negocio que empieza',
+     · CUOTA: cotiza(), igual que todo (escala por acumulación, guarda y suelo).
+     · MONTAJE: calculaSetup(), el motor normal de la web: suma de los
+       montajes con la misma escala y la guarda de monotonía. Añadir una pieza
+       nunca baja el montaje; si el descuento lo bajaría, se queda como estaba
+       (decisión de Ismael, 19-10-2026: sin excepciones para Citia).
+
+   Las piezas viejas (agenda-reserva-publica, recordatorios-confirmacion…) NO
+   se tocan: las siguen vendiendo las páginas de departamento.
+
+   citia-base es obligatoria: va en todas las combinaciones. */
+const { calculaSetup } = require('../assets/catalogo.js');
+
+function tramoCitia(nombre, gancho, slugs, incluye) {
+  if (!slugs.includes('citia-base')) throw new Error(`${nombre}: citia-base es obligatoria`);
+  const t = tramo('citia', nombre, gancho, slugs, incluye);
+  t.alta = calculaSetup(cotiza(slugs).piezas).total;
+  return t;
+}
+
+const CITIA = [
+  tramoCitia('Lo mínimo',
+    'Agenda, reserva y un asistente que contesta.',
+    ['citia-base'],
+    ['Agenda y página de reserva sin registro', 'Asistente por WhatsApp que cierra la cita', 'Panel de negocio incluido']),
+
+  tramoCitia('El negocio que empieza',
     'El que montamos casi siempre.',
-    ['agenda-reserva-publica', 'iris-0', 'recordatorios-confirmacion'],
-    ['Todo lo anterior', 'Recordatorios anti no-show', 'Peticiones de reseña']),
+    ['citia-base', 'citia-recordatorios'],
+    ['Todo lo anterior', 'Recordatorio la víspera y hueco liberado', 'Peticiones de reseña de Google']),
 
-  tramo('bookia', 'Con volumen',
+  tramoCitia('Con volumen',
     'Cuando ya hay clientes que recuperar.',
-    ['agenda-reserva-publica', 'iris-0', 'recordatorios-confirmacion',
-     'reactivacion-dormidos', 'insights-semanales'],
-    ['Todo lo anterior', 'Reactivación de clientes dormidos', 'Informe semanal']),
+    ['citia-base', 'citia-recordatorios', 'citia-reactivacion', 'citia-informe'],
+    ['Todo lo anterior', 'Reactivación de clientes dormidos', 'Informe semanal por correo']),
 
-  tramo('bookia', 'El negocio entero',
+  tramoCitia('El negocio entero',
     'Sin nada fuera.',
-    [...CATALOGO.piezas.filter(p => p.cat === 'citas').map(p => p.slug), 'iris-0'],
-    ['Todo lo anterior', 'Ficha de cliente', 'Panel de negocio', 'Tu página web conectada']),
+    ['citia-base', 'citia-recordatorios', 'citia-reactivacion', 'citia-informe', 'citia-ficha', 'citia-landing'],
+    ['Todo lo anterior', 'Ficha de cliente con historial y fotos', 'Tu página web con la reserva dentro']),
 ];
 
-module.exports = { DENTIA, BOOKIA, altaPreset, tramo };
+module.exports = { DENTIA, CITIA, altaPreset, tramo };
 
 if (require.main === module) {
   const eur = n => n.toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-  for (const [n, ts] of [['DENTIA', DENTIA], ['BOOKIA', BOOKIA]]) {
+  for (const [n, ts] of [['DENTIA', DENTIA], ['CITIA', CITIA]]) {
     console.log(`\n=== ${n} ===`);
     for (const t of ts) {
       console.log(`  ${t.nombre.padEnd(28)} ${String(t.piezas).padStart(2)} piezas · ` +

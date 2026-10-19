@@ -15,6 +15,12 @@
    a propósito: aplicar el orden nuevo no puede costar perder la única prueba
    publicada de un producto nuestro en producción.
 
+   El 14-10-2026 se añade un tercer hueco, `antesDeCompleto`, entre los dolores
+   y el pack. Hacía falta porque en Ventas el CRM pasa a ser el producto
+   principal y las tres piezas de siempre se montan ENCIMA de él: si el CRM
+   entrara por `antesDePiezas` aparecería después del pack, y el orden diría lo
+   contrario de lo que vendemos.
+
    El nav, el pie, el FAQ y el cierre se IMPORTAN de generar-paginas.cjs. No se
    copian: el 09-09 la plantilla de aquel se desincronizó del HTML publicado y
    al regenerar devolvía el favicon a un fichero inexistente. Con dos copias, el
@@ -27,6 +33,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { DEPARTAMENTOS } = require('./datos-departamentos.cjs');
 const { nav, faq, cierre, pie, esc, CAL } = require('./generar-paginas.cjs');
+const { lineaIva } = require('./iva.cjs');
 
 const raiz = path.join(__dirname, '..');
 
@@ -174,8 +181,10 @@ const completo = p => {
       </div>
       <div class="pack-precio">
         <div class="pack-cuota">${k.cuota} €<span>/mes</span></div>
+        <div class="iva-linea">${lineaIva(k.cuota)} al mes</div>
         <div class="pack-alta">${miles(k.alta)} € de instalación <s>${miles(k.altaSuelta)} €</s> <i>−${dto}&nbsp;%</i></div>
-        <div class="sin-iva">Precios sin IVA</div>
+        <div class="iva-linea">${lineaIva(k.alta)} sobre la instalación</div>
+        <div class="sin-iva">Los precios de arriba van sin IVA</div>
         <div class="pack-nota">El descuento va en el montaje, que es lo que de verdad se comparte al hacerlo todo a la vez. La cuota mensual es la misma que sumando las piezas: no te cobramos de más por juntarlas ni te prometemos un descuento que no existe.</div>
       </div>
     </div>
@@ -200,16 +209,16 @@ const sueltas = p => `<section class="seccion seccion-cream" id="piezas">
         <span>Pieza</span><span>Hasta dónde llega</span><span>Al mes<em>sin IVA</em></span><span>Instalación<em>sin IVA</em></span>
       </div>
       ${p.piezas.map(z => `<div class="tp-fila"${z.slug ? ` data-pieza="${z.slug}" data-limite="${z.slug}"` : ''}>
-        <span class="tp-n">${esc(z.n)}${z.fueraDelPack ? '<em>fuera del plan completo</em>' : ''}</span>
+        <span class="tp-n">${esc(z.n)}${z.etiqueta ? `<em>${esc(z.etiqueta)}</em>` : z.fueraDelPack ? '<em>fuera del plan completo</em>' : ''}</span>
         <span class="tp-lim">${esc(z.lim)}</span>
-        <span class="tp-eur">${z.desde ? 'desde ' : ''}${z.eur} €</span>
-        <span class="tp-alta">${miles(z.setup)} €</span>
+        <span class="tp-eur">${z.desde ? 'desde ' : ''}${z.eur} €${lineaIva(z.eur, { corto: true })}</span>
+        <span class="tp-alta">${z.desdeAlta ? 'desde ' : ''}${miles(z.setup)} €${lineaIva(z.setup, { corto: true })}</span>
       </div>`).join('\n      ')}
       <div class="tp-pie">
         <span>Las ${p.piezas.filter(z => !z.fueraDelPack).length} del plan completo</span>
         <span>El departamento entero, a tu medida</span>
-        <span class="tp-eur">${p.pack.cuota} €</span>
-        <span class="tp-alta"><s>${miles(p.pack.altaSuelta)} €</s> ${miles(p.pack.alta)} €</span>
+        <span class="tp-eur">${p.pack.cuota} €${lineaIva(p.pack.cuota, { corto: true })}</span>
+        <span class="tp-alta"><s>${miles(p.pack.altaSuelta)} €</s> ${miles(p.pack.alta)} €${lineaIva(p.pack.alta, { corto: true })}</span>
       </div>
     </div>
   </div>
@@ -277,6 +286,8 @@ ${nav(ANCLAS)}
 ${p.heroHtml || hero(p)}
 
 ${dolores(p)}
+
+${p.antesDeCompleto || ''}
 
 ${completo(p)}
 

@@ -11,6 +11,8 @@
    fichero de datos se siga leyendo como datos y no como HTML.
    ──────────────────────────────────────────────────────────────────────── */
 
+const { lineaIva } = require('./iva.cjs');
+
 const heroAtencion = `<header class="hero">
   <div class="hero-fondo"></div>
   <div class="hero-grano"></div>
@@ -185,8 +187,8 @@ const heroVentas = `<header class="hero">
   </div>
 
   <div class="hero-centro">
-    <h1 class="hero-pill"><i></i> Captación de clientes y seguimiento de presupuestos</h1>
-    <p class="t-h1">Encontrar a quien<br>no te conoce.<br><span class="acento">Y no perder a quien ya te preguntó.</span></p>
+    <h1 class="hero-pill"><i></i> CRM a medida, captación de clientes y seguimiento de presupuestos</h1>
+    <p class="t-h1">Todo lo de cada cliente<br>en un sitio.<br><span class="acento">Y la máquina de traer más, encima.</span></p>
 
     <!-- La lista del lunes: lo que entrega la captación, en HTML y no en captura -->
     <div class="lista" aria-hidden="true">
@@ -199,16 +201,20 @@ const heroVentas = `<header class="hero">
       <div class="lista-pie">Nombres inventados. La nota y el motivo, así de concretos, son lo que llega de verdad.</div>
     </div>
 
-    <p class="t-lead">Un sistema que sale a buscar a los que todavía no te conocen y te los deja puntuados, con el motivo y el primer mensaje escrito. Y otro que persigue los presupuestos que mandas y acompaña al que duda. Tú solo hablas con los que merecen la llamada.</p>
-    <!-- Los tres productos de la página, para moverse entre ellos sin bajar a ciegas -->
+    <p class="t-lead">Primero un CRM que junta en una ficha lo que sabes de cada cliente, y que se rellena solo desde tu correo y tu agenda. Encima de él, lo que sale a buscar a quien no te conoce y lo que persigue los presupuestos que mandas. Tú solo hablas con los que merecen la llamada.</p>
+    <!-- Los productos de la página, para moverse entre ellos sin bajar a ciegas.
+         El 14-10-2026 pasan a ser tres con el CRM delante, que es el principal.
+         Los dos primeros apuntaban a #captacion y #seguimiento, que NO EXISTEN
+         en la página: dos de los tres botones no hacían nada desde que se
+         escribió esto. Ahora van a secciones reales. -->
     <nav class="hero-productos" aria-label="Los tres productos de este departamento">
-      <a class="hero-producto" href="#captacion">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/></svg>
-        <span><b>La captación</b><small>Encontrar a quien no te conoce</small></span>
+      <a class="hero-producto" href="#crm">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 9h18M9 9v11"/></svg>
+        <span><b>El CRM</b><small>Todo lo de cada cliente en un sitio</small></span>
       </a>
-      <a class="hero-producto" href="#seguimiento">
-        <svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 01-9 8.4 8.5 8.5 0 01-3.9-.9L3 20.5l1.5-4.6A8.4 8.4 0 0112 3.1a8.4 8.4 0 019 8.4z"/></svg>
-        <span><b>El seguimiento</b><small>No perder a quien ya preguntó</small></span>
+      <a class="hero-producto" href="#completo">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/></svg>
+        <span><b>Captación y seguimiento</b><small>Traer clientes y no perderlos</small></span>
       </a>
       <a class="hero-producto" href="#competencia">
         <svg viewBox="0 0 24 24"><path d="M12 12L19 5"/><path d="M12 21a9 9 0 110-18"/><path d="M12 17a5 5 0 110-10"/><circle cx="12" cy="12" r="1.2"/></svg>
@@ -218,6 +224,83 @@ const heroVentas = `<header class="hero">
     <p class="t-micro" style="margin-top:18px">Cada precio con su límite al lado. Sin permanencia.</p>
   </div>
 </header>`;
+
+/* ─── EL CRM ──────────────────────────────────────────────────────────────
+   Escrito el 14-10-2026. Es el producto principal de Ventas desde hoy, y por
+   eso va antes del pack, por el hueco `antesDeCompleto`.
+
+   La estructura NO es una lista de funciones a propósito: son los cinco
+   problemas de no tener CRM, cada uno con lo que el panel hace. Salen de la
+   lámina 26 de los apuntes de Gestión de Ventas (Universidad de Valladolid),
+   que es exactamente como se vende esto: por lo que el comprador pierde hoy,
+   no por lo que el programa tiene.
+
+   El precio lleva `data-pieza` para que verificar-ventas.mjs lo contraste con
+   el catálogo. Ojo al escribirlo: el verificador captura hasta el primer
+   </div>, así que las dos cifras van dentro de ese bloque y sin divs anidados
+   por el medio. */
+const crmVentas = `<section class="seccion" id="crm">
+  <div class="envoltura">
+    <div class="envoltura-txt centrado" style="padding:0">
+      <span class="t-eyebrow">El producto principal</span>
+      <h2 class="t-h2" style="margin:14px 0 16px">Todo lo de cada cliente,<br><span class="acento">en un solo sitio.</span></h2>
+      <p class="t-lead">Lo que sabes de un cliente está hoy en tu cabeza, en tu correo, en la agenda y en la libreta de alguien. El CRM lo junta en una ficha por cliente, con lo hablado y en qué punto está — y lo rellena solo desde donde ya estaba.</p>
+    </div>
+
+    <div class="capacidades aparece">
+      <div class="cap cap-base">
+        <span class="cap-etiq">La base sobre la que va todo lo demás</span>
+        <h3>El CRM de tu negocio</h3>
+        <p>Una ficha por cliente con sus datos, lo que te ha comprado, lo último que hablasteis y qué toca hacer con él. Entra solo desde tu correo, tu agenda y tu programa de gestión, <strong>así que nace lleno</strong>. Lo abre todo el equipo desde el navegador, cada uno con su usuario.</p>
+        <div class="ejemplo"><b>Lo que ves al abrirlo un lunes</b><q>Siete clientes esperan algo tuyo. A tres les mandaste presupuesto y no han contestado: el más antiguo lleva once días. Laura llamó el jueves y la atendió Marta — está apuntado lo que pidió. Y dos clientes de los buenos llevan cinco meses sin encargarte nada.</q></div>
+        <div class="cap-limite" data-limite="crm-panel">hasta 5 personas usándolo · hasta 2.000 fichas de cliente · dos sistemas conectados, si tienen API</div>
+        <div class="cap-aviso">No sustituye a tu programa de gestión ni escribe dentro de él: lo lee. Lo que presentas ante la Administración lo sigues presentando desde donde lo presentas hoy.</div>
+        <div class="cap-precio cap-precio-base" data-pieza="crm-panel">desde 149 € <span>/mes · desde 900 € de instalación</span>${lineaIva(149)} al mes y ${lineaIva(900)} sobre la instalación, sin IVA ninguno de los dos</div>
+      </div>
+
+      <div class="cap">
+        <div class="cap-ico"><svg viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h10"/><circle cx="19" cy="17" r="2.5"/></svg></div>
+        <h3>«Está en tres sitios y ninguno es el bueno»</h3>
+        <p>El teléfono en la agenda, lo que pidió en un correo, lo que se le prometió en la cabeza de quien lo atendió. Buscarlo cuesta tiempo y además cada sitio dice una cosa distinta.</p>
+        <div class="ejemplo"><b>Con el panel</b><q>Una ficha por cliente. Lo que hay en el correo y en la agenda entra en ella solo, así que no hay dos versiones de nada.</q></div>
+      </div>
+
+      <div class="cap">
+        <div class="cap-ico"><svg viewBox="0 0 24 24"><path d="M12 3v18M5 8l7-5 7 5"/><path d="M5 16l7 5 7-5"/></svg></div>
+        <h3>«Lo llevamos a mano y se nos escapa»</h3>
+        <p>Apuntar a mano cuesta tiempo y falla: el que no se apunta no existe, y el que se apunta mal es peor que no tenerlo.</p>
+        <div class="ejemplo"><b>Con el panel</b><q>Lo que ya está en un sistema no se teclea otra vez. Se escribe a mano lo que de verdad solo sabe una persona, que es poco.</q></div>
+      </div>
+
+      <div class="cap">
+        <div class="cap-ico"><svg viewBox="0 0 24 24"><path d="M3 17l5-5 4 3 8-8"/><path d="M15 7h5v5"/></svg></div>
+        <h3>«No sé si lo que hacemos para vender sirve»</h3>
+        <p>Cuántos preguntaron, a cuántos les mandaste precio, cuántos dijeron que sí y quién responde de cada uno. Sin eso, decidir dónde meter el esfuerzo es adivinar.</p>
+        <div class="ejemplo"><b>Con el panel</b><q>Entraron 34, pediste cita a 12, firmaron 4. Los que más entran vienen de la ficha de Google, y los que más firman del boca a boca.</q></div>
+      </div>
+
+      <div class="cap">
+        <div class="cap-ico"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 01-9 8.4 8.5 8.5 0 01-3.9-.9L3 20.5l1.5-4.6A8.4 8.4 0 0112 3.1a8.4 8.4 0 019 8.4z"/></svg></div>
+        <h3>«Llama un cliente y quien coge no sabe quién es»</h3>
+        <p>El cliente da por hecho que te acuerdas, y tiene que volver a contarlo todo. Es el momento exacto en el que un cliente bueno empieza a dejar de serlo.</p>
+        <div class="ejemplo"><b>Con el panel</b><q>Quien coge el teléfono ve lo último que se habló, lo que compró y lo que está pendiente. Aunque ese día no esté quien lo lleva.</q></div>
+      </div>
+
+      <div class="cap">
+        <div class="cap-ico"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3.3 2.7-5 6-5s6 1.7 6 5"/><path d="M15.5 20c0-2.2 1.5-3.5 3.5-3.5s2.5 1.3 2.5 3.5"/></svg></div>
+        <h3>«Cada uno tiene sus notas en su cuaderno»</h3>
+        <p>Si la información vive en la cabeza de cada uno, trabajar en equipo cuesta el doble — y el día que esa persona se va, se lleva su cartera con ella.</p>
+        <div class="ejemplo"><b>Con el panel</b><q>Lo mismo para todos, con su usuario. Y si alguien se va, lo que sabía de sus clientes se queda.</q></div>
+      </div>
+    </div>
+
+    <div class="envoltura-txt centrado" style="padding:28px 0 0">
+      <p class="t-body"><strong>Lo que no hacemos, y lo decimos antes:</strong> un CRM vacío que haya que alimentar a mano no sirve de nada y da trabajo. Por eso esto solo lo montamos conectado a lo que ya usas. Si no hay nada que conectar, te lo decimos en la llamada y no te lo vendemos.</p>
+    </div>
+  </div>
+</section>
+
+`;
 
 const capturaVentas = `<section class="seccion seccion-cream">
   <div class="envoltura">
@@ -300,4 +383,4 @@ const competenciaVentas = `<section class="seccion" id="competencia">
 </section>
 `;
 
-module.exports = { heroAtencion, noEsBot, heroVentas, capturaVentas, competenciaVentas };
+module.exports = { heroAtencion, noEsBot, heroVentas, crmVentas, capturaVentas, competenciaVentas };

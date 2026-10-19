@@ -909,6 +909,9 @@ h1.hero-pill i { display: inline-block; vertical-align: middle; margin: -2px 8px
 .tp-n { font-weight: 600; color: var(--ink); }
 .tp-lim { font-size: 13px; color: var(--ink-3); }
 .tp-eur, .tp-alta { font-weight: 650; text-align: right; white-space: nowrap; }
+/* El IVA dentro de la celda: va debajo del importe, alineado con él y un paso
+   por detrás en peso y color, para que la columna se siga leyendo de un vistazo. */
+.tp-eur .iva, .tp-alta .iva { margin-top: 2px; font-size: 11.5px; font-weight: 500; color: var(--ink-4); }
 .tp-alta { color: var(--ink-2); font-weight: 550; }
 
 .tp-pie {
@@ -1233,3 +1236,5 @@ h1.hero-pill i { display: inline-block; vertical-align: middle; margin: -2px 8px
   color: var(--ink-4); margin-top: 1px;
 }
 .pack .sin-iva { color: rgba(255,255,255,.5); }
+/* El bloque del pack va sobre fondo oscuro: el gris de base.css no se lee ahí. */
+.pack .iva-linea, .pack .iva { color: rgba(255,255,255,.72); }

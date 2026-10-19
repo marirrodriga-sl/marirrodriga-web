@@ -422,7 +422,7 @@ function pintaCuenta(prodId) {
         <span>La última entra gratis: con ${q.nPiezas - 1} ya pagabas ${eur(q.cuota)}, así que añadirla no te sube la factura. Por eso el descuento no llega al ${q.bonificacion} % de la tabla.</span><span></span>
       </div>` : ''}
     ${q.sueloAplicado ? `
-      <div class="cuenta-linea cuenta-nota"><span>Mínimo por solución, con la reunión del mes y los ajustes dentro</span><span>${eur(CATALOGO.suelo)}</span></div>` : ''}
+      <div class="cuenta-linea cuenta-nota"><span>Mínimo por solución, con los ajustes y las reuniones que hagan falta dentro</span><span>${eur(CATALOGO.suelo)}</span></div>` : ''}
     <div class="cuenta-linea cuenta-total"><span>Tu cuota</span><span>${eur(q.cuota)}<i>/mes</i></span></div>
 
     ${setup.total ? `

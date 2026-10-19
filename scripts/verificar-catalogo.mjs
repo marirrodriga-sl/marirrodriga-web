@@ -30,9 +30,23 @@ const { CATALOGO, cotiza, calculaSetup } = require('../assets/catalogo.js');
    el nombre o el límite distintos porque se retocó el texto en la web y nunca se replicó
    en la base — canal-adicional y voz-telefono dicen «chatbot» en la base y «agente» en la
    web, y correo-respuesta-derivacion y presencia-web-landing están renombradas en la web.
-   Esta huella es la de la web. Al cuadrar esos cuatro textos, volverán a coincidir. */
-const HUELLA_ESPERADA = '7f91becf05b6c6044bd94351bb21960a';
-const N_ESPERADAS = 33;
+   Esta huella es la de la web. Al cuadrar esos cuatro textos, volverán a coincidir.
+
+   Cambió el 14-10-2026 al dar de alta `crm-panel` (149 €/mes, 900 € de instalación), que
+   pasa a ser el producto principal de Ventas. Son 34 piezas desde hoy, no 33: es la
+   primera que se AÑADE desde que existe esta comprobación, así que si esto vuelve a
+   saltar por el número, mira antes si alguien ha metido una pieza sin querer. La pieza
+   se creó en catalogo_piezas y de ahí salió a datos-catalogo.json, en ese orden.
+
+   Cambió el 19-10-2026: Bookia pasa a llamarse Citia con seis piezas propias
+   (citia-base, -recordatorios, -reactivacion, -informe, -ficha, -landing) y entra
+   consulta-stock, añadido del seguimiento de pedidos. Son 41. Las siete piezas
+   viejas de Bookia siguen: las venden las páginas de departamento. En la misma
+   tanda se cuadran en la base los cuatro textos de arriba, así que esta huella
+   vuelve a ser la de la web Y la de Supabase (comprobado con una simulación de
+   solo lectura en la base; el SQL que la deja así está pendiente de aplicar). */
+const HUELLA_ESPERADA = '80dcea0255de738095f96c7ec995dab4';
+const N_ESPERADAS = 41;
 
 let fallos = 0;
 const check = (ok, etiqueta, detalle = '') => {
@@ -63,7 +77,17 @@ const ALTAS = { 'iris-0': 150, 'modulo-seguimiento-pedidos': 70, 'hermes-seguimi
   // Validadas por Ismael el 19-08. Criterio: el alta ya era 2-4x la cuota en las piezas
   // de verdad, y estas cuatro se han encajado en esa horquilla.
   'reactivacion-dormidos': 40, 'insights-semanales': 50, 'panel-negocio': 150,
-  'landing-conectada-bookia': 200 };
+  'landing-conectada-bookia': 200,
+  // 14-10-2026. El alta es un «desde»: 900 € cubre dos sistemas conectados, y sube con
+  // cada uno que se añada. El ancla es la fase 1 de Palencia Asesores, 1.870 € con tres
+  // sistemas y web incluida. Es la única pieza del catálogo cuyo alta se publica con
+  // «desde» delante, y por eso lleva `desdeAlta` en datos-departamentos.cjs.
+  'crm-panel': 900,
+  // 16-10-2026 · Citia, por pieza. La reactivación va a 0 € a propósito.
+  'citia-base': 150, 'citia-recordatorios': 30, 'citia-reactivacion': 0, 'citia-informe': 50,
+  'citia-ficha': 100, 'citia-landing': 400,
+  // 19-10-2026 · solo como añadido del seguimiento de pedidos
+  'consulta-stock': 50 };
 const altasMal = CATALOGO.piezas.filter(p => p.setup !== undefined && ALTAS[p.slug] !== p.setup);
 check(altasMal.length === 0, 'las altas fijadas coinciden con la base',
       altasMal.map(p => `${p.slug}=${p.setup}`).join(', ') || `las ${Object.keys(ALTAS).length} cuadran`);
@@ -78,7 +102,10 @@ const EJEMPLOS = [
   // ficha-cliente de 25 a 35: son 10 € que la bonificacion deja en 8.
   // Comprobado el 13-09 con catalogo_cotiza() en Supabase: 193,60.
   // al retirar «profesionales ilimitados» de los dos conjuntos completos.
-  ['Negocio de citas completo', 193.60, [...CATALOGO.piezas.filter(p => p.cat === 'citas').map(p => p.slug), 'iris-0']],
+  // Desde el 19-10 se nombran las piezas a mano: filtrar por cat === 'citas' ya
+  // arrastraría también las de Citia.
+  ['Negocio de citas completo', 193.60, ['agenda-reserva-publica', 'recordatorios-confirmacion', 'reactivacion-dormidos',
+    'insights-semanales', 'landing-conectada-bookia', 'panel-negocio', 'ficha-cliente', 'iris-0']],
   ['Clínica dental mínima', 55.00, ['dental-agenda', 'dental-ficha-historia']],
   ['Clínica dental que empieza', 103.50, ['dental-agenda', 'dental-ficha-historia', 'dental-odontograma', 'dental-presupuestos', 'dental-facturacion']],
   ['Clínica dental con asistente', 159.20, ['dental-agenda', 'dental-ficha-historia', 'dental-odontograma', 'dental-presupuestos', 'dental-facturacion', 'dental-asistente-pacientes', 'dental-acompanamiento-presupuestos', 'dental-seguimiento-resenas', 'dental-analisis-conversaciones']],
@@ -146,7 +173,8 @@ check(altaMonotona, 'añadir una herramienta nunca abarata el montaje');
 const SOL = require('./soluciones.cjs');
 const TRAMOS = {
   DENTIA: [[55, 300], [103.50, 300], [147.90, 450], [199.20, 450]],
-  BOOKIA: [[64, 250], [79, 250], [98.10, 250], [193.60, 350]],
+  // Citia (antes Bookia), 16-10-2026: montaje por pieza con calculaSetup() y su guarda (19-10), sin preset.
+  CITIA: [[49, 150], [60, 180], [76.50, 230], [144.50, 657]],
 };
 for (const [nombre, esperados] of Object.entries(TRAMOS)) {
   const reales = SOL[nombre].map(t => [t.cuota, t.alta]);
@@ -160,9 +188,22 @@ for (const [nombre, esperados] of Object.entries(TRAMOS)) {
 // Del 16 al 19-08 esta comprobación FALLABA a propósito, para que no se publicaran las
 // cuatro piezas sin precio de instalación. Ya tienen precio, así que ahora debe pasar:
 // lo correcto pasa de «1 FALLOS» a «0 FALLOS».
-const sinAlta = CATALOGO.piezas.filter(p => p.cat !== 'dental' && !p.setup);
+// 0 € es un alta fijada (citia-reactivacion, a propósito); lo que no vale es que falte.
+const sinAlta = CATALOGO.piezas.filter(p => p.cat !== 'dental' && (p.setup === undefined || p.setup === null));
 check(sinAlta.length === 0, 'ninguna pieza de la web sin alta fijada',
       sinAlta.map(p => p.slug).join(', ') || 'todas la llevan');
+
+// ── 6. Citia: la base va siempre, y el IVA de los planes es el del céntimo exacto ──
+check(SOL.CITIA.every(t => t.slugs.includes('citia-base')), 'citia-base va en los cuatro planes de Citia');
+const { importeIva } = require('./iva.cjs');
+const IVA_CITIA = [[10.29, 31.5], [12.6, 37.8], [16.07, 48.3], [30.35, 137.97]];
+const ivaReal = SOL.CITIA.map(t => [importeIva(t.cuota), importeIva(t.alta)]);
+check(JSON.stringify(ivaReal) === JSON.stringify(IVA_CITIA), 'IVA de los planes de Citia',
+      ivaReal.map(([c, a]) => c + ' + ' + a).join(' · '));
+
+// consulta-stock solo existe como añadido del seguimiento de pedidos
+check(!!CATALOGO.piezas.find(p => p.slug === 'consulta-stock') && !!CATALOGO.piezas.find(p => p.slug === 'modulo-seguimiento-pedidos'),
+      'consulta-stock y el seguimiento de pedidos, los dos en catálogo');
 
 console.log(fallos ? `\n${fallos} FALLOS` : '\nTodo cuadra.');
 process.exit(fallos ? 1 : 0);

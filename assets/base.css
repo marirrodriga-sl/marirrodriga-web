@@ -408,6 +408,28 @@ img, svg { max-width: 100%; display: block; }
   color: var(--ink-4);
 }
 
+/* ─── EL IVA, DEBAJO DE CADA PRECIO ────────────────────────────────────────
+   Decisión de Ismael del 15-10-2026: el precio que manda sigue siendo el de
+   sin IVA, pero debajo va siempre lo que ese precio suma de impuesto. La idea
+   es que se vea qué parte del total se va en IVA, así que tiene que leerse —
+   no es letra pequeña. De ahí que no baje de 12px ni se quede en el gris más
+   flojo: va un escalón por encima de `.sin-iva`, que sí es una aclaración.
+
+   `.iva` es el dato y `.iva-linea` la fila que lo envuelve cuando lleva texto
+   al lado («+ 55,23 € de IVA al mes»). En las celdas de tabla no hay fila: el
+   <em> va dentro de la celda y se pone en bloque él solo. */
+.iva {
+  display: block;
+  font-style: normal;
+  font-size: 12px; font-weight: 600;
+  color: var(--ink-3);
+}
+.iva-linea {
+  margin-top: 4px;
+  font-size: 12px; color: var(--ink-3);
+}
+.iva-linea .iva { display: inline; }
+
 /* ─── LOS DOS SECTORES, Y LOS OFICIOS DEBAJO ───────────────────────────────
    El panel tenía siete entradas, una por página de sector, y aquellas páginas
    compartían el 84-91 % de sus palabras. Ahora son dos productos —Bookia y

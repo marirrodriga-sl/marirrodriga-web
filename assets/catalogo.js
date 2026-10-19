@@ -6,7 +6,7 @@
    catalogo_cotiza(). Este fichero es su copia para que la web funcione sin
    servidor.
 
-   Huella de las 33 piezas publicables y vigentes: 7f91becf05b6c6044bd94351bb21960a
+   Huella de las 41 piezas publicables y vigentes: 80dcea0255de738095f96c7ec995dab4
    (md5 de slug|eur|alta|nombre|limite ordenado por slug; la comprueba
    scripts/verificar-catalogo.mjs contra lo que diga la base)
 
@@ -15,13 +15,11 @@
    ═════════════════════════════════════════════════════════════════════════ */
 
 const CATALOGO = {
-  generado: '2026-10-08',
+  generado: '2026-10-19',
   suelo: 49,
   // [piezas_min, piezas_max, bonificación %]  ·  tope 20 %
   escala: [[1,3,0],[4,5,10],[6,7,15],[8,null,20]],
   setupPreset: [
-    { base: 'bookia', hasta: 5, importe: 250 },
-    { base: 'bookia', hasta: null, importe: 350 },
     { base: 'dentia', hasta: 5, importe: 300 },
     { base: 'dentia', hasta: null, importe: 450 },
   ],
@@ -30,8 +28,8 @@ const CATALOGO = {
     { slug: 'agenda-reserva-publica', nombre: 'Agenda + reserva pública', cat: 'citas', regimen: 'preset', base: 'bookia', eur: 15, setup: 50,
       limite: 'hasta 400 citas/mes · hasta 3 profesionales',
       canales: 'panel web + página pública de reserva',
-      integra: 'ninguna: la agenda es propia',
-      excluye: 'sincronización con Google Calendar u otros calendarios externos · varios locales · cobro online de la reserva' },
+      integra: 'agenda propia, que se conecta con Google Calendar si lo necesitas',
+      excluye: 'varios locales · cobro online de la reserva' },
     { slug: 'recordatorios-confirmacion', nombre: 'Recordatorios y reseñas', cat: 'citas', regimen: 'preset', base: 'bookia', eur: 15, setup: 30,
       limite: 'hasta 800 envíos/mes, sumando recordatorios y peticiones de reseña',
       canales: 'el mismo canal del producto; si no hay, email',
@@ -62,6 +60,36 @@ const CATALOGO = {
       canales: 'web',
       integra: null,
       excluye: 'consentimientos firmados (es Firma digital) · datos de salud · historiales clínicos' },
+    { slug: 'citia-base', nombre: 'Agenda, reserva y asistente', cat: 'citas', regimen: 'preset', base: 'bookia', eur: 49, setup: 150,
+      limite: 'hasta 400 citas/mes · hasta 3 profesionales · 500 conversaciones/mes',
+      canales: 'panel web + página pública de reserva + WhatsApp (la cuenta es tuya)',
+      integra: 'agenda propia, que se conecta con Google Calendar si lo necesitas · panel de negocio incluido, con los datos de lo que tengas contratado',
+      excluye: 'varios locales · cobro online de la reserva · canales además de WhatsApp (pieza aparte)' },
+    { slug: 'citia-recordatorios', nombre: 'Recordatorios y reseñas', cat: 'citas', regimen: 'preset', base: 'bookia', eur: 11, setup: 30,
+      limite: 'hasta 800 envíos/mes, sumando recordatorios y peticiones de reseña',
+      canales: 'el WhatsApp del asistente; si no hay, email',
+      integra: 'la agenda de Citia · enlace a tu ficha de Google',
+      excluye: 'SMS (coste por mensaje, aparte) · llamadas de voz · responder reseñas · reputación en otras plataformas · incentivos por reseña (lo prohíbe Google)' },
+    { slug: 'citia-reactivacion', nombre: 'Reactivación de dormidos', cat: 'citas', regimen: 'preset', base: 'bookia', eur: 10, setup: 0,
+      limite: 'hasta 200 contactos/mes · 1 campaña/mes',
+      canales: 'el WhatsApp del asistente',
+      integra: 'la agenda de Citia',
+      excluye: 'segmentación a medida · ofertas personalizadas por cliente · campañas fuera de calendario' },
+    { slug: 'citia-informe', nombre: 'Informe semanal', cat: 'citas', regimen: 'preset', base: 'bookia', eur: 15, setup: 50,
+      limite: '1 informe/semana, el lunes',
+      canales: 'email',
+      integra: 'solo datos propios de Citia',
+      excluye: 'cuadro de mando en vivo (va en el panel) · fuentes externas · informes a medida' },
+    { slug: 'citia-ficha', nombre: 'Ficha de cliente', cat: 'citas', regimen: 'preset', base: 'bookia', eur: 35, setup: 100,
+      limite: '2.000 fichas · 5 GB de fotos',
+      canales: 'web',
+      integra: 'la agenda de Citia',
+      excluye: 'consentimientos firmados · datos de salud · historiales clínicos' },
+    { slug: 'citia-landing', nombre: 'Landing conectada', cat: 'citas', regimen: 'preset', base: 'bookia', eur: 50, setup: 400,
+      limite: 'hasta 5 secciones · 1 idioma · 1 revisión de diseño al año',
+      canales: 'web',
+      integra: 'reserva de Citia + formulario de contacto',
+      excluye: 'blog · tienda · varios idiomas · el dominio lo paga el cliente · redacción de textos largos · SEO activo' },
 
     /* ── Clínica dental · no sale a la web, pero sigue en catálogo ──────────── */
     { slug: 'dental-agenda', nombre: 'Agenda + reserva online + recordatorios', cat: 'dental', regimen: 'preset', base: 'dentia', eur: 35,
@@ -131,6 +159,11 @@ const CATALOGO = {
       canales: 'el mismo del asistente',
       integra: 'solo lectura contra la plataforma de comercio electrónico del cliente',
       excluye: 'modificar, cancelar o crear pedidos · gestionar devoluciones' },
+    { slug: 'consulta-stock', nombre: 'Consulta de stock', cat: 'a_medida', regimen: 'a_medida', base: null, eur: 15, setup: 50,
+      limite: 'se acopla al seguimiento de pedidos',
+      canales: 'el mismo del asistente',
+      integra: 'solo lectura del stock en la plataforma de comercio electrónico del cliente',
+      excluye: 'cantidades exactas · reservar o apartar stock · venderse sin el seguimiento de pedidos' },
     { slug: 'hermes-seguimiento-presupuestos', nombre: 'HERMES · Seguimiento de presupuestos', cat: 'a_medida', regimen: 'a_medida', base: null, eur: 49, setup: 200,
       limite: '200 presupuestos activos',
       canales: 'email + un canal de mensajería',
@@ -176,6 +209,11 @@ const CATALOGO = {
       canales: 'teléfono',
       integra: 'el mismo cerebro y los mismos datos que el agente de texto',
       excluye: 'la telefonía y los minutos van a tu nombre y a tu cargo, como la cuenta de WhatsApp' },
+    { slug: 'crm-panel', nombre: 'El CRM de tu negocio', cat: 'a_medida', regimen: 'a_medida', base: null, eur: 149, setup: 900,
+      limite: 'hasta 5 personas usándolo · hasta 2.000 fichas de cliente',
+      canales: 'acceso por navegador, con usuario para cada persona del equipo',
+      integra: 'dos sistemas que ya uses (correo, agenda, facturación o tu programa de gestión), si tienen API',
+      excluye: 'no sustituye a tu programa de gestión ni escribe en él · no hace contabilidad ni presenta nada ante la Administración · migrar históricos y conectar sistemas sin API se presupuestan aparte' },
     { slug: 'correo-clasificacion', nombre: 'Clasificación de correos', cat: 'a_medida', regimen: 'a_medida', base: null, eur: 15, setup: 70,
       limite: 'hasta 1.000 correos/mes · 1 buzón',
       canales: 'un buzón de Gmail o Outlook',
@@ -195,7 +233,7 @@ const CATALOGO = {
       limite: 'hasta 300 fichas o registros al mes',
       canales: 'el mismo buzón',
       integra: 'escritura sobre el CRM que ya uses, si tiene API',
-      excluye: 'montarte un CRM si no tienes (se presupuesta aparte) · CRMs sin API · limpiar o deduplicar la base que ya tengas · fusionar fichas repetidas' },
+      excluye: 'CRMs sin API · limpiar o deduplicar la base que ya tengas · fusionar fichas repetidas · si no tienes CRM, el nuestro es una pieza aparte (crm-panel)' },
   ],
 };
 

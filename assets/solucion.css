@@ -162,6 +162,15 @@ h1.hero-s-pill i { display: inline-block; vertical-align: middle; margin: -2px 8
 }
 .tramos-pie strong { color: var(--ink-2); font-weight: 650; }
 
+/* Citia (16-10-2026): los cuatro planes son ejemplos, no paquetes. Va en una
+   caja suave encima del pie para que se lea antes que la letra pequeña. */
+.tramos-abiertos {
+  margin: 32px auto 0; max-width: 760px; text-align: center;
+  font-size: 15px; line-height: 1.65; color: var(--ink-2);
+  background: var(--purple-tint); border-radius: var(--r-panel); padding: 18px 24px;
+}
+.tramos-abiertos strong { color: var(--purple-deep); font-weight: 700; }
+
 /* ─── NAV SOBRE EL HERO OSCURO ───────────────────────────────────────────
    Igual que en la global: con la pastilla blanca fija parecía una barra
    pegada encima de la foto. Se vuelve sólida al bajar.

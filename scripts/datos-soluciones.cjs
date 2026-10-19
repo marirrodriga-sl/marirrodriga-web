@@ -1,10 +1,15 @@
-/* Los datos de las páginas de solución: Dentia, Bookia y sus seis sectores.
+/* Los datos de las páginas de solución: Dentia, Citia (antes Bookia) y sus seis sectores.
    Se tocan aquí. Las páginas se generan con generar-paginas.cjs.
 
    ⚠️ Ningún precio se escribe en este fichero. Los tramos salen de
    soluciones.cjs, que los calcula con el mismo motor que el resto de la web. */
 
 const CAL = 'https://cal.com/marirrodriga-ia/llamada';
+
+/* El «desde» de la descripción sale del motor, no se escribe a mano: el
+   16-10-2026 Citia bajó de 64 a 49 €/mes y el 64 escrito aquí se habría
+   quedado mintiendo en Google. */
+const DESDE_CITIA = require('./soluciones.cjs').CITIA[0].cuota;
 
 /* ─── DENTIA ─────────────────────────────────────────────────────────────── */
 const DENTIA = {
@@ -60,9 +65,12 @@ const DENTIA = {
   ],
 };
 
-/* ─── BOOKIA ─────────────────────────────────────────────────────────────── */
+/* ─── CITIA (antes Bookia; renombrada el 16-10-2026) ─────────────────────────────────────────────────────────────── */
 const BOOKIA_BASE = {
-  marca: 'Bookia',
+  /* El producto se llama Citia desde el 16-10-2026. Los ficheros, las URL
+     (/bookia, /l/software-*) y las carpetas de imágenes siguen con el nombre
+     viejo a propósito: hay anuncios y posicionamiento apuntando a ellas. */
+  marca: 'Citia',
   hero: 'hero-bookia.jpg',
   vistas: [
     { img: 'bookia-img/reserva-movil.png', et: 'La reserva',
@@ -90,7 +98,9 @@ const BOOKIA_BASE = {
     ['¿Y si alguien no aparece?',
      'La víspera le llega un recordatorio y puede confirmar o cancelar con un toque. Si cancela, el hueco vuelve a salir libre con tiempo para que lo coja otro.'],
     ['¿Se conecta con Google Calendar?',
-     'De momento no: la agenda es propia. Preferimos decírtelo antes de que lo descubras tú. Si es imprescindible para ti, dínoslo en la llamada y valoramos montarlo.'],
+     'Sí, si lo necesitas. Citia ya trae su propia agenda y para la mayoría basta con ella, pero si tú o tu equipo vivís en Google Calendar, lo conectamos para que no tengas dos agendas que cuadrar.'],
+    ['¿Tengo que quedarme con uno de los cuatro planes?',
+     'No. Son las combinaciones que más montamos, no paquetes cerrados. Eliges las piezas que te interesan —la agenda con el asistente va siempre— y el precio es la suma de las suyas, con el descuento por juntar varias ya aplicado.'],
     ['¿Hay permanencia?',
      'No. Te vas cuando quieras avisando con 30 días. El montaje se paga 50 % al empezar y 50 % al entregar.'],
   ],
@@ -113,7 +123,7 @@ const BOOKIA_BASE = {
 
    Las redirecciones van a /bookia a secas, NO al ancla del oficio. Se probó
    con ancla y aterrizabas al 63 % de la página, en una tarjeta suelta, sin
-   haber visto qué es Bookia ni cuánto cuesta — y desde un resultado de Google
+   haber visto qué es Citia ni cuánto cuesta — y desde un resultado de Google
    nadie sube. El ancla sí vale para el menú, donde el visitante ya está
    dentro y sabe dónde está. Dos trabajos distintos, dos destinos. */
 const SECTORES = [
@@ -121,8 +131,8 @@ const SECTORES = [
     /* Puestos a mano el 12-09: la descripcion se calculaba del lead y no
        nombraba ningun oficio. Ahora que los seis viven dentro de esta
        pagina, nombrarlos aqui es justo lo que la hace encontrable. */
-    tituloSeo: 'Software de citas para tu negocio | Bookia',
-    descripcionSeo: 'Agenda, reserva sin registro y recordatorios contra el hueco vacío. Para peluquería, estética, uñas, tatuajes, fisioterapia y podología. Desde 64 €/mes.',
+    tituloSeo: 'Software de citas para tu negocio | Citia',
+    descripcionSeo: `Agenda, reserva sin registro y recordatorios contra el hueco vacío. Para peluquería, estética, uñas, tatuajes, fisioterapia y podología. Desde ${DESDE_CITIA} €/mes.`,
     pill: 'Software de citas para tu negocio', sitio: 'La silla',
     h1: ['La silla nunca parada,', 'la agenda siempre llena.'],
     lead: 'Agenda, reserva online sin registro y recordatorios que evitan el hueco vacío. Con un asistente que contesta cuando tú tienes las manos ocupadas.',
@@ -200,11 +210,11 @@ const SECTORES = [
 /* Solo el primero se convierte en página. Los demás viven como datos: los
    consume la sección de sectores de /bookia y las redirecciones. */
 const BOOKIA = SECTORES.filter(s => !s.ancla).map(s => Object.assign({}, BOOKIA_BASE, s, {
-  titulo: s.tituloSeo || `${s.pill} | Bookia`,
+  titulo: s.tituloSeo || `${s.pill} | Citia`,
   descripcion: s.descripcionSeo || (() => {
     const frases = s.lead.split('. ').filter(Boolean);
     const distintiva = (frases[1] || frases[0]).replace(/\.$/, '');
-    return `${s.pill}. ${distintiva}. Desde 64 €/mes.`;
+    return `${s.pill}. ${distintiva}. Desde ${DESDE_CITIA} €/mes.`;
   })(),
 }));
 
@@ -224,7 +234,7 @@ const ANUNCIOS = [
     archivo: 'l/software-peluqueria.html', ruta: '/l/software-peluqueria',
     noindex: true,
     h1Busqueda: 'Software para peluquerías y centros de estética',
-    titulo: 'Software para peluquerías y centros de estética | Bookia',
+    titulo: 'Software para peluquerías y centros de estética | Citia',
   }),
   /* 15-09-2026 · Fisioterapia sustituye a barbería en la campaña de Bookia: su
      previsión da 65 clics a 2,37 € con 5 €/día. Aquí sí se usan el eslogan, el
@@ -238,15 +248,15 @@ const ANUNCIOS = [
     archivo: 'l/software-estetica.html', ruta: '/l/software-estetica',
     noindex: true,
     h1Busqueda: 'Software para centros de estética',
-    titulo: 'Software para centros de estética | Bookia',
+    titulo: 'Software para centros de estética | Citia',
     descripcion: 'Agenda, reserva desde Instagram sin registro y recordatorios para centros de estética. Con un asistente que contesta mientras estás en cabina.',
   }),
   Object.assign({}, BOOKIA_BASE, SECTORES.find(s => s.ancla === 'fisioterapia'), {
     archivo: 'l/software-fisioterapia.html', ruta: '/l/software-fisioterapia',
     noindex: true,
     h1Busqueda: 'Software para clínicas de fisioterapia',
-    titulo: 'Software para clínicas de fisioterapia | Bookia',
-    descripcion: 'Agenda, reserva online sin registro y recordatorios para clínicas de fisioterapia. Con un asistente que contesta mientras tratas. Desde 64 €/mes.',
+    titulo: 'Software para clínicas de fisioterapia | Citia',
+    descripcion: `Agenda, reserva online sin registro y recordatorios para clínicas de fisioterapia. Con un asistente que contesta mientras tratas. Desde ${DESDE_CITIA} €/mes.`,
   }),
 ];
 
