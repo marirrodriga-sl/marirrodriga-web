@@ -1,0 +1,44 @@
+/* Páginas de contenido: /agencia-ia-palencia y /guias. Solo lectura larga. */
+
+.art { padding: 150px 0 var(--air); }
+.art-cab h1 { margin: 14px 0 18px; }
+.art-firma { margin-top: 18px; font-size: 13.5px; color: var(--ink-3); }
+
+.art-cuerpo { margin-top: 44px; font-size: 16.5px; line-height: 1.7; color: var(--ink-2); }
+.art-cuerpo h2 {
+  font-family: var(--font-head); font-weight: 600; color: var(--ink);
+  font-size: clamp(26px, 3vw, 34px); line-height: 1.15; letter-spacing: -.015em;
+  margin: 52px 0 14px;
+}
+.art-cuerpo p { margin: 0 0 16px; }
+.art-cuerpo strong { color: var(--ink); }
+.art-cuerpo a:not(.art-tarjeta) { color: var(--purple-deep); text-decoration: underline; text-underline-offset: 3px; }
+.art-cuerpo ul, .art-cuerpo ol { margin: 0 0 18px; padding-left: 22px; }
+.art-cuerpo li { margin-bottom: 8px; }
+
+.art-resumen {
+  background: var(--purple-tint); border-radius: var(--r-card);
+  padding: 22px 24px; margin-bottom: 8px;
+}
+.art-resumen p { margin: 8px 0 0; }
+
+/* La tabla pasa a desplazarse en móvil antes que aplastar las cifras */
+.art-tabla { display: block; overflow-x: auto; width: 100%; border-collapse: collapse; margin: 18px 0 22px; font-size: 15px; line-height: 1.5; }
+.art-tabla th { text-align: left; font-size: 12.5px; font-weight: 700; color: var(--ink); padding: 0 14px 10px 0; border-bottom: 1px solid var(--line); }
+.art-tabla td { padding: 14px 14px 14px 0; border-bottom: 1px solid var(--line-soft); vertical-align: top; }
+.art-num { white-space: nowrap; color: var(--ink); }
+.art-nota { font-size: 13px; color: var(--ink-3); }
+.art-iva { font-style: normal; font-size: 12px; color: var(--ink-3); }
+
+.art-tarjeta {
+  display: block; padding: 22px 24px; border: 1px solid var(--line);
+  border-radius: var(--r-card); color: var(--ink-2); text-decoration: none;
+  transition: border-color .2s;
+}
+.art-tarjeta:hover { border-color: var(--purple); }
+.art-tarjeta strong { display: block; margin-bottom: 6px; font-size: 18px; }
+.art-tarjeta span { font-size: 15px; }
+
+@media (max-width: 640px) {
+  .art { padding-top: 116px; }
+}

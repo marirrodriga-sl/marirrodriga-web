@@ -131,7 +131,8 @@ const SECTORES = [
     /* Puestos a mano el 12-09: la descripcion se calculaba del lead y no
        nombraba ningun oficio. Ahora que los seis viven dentro de esta
        pagina, nombrarlos aqui es justo lo que la hace encontrable. */
-    tituloSeo: 'Software de citas para tu negocio | Citia',
+    tituloSeo: 'Programa de citas para peluquería, estética y fisioterapia | Citia',
+    h1Busqueda: 'Programa de citas y reservas para peluquerías, estética y fisioterapia',
     descripcionSeo: `Agenda, reserva sin registro y recordatorios contra el hueco vacío. Para peluquería, estética, uñas, tatuajes, fisioterapia y podología. Desde ${DESDE_CITIA} €/mes.`,
     pill: 'Software de citas para tu negocio', sitio: 'La silla',
     h1: ['La silla nunca parada,', 'la agenda siempre llena.'],

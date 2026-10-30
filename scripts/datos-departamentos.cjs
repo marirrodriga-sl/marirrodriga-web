@@ -30,6 +30,7 @@ const DEPARTAMENTOS = [
     archivo: 'atencion-al-cliente.html', ruta: '/atencion-al-cliente',
     heroHtml: T.heroAtencion,
     antesDePiezas: T.noEsBot,
+    despuesDePiezas: `<section class="seccion" style="padding-top:0"><div class="envoltura-txt"><p class="t-body">¿Comparando precios? En <a href="/guias/cuanto-cuesta-chatbot-whatsapp-ia" style="color:var(--purple-deep);text-decoration:underline">cuánto cuesta un chatbot de WhatsApp con IA</a> están el mercado, lo que cobra Meta desde octubre de 2026 y el coste del primer año.</p></div></section>`,
     pill: 'Atención al Cliente',
     titulo: 'Asistente de WhatsApp con IA para pymes | Marirrodriga IA',
     descripcion: 'Contesta por WhatsApp Business, Telegram o el chat de tu web, mira tu agenda y cierra la cita. Y en tu correo, clasifica y reparte lo que entra. Desde 49 €/mes.',

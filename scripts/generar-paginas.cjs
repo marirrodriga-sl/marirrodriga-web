@@ -282,6 +282,15 @@ const cierre = p => `<section class="cierre">
   </div>
 </section>`;
 
+/* BreadcrumbList. Cada tramo es [nombre, ruta]. */
+const migas = tramos => ({
+  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+  itemListElement: tramos.map(([name, ruta], i) => ({
+    '@type': 'ListItem', position: i + 1, name,
+    item: 'https://www.marirrodriga-ia.com' + ruta,
+  })),
+});
+
 const pie = () => `<footer class="pie">
   <div class="envoltura">
     <div class="pie-fila">
@@ -309,6 +318,8 @@ const pie = () => `<footer class="pie">
           <a href="${CAL}" target="_blank" rel="noopener">Asesoría gratuita</a>
           <a href="mailto:contacto@marirrodriga-ia.com">contacto@marirrodriga-ia.com</a>
           <a href="${WA}" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="/agencia-ia-palencia">Agencia de IA en Palencia</a>
+          <a href="/guias">Guías</a>
         </div>
         <div class="pie-col">
           <h4>Legal</h4>
@@ -369,6 +380,9 @@ function pagina(p, tramos) {
 
   <script type="application/ld+json">
 ${JSON.stringify(jsonld, null, 2)}
+  </script>
+  <script type="application/ld+json">
+${JSON.stringify(migas([['Inicio', '/'], [p.pill, p.ruta]]), null, 2)}
   </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -434,7 +448,7 @@ ${pie()}
 
    La guarda de abajo es lo que permite importarlo: sin ella, un require
    regeneraba las ocho páginas de sector como efecto colateral. */
-module.exports = { nav, faq, cierre, pie, esc, LOGO, WA, CAL,
+module.exports = { nav, faq, cierre, pie, esc, migas, LOGO, WA, CAL,
                    SECTORES_MENU, DEPTOS_MENU, SOBRE_MENU, itemSector, itemDepto };
 
 /* ─── ESCRIBIR ───────────────────────────────────────────────────────────── */

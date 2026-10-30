@@ -54,6 +54,23 @@
     <changefreq>monthly</changefreq>
   </url>
 
+  <!-- Local y guías -->
+  <url>
+    <loc>https://www.marirrodriga-ia.com/agencia-ia-palencia</loc>
+    <lastmod>2026-10-30</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.marirrodriga-ia.com/guias</loc>
+    <lastmod>2026-10-30</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.marirrodriga-ia.com/guias/cuanto-cuesta-chatbot-whatsapp-ia</loc>
+    <lastmod>2026-10-30</lastmod>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Productos -->
   <url>
     <loc>https://www.marirrodriga-ia.com/citia</loc>

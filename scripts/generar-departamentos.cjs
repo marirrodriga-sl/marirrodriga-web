@@ -32,7 +32,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { DEPARTAMENTOS } = require('./datos-departamentos.cjs');
-const { nav, faq, cierre, pie, esc, CAL } = require('./generar-paginas.cjs');
+const { nav, faq, cierre, pie, esc, CAL, migas } = require('./generar-paginas.cjs');
 const { lineaIva } = require('./iva.cjs');
 
 const raiz = path.join(__dirname, '..');
@@ -269,6 +269,9 @@ function pagina(p) {
 
   <script type="application/ld+json">
 ${JSON.stringify(jsonld, null, 2)}
+  </script>
+  <script type="application/ld+json">
+${JSON.stringify(migas([['Inicio', '/'], [p.pill, p.ruta]]), null, 2)}
   </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">

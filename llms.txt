@@ -1,0 +1,25 @@
+# Marirrodriga IA
+
+> Agencia de inteligencia artificial con sede en Palencia (España). Montamos software con IA por piezas para pymes y autónomos, con el precio y el límite de cada pieza publicados.
+
+Trabajamos en remoto en toda España. Equipo: Marco (desarrollador full-stack) e Isma (agentes de IA y automatización). Contacto: contacto@marirrodriga-ia.com · WhatsApp +34 675 148 566.
+
+## Software
+
+- [Citia](https://www.marirrodriga-ia.com/citia): programa de citas para peluquería, estética, uñas, tatuajes, fisioterapia y podología.
+- [Dentia](https://www.marirrodriga-ia.com/dentia): software de gestión para clínicas dentales.
+
+## IA por departamento
+
+- [Atención al Cliente](https://www.marirrodriga-ia.com/atencion-al-cliente): asistente con IA para WhatsApp Business, Telegram, web y correo.
+- [Ventas y Captación](https://www.marirrodriga-ia.com/ventas-y-captacion): CRM a medida, captación de clientes y seguimiento de presupuestos.
+- [Finanzas](https://www.marirrodriga-ia.com/finanzas): facturación y cobros automáticos.
+- [Logística](https://www.marirrodriga-ia.com/logistica): seguimiento de pedidos y envíos.
+- [Datos y Dirección](https://www.marirrodriga-ia.com/datos-y-direccion): cuadro de mando para pymes.
+- [Marketing](https://www.marirrodriga-ia.com/marketing): contenido para redes sociales con IA.
+- [Posicionamiento Online](https://www.marirrodriga-ia.com/posicionamiento-online): web, SEO local, ficha de Google y reseñas.
+
+## Local y guías
+
+- [Agencia de IA en Palencia](https://www.marirrodriga-ia.com/agencia-ia-palencia): quiénes somos y qué montamos en Palencia y Castilla y León.
+- [Cuánto cuesta un chatbot de WhatsApp con IA](https://www.marirrodriga-ia.com/guias/cuanto-cuesta-chatbot-whatsapp-ia): alta, cuota y mensajes de Meta, en euros.
