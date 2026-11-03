@@ -221,8 +221,11 @@ const precio = (p, tramos) => `<section class="seccion" id="precio">
   <div class="envoltura">
     <div class="envoltura-txt centrado" style="padding:0">
       <span class="t-eyebrow">El precio</span>
-      <h2 class="t-h2" style="margin:14px 0 16px">Cuatro puntos de partida.<br><span class="acento">Se sube cuando hace falta.</span></h2>
-      <p class="t-lead">No son planes cerrados: son las combinaciones que montamos más a menudo. Puedes quitar o añadir piezas, y el precio se recalcula con la misma cuenta.</p>
+${p.marca === 'Citia'
+  ? `      <h2 class="t-h2" style="margin:14px 0 16px">Cuatro planes, precio cerrado.<br><span class="acento">Se sube cuando hace falta.</span></h2>
+      <p class="t-lead">Eliges el plan según lo que necesita tu negocio y cambias de plan cuando crezca. Lo que ves es lo que pagas.</p>`
+  : `      <h2 class="t-h2" style="margin:14px 0 16px">Cuatro puntos de partida.<br><span class="acento">Se sube cuando hace falta.</span></h2>
+      <p class="t-lead">No son planes cerrados: son las combinaciones que montamos más a menudo. Puedes quitar o añadir piezas, y el precio se recalcula con la misma cuenta.</p>`}
     </div>
 
     <div class="tramos aparece">
@@ -235,25 +238,25 @@ const precio = (p, tramos) => `<section class="seccion" id="precio">
         <div class="tramo-alta">+ ${euros(t.alta)} € de montaje, una sola vez</div>
         <div class="iva-linea">${lineaIva(t.alta)} sobre el montaje</div>
         <div class="sin-iva">Los precios de arriba van sin IVA</div>
-        ${t.bonificacion > 0
+        ${t.plan
+          ? `<div class="tramo-bonif">${esc(t.nota)}</div>`
+          : t.bonificacion > 0
           ? `<div class="tramo-bonif">${t.piezas} piezas juntas · −${pct(t.bonificacion)} % ya aplicado</div>`
           : `<div class="tramo-bonif">${t.piezas} pieza${t.piezas === 1 ? '' : 's'}${t.sueloAplicado ? ' · mínimo por solución' : ''}</div>`}
         <div class="tramo-incluye">${t.incluye.map(x => `<span>${esc(x)}</span>`).join('')}</div>
       </article>`).join('\n      ')}
     </div>
 ${p.marca === 'Citia' ? `    <p class="tramos-abiertos">
-      <strong>Los planes no son cerrados.</strong> Eliges las piezas que te interesan —la agenda con el asistente
-      va siempre— y el precio es la suma de las suyas. Con cuatro o cinco piezas juntas la cuota baja
-      un 10 %, y con seis, un 15 %. El montaje lleva el mismo descuento, con una salvedad: añadir una pieza nunca lo
-      deja por debajo de lo que ya costaba; si el descuento lo bajaría, se queda como estaba.
+      <strong>Pagando por adelantado, la cuota baja.</strong> Por trimestre, un 8 %; por año, un 15 %.
+      El montaje no cambia: se paga una sola vez, elijas la forma de pago que elijas.
     </p>
 ` : ''}
     <p class="tramos-pie">
       Todos los precios <strong>sin IVA</strong>. El montaje se paga <strong>50 % al empezar y 50 % al entregar</strong>,
       e incluye pasar lo que ya tengas. La cuota lleva dentro los ajustes y las reuniones que hagan falta.
       <strong>Sin permanencia:</strong> te vas cuando quieras avisando con 30 días.
-      Cuantas más piezas juntas, menos cuesta cada una — la bonificación ya va aplicada en las cifras de arriba.
-    </p>
+${p.marca === 'Citia' ? '' : `      Cuantas más piezas juntas, menos cuesta cada una — la bonificación ya va aplicada en las cifras de arriba.
+`}    </p>
   </div>
 </section>`;
 

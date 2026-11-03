@@ -33,7 +33,7 @@ function tramo(base, nombre, gancho, slugs, incluye) {
     cuota: q.cuota,
     bonificacion: q.suma ? Math.round((1 - q.cuota / q.suma) * 1000) / 10 : 0,
     sueloAplicado: q.sueloAplicado,
-    alta: base === 'citia' ? null : altaPreset(base, q.nPiezas),   // Citia la pone tramoCitia()
+    alta: altaPreset(base, q.nPiezas),
   };
 }
 
@@ -67,52 +67,34 @@ const DENTIA = [
      'Análisis de conversaciones']),
 ];
 
-/* ─── CITIA (antes Bookia) ───────────────────────────────────────────────
-   16-10-2026 · Decisión de Ismael: Bookia pasa a llamarse Citia y cambia de
-   modelo. Ya no es una solución preset con alta fija por tramos (250/350 €):
-   son seis piezas propias, `citia-*`, cada una con su cuota y su montaje, y
-   el cliente elige las que quiere. Los cuatro planes de abajo son solo las
-   combinaciones más habituales, no planes cerrados.
-
-     · CUOTA: cotiza(), igual que todo (escala por acumulación, guarda y suelo).
-     · MONTAJE: calculaSetup(), el motor normal de la web: suma de los
-       montajes con la misma escala y la guarda de monotonía. Añadir una pieza
-       nunca baja el montaje; si el descuento lo bajaría, se queda como estaba
-       (decisión de Ismael, 19-10-2026: sin excepciones para Citia).
-
-   Las piezas viejas (agenda-reserva-publica, recordatorios-confirmacion…) NO
-   se tocan: las siguen vendiendo las páginas de departamento.
-
-   citia-base es obligatoria: va en todas las combinaciones. */
-const { calculaSetup } = require('../assets/catalogo.js');
-
-function tramoCitia(nombre, gancho, slugs, incluye) {
-  if (!slugs.includes('citia-base')) throw new Error(`${nombre}: citia-base es obligatoria`);
-  const t = tramo('citia', nombre, gancho, slugs, incluye);
-  t.alta = calculaSetup(cotiza(slugs).piezas).total;
-  return t;
+/* ─── CITIA (antes Bookia) ─────────────────────────────────────────────── */
+/* 03-11-2026 · Citia vuelve a planes cerrados (decisión de Ismael del 29-10, ajustada
+   el 03-11: Agenda sube a 60 € + 180 € porque lleva recordatorios y reseñas, y para
+   «solo las citas» queda Citia Citas a 49 € + 150 €). Ya no se suman piezas ni hay
+   descuento por juntarlas: cuota y alta van fijadas aquí y en el catálogo del CRM.
+   Pagando por adelantado la cuota baja un 8 % (trimestral) o un 15 % (anual). */
+function planCitia(nombre, gancho, cuota, alta, nota, incluye) {
+  return { nombre, gancho, cuota, alta, nota, incluye, plan: true,
+           piezas: 0, bonificacion: 0, slugs: ['citia-base'] };
 }
 
 const CITIA = [
-  tramoCitia('Lo mínimo',
-    'Agenda, reserva y un asistente que contesta.',
-    ['citia-base'],
-    ['Agenda y página de reserva sin registro', 'Asistente por WhatsApp que cierra la cita', 'Panel de negocio incluido']),
+  planCitia('Citia Citas', 'Solo las citas.', 49, 150, 'Hasta 2 profesionales',
+    ['Agenda y página de reserva sin registro', 'Asistente por WhatsApp que cierra la cita',
+     'Ficha de cliente y analíticas básicas']),
 
-  tramoCitia('El negocio que empieza',
-    'El que montamos casi siempre.',
-    ['citia-base', 'citia-recordatorios'],
-    ['Todo lo anterior', 'Recordatorio la víspera y hueco liberado', 'Peticiones de reseña de Google']),
+  planCitia('Citia Agenda', 'El que montamos casi siempre.', 60, 180, 'Hasta 2 profesionales',
+    ['Todo lo de Citas', 'Recordatorio la víspera y hueco liberado',
+     'Seguimiento de los que no vuelven', 'Peticiones de reseña de Google']),
 
-  tramoCitia('Con volumen',
-    'Cuando ya hay clientes que recuperar.',
-    ['citia-base', 'citia-recordatorios', 'citia-reactivacion', 'citia-informe'],
-    ['Todo lo anterior', 'Reactivación de clientes dormidos', 'Informe semanal por correo']),
+  planCitia('Citia Clínica', 'Para consultas sanitarias.', 75, 220, 'Hasta 5 profesionales',
+    ['Todo lo de Agenda', 'Historia clínica (500 pacientes activos)',
+     'Informes a partir de audios (600 min/mes)', 'Consentimiento informado digital',
+     'Análisis semanal con IA y reactivación']),
 
-  tramoCitia('El negocio entero',
-    'Sin nada fuera.',
-    ['citia-base', 'citia-recordatorios', 'citia-reactivacion', 'citia-informe', 'citia-ficha', 'citia-landing'],
-    ['Todo lo anterior', 'Ficha de cliente con historial y fotos', 'Tu página web con la reserva dentro']),
+  planCitia('Citia Negocio', 'Sin nada fuera.', 120, 500, 'Sin límite de profesionales',
+    ['Todo lo de Clínica, sin límite de pacientes', 'Informes a partir de audios (2.000 min/mes)',
+     'Panel de negocio completo', 'Contabilidad y facturación a tus clientes']),
 ];
 
 module.exports = { DENTIA, CITIA, altaPreset, tramo };

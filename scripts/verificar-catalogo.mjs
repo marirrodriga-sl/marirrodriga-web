@@ -173,8 +173,8 @@ check(altaMonotona, 'añadir una herramienta nunca abarata el montaje');
 const SOL = require('./soluciones.cjs');
 const TRAMOS = {
   DENTIA: [[55, 300], [103.50, 300], [147.90, 450], [199.20, 450]],
-  // Citia (antes Bookia), 16-10-2026: montaje por pieza con calculaSetup() y su guarda (19-10), sin preset.
-  CITIA: [[49, 150], [60, 180], [76.50, 230], [144.50, 657]],
+  // Citia, 03-11-2026: planes cerrados Citas · Agenda · Clínica · Negocio.
+  CITIA: [[49, 150], [60, 180], [75, 220], [120, 500]],
 };
 for (const [nombre, esperados] of Object.entries(TRAMOS)) {
   const reales = SOL[nombre].map(t => [t.cuota, t.alta]);
@@ -196,7 +196,7 @@ check(sinAlta.length === 0, 'ninguna pieza de la web sin alta fijada',
 // ── 6. Citia: la base va siempre, y el IVA de los planes es el del céntimo exacto ──
 check(SOL.CITIA.every(t => t.slugs.includes('citia-base')), 'citia-base va en los cuatro planes de Citia');
 const { importeIva } = require('./iva.cjs');
-const IVA_CITIA = [[10.29, 31.5], [12.6, 37.8], [16.07, 48.3], [30.35, 137.97]];
+const IVA_CITIA = [[10.29, 31.5], [12.6, 37.8], [15.75, 46.2], [25.2, 105]];
 const ivaReal = SOL.CITIA.map(t => [importeIva(t.cuota), importeIva(t.alta)]);
 check(JSON.stringify(ivaReal) === JSON.stringify(IVA_CITIA), 'IVA de los planes de Citia',
       ivaReal.map(([c, a]) => c + ' + ' + a).join(' · '));
