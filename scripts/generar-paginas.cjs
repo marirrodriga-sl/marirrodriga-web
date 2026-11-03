@@ -252,7 +252,7 @@ ${p.marca === 'Citia' ? `    <p class="tramos-abiertos">
     </p>
 ` : ''}
     <p class="tramos-pie">
-      Todos los precios <strong>sin IVA</strong>. El montaje se paga <strong>50 % al empezar y 50 % al entregar</strong>,
+      Todos los precios <strong>sin IVA</strong>. ${p.marca === 'Citia' ? 'El alta se paga <strong>al empezar</strong>, con <strong>60 días de garantía</strong> sobre las cuotas,' : 'El montaje se paga <strong>50 % al empezar y 50 % al entregar</strong>,'}
       e incluye pasar lo que ya tengas. La cuota lleva dentro los ajustes y las reuniones que hagan falta.
       <strong>Sin permanencia:</strong> te vas cuando quieras avisando con 30 días.
 ${p.marca === 'Citia' ? '' : `      Cuantas más piezas juntas, menos cuesta cada una — la bonificación ya va aplicada en las cifras de arriba.

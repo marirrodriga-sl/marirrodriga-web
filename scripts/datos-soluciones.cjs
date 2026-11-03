@@ -102,7 +102,7 @@ const BOOKIA_BASE = {
     ['¿Puedo cambiar de plan más adelante?',
      'Sí. Se empieza por el plan que encaja hoy y se sube cuando el negocio lo pida: de Citas a Agenda en cuanto quieras los recordatorios y las reseñas, o a Clínica si necesitas llevar la historia de tus pacientes.'],
     ['¿Hay permanencia?',
-     'No. Te vas cuando quieras avisando con 30 días. El montaje se paga 50 % al empezar y 50 % al entregar.'],
+     'No. Te vas cuando quieras avisando con 30 días. El alta se paga al empezar y tienes 60 días de garantía: si en ese tiempo no te convence, te devolvemos las cuotas pagadas.'],
   ],
 };
 
