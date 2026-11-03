@@ -84,13 +84,13 @@ const CITIA = [
      'Ficha de cliente y analíticas básicas']),
 
   planCitia('Citia Agenda', 'El que montamos casi siempre.', 60, 180, 'Hasta 3 profesionales',
-    ['Todo lo de Citas', 'Recordatorio la víspera y hueco liberado',
-     'Seguimiento de los que no vuelven', 'Peticiones de reseña de Google']),
+    ['Todo lo de Citas', 'Recordatorio antes de la cita y hueco liberado',
+     'Gracias y petición de reseña de Google tras la visita', 'Reactivación de clientes que dejan de venir']),
 
   planCitia('Citia Clínica', 'Para consultas sanitarias.', 75, 220, 'Hasta 5 profesionales',
     ['Todo lo de Agenda', 'Historia clínica (500 pacientes activos)',
      'Informes a partir de audios (600 min/mes)', 'Consentimiento informado digital',
-     'Análisis semanal con IA y reactivación']),
+     'Análisis semanal con IA de las conversaciones']),
 
   planCitia('Citia Negocio', 'Sin nada fuera.', 120, 500, 'Sin límite de profesionales',
     ['Todo lo de Clínica, sin límite de pacientes', 'Informes a partir de audios (2.000 min/mes)',
