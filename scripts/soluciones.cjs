@@ -83,7 +83,7 @@ const CITIA = [
     ['Agenda y página de reserva sin registro', 'Asistente por WhatsApp que cierra la cita',
      'Ficha de cliente y analíticas básicas']),
 
-  planCitia('Citia Agenda', 'El que montamos casi siempre.', 60, 180, 'Hasta 2 profesionales',
+  planCitia('Citia Agenda', 'El que montamos casi siempre.', 60, 180, 'Hasta 3 profesionales',
     ['Todo lo de Citas', 'Recordatorio la víspera y hueco liberado',
      'Seguimiento de los que no vuelven', 'Peticiones de reseña de Google']),
 
