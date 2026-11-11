@@ -38,18 +38,19 @@ const PALENCIA = {
 
     <h2>Cómo empezamos</h2>
     <ol>
-      <li><strong>Media hora con tu caso delante.</strong> Una demo por videollamada con lo que tú haces, no una genérica. Si con lo que ya tienes te apañas, te lo decimos.</li>
-      <li><strong>Precio cerrado por piezas.</strong> Cada pieza lleva su alta, su cuota y su límite. La instalación se paga 50 % al empezar y 50 % al entregar.</li>
+      <li><strong>Un diagnóstico gratis.</strong> Hasta tres sesiones de unas dos horas: con quien dirige, con el equipo y mirando el trabajo. Es para empresas de 5 a 50 personas en Castilla y León, con <a href="/diagnostico">dos plazas a la semana</a>.</li>
+      <li><strong>Un informe con dos caminos.</strong> Para cada tarea que merezca la pena: formar a tu equipo para que la resuelva, o montar el software que la haga sola. Con el precio escrito. Y si no compensa, lo pone.</li>
+      <li><strong>Precio cerrado antes de empezar.</strong> La instalación se paga 50 % al empezar y 50 % al entregar.</li>
       <li><strong>Sin permanencia.</strong> Te vas cuando quieras, avisando con 30 días.</li>
     </ol>
 
     <h2>Dónde trabajamos</h2>
-    <p>Estamos en Palencia y damos servicio en remoto en Valladolid, Burgos, León y el resto de España. Casi todo se monta a distancia: lo que necesitamos es entender tu negocio y tener acceso a las herramientas que ya usas.</p>
+    <p>Estamos en Palencia y el diagnóstico lo hacemos en toda Castilla y León, con alguna sesión en tu oficina. El montaje se hace casi todo a distancia: lo que necesitamos es entender tu negocio y tener acceso a las herramientas que ya usas.</p>
     <p>Puedes escribirnos a <a href="mailto:contacto@marirrodriga-ia.com">contacto@marirrodriga-ia.com</a> o por <a href="https://wa.me/34675148566" target="_blank" rel="noopener">WhatsApp, al 675 148 566</a>.</p>`,
   faq: [
     ['¿Cuánto cuesta contratar una agencia de IA en Palencia?', 'En nuestro caso, depende de las piezas: cada una tiene su alta y su cuota publicadas, sin IVA, en la página de su departamento. No hace falta pedir presupuesto para saber el orden de magnitud.'],
-    ['¿Hace falta que mi negocio sea grande?', 'No. Trabajamos para negocios pequeños y medianos, y se puede empezar por una sola pieza.'],
-    ['¿Trabajáis solo en Palencia?', 'No. Tenemos la sede en Palencia, pero el trabajo es en remoto y damos servicio en toda España.'],
+    ['¿Hace falta que mi negocio sea grande?', 'El diagnóstico gratis es para empresas de 5 a 50 personas. Si sois menos, casi siempre os sirve mejor uno de nuestros productos con precio cerrado, como Citia.'],
+    ['¿Trabajáis solo en Palencia?', 'No. La sede está en Palencia y el diagnóstico lo hacemos en toda Castilla y León. El montaje es en remoto, así que fuera de la comunidad también se puede: escríbenos y lo vemos.'],
     ['¿Mis datos y los de mis clientes están protegidos?', 'Si tratamos datos personales por tu cuenta, firmamos contigo el contrato de encargado de tratamiento que exige el artículo 28 del RGPD. Los asistentes, además, se identifican siempre como IA ante quien les escribe.'],
   ],
 };

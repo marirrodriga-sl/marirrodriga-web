@@ -17,6 +17,8 @@ const RAIZ = path.join(__dirname, '..');
 const ANCLAS = {
   // La home no lleva anclas en el menú: a sus apartados se llega por «Sobre nosotros»
   'index.html': [],
+  // Escrita a mano el 11-11-2026, como la home.
+  'diagnostico.html': [['#sesiones', 'Cómo es'], ['#informe', 'Qué te llevas'], ['#preguntas', 'Preguntas']],
 };
 
 for (const [f, anclas] of Object.entries(ANCLAS)) {

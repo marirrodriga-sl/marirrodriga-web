@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- ==========================================================================
+     DIAGNÓSTICO — la puerta de entrada de la web grande (decidido el 11-11-2026).
+
+     Sustituye a la «media hora» como oferta principal. /asesoria NO se toca:
+     sigue siendo el formulario del regalo de RRSS, con su contrato de campos
+     con n8n.
+
+     La oferta: hasta tres sesiones de unas dos horas (con quien dirige, con el
+     equipo y mirando el trabajo), no todas presenciales, gratis. Sale un
+     informe con dos caminos: formar al equipo o montar el software.
+
+     LOS FILTROS SON PARTE DEL MENSAJE: 5–50 personas, Castilla y León, quien
+     dirige participa, dos plazas a la semana. La escasez tiene que ser real:
+     si un mes se llenan, se dice.
+
+     Escrita a mano, como index y asesoria. El menú lo pone
+     scripts/sincronizar-menu.cjs: si cambias nav(), córrelo.
+     Los `name` del formulario viajan al webhook /asesoria con
+     source='diagnostico-formulario' (ver assets/diagnostico.js).
+     ========================================================================== -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diagnóstico gratis de automatización con IA | Marirrodriga IA</title>
+  <meta name="description" content="Hasta tres sesiones con quien dirige y su equipo para encontrar qué se puede automatizar. Gratis para empresas de 5 a 50 personas en Castilla y León.">
+  <link rel="canonical" href="https://www.marirrodriga-ia.com/diagnostico">
+  <meta name="theme-color" content="#7C3AED">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Marirrodriga IA">
+  <meta property="og:title" content="Diagnóstico gratis: qué trabajo de tu empresa se puede automatizar">
+  <meta property="og:description" content="Hasta tres sesiones con quien dirige y con el equipo. Sales con un informe: qué tareas, cuántas horas, cuánto cuestan hoy y cómo quitarlas.">
+  <meta property="og:url" content="https://www.marirrodriga-ia.com/diagnostico">
+  <meta property="og:image" content="https://www.marirrodriga-ia.com/og-image.png">
+  <meta property="og:locale" content="es_ES">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        "name": "Diagnóstico de automatización con IA",
+        "serviceType": "Consultoría de automatización e inteligencia artificial",
+        "provider": { "@type": "ProfessionalService", "name": "Marirrodriga IA", "url": "https://www.marirrodriga-ia.com/" },
+        "areaServed": { "@type": "AdministrativeArea", "name": "Castilla y León" },
+        "description": "Hasta tres sesiones con la dirección y el equipo para localizar las tareas manuales que se pueden automatizar. Termina con un informe y dos caminos: formar al equipo o montar el software.",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://www.marirrodriga-ia.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Diagnóstico", "item": "https://www.marirrodriga-ia.com/diagnostico" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "¿De verdad es gratis?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. Las sesiones y el informe no se cobran, y el informe es tuyo aunque no contrates nada. Lo que se paga, si decides seguir, es la formación o el software, con el precio escrito en el propio informe." } },
+          { "@type": "Question", "name": "¿Por qué solo dos plazas a la semana?", "acceptedAnswer": { "@type": "Answer", "text": "Porque cada diagnóstico lo hace la misma persona que luego monta el trabajo, y son hasta seis horas por empresa. No da para más sin hacerlo peor." } },
+          { "@type": "Question", "name": "¿Qué pasa con los datos de mi empresa?", "acceptedAnswer": { "@type": "Answer", "text": "Antes de la primera sesión firmamos un compromiso de confidencialidad. Tomamos notas de cómo se trabaja y de cifras agregadas; no nos llevamos copias de datos de tus clientes." } },
+          { "@type": "Question", "name": "¿Y si mi empresa está fuera de Castilla y León o es más pequeña?", "acceptedAnswer": { "@type": "Answer", "text": "El diagnóstico gratis es para empresas de 5 a 50 personas en Castilla y León. Si no es tu caso, escríbenos igualmente: puede que te encaje uno de nuestros productos, que tienen precio cerrado." } }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/base.css">
+  <link rel="stylesheet" href="/assets/global.css">
+  <link rel="stylesheet" href="/assets/asesoria.css">
+  <link rel="stylesheet" href="/assets/diagnostico.css">
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-logo" href="/">
+    <img src="/assets/img/logo.png" alt="" width="256" height="256">
+    <span>Marirrodriga<b>.IA</b></span>
+  </a>
+  <div class="nav-links">
+    <div class="nav-grupo">
+      <button class="nav-grupo-btn" type="button" aria-expanded="false" aria-controls="menu-sectores">Productos</button>
+      <div class="nav-panel nav-panel-sectores" id="menu-sectores">
+        <div class="nav-sector">
+          <a class="nav-item" href="/citia"><b>Negocios de citas</b><span>Agenda, reserva sin registro y recordatorios</span></a>
+          <div class="nav-oficios">
+            <a href="/citia#peluqueria">Peluquería</a><a href="/citia#estetica">Estética</a><a href="/citia#unas">Uñas</a><a href="/citia#tatuajes">Tatuajes</a><a href="/citia#fisioterapia">Fisioterapia</a><a href="/citia#podologia">Podología</a>
+          </div>
+        </div>
+        <div class="nav-sector">
+          <a class="nav-item" href="/dentia"><b>Clínicas dentales</b><span>Odontograma, historia clínica y consentimientos</span></a>
+          
+        </div>
+        <a class="nav-panel-pie" href="/diagnostico">Programas con precio cerrado. Si lo tuyo es más grande, empieza por el diagnóstico →</a>
+      </div>
+    </div>
+    <div class="nav-grupo">
+      <button class="nav-grupo-btn" type="button" aria-expanded="false" aria-controls="menu-departamentos">IA por departamento</button>
+      <div class="nav-panel" id="menu-departamentos">
+        <p class="nav-panel-intro">Añade IA a un departamento de tu negocio: para aliviar el trabajo, para hacerlo mejor, o para dejar de hacerlo tú.</p>
+        <a class="nav-item" href="/atencion-al-cliente"><b>Atención al Cliente</b><span>Contesta, mira tu agenda y cierra la cita</span></a>
+        <a class="nav-item" href="/ventas-y-captacion"><b>Ventas y Captación</b><span>Busca clientes y persigue los presupuestos</span></a>
+        <a class="nav-item" href="/finanzas"><b>Finanzas</b><span>Factura sin abrir el programa y persigue lo vencido</span></a>
+        <a class="nav-item" href="/logistica"><b>Logística</b><span>Persigue al transportista y avisa antes de que pregunten</span></a>
+        <a class="nav-item" href="/datos-y-direccion"><b>Datos y Dirección</b><span>Por qué ha ido bien el mes, no solo que ha ido bien</span></a>
+        <a class="nav-item" href="/marketing"><b>Marketing</b><span>Publicaciones, fotos y vídeos con tu marca</span></a>
+        <a class="nav-item" href="/posicionamiento-online"><b>Posicionamiento Online</b><span>Que te encuentren, y que lo que vean esté bien</span></a>
+      </div>
+    </div>
+    <div class="nav-grupo">
+      <button class="nav-grupo-btn" type="button" aria-expanded="false" aria-controls="menu-sobre">Sobre nosotros</button>
+      <div class="nav-panel" id="menu-sobre">
+        <a class="nav-item" href="/#quienes"><b>Quiénes somos</b><span>Marco escribe el código, Isma monta la IA</span></a>
+        <a class="nav-item" href="/#como"><b>Cómo funciona</b><span>Diagnóstico, y después formar al equipo o montar el software</span></a>
+        <a class="nav-item" href="/#proyectos"><b>Nuestros proyectos</b><span>Lo que hemos montado cuando nos lo han pedido</span></a>
+        <a class="nav-item" href="/diagnostico"><b>Diagnóstico gratis</b><span>Hasta tres sesiones para encontrar qué se puede automatizar</span></a>
+      </div>
+    </div>
+    <a class="nav-link" href="#sesiones">Cómo es</a>
+    <a class="nav-link" href="#informe">Qué te llevas</a>
+    <a class="nav-link" href="#preguntas">Preguntas</a>
+  </div>
+  <a class="btn btn-1 nav-cta" href="/diagnostico">Diagnóstico gratis</a>
+  <button class="nav-burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-movil">
+    <i></i><i></i><i></i>
+  </button>
+</nav>
+<div class="nav-movil" id="nav-movil">
+  <h5>Productos</h5>
+  <a class="nav-item" href="/citia"><b>Negocios de citas</b><span>Agenda, reserva sin registro y recordatorios</span></a>
+  <a class="nav-item" href="/dentia"><b>Clínicas dentales</b><span>Odontograma, historia clínica y consentimientos</span></a>
+  <a class="nav-movil-nota" href="/diagnostico">Programas con precio cerrado. Si lo tuyo es más grande, empieza por el diagnóstico →</a>
+  <h5>IA por departamento</h5>
+  <p class="nav-movil-intro">Añade IA a un departamento de tu negocio: para aliviar el trabajo, para hacerlo mejor, o para dejar de hacerlo tú.</p>
+  <a class="nav-item" href="/atencion-al-cliente"><b>Atención al Cliente</b><span>Contesta, mira tu agenda y cierra la cita</span></a>
+  <a class="nav-item" href="/ventas-y-captacion"><b>Ventas y Captación</b><span>Busca clientes y persigue los presupuestos</span></a>
+  <a class="nav-item" href="/finanzas"><b>Finanzas</b><span>Factura sin abrir el programa y persigue lo vencido</span></a>
+  <a class="nav-item" href="/logistica"><b>Logística</b><span>Persigue al transportista y avisa antes de que pregunten</span></a>
+  <a class="nav-item" href="/datos-y-direccion"><b>Datos y Dirección</b><span>Por qué ha ido bien el mes, no solo que ha ido bien</span></a>
+  <a class="nav-item" href="/marketing"><b>Marketing</b><span>Publicaciones, fotos y vídeos con tu marca</span></a>
+  <a class="nav-item" href="/posicionamiento-online"><b>Posicionamiento Online</b><span>Que te encuentren, y que lo que vean esté bien</span></a>
+  <h5>Sobre nosotros</h5>
+  <a class="nav-item" href="/#quienes"><b>Quiénes somos</b><span>Marco escribe el código, Isma monta la IA</span></a>
+  <a class="nav-item" href="/#como"><b>Cómo funciona</b><span>Diagnóstico, y después formar al equipo o montar el software</span></a>
+  <a class="nav-item" href="/#proyectos"><b>Nuestros proyectos</b><span>Lo que hemos montado cuando nos lo han pedido</span></a>
+  <a class="nav-item" href="/diagnostico"><b>Diagnóstico gratis</b><span>Hasta tres sesiones para encontrar qué se puede automatizar</span></a>
+  <h5>En esta página</h5>
+  <a class="nav-item" href="#sesiones"><b>Cómo es</b></a>
+  <a class="nav-item" href="#informe"><b>Qué te llevas</b></a>
+  <a class="nav-item" href="#preguntas"><b>Preguntas</b></a>
+  <a class="btn btn-1" href="/diagnostico">Diagnóstico gratis</a>
+</div>
+
+<!-- ─── HERO ────────────────────────────────────────────────────────────── -->
+<header class="as-hero dg-hero">
+  <div class="as-hero-fondo"></div>
+  <div class="as-envoltura as-hero-txt">
+    <span class="t-eyebrow">Diagnóstico gratuito · Castilla y León</span>
+    <h1>Lo que hoy hace una persona a mano, <em class="acento">encontrado en tres sesiones</em></h1>
+    <p class="t-lead">Nos sentamos con quien dirige y con su equipo, miramos cómo se trabaja y
+      sales con un informe: <strong>qué tareas se pueden quitar, cuántas horas cuestan hoy y
+      cómo quitarlas.</strong> Gratis, y el informe es tuyo aunque no sigas con nosotros.</p>
+    <a class="btn btn-1 as-hero-btn" href="#pedir">Pedir plaza</a>
+    <p class="t-micro as-hero-pie">Dos plazas a la semana · empresas de 5 a 50 personas</p>
+  </div>
+</header>
+
+<!-- ─── LAS SESIONES ────────────────────────────────────────────────────── -->
+<section class="seccion" id="sesiones">
+  <div class="envoltura">
+    <div class="envoltura-txt centrado" style="padding:0">
+      <span class="t-eyebrow">Cómo es</span>
+      <h2 class="t-h2" style="margin:14px 0 16px">Hasta tres sesiones.<br><span class="acento">De unas dos horas cada una.</span></h2>
+      <p class="t-lead">No siempre hacen falta las tres, y no todas tienen que ser en tu oficina.
+        Lo que no cambia es que la primera es con quien decide.</p>
+    </div>
+
+    <ol class="pasos aparece">
+      <li class="paso">
+        <span class="paso-num">01</span>
+        <h3>Con quien dirige</h3>
+        <p>Qué te frena hoy, qué querrías que pasara este año y dónde crees que se va el tiempo.
+          <strong>Sin presentación nuestra:</strong> hablas tú.</p>
+      </li>
+      <li class="paso">
+        <span class="paso-num">02</span>
+        <h3>Con el equipo</h3>
+        <p>Quien hace el trabajo sabe dónde se atasca. Les preguntamos qué repiten cada día, qué
+          copian de un sitio a otro y qué se queda sin hacer cuando hay lío.</p>
+      </li>
+      <li class="paso">
+        <span class="paso-num">03</span>
+        <h3>Mirando el trabajo</h3>
+        <p>Un rato al lado de quien lo hace: cómo entra un pedido, una factura o un mensaje, y
+          cuántos pasos a mano hay hasta que se termina.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ─── LO QUE TE LLEVAS ────────────────────────────────────────────────── -->
+<section class="seccion seccion-cream" id="informe">
+  <div class="envoltura">
+    <div class="envoltura-txt centrado" style="padding:0">
+      <span class="t-eyebrow">Lo que te llevas</span>
+      <h2 class="t-h2" style="margin:14px 0 16px">Un informe con las tareas, las horas<br><span class="acento">y lo que cuesta quitarlas.</span></h2>
+      <p class="t-lead">Para cada tarea que merezca la pena, dos caminos con su precio. Eliges tú,
+        o ninguno.</p>
+    </div>
+
+    <div class="dg-caminos aparece">
+      <article class="dg-camino">
+        <span class="dg-camino-tag">Camino 1</span>
+        <h3>Formar a tu equipo</h3>
+        <p>Les enseñamos a resolver esa tarea con IA ellos mismos, con sus programas y sus casos.
+          Tiene sentido cuando el equipo tiene tiempo para aprender y la tarea cambia a menudo.</p>
+        <p class="dg-precio">Desde 480 € por sesión de 4 horas<em class="iva">+ 100,80 € de IVA · hasta 8 personas; de 9 a 20, 720 € + 151,20 € de IVA</em></p>
+      </article>
+      <article class="dg-camino">
+        <span class="dg-camino-tag">Camino 2</span>
+        <h3>Montar el software</h3>
+        <p>Lo construimos nosotros y la tarea se hace sola: conectado a lo que ya usas, con alguien
+          que lo vigila. Tiene sentido cuando la tarea es repetitiva y se come horas cada semana.</p>
+        <p class="dg-precio">Montaje desde 1.500 €<em class="iva">+ 315 € de IVA</em></p>
+        <p class="dg-precio">y cuota desde 450 €/mes por departamento<em class="iva">+ 94,50 € de IVA</em></p>
+      </article>
+    </div>
+
+    <p class="contraste-pie aparece">Y a veces la respuesta es <strong>que no compensa</strong> automatizarlo
+      todavía. Si es así, lo pone en el informe. Preferimos eso a venderte algo que no vas a usar.</p>
+  </div>
+</section>
+
+<!-- ─── PARA QUIÉN ──────────────────────────────────────────────────────── -->
+<section class="seccion" id="para-quien">
+  <div class="envoltura">
+    <div class="envoltura-txt centrado" style="padding:0">
+      <span class="t-eyebrow">Para quién es</span>
+      <h2 class="t-h2" style="margin:14px 0 16px">Cuatro condiciones.<br><span class="acento">Y ninguna es por quedar bien.</span></h2>
+    </div>
+
+    <div class="contraste dg-condiciones aparece">
+      <div class="contraste-celda">
+        <h3>De 5 a 50 personas</h3>
+        <p>Por debajo, casi siempre te sirve mejor un producto con precio cerrado. Por encima,
+          hace falta otro tipo de proyecto.</p>
+      </div>
+      <div class="contraste-celda">
+        <h3>En Castilla y León</h3>
+        <p>Porque alguna de las sesiones es en tu oficina. Si estás fuera, <a href="mailto:contacto@marirrodriga-ia.com">escríbenos</a> y lo vemos.</p>
+      </div>
+      <div class="contraste-celda">
+        <h3>Quien dirige participa</h3>
+        <p>Sin la persona que decide, el informe se queda en un cajón. Es la única condición
+          que no movemos.</p>
+      </div>
+      <div class="contraste-celda">
+        <h3>Dos plazas a la semana</h3>
+        <p>Cada diagnóstico lo hace quien después monta el trabajo. <strong>No damos para más</strong>
+          sin hacerlo peor.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PREGUNTAS ───────────────────────────────────────────────────────── -->
+<section class="seccion seccion-cream" id="preguntas">
+  <div class="envoltura-txt">
+    <div class="centrado">
+      <span class="t-eyebrow">Lo que nos preguntan</span>
+      <h2 class="t-h2" style="margin:14px 0 30px">Antes de pedir plaza.</h2>
+    </div>
+    <div class="dg-faq">
+      <details>
+        <summary>¿De verdad es gratis?</summary>
+        <p>Sí. Las sesiones y el informe no se cobran, y el informe es tuyo aunque no contrates nada.
+          Lo que se paga, si decides seguir, es la formación o el software, con el precio escrito en
+          el propio informe. Nada de presupuestos que aparecen después.</p>
+      </details>
+      <details>
+        <summary>¿A qué me compromete?</summary>
+        <p>A nada más que a que quien dirige esté en la primera sesión. Si al final no quieres seguir,
+          no hay llamadas de insistencia.</p>
+      </details>
+      <details>
+        <summary>¿Qué pasa con los datos de mi empresa?</summary>
+        <p>Antes de la primera sesión firmamos un compromiso de confidencialidad. Tomamos notas de cómo
+          se trabaja y de cifras agregadas; no nos llevamos copias de datos de tus clientes. Si después
+          montamos algo que los trate, se firma el contrato de encargado de tratamiento que pide el RGPD.</p>
+      </details>
+      <details>
+        <summary>Ya tengo un programa de gestión y alguna app. ¿Sirve igual?</summary>
+        <p>Sirve más. Casi nunca se trata de cambiar lo que ya usas, sino de quitar el trabajo a mano que
+          queda entre un programa y otro. Lo que propongamos se suma a lo que tienes.</p>
+      </details>
+      <details>
+        <summary>¿Y si mi empresa está fuera de Castilla y León o es más pequeña?</summary>
+        <p>El diagnóstico gratis es para empresas de 5 a 50 personas en Castilla y León. Si no es tu caso,
+          <a href="mailto:contacto@marirrodriga-ia.com">escríbenos</a> igualmente: puede que te encaje uno
+          de nuestros productos, que tienen precio cerrado.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PASO 1: EL FORMULARIO ──────────────────────────────────────────── -->
+<main class="as-main" id="paso-form">
+  <div class="as-envoltura">
+
+    <header class="as-intro" id="pedir">
+      <span class="t-eyebrow">Pedir plaza</span>
+      <h2 class="t-h2" style="margin:14px 0 16px">Siete preguntas, <em class="acento">y elegimos fecha</em></h2>
+      <p class="as-honesto">Con esto preparo la primera sesión. Si por lo que me cuentas veo que
+        <strong>el diagnóstico no te va a servir</strong>, te lo digo antes de que pierdas la mañana.</p>
+    </header>
+
+    <form id="as-form" class="as-form" novalidate>
+
+      <fieldset class="as-bloque">
+        <legend class="as-num"><span>1</span> Para poder escribirte</legend>
+        <div class="as-dos">
+          <label class="as-campo">
+            <span>Tu nombre</span>
+            <input type="text" name="nombre" autocomplete="given-name" required>
+          </label>
+          <label class="as-campo">
+            <span>Tu correo</span>
+            <input type="email" name="email" autocomplete="email" required>
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset class="as-bloque">
+        <legend class="as-num"><span>2</span> Tu empresa, y a qué se dedica</legend>
+        <p class="as-ayuda">El nombre y el sector en pocas palabras: «Distribuciones Pérez, bebidas para hostelería».</p>
+        <label class="as-campo">
+          <input type="text" name="sector" placeholder="Empresa y sector" required>
+        </label>
+      </fieldset>
+
+      <fieldset class="as-bloque">
+        <legend class="as-num"><span>3</span> ¿Cuántas personas sois?</legend>
+        <div class="as-ops as-ops-fila">
+          <label class="as-op as-op-corta"><input type="radio" name="personas" value="1_4" required><span>1 a 4</span></label>
+          <label class="as-op as-op-corta"><input type="radio" name="personas" value="5_15"><span>5 a 15</span></label>
+          <label class="as-op as-op-corta"><input type="radio" name="personas" value="16_50"><span>16 a 50</span></label>
+          <label class="as-op as-op-corta"><input type="radio" name="personas" value="mas_50"><span>Más de 50</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="as-bloque">
+        <legend class="as-num"><span>4</span> ¿Dónde está la empresa?</legend>
+        <label class="as-campo">
+          <select name="provincia" required>
+            <option value="">Elige la provincia</option>
+            <option>Ávila</option><option>Burgos</option><option>León</option>
+            <option>Palencia</option><option>Salamanca</option><option>Segovia</option>
+            <option>Soria</option><option>Valladolid</option><option>Zamora</option>
+            <option value="fuera_cyl">Fuera de Castilla y León</option>
+          </select>
+        </label>
+      </fieldset>
+
+      <fieldset class="as-bloque">
+        <legend class="as-num"><span>5</span> ¿Dónde se os va más el tiempo?</legend>
+        <p class="as-ayuda"><strong>Marca todas las que os pasen.</strong></p>
+        <div class="as-ops">
+          <label class="as-op"><input type="checkbox" name="problema" value="pedidos"><span>Pedidos que llegan por todas partes<small>Teléfono, WhatsApp, correo, y alguien los teclea</small></span></label>
+          <label class="as-op"><input type="checkbox" name="problema" value="mensajes"><span>Contestar lo mismo mil veces<small>Clientes que preguntan precio, stock o dónde está lo suyo</small></span></label>
+          <label class="as-op"><input type="checkbox" name="problema" value="papeleo"><span>Facturas, albaranes y papeleo<small>Pasar datos de un documento a un programa</small></span></label>
+          <label class="as-op"><input type="checkbox" name="problema" value="cobros"><span>Perseguir cobros y presupuestos<small>Recordar, insistir, volver a insistir</small></span></label>
+          <label class="as-op"><input type="checkbox" name="problema" value="clientes"><span>Conseguir clientes nuevos<small>O que no se vayan los que ya hay</small></span></label>
+          <label class="as-op"><input type="checkbox" name="problema" value="numeros"><span>Saber cómo va el negocio<small>Informes, cierres, números que llegan tarde</small></span></label>
+          <label class="as-op"><input type="checkbox" name="problema" value="otra"><span>Otra cosa</span></label>
+        </div>
+        <label class="as-campo as-oculto" id="as-otro">
+          <span>Cuéntame cuál</span>
+          <input type="text" name="problema_otro">
+        </label>
+      </fieldset>
+
+      <fieldset class="as-bloque">
+        <legend class="as-num"><span>6</span> ¿Cuántas horas a la semana se van en eso?</legend>
+        <p class="as-ayuda">A ojo, sumando a todo el equipo.</p>
+        <div class="as-ops as-ops-fila">
+          <label class="as-op as-op-corta"><input type="radio" name="horas" value="menos_5" required><span>Menos de 5 h</span></label>
+          <label class="as-op as-op-corta"><input type="radio" name="horas" value="5_15"><span>5 a 15 h</span></label>
+          <label class="as-op as-op-corta"><input type="radio" name="horas" value="15_40"><span>15 a 40 h</span></label>
+          <label class="as-op as-op-corta"><input type="radio" name="horas" value="mas_40"><span>Más de 40 h</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="as-bloque">
+        <legend class="as-num"><span>7</span> ¿Eres quien dirige la empresa?</legend>
+        <div class="as-ops as-ops-fila">
+          <label class="as-op as-op-corta"><input type="radio" name="decide" value="yo" required><span>Sí</span></label>
+          <label class="as-op as-op-corta"><input type="radio" name="decide" value="compartida"><span>Lo dirijo con alguien más</span></label>
+          <label class="as-op as-op-corta"><input type="radio" name="decide" value="otra_persona"><span>No, pero lo propongo yo</span></label>
+        </div>
+      </fieldset>
+
+      <label class="as-privacidad">
+        <input type="checkbox" name="privacidad" required>
+        <span>He leído y acepto la <a href="/privacidad" target="_blank" rel="noopener">política de privacidad</a>.
+          Uso tus respuestas para preparar el diagnóstico y para nada más.</span>
+      </label>
+
+      <p class="as-error" id="as-error" hidden></p>
+
+      <button type="submit" class="btn btn-1 as-enviar" id="as-enviar">Pedir plaza y elegir fecha</button>
+      <p class="t-micro as-pie-form">Primero, una llamada corta para ver si encaja y fijar las sesiones.</p>
+    </form>
+  </div>
+</main>
+
+<!-- ─── PASO 2: LA LLAMADA ─────────────────────────────────────────────── -->
+<main class="as-main as-oculto" id="paso-cita">
+  <div class="as-envoltura">
+    <header class="as-intro">
+      <span class="t-eyebrow as-ok">✓ Recibido</span>
+      <h2 class="t-h2" id="as-titulo-cita">Ahora elige <em class="acento">la primera llamada</em></h2>
+      <p class="t-lead">Media hora para conocernos, ver si el diagnóstico te encaja y poner fecha a
+        las sesiones. Con lo que me has contado ya voy preparado.</p>
+    </header>
+    <div class="as-cal" id="as-cal"></div>
+    <div class="as-respaldo as-oculto" id="as-respaldo">
+      <p>¿No te carga el calendario?</p>
+      <a class="btn btn-1" href="https://cal.com/marirrodriga-ia/llamada" target="_blank" rel="noopener">Abrirlo en otra pestaña</a>
+    </div>
+    <p class="t-micro centrado as-pie-form">
+      ¿Prefieres escribirme? <a href="mailto:contacto@marirrodriga-ia.com">contacto@marirrodriga-ia.com</a>
+    </p>
+  </div>
+</main>
+
+<!-- ─── PIE ─────────────────────────────────────────────────────────────── -->
+<footer class="pie">
+  <div class="envoltura">
+    <div class="pie-fila">
+      <div>
+        <div class="pie-marca">
+          <img src="/assets/img/logo.png" alt="" width="256" height="256">
+          Marirrodriga.IA
+        </div>
+        <p style="margin-top:12px;max-width:280px;font-size:13.5px">Diagnóstico, formación y software con IA para empresas de Castilla y León.</p>
+      </div>
+      <div class="pie-cols">
+        <div class="pie-col">
+          <h4>Productos</h4>
+          <a href="/citia">Negocios de citas</a>
+          <a href="/dentia">Clínicas dentales</a>
+        </div>
+        <div class="pie-col">
+          <h4>IA por departamento</h4>
+          <a href="/atencion-al-cliente">Atención al Cliente</a>
+          <a href="/ventas-y-captacion">Ventas y Captación</a>
+          <a href="/finanzas">Finanzas</a>
+          <a href="/logistica">Logística</a>
+          <a href="/datos-y-direccion">Datos y Dirección</a>
+          <a href="/marketing">Marketing</a>
+          <a href="/posicionamiento-online">Posicionamiento Online</a>
+        </div>
+        <div class="pie-col">
+          <h4>Contacto</h4>
+          <a href="/diagnostico">Diagnóstico gratis</a>
+          <a href="mailto:contacto@marirrodriga-ia.com">contacto@marirrodriga-ia.com</a>
+          <a href="https://wa.me/34675148566" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="/agencia-ia-palencia">Agencia de IA en Palencia</a>
+          <a href="/guias">Guías</a>
+        </div>
+        <div class="pie-col">
+          <h4>Legal</h4>
+          <a href="/aviso-legal">Aviso legal</a>
+          <a href="/privacidad">Privacidad</a>
+        </div>
+      </div>
+    </div>
+    <div class="pie-legal">
+      <span>© 2026 Marirrodriga IA</span>
+      <span>Todos los precios sin IVA, con el IVA indicado junto a cada uno</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function (C, A, L) { var p = function (a, ar) { a.q.push(ar); }; var d = C.document;
+  C.Cal = C.Cal || function () { var cal = C.Cal; var ar = arguments;
+    if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; }
+    if (ar[0] === L) { var api = function () { p(api, arguments); }; var namespace = ar[1]; api.q = api.q || [];
+      if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); }
+      else p(cal, ar); return; }
+    p(cal, ar); };
+})(window, "https://app.cal.com/embed/embed.js", "init");
+Cal("init", { origin: "https://cal.com" });
+
+document.addEventListener('DOMContentLoaded', function () {
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add('dentro'); io.unobserve(x.target); } });
+  }, { threshold: .12, rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.aparece').forEach(function (el) { io.observe(el); });
+  var nav = document.querySelector('.nav');
+  if (nav) {
+    var marca = function () { nav.classList.toggle('pegada', window.scrollY > 24); };
+    marca(); addEventListener('scroll', marca, { passive: true });
+  }
+});
+</script>
+<script src="/assets/diagnostico.js"></script>
+<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/assets/nav.js"></script>
+<script defer src="/assets/origen.js"></script>
+</body>
+</html>

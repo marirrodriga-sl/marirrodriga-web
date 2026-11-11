@@ -1,0 +1,76 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   DIAGNÓSTICO — solo lo que /diagnostico no hereda.
+   El hero y el formulario salen de asesoria.css; las secciones, los pasos y
+   el contraste, de global.css. Aquí van los dos caminos, las condiciones en
+   2×2, las preguntas y el desplegable de provincia.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* El hero de asesoria está pensado para una cabecera de logo, no para el menú
+   fijo: se le da aire arriba para que el titular no quede debajo del menú. */
+.dg-hero { margin-top: 0; padding-top: 120px; }
+/* El titular de asesoria cabe en 12ch; este es más largo y en 12ch salían
+   siete líneas. */
+.dg-hero h1 { max-width: 20ch; }
+.dg-hero .t-lead { max-width: 540px; }
+
+/* ─── LOS DOS CAMINOS ───────────────────────────────────────────────────── */
+.dg-caminos {
+  margin-top: 46px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+}
+.dg-camino {
+  background: var(--white); border: 1px solid var(--line);
+  border-radius: var(--r-panel); padding: 32px 30px;
+}
+.dg-camino-tag {
+  display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--purple); margin-bottom: 10px;
+}
+.dg-camino h3 {
+  font-family: var(--font-head); font-size: 26px; font-weight: 600;
+  letter-spacing: -.015em; line-height: 1.2; margin-bottom: 12px;
+}
+.dg-camino p { font-size: 15px; line-height: 1.7; color: var(--ink-2); }
+.dg-precio {
+  margin-top: 16px; font-weight: 650; color: var(--ink) !important;
+}
+.dg-precio + .dg-precio { margin-top: 6px; }
+.dg-precio .iva {
+  display: block; font-style: normal; font-weight: 500;
+  font-size: 13px; color: var(--ink-3);
+}
+
+/* ─── CONDICIONES: 2×2 y no 3 columnas ─────────────────────────────────── */
+.dg-condiciones { grid-template-columns: 1fr 1fr; }
+.dg-condiciones a { color: var(--purple); text-decoration: underline; }
+
+/* ─── PREGUNTAS ─────────────────────────────────────────────────────────── */
+.dg-faq details {
+  border-bottom: 1px solid var(--line); padding: 18px 0;
+}
+.dg-faq summary {
+  cursor: pointer; list-style: none; font-weight: 650; font-size: 17px;
+  color: var(--ink); position: relative; padding-right: 30px;
+}
+.dg-faq summary::-webkit-details-marker { display: none; }
+.dg-faq summary::after {
+  content: '+'; position: absolute; right: 4px; top: -2px;
+  font-size: 22px; font-weight: 400; color: var(--purple); transition: transform .2s;
+}
+.dg-faq details[open] summary::after { transform: rotate(45deg); }
+.dg-faq p { margin-top: 12px; font-size: 15.5px; line-height: 1.7; color: var(--ink-2); }
+.dg-faq a { color: var(--purple); text-decoration: underline; }
+
+/* ─── DESPLEGABLE DE PROVINCIA (asesoria.css solo pinta inputs) ────────── */
+.as-campo select {
+  width: 100%; font-family: var(--font-body); font-size: 16px; color: var(--ink);
+  background: var(--white); border: 1px solid rgba(99,50,144,.16);
+  border-radius: 12px; padding: 14px 16px; appearance: auto;
+}
+.as-campo select:focus {
+  outline: none; border-color: var(--purple);
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, .12);
+}
+
+@media (max-width: 760px) {
+  .dg-caminos, .dg-condiciones { grid-template-columns: 1fr; }
+}

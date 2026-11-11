@@ -76,9 +76,9 @@ const DEPTOS_MENU = [
 /* Rutas absolutas a la home: desde una landing tienen que llevar allí y bajar */
 const SOBRE_MENU = [
   ['Quiénes somos', '/#quienes', 'Marco escribe el código, Isma monta la IA'],
-  ['Cómo funciona', '/#como', 'Se empieza por una pieza, y solo crece si funciona'],
+  ['Cómo funciona', '/#como', 'Diagnóstico, y después formar al equipo o montar el software'],
   ['Nuestros proyectos', '/#proyectos', 'Lo que hemos montado cuando nos lo han pedido'],
-  ['Contacto', '/#contacto', 'Media hora gratis, y te decimos por dónde empezar'],
+  ['Diagnóstico gratis', '/diagnostico', 'Hasta tres sesiones para encontrar qué se puede automatizar'],
 ];
 
 const itemSector = ([n, r, d, oficios]) => `<div class="nav-sector">
@@ -104,10 +104,10 @@ const nav = (anclas = ANCLAS) => `<nav class="nav">
   </a>
   <div class="nav-links">
     <div class="nav-grupo">
-      <button class="nav-grupo-btn" type="button" aria-expanded="false" aria-controls="menu-sectores">Software para tu negocio</button>
+      <button class="nav-grupo-btn" type="button" aria-expanded="false" aria-controls="menu-sectores">Productos</button>
       <div class="nav-panel nav-panel-sectores" id="menu-sectores">
         ${SECTORES_MENU.map(itemSector).join('\n        ')}
-        <a class="nav-panel-pie" href="${CAL}" target="_blank" rel="noopener">Si el tuyo no está aquí no es que no lo hagamos: es que se monta a tu medida →</a>
+        <a class="nav-panel-pie" href="/diagnostico">Programas con precio cerrado. Si lo tuyo es más grande, empieza por el diagnóstico →</a>
       </div>
     </div>
     <div class="nav-grupo">
@@ -125,15 +125,15 @@ const nav = (anclas = ANCLAS) => `<nav class="nav">
     </div>
     ${anclas.map(([h, t]) => `<a class="nav-link" href="${h}">${t}</a>`).join('\n    ')}
   </div>
-  <a class="btn btn-1 nav-cta" href="${CAL}" target="_blank" rel="noopener">Pide una demo</a>
+  <a class="btn btn-1 nav-cta" href="/diagnostico">Diagnóstico gratis</a>
   <button class="nav-burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-movil">
     <i></i><i></i><i></i>
   </button>
 </nav>
 <div class="nav-movil" id="nav-movil">
-  <h5>Software para tu negocio</h5>
+  <h5>Productos</h5>
   ${SECTORES_MENU.map(([n, r, d]) => itemDepto([n, r, d])).join('\n  ')}
-  <a class="nav-movil-nota" href="${CAL}" target="_blank" rel="noopener">Si el tuyo no está aquí no es que no lo hagamos: es que se monta a tu medida →</a>
+  <a class="nav-movil-nota" href="/diagnostico">Programas con precio cerrado. Si lo tuyo es más grande, empieza por el diagnóstico →</a>
   <h5>IA por departamento</h5>
   <p class="nav-movil-intro">Añade IA a un departamento de tu negocio: para aliviar el trabajo, para hacerlo mejor, o para dejar de hacerlo tú.</p>
   ${DEPTOS_MENU.map(itemDepto).join('\n  ')}
@@ -141,7 +141,7 @@ const nav = (anclas = ANCLAS) => `<nav class="nav">
   ${SOBRE_MENU.map(itemDepto).join('\n  ')}
   ${anclas.length ? `<h5>En esta página</h5>
   ${anclas.map(([h, t]) => `<a class="nav-item" href="${h}"><b>${t}</b></a>`).join('\n  ')}` : ''}
-  <a class="btn btn-1" href="${CAL}" target="_blank" rel="noopener">Pide una demo</a>
+  <a class="btn btn-1" href="/diagnostico">Diagnóstico gratis</a>
 </div>`;
 
 const hero = p => `<header class="hero-s" style="--hero:url('/assets/img/${p.hero}')">
@@ -274,13 +274,28 @@ const faq = p => `<section class="seccion seccion-cream" id="preguntas">
   </div>
 </section>`;
 
-const cierre = p => `<section class="cierre">
+/* El cierre tiene dos versiones desde el 11-11-2026. Los productos (Citia,
+   Dentia) siguen cerrando con la demo de media hora: tienen precio cerrado y
+   se enseñan. Lo demás (departamentos, Palencia, guías) cierra con el
+   diagnóstico, que es la puerta de la web grande. */
+const cierre = (p, modo = 'diagnostico') => modo === 'producto'
+  ? `<section class="cierre">
   <div class="envoltura-txt">
     <h2 class="t-h2">Media hora, y te decimos<br>si esto te encaja.</h2>
     <p>O que no te encaja. Si con lo que ya tienes te apañas, te lo decimos en la llamada y nos ahorramos los dos el tiempo.</p>
     <div class="hero-botones">
       <a class="btn btn-2" href="${CAL}" target="_blank" rel="noopener">Pide una demo</a>
       <a class="btn btn-3" style="color:rgba(255,255,255,.6)" href="/">Ver todo lo que montamos →</a>
+    </div>
+  </div>
+</section>`
+  : `<section class="cierre">
+  <div class="envoltura-txt">
+    <h2 class="t-h2">Hasta tres sesiones, y sabrás<br>qué se puede quitar de encima.</h2>
+    <p>Diagnóstico gratis para empresas de 5 a 50 personas en Castilla y León. Sales con un informe: qué tareas, cuántas horas y cuánto cuesta quitarlas. Dos plazas a la semana.</p>
+    <div class="hero-botones">
+      <a class="btn btn-2" href="/diagnostico">Pedir plaza</a>
+      <a class="btn btn-3" style="color:rgba(255,255,255,.6)" href="/diagnostico#sesiones">Cómo es el diagnóstico →</a>
     </div>
   </div>
 </section>`;
@@ -303,7 +318,7 @@ const pie = () => `<footer class="pie">
       </div>
       <div class="pie-cols">
         <div class="pie-col">
-          <h4>Software</h4>
+          <h4>Productos</h4>
           ${SECTORES_MENU.map(([n, r]) => `<a href="${r}">${n}</a>`).join('\n          ')}
         </div>
         <div class="pie-col">
@@ -318,7 +333,7 @@ const pie = () => `<footer class="pie">
         </div>
         <div class="pie-col">
           <h4>Contacto</h4>
-          <a href="${CAL}" target="_blank" rel="noopener">Asesoría gratuita</a>
+          <a href="/diagnostico">Diagnóstico gratis</a>
           <a href="mailto:contacto@marirrodriga-ia.com">contacto@marirrodriga-ia.com</a>
           <a href="${WA}" target="_blank" rel="noopener">WhatsApp</a>
           <a href="/agencia-ia-palencia">Agencia de IA en Palencia</a>
@@ -411,7 +426,7 @@ ${precio(p, tramos)}
 
 ${faq(p)}
 
-${cierre(p)}
+${cierre(p, 'producto')}
 
 ${pie()}
 
