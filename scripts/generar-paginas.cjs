@@ -292,7 +292,7 @@ const cierre = (p, modo = 'diagnostico') => modo === 'producto'
       `<a class="btn btn-1" href="${CAL}" target="_blank" rel="noopener">Pide una demo</a>`,
       '<a class="cierre-d-enlace" href="/agentes">Ver todo lo que hacemos</a>')
   : bloqueCierre('Empieza por el diagnóstico',
-      'Hasta tres sesiones en tu empresa y un informe con qué tareas, cuántas horas y cuánto cuesta quitarlas. Para empresas de 5 a 50 personas en Castilla y León. Quedan solo <span class="plazas-n">11</span> plazas a coste 0; después, 350 €.',
+      'Hasta tres sesiones en tu empresa y un informe con qué tareas, cuántas horas y cuánto cuesta quitarlas. Para empresas de 5 a 50 personas en Castilla y León. Quedan solo <span class="plazas-n">10</span> plazas a coste 0; después, 350 €.',
       '<a class="btn btn-1" href="/#solicitar">Pedir plaza</a>',
       `<a class="cierre-d-enlace" href="${WA}" target="_blank" rel="noopener">Escribir por WhatsApp</a>`);
 

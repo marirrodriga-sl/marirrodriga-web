@@ -56,7 +56,7 @@ const PALENCIA = {
 
     <h2>Cómo empezamos</h2>
     <ol>
-      <li><strong>Un diagnóstico gratis.</strong> Hasta tres sesiones de unas dos horas: con quien dirige, con el equipo y mirando el trabajo. Es para empresas de 5 a 50 personas en Castilla y León, y <a href="/#solicitar">quedan solo <span class="plazas-n">11</span> plazas a coste 0</a>; después costará 350 €.</li>
+      <li><strong>Un diagnóstico gratis.</strong> Hasta tres sesiones de unas dos horas: con quien dirige, con el equipo y mirando el trabajo. Es para empresas de 5 a 50 personas en Castilla y León, y <a href="/#solicitar">quedan solo <span class="plazas-n">10</span> plazas a coste 0</a>; después costará 350 €.</li>
       <li><strong>Un informe con dos caminos.</strong> Para cada tarea que merezca la pena: formar a tu equipo para que la resuelva, o montar el software que la haga sola. Con las horas y el precio escritos. Y si no compensa, lo pone.</li>
       <li><strong>Precio cerrado antes de empezar.</strong> La instalación se paga 50 % al empezar y 50 % al entregar.</li>
       <li><strong>Sin permanencia.</strong> Te vas cuando quieras, avisando con 30 días.</li>
