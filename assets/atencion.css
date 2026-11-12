@@ -609,6 +609,7 @@ h1.hero-pill i { display: inline-block; vertical-align: middle; margin: -2px 8px
 /* Cada canal con su color, como en el original */
 .flujo-ico-wa     { background: #e7f6ec; } .flujo-ico-wa svg     { stroke: #1f9d55; }
 .flujo-ico-tg     { background: #e6f2fb; } .flujo-ico-tg svg     { stroke: #2b8ccc; }
+.flujo-ico-ig     { background: #fdeef4; } .flujo-ico-ig svg     { stroke: #c13584; }
 .flujo-ico-web    { background: #f0eefa; } .flujo-ico-web svg    { stroke: #6d4bb8; }
 .flujo-ico-ok     { background: #e7f6ec; } .flujo-ico-ok svg     { stroke: #1f9d55; }
 .flujo-ico-humano { background: #fdf0e4; } .flujo-ico-humano svg { stroke: #c47a24; }

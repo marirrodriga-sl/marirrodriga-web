@@ -124,8 +124,8 @@ const noEsBot = `<section class="seccion">
               WhatsApp
             </div>
             <div class="flujo-nodo flujo-disp">
-              <i class="flujo-ico flujo-ico-tg"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 4L2.5 11.2l5.4 1.9L19 6.5l-8.6 8.2.4 5.3 2.8-3.7 4.6 3.3z"/></svg></i>
-              Telegram
+              <i class="flujo-ico flujo-ico-ig"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.2 6.8h.01"/></svg></i>
+              Instagram
             </div>
             <div class="flujo-nodo flujo-disp">
               <i class="flujo-ico flujo-ico-web"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v11H8l-4 4z"/></svg></i>

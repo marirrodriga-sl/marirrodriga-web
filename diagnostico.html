@@ -12,8 +12,10 @@
      informe con dos caminos: formar al equipo o montar el software.
 
      LOS FILTROS SON PARTE DEL MENSAJE: 5–50 personas, Castilla y León, quien
-     dirige participa, dos plazas a la semana. La escasez tiene que ser real:
-     si un mes se llenan, se dice.
+     dirige participa, y SOLO 11 PLAZAS A COSTE 0 (decidido el 11-11-2026):
+     después cuesta 350 € + IVA. La escasez tiene que ser real: el número
+     (clase plazas-n, en index y aquí) se baja con cada diagnóstico hecho, y
+     al llegar a 0 se cobra. Ver README.
 
      Escrita a mano, como index y asesoria. El menú lo pone
      scripts/sincronizar-menu.cjs: si cambias nav(), córrelo.
@@ -66,8 +68,8 @@
       {
         "@type": "FAQPage",
         "mainEntity": [
-          { "@type": "Question", "name": "¿De verdad es gratis?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. Las sesiones y el informe no se cobran, y el informe es tuyo aunque no contrates nada. Lo que se paga, si decides seguir, es la formación o el software, con el precio escrito en el propio informe." } },
-          { "@type": "Question", "name": "¿Por qué solo dos plazas a la semana?", "acceptedAnswer": { "@type": "Answer", "text": "Porque cada diagnóstico lo hace la misma persona que luego monta el trabajo, y son hasta seis horas por empresa. No da para más sin hacerlo peor." } },
+          { "@type": "Question", "name": "¿De verdad es gratis?", "acceptedAnswer": { "@type": "Answer", "text": "Sí, para las 10 primeras empresas: las sesiones y el informe no se cobran, y el informe es tuyo aunque no sigas con nosotros. Después, el diagnóstico costará 350 € + 73,50 € de IVA. Lo que se paga, si decides seguir, es la formación o el software, con el precio escrito en el propio informe." } },
+          { "@type": "Question", "name": "¿Por qué solo 11 plazas gratis?", "acceptedAnswer": { "@type": "Answer", "text": "Porque cada diagnóstico lo hace la misma persona que luego monta el trabajo, y son hasta seis horas por empresa. Las 10 primeras empresas no pagan; después, el diagnóstico costará 350 € + 73,50 € de IVA." } },
           { "@type": "Question", "name": "¿Qué pasa con los datos de mi empresa?", "acceptedAnswer": { "@type": "Answer", "text": "Antes de la primera sesión firmamos un compromiso de confidencialidad. Tomamos notas de cómo se trabaja y de cifras agregadas; no nos llevamos copias de datos de tus clientes." } },
           { "@type": "Question", "name": "¿Y si mi empresa está fuera de Castilla y León o es más pequeña?", "acceptedAnswer": { "@type": "Answer", "text": "El diagnóstico gratis es para empresas de 5 a 50 personas en Castilla y León. Si no es tu caso, escríbenos igualmente: puede que te encaje uno de nuestros productos, que tienen precio cerrado." } }
         ]
@@ -79,10 +81,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/base.css">
+  <link rel="stylesheet" href="/assets/base.css?v=20261112c">
   <link rel="stylesheet" href="/assets/global.css">
   <link rel="stylesheet" href="/assets/asesoria.css">
-  <link rel="stylesheet" href="/assets/diagnostico.css">
+  <link rel="stylesheet" href="/assets/diagnostico.css?v=20261112">
 </head>
 <body>
 
@@ -92,77 +94,27 @@
     <span>Marirrodriga<b>.IA</b></span>
   </a>
   <div class="nav-links">
-    <div class="nav-grupo">
-      <button class="nav-grupo-btn" type="button" aria-expanded="false" aria-controls="menu-sectores">Productos</button>
-      <div class="nav-panel nav-panel-sectores" id="menu-sectores">
-        <div class="nav-sector">
-          <a class="nav-item" href="/citia"><b>Negocios de citas</b><span>Agenda, reserva sin registro y recordatorios</span></a>
-          <div class="nav-oficios">
-            <a href="/citia#peluqueria">Peluquería</a><a href="/citia#estetica">Estética</a><a href="/citia#unas">Uñas</a><a href="/citia#tatuajes">Tatuajes</a><a href="/citia#fisioterapia">Fisioterapia</a><a href="/citia#podologia">Podología</a>
-          </div>
-        </div>
-        <div class="nav-sector">
-          <a class="nav-item" href="/dentia"><b>Clínicas dentales</b><span>Odontograma, historia clínica y consentimientos</span></a>
-          
-        </div>
-        <a class="nav-panel-pie" href="/diagnostico">Programas con precio cerrado. Si lo tuyo es más grande, empieza por el diagnóstico →</a>
-      </div>
-    </div>
-    <div class="nav-grupo">
-      <button class="nav-grupo-btn" type="button" aria-expanded="false" aria-controls="menu-departamentos">IA por departamento</button>
-      <div class="nav-panel" id="menu-departamentos">
-        <p class="nav-panel-intro">Añade IA a un departamento de tu negocio: para aliviar el trabajo, para hacerlo mejor, o para dejar de hacerlo tú.</p>
-        <a class="nav-item" href="/atencion-al-cliente"><b>Atención al Cliente</b><span>Contesta, mira tu agenda y cierra la cita</span></a>
-        <a class="nav-item" href="/ventas-y-captacion"><b>Ventas y Captación</b><span>Busca clientes y persigue los presupuestos</span></a>
-        <a class="nav-item" href="/finanzas"><b>Finanzas</b><span>Factura sin abrir el programa y persigue lo vencido</span></a>
-        <a class="nav-item" href="/logistica"><b>Logística</b><span>Persigue al transportista y avisa antes de que pregunten</span></a>
-        <a class="nav-item" href="/datos-y-direccion"><b>Datos y Dirección</b><span>Por qué ha ido bien el mes, no solo que ha ido bien</span></a>
-        <a class="nav-item" href="/marketing"><b>Marketing</b><span>Publicaciones, fotos y vídeos con tu marca</span></a>
-        <a class="nav-item" href="/posicionamiento-online"><b>Posicionamiento Online</b><span>Que te encuentren, y que lo que vean esté bien</span></a>
-      </div>
-    </div>
-    <div class="nav-grupo">
-      <button class="nav-grupo-btn" type="button" aria-expanded="false" aria-controls="menu-sobre">Sobre nosotros</button>
-      <div class="nav-panel" id="menu-sobre">
-        <a class="nav-item" href="/#quienes"><b>Quiénes somos</b><span>Marco escribe el código, Isma monta la IA</span></a>
-        <a class="nav-item" href="/#como"><b>Cómo funciona</b><span>Diagnóstico, y después formar al equipo o montar el software</span></a>
-        <a class="nav-item" href="/#proyectos"><b>Nuestros proyectos</b><span>Lo que hemos montado cuando nos lo han pedido</span></a>
-        <a class="nav-item" href="/diagnostico"><b>Diagnóstico gratis</b><span>Hasta tres sesiones para encontrar qué se puede automatizar</span></a>
-      </div>
-    </div>
+    <a class="nav-link nav-seccion" href="/">Trabaja con nosotros</a>
+    <a class="nav-link nav-seccion" href="/agentes">Qué hacemos</a>
+    <a class="nav-link nav-seccion" href="/conocenos">Conócenos</a>
     <a class="nav-link" href="#sesiones">Cómo es</a>
     <a class="nav-link" href="#informe">Qué te llevas</a>
     <a class="nav-link" href="#preguntas">Preguntas</a>
   </div>
-  <a class="btn btn-1 nav-cta" href="/diagnostico">Diagnóstico gratis</a>
+  <a class="btn btn-1 nav-cta" href="/#solicitar">Diagnóstico gratis</a>
   <button class="nav-burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-movil">
     <i></i><i></i><i></i>
   </button>
 </nav>
 <div class="nav-movil" id="nav-movil">
-  <h5>Productos</h5>
-  <a class="nav-item" href="/citia"><b>Negocios de citas</b><span>Agenda, reserva sin registro y recordatorios</span></a>
-  <a class="nav-item" href="/dentia"><b>Clínicas dentales</b><span>Odontograma, historia clínica y consentimientos</span></a>
-  <a class="nav-movil-nota" href="/diagnostico">Programas con precio cerrado. Si lo tuyo es más grande, empieza por el diagnóstico →</a>
-  <h5>IA por departamento</h5>
-  <p class="nav-movil-intro">Añade IA a un departamento de tu negocio: para aliviar el trabajo, para hacerlo mejor, o para dejar de hacerlo tú.</p>
-  <a class="nav-item" href="/atencion-al-cliente"><b>Atención al Cliente</b><span>Contesta, mira tu agenda y cierra la cita</span></a>
-  <a class="nav-item" href="/ventas-y-captacion"><b>Ventas y Captación</b><span>Busca clientes y persigue los presupuestos</span></a>
-  <a class="nav-item" href="/finanzas"><b>Finanzas</b><span>Factura sin abrir el programa y persigue lo vencido</span></a>
-  <a class="nav-item" href="/logistica"><b>Logística</b><span>Persigue al transportista y avisa antes de que pregunten</span></a>
-  <a class="nav-item" href="/datos-y-direccion"><b>Datos y Dirección</b><span>Por qué ha ido bien el mes, no solo que ha ido bien</span></a>
-  <a class="nav-item" href="/marketing"><b>Marketing</b><span>Publicaciones, fotos y vídeos con tu marca</span></a>
-  <a class="nav-item" href="/posicionamiento-online"><b>Posicionamiento Online</b><span>Que te encuentren, y que lo que vean esté bien</span></a>
-  <h5>Sobre nosotros</h5>
-  <a class="nav-item" href="/#quienes"><b>Quiénes somos</b><span>Marco escribe el código, Isma monta la IA</span></a>
-  <a class="nav-item" href="/#como"><b>Cómo funciona</b><span>Diagnóstico, y después formar al equipo o montar el software</span></a>
-  <a class="nav-item" href="/#proyectos"><b>Nuestros proyectos</b><span>Lo que hemos montado cuando nos lo han pedido</span></a>
-  <a class="nav-item" href="/diagnostico"><b>Diagnóstico gratis</b><span>Hasta tres sesiones para encontrar qué se puede automatizar</span></a>
+  <a class="nav-item" href="/"><b>Trabaja con nosotros</b><span>Diagnóstico gratis, formación o software a medida</span></a>
+  <a class="nav-item" href="/agentes"><b>Qué hacemos</b><span>Los agentes que montamos, uno por departamento</span></a>
+  <a class="nav-item" href="/conocenos"><b>Conócenos</b><span>Quién está detrás, de dónde somos y lo que hemos montado</span></a>
   <h5>En esta página</h5>
   <a class="nav-item" href="#sesiones"><b>Cómo es</b></a>
   <a class="nav-item" href="#informe"><b>Qué te llevas</b></a>
   <a class="nav-item" href="#preguntas"><b>Preguntas</b></a>
-  <a class="btn btn-1" href="/diagnostico">Diagnóstico gratis</a>
+  <a class="btn btn-1" href="/#solicitar">Diagnóstico gratis</a>
 </div>
 
 <!-- ─── HERO ────────────────────────────────────────────────────────────── -->
@@ -175,7 +127,7 @@
       sales con un informe: <strong>qué tareas se pueden quitar, cuántas horas cuestan hoy y
       cómo quitarlas.</strong> Gratis, y el informe es tuyo aunque no sigas con nosotros.</p>
     <a class="btn btn-1 as-hero-btn" href="#pedir">Pedir plaza</a>
-    <p class="t-micro as-hero-pie">Dos plazas a la semana · empresas de 5 a 50 personas</p>
+    <p class="t-micro as-hero-pie">Quedan solo <span class="plazas-n">11</span> plazas a coste 0 · después, 350 € + 73,50 € de IVA</p>
   </div>
 </header>
 
@@ -228,15 +180,14 @@
         <h3>Formar a tu equipo</h3>
         <p>Les enseñamos a resolver esa tarea con IA ellos mismos, con sus programas y sus casos.
           Tiene sentido cuando el equipo tiene tiempo para aprender y la tarea cambia a menudo.</p>
-        <p class="dg-precio">Desde 480 € por sesión de 4 horas<em class="iva">+ 100,80 € de IVA · hasta 8 personas; de 9 a 20, 720 € + 151,20 € de IVA</em></p>
+        <p class="dg-precio">Desde 300 € por sesión de 4 horas<em class="iva">+ 63 € de IVA. El precio final depende del tamaño del grupo</em></p>
       </article>
       <article class="dg-camino">
         <span class="dg-camino-tag">Camino 2</span>
         <h3>Montar el software</h3>
         <p>Lo construimos nosotros y la tarea se hace sola: conectado a lo que ya usas, con alguien
           que lo vigila. Tiene sentido cuando la tarea es repetitiva y se come horas cada semana.</p>
-        <p class="dg-precio">Montaje desde 1.500 €<em class="iva">+ 315 € de IVA</em></p>
-        <p class="dg-precio">y cuota desde 450 €/mes por departamento<em class="iva">+ 94,50 € de IVA</em></p>
+        <p class="dg-precio">Montaje y cuota mensual<em class="iva">Con el precio cerrado en el informe: depende de lo que haya que montar</em></p>
       </article>
     </div>
 
@@ -269,9 +220,9 @@
           que no movemos.</p>
       </div>
       <div class="contraste-celda">
-        <h3>Dos plazas a la semana</h3>
-        <p>Cada diagnóstico lo hace quien después monta el trabajo. <strong>No damos para más</strong>
-          sin hacerlo peor.</p>
+        <h3>Solo 11 plazas a coste 0</h3>
+        <p>Cada diagnóstico lo hace quien después monta el trabajo, así que van de uno en uno.
+          <strong>Cuando se acaben las 10, costará 350 €</strong> + 73,50 € de IVA.</p>
       </div>
     </div>
   </div>
@@ -287,9 +238,7 @@
     <div class="dg-faq">
       <details>
         <summary>¿De verdad es gratis?</summary>
-        <p>Sí. Las sesiones y el informe no se cobran, y el informe es tuyo aunque no contrates nada.
-          Lo que se paga, si decides seguir, es la formación o el software, con el precio escrito en
-          el propio informe. Nada de presupuestos que aparecen después.</p>
+        <p>Sí, para las 10 primeras empresas: las sesiones y el informe no se cobran, y el informe es tuyo aunque no sigas con nosotros. Después, el diagnóstico costará 350 € + 73,50 € de IVA. Lo que se paga, si decides seguir, es la formación o el software, con el precio escrito en el propio informe.</p>
       </details>
       <details>
         <summary>¿A qué me compromete?</summary>
@@ -329,6 +278,7 @@
     </header>
 
     <form id="as-form" class="as-form" novalidate>
+      <p class="as-ayuda as-obligatorio">Todas las preguntas son obligatorias.</p>
 
       <fieldset class="as-bloque">
         <legend class="as-num"><span>1</span> Para poder escribirte</legend>
@@ -367,25 +317,74 @@
         <label class="as-campo">
           <select name="provincia" required>
             <option value="">Elige la provincia</option>
-            <option>Ávila</option><option>Burgos</option><option>León</option>
-            <option>Palencia</option><option>Salamanca</option><option>Segovia</option>
-            <option>Soria</option><option>Valladolid</option><option>Zamora</option>
-            <option value="fuera_cyl">Fuera de Castilla y León</option>
+            <option>Álava</option>
+            <option>Albacete</option>
+            <option>Alicante</option>
+            <option>Almería</option>
+            <option>Asturias</option>
+            <option>Ávila</option>
+            <option>Badajoz</option>
+            <option>Baleares</option>
+            <option>Barcelona</option>
+            <option>Bizkaia</option>
+            <option>Burgos</option>
+            <option>Cáceres</option>
+            <option>Cádiz</option>
+            <option>Cantabria</option>
+            <option>Castellón</option>
+            <option>Ceuta</option>
+            <option>Ciudad Real</option>
+            <option>Córdoba</option>
+            <option>A Coruña</option>
+            <option>Cuenca</option>
+            <option>Gipuzkoa</option>
+            <option>Girona</option>
+            <option>Granada</option>
+            <option>Guadalajara</option>
+            <option>Huelva</option>
+            <option>Huesca</option>
+            <option>Jaén</option>
+            <option>La Rioja</option>
+            <option>Las Palmas</option>
+            <option>León</option>
+            <option>Lleida</option>
+            <option>Lugo</option>
+            <option>Madrid</option>
+            <option>Málaga</option>
+            <option>Melilla</option>
+            <option>Murcia</option>
+            <option>Navarra</option>
+            <option>Ourense</option>
+            <option>Palencia</option>
+            <option>Pontevedra</option>
+            <option>Salamanca</option>
+            <option>Santa Cruz de Tenerife</option>
+            <option>Segovia</option>
+            <option>Sevilla</option>
+            <option>Soria</option>
+            <option>Tarragona</option>
+            <option>Teruel</option>
+            <option>Toledo</option>
+            <option>Valencia</option>
+            <option>Valladolid</option>
+            <option>Zamora</option>
+            <option>Zaragoza</option>
           </select>
         </label>
       </fieldset>
 
       <fieldset class="as-bloque">
-        <legend class="as-num"><span>5</span> ¿Dónde se os va más el tiempo?</legend>
-        <p class="as-ayuda"><strong>Marca todas las que os pasen.</strong></p>
+        <legend class="as-num"><span>5</span> ¿Qué departamento os da más trabajo?</legend>
+        <p class="as-ayuda">Marca uno o varios.</p>
         <div class="as-ops">
-          <label class="as-op"><input type="checkbox" name="problema" value="pedidos"><span>Pedidos que llegan por todas partes<small>Teléfono, WhatsApp, correo, y alguien los teclea</small></span></label>
-          <label class="as-op"><input type="checkbox" name="problema" value="mensajes"><span>Contestar lo mismo mil veces<small>Clientes que preguntan precio, stock o dónde está lo suyo</small></span></label>
-          <label class="as-op"><input type="checkbox" name="problema" value="papeleo"><span>Facturas, albaranes y papeleo<small>Pasar datos de un documento a un programa</small></span></label>
-          <label class="as-op"><input type="checkbox" name="problema" value="cobros"><span>Perseguir cobros y presupuestos<small>Recordar, insistir, volver a insistir</small></span></label>
-          <label class="as-op"><input type="checkbox" name="problema" value="clientes"><span>Conseguir clientes nuevos<small>O que no se vayan los que ya hay</small></span></label>
-          <label class="as-op"><input type="checkbox" name="problema" value="numeros"><span>Saber cómo va el negocio<small>Informes, cierres, números que llegan tarde</small></span></label>
-          <label class="as-op"><input type="checkbox" name="problema" value="otra"><span>Otra cosa</span></label>
+          <label class="as-op"><input type="checkbox" name="problema" value="procesos"><span>Procesos manuales internos<small>Copiar datos de un sitio a otro, hojas de cálculo, tareas repetidas</small></span></label>
+          <label class="as-op"><input type="checkbox" name="problema" value="atencion"><span>Atención al cliente<small>WhatsApp, teléfono y correo: las mismas preguntas todo el día</small></span></label>
+          <label class="as-op"><input type="checkbox" name="problema" value="pedidos"><span>Pedidos y logística<small>Pedidos que llegan por todas partes, entregas, incidencias</small></span></label>
+          <label class="as-op"><input type="checkbox" name="problema" value="finanzas"><span>Finanzas y administración<small>Facturas, albaranes, cobros</small></span></label>
+          <label class="as-op"><input type="checkbox" name="problema" value="ventas"><span>Ventas y captación<small>Presupuestos, seguimiento, clientes nuevos</small></span></label>
+          <label class="as-op"><input type="checkbox" name="problema" value="marketing"><span>Marketing y presencia online<small>Redes, web, ficha de Google</small></span></label>
+          <label class="as-op"><input type="checkbox" name="problema" value="datos"><span>Datos y dirección<small>Informes, cierres, números que llegan tarde</small></span></label>
+          <label class="as-op"><input type="checkbox" name="problema" value="otra"><span>Otro</span></label>
         </div>
         <label class="as-campo as-oculto" id="as-otro">
           <span>Cuéntame cuál</span>
@@ -421,7 +420,7 @@
 
       <p class="as-error" id="as-error" hidden></p>
 
-      <button type="submit" class="btn btn-1 as-enviar" id="as-enviar">Pedir plaza y elegir fecha</button>
+      <button type="submit" class="btn btn-1 as-enviar" id="as-enviar">Pedir plaza</button>
       <p class="t-micro as-pie-form">Primero, una llamada corta para ver si encaja y fijar las sesiones.</p>
     </form>
   </div>
@@ -461,11 +460,12 @@
       <div class="pie-cols">
         <div class="pie-col">
           <h4>Productos</h4>
+          <a href="/agentes">Nuestros agentes</a>
           <a href="/citia">Negocios de citas</a>
           <a href="/dentia">Clínicas dentales</a>
         </div>
         <div class="pie-col">
-          <h4>IA por departamento</h4>
+          <h4>Agentes por departamento</h4>
           <a href="/atencion-al-cliente">Atención al Cliente</a>
           <a href="/ventas-y-captacion">Ventas y Captación</a>
           <a href="/finanzas">Finanzas</a>
@@ -479,6 +479,7 @@
           <a href="/diagnostico">Diagnóstico gratis</a>
           <a href="mailto:contacto@marirrodriga-ia.com">contacto@marirrodriga-ia.com</a>
           <a href="https://wa.me/34675148566" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="/conocenos">Conócenos</a>
           <a href="/agencia-ia-palencia">Agencia de IA en Palencia</a>
           <a href="/guias">Guías</a>
         </div>
@@ -519,9 +520,12 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 </script>
+<script src="/assets/guardia-form.js"></script>
+<script src="/assets/provincias.js"></script>
 <script src="/assets/diagnostico.js"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script defer src="/assets/nav.js"></script>
+<script defer src="/assets/plazas.js"></script>
 <script defer src="/assets/origen.js"></script>
 </body>
 </html>

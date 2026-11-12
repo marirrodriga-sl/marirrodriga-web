@@ -1,0 +1,301 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   HOME — registro de consultora (11-11-2026). Sustituye a global.css en la
+   home; global.css sigue vivo porque lo usa /diagnostico.
+
+   Reglas de esta página:
+   - El morado es SOLO de los botones. Nada de cursivas moradas en titulares.
+   - Titulares en Cormorant, en frase normal. Sin etiquetas en mayúsculas.
+   - Una sola cosa memorable: la hoja de encargo de la cabecera. El resto,
+     callado: filas con raya fina en vez de tarjetas, y dos columnas
+     (título a la izquierda, contenido a la derecha) como un informe.
+   - Sin animaciones de entrada.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.home { background: var(--cream); }
+
+.hm-ancho  { width: 100%; max-width: var(--w-wide); margin: 0 auto; padding: 0 28px; }
+.hm-sec    { padding: 88px 0; border-top: 1px solid var(--line-soft); }
+.hm-sec-papel { background: #fff; }
+
+.hm-h2 {
+  font-family: var(--font-head); font-weight: 500;
+  font-size: clamp(30px, 3.1vw, 40px); line-height: 1.12; letter-spacing: -.015em;
+  color: var(--ink); margin-bottom: 14px;
+}
+.hm-p        { font-size: 16.5px; line-height: 1.65; color: var(--ink-2); max-width: 40ch; }
+.hm-p-corta  { max-width: 64ch; margin-bottom: 40px; }
+
+/* Título y entradilla ARRIBA, contenido debajo. Hasta el 11-11 el título iba
+   a la izquierda y el contenido a la derecha: con contenido largo quedaba un
+   hueco vacío debajo del título, y a Ismael no le gustó. */
+.hm-dos { display: block; }
+.hm-dos-izq { margin-bottom: 34px; }
+.hm-dos-izq .hm-p { max-width: 64ch; }
+
+.hm-enlace {
+  font-weight: 600; font-size: 15px; color: var(--ink);
+  text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px;
+}
+.hm-enlace:hover { color: var(--purple); }
+
+:where(.home) a:focus-visible, :where(.home) summary:focus-visible {
+  outline: 2px solid var(--purple); outline-offset: 3px; border-radius: 4px;
+}
+
+/* ─── CABECERA ──────────────────────────────────────────────────────────── */
+/* La foto va DENTRO del fondo, debajo de dos degradados: el de la izquierda
+   oscurece donde va el texto, el de abajo cierra contra la sección siguiente.
+   Si el JPG faltara, queda la tinta y no se ve un hueco.
+   Provisional (11-11-2026): la mesa de facturas de noche. Se cambia por la
+   foto de Isma dando una sesión cuando esté el personaje de Magnific. */
+.hm-cab {
+  background:
+    linear-gradient(90deg, rgba(23,20,31,.94) 0%, rgba(23,20,31,.86) 38%, rgba(23,20,31,.55) 68%, rgba(23,20,31,.40) 100%),
+    linear-gradient(180deg, rgba(23,20,31,.35) 0%, rgba(23,20,31,0) 30%, rgba(23,20,31,0) 75%, rgba(23,20,31,.6) 100%),
+    url('/assets/img/hero-finanzas.jpg') center 60% / cover no-repeat,
+    var(--ink);
+  color: #fff;
+  padding: 124px 0 80px;
+}
+.hm-rejilla {
+  width: 100%; max-width: var(--w-wide); margin: 0 auto; padding: 0 28px;
+  display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: 64px; align-items: center;
+}
+.hm-sello {
+  font-family: var(--font-body); font-size: 14px; font-weight: 600;
+  color: rgba(255,255,255,.62); letter-spacing: .01em; margin-bottom: 22px;
+  padding-left: 14px; border-left: 2px solid rgba(255,255,255,.28);
+}
+.hm-titular {
+  font-family: var(--font-head); font-weight: 500;
+  font-size: clamp(36px, 3.6vw, 52px); line-height: 1.08; letter-spacing: -.02em;
+  color: #fff; max-width: 21ch;
+}
+.hm-entrada {
+  margin-top: 24px; max-width: 50ch;
+  font-size: clamp(16.5px, 1.4vw, 18.5px); line-height: 1.6; color: rgba(255,255,255,.78);
+}
+.hm-botones { margin-top: 34px; display: flex; flex-wrap: wrap; align-items: center; gap: 22px; }
+.hm-cab .hm-enlace { color: rgba(255,255,255,.86); }
+.hm-cab .hm-enlace:hover { color: #fff; }
+
+/* La hoja de encargo: papel blanco sobre tinta, como un documento encima
+   de la mesa. Esquinas de 6px, no de tarjeta de app. */
+.hm-hoja {
+  background: #fff; color: var(--ink);
+  border-radius: 6px; padding: 26px 28px 22px;
+  box-shadow: 0 30px 60px -28px rgba(0,0,0,.55);
+}
+.hm-hoja-cab { padding-bottom: 16px; border-bottom: 2px solid var(--ink); }
+.hm-hoja-cab h2 {
+  font-family: var(--font-head); font-weight: 600; font-size: 28px;
+  line-height: 1.1; letter-spacing: -.01em;
+}
+.hm-hoja-cab p { margin-top: 4px; font-size: 14px; color: var(--ink-2); }
+
+.hm-sesiones { list-style: none; }
+.hm-sesiones li {
+  display: grid; grid-template-columns: 28px 1fr auto; gap: 12px; align-items: baseline;
+  padding: 12px 0; border-bottom: 1px solid var(--line);
+}
+.hm-ses-num {
+  font-size: 15px; font-weight: 700; color: var(--ink-3); font-variant-numeric: lining-nums;
+}
+.hm-sesiones b    { display: block; font-size: 15.5px; font-weight: 700; }
+.hm-sesiones span { font-size: 14px; line-height: 1.5; color: var(--ink-2); }
+.hm-ses-dur { font-size: 13.5px !important; font-weight: 600; color: var(--ink) !important; white-space: nowrap; }
+
+.hm-hoja-pie { margin: 14px 0 20px; }
+.hm-hoja-pie div {
+  display: grid; grid-template-columns: 84px 1fr; gap: 12px;
+  padding: 7px 0; font-size: 14px; line-height: 1.5;
+}
+.hm-hoja-pie dt { color: var(--ink-3); font-weight: 600; }
+.hm-hoja-pie dd { color: var(--ink); }
+.hm-hoja-btn  { width: 100%; justify-content: center; }
+.hm-hoja-nota { margin-top: 12px; font-size: 12.5px; line-height: 1.5; color: var(--ink-3); text-align: center; }
+
+/* ─── LISTA DEL INFORME ─────────────────────────────────────────────────── */
+.hm-lista {
+  list-style: none; display: grid; grid-template-columns: 1fr 1fr; column-gap: 48px;
+  border-top: 1px solid var(--line);
+}
+.hm-lista li {
+  padding: 18px 0 18px 30px; border-bottom: 1px solid var(--line);
+  font-size: 16.5px; line-height: 1.6; color: var(--ink); position: relative;
+}
+.hm-lista li::before {
+  content: ''; position: absolute; left: 4px; top: 29px;
+  width: 12px; height: 1.5px; background: var(--ink);
+}
+
+/* ─── DOS CAMINOS ───────────────────────────────────────────────────────── */
+.hm-caminos { display: grid; grid-template-columns: 1fr 1fr; border-top: 2px solid var(--ink); }
+.hm-camino { padding: 30px 36px 8px 0; }
+.hm-camino + .hm-camino { padding-left: 36px; border-left: 1px solid var(--line); }
+.hm-camino h3 {
+  font-family: var(--font-head); font-weight: 600; font-size: 28px;
+  line-height: 1.15; margin-bottom: 12px;
+}
+.hm-camino p { font-size: 15.5px; line-height: 1.65; color: var(--ink-2); max-width: 46ch; }
+.hm-precio { margin-top: 20px; font-weight: 700; color: var(--ink) !important; font-size: 16.5px !important; }
+.hm-iva    { margin-top: 4px; font-size: 13.5px !important; color: var(--ink-3) !important; }
+
+/* ─── CONDICIONES ───────────────────────────────────────────────────────── */
+.hm-condiciones {
+  display: grid; grid-template-columns: 1fr 1fr; column-gap: 48px;
+  border-top: 1px solid var(--line);
+}
+.hm-condiciones div { padding: 18px 0; border-bottom: 1px solid var(--line); }
+.hm-condiciones dt { font-weight: 700; font-size: 16.5px; color: var(--ink); margin-bottom: 4px; }
+.hm-condiciones dd { font-size: 15.5px; line-height: 1.6; color: var(--ink-2); }
+.hm-condiciones a  { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+
+/* ─── DEPARTAMENTOS ─────────────────────────────────────────────────────── */
+.hm-deptos {
+  list-style: none; display: grid; grid-template-columns: 1fr 1fr; column-gap: 48px;
+  border-top: 1px solid var(--line);
+}
+.hm-deptos a {
+  display: block; padding: 18px 0; border-bottom: 1px solid var(--line);
+  transition: color .15s;
+}
+.hm-deptos b    { display: block; font-size: 16px; font-weight: 700; color: var(--ink); }
+.hm-deptos span { display: block; margin-top: 3px; font-size: 14.5px; line-height: 1.55; color: var(--ink-2); }
+.hm-deptos a:hover b { color: var(--purple); }
+
+/* ─── PERSONAS ──────────────────────────────────────────────────────────── */
+.hm-persona  { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 36px; align-items: center; max-width: 860px; }
+.hm-persona img {
+  width: 200px; height: 200px; object-fit: cover; border-radius: 4px;
+  filter: grayscale(.15);
+}
+.hm-persona p + p { margin-top: 12px; }
+.hm-persona h3 { font-family: var(--font-head); font-size: 26px; font-weight: 600; line-height: 1.1; }
+.hm-cargo      { font-size: 13.5px; font-weight: 600; color: var(--ink-3); margin: 2px 0 8px; }
+.hm-persona p:not(.hm-cargo) { font-size: 15.5px; line-height: 1.65; color: var(--ink-2); max-width: 62ch; }
+
+/* ─── PREGUNTAS ─────────────────────────────────────────────────────────── */
+.hm-faq { border-top: 1px solid var(--line); max-width: 860px; }
+.hm-faq details { border-bottom: 1px solid var(--line); padding: 18px 0; }
+.hm-faq summary {
+  cursor: pointer; list-style: none; position: relative; padding-right: 34px;
+  font-weight: 700; font-size: 16.5px; color: var(--ink);
+}
+.hm-faq summary::-webkit-details-marker { display: none; }
+.hm-faq summary::after {
+  content: '+'; position: absolute; right: 4px; top: -3px;
+  font-size: 24px; font-weight: 400; color: var(--ink-3); transition: transform .2s;
+}
+.hm-faq details[open] summary::after { transform: rotate(45deg); }
+.hm-faq p { margin-top: 10px; font-size: 15.5px; line-height: 1.7; color: var(--ink-2); max-width: 62ch; }
+
+/* ─── CIERRE ────────────────────────────────────────────────────────────── */
+.hm-cierre { background: var(--ink); color: #fff; padding: 72px 0; }
+.hm-cierre-in { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 28px; }
+.hm-cierre h2 {
+  font-family: var(--font-head); font-weight: 500; font-size: clamp(30px, 3vw, 40px); line-height: 1.1;
+}
+.hm-cierre p { margin-top: 8px; color: rgba(255,255,255,.7); font-size: 16px; max-width: 52ch; }
+.hm-cierre-btns { display: flex; flex-wrap: wrap; align-items: center; gap: 22px; }
+.hm-cierre .hm-enlace { color: rgba(255,255,255,.86); }
+.hm-cierre .hm-enlace:hover { color: #fff; }
+
+/* ─── PRODUCTOS ─────────────────────────────────────────────────────────── */
+.hm-productos { background: var(--cream-deep); padding: 26px 0; }
+.hm-productos-in { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px 32px; font-size: 14.5px; color: var(--ink-2); }
+.hm-productos b { color: var(--ink); }
+.hm-productos a { color: var(--ink); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.hm-productos a span { font-weight: 500; color: var(--ink-3); text-decoration: none; display: inline-block; margin-left: 4px; }
+
+/* ─── MÓVIL ─────────────────────────────────────────────────────────────── */
+@media (max-width: 920px) {
+  .hm-rejilla, .hm-dos { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+  .hm-cab { padding: 120px 0 72px; }
+  .hm-p { max-width: 60ch; }
+}
+@media (max-width: 680px) {
+  .hm-ancho, .hm-rejilla { padding: 0 18px; }
+  .hm-sec { padding: 64px 0; }
+  .hm-caminos, .hm-deptos, .hm-lista, .hm-condiciones { grid-template-columns: 1fr; }
+  .hm-camino { padding-right: 0; }
+  .hm-camino + .hm-camino { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); }
+  .hm-hoja { padding: 24px 20px 20px; }
+  .hm-persona { grid-template-columns: 1fr; gap: 20px; }
+  .hm-persona img { width: 140px; height: 140px; }
+}
+
+/* La línea de plazas (11-11-2026): es la escasez, y es real. El número se
+   baja a mano con cada diagnóstico hecho (README, «Las plazas del diagnóstico»). */
+.hm-plazas dd b     { font-weight: 700; }
+.hm-plazas dd small { display: block; margin-top: 2px; font-size: 12.5px; color: var(--ink-3); }
+
+/* El marco de cada título de sección (11-11-2026, petición de Ismael): una
+   línea morada de la paleta, sin fondo. Separa visualmente cada paso de la
+   página. Se ajusta al texto (fit-content), no ocupa todo el ancho. */
+.hm-marco {
+  width: fit-content; max-width: 100%;
+  border: 1.5px solid var(--purple); border-radius: 6px;
+  padding: 22px 28px 20px;
+}
+.hm-marco .hm-h2 { margin-bottom: 8px; }
+.hm-marco .hm-p, .hm-marco .hm-p-corta { margin-bottom: 0; }
+/* PRUEBA 11-11: el marco con un morado clarito difuminado de fondo (el oscuro
+   se descartó por demasiado fuerte). */
+.hm-marco {
+  background: linear-gradient(120deg, rgba(124,58,237,.11) 0%, rgba(124,58,237,.04) 60%, rgba(124,58,237,0) 100%);
+}
+.hm-marco-sep { margin-bottom: 34px; }
+@media (max-width: 680px) { .hm-marco { padding: 18px 18px 16px; } }
+
+/* ─── SOLICITAR PLAZA (el formulario dentro de la home) ────────────────── */
+/* 12-11-2026: hasta hoy iba suelto sobre blanco y pegado a la izquierda. Ahora
+   es una hoja como la de la cabecera —blanca, con la raya de tinta bajo el
+   título y su sombra—, centrada sobre el morado clarito difuminado que ya se
+   usa en los marcos de los títulos. */
+.hm-solicitar {
+  background: linear-gradient(180deg, rgba(124,58,237,.075) 0%, rgba(124,58,237,.025) 55%, var(--cream) 100%), var(--cream);
+}
+.hm-solicitar-hoja {
+  max-width: 780px; margin: 0 auto;
+  background: #fff; border-radius: 6px; border: 1px solid var(--line-soft);
+  padding: 44px 52px 40px;
+  box-shadow: 0 30px 60px -32px rgba(23,20,31,.28);
+}
+.hm-solicitar-cab { text-align: center; padding-bottom: 24px; margin-bottom: 30px; border-bottom: 2px solid var(--ink); }
+.hm-solicitar-cab .hm-h2 { margin-bottom: 10px; }
+.hm-solicitar-cab p { font-size: 15.5px; line-height: 1.6; color: var(--ink-2); max-width: 54ch; margin: 0 auto; }
+.hm-solicitar-cab .plazas-n { font-weight: 700; color: var(--ink); }
+.hm-solicitar-in { max-width: none; }
+#solicitar .as-form { gap: 0; }
+/* La raya va como fondo y no como border-top: en un fieldset, el borde se
+   parte detrás de la legend. */
+#solicitar .as-bloque { padding: 26px 0; background: linear-gradient(var(--line), var(--line)) top / 100% 1px no-repeat; }
+#solicitar .as-bloque:first-of-type { background: none; padding-top: 4px; }
+#solicitar { scroll-margin-top: 70px; }
+/* La legend de un fieldset se sienta encima de su borde y el fondo empieza a
+   media altura de ella. Flotándola, el fieldset empieza arriba de verdad. */
+#solicitar .as-num { float: left; width: 100%; margin-bottom: 14px; }
+#solicitar .as-num + * { clear: both; }
+#solicitar .as-obligatorio { text-align: center; margin-bottom: 8px; }
+#solicitar .as-campo input, #solicitar .as-campo select { background: var(--cream); }
+#solicitar .as-campo input:focus { background: #fff; }
+#solicitar .as-privacidad { padding-top: 24px; border-top: 1px solid var(--line-soft); margin-bottom: 22px; }
+#solicitar .as-error { margin-bottom: 18px; }
+#solicitar .as-pie-form { margin-top: 12px; }
+@media (max-width: 680px) {
+  .hm-solicitar-hoja { padding: 30px 20px 26px; }
+  .hm-solicitar-cab { padding-bottom: 18px; margin-bottom: 20px; }
+}
+#solicitar .as-intro { text-align: left; margin-bottom: 26px; }
+#solicitar .as-intro .t-lead { max-width: 60ch; }
+#solicitar .as-cal { margin-top: 10px; }
+
+/* ─── PRODUCTOS: puerta al catálogo (11-11-2026) ─────────────────────── */
+.hm-puerta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px 40px; }
+/* El botón de la puerta, más grande (11-11): con el tamaño normal se perdía al
+   lado del recuadro del título. Sigue en blanco: el morado es del diagnóstico. */
+.hm-puerta .btn { font-size: 17px; padding: 19px 40px; box-shadow: inset 0 0 0 1.5px var(--purple), var(--sh-2); }
+.hm-puerta .btn:hover { box-shadow: inset 0 0 0 1.5px var(--purple-deep), var(--sh-3); }
+@media (max-width: 680px) { .hm-puerta .btn { width: 100%; } }

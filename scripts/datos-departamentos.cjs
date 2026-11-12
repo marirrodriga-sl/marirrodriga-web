@@ -33,7 +33,7 @@ const DEPARTAMENTOS = [
     despuesDePiezas: `<section class="seccion" style="padding-top:0"><div class="envoltura-txt"><p class="t-body">¿Comparando precios? En <a href="/guias/cuanto-cuesta-chatbot-whatsapp-ia" style="color:var(--purple-deep);text-decoration:underline">cuánto cuesta un chatbot de WhatsApp con IA</a> están el mercado, lo que cobra Meta desde octubre de 2026 y el coste del primer año.</p></div></section>`,
     pill: 'Atención al Cliente',
     titulo: 'Asistente de WhatsApp con IA para pymes | Marirrodriga IA',
-    descripcion: 'Contesta por WhatsApp Business, Telegram o el chat de tu web, mira tu agenda y cierra la cita. Y en tu correo, clasifica y reparte lo que entra. Desde 49 €/mes.',
+    descripcion: 'Contesta por WhatsApp Business, Instagram o el chat de tu web, mira tu agenda y cierra la cita. Y en tu correo, clasifica y reparte lo que entra. Desde 49 €/mes.',
     h1: ['Contesta a las once de la noche.', 'Y también los domingos.'],
     lead: 'Un asistente que entiende lo que le escriben, mira tu agenda de verdad y cierra la cita él mismo. En el canal donde tus clientes ya te escriben, no en uno nuevo que tengan que aprender.',
     doloresTitulo: ['Lo que se pierde no es una llamada.', 'Es la que no vuelve a llamar.'],
@@ -42,7 +42,7 @@ const DEPARTAMENTOS = [
       nombre: 'Atención al Cliente, montada entera',
       gancho: 'Las siete piezas —el chat, la agenda, los recordatorios y el correo— con la misma cabeza detrás.',
       cuota: 144, alta: 330, altaSuelta: 470,
-      entra: ['WhatsApp y Telegram', 'El chat de tu web', 'Tu bandeja de correo'],
+      entra: ['WhatsApp e Instagram', 'El chat de tu web', 'Tu bandeja de correo'],
       sale: ['Contestado a cualquier hora', 'La cita, cerrada', 'Y lo que no le toca, en tus manos'],
       comoVa: 'No son siete programas: es uno con siete manos. El mismo que contesta el chat es el que mira la agenda y el que ordena el correo.',
       pie: 'Montado entero, lo que aprende en un canal lo sabe en los demás. Comprando pieza a pieza, cada una empieza de cero.',
@@ -70,7 +70,7 @@ const DEPARTAMENTOS = [
         </div>
         <div class="mq-a-caja"><span>23:41 · contestado en 4 segundos</span><em>✓</em></div>
       </div>`,
-      d: 'Contesta las preguntas de siempre con lo que tú le hayas contado de tu negocio. Va con un canal incluido, el que tú elijas: el chat de tu web, WhatsApp o Telegram. Se identifica como IA y te pasa la conversación cuando no le toca a él.',
+      d: 'Contesta las preguntas de siempre con lo que tú le hayas contado de tu negocio. Va con un canal incluido, el que tú elijas: WhatsApp, Instagram o el chat de tu web. Se identifica como IA y te pasa la conversación cuando no le toca a él.',
       lim: '500 conversaciones al mes · 1 canal' },
 
     { n: 'Un canal más', slug: 'canal-adicional', eur: 5, setup: 30,
@@ -78,13 +78,13 @@ const DEPARTAMENTOS = [
         <div class="mq-l-cab">Por dónde contesta</div>
         <ul>
           <li class="mq-l-nuevo"><span class="mq-eti mq-eti-v">Incluido</span><i>WhatsApp · el que has elegido tú</i></li>
-          <li><span class="mq-eti">+5 €</span><i>Telegram</i></li>
           <li><span class="mq-eti">+5 €</span><i>Instagram</i></li>
+          <li><span class="mq-eti">+5 €</span><i>Telegram</i></li>
           <li><span class="mq-eti">+5 €</span><i>El chat de tu web</i></li>
         </ul>
         <p class="mq-l-pie">El mismo agente en todos: lo que aprende en uno lo sabe en los demás.</p>
       </div>`,
-      d: 'El primero va incluido y lo eliges tú. Cada canal de más — WhatsApp, Telegram, Instagram — se suma aparte.',
+      d: 'El primero va incluido y lo eliges tú. Cada canal de más — WhatsApp, Instagram, Telegram — se suma aparte.',
       lim: '1 canal por unidad' },
 
     { n: 'Acceso a tu agenda: reservar, cambiar y cancelar', slug: 'agenda-reserva-publica', eur: 15, setup: 50, destacada: true,

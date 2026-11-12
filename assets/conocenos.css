@@ -1,0 +1,86 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   /conocenos (12-11-2026). Mismo registro que la home y /agentes: crema,
+   tinta, el morado para lo que se pulsa y el marco difuminado de los títulos.
+   ═══════════════════════════════════════════════════════════════════════════ */
+.cn-ancho { width: min(1120px, 100% - 48px); margin: 0 auto; }
+
+.cn-cab { padding: 150px 0 40px; }
+.cn-cab h1 {
+  font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500;
+  font-size: clamp(40px, 5.4vw, 62px); line-height: 1.05; color: var(--ink);
+}
+.cn-cab p { margin-top: 16px; font-size: 18px; line-height: 1.6; color: var(--ink-2); max-width: 62ch; }
+
+.cn-sec { padding: 56px 0 88px; }
+.cn-sec-blanca { background: #fff; padding-top: 88px; border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); }
+
+.cn-marco {
+  width: fit-content; max-width: 100%; margin-bottom: 34px;
+  border: 1.5px solid var(--purple); border-radius: 6px; padding: 22px 28px 20px;
+  background: linear-gradient(120deg, rgba(124,58,237,.11) 0%, rgba(124,58,237,.04) 60%, rgba(124,58,237,0) 100%);
+}
+.cn-marco h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(30px, 3.4vw, 40px); font-weight: 500; line-height: 1.1; }
+.cn-marco p { margin-top: 8px; font-size: 16.5px; line-height: 1.6; color: var(--ink-2); max-width: 60ch; }
+
+/* ─── Palencia ─────────────────────────────────────────────────────────── */
+.cn-palencia-txt { max-width: 68ch; }
+.cn-palencia-txt p { font-size: 17.5px; line-height: 1.7; color: var(--ink-2); }
+.cn-palencia-txt p + p { margin-top: 16px; }
+.cn-palencia-txt p:first-child { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(24px, 2.4vw, 29px); line-height: 1.35; color: var(--ink); }
+
+/* ─── Las personas ─────────────────────────────────────────────────────── */
+.cn-personas { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+.cn-persona {
+  display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 26px; align-items: start;
+  padding: 28px; border: 1px solid var(--line); border-radius: 8px; background: var(--cream, #faf8f5);
+}
+.cn-persona img { width: 170px; height: 170px; object-fit: cover; border-radius: 6px; display: block; }
+.cn-persona h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 30px; font-weight: 600; line-height: 1.1; color: var(--ink); }
+.cn-papel { margin-top: 4px; font-size: 14.5px; font-weight: 600; color: var(--purple-deep); }
+.cn-titulos { list-style: none; margin: 14px 0 16px; padding: 12px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.cn-titulos li { font-size: 14.5px; line-height: 1.45; color: var(--ink); font-weight: 600; padding: 3px 0 3px 14px; position: relative; }
+.cn-titulos li::before { content: ''; position: absolute; left: 0; top: 12px; width: 6px; height: 1.5px; background: var(--purple); }
+.cn-persona p:not(.cn-papel) { font-size: 15px; line-height: 1.6; color: var(--ink-2); }
+.cn-persona p + p { margin-top: 10px; }
+
+/* ─── Los proyectos ────────────────────────────────────────────────────── */
+/* Sin captura (12-11-2026): la del CRM enseñaba demasiado. Va en tinta, a lo
+   ancho, solo con texto. */
+.cn-sistema { background: var(--ink); color: #fff; border-radius: 8px; margin-bottom: 24px; }
+.cn-sistema-txt { padding: 44px 48px 42px; display: flex; flex-direction: column; gap: 14px; }
+.cn-sistema p { max-width: 70ch; }
+.cn-sistema h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(30px, 3vw, 38px); font-weight: 500; line-height: 1.1; color: #fff; }
+.cn-sistema p { font-size: 16.5px; line-height: 1.65; color: rgba(255,255,255,.74); }
+.cn-sistema .cn-enlace { color: rgba(255,255,255,.9); }
+.cn-sistema .cn-enlace:hover { color: #fff; }
+
+.cn-proyectos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.cn-proyecto {
+  display: flex; flex-direction: column; gap: 10px;
+  padding: 26px 26px 24px; background: #fff; border: 1px solid var(--line); border-radius: 8px;
+}
+.cn-proyecto h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 25px; font-weight: 600; line-height: 1.15; color: var(--ink); }
+.cn-proyecto p { font-size: 15px; line-height: 1.6; color: var(--ink-2); flex: 1; }
+.cn-enlace {
+  align-self: flex-start; font-weight: 600; font-size: 14.5px; color: var(--ink);
+  text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px;
+}
+.cn-enlace:hover { color: var(--purple); }
+.cn-enlace:focus-visible { outline: 2px solid var(--purple); outline-offset: 3px; }
+
+@media (max-width: 1040px) {
+  .cn-personas { grid-template-columns: 1fr; }
+}
+@media (max-width: 960px) {
+  .cn-proyectos { grid-template-columns: 1fr 1fr; }
+  .cn-sistema-txt { padding: 28px 26px 28px; }
+}
+@media (max-width: 640px) {
+  .cn-proyectos { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .cn-cab { padding: 120px 0 30px; }
+  .cn-marco { padding: 20px 20px 18px; }
+  .cn-persona { grid-template-columns: 1fr; padding: 22px; }
+  .cn-persona img { width: 120px; height: 120px; }
+}

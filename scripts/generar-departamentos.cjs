@@ -277,7 +277,7 @@ ${JSON.stringify(migas([['Inicio', '/'], [p.pill, p.ruta]]), null, 2)}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/base.css">
+  <link rel="stylesheet" href="/assets/base.css?v=20261112c">
   <link rel="stylesheet" href="/assets/atencion.css">
   <link rel="stylesheet" href="/assets/solucion.css">${(p.css || []).map(h => `
   <link rel="stylesheet" href="/assets/${h}">`).join('')}
@@ -326,6 +326,7 @@ ${pie()}
   });
 </script>
 <script defer src="/assets/nav.js"></script>
+<script defer src="/assets/plazas.js"></script>
 <script defer src="/assets/origen.js"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 </body>

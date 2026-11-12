@@ -188,6 +188,33 @@ img, svg { max-width: 100%; display: block; }
 .nav-link:hover { color: #fff; }
 .nav-cta { font-size: 13.5px; padding: 11px 21px; }
 
+/* ─── CIERRE DE LAS PÁGINAS INTERIORES (12-11-2026) ───────────────────────
+   El mismo que el de la home (.hm-cierre): franja de tinta, texto a la
+   izquierda y el botón morado, grande, a la derecha. */
+.cierre-d { background: var(--ink); color: #fff; padding: 84px 0; border-bottom: 1px solid rgba(255,255,255,.09); }
+.cierre-d-in {
+  width: 100%; max-width: var(--w-wide); margin: 0 auto; padding: 0 28px;
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 30px 64px;
+}
+.cierre-d h2 {
+  font-family: var(--font-head); font-weight: 500; color: #fff;
+  font-size: clamp(32px, 3.4vw, 44px); line-height: 1.08; letter-spacing: -.01em;
+}
+.cierre-d p { margin-top: 14px; color: rgba(255,255,255,.7); font-size: 16.5px; line-height: 1.6; max-width: 58ch; }
+.cierre-d-btns { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 26px; }
+.cierre-d .btn-1 { font-size: 16.5px; padding: 18px 38px; }
+.cierre-d-enlace {
+  font-weight: 600; font-size: 15px; color: rgba(255,255,255,.86);
+  text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px;
+}
+.cierre-d-enlace:hover { color: #fff; }
+@media (max-width: 860px) {
+  .cierre-d { padding: 64px 0; }
+  .cierre-d-in { grid-template-columns: 1fr; padding: 0 20px; }
+  .cierre-d .btn-1 { width: 100%; }
+  .cierre-d-btns { justify-content: center; }
+}
+
 /* ─── MENÚ DE PRODUCTO ────────────────────────────────────────────────────
    Dos ejes: por sector y por departamento. La misma pieza se busca de las dos
    maneras — el dueño de la clínica busca «software para clínicas», el jefe de
@@ -322,13 +349,13 @@ img, svg { max-width: 100%; display: block; }
 .nav-movil h5:first-child { margin-top: 0; padding-top: 2px; border-top: 0; }
 .nav-movil .btn { width: 100%; justify-content: center; margin-top: 14px; }
 
-/* Por debajo de 1240 no caben los TRES desplegables más las anclas de la
+/* Por debajo de 1320 no caben las tres secciones más las anclas de la
    página. Se van las anclas: llevan a sitios de esta misma página, a los que
-   se llega bajando. Los desplegables son la única puerta al resto del sitio,
-   y siguen estando enteros en el panel móvil. */
+   se llega bajando. Las secciones (.nav-seccion) son la puerta al resto del
+   sitio y se quedan. Hasta el 12-11-2026 eran desplegables. */
 @media (min-width: 861px) and (max-width: 1320px) {
   .nav-links { gap: 18px; }
-  .nav-links > .nav-link { display: none; }
+  .nav-links > .nav-link:not(.nav-seccion) { display: none; }
 }
 
 @media (max-width: 860px) {

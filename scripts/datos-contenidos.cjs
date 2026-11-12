@@ -24,7 +24,7 @@ const PALENCIA = {
   lead: 'Marirrodriga IA es una agencia de inteligencia artificial con sede en Palencia. Montamos asistentes, automatizaciones y software a medida para pymes y autónomos, con el precio de cada pieza publicado en la web.',
   secciones: ({ departamentos }) => `
     <h2>Quiénes somos</h2>
-    <p>Somos dos hermanos: <strong>Marco</strong>, desarrollador full-stack titulado, escribe el código, e <strong>Isma</strong> monta los agentes de IA y las conexiones con lo que ya usas. Trabajas con quien lo construye, no con un comercial que se lo pasa a otro.</p>
+    <p>Somos dos hermanos: <strong>Marco</strong>, desarrollador full-stack, escribe el código, e <strong>Isma</strong> monta los agentes de IA y las conexiones con lo que ya usas. Trabajas con quien lo construye, no con un comercial que se lo pasa a otro.</p>
 
     <h2>Qué montamos para un negocio de Palencia</h2>
     <p>No vendemos «IA» en abstracto. Se empieza por lo que te quita tiempo cada semana y se monta por piezas:</p>
@@ -38,7 +38,7 @@ const PALENCIA = {
 
     <h2>Cómo empezamos</h2>
     <ol>
-      <li><strong>Un diagnóstico gratis.</strong> Hasta tres sesiones de unas dos horas: con quien dirige, con el equipo y mirando el trabajo. Es para empresas de 5 a 50 personas en Castilla y León, con <a href="/diagnostico">dos plazas a la semana</a>.</li>
+      <li><strong>Un diagnóstico gratis.</strong> Hasta tres sesiones de unas dos horas: con quien dirige, con el equipo y mirando el trabajo. Es para empresas de 5 a 50 personas en Castilla y León, y <a href="/#solicitar">quedan solo <span class="plazas-n">11</span> plazas a coste 0</a>; después costará 350 €.</li>
       <li><strong>Un informe con dos caminos.</strong> Para cada tarea que merezca la pena: formar a tu equipo para que la resuelva, o montar el software que la haga sola. Con el precio escrito. Y si no compensa, lo pone.</li>
       <li><strong>Precio cerrado antes de empezar.</strong> La instalación se paga 50 % al empezar y 50 % al entregar.</li>
       <li><strong>Sin permanencia.</strong> Te vas cuando quieras, avisando con 30 días.</li>

@@ -98,6 +98,14 @@
       pendientes.push('aceptar la política de privacidad');
     }
     if (pendientes.length) { quejarse(pendientes); return; }
+    // Lo que está pero mal escrito (guardia-form.js) va con su propia frase.
+    var malos = window.Guardia ? window.Guardia.revisar(datos) : [];
+    if (malos.length) {
+      aviso.textContent = malos.join(' ');
+      aviso.hidden = false;
+      aviso.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
 
     // El origen, de la URL. Si no viene nada, es que ha entrado a pelo.
     var url = new URLSearchParams(window.location.search);
@@ -105,6 +113,8 @@
     datos.canal        = url.get('c') || 'directo';
     datos.timestamp    = new Date().toISOString();
     datos.source       = 'asesoria-formulario';
+    datos.formulario   = 'asesoria';
+    if (window.Guardia) { var x = window.Guardia.extra(); datos.sitio_web = x.sitio_web; datos.t_ms = x.t_ms; }
 
     boton.disabled = true;
     boton.textContent = 'Un segundo…';

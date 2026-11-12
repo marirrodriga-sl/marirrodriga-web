@@ -29,7 +29,9 @@ Tres generadores, cada uno con su fichero de datos al lado:
 | `scripts/generar-departamentos.cjs` | Las **7 landings de departamento** | `scripts/datos-departamentos.cjs` |
 | `scripts/generar-paginas.cjs` | `bookia.html`, `dentia.html` y las **landings de anuncios `l/*.html`** (`noindex`, fuera del sitemap; son /bookia con otro título) | `scripts/datos-soluciones.cjs` (`ANUNCIOS`) |
 | `scripts/generar-contenidos.cjs` | `agencia-ia-palencia.html`, `guias/index.html` y cada guía | `scripts/datos-contenidos.cjs` (los precios se leen de `datos-departamentos.cjs`) |
-| `scripts/sincronizar-menu.cjs` | Solo el **menú** de `index.html` | — (lo copia del generador) |
+| `scripts/generar-agentes.cjs` | `agentes.html` (/agentes, «Qué hacemos»): las cartas de cada departamento | `scripts/datos-departamentos.cjs` + el texto de cada carta, en el propio generador |
+| `scripts/generar-conocenos.cjs` | `conocenos.html` (/conocenos) | En el propio generador |
+| `scripts/sincronizar-menu.cjs` | Solo el **menú** de `index.html` y `diagnostico.html` | — (lo copia del generador) |
 
 `index.html` y `asesoria.html` se escriben a mano; de ellas solo el menú sale
 del generador, y por eso existe el tercer script. **Si tocas el menú, córrelo
@@ -46,6 +48,8 @@ es la copia que usa el navegador.
 node scripts/generar-paginas.cjs
 node scripts/generar-departamentos.cjs
 node scripts/generar-contenidos.cjs
+node scripts/generar-agentes.cjs
+node scripts/generar-conocenos.cjs
 node scripts/sincronizar-menu.cjs
 ```
 
@@ -97,3 +101,24 @@ Dos cosas que la web usa y que no se tocan desde aquí:
   API con la clave del `.env` de la agencia.
 - **Google Search Console** — propiedad de dominio verificada por DNS. El
   sitemap se envía ahí a mano cuando cambian las páginas.
+
+---
+
+## Las plazas del diagnóstico
+
+La web dice **«Quedan solo N plazas a coste 0; después, 350 € + 73,50 € de IVA»**.
+Es una promesa: cuando se acaben, se cobra.
+
+**Desde el 12-11-2026 el número se lleva solo.** Ismael decidió regalar 11.
+`assets/plazas.js` pregunta a n8n (flujo «Web · Plazas del diagnóstico»,
+`GET /webhook/plazas-diagnostico`), que devuelve el total menos los leads que
+han pasado por la etapa **«Diagnóstico»** del CRM (`crm/panel/db/009`). Basta
+con mover el lead a esa etapa: en dos minutos como mucho, toda la web lo dice.
+
+- El número escrito en `<span class="plazas-n">11</span>` es solo el de reserva,
+  por si n8n no contesta. No hace falta tocarlo.
+- Para cambiar el total, en el SQL Editor de Supabase (agencia):
+  `update public.web_plazas set total = 15, actualizado_en = now();`
+- Al llegar a 0 no se deja «0 plazas»: se cambia la oferta a «Diagnóstico: 350 €»
+  en `index.html`, `diagnostico.html`, el cierre de `generar-paginas.cjs` y
+  `datos-contenidos.cjs`, y en el JSON-LD de /diagnostico el `price` pasa de 0 a 350.

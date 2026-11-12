@@ -73,12 +73,29 @@ const DEPTOS_MENU = [
   ['Posicionamiento Online', '/posicionamiento-online', 'Que te encuentren, y que lo que vean esté bien'],
 ];
 
+/* «Conócenos» (11-11-2026): quién está detrás, de dónde somos y lo que
+   publicamos. */
+const CONOCENOS_MENU = [
+  ['Quiénes somos', '/#quienes', 'Quien hace el diagnóstico es quien monta el trabajo'],
+  ['Somos de Palencia', '/agencia-ia-palencia', 'Una agencia de IA de aquí, para empresas de Castilla y León'],
+  ['Guías', '/guias', 'Qué cuesta la IA y qué preguntar antes de contratarla'],
+];
+
+/* Las tres secciones del menú (12-11-2026). Eran desplegables; Ismael las
+   dejó como enlaces fijos: cada una lleva a su página, y lo que había dentro
+   ya está en esa página (los departamentos, en /agentes). */
+const SECCIONES = [
+  ['Trabaja con nosotros', '/', 'Diagnóstico gratis, formación o software a medida'],
+  ['Qué hacemos', '/agentes', 'Los agentes que montamos, uno por departamento'],
+  ['Conócenos', '/conocenos', 'Quién está detrás, de dónde somos y lo que hemos montado'],
+];
+
 /* Rutas absolutas a la home: desde una landing tienen que llevar allí y bajar */
 const SOBRE_MENU = [
-  ['Quiénes somos', '/#quienes', 'Marco escribe el código, Isma monta la IA'],
-  ['Cómo funciona', '/#como', 'Diagnóstico, y después formar al equipo o montar el software'],
-  ['Nuestros proyectos', '/#proyectos', 'Lo que hemos montado cuando nos lo han pedido'],
+  ['Cómo trabajamos', '/', 'Diagnóstico, formación de tu equipo o software a medida'],
   ['Diagnóstico gratis', '/diagnostico', 'Hasta tres sesiones para encontrar qué se puede automatizar'],
+  ['Qué te llevas', '/#informe', 'Un informe con las tareas, las horas y cómo quitarlas'],
+  ['Preguntas', '/diagnostico#preguntas', 'Lo que nos preguntan antes de pedir plaza'],
 ];
 
 const itemSector = ([n, r, d, oficios]) => `<div class="nav-sector">
@@ -103,45 +120,19 @@ const nav = (anclas = ANCLAS) => `<nav class="nav">
     <span>Marirrodriga<b>.IA</b></span>
   </a>
   <div class="nav-links">
-    <div class="nav-grupo">
-      <button class="nav-grupo-btn" type="button" aria-expanded="false" aria-controls="menu-sectores">Productos</button>
-      <div class="nav-panel nav-panel-sectores" id="menu-sectores">
-        ${SECTORES_MENU.map(itemSector).join('\n        ')}
-        <a class="nav-panel-pie" href="/diagnostico">Programas con precio cerrado. Si lo tuyo es más grande, empieza por el diagnóstico →</a>
-      </div>
-    </div>
-    <div class="nav-grupo">
-      <button class="nav-grupo-btn" type="button" aria-expanded="false" aria-controls="menu-departamentos">IA por departamento</button>
-      <div class="nav-panel" id="menu-departamentos">
-        <p class="nav-panel-intro">Añade IA a un departamento de tu negocio: para aliviar el trabajo, para hacerlo mejor, o para dejar de hacerlo tú.</p>
-        ${DEPTOS_MENU.map(itemDepto).join('\n        ')}
-      </div>
-    </div>
-    <div class="nav-grupo">
-      <button class="nav-grupo-btn" type="button" aria-expanded="false" aria-controls="menu-sobre">Sobre nosotros</button>
-      <div class="nav-panel" id="menu-sobre">
-        ${SOBRE_MENU.map(itemDepto).join('\n        ')}
-      </div>
-    </div>
+    ${SECCIONES.map(([t, h]) => `<a class="nav-link nav-seccion" href="${h}">${t}</a>`).join('\n    ')}
     ${anclas.map(([h, t]) => `<a class="nav-link" href="${h}">${t}</a>`).join('\n    ')}
   </div>
-  <a class="btn btn-1 nav-cta" href="/diagnostico">Diagnóstico gratis</a>
+  <a class="btn btn-1 nav-cta" href="/#solicitar">Diagnóstico gratis</a>
   <button class="nav-burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-movil">
     <i></i><i></i><i></i>
   </button>
 </nav>
 <div class="nav-movil" id="nav-movil">
-  <h5>Productos</h5>
-  ${SECTORES_MENU.map(([n, r, d]) => itemDepto([n, r, d])).join('\n  ')}
-  <a class="nav-movil-nota" href="/diagnostico">Programas con precio cerrado. Si lo tuyo es más grande, empieza por el diagnóstico →</a>
-  <h5>IA por departamento</h5>
-  <p class="nav-movil-intro">Añade IA a un departamento de tu negocio: para aliviar el trabajo, para hacerlo mejor, o para dejar de hacerlo tú.</p>
-  ${DEPTOS_MENU.map(itemDepto).join('\n  ')}
-  <h5>Sobre nosotros</h5>
-  ${SOBRE_MENU.map(itemDepto).join('\n  ')}
+  ${SECCIONES.map(([t, h, d]) => `<a class="nav-item" href="${h}"><b>${t}</b><span>${d}</span></a>`).join('\n  ')}
   ${anclas.length ? `<h5>En esta página</h5>
   ${anclas.map(([h, t]) => `<a class="nav-item" href="${h}"><b>${t}</b></a>`).join('\n  ')}` : ''}
-  <a class="btn btn-1" href="/diagnostico">Diagnóstico gratis</a>
+  <a class="btn btn-1" href="/#solicitar">Diagnóstico gratis</a>
 </div>`;
 
 const hero = p => `<header class="hero-s" style="--hero:url('/assets/img/${p.hero}')">
@@ -278,27 +269,32 @@ const faq = p => `<section class="seccion seccion-cream" id="preguntas">
    Dentia) siguen cerrando con la demo de media hora: tienen precio cerrado y
    se enseñan. Lo demás (departamentos, Palencia, guías) cierra con el
    diagnóstico, que es la puerta de la web grande. */
-const cierre = (p, modo = 'diagnostico') => modo === 'producto'
-  ? `<section class="cierre">
-  <div class="envoltura-txt">
-    <h2 class="t-h2">Media hora, y te decimos<br>si esto te encaja.</h2>
-    <p>O que no te encaja. Si con lo que ya tienes te apañas, te lo decimos en la llamada y nos ahorramos los dos el tiempo.</p>
-    <div class="hero-botones">
-      <a class="btn btn-2" href="${CAL}" target="_blank" rel="noopener">Pide una demo</a>
-      <a class="btn btn-3" style="color:rgba(255,255,255,.6)" href="/">Ver todo lo que montamos →</a>
+/* 12-11-2026: el mismo cierre que la home —franja de tinta, texto a la
+   izquierda, botón morado grande a la derecha— y con su estilo en base.css.
+   Antes vivía en atencion.css, y en /agentes, que no lo carga, salía sin
+   formato: botón pequeño y el segundo enlace blanco sobre crema. */
+const bloqueCierre = (h2, p, boton, enlace) => `<section class="cierre-d">
+  <div class="cierre-d-in">
+    <div>
+      <h2>${h2}</h2>
+      <p>${p}</p>
     </div>
-  </div>
-</section>`
-  : `<section class="cierre">
-  <div class="envoltura-txt">
-    <h2 class="t-h2">Hasta tres sesiones, y sabrás<br>qué se puede quitar de encima.</h2>
-    <p>Diagnóstico gratis para empresas de 5 a 50 personas en Castilla y León. Sales con un informe: qué tareas, cuántas horas y cuánto cuesta quitarlas. Dos plazas a la semana.</p>
-    <div class="hero-botones">
-      <a class="btn btn-2" href="/diagnostico">Pedir plaza</a>
-      <a class="btn btn-3" style="color:rgba(255,255,255,.6)" href="/diagnostico#sesiones">Cómo es el diagnóstico →</a>
+    <div class="cierre-d-btns">
+      ${boton}
+      ${enlace}
     </div>
   </div>
 </section>`;
+
+const cierre = (p, modo = 'diagnostico') => modo === 'producto'
+  ? bloqueCierre('Media hora, y te decimos si esto te encaja.',
+      'O que no te encaja. Si con lo que ya tienes te apañas, te lo decimos en la llamada y nos ahorramos los dos el tiempo.',
+      `<a class="btn btn-1" href="${CAL}" target="_blank" rel="noopener">Pide una demo</a>`,
+      '<a class="cierre-d-enlace" href="/agentes">Ver todo lo que hacemos</a>')
+  : bloqueCierre('Empieza por el diagnóstico',
+      'Hasta tres sesiones en tu empresa y un informe con qué tareas, cuántas horas y cuánto cuesta quitarlas. Para empresas de 5 a 50 personas en Castilla y León. Quedan solo <span class="plazas-n">11</span> plazas a coste 0; después, 350 €.',
+      '<a class="btn btn-1" href="/#solicitar">Pedir plaza</a>',
+      `<a class="cierre-d-enlace" href="${WA}" target="_blank" rel="noopener">Escribir por WhatsApp</a>`);
 
 /* BreadcrumbList. Cada tramo es [nombre, ruta]. */
 const migas = tramos => ({
@@ -319,10 +315,11 @@ const pie = () => `<footer class="pie">
       <div class="pie-cols">
         <div class="pie-col">
           <h4>Productos</h4>
+          <a href="/agentes">Nuestros agentes</a>
           ${SECTORES_MENU.map(([n, r]) => `<a href="${r}">${n}</a>`).join('\n          ')}
         </div>
         <div class="pie-col">
-          <h4>IA por departamento</h4>
+          <h4>Agentes por departamento</h4>
           <a href="/atencion-al-cliente">Atención al Cliente</a>
           <a href="/ventas-y-captacion">Ventas y Captación</a>
           <a href="/finanzas">Finanzas</a>
@@ -336,6 +333,7 @@ const pie = () => `<footer class="pie">
           <a href="/diagnostico">Diagnóstico gratis</a>
           <a href="mailto:contacto@marirrodriga-ia.com">contacto@marirrodriga-ia.com</a>
           <a href="${WA}" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="/conocenos">Conócenos</a>
           <a href="/agencia-ia-palencia">Agencia de IA en Palencia</a>
           <a href="/guias">Guías</a>
         </div>
@@ -406,7 +404,7 @@ ${JSON.stringify(migas([['Inicio', '/'], [p.pill, p.ruta]]), null, 2)}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/base.css">
+  <link rel="stylesheet" href="/assets/base.css?v=20261112c">
   <link rel="stylesheet" href="/assets/atencion.css">
   <link rel="stylesheet" href="/assets/solucion.css">
 </head>
@@ -450,6 +448,7 @@ ${pie()}
   });
 </script>
 <script defer src="/assets/nav.js"></script>
+<script defer src="/assets/plazas.js"></script>
 <script defer src="/assets/origen.js"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 </body>
@@ -466,7 +465,7 @@ ${pie()}
 
    La guarda de abajo es lo que permite importarlo: sin ella, un require
    regeneraba las ocho páginas de sector como efecto colateral. */
-module.exports = { nav, faq, cierre, pie, esc, migas, LOGO, WA, CAL,
+module.exports = { nav, faq, cierre, pie, esc, migas, LOGO, WA, CAL, CONOCENOS_MENU,
                    SECTORES_MENU, DEPTOS_MENU, SOBRE_MENU, itemSector, itemDepto };
 
 /* ─── ESCRIBIR ───────────────────────────────────────────────────────────── */

@@ -89,4 +89,15 @@
     <changefreq>monthly</changefreq>
   </url>
 
+  <url>
+    <loc>https://www.marirrodriga-ia.com/agentes</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://www.marirrodriga-ia.com/conocenos</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
 </urlset>

@@ -1,20 +1,11 @@
 /* ═══════════════════════════════════════════════════════════════════════════
-   DIAGNÓSTICO — la lógica del formulario de /diagnostico.
+   DIAGNÓSTICO — la lógica del formulario de /diagnostico y de la home.
 
-   Es asesoria.js con dos cambios, y el segundo es un APAÑO CON FECHA:
-
-   1) Pregunta personas y provincia (los filtros de la oferta) y no pregunta
-      «qué has probado».
-
-   2) Viaja al MISMO webhook que /asesoria (flujo «Asesoria · clasificar y
-      preparar la llamada»), que valida contra listas blancas pensadas para la
-      media hora. Lo que no está en su lista lo tira sin avisar. Para no perder
-      nada mientras ese flujo no tenga rama propia para el diagnóstico:
-        - las horas se traducen a sus tramos;
-        - «pedidos» no existe allí: va como «otra» con el texto en problema_otro;
-        - empresa, personas y provincia van DENTRO de `sector`, con la marca
-          [DIAGNÓSTICO], para que se vean en la base y en el correo de aviso.
-      PENDIENTE (11-11-2026): rama propia en n8n y quitar esta traducción.
+   Pregunta personas, provincia y departamento (los filtros de la oferta).
+   Desde el 11-11-2026 viaja TAL CUAL al flujo común «CRM · Entrada de leads»
+   (webhook /asesoria, nodo «Validar formulario web»), que entiende estos
+   campos. Si cambias un nombre o un valor aquí, cámbialo allí el mismo día.
+   La guardia anti-basura está en guardia-form.js.
    ═══════════════════════════════════════════════════════════════════════════ */
 
 (function () {
@@ -47,7 +38,7 @@
     sector:    'tu empresa y a qué se dedica',
     personas:  'cuántas personas sois',
     provincia: 'dónde está la empresa',
-    problema:  'marcar al menos una cosa de las que os roban tiempo',
+    problema:  'marcar al menos un departamento',
     horas:     'cuántas horas se van a la semana',
     decide:    'si eres quien dirige'
   };
@@ -68,7 +59,9 @@
   function quejarse(lista) {
     aviso.textContent = lista.length === 1
       ? 'Te falta ' + lista[0] + '.'
-      : 'Te faltan un par de cosas: ' + lista.join(', ') + '.';
+      : lista.length === 2
+        ? 'Te faltan un par de cosas: ' + lista.join(' y ') + '.'
+        : 'Te falta por contestar: ' + lista.join(', ') + '.';
     aviso.hidden = false;
     aviso.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
@@ -89,15 +82,30 @@
 
     var pendientes = faltan(datos);
     if (datos.problema.indexOf('otra') !== -1 && !datos.problema_otro) {
-      pendientes.push('cuál es esa otra cosa');
+      pendientes.push('cuál es ese otro departamento');
     }
     if (!f.get('privacidad')) {
       pendientes.push('aceptar la política de privacidad');
     }
     if (pendientes.length) { quejarse(pendientes); return; }
+    // Lo que está pero mal escrito (guardia-form.js) va con su propia frase.
+    var malos = window.Guardia ? window.Guardia.revisar(datos) : [];
+    if (malos.length) {
+      aviso.textContent = malos.join(' ');
+      aviso.hidden = false;
+      aviso.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
 
     var url = new URLSearchParams(window.location.search);
-    var envio = traducir(datos);
+    var envio = {
+      nombre: datos.nombre, email: datos.email, sector: datos.sector,
+      personas: datos.personas, provincia: datos.provincia,
+      departamentos: datos.problema, problema_otro: datos.problema_otro,
+      horas: datos.horas, decide: datos.decide,
+      formulario: 'diagnostico', pagina: window.location.pathname
+    };
+    if (window.Guardia) { var x = window.Guardia.extra(); envio.sitio_web = x.sitio_web; envio.t_ms = x.t_ms; }
     envio.origen_pieza = url.get('p') || null;
     envio.canal        = url.get('c') || 'web';
     envio.timestamp    = new Date().toISOString();
@@ -117,34 +125,6 @@
   });
 
 
-  /* ─── La traducción al contrato del flujo de /asesoria (ver cabecera) ── */
-  var HORAS = { menos_5: '2_5', '5_15': '5_10', '15_40': 'mas_10', mas_40: 'mas_10' };
-  var VALIDOS = ['mensajes', 'citas', 'cobros', 'papeleo', 'clientes', 'numeros', 'otra'];
-  var PERSONAS = { '1_4': '1-4', '5_15': '5-15', '16_50': '16-50', mas_50: 'más de 50' };
-
-  function traducir(d) {
-    var problema = d.problema.filter(function (p) { return VALIDOS.indexOf(p) !== -1; });
-    var otro = d.problema_otro;
-    if (d.problema.indexOf('pedidos') !== -1) {
-      if (problema.indexOf('otra') === -1) problema.push('otra');
-      otro = 'Pedidos que llegan por teléfono, WhatsApp o correo' + (otro ? ' · ' + otro : '');
-    }
-    return {
-      nombre: d.nombre,
-      email: d.email,
-      sector: '[DIAGNÓSTICO] ' + d.sector + ' · ' + (PERSONAS[d.personas] || d.personas) +
-              ' personas · ' + (d.provincia === 'fuera_cyl' ? 'fuera de CyL' : d.provincia) +
-              ' · horas/semana: ' + d.horas,
-      problema: problema,
-      problema_otro: otro,
-      horas: HORAS[d.horas] || '',
-      decide: d.decide,
-      personas: d.personas,
-      provincia: d.provincia,
-      horas_reales: d.horas
-    };
-  }
-
   /* ─── Paso 2 ────────────────────────────────────────────────────────── */
   function alCalendario(datos) {
     var nombre = datos.nombre.split(' ')[0];
@@ -156,17 +136,13 @@
     document.getElementById('paso-form').classList.add('as-oculto');
     document.getElementById('paso-cita').classList.remove('as-oculto');
 
-    // El hero se retira: ya ha hecho su trabajo, y dejarlo puesto era lo que
-    // hacia que al enviar el formulario la pagina te devolviera arriba del todo
-    // -- a la portada otra vez -- y el calendario quedara fuera de pantalla,
-    // esperando a que volvieras a bajar. Sin hero, arriba ES el calendario.
-    var hero = document.querySelector('.as-hero');
-    if (hero) hero.classList.add('as-oculto');
-    // El logo estaba en blanco para el hero oscuro: sin hero hay que devolverlo
-    // a tinta o se queda invisible sobre el fondo claro.
-    document.body.classList.add('sin-hero');
-
-    window.scrollTo({ top: 0, behavior: 'auto' });
+    // A diferencia de /asesoria, aquí el formulario va al FINAL de la página
+    // (en /diagnostico y en la home), con secciones encima. Subir arriba del
+    // todo dejaba el calendario fuera de pantalla: se baja hasta él, dejando
+    // sitio al menú fijo.
+    var cita = document.getElementById('paso-cita');
+    var y = cita.getBoundingClientRect().top + window.pageYOffset - 96;
+    window.scrollTo({ top: y, behavior: 'auto' });
 
     pintarCalendario(datos);
   }
