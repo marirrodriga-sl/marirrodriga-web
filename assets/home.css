@@ -104,6 +104,10 @@
 }
 .hm-sesiones b    { display: block; font-size: 15.5px; font-weight: 700; }
 .hm-sesiones span { font-size: 14px; line-height: 1.5; color: var(--ink-2); }
+/* 4.ª fase (12-11-2026): la entrega, con sus dos caminos como sublista. */
+.hm-ramas { list-style: none; margin-top: 4px; }
+.hm-sesiones .hm-ramas li { display: block; padding: 4px 0 0 14px; border: 0; position: relative; }
+.hm-ramas li::before { content: "–"; position: absolute; left: 0; top: 4px; color: var(--purple); font-weight: 700; }
 
 .hm-hoja-pie { margin: 14px 0 20px; }
 .hm-hoja-pie div {
