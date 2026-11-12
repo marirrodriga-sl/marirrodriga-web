@@ -25,6 +25,8 @@
 /* ─── Palencia ─────────────────────────────────────────────────────────── */
 .cn-palencia-txt { max-width: 68ch; }
 .cn-palencia-txt p { font-size: 17.5px; line-height: 1.7; color: var(--ink-2); }
+.cn-palencia-txt a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+.cn-palencia-txt a:hover { color: var(--purple); }
 .cn-palencia-txt p + p { margin-top: 16px; }
 .cn-palencia-txt p:first-child { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(24px, 2.4vw, 29px); line-height: 1.35; color: var(--ink); }
 

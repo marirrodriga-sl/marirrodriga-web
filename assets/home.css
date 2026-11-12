@@ -299,3 +299,6 @@
 .hm-puerta .btn { font-size: 17px; padding: 19px 40px; box-shadow: inset 0 0 0 1.5px var(--purple), var(--sh-2); }
 .hm-puerta .btn:hover { box-shadow: inset 0 0 0 1.5px var(--purple-deep), var(--sh-3); }
 @media (max-width: 680px) { .hm-puerta .btn { width: 100%; } }
+
+/* Enlaces bajo la ficha de Ismael (12-11-2026): a Conócenos y a la página de Palencia. */
+.hm-persona-mas { margin-top: 16px; }

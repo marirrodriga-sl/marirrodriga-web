@@ -17,40 +17,60 @@ const PALENCIA = {
   archivo: 'agencia-ia-palencia.html',
   ruta: '/agencia-ia-palencia',
   miga: 'Agencia de IA en Palencia',
-  titulo: 'Agencia de IA en Palencia para pymes | Marirrodriga IA',
-  descripcion: 'Somos de Palencia y montamos IA en negocios pequeños y medianos: WhatsApp, citas, facturas y clientes. Precios públicos y demo con tu caso, sin compromiso.',
+  /* 12-11-2026: rehecha tras la auditoría de Search Console (0 enlaces
+     externos, puesto ~14 para «agencia de IA en Palencia»). Fuera la «demo»:
+     la puerta es el diagnóstico. Lo local es lo que la distingue de las
+     agencias nacionales con una página por ciudad: quiénes somos, que vamos
+     en persona y los sectores de aquí. Sin cifras de la provincia sin fuente. */
+  titulo: 'Agencia de IA en Palencia: diagnóstico gratis | Marirrodriga IA',
+  descripcion: 'Agencia de IA de Palencia. Vamos a tu empresa, vemos qué tareas se pueden automatizar y te damos un informe con horas y precios. Diagnóstico gratis.',
   eyebrow: 'Palencia · Castilla y León',
   h1: 'Agencia de IA en Palencia',
-  lead: 'Marirrodriga IA es una agencia de inteligencia artificial con sede en Palencia. Montamos asistentes, automatizaciones y software a medida para pymes y autónomos, con el precio de cada pieza publicado en la web.',
+  lead: 'Marirrodriga IA es una agencia de inteligencia artificial nacida en Palencia. Vamos a tu empresa, vemos cómo se trabaja y montamos los agentes y automatizaciones que quitan las tareas repetitivas, con el precio de cada pieza publicado.',
   secciones: ({ departamentos }) => `
-    <h2>Quiénes somos</h2>
-    <p>Somos dos hermanos: <strong>Marco</strong>, desarrollador full-stack, escribe el código, e <strong>Isma</strong> monta los agentes de IA y las conexiones con lo que ya usas. Trabajas con quien lo construye, no con un comercial que se lo pasa a otro.</p>
+    <h2>Por qué una agencia de IA de Palencia</h2>
+    <p>Buscar «agencia de IA en Palencia» devuelve, sobre todo, agencias de otras ciudades con una página para cada provincia. Nosotros somos de aquí: <strong>el diagnóstico lo hacemos en tu empresa, en persona</strong>, sentados con quien dirige y con el equipo que hace el trabajo.</p>
+    <p>Montamos la agencia para que el negocio que sigue abierto en Palencia, el que compite con las cadenas y con internet con menos gente y menos horas, tenga las mismas herramientas que una empresa grande.</p>
 
-    <h2>Qué montamos para un negocio de Palencia</h2>
-    <p>No vendemos «IA» en abstracto. Se empieza por lo que te quita tiempo cada semana y se monta por piezas:</p>
+    <h2>Quiénes somos</h2>
+    <p>Somos dos hermanos. <strong>Ismael Marirrodriga</strong> hace los diagnósticos y monta los agentes de IA y las automatizaciones; además es graduado en Derecho, así que los contratos y el RGPD se miran antes de tocar nada. <strong>Marco Marirrodriga</strong>, desarrollador full-stack, escribe el código: las aplicaciones, los paneles y las conexiones entre programas. Trabajas con quien lo construye, no con un comercial que se lo pasa a otro. Más en <a href="/conocenos">Conócenos</a>.</p>
+
+    <h2>Para qué empresas de Palencia</h2>
+    <p>El diagnóstico gratis es para empresas de <strong>5 a 50 personas</strong>. En la provincia eso es, sobre todo:</p>
+    <ul>
+      <li><strong>Industria agroalimentaria y sus proveedores:</strong> pedidos que llegan por todas partes, albaranes, seguimiento de entregas e incidencias.</li>
+      <li><strong>Talleres, industria y servicios a la automoción:</strong> presupuestos que se enfrían, citas, avisos al cliente y papeleo.</li>
+      <li><strong>Distribución y comercio:</strong> stock, pedidos, cobros y la misma pregunta por WhatsApp veinte veces al día.</li>
+      <li><strong>Despachos, asesorías y clínicas:</strong> documentos que hay que perseguir, citas, recordatorios y facturación.</li>
+    </ul>
+
+    <h2>Qué montamos</h2>
+    <p>No vendemos «IA» en abstracto. Montamos el departamento entero con agentes de IA, o automatizamos las tareas repetitivas dentro de él:</p>
     <table class="art-tabla">
       <thead><tr><th>Si lo que te frena es…</th><th>Se resuelve en</th><th>Desde</th></tr></thead>
       <tbody>
         ${departamentos.map(d => `<tr><td>${d.dolor}</td><td><a href="${d.ruta}">${d.nombre}</a></td><td class="art-num">${d.desde} €/mes${d.iva}</td></tr>`).join('\n        ')}
       </tbody>
     </table>
-    <p>Si tienes una peluquería, un centro de estética o una clínica de fisioterapia, mira <a href="/citia">Citia</a>; si es una clínica dental, <a href="/dentia">Dentia</a>.</p>
+    <p>Puedes ver cada agente en <a href="/agentes">Qué hacemos</a>. Si tienes una peluquería, un centro de estética o una clínica de fisioterapia, mira <a href="/citia">Citia</a>; si es una clínica dental, <a href="/dentia">Dentia</a>. Y algunos de los proyectos que hemos montado, contados sin nombres porque firmamos confidencialidad, están en <a href="/conocenos">Conócenos</a>.</p>
 
     <h2>Cómo empezamos</h2>
     <ol>
       <li><strong>Un diagnóstico gratis.</strong> Hasta tres sesiones de unas dos horas: con quien dirige, con el equipo y mirando el trabajo. Es para empresas de 5 a 50 personas en Castilla y León, y <a href="/#solicitar">quedan solo <span class="plazas-n">11</span> plazas a coste 0</a>; después costará 350 €.</li>
-      <li><strong>Un informe con dos caminos.</strong> Para cada tarea que merezca la pena: formar a tu equipo para que la resuelva, o montar el software que la haga sola. Con el precio escrito. Y si no compensa, lo pone.</li>
+      <li><strong>Un informe con dos caminos.</strong> Para cada tarea que merezca la pena: formar a tu equipo para que la resuelva, o montar el software que la haga sola. Con las horas y el precio escritos. Y si no compensa, lo pone.</li>
       <li><strong>Precio cerrado antes de empezar.</strong> La instalación se paga 50 % al empezar y 50 % al entregar.</li>
       <li><strong>Sin permanencia.</strong> Te vas cuando quieras, avisando con 30 días.</li>
     </ol>
 
     <h2>Dónde trabajamos</h2>
-    <p>Estamos en Palencia y el diagnóstico lo hacemos en toda Castilla y León, con alguna sesión en tu oficina. El montaje se hace casi todo a distancia: lo que necesitamos es entender tu negocio y tener acceso a las herramientas que ya usas.</p>
-    <p>Puedes escribirnos a <a href="mailto:contacto@marirrodriga-ia.com">contacto@marirrodriga-ia.com</a> o por <a href="https://wa.me/34675148566" target="_blank" rel="noopener">WhatsApp, al 675 148 566</a>.</p>`,
+    <p>Estamos en Palencia capital y vamos a cualquier punto de la provincia. El diagnóstico lo hacemos en toda Castilla y León, con alguna sesión en tu oficina. El montaje se hace casi todo a distancia: lo que necesitamos es entender tu negocio y tener acceso a las herramientas que ya usas.</p>
+    <p>Puedes escribirnos a <a href="mailto:contacto@marirrodriga-ia.com">contacto@marirrodriga-ia.com</a> o por <a href="https://wa.me/34675148566" target="_blank" rel="noopener">WhatsApp, al 675 148 566</a>, o <a href="/#solicitar">pedir plaza para el diagnóstico</a>.</p>`,
   faq: [
-    ['¿Cuánto cuesta contratar una agencia de IA en Palencia?', 'En nuestro caso, depende de las piezas: cada una tiene su alta y su cuota publicadas, sin IVA, en la página de su departamento. No hace falta pedir presupuesto para saber el orden de magnitud.'],
+    ['¿Qué hace una agencia de IA?', 'Busca en tu empresa las tareas que se repiten y monta lo que las hace solas: un asistente que contesta por WhatsApp, un sistema que persigue facturas vencidas, un agente que ordena el correo. En nuestro caso, primero miramos cómo trabajáis y después decimos qué compensa y qué no.'],
+    ['¿Cuánto cuesta contratar una agencia de IA en Palencia?', 'El diagnóstico es gratis para las primeras plazas. Después, cada pieza tiene su alta y su cuota publicadas, sin IVA, en la página de su departamento, así que no hace falta pedir presupuesto para saber el orden de magnitud.'],
+    ['¿Venís a la empresa o es todo por videollamada?', 'El diagnóstico lo hacemos en tu empresa: no se puede ver cómo se trabaja desde una pantalla. El montaje y las revisiones posteriores, casi siempre a distancia.'],
     ['¿Hace falta que mi negocio sea grande?', 'El diagnóstico gratis es para empresas de 5 a 50 personas. Si sois menos, casi siempre os sirve mejor uno de nuestros productos con precio cerrado, como Citia.'],
-    ['¿Trabajáis solo en Palencia?', 'No. La sede está en Palencia y el diagnóstico lo hacemos en toda Castilla y León. El montaje es en remoto, así que fuera de la comunidad también se puede: escríbenos y lo vemos.'],
+    ['¿Trabajáis solo en Palencia?', 'No. Somos de Palencia y el diagnóstico lo hacemos en toda Castilla y León. El montaje es en remoto, así que fuera de la comunidad también se puede: escríbenos y lo vemos.'],
     ['¿Mis datos y los de mis clientes están protegidos?', 'Si tratamos datos personales por tu cuenta, firmamos contigo el contrato de encargado de tratamiento que exige el artículo 28 del RGPD. Los asistentes, además, se identifican siempre como IA ante quien les escribe.'],
   ],
 };
