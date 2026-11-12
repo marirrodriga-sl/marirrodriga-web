@@ -302,3 +302,16 @@
 
 /* Enlaces bajo la ficha de Ismael (12-11-2026): a Conócenos y a la página de Palencia. */
 .hm-persona-mas { margin-top: 16px; }
+
+/* Móvil (12-11-2026, petición de Ismael): la hoja del diagnóstico va justo
+   después del texto, y debajo de ella solo el enlace «Cómo es el
+   diagnóstico». El botón «Pedir plaza» de la cabecera sobra en móvil: la
+   hoja ya trae el suyo. La caja del texto se «disuelve» (display: contents)
+   para poder ordenar los botones por detrás de la hoja. */
+@media (max-width: 920px) {
+  .hm-rejilla { gap: 0; }
+  .hm-cab-txt { display: contents; }
+  .hm-cab .hm-hoja { order: 1; margin-top: 40px; }
+  .hm-cab .hm-botones { order: 2; margin-top: 26px; justify-content: center; }
+  .hm-cab .hm-botones .btn { display: none; }
+}

@@ -25,6 +25,11 @@
   ],
   "redirects": [
     {
+      "source": "/diagnostico",
+      "destination": "/#informe",
+      "permanent": true
+    },
+    {
       "source": "/bookia",
       "destination": "/citia",
       "permanent": true

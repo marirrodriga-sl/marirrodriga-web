@@ -330,7 +330,7 @@ const pie = () => `<footer class="pie">
         </div>
         <div class="pie-col">
           <h4>Contacto</h4>
-          <a href="/diagnostico">Diagnóstico gratis</a>
+          <a href="/#informe">Diagnóstico gratis</a>
           <a href="mailto:contacto@marirrodriga-ia.com">contacto@marirrodriga-ia.com</a>
           <a href="${WA}" target="_blank" rel="noopener">WhatsApp</a>
           <a href="/conocenos">Conócenos</a>
