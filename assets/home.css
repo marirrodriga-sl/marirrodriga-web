@@ -306,6 +306,22 @@
 /* Enlaces bajo la ficha de Ismael (12-11-2026): a Conócenos y a la página de Palencia. */
 .hm-persona-mas { margin-top: 16px; }
 
+/* Escritorio (16-11-2026, petición de Ismael): la hoja era tan alta que
+   empujaba el texto de la izquierda hacia abajo. Ahora es más ancha y más
+   baja: las tres sesiones en fila, la 4.ª fase a todo el ancho con sus dos
+   caminos lado a lado, y el pie (resultado, coste, plazas) también en fila. */
+@media (min-width: 921px) {
+  .hm-rejilla { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 56px; }
+  .hm-titular { font-size: clamp(34px, 3.2vw, 46px); }
+  .hm-hoja { padding: 24px 28px 20px; }
+  .hm-sesiones { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 22px; }
+  .hm-sesiones > li { grid-template-columns: 1fr; gap: 4px; align-content: start; }
+  .hm-sesiones > li.hm-ses-final { grid-column: 1 / -1; grid-template-columns: 22px 1fr; gap: 10px; }
+  .hm-ses-final .hm-ramas { display: grid; grid-template-columns: 1fr 1fr; column-gap: 22px; }
+  .hm-hoja-pie { display: grid; grid-template-columns: 1fr 1fr 1.2fr; column-gap: 22px; margin: 12px 0 18px; }
+  .hm-hoja-pie div { grid-template-columns: 1fr; gap: 2px; padding: 4px 0; }
+}
+
 /* Móvil (12-11-2026, petición de Ismael): la hoja del diagnóstico va justo
    después del texto, y debajo de ella solo el enlace «Cómo es el
    diagnóstico». El botón «Pedir plaza» de la cabecera sobra en móvil: la
