@@ -56,21 +56,21 @@ const PALENCIA = {
 
     <h2>Cómo empezamos</h2>
     <ol>
-      <li><strong>Un diagnóstico gratis.</strong> Hasta tres sesiones de unas dos horas: con quien dirige, con el equipo y mirando el trabajo. Es para empresas de 5 a 50 personas en Castilla y León, y <a href="/#solicitar">quedan solo <span class="plazas-n">10</span> plazas a coste 0</a>; después costará 350 €.</li>
+      <li><strong>Un diagnóstico gratis.</strong> Hasta tres sesiones de unas dos horas: con quien dirige, con el equipo y mirando el trabajo. Es para empresas de 5 a 50 personas de toda España, y <a href="/#solicitar">quedan solo <span class="plazas-n">10</span> plazas a coste 0</a>; después costará 350 €.</li>
       <li><strong>Un informe con dos caminos.</strong> Para cada tarea que merezca la pena: formar a tu equipo para que la resuelva, o montar el software que la haga sola. Con las horas y el precio escritos. Y si no compensa, lo pone.</li>
       <li><strong>Precio cerrado antes de empezar.</strong> La instalación se paga 50 % al empezar y 50 % al entregar.</li>
       <li><strong>Sin permanencia.</strong> Te vas cuando quieras, avisando con 30 días.</li>
     </ol>
 
     <h2>Dónde trabajamos</h2>
-    <p>Estamos en Palencia capital y vamos a cualquier punto de la provincia. El diagnóstico lo hacemos en toda Castilla y León, con alguna sesión en tu oficina. El montaje se hace casi todo a distancia: lo que necesitamos es entender tu negocio y tener acceso a las herramientas que ya usas.</p>
+    <p>Estamos en Palencia capital y vamos a cualquier punto de la provincia. En toda Castilla y León, el diagnóstico tiene alguna sesión en tu oficina; en el resto de España, va por videollamada. El montaje se hace casi todo a distancia: lo que necesitamos es entender tu negocio y tener acceso a las herramientas que ya usas.</p>
     <p>Puedes escribirnos a <a href="mailto:contacto@marirrodriga-ia.com">contacto@marirrodriga-ia.com</a> o por <a href="https://wa.me/34675148566" target="_blank" rel="noopener">WhatsApp, al 675 148 566</a>, o <a href="/#solicitar">pedir plaza para el diagnóstico</a>.</p>`,
   faq: [
     ['¿Qué hace una agencia de IA?', 'Busca en tu empresa las tareas que se repiten y monta lo que las hace solas: un asistente que contesta por WhatsApp, un sistema que persigue facturas vencidas, un agente que ordena el correo. En nuestro caso, primero miramos cómo trabajáis y después decimos qué compensa y qué no.'],
     ['¿Cuánto cuesta contratar una agencia de IA en Palencia?', 'El diagnóstico es gratis para las primeras plazas. Después, cada pieza tiene su alta y su cuota publicadas, sin IVA, en la página de su departamento, así que no hace falta pedir presupuesto para saber el orden de magnitud.'],
-    ['¿Venís a la empresa o es todo por videollamada?', 'El diagnóstico lo hacemos en tu empresa: no se puede ver cómo se trabaja desde una pantalla. El montaje y las revisiones posteriores, casi siempre a distancia.'],
+    ['¿Venís a la empresa o es todo por videollamada?', 'En Castilla y León, el diagnóstico lo hacemos en tu empresa: el trabajo se entiende mejor viéndolo. Fuera, por videollamada, o en persona si la empresa paga el viaje. El montaje y las revisiones posteriores, casi siempre a distancia.'],
     ['¿Hace falta que mi negocio sea grande?', 'El diagnóstico gratis es para empresas de 5 a 50 personas. Si sois menos, casi siempre os sirve mejor uno de nuestros productos con precio cerrado, como Citia.'],
-    ['¿Trabajáis solo en Palencia?', 'No. Somos de Palencia y el diagnóstico lo hacemos en toda Castilla y León. El montaje es en remoto, así que fuera de la comunidad también se puede: escríbenos y lo vemos.'],
+    ['¿Trabajáis solo en Palencia?', 'No. Somos de Palencia y el diagnóstico lo hacemos en persona en toda Castilla y León. Fuera de la comunidad también: por videollamada, o en persona si la empresa paga el viaje. El montaje es en remoto.'],
     ['¿Mis datos y los de mis clientes están protegidos?', 'Si tratamos datos personales por tu cuenta, firmamos contigo el contrato de encargado de tratamiento que exige el artículo 28 del RGPD. Los asistentes, además, se identifican siempre como IA ante quien les escribe.'],
   ],
 };
@@ -158,7 +158,128 @@ const CHATBOT = {
   ],
 };
 
-const GUIAS = [CHATBOT];
+/* 23-11-2026: guía nacional (el diagnóstico es para toda España desde el 17-11).
+   Los tres niveles son los de Ismael: tarea concreta → proceso completo →
+   departamento entero. El suelo del nivel 1 (150 € + 70 €/mes) lo fijó él; el
+   resto de precios se lee de datos-departamentos.cjs. Fuera, por decisión suya:
+   el suelo interno de los proyectos a medida y las ayudas públicas.
+   El sueldo es el último dato del INE por ocupación (EES 2022) y los tipos de
+   cotización son los de 2026 de la Seguridad Social. */
+const { DEPARTAMENTOS } = require('./datos-departamentos.cjs');
+const NIVEL1 = { alta: 150, cuota: 70 };
+const fmt = n => n.toLocaleString('es-ES', { useGrouping: true }).replace(/(\d)(?=(\d{3})+$)/, '$1.');
+const PACKS = DEPARTAMENTOS.filter(d => d.pack && d.pack.alta);
+const N2 = [['/finanzas', 'Recobro de facturas vencidas'], ['/logistica', 'Seguimiento de entregas'],
+  ['/finanzas', 'Contabilidad y cuadro financiero'], ['/ventas-y-captacion', 'Captación de clientes potenciales']]
+  .map(([ruta, n]) => DEPARTAMENTOS.find(d => d.ruta === ruta).piezas.find(z => z.n === n));
+const rangoDe = (xs, k) => `${fmt(Math.min(...xs.map(k)))} a ${fmt(Math.max(...xs.map(k)))}`;
+const RANGO = {
+  n2: { alta: rangoDe(N2, z => z.setup), cuota: rangoDe(N2, z => z.eur) },
+  n3: { alta: rangoDe(PACKS, d => d.pack.alta), cuota: rangoDe(PACKS, d => d.pack.cuota) },
+};
+const SUELDO_ADMIN = 24198.08;          // INE, EES 2022, gran grupo 4 (ambos sexos)
+const SS_EMPRESA = 0.3065 + 0.015;      // 23,60 + 5,50 + 0,20 + 0,60 + 0,75 (MEI) + ~1,50 AT/EP oficina
+const COSTE_ADMIN = Math.round(SUELDO_ADMIN * (1 + SS_EMPRESA) / 1000) * 1000;
+
+const IMPLANTAR = {
+  archivo: 'guias/cuanto-cuesta-implantar-ia-pyme.html',
+  ruta: '/guias/cuanto-cuesta-implantar-ia-pyme',
+  miga: 'Cuánto cuesta implantar IA en una pyme',
+  fecha: '2026-11-23',
+  fechaTxt: '23 de noviembre de 2026',
+  titulo: 'Cuánto cuesta implantar IA en una pyme en 2026 | Marirrodriga IA',
+  descripcion: 'Tres niveles, del más sencillo a un departamento entero, con precios en euros y el IVA aparte. Y la cuenta frente a contratar a una persona.',
+  eyebrow: 'Guía de precios',
+  h1: 'Cuánto cuesta implantar IA en una pyme en España',
+  lead: 'Depende de cuánto quieras que haga la IA: acelerar una tarea, llevar un proceso entero o encargarse de un departamento. Aquí van los tres niveles con precios reales, sin IVA y con el IVA debajo, y la comparación que se hace casi todo el mundo: contratar a una persona.',
+  resumen: ({ f }) => `
+    <aside class="art-resumen">
+      <strong>La respuesta corta</strong>
+      <p>Automatizar una tarea concreta empieza en unos ${f(NIVEL1.alta)} € de alta y ${f(NIVEL1.cuota)} €/mes. Un proceso completo, de ${RANGO.n2.alta} € de alta y de ${RANGO.n2.cuota} €/mes. Un departamento entero, de ${RANGO.n3.alta} € de alta y de ${RANGO.n3.cuota} €/mes. Todo sin IVA. Los proyectos a medida que publican otras agencias van de 2.000 a 30.000 €.</p>
+    </aside>`,
+  secciones: ({ f, iva, primerAno, deps, pieza }) => {
+    const fila = d => `
+        <tr>
+          <td><strong>${d.nombre}</strong></td>
+          <td class="art-num">${f(d.pack.alta)} €${iva(d.pack.alta)}</td>
+          <td class="art-num">${f(d.pack.cuota)} €/mes${iva(d.pack.cuota)}</td>
+          <td class="art-num"><strong>${f(primerAno(d.pack.alta, d.pack.cuota))} €</strong>${iva(primerAno(d.pack.alta, d.pack.cuota))}</td>
+        </tr>`;
+    const ej = (ruta, n) => { const z = pieza(ruta, n); return `<strong>${z.n}</strong>: ${f(z.setup)} € de alta y ${f(z.eur)} €/mes`; };
+    const at = deps.find(d => d.ruta === '/atencion-al-cliente');
+    return `
+    <h2>Los tres niveles</h2>
+    <table class="art-tabla">
+      <thead><tr><th>Nivel</th><th>Qué hace la IA</th><th>Ejemplo</th></tr></thead>
+      <tbody>
+        <tr><td><strong>1. Una tarea concreta</strong></td><td>Hace más rápida una tarea dentro de un proceso que sigue llevando una persona.</td><td>Un agente que crea las facturas de tus clientes y las deja ordenadas.</td></tr>
+        <tr><td><strong>2. Un proceso completo</strong></td><td>Lleva el proceso de principio a fin, sola o con una persona que solo revisa.</td><td>Perseguir las facturas vencidas hasta cobrarlas, o al transportista hasta tener la fecha.</td></tr>
+        <tr><td><strong>3. Un departamento entero</strong></td><td>Varios agentes trabajando juntos que se encargan del departamento.</td><td>Toda la atención al cliente: chat, agenda, recordatorios y correo.</td></tr>
+      </tbody>
+    </table>
+    <p>Cuanto más arriba, más horas libera y más hay que montar. Casi nadie empieza por el nivel 3: lo normal es empezar por la tarea que más tiempo roba y subir cuando funciona.</p>
+
+    <h2>Nivel 1: una tarea concreta</h2>
+    <p>Es la puerta de entrada. La IA no lleva el proceso: hace más rápida una parte. Por ejemplo, le dices a quién y de qué, y la factura sale hecha y archivada donde toca. La persona sigue decidiendo, pero tarda segundos en lo que antes le llevaba un rato.</p>
+    <p>Con nosotros empieza en <strong>${f(NIVEL1.alta)} € de alta</strong>${iva(NIVEL1.alta)} y <strong>${f(NIVEL1.cuota)} €/mes</strong>${iva(NIVEL1.cuota)}.</p>
+
+    <h2>Nivel 2: un proceso completo</h2>
+    <p>Aquí la IA hace el trabajo entero y la persona solo mira lo que no está claro. Algunos de los que tenemos publicados, sin IVA:</p>
+    <ul>
+      <li>${ej('/finanzas', 'Recobro de facturas vencidas')}. Escribe, insiste con criterio y avisa cuando hay que llamar.</li>
+      <li>${ej('/logistica', 'Seguimiento de entregas')}. Persigue a cada transportista hasta sacarle la fecha real.</li>
+      <li>${ej('/finanzas', 'Contabilidad y cuadro financiero')}. Clasifica gastos e ingresos y cruza lo cobrado con lo facturado.</li>
+      <li>${ej('/ventas-y-captacion', 'Captación de clientes potenciales')}. Busca negocios que encajan con tu cliente ideal.</li>
+    </ul>
+
+    <h2>Nivel 3: un departamento entero</h2>
+    <p>Todas las piezas de un departamento, montadas juntas y con la misma cabeza detrás. Son nuestros precios publicados, sin IVA y con el IVA debajo:</p>
+    <table class="art-tabla">
+      <thead><tr><th>Departamento</th><th>Alta</th><th>Cuota</th><th>Primer año</th></tr></thead>
+      <tbody>${deps.map(fila).join('')}
+      </tbody>
+    </table>
+    <p class="art-nota">En Ventas, el CRM va aparte. Cada departamento tiene su página con todas las piezas y lo que incluye cada una.</p>
+
+    <h2>Lo que dicen otros</h2>
+    <p>No hay un precio oficial. Estas son cifras que publican otros proveedores, para que tengas con qué comparar:</p>
+    <ul>
+      <li><a href="https://www.utilia.ai/es/blog/cuanto-cuesta-ia-pymes-2025" target="_blank" rel="noopener">Utilia</a> da <strong>de 2.000 a 8.000 €</strong> para una automatización con herramientas <em>low-code</em> y <strong>de 8.000 a 30.000 €</strong> para un desarrollo a medida.</li>
+      <li><a href="https://blog.tenea.com/cuanto-cuesta-ia-agentica" target="_blank" rel="noopener">Tenea</a> sitúa la IA agéntica para una pyme <strong>entre 3.000 y 15.000 €</strong>.</li>
+    </ul>
+    <p>La diferencia con lo nuestro no es magia. Esas cifras son proyectos que se construyen y se pagan de una vez. Lo nuestro son piezas que ya funcionan, se adaptan a tu negocio y se pagan con una cuota. Si lo que necesitas no existe, también se construye a medida, con un presupuesto cerrado después del diagnóstico.</p>
+
+    <h2>La cuenta que se hace casi todo el mundo: contratar a una persona</h2>
+    <p>Un administrativo en España cobra de media <strong>${f(Math.round(SUELDO_ADMIN))} € brutos al año</strong>, según la <a href="https://www.ine.es/dyngs/Prensa/EES2022.htm" target="_blank" rel="noopener">Encuesta de Estructura Salarial del INE</a> (2022, el último dato por ocupación). A eso la empresa le suma su parte de la Seguridad Social: un 30,65 % con los <a href="https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/CotizacionRecaudacionTrabajadores/36537" target="_blank" rel="noopener">tipos de 2026</a>, más la cotización por accidentes de trabajo. En total, <strong>unos ${f(COSTE_ADMIN)} € al año</strong>.</p>
+    <p>Atención al cliente entera, montada con IA, sale por ${f(primerAno(at.pack.alta, at.pack.cuota))} € el primer año, sin IVA.</p>
+    <p>Dicho esto, la comparación tiene trampa y conviene decirla: <strong>la IA no sustituye a una persona entera</strong>. Lo que hace es quitarle a tu equipo las horas que se van en lo repetitivo, para que las dedique a lo que solo puede hacer una persona. Por eso lo que hay que medir no es el sueldo, sino cuántas horas a la semana se van en tareas que siguen siempre el mismo esquema.</p>
+
+    <h2>Lo que no sale en la factura</h2>
+    <ul>
+      <li><strong>El tiempo de tu equipo al principio.</strong> Alguien tiene que explicar cómo se hacen las cosas y revisar las primeras semanas.</li>
+      <li><strong>Tus datos, en orden.</strong> Si los clientes están en tres hojas de cálculo distintas, primero hay que juntarlos.</li>
+      <li><strong>Lo que cobran otros.</strong> Por ejemplo, los mensajes de WhatsApp que factura Meta, que van a tu nombre.</li>
+    </ul>
+
+    <h2>Cuándo no compensa</h2>
+    <ul>
+      <li>Si casi no hay tareas que se repitan: la IA rinde en lo que sigue un esquema.</li>
+      <li>Si el proceso cambia cada semana: primero hay que asentarlo.</li>
+      <li>Si sois menos de cinco personas: casi siempre te sirve mejor un producto con precio cerrado que un proyecto.</li>
+    </ul>
+
+    <h2>Cómo saber cuánto te costaría a ti</h2>
+    <p>Las tablas dan el orden de magnitud, pero la cifra buena sale de mirar tu empresa: qué tareas se repiten, cuántas horas se llevan y cuáles merece la pena automatizar. Eso es lo que hacemos en el <a href="/#informe">diagnóstico</a>: hasta tres sesiones con quien dirige y con el equipo, y un informe con las tareas, las horas y el precio de quitarlas. Es gratis para empresas de 5 a 50 personas de toda España.</p>`;
+  },
+  faq: [
+    ['¿Cuánto cuesta implantar inteligencia artificial en una pyme?', `Depende del nivel. Automatizar una tarea concreta empieza en unos ${NIVEL1.alta} € de alta y ${NIVEL1.cuota} €/mes. Un departamento entero, de ${RANGO.n3.alta} € de alta y de ${RANGO.n3.cuota} €/mes. Todo sin IVA. Los proyectos a medida que publican otras agencias van de 2.000 a 30.000 €.`],
+    ['¿Sale más barato que contratar a una persona?', `En coste, sí: un administrativo le cuesta a la empresa unos ${fmt(COSTE_ADMIN)} € al año con la Seguridad Social. Pero la IA no sustituye a una persona entera: quita las horas de las tareas repetitivas para que tu equipo las dedique a otra cosa.`],
+    ['¿Por dónde empiezo?', 'Por la tarea que más horas se lleva y que siempre se hace igual. Si no sabes cuál es, el diagnóstico gratuito sirve justo para eso.'],
+    ['¿Hay permanencia?', 'Se paga una cuota mensual. Antes de contratar, pregunta siempre cuánto hay que avisar para irse y qué pasa con tus datos si te vas.'],
+  ],
+};
+
+const GUIAS = [IMPLANTAR, CHATBOT];
 
 const INDICE_GUIAS = {
   archivo: 'guias/index.html',

@@ -170,7 +170,7 @@ ${nav([])}
       <div class="cn-palencia-txt">
         <p>En una ciudad como la nuestra, el negocio que sigue abierto compite con las cadenas y con internet, y casi siempre con menos gente y menos horas. No le falta oficio: le falta tiempo.</p>
         <p>Por eso empezamos aquí. Queremos que Palencia se modernice sin perder lo que tiene: que la tienda, la clínica o la distribuidora de siempre conteste a las once de la noche, persiga sus cobros y salga en Google como lo haría una empresa grande.</p>
-        <p>Trabajamos sobre todo en Castilla y León, y vamos a tu empresa en persona. Quien te hace el diagnóstico es quien después monta el trabajo. Cómo lo hacemos aquí, en <a href="/agencia-ia-palencia">nuestra página de agencia de IA en Palencia</a>.</p>
+        <p>Trabajamos sobre todo en Castilla y León, donde vamos a tu empresa en persona; con el resto de España, por videollamada. Quien te hace el diagnóstico es quien después monta el trabajo. Cómo lo hacemos aquí, en <a href="/agencia-ia-palencia">nuestra página de agencia de IA en Palencia</a>.</p>
       </div>
     </div>
   </section>

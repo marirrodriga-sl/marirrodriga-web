@@ -148,7 +148,7 @@ function guia(p) {
   const articulo = {
     '@context': 'https://schema.org', '@type': 'Article',
     headline: p.h1, description: p.descripcion, inLanguage: 'es-ES',
-    datePublished: FECHA, dateModified: FECHA, url: BASE + p.ruta,
+    datePublished: p.fecha || FECHA, dateModified: p.fecha || FECHA, url: BASE + p.ruta,
     image: BASE + '/og-image.png',
     author: { '@type': 'Organization', name: 'Marirrodriga IA', url: BASE + '/' },
     publisher: { '@type': 'Organization', name: 'Marirrodriga IA', logo: { '@type': 'ImageObject', url: BASE + '/icon-512.png' } },
@@ -157,6 +157,10 @@ function guia(p) {
     agente: { ...agenteBase, limCorto: agenteBase.lim.split(' · ')[0] },
     pack: atencion.pack, f: euros, iva,
     primerAno: (alta, cuota) => alta + cuota * 12,
+    deps: DEPARTAMENTOS.filter(d => d.pack && d.pack.alta)
+      .map(d => ({ ruta: d.ruta, nombre: d.pill, pack: d.pack }))
+      .sort((a, b) => (a.pack.alta + a.pack.cuota * 12) - (b.pack.alta + b.pack.cuota * 12)),
+    pieza: (r, n) => dep(r).piezas.find(z => z.n === n),
   };
   return cabecera(p, [articulo, faqLd(p), ruta(['Inicio', '/'], ['Guías', '/guias'], [p.miga, p.ruta])]) + `
 <main class="art">
@@ -164,7 +168,7 @@ function guia(p) {
     <span class="t-eyebrow">${esc(p.eyebrow)}</span>
     <h1 class="t-h2">${esc(p.h1)}</h1>
     <p class="t-lead">${esc(p.lead)}</p>
-    <p class="art-firma">Por Marirrodriga IA · Actualizada el <time datetime="${FECHA}">${FECHA_TXT}</time></p>
+    <p class="art-firma">Por Marirrodriga IA · Actualizada el <time datetime="${p.fecha || FECHA}">${p.fechaTxt || FECHA_TXT}</time></p>
   </header>
   <div class="art-cuerpo envoltura-txt">${p.resumen(datos)}${p.secciones(datos)}
   </div>
