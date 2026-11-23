@@ -76,7 +76,7 @@ const DEPTOS_MENU = [
 /* «Conócenos» (11-11-2026): quién está detrás, de dónde somos y lo que
    publicamos. */
 const CONOCENOS_MENU = [
-  ['Quiénes somos', '/#quienes', 'Quien hace el diagnóstico es quien monta el trabajo'],
+  ['Quiénes somos', '/#quienes', 'Quien hace la consultoría es quien monta el trabajo'],
   ['Somos de Palencia', '/agencia-ia-palencia', 'Una agencia de IA de aquí, para empresas de Castilla y León'],
   ['Guías', '/guias', 'Qué cuesta la IA y qué preguntar antes de contratarla'],
 ];
@@ -85,15 +85,15 @@ const CONOCENOS_MENU = [
    dejó como enlaces fijos: cada una lleva a su página, y lo que había dentro
    ya está en esa página (los departamentos, en /agentes). */
 const SECCIONES = [
-  ['Trabaja con nosotros', '/', 'Diagnóstico gratis, formación o software a medida'],
+  ['Trabaja con nosotros', '/', 'Consultoría gratis, formación o software a medida'],
   ['Qué hacemos', '/agentes', 'Los agentes que montamos, uno por departamento'],
   ['Conócenos', '/conocenos', 'Quién está detrás, de dónde somos y lo que hemos montado'],
 ];
 
 /* Rutas absolutas a la home: desde una landing tienen que llevar allí y bajar */
 const SOBRE_MENU = [
-  ['Cómo trabajamos', '/', 'Diagnóstico, formación de tu equipo o software a medida'],
-  ['Diagnóstico gratis', '/diagnostico', 'Hasta tres sesiones para encontrar qué se puede automatizar'],
+  ['Cómo trabajamos', '/', 'Consultoría, formación de tu equipo o software a medida'],
+  ['Consultoría gratis', '/consultoria', 'Hasta tres sesiones para encontrar qué se puede automatizar'],
   ['Qué te llevas', '/#informe', 'Un informe con las tareas, las horas y cómo quitarlas'],
   ['Preguntas', '/diagnostico#preguntas', 'Lo que nos preguntan antes de pedir plaza'],
 ];
@@ -123,7 +123,7 @@ const nav = (anclas = ANCLAS) => `<nav class="nav">
     ${SECCIONES.map(([t, h]) => `<a class="nav-link nav-seccion" href="${h}">${t}</a>`).join('\n    ')}
     ${anclas.map(([h, t]) => `<a class="nav-link" href="${h}">${t}</a>`).join('\n    ')}
   </div>
-  <a class="btn btn-1 nav-cta" href="/#solicitar">Diagnóstico gratis</a>
+  <a class="btn btn-1 nav-cta" href="/#solicitar">Consultoría gratis</a>
   <button class="nav-burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-movil">
     <i></i><i></i><i></i>
   </button>
@@ -132,7 +132,7 @@ const nav = (anclas = ANCLAS) => `<nav class="nav">
   ${SECCIONES.map(([t, h, d]) => `<a class="nav-item" href="${h}"><b>${t}</b><span>${d}</span></a>`).join('\n  ')}
   ${anclas.length ? `<h5>En esta página</h5>
   ${anclas.map(([h, t]) => `<a class="nav-item" href="${h}"><b>${t}</b></a>`).join('\n  ')}` : ''}
-  <a class="btn btn-1" href="/#solicitar">Diagnóstico gratis</a>
+  <a class="btn btn-1" href="/#solicitar">Consultoría gratis</a>
 </div>`;
 
 const hero = p => `<header class="hero-s" style="--hero:url('/assets/img/${p.hero}')">
@@ -291,7 +291,7 @@ const cierre = (p, modo = 'diagnostico') => modo === 'producto'
       'O que no te encaja. Si con lo que ya tienes te apañas, te lo decimos en la llamada y nos ahorramos los dos el tiempo.',
       `<a class="btn btn-1" href="${CAL}" target="_blank" rel="noopener">Pide una demo</a>`,
       '<a class="cierre-d-enlace" href="/agentes">Ver todo lo que hacemos</a>')
-  : bloqueCierre('Empieza por el diagnóstico',
+  : bloqueCierre('Empieza por la consultoría',
       'Hasta tres sesiones con tu empresa y un informe con qué tareas, cuántas horas y cuánto cuesta quitarlas. Para empresas de 5 a 50 personas de toda España: en persona en Castilla y León y por videollamada en el resto. Quedan solo <span class="plazas-n">10</span> plazas a coste 0; después, 350 €.',
       '<a class="btn btn-1" href="/#solicitar">Pedir plaza</a>',
       `<a class="cierre-d-enlace" href="${WA}" target="_blank" rel="noopener">Escribir por WhatsApp</a>`);
@@ -330,7 +330,7 @@ const pie = () => `<footer class="pie">
         </div>
         <div class="pie-col">
           <h4>Contacto</h4>
-          <a href="/#informe">Diagnóstico gratis</a>
+          <a href="/#informe">Consultoría gratis</a>
           <a href="mailto:contacto@marirrodriga-ia.com">contacto@marirrodriga-ia.com</a>
           <a href="${WA}" target="_blank" rel="noopener">WhatsApp</a>
           <a href="/conocenos">Conócenos</a>

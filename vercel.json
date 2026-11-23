@@ -30,6 +30,11 @@
       "permanent": true
     },
     {
+      "source": "/consultoria",
+      "destination": "/#solicitar",
+      "permanent": false
+    },
+    {
       "source": "/bookia",
       "destination": "/citia",
       "permanent": true

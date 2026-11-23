@@ -22,21 +22,21 @@ const PALENCIA = {
      la puerta es el diagnóstico. Lo local es lo que la distingue de las
      agencias nacionales con una página por ciudad: quiénes somos, que vamos
      en persona y los sectores de aquí. Sin cifras de la provincia sin fuente. */
-  titulo: 'Agencia de IA en Palencia: diagnóstico gratis | Marirrodriga IA',
-  descripcion: 'Agencia de IA de Palencia. Vamos a tu empresa, vemos qué tareas se pueden automatizar y te damos un informe con horas y precios. Diagnóstico gratis.',
+  titulo: 'Agencia de IA en Palencia: consultoría gratis | Marirrodriga IA',
+  descripcion: 'Agencia de IA de Palencia. Vamos a tu empresa, vemos qué tareas se pueden automatizar y te damos un informe con horas y precios. Consultoría gratis.',
   eyebrow: 'Palencia · Castilla y León',
   h1: 'Agencia de IA en Palencia',
   lead: 'Marirrodriga IA es una agencia de inteligencia artificial nacida en Palencia. Vamos a tu empresa, vemos cómo se trabaja y montamos los agentes y automatizaciones que quitan las tareas repetitivas, con el precio de cada pieza publicado.',
   secciones: ({ departamentos }) => `
     <h2>Por qué una agencia de IA de Palencia</h2>
-    <p>Buscar «agencia de IA en Palencia» devuelve, sobre todo, agencias de otras ciudades con una página para cada provincia. Nosotros somos de aquí: <strong>el diagnóstico lo hacemos en tu empresa, en persona</strong>, sentados con quien dirige y con el equipo que hace el trabajo.</p>
+    <p>Buscar «agencia de IA en Palencia» devuelve, sobre todo, agencias de otras ciudades con una página para cada provincia. Nosotros somos de aquí: <strong>la consultoría la hacemos en tu empresa, en persona</strong>, sentados con quien dirige y con el equipo que hace el trabajo.</p>
     <p>Montamos la agencia para que el negocio que sigue abierto en Palencia, el que compite con las cadenas y con internet con menos gente y menos horas, tenga las mismas herramientas que una empresa grande.</p>
 
     <h2>Quiénes somos</h2>
-    <p>Somos dos hermanos. <strong>Ismael Marirrodriga</strong> hace los diagnósticos y monta los agentes de IA y las automatizaciones; además es graduado en Derecho, así que los contratos y el RGPD se miran antes de tocar nada. <strong>Marco Marirrodriga</strong>, desarrollador full-stack, escribe el código: las aplicaciones, los paneles y las conexiones entre programas. Trabajas con quien lo construye, no con un comercial que se lo pasa a otro. Más en <a href="/conocenos">Conócenos</a>.</p>
+    <p>Somos dos hermanos. <strong>Ismael Marirrodriga</strong> hace las consultorías y monta los agentes de IA y las automatizaciones; además es graduado en Derecho, así que los contratos y el RGPD se miran antes de tocar nada. <strong>Marco Marirrodriga</strong>, desarrollador full-stack, escribe el código: las aplicaciones, los paneles y las conexiones entre programas. Trabajas con quien lo construye, no con un comercial que se lo pasa a otro. Más en <a href="/conocenos">Conócenos</a>.</p>
 
     <h2>Para qué empresas de Palencia</h2>
-    <p>El diagnóstico gratis es para empresas de <strong>5 a 50 personas</strong>. En la provincia eso es, sobre todo:</p>
+    <p>La consultoría gratis es para empresas de <strong>5 a 50 personas</strong>. En la provincia eso es, sobre todo:</p>
     <ul>
       <li><strong>Industria agroalimentaria y sus proveedores:</strong> pedidos que llegan por todas partes, albaranes, seguimiento de entregas e incidencias.</li>
       <li><strong>Talleres, industria y servicios a la automoción:</strong> presupuestos que se enfrían, citas, avisos al cliente y papeleo.</li>
@@ -56,21 +56,21 @@ const PALENCIA = {
 
     <h2>Cómo empezamos</h2>
     <ol>
-      <li><strong>Un diagnóstico gratis.</strong> Hasta tres sesiones de unas dos horas: con quien dirige, con el equipo y mirando el trabajo. Es para empresas de 5 a 50 personas de toda España, y <a href="/#solicitar">quedan solo <span class="plazas-n">10</span> plazas a coste 0</a>; después costará 350 €.</li>
+      <li><strong>Una consultoría gratis.</strong> Hasta tres sesiones de unas dos horas: con quien dirige, con el equipo y mirando el trabajo. Es para empresas de 5 a 50 personas de toda España, y <a href="/#solicitar">quedan solo <span class="plazas-n">10</span> plazas a coste 0</a>; después costará 350 €.</li>
       <li><strong>Un informe con dos caminos.</strong> Para cada tarea que merezca la pena: formar a tu equipo para que la resuelva, o montar el software que la haga sola. Con las horas y el precio escritos. Y si no compensa, lo pone.</li>
       <li><strong>Precio cerrado antes de empezar.</strong> La instalación se paga 50 % al empezar y 50 % al entregar.</li>
       <li><strong>Sin permanencia.</strong> Te vas cuando quieras, avisando con 30 días.</li>
     </ol>
 
     <h2>Dónde trabajamos</h2>
-    <p>Estamos en Palencia capital y vamos a cualquier punto de la provincia. En toda Castilla y León, el diagnóstico tiene alguna sesión en tu oficina; en el resto de España, va por videollamada. El montaje se hace casi todo a distancia: lo que necesitamos es entender tu negocio y tener acceso a las herramientas que ya usas.</p>
+    <p>Estamos en Palencia capital y vamos a cualquier punto de la provincia. En toda Castilla y León, la consultoría tiene alguna sesión en tu oficina; en el resto de España, va por videollamada. El montaje se hace casi todo a distancia: lo que necesitamos es entender tu negocio y tener acceso a las herramientas que ya usas.</p>
     <p>Puedes escribirnos a <a href="mailto:contacto@marirrodriga-ia.com">contacto@marirrodriga-ia.com</a> o por <a href="https://wa.me/34675148566" target="_blank" rel="noopener">WhatsApp, al 675 148 566</a>, o <a href="/#solicitar">pedir plaza para el diagnóstico</a>.</p>`,
   faq: [
     ['¿Qué hace una agencia de IA?', 'Busca en tu empresa las tareas que se repiten y monta lo que las hace solas: un asistente que contesta por WhatsApp, un sistema que persigue facturas vencidas, un agente que ordena el correo. En nuestro caso, primero miramos cómo trabajáis y después decimos qué compensa y qué no.'],
-    ['¿Cuánto cuesta contratar una agencia de IA en Palencia?', 'El diagnóstico es gratis para las primeras plazas. Después, cada pieza tiene su alta y su cuota publicadas, sin IVA, en la página de su departamento, así que no hace falta pedir presupuesto para saber el orden de magnitud.'],
-    ['¿Venís a la empresa o es todo por videollamada?', 'En Castilla y León, el diagnóstico lo hacemos en tu empresa: el trabajo se entiende mejor viéndolo. Fuera, por videollamada, o en persona si la empresa paga el viaje. El montaje y las revisiones posteriores, casi siempre a distancia.'],
-    ['¿Hace falta que mi negocio sea grande?', 'El diagnóstico gratis es para empresas de 5 a 50 personas. Si sois menos, casi siempre os sirve mejor uno de nuestros productos con precio cerrado, como Citia.'],
-    ['¿Trabajáis solo en Palencia?', 'No. Somos de Palencia y el diagnóstico lo hacemos en persona en toda Castilla y León. Fuera de la comunidad también: por videollamada, o en persona si la empresa paga el viaje. El montaje es en remoto.'],
+    ['¿Cuánto cuesta contratar una agencia de IA en Palencia?', 'La consultoría es gratis para las primeras plazas. Después, cada pieza tiene su alta y su cuota publicadas, sin IVA, en la página de su departamento, así que no hace falta pedir presupuesto para saber el orden de magnitud.'],
+    ['¿Venís a la empresa o es todo por videollamada?', 'En Castilla y León, la consultoría la hacemos en tu empresa: el trabajo se entiende mejor viéndolo. Fuera, por videollamada, o en persona si la empresa paga el viaje. El montaje y las revisiones posteriores, casi siempre a distancia.'],
+    ['¿Hace falta que mi negocio sea grande?', 'La consultoría gratis es para empresas de 5 a 50 personas. Si sois menos, casi siempre os sirve mejor uno de nuestros productos con precio cerrado, como Citia.'],
+    ['¿Trabajáis solo en Palencia?', 'No. Somos de Palencia y la consultoría la hacemos en persona en toda Castilla y León. Fuera de la comunidad también: por videollamada, o en persona si la empresa paga el viaje. El montaje es en remoto.'],
     ['¿Mis datos y los de mis clientes están protegidos?', 'Si tratamos datos personales por tu cuenta, firmamos contigo el contrato de encargado de tratamiento que exige el artículo 28 del RGPD. Los asistentes, además, se identifican siempre como IA ante quien les escribe.'],
   ],
 };
@@ -269,12 +269,12 @@ const IMPLANTAR = {
     </ul>
 
     <h2>Cómo saber cuánto te costaría a ti</h2>
-    <p>Las tablas dan el orden de magnitud, pero la cifra buena sale de mirar tu empresa: qué tareas se repiten, cuántas horas se llevan y cuáles merece la pena automatizar. Eso es lo que hacemos en el <a href="/#informe">diagnóstico</a>: hasta tres sesiones con quien dirige y con el equipo, y un informe con las tareas, las horas y el precio de quitarlas. Es gratis para empresas de 5 a 50 personas de toda España. Si quieres saber qué debería incluir cualquier diagnóstico, sea nuestro o de otro, lo contamos en <a href="/guias/diagnostico-ia-empresas">qué es un diagnóstico de IA para empresas</a>.</p>`;
+    <p>Las tablas dan el orden de magnitud, pero la cifra buena sale de mirar tu empresa: qué tareas se repiten, cuántas horas se llevan y cuáles merece la pena automatizar. Eso es lo que hacemos en la <a href="/#informe">consultoría</a>: hasta tres sesiones con quien dirige y con el equipo, y un informe con las tareas, las horas y el precio de quitarlas. Es gratis para empresas de 5 a 50 personas de toda España. Si quieres saber qué debería incluir cualquier diagnóstico, sea nuestro o de otro, lo contamos en <a href="/guias/diagnostico-ia-empresas">qué es un diagnóstico de IA para empresas</a>.</p>`;
   },
   faq: [
     ['¿Cuánto cuesta implantar inteligencia artificial en una pyme?', `Depende del nivel. Automatizar una tarea concreta empieza en unos ${NIVEL1.alta} € de alta y ${NIVEL1.cuota} €/mes. Un departamento entero, de ${RANGO.n3.alta} € de alta y de ${RANGO.n3.cuota} €/mes. Todo sin IVA. Los proyectos a medida que publican otras agencias van de 2.000 a 30.000 €.`],
     ['¿Sale más barato que contratar a una persona?', `En coste, sí: un administrativo le cuesta a la empresa unos ${fmt(COSTE_ADMIN)} € al año con la Seguridad Social. Pero la IA no sustituye a una persona entera: quita las horas de las tareas repetitivas para que tu equipo las dedique a otra cosa.`],
-    ['¿Por dónde empiezo?', 'Por la tarea que más horas se lleva y que siempre se hace igual. Si no sabes cuál es, el diagnóstico gratuito sirve justo para eso.'],
+    ['¿Por dónde empiezo?', 'Por la tarea que más horas se lleva y que siempre se hace igual. Si no sabes cuál es, la consultoría gratuita sirve justo para eso.'],
     ['¿Hay permanencia?', 'Se paga una cuota mensual. Antes de contratar, pregunta siempre cuánto hay que avisar para irse y qué pasa con tus datos si te vas.'],
   ],
 };
@@ -341,7 +341,7 @@ const DIAGNOSTICO = {
     </ul>
 
     <h2>El nuestro</h2>
-    <p>Es un diagnóstico de procesos de <strong>hasta tres sesiones</strong>: con quien dirige, con el equipo y mirando el trabajo. No siempre hacen falta las tres. Al final te damos un informe con las tareas, las horas que cuestan y cómo quitarlas, por dos caminos: formar a tu equipo o montarlo nosotros con un precio cerrado. <strong>El informe es tuyo aunque no sigas con nosotros.</strong></p>
+    <p>Es una consultoría: un diagnóstico de procesos de <strong>hasta tres sesiones</strong>: con quien dirige, con el equipo y mirando el trabajo. No siempre hacen falta las tres. Al final te damos un informe con las tareas, las horas que cuestan y cómo quitarlas, por dos caminos: formar a tu equipo o montarlo nosotros con un precio cerrado. <strong>El informe es tuyo aunque no sigas con nosotros.</strong></p>
     <ul>
       <li><strong>Para quién:</strong> empresas de 5 a 50 personas de toda España, y siempre con quien dirige dentro.</li>
       <li><strong>Dónde:</strong> en persona en Castilla y León. En el resto de España, por videollamada.</li>
