@@ -269,7 +269,7 @@ const IMPLANTAR = {
     </ul>
 
     <h2>Cómo saber cuánto te costaría a ti</h2>
-    <p>Las tablas dan el orden de magnitud, pero la cifra buena sale de mirar tu empresa: qué tareas se repiten, cuántas horas se llevan y cuáles merece la pena automatizar. Eso es lo que hacemos en el <a href="/#informe">diagnóstico</a>: hasta tres sesiones con quien dirige y con el equipo, y un informe con las tareas, las horas y el precio de quitarlas. Es gratis para empresas de 5 a 50 personas de toda España.</p>`;
+    <p>Las tablas dan el orden de magnitud, pero la cifra buena sale de mirar tu empresa: qué tareas se repiten, cuántas horas se llevan y cuáles merece la pena automatizar. Eso es lo que hacemos en el <a href="/#informe">diagnóstico</a>: hasta tres sesiones con quien dirige y con el equipo, y un informe con las tareas, las horas y el precio de quitarlas. Es gratis para empresas de 5 a 50 personas de toda España. Si quieres saber qué debería incluir cualquier diagnóstico, sea nuestro o de otro, lo contamos en <a href="/guias/diagnostico-ia-empresas">qué es un diagnóstico de IA para empresas</a>.</p>`;
   },
   faq: [
     ['¿Cuánto cuesta implantar inteligencia artificial en una pyme?', `Depende del nivel. Automatizar una tarea concreta empieza en unos ${NIVEL1.alta} € de alta y ${NIVEL1.cuota} €/mes. Un departamento entero, de ${RANGO.n3.alta} € de alta y de ${RANGO.n3.cuota} €/mes. Todo sin IVA. Los proyectos a medida que publican otras agencias van de 2.000 a 30.000 €.`],
@@ -279,7 +279,85 @@ const IMPLANTAR = {
   ],
 };
 
-const GUIAS = [IMPLANTAR, CHATBOT];
+/* 23-11-2026: para «diagnóstico de IA para empresas». En Google salen tres cosas
+   distintas con el mismo nombre (tests de madurez online, diagnósticos de
+   cumplimiento del AI Act y consultoras que no dicen qué entregan): la guía las
+   separa y dice qué debe incluir uno de procesos. Lo nuestro, tal y como está
+   en la hoja de la home. */
+const PRECIO_DIAG = 350;
+
+const DIAGNOSTICO = {
+  archivo: 'guias/diagnostico-ia-empresas.html',
+  ruta: '/guias/diagnostico-ia-empresas',
+  miga: 'Diagnóstico de IA para empresas',
+  fecha: '2026-11-23',
+  fechaTxt: '23 de noviembre de 2026',
+  titulo: 'Diagnóstico de IA para empresas: qué incluye | Marirrodriga IA',
+  descripcion: 'Test online, diagnóstico legal o diagnóstico de procesos: en qué se diferencian, qué debe incluir uno que sirva y qué señales indican que no te va a servir.',
+  eyebrow: 'Guía',
+  h1: 'Diagnóstico de IA para empresas: qué es y qué debe incluir',
+  lead: 'Al buscarlo aparecen tres cosas distintas con el mismo nombre. Aquí van las tres, qué debería traer uno que te sirva para decidir y las señales de que no te va a servir.',
+  resumen: () => `
+    <aside class="art-resumen">
+      <strong>La respuesta corta</strong>
+      <p>Un diagnóstico de IA para empresas mira cómo se trabaja en tu empresa y te dice qué tareas se pueden automatizar, cuántas horas se llevan hoy y cuánto cuesta quitarlas. Uno que sirva habla con quien dirige y con el equipo, ve el trabajo en directo y termina en un informe con cifras, incluida la lista de lo que no compensa tocar.</p>
+    </aside>`,
+  secciones: ({ f, iva }) => `
+    <h2>Los tres «diagnósticos» que vas a encontrar</h2>
+    <table class="art-tabla">
+      <thead><tr><th>Tipo</th><th>Qué te dice</th><th>Qué no te dice</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Test de madurez online</strong></td><td>Un cuestionario de unos minutos y una puntuación de lo «preparada» que está tu empresa.</td><td>Qué tareas concretas automatizar. Nadie ha visto cómo trabajáis.</td></tr>
+        <tr><td><strong>Diagnóstico legal (AI Act)</strong></td><td>Qué obligaciones tienes con el Reglamento Europeo de IA y el RGPD por la IA que ya usas.</td><td>Dónde te ahorraría tiempo la IA. Es cumplimiento, no procesos.</td></tr>
+        <tr><td><strong>Diagnóstico de procesos</strong></td><td>Qué tareas se repiten, cuántas horas se llevan y cuánto cuesta quitarlas.</td><td>Si cumples la ley: para eso, el anterior.</td></tr>
+      </tbody>
+    </table>
+    <p>Los tres son útiles para cosas distintas. Si lo que quieres saber es <strong>qué hacer con la IA en tu empresa y cuánto te va a costar</strong>, el que necesitas es el de procesos.</p>
+
+    <h2>Qué debería incluir uno de procesos</h2>
+    <ol>
+      <li><strong>Una conversación con quien dirige.</strong> Qué le frena, dónde cree que se va el tiempo y qué no está dispuesto a cambiar.</li>
+      <li><strong>Otra con el equipo.</strong> Son quienes saben qué se repite y qué se copia a mano de un sitio a otro. Muchas veces no coincide con lo que cree la dirección.</li>
+      <li><strong>Ver el trabajo.</strong> Seguir de principio a fin las tareas de cada día y contar los pasos. Lo que se cuenta en una reunión no es lo mismo que lo que se hace.</li>
+      <li><strong>Un informe con cifras.</strong> Cada tarea, las horas que se lleva y lo que costaría quitarla. Sin horas ni precios no puedes decidir.</li>
+      <li><strong>Lo que no compensa.</strong> Un buen diagnóstico también te dice qué no tocar, porque cuesta más automatizarlo que seguir haciéndolo a mano.</li>
+      <li><strong>Más de un camino.</strong> A veces lo mejor es formar al equipo para que lo resuelva con herramientas que ya tiene, no montar software.</li>
+    </ol>
+
+    <h2>Señales de que no te va a servir</h2>
+    <ul>
+      <li><strong>No habla con el equipo.</strong> Si solo pregunta a la dirección, se pierde la mitad.</li>
+      <li><strong>No trae cifras.</strong> «Tenéis mucho potencial» no es un resultado.</li>
+      <li><strong>Siempre acaba en la misma herramienta.</strong> Si la recomendación es justo lo que vende quien hace el diagnóstico, y no hay alternativa, desconfía.</li>
+      <li><strong>El informe no es tuyo.</strong> Tienes que poder llevártelo y enseñárselo a otro proveedor.</li>
+    </ul>
+
+    <h2>Cómo prepararlo para aprovecharlo</h2>
+    <ul>
+      <li>Apunta durante una semana las tareas que más se repiten y quién las hace.</li>
+      <li>Ten a mano las herramientas que usáis: programa de facturación, CRM, hojas de cálculo, WhatsApp de empresa.</li>
+      <li>Avisa al equipo: no es una evaluación de su trabajo, es buscar lo que les sobra.</li>
+      <li>Piensa qué no quieres cambiar. Ahorra tiempo a los dos.</li>
+    </ul>
+
+    <h2>El nuestro</h2>
+    <p>Es un diagnóstico de procesos de <strong>hasta tres sesiones</strong>: con quien dirige, con el equipo y mirando el trabajo. No siempre hacen falta las tres. Al final te damos un informe con las tareas, las horas que cuestan y cómo quitarlas, por dos caminos: formar a tu equipo o montarlo nosotros con un precio cerrado. <strong>El informe es tuyo aunque no sigas con nosotros.</strong></p>
+    <ul>
+      <li><strong>Para quién:</strong> empresas de 5 a 50 personas de toda España, y siempre con quien dirige dentro.</li>
+      <li><strong>Dónde:</strong> en persona en Castilla y León. En el resto de España, por videollamada.</li>
+      <li><strong>Cuánto:</strong> gratis para las 10 primeras plazas. Después, ${f(PRECIO_DIAG)} €${iva(PRECIO_DIAG)}.</li>
+    </ul>
+    <p>Si antes quieres el orden de magnitud de lo que cuesta montar algo, está en <a href="/guias/cuanto-cuesta-implantar-ia-pyme">cuánto cuesta implantar IA en una pyme</a>.</p>`,
+  faq: [
+    ['¿Qué es un diagnóstico de IA para empresas?', 'Un análisis de cómo se trabaja en la empresa para saber qué tareas se pueden automatizar con IA, cuántas horas se llevan hoy y cuánto costaría quitarlas. El resultado es un informe con cifras.'],
+    ['¿Sirve un test online?', 'Para hacerte una idea general, sí. Pero nadie ha visto cómo trabajáis, así que no te dirá qué tareas concretas automatizar ni cuánto cuesta.'],
+    ['¿Cuánto dura?', 'El nuestro, hasta tres sesiones. No siempre hacen falta las tres: depende del tamaño de la empresa y de cuántos procesos haya que mirar.'],
+    ['¿Es lo mismo que una auditoría del AI Act?', 'No. La auditoría legal te dice qué obligaciones tienes por la IA que ya usas. El diagnóstico de procesos te dice dónde te ahorraría tiempo.'],
+    [`¿Cuánto cuesta?`, `El nuestro es gratis para las 10 primeras plazas y después cuesta ${PRECIO_DIAG} € más IVA. El informe es tuyo aunque no sigas con nosotros.`],
+  ],
+};
+
+const GUIAS = [IMPLANTAR, DIAGNOSTICO, CHATBOT];
 
 const INDICE_GUIAS = {
   archivo: 'guias/index.html',
