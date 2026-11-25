@@ -65,12 +65,11 @@ const SECTORES_MENU = [
 
 const DEPTOS_MENU = [
   ['Atención al Cliente', '/atencion-al-cliente', 'Contesta, mira tu agenda y cierra la cita'],
-  ['Ventas y Captación', '/ventas-y-captacion', 'Busca clientes y persigue los presupuestos'],
   ['Finanzas', '/finanzas', 'Factura sin abrir el programa y persigue lo vencido'],
   ['Logística', '/logistica', 'Persigue al transportista y avisa antes de que pregunten'],
   ['Datos y Dirección', '/datos-y-direccion', 'Por qué ha ido bien el mes, no solo que ha ido bien'],
   ['Marketing', '/marketing', 'Publicaciones, fotos y vídeos con tu marca'],
-  ['Posicionamiento Online', '/posicionamiento-online', 'Que te encuentren, y que lo que vean esté bien'],
+  ['Páginas web y posicionamiento', '/posicionamiento-online', 'Tu web, y que Google te encuentre'],
 ];
 
 /* «Conócenos» (11-11-2026): quién está detrás, de dónde somos y lo que
@@ -86,7 +85,7 @@ const CONOCENOS_MENU = [
    ya está en esa página (los departamentos, en /agentes). */
 const SECCIONES = [
   ['Trabaja con nosotros', '/', 'Consultoría gratis, formación o software a medida'],
-  ['Qué hacemos', '/agentes', 'Los agentes que montamos, uno por departamento'],
+  ['Qué hacemos', '/agentes', 'Automatizamos tus procesos repetitivos, con ejemplos por departamento'],
   ['Conócenos', '/conocenos', 'Quién está detrás, de dónde somos y lo que hemos montado'],
 ];
 
@@ -108,20 +107,18 @@ const itemDepto = ([n, r, d]) => r
   ? `<a class="nav-item" href="${r}"><b>${n}</b><span>${d}</span></a>`
   : `<span class="nav-item apagado"><b>${n}</b><span>${d}</span></span>`;
 
-const ANCLAS = [
-  ['#lo-que-hace', 'Lo que hace'],
-  ['#precio', 'Precio'],
-  ['#preguntas', 'Preguntas'],
-];
-
-const nav = (anclas = ANCLAS) => `<nav class="nav">
+/* 25-11-2026 · El menú es el mismo en toda la web (decisión de Ismael): las
+   tres secciones y el botón. Antes cada página le añadía enlaces a sus
+   propios apartados y parecía que cambiabas de web al pasar de una a otra.
+   El salto a los precios va ahora en la cabecera de cada página («Ver
+   precios ↓»). El parámetro se acepta y se ignora para no romper llamadas. */
+const nav = () => `<nav class="nav">
   <a class="nav-logo" href="/">
     ${LOGO}
     <span>Marirrodriga<b>.IA</b></span>
   </a>
   <div class="nav-links">
     ${SECCIONES.map(([t, h]) => `<a class="nav-link nav-seccion" href="${h}">${t}</a>`).join('\n    ')}
-    ${anclas.map(([h, t]) => `<a class="nav-link" href="${h}">${t}</a>`).join('\n    ')}
   </div>
   <a class="btn btn-1 nav-cta" href="/#solicitar">Consultoría gratis</a>
   <button class="nav-burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-movil">
@@ -130,8 +127,6 @@ const nav = (anclas = ANCLAS) => `<nav class="nav">
 </nav>
 <div class="nav-movil" id="nav-movil">
   ${SECCIONES.map(([t, h, d]) => `<a class="nav-item" href="${h}"><b>${t}</b><span>${d}</span></a>`).join('\n  ')}
-  ${anclas.length ? `<h5>En esta página</h5>
-  ${anclas.map(([h, t]) => `<a class="nav-item" href="${h}"><b>${t}</b></a>`).join('\n  ')}` : ''}
   <a class="btn btn-1" href="/#solicitar">Consultoría gratis</a>
 </div>`;
 
@@ -143,6 +138,7 @@ const hero = p => `<header class="hero-s" style="--hero:url('/assets/img/${p.her
       : `<span class="hero-s-pill"><i></i> ${esc(p.pill)}</span>`}
     <${p.h1Busqueda ? 'p' : 'h1'} class="t-h1">${esc(p.h1[0])}<br><span class="acento">${esc(p.h1[1])}</span></${p.h1Busqueda ? 'p' : 'h1'}>
     <p class="t-lead">${p.lead}</p>
+    ${p.verPrecios ? `<a class="btn btn-2 ver-precios" href="${p.verPrecios}">Ver precios ↓</a>` : ''}
   </div>
 </header>`;
 
@@ -310,7 +306,7 @@ const pie = () => `<footer class="pie">
     <div class="pie-fila">
       <div>
         <div class="pie-marca">${LOGO} Marirrodriga.IA</div>
-        <p style="margin-top:12px;max-width:280px;font-size:13.5px">Software con IA montado por piezas, con su precio y su límite públicos.</p>
+        <p style="margin-top:12px;max-width:280px;font-size:13.5px">Automatizamos con IA los procesos repetitivos de tu empresa: solo la parte que compensa.</p>
       </div>
       <div class="pie-cols">
         <div class="pie-col">
@@ -321,12 +317,11 @@ const pie = () => `<footer class="pie">
         <div class="pie-col">
           <h4>Agentes por departamento</h4>
           <a href="/atencion-al-cliente">Atención al Cliente</a>
-          <a href="/ventas-y-captacion">Ventas y Captación</a>
           <a href="/finanzas">Finanzas</a>
           <a href="/logistica">Logística</a>
           <a href="/datos-y-direccion">Datos y Dirección</a>
           <a href="/marketing">Marketing</a>
-          <a href="/posicionamiento-online">Posicionamiento Online</a>
+          <a href="/posicionamiento-online">Páginas web y posicionamiento</a>
         </div>
         <div class="pie-col">
           <h4>Contacto</h4>
@@ -412,7 +407,7 @@ ${JSON.stringify(migas([['Inicio', '/'], [p.pill, p.ruta]]), null, 2)}
 
 ${nav()}
 
-${hero(p)}
+${hero({ ...p, verPrecios: '#precio' })}
 
 ${dolores(p)}
 

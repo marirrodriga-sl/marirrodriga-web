@@ -45,8 +45,11 @@ const { CATALOGO, cotiza, calculaSetup } = require('../assets/catalogo.js');
    tanda se cuadran en la base los cuatro textos de arriba, así que esta huella
    vuelve a ser la de la web Y la de Supabase (comprobado con una simulación de
    solo lectura en la base; el SQL que la deja así está pendiente de aplicar). */
-const HUELLA_ESPERADA = '80dcea0255de738095f96c7ec995dab4';
-const N_ESPERADAS = 41;
+/* 25-11-2026 · Entran las 18 piezas de Finanzas, Logística, Datos, Marketing y
+   Posicionamiento (estaban solo en la web, «pendientes de validar») y la nueva de
+   pedidos a proveedores. Son 59. Exportadas de Supabase el mismo día. */
+const HUELLA_ESPERADA = 'f0c978a3ea2027e6c50087149fee3e01';
+const N_ESPERADAS = 59;
 
 let fallos = 0;
 const check = (ok, etiqueta, detalle = '') => {
@@ -79,7 +82,7 @@ const ALTAS = { 'iris-0': 150, 'modulo-seguimiento-pedidos': 70, 'hermes-seguimi
   'reactivacion-dormidos': 40, 'insights-semanales': 50, 'panel-negocio': 150,
   'landing-conectada-bookia': 200,
   // 14-10-2026. El alta es un «desde»: 900 € cubre dos sistemas conectados, y sube con
-  // cada uno que se añada. El ancla es la fase 1 de Palencia Asesores, 1.870 € con tres
+  // cada uno que se añada. El ancla es la fase 1 de una propuesta real, 1.870 € con tres
   // sistemas y web incluida. Es la única pieza del catálogo cuyo alta se publica con
   // «desde» delante, y por eso lleva `desdeAlta` en datos-departamentos.cjs.
   'crm-panel': 900,
@@ -87,7 +90,13 @@ const ALTAS = { 'iris-0': 150, 'modulo-seguimiento-pedidos': 70, 'hermes-seguimi
   'citia-base': 150, 'citia-recordatorios': 30, 'citia-reactivacion': 0, 'citia-informe': 50,
   'citia-ficha': 100, 'citia-landing': 400,
   // 19-10-2026 · solo como añadido del seguimiento de pedidos
-  'consulta-stock': 50 };
+  'consulta-stock': 50,
+  // 25-11-2026 · las de los cinco departamentos, con el alta que ya publicaba la web
+  'fin-recobro': 250, 'fin-fichas-validar': 600, 'fin-contabilidad-cuadro': 450,
+  'log-seguimiento-entregas': 250, 'log-avisos-cliente': 100, 'log-citas-carga': 150, 'log-incidencias': 200,
+  'log-pedidos-proveedores': 200, 'dat-datos-un-sitio': 150, 'dat-asistente': 150, 'dat-insights': 50,
+  'mkt-linkedin': 100, 'mkt-fotos': 150, 'mkt-videos': 250, 'mkt-campanas': 450,
+  'pos-paginas-captacion': 150, 'pos-ficha-google': 100, 'pos-resenas': 100 };
 const altasMal = CATALOGO.piezas.filter(p => p.setup !== undefined && ALTAS[p.slug] !== p.setup);
 check(altasMal.length === 0, 'las altas fijadas coinciden con la base',
       altasMal.map(p => `${p.slug}=${p.setup}`).join(', ') || `las ${Object.keys(ALTAS).length} cuadran`);
@@ -110,7 +119,7 @@ const EJEMPLOS = [
   ['Clínica dental que empieza', 103.50, ['dental-agenda', 'dental-ficha-historia', 'dental-odontograma', 'dental-presupuestos', 'dental-facturacion']],
   ['Clínica dental con asistente', 159.20, ['dental-agenda', 'dental-ficha-historia', 'dental-odontograma', 'dental-presupuestos', 'dental-facturacion', 'dental-asistente-pacientes', 'dental-acompanamiento-presupuestos', 'dental-seguimiento-resenas', 'dental-analisis-conversaciones']],
   ['Clínica dental completa', 199.20, CATALOGO.piezas.filter(p => p.cat === 'dental').map(p => p.slug)],
-  ['Tienda online (caso Fer)', 79.00, ['iris-0', 'modulo-seguimiento-pedidos']],
+  ['Tienda online (caso de cliente)', 79.00, ['iris-0', 'modulo-seguimiento-pedidos']],
 ];
 
 for (const [nombre, esperada, slugs] of EJEMPLOS) {
@@ -146,7 +155,7 @@ check(minima.cuota === 49 && minima.sueloAplicado, 'suelo de 49 € con una sola
 // El alta de la web es la suma de las altas de cada pieza: aquí no se venden
 // soluciones preset completas, se venden configuradores.
 const setupFer = calculaSetup(cotiza(['iris-0', 'modulo-seguimiento-pedidos']).piezas);
-check(setupFer.total === 220, 'el alta se suma por pieza (caso Fer: 150 + 70, sin bonificación con 2)', `${setupFer.total} €`);
+check(setupFer.total === 220, 'el alta se suma por pieza (caso de cliente: 150 + 70, sin bonificación con 2)', `${setupFer.total} €`);
 
 const chatbot = cotiza(['iris-0', 'canal-adicional', 'agenda-reserva-publica', 'recordatorios-confirmacion',
   'ficha-cliente', 'modulo-seguimiento-pedidos', 'hermes-acompanamiento-conversacional', 'voz-telefono']);

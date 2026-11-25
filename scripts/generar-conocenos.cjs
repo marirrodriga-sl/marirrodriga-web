@@ -3,7 +3,7 @@
    Uso:  node scripts/generar-conocenos.cjs
 
    Decidido el 12-11-2026 con Ismael. Reglas:
-   - Solo proyectos NUESTROS. Los de clientes (Pedro, Fer) tienen cláusula de
+   - Solo proyectos NUESTROS. Los de clientes tienen cláusula de
      confidencialidad firmada: no salen aquí sin su permiso por escrito.
    - Nada de cifras de la ciudad sin fuente.
 
@@ -20,35 +20,27 @@ const P = {
   archivo: 'conocenos.html',
   ruta: '/conocenos',
   titulo: 'Conócenos: una agencia de IA nacida en Palencia | Marirrodriga IA',
-  descripcion: 'Dos hermanos de Palencia: Ismael, experto en IA y graduado en Derecho, y Marco, desarrollador full-stack. IA para que el negocio de aquí siga compitiendo.',
+  /* 25-11-2026 · Fuera Marco (Ismael): en los papeles de la Cámara de Comercio
+     consta como único trabajador de la agencia. */
+  descripcion: 'Una agencia de IA nacida en Palencia. Detrás está Ismael Marirrodriga, experto en IA y graduado en Derecho: quien hace la consultoría es quien monta el trabajo.',
   h1: 'Conócenos',
-  lead: 'Somos dos hermanos de Palencia. Montamos la agencia para que los negocios de aquí, los que siguen abiertos, tengan las mismas herramientas que una gran empresa y puedan seguir compitiendo.',
+  lead: 'Marirrodriga IA nace en Palencia para que los negocios de aquí, los que siguen abiertos, tengan las mismas herramientas que una gran empresa y puedan seguir compitiendo.',
 };
 
 const PERSONAS = [
   {
     nombre: 'Ismael Marirrodriga',
     foto: '/assets/img/isma.jpg',
-    papel: 'Diagnóstico, automatizaciones y agentes de IA',
+    papel: 'Consultoría, automatizaciones y agentes de IA',
     titulos: ['Desarrollador de software y automatizaciones', 'Experto en IA generativa, automatización y creación de SaaS', 'Grado en Derecho'],
     texto: [
-      'Hace los diagnósticos: se sienta contigo, habla con tu equipo y mira cómo se trabaja de verdad. Después monta los agentes, los flujos y las conexiones con los programas que ya usáis.',
+      'Hace las consultorías: se sienta contigo, habla con tu equipo y mira cómo se trabaja de verdad. Después monta los agentes, los flujos, el código y las conexiones con los programas que ya usáis.',
       'El Derecho no es un adorno: es la razón de que los contratos, el RGPD y los datos de tus clientes se miren con lupa antes de automatizar nada.',
-    ],
-  },
-  {
-    nombre: 'Marco Marirrodriga',
-    foto: '/assets/img/marco.jpg',
-    papel: 'Desarrollo de software',
-    titulos: ['Desarrollador full-stack'],
-    texto: [
-      'Escribe el código: las aplicaciones, los paneles, las bases de datos y las conexiones entre programas que no se hablan entre sí.',
-      'Cuando una automatización necesita una pantalla propia —un CRM, una agenda, una ficha de paciente—, la construye él.',
     ],
   },
 ];
 
-/* 12-11-2026, lista de Ismael. Hay casos de clientes (Pedro, Fer): sus
+/* 12-11-2026, lista de Ismael. Hay casos de clientes: sus
    contratos firmados obligan a guardar la información comercial, técnica y de
    negocio, así que van SIN nombre, SIN sector reconocible y SIN cifras —se
    cuenta el tipo de trabajo, no el cliente—. Ojo: el borrador de Palencia
@@ -56,7 +48,7 @@ const PERSONAS = [
 const SISTEMA = {
   nombre: 'El sistema completo de la agencia',
   texto: 'Lo que usamos nosotros cada día, de punta a punta: capta clientes por varios canales, los puntúa con el motivo escrito, deja preparado el primer mensaje, sigue cada conversación y, cuando alguien firma, lleva la gestión documental de su proyecto. Es la prueba de que lo que vendemos funciona: nos funciona a nosotros.',
-  enlace: ['/ventas-y-captacion', 'Ver Ventas y Captación'],
+  enlace: ['/agentes', 'Ver qué hacemos'],
 };
 
 const PROYECTOS = [
@@ -170,7 +162,7 @@ ${nav([])}
       <div class="cn-palencia-txt">
         <p>En una ciudad como la nuestra, el negocio que sigue abierto compite con las cadenas y con internet, y casi siempre con menos gente y menos horas. No le falta oficio: le falta tiempo.</p>
         <p>Por eso empezamos aquí. Queremos que Palencia se modernice sin perder lo que tiene: que la tienda, la clínica o la distribuidora de siempre conteste a las once de la noche, persiga sus cobros y salga en Google como lo haría una empresa grande.</p>
-        <p>Trabajamos sobre todo en Castilla y León, donde vamos a tu empresa en persona; con el resto de España, por videollamada. Quien te hace el diagnóstico es quien después monta el trabajo. Cómo lo hacemos aquí, en <a href="/agencia-ia-palencia">nuestra página de agencia de IA en Palencia</a>.</p>
+        <p>Trabajamos sobre todo en Castilla y León, donde vamos a tu empresa en persona; con el resto de España, por videollamada. Quien te hace la consultoría es quien después monta el trabajo. Cómo lo hacemos aquí, en <a href="/agencia-ia-palencia">nuestra página de agencia de IA en Palencia</a>.</p>
       </div>
     </div>
   </section>
@@ -178,8 +170,8 @@ ${nav([])}
   <section class="cn-sec cn-sec-blanca">
     <div class="cn-ancho">
       <div class="cn-marco">
-        <h2>Quiénes somos</h2>
-        <p>Uno monta las automatizaciones y los agentes; el otro escribe el código. Sin comerciales en medio.</p>
+        <h2>Quién está detrás</h2>
+        <p>Quien hace la consultoría es quien monta el trabajo. Sin comerciales en medio.</p>
       </div>
       <div class="cn-personas">
       ${PERSONAS.map(persona).join('\n      ')}

@@ -1,23 +1,31 @@
 # Marirrodriga IA
 
-> Agencia de inteligencia artificial con sede en Palencia (España). Montamos software con IA por piezas para pymes y autónomos, con el precio y el límite de cada pieza publicados.
+> Agencia de inteligencia artificial de Palencia (España). Automatizamos con IA los procesos repetitivos de las empresas, mano a mano con ellas, y solo la parte de cada proceso que compensa automatizar.
 
-Trabajamos en remoto en toda España. Equipo: Marco (desarrollador full-stack) e Isma (agentes de IA y automatización). Contacto: contacto@marirrodriga-ia.com · WhatsApp +34 675 148 566.
+Empezamos con una consultoría gratuita de hasta tres sesiones (en persona en Castilla y León, por videollamada en el resto de España) y un informe con qué se puede automatizar, cuántas horas son y lo que costaría. Detrás está Ismael Marirrodriga (consultoría, agentes de IA, automatización y desarrollo). Contacto: contacto@marirrodriga-ia.com · WhatsApp +34 675 148 566.
+
+## Qué hacemos
+
+- [Qué hacemos](https://www.marirrodriga-ia.com/agentes): automatización de procesos internos y ejemplos de soluciones por departamento.
+
+## Ejemplos por departamento
+
+Con precio de referencia publicado:
+
+- [Atención al Cliente](https://www.marirrodriga-ia.com/atencion-al-cliente): agente de IA que contesta por WhatsApp, redes sociales, el chat de la web o el correo, cierra citas en la agenda y dice dónde está cada pedido.
+- [Marketing](https://www.marirrodriga-ia.com/marketing): publicaciones, fotos y vídeos con la marca de la empresa, y campañas con su calendario.
+- [Páginas web y posicionamiento](https://www.marirrodriga-ia.com/posicionamiento-online): la web de la empresa, el SEO local, la ficha de Google y las reseñas.
+
+Con presupuesto a medida (la página muestra la horquilla habitual):
+
+- [Finanzas](https://www.marirrodriga-ia.com/finanzas): facturar desde un mensaje, reclamar lo vencido, pedir documentos y explicar las cuentas.
+- [Logística](https://www.marirrodriga-ia.com/logistica): seguimiento de envíos con los transportistas, avisos al cliente, citas de carga, incidencias y pedidos a proveedores.
+- [Datos y Dirección](https://www.marirrodriga-ia.com/datos-y-direccion): los datos de varios programas en un panel y un asistente al que preguntar por qué ha ido así el mes.
 
 ## Software
 
 - [Citia](https://www.marirrodriga-ia.com/citia): programa de citas para peluquería, estética, uñas, tatuajes, fisioterapia y podología.
 - [Dentia](https://www.marirrodriga-ia.com/dentia): software de gestión para clínicas dentales.
-
-## IA por departamento
-
-- [Atención al Cliente](https://www.marirrodriga-ia.com/atencion-al-cliente): asistente con IA para WhatsApp Business, Telegram, web y correo.
-- [Ventas y Captación](https://www.marirrodriga-ia.com/ventas-y-captacion): CRM a medida, captación de clientes y seguimiento de presupuestos.
-- [Finanzas](https://www.marirrodriga-ia.com/finanzas): facturación y cobros automáticos.
-- [Logística](https://www.marirrodriga-ia.com/logistica): seguimiento de pedidos y envíos.
-- [Datos y Dirección](https://www.marirrodriga-ia.com/datos-y-direccion): cuadro de mando para pymes.
-- [Marketing](https://www.marirrodriga-ia.com/marketing): contenido para redes sociales con IA.
-- [Posicionamiento Online](https://www.marirrodriga-ia.com/posicionamiento-online): web, SEO local, ficha de Google y reseñas.
 
 ## Local y guías
 

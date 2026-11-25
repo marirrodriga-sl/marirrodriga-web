@@ -86,3 +86,7 @@
   .cn-persona { grid-template-columns: 1fr; padding: 22px; }
   .cn-persona img { width: 120px; height: 120px; }
 }
+
+/* 25-11-2026 · Una sola persona en el equipo */
+.cn-personas:has(> :only-child) { grid-template-columns: 1fr; max-width: 760px; }
+.cn-personas:has(> :only-child) { margin-inline: auto; }

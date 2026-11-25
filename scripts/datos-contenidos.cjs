@@ -26,14 +26,14 @@ const PALENCIA = {
   descripcion: 'Agencia de IA de Palencia. Vamos a tu empresa, vemos qué tareas se pueden automatizar y te damos un informe con horas y precios. Consultoría gratis.',
   eyebrow: 'Palencia · Castilla y León',
   h1: 'Agencia de IA en Palencia',
-  lead: 'Marirrodriga IA es una agencia de inteligencia artificial nacida en Palencia. Vamos a tu empresa, vemos cómo se trabaja y montamos los agentes y automatizaciones que quitan las tareas repetitivas, con el precio de cada pieza publicado.',
+  lead: 'Marirrodriga IA es una agencia de inteligencia artificial nacida en Palencia. Vamos a tu empresa, vemos cómo se trabaja y automatizamos la parte de cada proceso que compensa, con precios de referencia publicados.',
   secciones: ({ departamentos }) => `
     <h2>Por qué una agencia de IA de Palencia</h2>
     <p>Buscar «agencia de IA en Palencia» devuelve, sobre todo, agencias de otras ciudades con una página para cada provincia. Nosotros somos de aquí: <strong>la consultoría la hacemos en tu empresa, en persona</strong>, sentados con quien dirige y con el equipo que hace el trabajo.</p>
     <p>Montamos la agencia para que el negocio que sigue abierto en Palencia, el que compite con las cadenas y con internet con menos gente y menos horas, tenga las mismas herramientas que una empresa grande.</p>
 
     <h2>Quiénes somos</h2>
-    <p>Somos dos hermanos. <strong>Ismael Marirrodriga</strong> hace las consultorías y monta los agentes de IA y las automatizaciones; además es graduado en Derecho, así que los contratos y el RGPD se miran antes de tocar nada. <strong>Marco Marirrodriga</strong>, desarrollador full-stack, escribe el código: las aplicaciones, los paneles y las conexiones entre programas. Trabajas con quien lo construye, no con un comercial que se lo pasa a otro. Más en <a href="/conocenos">Conócenos</a>.</p>
+    <p>Detrás está <strong>Ismael Marirrodriga</strong>: hace las consultorías y monta los agentes de IA, las automatizaciones y el código; además es graduado en Derecho, así que los contratos y el RGPD se miran antes de tocar nada. Trabajas con quien lo construye, no con un comercial que se lo pasa a otro. Más en <a href="/conocenos">Conócenos</a>.</p>
 
     <h2>Para qué empresas de Palencia</h2>
     <p>La consultoría gratis es para empresas de <strong>5 a 50 personas</strong>. En la provincia eso es, sobre todo:</p>
@@ -64,10 +64,10 @@ const PALENCIA = {
 
     <h2>Dónde trabajamos</h2>
     <p>Estamos en Palencia capital y vamos a cualquier punto de la provincia. En toda Castilla y León, la consultoría tiene alguna sesión en tu oficina; en el resto de España, va por videollamada. El montaje se hace casi todo a distancia: lo que necesitamos es entender tu negocio y tener acceso a las herramientas que ya usas.</p>
-    <p>Puedes escribirnos a <a href="mailto:contacto@marirrodriga-ia.com">contacto@marirrodriga-ia.com</a> o por <a href="https://wa.me/34675148566" target="_blank" rel="noopener">WhatsApp, al 675 148 566</a>, o <a href="/#solicitar">pedir plaza para el diagnóstico</a>.</p>`,
+    <p>Puedes escribirnos a <a href="mailto:contacto@marirrodriga-ia.com">contacto@marirrodriga-ia.com</a> o por <a href="https://wa.me/34675148566" target="_blank" rel="noopener">WhatsApp, al 675 148 566</a>, o <a href="/#solicitar">pedir plaza para la consultoría</a>.</p>`,
   faq: [
     ['¿Qué hace una agencia de IA?', 'Busca en tu empresa las tareas que se repiten y monta lo que las hace solas: un asistente que contesta por WhatsApp, un sistema que persigue facturas vencidas, un agente que ordena el correo. En nuestro caso, primero miramos cómo trabajáis y después decimos qué compensa y qué no.'],
-    ['¿Cuánto cuesta contratar una agencia de IA en Palencia?', 'La consultoría es gratis para las primeras plazas. Después, cada pieza tiene su alta y su cuota publicadas, sin IVA, en la página de su departamento, así que no hace falta pedir presupuesto para saber el orden de magnitud.'],
+    ['¿Cuánto cuesta contratar una agencia de IA en Palencia?', 'La consultoría es gratis para las primeras plazas. Después, en Atención, Marketing y Páginas web tienes un precio de referencia publicado en su página; en Finanzas, Logística y Datos, la horquilla habitual y un presupuesto cerrado tras la consultoría.'],
     ['¿Venís a la empresa o es todo por videollamada?', 'En Castilla y León, la consultoría la hacemos en tu empresa: el trabajo se entiende mejor viéndolo. Fuera, por videollamada, o en persona si la empresa paga el viaje. El montaje y las revisiones posteriores, casi siempre a distancia.'],
     ['¿Hace falta que mi negocio sea grande?', 'La consultoría gratis es para empresas de 5 a 50 personas. Si sois menos, casi siempre os sirve mejor uno de nuestros productos con precio cerrado, como Citia.'],
     ['¿Trabajáis solo en Palencia?', 'No. Somos de Palencia y la consultoría la hacemos en persona en toda Castilla y León. Fuera de la comunidad también: por videollamada, o en persona si la empresa paga el viaje. El montaje es en remoto.'],
@@ -123,20 +123,20 @@ const CHATBOT = {
       <thead><tr><th></th><th>Alta</th><th>Cuota</th><th>Primer año</th></tr></thead>
       <tbody>
         <tr>
-          <td><strong>El agente</strong><br><span class="art-nota">Contesta por un canal, hasta ${agente.limCorto}</span></td>
+          <td><strong>Con agenda (banda Calendario)</strong><br><span class="art-nota">Contesta por un canal y cierra la cita, hasta ${agente.limCorto}</span></td>
           <td class="art-num">${f(agente.setup)} €${iva(agente.setup)}</td>
           <td class="art-num">${f(agente.eur)} €/mes${iva(agente.eur)}</td>
           <td class="art-num"><strong>${f(primerAno(agente.setup, agente.eur))} €</strong>${iva(primerAno(agente.setup, agente.eur))}</td>
         </tr>
         <tr>
-          <td><strong>Atención al Cliente entera</strong><br><span class="art-nota">Las siete piezas: chat, agenda, recordatorios y correo</span></td>
+          <td><strong>Atención al Cliente entera</strong><br><span class="art-nota">Las tres bandas: calendario, pedidos y correo</span></td>
           <td class="art-num">${f(pack.alta)} €${iva(pack.alta)}</td>
           <td class="art-num">${f(pack.cuota)} €/mes${iva(pack.cuota)}</td>
           <td class="art-num"><strong>${f(primerAno(pack.alta, pack.cuota))} €</strong>${iva(primerAno(pack.alta, pack.cuota))}</td>
         </tr>
       </tbody>
     </table>
-    <p>Lo que Meta cobre va aparte y a tu nombre: no revendemos mensajería. Todas las piezas, con su límite, están en <a href="/atencion-al-cliente">Atención al Cliente</a>.</p>
+    <p>Lo que Meta cobre va aparte y a tu nombre: no revendemos mensajería. Las bandas, con su límite, están en <a href="/atencion-al-cliente">Atención al Cliente</a>.</p>
 
     <h2>Cuándo no te hace falta</h2>
     <p>Si te entran pocos mensajes y son siempre las mismas tres preguntas, prueba primero las <strong>respuestas automáticas y rápidas de la app gratuita de WhatsApp Business</strong>. Un asistente con IA empieza a compensar cuando las preguntas cambian, cuando te escriben fuera de horario y se te van, o cuando tiene que hacer algo: mirar la agenda, reservar o pasar el caso a una persona.</p>
@@ -151,7 +151,7 @@ const CHATBOT = {
       <li><strong>¿Hay permanencia?</strong> Y cuánto hay que avisar para irse.</li>
     </ol>`,
   faq: [
-    ['¿Cuánto cuesta al mes un chatbot de WhatsApp con IA?', 'Depende del alcance. Hay suscripciones desde unas decenas de euros al mes y proyectos a medida con mantenimiento bastante más caros. El nuestro empieza en 49 €/mes, sin IVA, con 500 conversaciones al mes y un canal.'],
+    ['¿Cuánto cuesta al mes un chatbot de WhatsApp con IA?', 'Depende del alcance. Hay suscripciones desde unas decenas de euros al mes y proyectos a medida con mantenimiento bastante más caros. El nuestro empieza en 79 €/mes, sin IVA, con un canal, la agenda y 500 conversaciones al mes.'],
     ['¿Meta cobra por contestar a mis clientes?', 'Desde el 1 de octubre de 2026, cada número tiene 1.000 mensajes de servicio gratis al mes y se cobra a partir de ahí. Los mensajes que te envían tus clientes no se cobran.'],
     ['¿Hay chatbots de WhatsApp gratis?', 'La app de WhatsApp Business trae respuestas automáticas gratuitas, pero no entienden lo que les escriben ni consultan tu agenda. Para eso hace falta un asistente con IA, que tiene coste de modelo y de servidor.'],
     ['¿Sirve la cuenta normal de WhatsApp Business?', 'Para un asistente conectado hace falta la API de WhatsApp Business, y es Meta quien factura el consumo. Conviene que la cuenta vaya a nombre de tu empresa.'],
@@ -168,13 +168,14 @@ const CHATBOT = {
 const { DEPARTAMENTOS } = require('./datos-departamentos.cjs');
 const NIVEL1 = { alta: 150, cuota: 70 };
 const fmt = n => n.toLocaleString('es-ES', { useGrouping: true }).replace(/(\d)(?=(\d{3})+$)/, '$1.');
-const PACKS = DEPARTAMENTOS.filter(d => d.pack && d.pack.alta);
+const PACKS = DEPARTAMENTOS.filter(d => d.pack && d.pack.alta && !d.presupuesto);
 const N2 = [['/finanzas', 'Recobro de facturas vencidas'], ['/logistica', 'Seguimiento de entregas'],
-  ['/finanzas', 'Contabilidad y cuadro financiero'], ['/ventas-y-captacion', 'Captación de clientes potenciales']]
+  ['/finanzas', 'Contabilidad y cuadro financiero'], ['/logistica', 'Gestión de incidencias']]
   .map(([ruta, n]) => DEPARTAMENTOS.find(d => d.ruta === ruta).piezas.find(z => z.n === n));
 const rangoDe = (xs, k) => `${fmt(Math.min(...xs.map(k)))} a ${fmt(Math.max(...xs.map(k)))}`;
 const RANGO = {
-  n2: { alta: rangoDe(N2, z => z.setup), cuota: rangoDe(N2, z => z.eur) },
+  // 25-11-2026: Finanzas y Logística se presupuestan; la referencia es su horquilla publicada
+  n2: { alta: '200 a 1.200', cuota: '49 a 299' },
   n3: { alta: rangoDe(PACKS, d => d.pack.alta), cuota: rangoDe(PACKS, d => d.pack.cuota) },
 };
 const SUELDO_ADMIN = 24198.08;          // INE, EES 2022, gran grupo 4 (ambos sexos)
@@ -214,7 +215,7 @@ const IMPLANTAR = {
       <tbody>
         <tr><td><strong>1. Una tarea concreta</strong></td><td>Hace más rápida una tarea dentro de un proceso que sigue llevando una persona.</td><td>Un agente que crea las facturas de tus clientes y las deja ordenadas.</td></tr>
         <tr><td><strong>2. Un proceso completo</strong></td><td>Lleva el proceso de principio a fin, sola o con una persona que solo revisa.</td><td>Perseguir las facturas vencidas hasta cobrarlas, o al transportista hasta tener la fecha.</td></tr>
-        <tr><td><strong>3. Un departamento entero</strong></td><td>Varios agentes trabajando juntos que se encargan del departamento.</td><td>Toda la atención al cliente: chat, agenda, recordatorios y correo.</td></tr>
+        <tr><td><strong>3. Un departamento entero</strong></td><td>Un solo agente, con acceso a todo, que lleva el departamento entero.</td><td>Toda la atención al cliente: chat, agenda, recordatorios y correo.</td></tr>
       </tbody>
     </table>
     <p>Cuanto más arriba, más horas libera y más hay que montar. Casi nadie empieza por el nivel 3: lo normal es empezar por la tarea que más tiempo roba y subir cuando funciona.</p>
@@ -224,22 +225,22 @@ const IMPLANTAR = {
     <p>Con nosotros empieza en <strong>${f(NIVEL1.alta)} € de alta</strong>${iva(NIVEL1.alta)} y <strong>${f(NIVEL1.cuota)} €/mes</strong>${iva(NIVEL1.cuota)}.</p>
 
     <h2>Nivel 2: un proceso completo</h2>
-    <p>Aquí la IA hace el trabajo entero y la persona solo mira lo que no está claro. Algunos de los que tenemos publicados, sin IVA:</p>
+    <p>Aquí la IA hace el trabajo entero y la persona solo mira lo que no está claro. Algunos ejemplos; como dependen de cada empresa, se presupuestan tras la consultoría:</p>
     <ul>
-      <li>${ej('/finanzas', 'Recobro de facturas vencidas')}. Escribe, insiste con criterio y avisa cuando hay que llamar.</li>
-      <li>${ej('/logistica', 'Seguimiento de entregas')}. Persigue a cada transportista hasta sacarle la fecha real.</li>
-      <li>${ej('/finanzas', 'Contabilidad y cuadro financiero')}. Clasifica gastos e ingresos y cruza lo cobrado con lo facturado.</li>
-      <li>${ej('/ventas-y-captacion', 'Captación de clientes potenciales')}. Busca negocios que encajan con tu cliente ideal.</li>
+      <li><strong>Recobro de facturas vencidas</strong>. Escribe, insiste con criterio y avisa cuando hay que llamar.</li>
+      <li><strong>Seguimiento de entregas</strong>. Persigue a cada transportista hasta sacarle la fecha real.</li>
+      <li><strong>Contabilidad y cuadro financiero</strong>. Clasifica gastos e ingresos y cruza lo cobrado con lo facturado.</li>
+      <li><strong>Gestión de incidencias</strong>. Abre el parte de lo que llega mal y lo persigue hasta cerrarlo.</li>
     </ul>
 
     <h2>Nivel 3: un departamento entero</h2>
-    <p>Todas las piezas de un departamento, montadas juntas y con la misma cabeza detrás. Son nuestros precios publicados, sin IVA y con el IVA debajo:</p>
+    <p>El departamento entero, con un solo agente que tiene acceso a todo. Son nuestros precios de referencia, sin IVA y con el IVA debajo:</p>
     <table class="art-tabla">
       <thead><tr><th>Departamento</th><th>Alta</th><th>Cuota</th><th>Primer año</th></tr></thead>
       <tbody>${deps.map(fila).join('')}
       </tbody>
     </table>
-    <p class="art-nota">En Ventas, el CRM va aparte. Cada departamento tiene su página con todas las piezas y lo que incluye cada una.</p>
+    <p class="art-nota">En Finanzas, Logística y Datos el precio depende de tu caso: en su página tienes la horquilla habitual y un ejemplo.</p>
 
     <h2>Lo que dicen otros</h2>
     <p>No hay un precio oficial. Estas son cifras que publican otros proveedores, para que tengas con qué comparar:</p>
@@ -247,7 +248,7 @@ const IMPLANTAR = {
       <li><a href="https://www.utilia.ai/es/blog/cuanto-cuesta-ia-pymes-2025" target="_blank" rel="noopener">Utilia</a> da <strong>de 2.000 a 8.000 €</strong> para una automatización con herramientas <em>low-code</em> y <strong>de 8.000 a 30.000 €</strong> para un desarrollo a medida.</li>
       <li><a href="https://blog.tenea.com/cuanto-cuesta-ia-agentica" target="_blank" rel="noopener">Tenea</a> sitúa la IA agéntica para una pyme <strong>entre 3.000 y 15.000 €</strong>.</li>
     </ul>
-    <p>La diferencia con lo nuestro no es magia. Esas cifras son proyectos que se construyen y se pagan de una vez. Lo nuestro son piezas que ya funcionan, se adaptan a tu negocio y se pagan con una cuota. Si lo que necesitas no existe, también se construye a medida, con un presupuesto cerrado después del diagnóstico.</p>
+    <p>La diferencia con lo nuestro no es magia. Esas cifras son proyectos que se construyen y se pagan de una vez. Lo nuestro es automatizar contigo solo la parte que compensa, sobre bases que ya funcionan, y se paga con una cuota. Si lo que necesitas no existe, también se construye a medida, con un presupuesto cerrado después de la consultoría.</p>
 
     <h2>La cuenta que se hace casi todo el mundo: contratar a una persona</h2>
     <p>Un administrativo en España cobra de media <strong>${f(Math.round(SUELDO_ADMIN))} € brutos al año</strong>, según la <a href="https://www.ine.es/dyngs/Prensa/EES2022.htm" target="_blank" rel="noopener">Encuesta de Estructura Salarial del INE</a> (2022, el último dato por ocupación). A eso la empresa le suma su parte de la Seguridad Social: un 30,65 % con los <a href="https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/CotizacionRecaudacionTrabajadores/36537" target="_blank" rel="noopener">tipos de 2026</a>, más la cotización por accidentes de trabajo. En total, <strong>unos ${f(COSTE_ADMIN)} € al año</strong>.</p>

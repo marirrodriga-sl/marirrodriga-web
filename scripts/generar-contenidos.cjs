@@ -27,7 +27,6 @@ const agenteBase = atencion.piezas.find(z => z.slug === 'iris-0');
    la descripción de cada landing: se lee de ahí para que no haya dos versiones. */
 const DOLORES = [
   ['/atencion-al-cliente', 'Contestar mensajes, llamadas y correo fuera de horario'],
-  ['/ventas-y-captacion', 'Clientes sin ficha y presupuestos sin seguimiento'],
   ['/finanzas', 'Facturar, reclamar cobros y saber cómo va la caja'],
   ['/posicionamiento-online', 'Que no te encuentren en Google ni tengas reseñas'],
   ['/marketing', 'Publicar en redes sin que te robe la semana'],
@@ -154,10 +153,13 @@ function guia(p) {
     publisher: { '@type': 'Organization', name: 'Marirrodriga IA', logo: { '@type': 'ImageObject', url: BASE + '/icon-512.png' } },
   };
   const datos = {
-    agente: { ...agenteBase, limCorto: agenteBase.lim.split(' · ')[0] },
+    /* 25-11-2026 · Por WhatsApp se empieza en la banda Calendario (79 € + 230 €):
+       los 49 € de Atención son la banda de Correo, que no lleva WhatsApp. */
+    agente: (() => { const c = require('./datos-catalogo.json').planes.find(x => x.slug === 'atencion-calendario');
+      return { ...agenteBase, eur: c.cuota, setup: c.alta, limCorto: agenteBase.lim.split(' · ')[0] }; })(),
     pack: atencion.pack, f: euros, iva,
     primerAno: (alta, cuota) => alta + cuota * 12,
-    deps: DEPARTAMENTOS.filter(d => d.pack && d.pack.alta)
+    deps: DEPARTAMENTOS.filter(d => d.pack && d.pack.alta && !d.presupuesto)
       .map(d => ({ ruta: d.ruta, nombre: d.pill, pack: d.pack }))
       .sort((a, b) => (a.pack.alta + a.pack.cuota * 12) - (b.pack.alta + b.pack.cuota * 12)),
     pieza: (r, n) => dep(r).piezas.find(z => z.n === n),

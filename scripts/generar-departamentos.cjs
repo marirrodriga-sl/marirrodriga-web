@@ -41,11 +41,6 @@ const raiz = path.join(__dirname, '..');
    español. Se formatea a mano para no depender de cómo esté compilado. */
 const miles = n => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 
-const ANCLAS = [
-  ['#completo', 'La solución completa'],
-  ['#piezas', 'O por piezas'],
-  ['#preguntas', 'Preguntas'],
-];
 
 /* ─── ICONOS DEL DIAGRAMA ────────────────────────────────────────────────
    Trazos sueltos, sin relleno: heredan el grosor y el color del CSS. */
@@ -73,10 +68,44 @@ const hero = p => `<header class="hero-s" style="--hero:url('/assets/img/${p.her
       : `<span class="hero-s-pill"><i></i> ${esc(p.pill)}</span>`}
     <${p.h1Busqueda ? 'p' : 'h1'} class="t-h1">${esc(p.h1[0])}<br><span class="acento">${esc(p.h1[1])}</span></${p.h1Busqueda ? 'p' : 'h1'}>
     <p class="t-lead">${p.lead}</p>
+    ${p.verPrecios ? `<a class="btn btn-2 ver-precios" href="${p.verPrecios}">Ver precios ↓</a>` : ''}
   </div>
 </header>`;
 
-const dolores = p => `<section class="seccion">
+/* ─── EL PROBLEMA Y LA SOLUCIÓN ──────────────────────────────────────────
+   25-11-2026 · Sustituye a «El agujero» donde el departamento trae
+   `problemaSolucion` (Ismael, revisión para la Cámara de Comercio). Una fila
+   por tipo de negocio: a la izquierda cómo está hoy, a la derecha qué hace el
+   agente. Los datos solo con estudio real, de 2024 en adelante, y citado. */
+const problemaSolucion = p => {
+  const s = p.problemaSolucion;
+  return `<section class="seccion">
+  <div class="envoltura">
+    <div class="envoltura-txt centrado" style="padding:0;margin-bottom:36px">
+      <span class="t-eyebrow">El problema y la solución</span>
+      <h2 class="t-h2" style="margin:14px 0 16px">${esc(s.titulo[0])}<br><span class="acento">${esc(s.titulo[1])}</span></h2>
+      ${s.lead ? `<p class="t-lead">${esc(s.lead)}</p>` : ''}
+    </div>
+    <div class="ps aparece">
+      ${s.filas.map(f => `<div class="ps-fila">
+        <h3 class="ps-sector">${esc(f.sector)}</h3>
+        <div class="ps-hoy">
+          <span class="ps-et">Hoy</span>
+          <p>${esc(f.hoy)}</p>
+          ${f.dato ? `<p class="ps-dato"><b>${esc(f.dato.cifra)}</b> ${esc(f.dato.texto)} <a href="${f.dato.url}" target="_blank" rel="noopener">${esc(f.dato.fuente)}</a></p>` : ''}
+        </div>
+        <div class="ps-flecha" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        <div class="ps-sol">
+          <span class="ps-et">${esc(f.etSol || 'Con el agente')}</span>
+          <p>${esc(f.solucion)}</p>
+        </div>
+      </div>`).join('\n      ')}
+    </div>
+  </div>
+</section>`;
+};
+
+const dolores = p => p.problemaSolucion ? problemaSolucion(p) : `<section class="seccion">
   <div class="envoltura">
     <div class="envoltura-txt centrado" style="padding:0">
       <span class="t-eyebrow">El agujero</span>
@@ -118,7 +147,7 @@ const completo = p => {
   return `<section class="seccion" id="completo">
   <div class="envoltura">
     <div class="envoltura-txt centrado" style="padding:0;margin-bottom:40px">
-      <span class="t-eyebrow">Lo que recomendamos</span>
+      <span class="t-eyebrow">El agente al completo</span>
       <h2 class="t-h2" style="margin:14px 0 16px">El departamento entero,<br><span class="acento">montado a tu medida.</span></h2>
       <p class="t-lead">${esc(k.gancho)}</p>
     </div>
@@ -137,10 +166,11 @@ const completo = p => {
             </div>
             <div class="mapa-centro">
               <div class="mapa-nucleo">
-                <span class="mapa-nucleo-et">Trabajando juntas</span>
+                <span class="mapa-nucleo-et">${k.accesos ? 'El agente de' : 'Trabajando juntas'}</span>
                 <b>${esc(p.pill)}</b>
+                ${k.accesos ? '<span class="mapa-nucleo-et mapa-accede">Con acceso a</span>' : ''}
                 <div class="mapa-piezas">
-                  ${dentro.map(z => `<span>${esc(z.n)}</span>`).join('\n                  ')}
+                  ${(k.accesos || dentro.map(z => z.n)).map(x => `<span>${esc(x)}</span>`).join('\n                  ')}
                 </div>
               </div>
               <p class="mapa-explica">${esc(k.comoVa)}</p>
@@ -150,12 +180,21 @@ const completo = p => {
               ${k.sale.map(x => `<div class="flujo-nodo mapa-nodo mapa-nodo-fin">${esc(x)}</div>`).join('\n              ')}
             </div>
           </div>
+          ${k.ramas ? `<div class="mapa-rama">
+            <span class="mapa-titulo">Lo que hace con esa información</span>
+            <div class="mapa-rama-cols">
+              ${k.ramas.map(([t, xs]) => `<div class="mapa-rama-col">
+                <h4>${esc(t)}</h4>
+                <ul>${xs.map(x => `<li>${esc(x)}</li>`).join('')}</ul>
+              </div>`).join('')}
+            </div>
+          </div>` : ''}
         </div>
       </div>
       <figcaption>${esc(k.pie)}</figcaption>
     </figure>
 
-    <div class="desglose aparece">
+    ${k.ramas ? '' : `<div class="desglose aparece">
       <h3 class="desglose-titulo">Qué hace cada parte</h3>
       ${dentro.map((z, n) => `<article class="desglose-pieza${n % 2 ? ' desglose-vuelta' : ''}${z.foto || z.maqueta ? '' : ' desglose-sinfoto'}">
         ${z.maqueta
@@ -172,9 +211,9 @@ const completo = p => {
           </ul>` : ''}
         </div>
       </article>`).join('\n      ')}
-    </div>
+    </div>`}
 
-    <div class="pack aparece">
+    ${p.planes ? '' : `<div class="pack aparece">
       <div class="pack-txt">
         <h3>${esc(k.nombre)}</h3>
         <p>Todo lo de arriba, conectado entre sí y ajustado a cómo trabajas tú. Sin permanencia: te vas cuando quieras avisando con 30 días.</p>
@@ -187,10 +226,127 @@ const completo = p => {
         <div class="sin-iva">Los precios de arriba van sin IVA</div>
         <div class="pack-nota">El descuento va en el montaje, que es lo que de verdad se comparte al hacerlo todo a la vez. La cuota mensual es la misma que sumando las piezas: no te cobramos de más por juntarlas ni te prometemos un descuento que no existe.</div>
       </div>
+    </div>`}
+  </div>
+</section>`;
+};
+
+/* ─── LOS PRECIOS CERRADOS ───────────────────────────────────────────────
+   25-11-2026 · Donde el departamento trae `planes`, la página deja de vender
+   pieza a pieza (Ismael): tres bandas acumulables, las combinaciones de dos
+   ya calculadas y la completa. Las cifras salen de catalogo_planes en
+   Supabase, vía scripts/datos-catalogo.json; verificar-ventas las contrasta
+   por data-plan. */
+const PLANES = require('./datos-catalogo.json').planes || [];
+const planesDe = dep => PLANES.filter(x => x.departamento === dep);
+const limites = (p, x) => x.piezas
+  .map(s => (p.piezas.find(z => z.slug === s) || {}).lim)
+  .filter(l => l && !/acopla|comparte/.test(l))
+  .flatMap(l => l.split(' · ').filter(t => !/solo lee|backend/.test(t)))
+  .join(' · ');
+/* Finanzas, Logística y Datos (25-11-2026, Ismael): sin precio cerrado. Una
+   horquilla honrada —de la banda más pequeña al departamento entero, sacada
+   de catalogo_planes— y el presupuesto, tras la consultoría. */
+const horquilla = p => {
+  const { cMin, cMax, aMin, aMax, ejemplo } = p.horquilla;
+  return `<section class="seccion seccion-cream" id="precios">
+  <div class="envoltura">
+    <div class="envoltura-txt centrado" style="padding:0;margin-bottom:32px">
+      <span class="t-eyebrow">Precio</span>
+      <h2 class="t-h2" style="margin:14px 0 16px">Un presupuesto<br><span class="acento">para tu caso.</span></h2>
+    </div>
+    <div class="horquilla aparece" data-horquilla="${esc(p.planes)}">
+      <div class="horquilla-cifras">
+        <span class="horquilla-et">Lo habitual</span>
+        <div class="horquilla-cuota">${cMin} – ${cMax} €<span>/mes</span></div>
+        <div class="horquilla-alta">y entre ${miles(aMin)} y ${miles(aMax)} € de instalación</div>
+        <div class="sin-iva">Sin IVA</div>
+        <p class="horquilla-ej">${esc(ejemplo)}</p>
+      </div>
+      <div class="horquilla-txt">
+        <p>Nos encantaría darte un precio fijo, pero aquí no sería honrado: depende de qué partes del proceso automaticemos en tu empresa y de con cuántos programas haya que conectarse.</p>
+        <p>Lo vemos contigo en la consultoría y te mandamos el presupuesto cerrado, con lo que incluye y su límite al lado.</p>
+        <a class="btn btn-1" href="/#solicitar">Pedir la consultoría gratis</a>
+      </div>
     </div>
   </div>
 </section>`;
 };
+/* 25-11-2026 · Sin «Cuéntanos tu caso» en los que se presupuestan (Ismael): su
+   presupuesto nunca puede salir solo, así que el formulario solo daría
+   problemas. Basta con el botón de la consultoría. */
+const precios = p => {
+  const ps = planesDe(p.planes);
+  const bandas = ps.filter(x => x.tipo === 'banda');
+  const combos = ps.filter(x => x.tipo === 'combinacion');
+  const todo = ps.find(x => x.tipo === 'completo');
+  const tarjeta = (x, destacada) => `<article class="banda${destacada ? ' banda-top' : ''}" data-plan="${x.slug}">
+        ${destacada ? '<span class="banda-et">Todo junto</span>' : ''}
+        <h3>${esc(x.nombre)}</h3>
+        <div class="banda-cuota">${x.cuota} €<span>/mes</span></div>
+        <div class="iva-linea">${lineaIva(x.cuota)} al mes</div>
+        <div class="banda-alta">${miles(x.alta)} € de instalación</div>
+        <div class="iva-linea">${lineaIva(x.alta)}</div>
+        <p class="banda-lim">${esc(limites(p, x))}</p>
+        <ul>${x.incluye.map(i => `<li>${esc(i)}</li>`).join('')}</ul>
+      </article>`;
+  return `<section class="seccion seccion-cream" id="precios">
+  <div class="envoltura">
+    <div class="envoltura-txt centrado" style="padding:0;margin-bottom:36px">
+      <span class="t-eyebrow">Precios</span>
+      <h2 class="t-h2" style="margin:14px 0 16px">Elige lo que necesitas.<br><span class="acento">Y suma lo que quieras.</span></h2>
+      <p class="t-lead">Son precios de referencia, con su límite al lado. Se pueden coger por separado o juntos, y la oferta final se ajusta a tu volumen y a lo que necesites.</p>
+    </div>
+    <div class="bandas aparece" style="--n:${bandas.length + (todo ? 1 : 0)}">
+      ${bandas.map(x => tarjeta(x, false)).join('\n      ')}
+      ${todo ? tarjeta(todo, true) : ''}
+    </div>
+    ${combos.length ? `<div class="combos">
+      <span class="combos-tit">¿Solo dos? Ya está calculado:</span>
+      ${combos.map(x => `<span class="combo" data-plan="${x.slug}"><b>${esc(x.nombre)}</b> ${x.cuota} €/mes · ${miles(x.alta)} € de instalación</span>`).join('\n      ')}
+    </div>` : ''}
+    ${p.aMedida ? aMedida(p) : ''}
+    <p class="sin-iva centrado">Precios sin IVA. Sin permanencia: te vas cuando quieras avisando con 30 días. La instalación se paga 50 % al empezar y 50 % al entregar.</p>
+  </div>
+</section>`;
+};
+
+/* El quinto cuadro (25-11-2026, Ismael): para quien no encaja en ninguna banda
+   —solo preguntas frecuentes, preguntas y reseñas, media banda de cada…—. Envía
+   al flujo «CRM · Entrada de leads» como formulario «presupuesto»; la lógica
+   está en assets/presupuesto.js. */
+const aMedida = p => `<div class="amedida aparece" id="a-medida">
+      <div class="amedida-txt">
+        <span class="banda-et banda-et-quieta">${p.presupuesto ? 'Cuéntanos tu caso' : 'A tu medida'}</span>
+        <h3>${p.presupuesto ? '¿Prefieres empezar por escrito?' : '¿Ninguna se ajusta a lo que necesitas?'}</h3>
+        <p>${p.presupuesto ? 'Marca lo que te interesa y cuéntanos cómo lo hacéis hoy. Te contestamos con una primera estimación y, si encaja, quedamos para verlo.' : (p.aMedidaEj || 'Si solo quieres una parte —por ejemplo, que conteste las preguntas frecuentes y pida reseñas— o un poco de cada banda, cuéntanoslo y te mandamos un presupuesto cerrado para lo tuyo.')}</p>
+      </div>
+      <form class="amedida-form" id="presu-form" data-departamento="${esc(p.planes)}" novalidate>
+        <div class="amedida-fila">
+          <label>Tu nombre<input name="nombre" autocomplete="name" required></label>
+          <label>Empresa<input name="sector" autocomplete="organization" required></label>
+        </div>
+        <div class="amedida-fila">
+          <label>Correo<input name="email" type="email" autocomplete="email" required></label>
+          <label><span>Teléfono <small>(opcional)</small></span><input name="telefono" type="tel" autocomplete="tel"></label>
+        </div>
+        <fieldset>
+          <legend>Lo que te interesa</legend>
+          <div class="amedida-ops">
+            ${p.aMedida.map(x => `<label class="amedida-op"><input type="checkbox" name="funciones" value="${esc(x)}"><span>${esc(x)}</span></label>`).join('\n            ')}
+          </div>
+        </fieldset>
+        <label>Cuéntanos qué necesitas<textarea name="mensaje" rows="3" placeholder="${p.presupuesto ? 'Por ejemplo: cómo lo hacéis hoy, con qué programas y cuántas horas a la semana os lleva.' : 'Por ejemplo: tengo una tienda y solo quiero que conteste dudas de producto por WhatsApp.'}"></textarea></label>
+        <label class="amedida-priv"><input type="checkbox" name="privacidad" required><span>He leído y acepto la <a href="/privacidad" target="_blank" rel="noopener">política de privacidad</a>.</span></label>
+        <input type="text" name="sitio_web" tabindex="-1" autocomplete="off" aria-hidden="true" class="amedida-trampa">
+        <p class="amedida-error" id="presu-error" role="alert" hidden></p>
+        <button class="btn btn-1" type="submit" id="presu-enviar">Pedir mi presupuesto</button>
+      </form>
+      <div class="amedida-ok" id="presu-ok" hidden>
+        <h3>Recibido.</h3>
+        <p>Te escribimos con tu presupuesto en un día laborable. Si lo necesitas antes, estamos en <a href="https://wa.me/34675148566" target="_blank" rel="noopener">WhatsApp, al 675 148 566</a>.</p>
+      </div>
+    </div>`;
 
 /* ─── O SOLO UNA PIEZA ───────────────────────────────────────────────────
    Tabla, no tarjetas. Lo que hace cada una ya se ha explicado arriba, así que
@@ -209,7 +365,7 @@ const sueltas = p => `<section class="seccion seccion-cream" id="piezas">
         <span>Pieza</span><span>Hasta dónde llega</span><span>Al mes<em>sin IVA</em></span><span>Instalación<em>sin IVA</em></span>
       </div>
       ${p.piezas.map(z => `<div class="tp-fila"${z.slug ? ` data-pieza="${z.slug}" data-limite="${z.slug}"` : ''}>
-        <span class="tp-n">${esc(z.n)}${z.etiqueta ? `<em>${esc(z.etiqueta)}</em>` : z.fueraDelPack ? '<em>fuera del plan completo</em>' : ''}</span>
+        <span class="tp-n">${esc(z.n)}${z.etiqueta ? `<em>${esc(z.etiqueta)}</em>` : z.fueraDelPack ? '<em>fuera del plan completo</em>' : ''}${p.pack.ramas ? `<small class="tp-d">${esc(z.d)}</small>` : ''}</span>
         <span class="tp-lim">${esc(z.lim)}</span>
         <span class="tp-eur">${z.desde ? 'desde ' : ''}${z.eur} €${lineaIva(z.eur, { corto: true })}</span>
         <span class="tp-alta">${z.desdeAlta ? 'desde ' : ''}${miles(z.setup)} €${lineaIva(z.setup, { corto: true })}</span>
@@ -284,9 +440,9 @@ ${JSON.stringify(migas([['Inicio', '/'], [p.pill, p.ruta]]), null, 2)}
 </head>
 <body>
 
-${nav(ANCLAS)}
+${nav()}
 
-${p.heroHtml || hero(p)}
+${p.heroHtml || hero({ ...p, verPrecios: p.planes ? '#precios' : '#completo' })}
 
 ${dolores(p)}
 
@@ -296,7 +452,7 @@ ${completo(p)}
 
 ${p.antesDePiezas || ''}
 
-${sueltas(p)}
+${p.presupuesto ? horquilla(p) : p.planes ? precios(p) : sueltas(p)}
 
 ${p.despuesDePiezas || ''}
 
@@ -325,7 +481,9 @@ ${pie()}
     }
   });
 </script>
-<script defer src="/assets/nav.js"></script>
+<script defer src="/assets/nav.js"></script>${p.aMedida && !p.presupuesto ? `
+<script defer src="/assets/guardia-form.js"></script>
+<script defer src="/assets/presupuesto.js"></script>` : ''}
 <script defer src="/assets/plazas.js"></script>
 <script defer src="/assets/origen.js"></script>
 <script defer src="/_vercel/insights/script.js"></script>

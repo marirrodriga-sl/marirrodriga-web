@@ -16,6 +16,7 @@ import { readFileSync } from 'node:fs';
 const require = createRequire(import.meta.url);
 const { CATALOGO, cotiza, calculaSetup } = require('../assets/catalogo.js');
 const pieza = s => CATALOGO.piezas.find(p => p.slug === s);
+const PLANES = require('./datos-catalogo.json').planes || [];
 
 let fallos = 0;
 /* El recuento va global y no por página: los cinco departamentos que se
@@ -35,7 +36,7 @@ const fmt = n => Number.isInteger(n) ? String(n) : n.toFixed(2).replace('.', ','
 /* Desde el 09-09 las siete landings salen del generador y su tabla de piezas
    marca con data-pieza las que existen en el catálogo, así que la
    comprobación deja de ser solo de Ventas y cubre las siete. */
-for (const fichero of ['ventas-y-captacion.html', 'atencion-al-cliente.html', 'finanzas.html',
+for (const fichero of ['atencion-al-cliente.html', 'finanzas.html',
                        'logistica.html', 'datos-y-direccion.html', 'marketing.html',
                        'posicionamiento-online.html']) {
   const html = readFileSync(new URL('../' + fichero, import.meta.url), 'utf8');
@@ -63,6 +64,27 @@ for (const fichero of ['ventas-y-captacion.html', 'atencion-al-cliente.html', 'f
     const nums = numeros(m[2]);
     check(nums.includes(q.cuota) && nums.includes(a.total),
       `juntas ${m[1]} · ${fmt(q.cuota)} €/mes + ${fmt(a.total)} €`, nums.join(' '));
+  }
+
+  // data-plan: precios cerrados (25-11-2026), contra catalogo_planes vía datos-catalogo.json
+  const rp = /<(article|span)[^>]+data-plan="([^"]+)"[^>]*>([\s\S]*?)<\/\1>/g;
+  while ((m = rp.exec(html))) {
+    const pl = PLANES.find(x => x.slug === m[2]);
+    if (!pl) { check(false, `plan ${m[2]}`, 'no está en catalogo_planes'); continue; }
+    marcados++;
+    const nums = numeros(m[3]);
+    check(nums.includes(pl.cuota) && nums.includes(pl.alta), `plan ${m[2]} · ${pl.cuota} €/mes + ${pl.alta} €`, nums.join(' '));
+  }
+
+  // data-horquilla: el rango de los departamentos que se presupuestan (25-11-2026)
+  for (const h of html.matchAll(/data-horquilla="([^"]+)"[^>]*>([\s\S]*?)<\/section>/g)) {
+    // 25-11-2026: la horquilla ya no sale de las bandas: es la fijada en datos-departamentos.cjs
+    const dep = require('./datos-departamentos.cjs').DEPARTAMENTOS.find(d => d.planes === h[1]);
+    const nums = numeros(h[2]);
+    const hq = dep && dep.horquilla;
+    const esperado = hq ? [hq.cMin, hq.cMax, hq.aMin, hq.aMax] : [];
+    marcados++;
+    check(!!hq && esperado.every(n => nums.includes(n)), `horquilla ${h[1]} · ${esperado.join(' / ')}`, nums.slice(0, 6).join(' '));
   }
 
   // Ningún precio sin límite: cada data-pieza con precio de cuota lleva un data-limite hermano

@@ -68,6 +68,11 @@
       "source": "/bookia-tatuajes",
       "destination": "/citia",
       "permanent": true
+    },
+    {
+      "source": "/ventas-y-captacion",
+      "destination": "/agentes",
+      "permanent": true
     }
   ]
 }

@@ -229,3 +229,132 @@ h1.hero-s-pill i { display: inline-block; vertical-align: middle; margin: -2px 8
 @media (max-width: 900px) {
   .vista-img-alta img { max-width: 46%; }
 }
+
+/* 25-11-2026 · «Ver precios ↓» en la cabecera: el menú ya no lleva anclas. */
+.ver-precios { display: inline-flex; margin-top: 22px; }
+
+/* ─── El problema y la solución (25-11-2026) ─────────────────────────────── */
+.ps { display: flex; flex-direction: column; gap: 28px; max-width: 1080px; margin: 0 auto; }
+.ps-fila { display: grid; grid-template-columns: 1fr 44px 1fr; grid-template-rows: auto 1fr; column-gap: 12px; row-gap: 12px; align-items: stretch; }
+.ps-sector { grid-column: 1 / -1; font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); }
+.ps-hoy, .ps-sol { border-radius: 14px; padding: 22px 24px; display: flex; flex-direction: column; gap: 10px; }
+.ps-hoy { background: #fff; box-shadow: inset 0 0 0 1px var(--line); }
+.ps-sol { background: linear-gradient(135deg, rgba(124,58,237,.10), rgba(124,58,237,.04)); box-shadow: inset 0 0 0 1px rgba(124,58,237,.22); }
+.ps-et { font-size: 12px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--ink-3); }
+.ps-sol .ps-et { color: var(--purple-deep); }
+.ps-hoy p, .ps-sol p { font-size: 16px; line-height: 1.6; color: var(--ink); }
+.ps-dato { margin-top: auto; padding-top: 12px; border-top: 1px solid var(--line-soft); font-size: 13.5px !important; line-height: 1.5 !important; color: var(--ink-2) !important; }
+.ps-dato b { font-size: 22px; font-weight: 700; color: var(--ink); margin-right: 4px; }
+.ps-dato a { display: block; margin-top: 4px; font-size: 12px; color: var(--ink-3); text-decoration: underline; }
+.ps-flecha { display: flex; align-items: center; justify-content: center; }
+.ps-flecha svg { width: 26px; height: 26px; fill: none; stroke: var(--purple); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+@media (max-width: 760px) {
+  .ps-fila { grid-template-columns: 1fr; }
+  .ps-flecha { transform: rotate(90deg); height: 28px; }
+}
+.mapa-accede { margin-top: 10px; }
+
+/* ─── La rama del mapa: lo que hace con esa información (25-11-2026) ─────── */
+.mapa-rama { margin-top: 28px; padding-top: 24px; border-top: 1px dashed rgba(124,58,237,.3); position: relative; text-align: center; }
+.mapa-rama::before { content: ''; position: absolute; top: -28px; left: 50%; width: 1.5px; height: 28px; background: rgba(124,58,237,.35); }
+.mapa-rama > .mapa-titulo { display: block; margin-bottom: 14px; }
+.mapa-rama-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; text-align: left; }
+.mapa-rama-col { background: #fff; border-radius: 12px; padding: 16px 18px; box-shadow: inset 0 0 0 1px rgba(124,58,237,.2); }
+.mapa-rama-col h4 { font-size: 12.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--purple-deep); margin-bottom: 8px; }
+.mapa-rama-col ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.mapa-rama-col li { font-size: 14px; line-height: 1.45; color: var(--ink); padding-left: 14px; position: relative; }
+.mapa-rama-col li::before { content: ''; position: absolute; left: 0; top: 9px; width: 6px; height: 1.5px; background: var(--purple); }
+@media (max-width: 760px) { .mapa-rama-cols { grid-template-columns: 1fr; } }
+.tp-d { display: block; margin-top: 4px; font-size: 13px; font-weight: 400; line-height: 1.45; color: var(--ink-3); }
+
+/* ─── La rama del mapa: lo que hace con esa información (25-11-2026) ─────── */
+.mapa-rama { margin-top: 28px; padding-top: 24px; border-top: 1px dashed rgba(124,58,237,.3); position: relative; text-align: center; }
+.mapa-rama::before { content: ''; position: absolute; top: -28px; left: 50%; width: 1.5px; height: 28px; background: rgba(124,58,237,.35); }
+.mapa-rama > .mapa-titulo { display: block; margin-bottom: 14px; }
+.mapa-rama-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; text-align: left; }
+.mapa-rama-col { background: #fff; border-radius: 12px; padding: 16px 18px; box-shadow: inset 0 0 0 1px rgba(124,58,237,.2); }
+.mapa-rama-col h4 { font-size: 12.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--purple-deep); margin-bottom: 8px; }
+.mapa-rama-col ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.mapa-rama-col li { font-size: 14px; line-height: 1.45; color: var(--ink); padding-left: 14px; position: relative; }
+.mapa-rama-col li::before { content: ''; position: absolute; left: 0; top: 9px; width: 6px; height: 1.5px; background: var(--purple); }
+@media (max-width: 760px) { .mapa-rama-cols { grid-template-columns: 1fr; } }
+.tp-d { display: block; margin-top: 4px; font-size: 13px; font-weight: 400; line-height: 1.45; color: var(--ink-3); }
+
+/* Dos secciones crema seguidas (piezas + preguntas) no duplican el margen. */
+.seccion-cream + .seccion-cream { padding-top: 0; }
+
+/* ─── Precios cerrados por bandas (25-11-2026) ───────────────────────────── */
+.bandas { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 1120px; margin: 0 auto; align-items: stretch; }
+.banda { background: #fff; border-radius: 16px; padding: 24px 22px; box-shadow: inset 0 0 0 1px var(--line), var(--sh-1); display: flex; flex-direction: column; gap: 4px; position: relative; }
+.banda h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 28px; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
+.banda-cuota { font-size: 34px; font-weight: 750; color: var(--ink); line-height: 1; }
+.banda-cuota span { font-size: 15px; font-weight: 500; color: var(--ink-3); margin-left: 2px; }
+.banda-alta { margin-top: 10px; font-size: 14.5px; font-weight: 600; color: var(--ink-2); }
+.banda .iva-linea { font-size: 12px; color: var(--ink-4); }
+.banda .iva-linea em { font-style: normal; }
+.banda-lim { margin-top: 12px; font-size: 12.5px; line-height: 1.45; color: var(--ink-3); }
+.banda ul { list-style: none; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--line-soft); display: flex; flex-direction: column; gap: 7px; }
+.banda li { font-size: 14px; line-height: 1.45; color: var(--ink); padding-left: 16px; position: relative; }
+.banda li::before { content: ''; position: absolute; left: 0; top: 8px; width: 8px; height: 4px; border-left: 1.5px solid var(--purple); border-bottom: 1.5px solid var(--purple); transform: rotate(-45deg); }
+.banda-top { background: linear-gradient(160deg, #2a1b4d, #1b1430); box-shadow: 0 14px 40px rgba(76,29,149,.28); }
+.banda-top h3, .banda-top .banda-cuota, .banda-top li { color: #fff; }
+.banda-top .banda-cuota span, .banda-top .banda-alta, .banda-top .banda-lim, .banda-top .iva-linea { color: rgba(255,255,255,.72); }
+.banda-top ul { border-top-color: rgba(255,255,255,.16); }
+.banda-top li::before { border-color: #c4b5fd; }
+.banda-et { position: absolute; top: -11px; left: 22px; background: var(--purple); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; }
+.combos { max-width: 1120px; margin: 22px auto 0; display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: center; justify-content: center; }
+.combos-tit { width: 100%; text-align: center; font-size: 14px; color: var(--ink-2); margin-bottom: 4px; }
+.combo { background: #fff; border-radius: 999px; padding: 8px 14px; font-size: 13.5px; color: var(--ink-2); box-shadow: inset 0 0 0 1px var(--line); }
+.combo b { color: var(--ink); font-weight: 650; margin-right: 4px; }
+#precios .sin-iva { margin-top: 18px; font-size: 13px; color: var(--ink-3); text-align: center; }
+@media (max-width: 1000px) { .bandas { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .bandas { grid-template-columns: 1fr; } }
+
+/* ─── El quinto cuadro: a tu medida (25-11-2026) ─────────────────────────── */
+.amedida { max-width: 1120px; margin: 28px auto 0; background: #fff; border-radius: 18px; padding: 30px 32px; box-shadow: inset 0 0 0 1.5px rgba(124,58,237,.35), var(--sh-1); display: grid; grid-template-columns: 1fr 1.5fr; gap: 32px; position: relative; }
+.banda-et-quieta { position: static; display: inline-block; margin-bottom: 12px; }
+.amedida-txt h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 30px; font-weight: 600; line-height: 1.1; color: var(--ink); margin-bottom: 10px; }
+.amedida-txt p { font-size: 15.5px; line-height: 1.6; color: var(--ink-2); }
+.amedida-form { display: flex; flex-direction: column; gap: 12px; }
+.amedida-form label { display: flex; flex-direction: column; gap: 5px; font-size: 13.5px; font-weight: 600; color: var(--ink-2); }
+.amedida-form small { font-weight: 400; color: var(--ink-4); }
+.amedida-form input:not([type=checkbox]), .amedida-form textarea { font: inherit; font-size: 15px; font-weight: 400; color: var(--ink); padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--cream, #faf8f4); }
+.amedida-form input:focus, .amedida-form textarea:focus { outline: 2px solid var(--purple); outline-offset: 1px; }
+.amedida-fila { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.amedida-form fieldset { border: 0; padding: 0; margin: 0; }
+.amedida-form legend { font-size: 13.5px; font-weight: 600; color: var(--ink-2); margin-bottom: 6px; }
+.amedida-ops { display: flex; flex-wrap: wrap; gap: 6px; }
+.amedida-op { flex-direction: row !important; font-weight: 500 !important; cursor: pointer; }
+.amedida-op input { position: absolute; opacity: 0; pointer-events: none; }
+.amedida-op span { padding: 6px 12px; border-radius: 999px; font-size: 13.5px; background: var(--cream-deep, #f1ede6); color: var(--ink-2); box-shadow: inset 0 0 0 1px var(--line); transition: background .15s, color .15s; }
+.amedida-op input:checked + span { background: var(--purple); color: #fff; box-shadow: none; }
+.amedida-op input:focus-visible + span { outline: 2px solid var(--purple); outline-offset: 2px; }
+.amedida-priv { flex-direction: row !important; align-items: flex-start; gap: 8px !important; font-weight: 400 !important; font-size: 13px !important; }
+.amedida-priv a { color: var(--purple-deep); text-decoration: underline; }
+.amedida-trampa { position: absolute !important; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.amedida-error { color: #b42318; font-size: 13.5px; }
+.amedida-form .btn { align-self: flex-start; }
+.amedida-ok h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 30px; color: var(--ink); }
+.amedida-ok p { font-size: 15.5px; line-height: 1.6; color: var(--ink-2); margin-top: 8px; }
+.amedida-ok a { color: var(--purple-deep); text-decoration: underline; }
+@media (max-width: 860px) { .amedida { grid-template-columns: 1fr; padding: 24px 20px; } .amedida-fila { grid-template-columns: 1fr; } }
+.amedida [hidden] { display: none !important; }
+/* La rejilla de bandas se adapta al número de tarjetas (2, 3 o 4). */
+.bandas { grid-template-columns: repeat(var(--n, 4), minmax(0, 1fr)); max-width: calc(var(--n, 4) * 280px); }
+@media (max-width: 1000px) { .bandas { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 640px; } }
+@media (max-width: 560px) { .bandas { grid-template-columns: 1fr; } }
+
+/* ─── Horquilla de precio: departamentos que se presupuestan (25-11-2026) ── */
+.horquilla { max-width: 1000px; margin: 0 auto; background: #fff; border-radius: 18px; padding: 32px 34px; box-shadow: inset 0 0 0 1px var(--line), var(--sh-1); display: grid; grid-template-columns: 1fr 1.4fr; gap: 36px; align-items: center; }
+.horquilla-et { font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--purple-deep); }
+.horquilla-cuota { font-size: 40px; font-weight: 750; color: var(--ink); line-height: 1.1; margin-top: 6px; white-space: nowrap; }
+.horquilla-cuota span { font-size: 16px; font-weight: 500; color: var(--ink-3); margin-left: 2px; }
+.horquilla-alta { margin-top: 8px; font-size: 15px; color: var(--ink-2); }
+.horquilla .sin-iva { margin-top: 6px; font-size: 12.5px; color: var(--ink-4); }
+.horquilla-txt p { font-size: 16px; line-height: 1.6; color: var(--ink-2); }
+.horquilla-txt p + p { margin-top: 10px; }
+.horquilla-txt .btn { margin-top: 18px; }
+@media (max-width: 760px) { .horquilla { grid-template-columns: 1fr; gap: 20px; padding: 24px 20px; } .horquilla-cuota { font-size: 34px; } }
+.horquilla .sin-iva { text-align: left; }
+.horquilla-ej { margin-top: 14px; font-size: 14px; line-height: 1.5; color: var(--ink-2); padding-top: 12px; border-top: 1px solid var(--line-soft); }
+#precios .horquilla .sin-iva { text-align: left; margin-top: 6px; }

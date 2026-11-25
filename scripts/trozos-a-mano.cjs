@@ -39,11 +39,11 @@ const heroAtencion = `<header class="hero">
             <span class="chat-quien"><b>Tu negocio</b><small>en línea · responde al momento</small></span>
           </div>
           <div class="chat-hilo">
-            <div class="msg msg-ent m1">Hola, ¿os queda hueco mañana por la tarde?</div>
+            <div class="msg msg-ent m1">Se me ha encendido el testigo del motor, ¿me lo podéis mirar esta semana?</div>
             <div class="msg msg-sal msg-esc m2"><i></i><i></i><i></i></div>
-            <div class="msg msg-sal m3">Sí — mañana tengo las 17:30 y las 19:00 libres. ¿Cuál te viene mejor?</div>
-            <div class="msg msg-ent m4">La de las 19:00</div>
-            <div class="msg msg-sal m5">Hecho, reservado ✓<br><span>Te aviso la víspera por si tienes que moverla.</span></div>
+            <div class="msg msg-sal m3">Sí: el miércoles a las 9:00 o el jueves a las 16:00. Lo dejas por la mañana y a mediodía te decimos qué tiene.</div>
+            <div class="msg msg-ent m4">El miércoles</div>
+            <div class="msg msg-sal m5">Hecho, miércoles 9:00 ✓<br><span>Te aviso la víspera por si hay que moverlo.</span></div>
             <div class="msg msg-ent m6">¡Gracias!</div>
           </div>
         </div>
@@ -55,7 +55,8 @@ const heroAtencion = `<header class="hero">
       
     </div>
 
-    <p class="t-lead">Un asistente que entiende lo que le escriben, mira tu agenda de verdad y cierra la cita él mismo. En el canal donde tus clientes ya te escriben, no en uno nuevo que tengan que aprender.</p>
+    <p class="t-lead">Un asistente que entiende lo que le escriben, consulta tus programas de verdad —la agenda, la tienda, el correo— y hace la gestión él mismo. En el canal donde tus clientes ya te escriben, no en uno nuevo que tengan que aprender.</p>
+    <a class="btn btn-2 ver-precios" href="#precios">Ver precios ↓</a>
 
     <!-- ─── SOBRE QUÉ ACTÚA ──────────────────────────────────────────────
          Lo que faltaba contar. La conversación del móvil enseña que CONTESTA,

@@ -1239,3 +1239,6 @@ h1.hero-pill i { display: inline-block; vertical-align: middle; margin: -2px 8px
 .pack .sin-iva { color: rgba(255,255,255,.5); }
 /* El bloque del pack va sobre fondo oscuro: el gris de base.css no se lee ahí. */
 .pack .iva-linea, .pack .iva { color: rgba(255,255,255,.72); }
+
+/* 25-11-2026 · «Ver precios ↓» en la cabecera de Atención. */
+.hero-centro .ver-precios { display: inline-flex; margin-top: 20px; }

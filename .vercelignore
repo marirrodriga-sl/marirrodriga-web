@@ -9,3 +9,7 @@ scripts/
 docs/
 .claude/
 *.md
+
+# Herramientas internas (25-11-2026, Ismael): no se publican.
+taller.html
+calculadora.html

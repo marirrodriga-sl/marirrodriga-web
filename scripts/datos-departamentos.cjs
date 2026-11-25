@@ -29,23 +29,64 @@ const DEPARTAMENTOS = [
   {
     archivo: 'atencion-al-cliente.html', ruta: '/atencion-al-cliente',
     heroHtml: T.heroAtencion,
-    antesDePiezas: T.noEsBot,
-    despuesDePiezas: `<section class="seccion" style="padding-top:0"><div class="envoltura-txt"><p class="t-body">¿Comparando precios? En <a href="/guias/cuanto-cuesta-chatbot-whatsapp-ia" style="color:var(--purple-deep);text-decoration:underline">cuánto cuesta un chatbot de WhatsApp con IA</a> están el mercado, lo que cobra Meta desde octubre de 2026 y el coste del primer año.</p></div></section>`,
+    /* 25-11-2026 · Página reducida a: problema y solución, el mapa, el precio
+       del pack, las piezas y las preguntas (Ismael; será el esquema de todos
+       los departamentos). «Esto no es un chatbot» pasa a ser una pregunta. */
     pill: 'Atención al Cliente',
+    /* 25-11-2026 · Precios cerrados: tres bandas acumulables y la completa
+       (catalogo_planes). La cuota y el alta del pack se toman del plan
+       completo al final del fichero, para que las guías no se desfasen. */
+    planes: 'atencion',
+    /* Las casillas del quinto cuadro, «A tu medida» (25-11-2026). */
+    aMedida: ['Preguntas frecuentes', 'Recomendar productos', 'Citas en tu agenda', 'Recordatorios de cita', 'Reseñas', 'Seguimiento de pedidos', 'Stock', 'Correo', 'Atender por teléfono (voz)', 'Más de un canal'],
     titulo: 'Asistente de WhatsApp con IA para pymes | Marirrodriga IA',
     descripcion: 'Contesta por WhatsApp Business, Instagram o el chat de tu web, mira tu agenda y cierra la cita. Y en tu correo, clasifica y reparte lo que entra. Desde 49 €/mes.',
     h1: ['Contesta a las once de la noche.', 'Y también los domingos.'],
-    lead: 'Un asistente que entiende lo que le escriben, mira tu agenda de verdad y cierra la cita él mismo. En el canal donde tus clientes ya te escriben, no en uno nuevo que tengan que aprender.',
+    lead: 'Un asistente que entiende lo que le escriben, consulta tus programas de verdad —la agenda, la tienda, el correo— y hace la gestión él mismo. En el canal donde tus clientes ya te escriben, no en uno nuevo que tengan que aprender.',
+    /* 25-11-2026 · Sustituye a «El agujero» (Ismael). La fila de pedidos a
+       proveedores se descartó aquí: no es atención al cliente y va a Logística.
+       Los datos están comprobados en la fuente: CallRail publica el 78 % el
+       25-09-2025 (1.000 consumidores de EE. UU.); el 68,7 % es del
+       I Observatorio de Tendencias en CX de Foundever (1.000 personas en
+       España, 30-08 a 11-09-2024). */
+    problemaSolucion: {
+      titulo: ['Lo que pasa hoy.', 'Y lo que cambia.'],
+      lead: 'Depende de cómo te compran tus clientes: pidiendo cita o preguntando antes de comprar.',
+      filas: [
+        { sector: 'Negocios con cita · clínicas, peluquerías, talleres',
+          hoy: 'La llamada que no coges no espera a mañana. Estás atendiendo a alguien, el teléfono suena y quien llamaba acaba reservando en el siguiente de la lista. Y tú ni te enteras de que lo has perdido.',
+          dato: { cifra: '78 %', texto: 'de los consumidores ha dejado un negocio porque no le cogieron el teléfono.', fuente: 'CallRail, 2025 · encuesta a 1.000 consumidores de EE. UU.', url: 'https://www.callrail.com/blog/missed-calls-cost-businesses-more-than-ever' },
+          solucion: 'Un agente conectado a tu agenda. Contesta por WhatsApp a cualquier hora, mira los huecos reales y reserva, cambia o cancela él mismo. La víspera recuerda la cita, y después pide la reseña si todo fue bien.' },
+        { sector: 'Comercios y tiendas online',
+          hoy: 'Te escriben para preguntar: si lo tenéis, en qué talla, cuánto tarda, si sirve para lo que buscan. Si la respuesta llega tarde, la compra se hace en otra tienda.',
+          dato: { cifra: '68,7 %', texto: 'de los españoles ha dejado de comprar a una empresa habitual por una mala atención.', fuente: 'Foundever, Observatorio de Tendencias en CX, 2024', url: 'https://www.puromarketing.com/102/214443/servicio-cliente-principal-razon-consumidores-abandonan-marca' },
+          solucion: 'Un agente que conoce tu catálogo y tus servicios. Resuelve las dudas al momento, recomienda el producto que encaja y mira el stock real antes de prometer nada. Aquí recomendamos texto, no voz: quien está comparando quiere leer, no llamar.' },
+      ],
+    },
     doloresTitulo: ['Lo que se pierde no es una llamada.', 'Es la que no vuelve a llamar.'],
     doloresLead: 'Quien escribe fuera de horario no espera a mañana: escribe al siguiente. El problema de no contestar no es el mensaje perdido, es que no te enteras de que lo has perdido.',
     pack: {
       nombre: 'Atención al Cliente, montada entera',
-      gancho: 'Las siete piezas —el chat, la agenda, los recordatorios y el correo— con la misma cabeza detrás.',
+      gancho: 'Un solo agente que atiende por todos tus canales, con acceso a todo lo que hace falta para responder.',
       cuota: 144, alta: 330, altaSuelta: 470,
-      entra: ['WhatsApp e Instagram', 'El chat de tu web', 'Tu bandeja de correo'],
-      sale: ['Contestado a cualquier hora', 'La cita, cerrada', 'Y lo que no le toca, en tus manos'],
-      comoVa: 'No son siete programas: es uno con siete manos. El mismo que contesta el chat es el que mira la agenda y el que ordena el correo.',
-      pie: 'Montado entero, lo que aprende en un canal lo sabe en los demás. Comprando pieza a pieza, cada una empieza de cero.',
+      /* 25-11-2026 · Mapa rehecho para quien no sabe cómo funciona un agente
+         (Ismael): en el centro, a qué tiene acceso; no los nombres de las
+         piezas, que no explicaban nada («Un canal más»). */
+      entra: ['WhatsApp y redes sociales', 'Un chat integrado en tu web', 'Tu bandeja de correo'],
+      accesos: ['Tu base de datos de clientes', 'Tus productos y tu stock', 'Los detalles de tu negocio: horario, precios, servicios, profesionales y dudas frecuentes', 'Tu calendario'],
+      /* 25-11-2026 · La rama sustituye a «Qué hace cada parte» (los siete
+         bloques con foto): con el mapa ya se entendía y ocupaba media página.
+         Lo que hacía cada pieza pasa, en una línea, a la tabla de piezas. */
+      ramas: [
+        ['Calendario', ['Reserva, cambia y cancela citas', 'Recordatorios de cita (anti no-show)', 'Pide la reseña después de la cita']],
+        ['Pedidos', ['Dice dónde está cada pedido y sus detalles', 'Recomienda productos según lo que necesita el cliente', 'Consulta el stock real', 'Pide la reseña cuando llega el pedido']],
+        ['Correo', ['Ordena lo que entra en tu buzón', 'Contesta lo que se contesta solo', 'Lo demás, a quien le toque, y lo urgente a ti al momento']],
+      ],
+      sale: ['Clientes con respuesta inmediata', 'Citas cerradas por el agente', 'Lo que no puede responder, derivado a ti'],
+      comoVa: 'Es un solo agente. Conteste por donde conteste, lo hace con la misma información de tu negocio.',
+      /* 25-11-2026 · Texto de Ismael: el mapa enseña el agente con todo; con
+         una sola banda hace solo lo que le da acceso esa banda. */
+      pie: 'Estas funciones reflejan lo que puede hacer el agente con la Atención completa. Con una sola banda, hace lo que esa banda le permite: sin acceso a tu calendario, por ejemplo, no puede cerrar citas.',
     },
 
     dolores: [
@@ -58,14 +99,14 @@ const DEPARTAMENTOS = [
       maqueta: `<div class="mq-agente">
         <div class="mq-a-cab"><span class="mq-a-punto"></span>WhatsApp · tu negocio</div>
         <div class="mq-a-hilo">
-          <p class="mq-a-tuya">Buenas, ¿tenéis hueco esta semana para una revisión?</p>
+          <p class="mq-a-tuya">Buenas, somos un bar de Palencia. ¿Servís a hostelería con factura?</p>
           <div class="mq-a-suya">
-            <p>Buenas noches. Sí: el jueves a las 17:30 o el viernes a las 10:00.</p>
-            <p class="mq-a-pie">Soy el asistente de la clínica — una IA. Si prefieres hablar con alguien, te paso.</p>
+            <p>Buenas noches. Sí: tenemos tarifa de profesional y repartimos los martes y los viernes.</p>
+            <p class="mq-a-pie">Soy el asistente de la distribuidora — una IA. Si prefieres hablar con alguien, te paso.</p>
           </div>
-          <p class="mq-a-tuya">El jueves me viene bien</p>
+          <p class="mq-a-tuya">Vale, ¿cómo nos damos de alta?</p>
           <div class="mq-a-suya">
-            <p>Hecho, <b>jueves 17:30</b>. Te aviso la víspera por si hay que moverla.</p>
+            <p>Te paso con <b>el comercial</b>: mañana a primera hora te llama para darte de alta.</p>
           </div>
         </div>
         <div class="mq-a-caja"><span>23:41 · contestado en 4 segundos</span><em>✓</em></div>
@@ -91,11 +132,11 @@ const DEPARTAMENTOS = [
       maqueta: `<div class="mq-lista">
         <div class="mq-l-cab">Jueves 14 · huecos reales</div>
         <ul>
-          <li class="mq-l-lleno"><span>09:00</span><i>María G. · revisión</i></li>
-          <li class="mq-l-lleno"><span>11:30</span><i>Jorge P. · limpieza</i></li>
-          <li class="mq-l-libre"><span>17:30</span><i>libre</i></li>
-          <li class="mq-l-nuevo"><span>17:30</span><i>reservado por el agente · hace 1 min</i></li>
-          <li class="mq-l-libre"><span>19:00</span><i>libre</i></li>
+          <li class="mq-l-lleno"><span>09:00</span><i>Seat León · cambio de aceite</i></li>
+          <li class="mq-l-lleno"><span>11:30</span><i>Ford Focus · pre-ITV</i></li>
+          <li class="mq-l-libre"><span>16:00</span><i>libre</i></li>
+          <li class="mq-l-nuevo"><span>16:00</span><i>reservado por el agente · hace 1 min</i></li>
+          <li class="mq-l-libre"><span>18:00</span><i>libre</i></li>
         </ul>
         <p class="mq-l-pie">Mira el hueco de verdad antes de ofrecerlo. No promete lo que no hay.</p>
       </div>`,
@@ -107,7 +148,7 @@ const DEPARTAMENTOS = [
         <div class="mq-a-cab"><span class="mq-a-punto"></span>La víspera, y el día después</div>
         <div class="mq-a-hilo">
           <div class="mq-a-suya">
-            <p>Mañana a las <b>17:30</b> tienes cita. ¿La confirmas o la movemos?</p>
+            <p>Mañana a las <b>9:00</b> te esperamos en el taller con el León. ¿Lo confirmas o lo movemos?</p>
             <div class="mq-a-botones"><span>Confirmar</span><span>Cambiarla</span></div>
           </div>
           <p class="mq-a-tuya">Confirmada</p>
@@ -117,7 +158,7 @@ const DEPARTAMENTOS = [
           </div>
         </div>
       </div>`,
-      d: 'Avisa la víspera y deja confirmar o cancelar con un toque. Cuando la visita ha pasado pregunta qué tal fue: si fue bien pide la reseña de Google, y si fue mal te avisa a ti.',
+      d: 'Avisa la víspera y deja confirmar o cancelar con un toque. Cuando la visita ha pasado, o el pedido ha llegado, pregunta qué tal fue: si fue bien pide la reseña de Google, y si fue mal te avisa a ti.',
       lim: 'hasta 800 envíos/mes',
       nota: 'Para contestar las reseñas ya publicadas, eso vive en Posicionamiento Online.' },
 
@@ -185,9 +226,10 @@ const DEPARTAMENTOS = [
       lim: '2.000 fichas · 5 GB de fotos',
       nota: 'No confundir con lo que el agente sabe de tu negocio —precios, horarios, cómo trabajas—: eso va dentro del agente y no se paga aparte. Esto es el archivo de tus clientes, que ocupa disco.' },
 
-    { n: 'Monitoreo de clientes potenciales', slug: 'hermes-acompanamiento-conversacional', eur: 49, setup: 50, fueraDelPack: true,
-      d: 'Sigue a los que preguntaron y no cerraron: intenta cerrarlos, y cuando alguno se cae te reporta por qué se ha caído.',
-      lim: '300 conversaciones/mes' },
+    /* 25-11-2026 · Fuera «Monitoreo de clientes potenciales» (hermes-
+       acompanamiento-conversacional): es una pieza de ventas, y Ventas se
+       retira de la web porque hoy no nos funciona ni a nosotros. Decisión de
+       Isma, de cara a la Cámara de Comercio. */
 
     { n: 'Función de voz: que coja el teléfono', slug: 'voz-telefono', eur: 15, setup: 100, fueraDelPack: true,
       d: 'Que atienda hablando, no solo escribiendo. Mismo cerebro y mismos datos que el de texto.',
@@ -204,14 +246,15 @@ const DEPARTAMENTOS = [
       nota: 'Cuenta con que ya tienes un CRM y con que deja escribir desde fuera. Si no tienes, montarlo se presupuesta aparte.' },
     ],
     faq: [
+      ['¿En qué se diferencia de un chatbot?', 'Un chatbot lleva las respuestas escritas de antemano: si le preguntas algo que no estaba previsto, te contesta con un menú, un formulario o un «no te he entendido». Este agente entiende lo que le escriben, responde con lo que tú le has contado de tu negocio y sabe cuándo callarse y pasarte la conversación. Y no se queda en contestar: entra en tu agenda, tu tienda o tu correo y hace la gestión él mismo.'],
       ['¿Se nota que es un bot?', 'Sí, y a propósito: se identifica siempre como IA. Lo exige el artículo 50 del Reglamento Europeo de IA desde agosto de 2026, y además mentir en eso sale caro el día que el cliente lo descubre. Lo que no se nota es que sea malo.'],
       ['¿Qué pasa cuando no sabe algo?', 'Deja de contestar y te pasa la conversación. No improvisa, no promete plazos y no cierra ventas con cobro. Si el cliente se enfada, también te lo pasa: la escalada a una persona es parte del diseño, no un fallo.'],
-      ['¿Necesito una cuenta de WhatsApp Business?', 'Sí, y va a tu nombre: Meta te factura a ti directamente. No revendemos mensajería. Por eso un canal de más cuesta 5 €/mes — lo que pagas es la conexión, no el consumo.'],
+      ['¿El consumo de la IA va aparte?', 'No. El modelo de IA que hay detrás lo pagamos nosotros y va dentro de la cuota, hasta el límite de cada pieza. A tu nombre va solo lo que es tuyo: la cuenta de WhatsApp Business, donde Meta te cobra los mensajes que inicie tu negocio —recordatorios, avisos— porque salen con plantillas de pago, y, si añades la voz, la línea de teléfono y sus minutos. Contestar a quien te escribe es gratis hasta 1.000 mensajes al mes por número; a partir de ahí, Meta te lo cobra a ti.'],
       ['¿Y si me quedo corto de conversaciones?', 'Te avisamos al 80 % del límite y te proponemos subir. Nunca cortamos el servicio ni te facturamos el exceso por sorpresa. Un precio sin su límite al lado es una mentira o una trampa, así que aquí van siempre juntos.'],
       ['¿Hay permanencia?', 'No. Te vas cuando quieras avisando con 30 días. La instalación se paga 50 % al empezar y 50 % al entregar, y la cuota incluye los ajustes y las reuniones que hagan falta.'],
       ['¿Contesta fuera de horario?', 'Sí: las 24 horas, fines de semana incluidos. Lo que no le toca a él —algo que no sabe, un cliente enfadado, una venta con cobro— te lo deja pasado para cuando vuelvas.'],
-      ['¿Cuánto cuesta el asistente de WhatsApp Business?', 'Cada pieza lleva su precio y su límite en la tabla de esta página, sin IVA. Lo que Meta cobre por tu cuenta de WhatsApp Business va aparte y a tu nombre: no pasa por nosotros.'],
-      ['¿Hay versión gratis?', 'No. Detrás de cada pieza hay un modelo de IA, un servidor y los ajustes que hacemos nosotros, y por eso cada una lleva su cuota con su límite al lado. Lo que sí es gratis es el diagnóstico: hasta tres sesiones con tu equipo y un informe con lo que se puede automatizar y lo que costaría.'],
+      ['¿Cuánto cuesta el asistente de WhatsApp Business?', 'Con agenda, 79 €/mes; con pedidos, 99 €/mes; y con todo —agenda, pedidos y correo—, 139 €/mes. Cada banda lleva su límite al lado y todo va sin IVA. Lo que Meta cobre por las plantillas de tu cuenta de WhatsApp Business va aparte y a tu nombre: no pasa por nosotros.'],
+      ['¿Hay versión gratis?', 'No. Detrás de cada pieza hay un modelo de IA, un servidor y los ajustes que hacemos nosotros, y por eso cada una lleva su cuota con su límite al lado. Lo que sí es gratis es la consultoría: hasta tres sesiones con tu equipo y un informe con lo que se puede automatizar y lo que costaría.'],
       ['¿Cuánto tarda en estar funcionando?', 'Depende de cuánto haya que contarle de tu negocio y de a cuántas cosas tuyas se tenga que conectar. En la llamada lo vemos y sales con una fecha concreta, no con un «pronto».'],
     ],
   },
@@ -332,7 +375,7 @@ const DEPARTAMENTOS = [
       ['¿Me obliga a cambiar de programa?', 'No. El CRM lee tu programa de gestión, no lo sustituye ni escribe dentro de él, y lo que presentas ante la Administración lo sigues presentando desde donde lo haces hoy. Si tu programa no tiene forma de dejarse leer, te lo decimos antes de empezar y se valora aparte — no después.'],
       ['¿El seguimiento negocia el precio?', 'No. Escribe, resuelve dudas, marca calientes y fríos y te pasa a ti los que merecen llamada. Que negocie dentro de unos límites que fijes tú se construye aparte, con tus reglas por escrito, y lo que se salga de la regla te lo pasa igual.'],
       ['¿Se nota que es un bot?', 'Cuando conversa con alguien se identifica como asistente, que es lo que exige el artículo 50 del Reglamento Europeo de IA desde agosto de 2026. Escribe con tu tono y desde tu negocio, y cuando no sabe algo o la conversación se pone seria, deja de contestar y te la pasa a ti.'],
-      ['¿Hay versión gratis?', 'No. Detrás de cada pieza hay un modelo de IA, un servidor y los ajustes que hacemos nosotros, y por eso cada una lleva su cuota con su límite al lado. Lo que sí es gratis es el diagnóstico: hasta tres sesiones con tu equipo y un informe con lo que se puede automatizar y lo que costaría.'],
+      ['¿Hay versión gratis?', 'No. Detrás de cada pieza hay un modelo de IA, un servidor y los ajustes que hacemos nosotros, y por eso cada una lleva su cuota con su límite al lado. Lo que sí es gratis es la consultoría: hasta tres sesiones con tu equipo y un informe con lo que se puede automatizar y lo que costaría.'],
       ['¿Hay permanencia?', 'No. Te vas cuando quieras avisando con 30 días. La instalación se paga 50 % al empezar y 50 % al entregar, y la cuota incluye los ajustes y las reuniones que hagan falta. Y si te acercas al límite de tu pieza, te avisamos al 80 % y te proponemos subir: nunca cortamos ni facturamos el exceso por sorpresa.'],
     ],
   },
@@ -450,7 +493,8 @@ const DEPARTAMENTOS = [
     ['¿El recobro llama por teléfono?', 'Por defecto escribe: WhatsApp, correo o SMS. La llamada se puede añadir, pero entonces hay que grabar el aviso legal y fijar por escrito qué dice y qué no dice.'],
     ['¿Y si el cliente se enfada?', 'Deja de insistir y te lo pasa. No negocia plazos ni quitas por su cuenta: eso lo decides tú.'],
     ['¿Sustituye a mi gestoría?', 'No, y no lo pretende. Le deja el trabajo ordenado para que cobre por asesorarte y no por teclear.'],
-    ['¿Hay versión gratis?', 'No. Detrás de cada pieza hay un modelo de IA, un servidor y los ajustes que hacemos nosotros, y por eso cada una lleva su cuota con su límite al lado. Lo que sí es gratis es el diagnóstico: hasta tres sesiones con tu equipo y un informe con lo que se puede automatizar y lo que costaría.'],
+    ['¿Hay versión gratis?', 'No. Detrás de cada pieza hay un modelo de IA, un servidor y los ajustes que hacemos nosotros, y por eso cada una lleva su cuota con su límite al lado. Lo que sí es gratis es la consultoría: hasta tres sesiones con tu equipo y un informe con lo que se puede automatizar y lo que costaría.'],
+    ['¿El consumo de la IA va aparte?', 'No. El modelo de IA que hay detrás lo pagamos nosotros y va dentro de la cuota, hasta el límite de cada pieza. No te llega ninguna factura de consumo aparte.'],
     ['¿Hay permanencia?', 'No. Te vas cuando quieras avisando con 30 días. La instalación se paga 50 % al empezar y 50 % al entregar.'],
   ],
 },
@@ -537,7 +581,8 @@ const DEPARTAMENTOS = [
     ['¿Llama de verdad a los transportistas?', 'Puede. Por defecto escribe, que es más barato y deja rastro. La llamada se añade aparte y lleva su aviso legal grabado.'],
     ['¿Y si el transportista no contesta?', 'Insiste con criterio y, pasado el margen que fijes, te lo pasa a ti señalado como «sin respuesta». No inventa una fecha.'],
     ['¿Vale para quien vende online?', 'Sí, y es donde más se nota: el «¿dónde está mi pedido?» es la pregunta más repetida de cualquier tienda.'],
-    ['¿Hay versión gratis?', 'No. Detrás de cada pieza hay un modelo de IA, un servidor y los ajustes que hacemos nosotros, y por eso cada una lleva su cuota con su límite al lado. Lo que sí es gratis es el diagnóstico: hasta tres sesiones con tu equipo y un informe con lo que se puede automatizar y lo que costaría.'],
+    ['¿Hay versión gratis?', 'No. Detrás de cada pieza hay un modelo de IA, un servidor y los ajustes que hacemos nosotros, y por eso cada una lleva su cuota con su límite al lado. Lo que sí es gratis es la consultoría: hasta tres sesiones con tu equipo y un informe con lo que se puede automatizar y lo que costaría.'],
+    ['¿El consumo de la IA va aparte?', 'No. El modelo de IA que hay detrás lo pagamos nosotros y va dentro de la cuota, hasta el límite de cada pieza. No te llega ninguna factura de consumo aparte.'],
     ['¿Hay permanencia?', 'No. Te vas cuando quieras avisando con 30 días. La instalación se paga 50 % al empezar y 50 % al entregar.'],
   ],
 },
@@ -649,7 +694,8 @@ const DEPARTAMENTOS = [
     ['¿Necesito tener muchos datos?', 'No, pero sí unos meses de historia. Con dos semanas no se puede comparar nada y el informe sería palabrería.'],
     ['¿El informe lo escribe una IA?', 'Sí, y lo dice. Lee tus números, busca lo que ha cambiado y lo redacta. Lo que no hace es inventarse la causa: si no la puede saber, lo dice.'],
     ['¿Puedo pedir que vigile algo concreto?', 'Sí, para eso está la pieza de avisos. Le dices qué te preocupa y te escribe el día que pasa.'],
-    ['¿Hay versión gratis?', 'No. Detrás de cada pieza hay un modelo de IA, un servidor y los ajustes que hacemos nosotros, y por eso cada una lleva su cuota con su límite al lado. Lo que sí es gratis es el diagnóstico: hasta tres sesiones con tu equipo y un informe con lo que se puede automatizar y lo que costaría.'],
+    ['¿Hay versión gratis?', 'No. Detrás de cada pieza hay un modelo de IA, un servidor y los ajustes que hacemos nosotros, y por eso cada una lleva su cuota con su límite al lado. Lo que sí es gratis es la consultoría: hasta tres sesiones con tu equipo y un informe con lo que se puede automatizar y lo que costaría.'],
+    ['¿El consumo de la IA va aparte?', 'No. El modelo de IA que hay detrás lo pagamos nosotros y va dentro de la cuota, hasta el límite de cada pieza. No te llega ninguna factura de consumo aparte.'],
     ['¿Hay permanencia?', 'No. Te vas cuando quieras avisando con 30 días. La instalación se paga 50 % al empezar y 50 % al entregar.'],
   ],
 },
@@ -760,9 +806,10 @@ const DEPARTAMENTOS = [
   faq: [
     ['¿Publica sin que yo lo vea?', 'Solo si tú lo decides. De salida, todo pasa por tu visto bueno. Muchos clientes lo dejan así siempre, y nos parece bien.'],
     ['¿De dónde saca mi manera de hablar?', 'De lo que ya has escrito: tu web, tus publicaciones anteriores, lo que nos cuentes en la llamada. Cuanto más le des, menos suena a folleto.'],
-    ['¿Y las fotos?', 'Usa las tuyas. Puede sugerirte qué fotografiar, pero no inventa imágenes de tu negocio: eso se nota y resta.'],
-    ['¿Sirve si no tengo redes?', 'La newsletter sí, y muchas veces rinde más. Si no tienes ni redes ni lista, lo primero es Posicionamiento, no esto.'],
-    ['¿Hay versión gratis?', 'No. Detrás de cada pieza hay un modelo de IA, un servidor y los ajustes que hacemos nosotros, y por eso cada una lleva su cuota con su límite al lado. Lo que sí es gratis es el diagnóstico: hasta tres sesiones con tu equipo y un informe con lo que se puede automatizar y lo que costaría.'],
+    ['¿Y las fotos?', 'Genera fotos con tu identidad de marca para lo que cuentas ese día, pero nunca de tu local, tu producto o tu equipo: para eso se usan las tuyas, porque inventarlas se nota y resta.'],
+    ['¿Sirve si no tengo redes?', 'Si no tienes redes, lo primero es Páginas web y posicionamiento: que te encuentren. Después, esto.'],
+    ['¿Hay versión gratis?', 'No. Detrás de cada pieza hay un modelo de IA, un servidor y los ajustes que hacemos nosotros, y por eso cada una lleva su cuota con su límite al lado. Lo que sí es gratis es la consultoría: hasta tres sesiones con tu equipo y un informe con lo que se puede automatizar y lo que costaría.'],
+    ['¿El consumo de la IA va aparte?', 'No. El modelo de IA que hay detrás lo pagamos nosotros y va dentro de la cuota, hasta el límite de cada pieza. No te llega ninguna factura de consumo aparte.'],
     ['¿Hay permanencia?', 'No. Te vas cuando quieras avisando con 30 días. La instalación se paga 50 % al empezar y 50 % al entregar.'],
   ],
 },
@@ -967,11 +1014,240 @@ const DEPARTAMENTOS = [
     ['¿Cuánto tarda en notarse?', 'La ficha y las reseñas, semanas. Las páginas de captación, meses: Google no las coloca de un día para otro y quien te diga lo contrario te está vendiendo humo.'],
     ['¿Escribís las reseñas?', 'No, y no lo haríamos. Es ilegal y se nota. Lo que hacemos es pedírselas a quien ha tenido una buena experiencia, que es lo que casi nadie hace.'],
     ['¿Y si me llega una reseña mala?', 'Te avisamos y te proponemos respuesta. Una mala contestada bien hace menos daño que diez buenas sin contestar.'],
-    ['¿Hay versión gratis?', 'No. Detrás de cada pieza hay un modelo de IA, un servidor y los ajustes que hacemos nosotros, y por eso cada una lleva su cuota con su límite al lado. Lo que sí es gratis es el diagnóstico: hasta tres sesiones con tu equipo y un informe con lo que se puede automatizar y lo que costaría.'],
+    ['¿Hay versión gratis?', 'No. Detrás de cada pieza hay un modelo de IA, un servidor y los ajustes que hacemos nosotros, y por eso cada una lleva su cuota con su límite al lado. Lo que sí es gratis es la consultoría: hasta tres sesiones con tu equipo y un informe con lo que se puede automatizar y lo que costaría.'],
+    ['¿El consumo de la IA va aparte?', 'No. El modelo de IA que hay detrás lo pagamos nosotros y va dentro de la cuota, hasta el límite de cada pieza. No te llega ninguna factura de consumo aparte.'],
     ['¿Hay permanencia?', 'No. Te vas cuando quieras avisando con 30 días. La instalación se paga 50 % al empezar y 50 % al entregar.'],
   ],
 },
 
 ];
+
+/* ═══ REVISIÓN 25-11-2026 · EL ESQUEMA DE ATENCIÓN, EN TODOS ═══════════════
+   Para la Cámara de Comercio (Ismael, con libertad para proponer): cada
+   departamento queda igual que Atención al Cliente —el problema y la
+   solución, el mapa con lo que entra, a qué accede, lo que hace y lo que
+   sale, los precios por bandas (catalogo_planes) con «A tu medida», y las
+   preguntas—. Ventas y Captación se retira de la web.
+   Lo de arriba de cada departamento (dolores, flujo, fotos de las piezas)
+   se queda en el fichero porque el generador ya no lo pinta cuando hay
+   `problemaSolucion` y `planes`. */
+/* 25-11-2026 · Finanzas, Logística y Datos no llevan precio cerrado (Ismael):
+   dependen de cuántos programas haya y de qué parte del proceso se automatice.
+   Enseñan una horquilla y se presupuestan tras la consultoría. */
+const PIE_PRESUPUESTO = 'Estas son las funciones del departamento entero. En tu empresa montamos solo las partes que de verdad te hagan falta.';
+const PIE_BANDAS = 'Estas funciones reflejan lo que puede hacer el agente con todo contratado. Con una sola banda, hace lo que esa banda le permite.';
+const REVISION = {
+  '/logistica': {
+    planes: 'logistica', presupuesto: true,
+    /* 25-11-2026 · Horquilla y ejemplo fijados con Ismael. Calibrado con dos
+       ofertas reales de la agencia (una tienda online con su logística dentro,
+       y un restaurante con miles de pedidos al mes pasados a su ERP). */
+    horquilla: { cMin: 49, cMax: 299, aMin: 200, aMax: 1200, ejemplo: 'Como referencia: para unos 1.000 envíos al mes, unos 250 €/mes.' },
+    descripcion: 'Persigue al transportista, avisa a tu cliente antes de que pregunte, cuadra el muelle, lleva cada incidencia hasta cerrarla y hace los pedidos a tus proveedores. Desde 49 €/mes, según tu caso.',
+    slugs: { 'Seguimiento de entregas': 'log-seguimiento-entregas', 'Avisar antes de que pregunten': 'log-avisos-cliente', 'Citas de carga y descarga': 'log-citas-carga', 'Gestión de incidencias': 'log-incidencias' },
+    piezaNueva: { n: 'Pedidos a proveedores', slug: 'log-pedidos-proveedores', eur: 49, setup: 200, lim: 'hasta 150 pedidos a proveedores/mes',
+      d: 'Ve lo que se está acabando, prepara el pedido al proveedor y lo manda con tu visto bueno. Confirma el plazo y te avisa si se retrasa.' },
+    problemaSolucion: {
+      titulo: ['Lo que pasa hoy.', 'Y lo que cambia.'],
+      lead: 'Depende de qué se te escape: el envío que sale, lo que pasa en el muelle o lo que tienes que pedir.',
+      filas: [
+        { sector: 'Envíos · tiendas online y distribuidoras',
+          hoy: 'Llamas al transportista para saber por dónde va el pedido, no lo coge y vuelves a llamar. Y te enteras del retraso cuando el cliente llama enfadado.',
+          solucion: 'Pide la fecha real a cada transportista, la apunta donde lleves los envíos y avisa al cliente antes de que pregunte. Si algo se retrasa, te avisa primero a ti.' },
+        { sector: 'Almacén · naves, almacenes e industria',
+          hoy: 'Dos camiones a la misma hora, o ninguno en toda la mañana. Y la caja que llega rota se queda en un correo que nadie persigue.',
+          solucion: 'Cuadra cada carga y descarga con el transportista y con tu almacén, y confirma a los dos. Cuando algo llega mal, abre el parte y lo persigue hasta cerrarlo.' },
+        { sector: 'Proveedores · comercios, talleres y hostelería',
+          hoy: 'Te das cuenta de que falta algo cuando ya no queda. Y luego hay que hacer el pedido, recordarlo y perseguir el plazo, todo a mano.',
+          solucion: 'Ve lo que se está acabando, prepara el pedido al proveedor y, con tu visto bueno, lo manda. Confirma el plazo y te avisa si se retrasa.' },
+      ],
+    },
+    pack: {
+      gancho: 'Un solo agente que sigue lo que sale, lo que entra y lo que hay que pedir, sin que nadie coja el teléfono.',
+      entra: ['Los pedidos que salen', 'Lo que se acaba en tu almacén', 'Lo que se tuerce'],
+      accesos: ['Tus pedidos y envíos', 'Tus transportistas', 'Tu stock y tus proveedores', 'El calendario de tu muelle'],
+      sale: ['El cliente, avisado con la fecha real', 'El pedido al proveedor, hecho y con plazo', 'La incidencia, cerrada'],
+      ramas: [
+        ['Envíos', ['Pide la fecha real al transportista', 'La apunta donde lleves los envíos', 'Avisa al cliente, y otra vez si cambia']],
+        ['Almacén', ['Cuadra las citas de carga y descarga', 'Confirma al transportista y a tu almacén', 'Abre el parte de cada incidencia y lo persigue']],
+        ['Proveedores', ['Detecta lo que se está acabando', 'Prepara y envía el pedido con tu visto bueno', 'Confirma el plazo y avisa del retraso']],
+      ],
+      comoVa: 'Es un solo agente: la fecha que saca del transportista es la que le cuenta a tu cliente.',
+    },
+    aMedida: ['Seguimiento de entregas', 'Avisos al cliente', 'Citas de carga y descarga', 'Incidencias', 'Pedidos a proveedores'],
+  },
+
+  '/finanzas': {
+    planes: 'finanzas', presupuesto: true,
+    horquilla: { cMin: 49, cMax: 299, aMin: 200, aMax: 1200, ejemplo: 'Como referencia: para unas 300 facturas al mes, con el cobro de lo vencido y las cuentas, unos 199 €/mes.' },
+    descripcion: 'Factura por mensaje, persigue lo vencido, reclama los papeles que faltan y te explica tu dinero: qué vas a cobrar y cuánto te falta para cubrir el mes. Desde 49 €/mes, según tu caso.',
+    slugs: { 'Facturación por mensaje': 'abaco-facturacion-mensaje', 'Recobro de facturas vencidas': 'fin-recobro', 'Persecución de documentos': 'abaco-gestion-documental', 'Fichas listas para validar': 'fin-fichas-validar', 'Contabilidad y cuadro financiero': 'fin-contabilidad-cuadro' },
+    problemaSolucion: {
+      titulo: ['Lo que pasa hoy.', 'Y lo que cambia.'],
+      lead: 'Depende de dónde se te vaya el tiempo: en facturar y cobrar, en conseguir los papeles o en saber cómo va el dinero.',
+      filas: [
+        { sector: 'Facturar y cobrar · comercios, talleres y servicios',
+          hoy: 'La factura se hace por la noche, cuando ya has cerrado, abriendo un programa que no te gusta. Y lo vencido se queda sin reclamar porque a nadie le apetece llamar para cobrar.',
+          solucion: 'Le dices por WhatsApp a quién y de qué, y la factura sale hecha, numerada y enviada. Lo vencido lo reclama él, con insistencia y buenas formas, y a ti solo te pasa lo que necesita una llamada.' },
+        { sector: 'Papeles que no llegan · asesorías, gestorías e inmobiliarias',
+          hoy: 'No puedes cerrar un trámite hasta que el cliente te manda un papel. Se lo pides una vez, y otra, y al final lo persigues tú.',
+          solucion: 'Escribe a cada cliente pidiendo lo que falta, insiste con criterio, comprueba que lo que llega está completo y te dice qué falta y de quién.' },
+        { sector: 'Saber cómo va el dinero · cualquier pyme',
+          hoy: 'Sabes lo que hay hoy en el banco, pero no lo que vas a cobrar este mes, quién te hace esperar ni cuánto te falta para cubrir gastos.',
+          solucion: 'Clasifica gastos e ingresos, cruza lo cobrado con lo facturado y te monta un cuadro con lo que vas a cobrar, quién se retrasa y cuánto te falta para cubrir el mes.' },
+      ],
+    },
+    pack: {
+      gancho: 'Un solo agente que factura, cobra, pide los papeles y te explica las cuentas.',
+      entra: ['Las facturas que emites', 'Las que te llegan', 'Los papeles de tus clientes'],
+      accesos: ['Tu programa de facturación', 'Tus cobros y tus pagos', 'Tus clientes y sus datos fiscales', 'Las carpetas de cada cliente'],
+      sale: ['Facturado sin abrir el programa', 'Cobrado sin perseguir tú', 'Las cuentas, explicadas'],
+      ramas: [
+        ['Facturar y cobrar', ['Hace y envía la factura desde un mensaje', 'Reclama lo vencido con buenas formas', 'Te pasa solo lo que necesita una llamada']],
+        ['Papeles', ['Pide a cada cliente lo que falta', 'Comprueba que llega completo', 'Te dice qué falta y de quién']],
+        ['Cuentas', ['Clasifica gastos e ingresos', 'Cruza lo cobrado con lo facturado', 'Qué vas a cobrar y cuánto te falta']],
+      ],
+      comoVa: 'Es un solo agente: la factura que hace es la que luego reclama y la que aparece en tus cuentas.',
+    },
+    aMedida: ['Facturación por mensaje', 'Recobro de vencidas', 'Pedir documentos a clientes', 'Fichas listas para validar', 'Contabilidad y cuadro financiero'],
+  },
+
+  '/datos-y-direccion': {
+    planes: 'datos', presupuesto: true,
+    horquilla: { cMin: 64, cMax: 249, aMin: 200, aMax: 900, ejemplo: 'Como referencia: juntando 3 programas, con el asistente para preguntarle, unos 149 €/mes.' },
+    descripcion: 'Tus datos juntos y cruzados, un correo el lunes con lo que se ha torcido y un asistente al que preguntarle por qué ha ido así el mes. Desde 64 €/mes, según tu caso.',
+    slugs: { 'Tus datos en un sitio': 'dat-datos-un-sitio', 'Un asistente al que preguntarle': 'dat-asistente', 'Insights semanales': 'dat-insights' },
+    problemaSolucion: {
+      titulo: ['Lo que pasa hoy.', 'Y lo que cambia.'],
+      lead: 'Depende de lo que te falte: ver los números juntos o entender por qué salen así.',
+      filas: [
+        { sector: 'Los números, desperdigados · cualquier pyme',
+          hoy: 'La facturación en un programa, la agenda en otro y las conversaciones en el móvil. Para saber cómo va la semana hay que abrir cuatro cosas, y al final no se abre ninguna.',
+          solucion: 'Junta tus datos en un solo panel, siempre al día, y el lunes te manda un correo con cómo fue la semana y lo que se ha torcido.' },
+        { sector: 'El porqué · quien dirige',
+          hoy: 'El panel te dice que este mes has facturado menos. Pero no te dice por qué, y sin el porqué no sabes qué tocar.',
+          solucion: 'Le preguntas en cristiano —«¿por qué ha bajado octubre?»— y te contesta con tus números delante, cruzando ventas, agenda y conversaciones. Decides tú, con algo más que la sensación.' },
+      ],
+    },
+    pack: {
+      gancho: 'Un solo agente que junta tus datos, te avisa cuando algo cambia y te explica por qué.',
+      entra: ['Tu facturación', 'Tu agenda', 'Tus conversaciones'],
+      accesos: ['Tu programa de facturación', 'Tu agenda', 'Tus conversaciones con clientes', 'Tus hojas de cálculo'],
+      sale: ['El panel, al día', 'El porqué de cada mes', 'El aviso cuando algo cambia'],
+      ramas: [
+        ['Panel', ['Junta y cruza tus datos', 'Siempre al día, sin tocar nada']],
+        ['Avisos', ['Un correo el lunes con la semana', 'Te avisa cuando algo se tuerce']],
+        ['Asistente', ['Contesta «¿por qué ha bajado?» con tus números', 'Un informe escrito al mes']],
+      ],
+      comoVa: 'Es un solo agente: los datos que junta en el panel son los que usa para contestarte.',
+    },
+    aMedida: ['Panel con tus datos', 'Correo semanal', 'Asistente al que preguntar', 'Conectar más fuentes'],
+  },
+
+  '/marketing': {
+    planes: 'marketing',
+    descripcion: 'Publica con tu voz en LinkedIn y en tus redes, genera fotos y vídeos con tu marca y monta campañas enteras con su calendario. Desde 78 €/mes.',
+    slugs: { 'Publicación automática en LinkedIn': 'mkt-linkedin', 'Fotos de marca, publicadas': 'mkt-fotos', 'Vídeos cortos, publicados': 'mkt-videos', 'Campañas: diseño y publicación': 'mkt-campanas' },
+    problemaSolucion: {
+      titulo: ['Lo que pasa hoy.', 'Y lo que cambia.'],
+      lead: 'Depende de lo que te frene: no tener tiempo para publicar, no tener fotos ni vídeos o no tener una campaña detrás.',
+      filas: [
+        { sector: 'Publicar con constancia · comercios, servicios y empresas',
+          hoy: 'Sabes qué contar, pero hacer la foto, escribir el texto y subirlo cuesta una hora que no tienes. Y pasan tres semanas sin publicar.',
+          solucion: 'Escribe con tu voz a partir de lo que pasa en tu negocio, genera la foto con tu marca y lo publica en LinkedIn o en la red que elijas. Nada sale sin que lo veas.' },
+        { sector: 'Vídeo · negocios que venden por Instagram o TikTok',
+          hoy: 'Lo que más se ve son los reels y las stories, y un vídeo hay que grabarlo, montarlo y subirlo. Así que no se hace.',
+          solucion: 'Genera vídeos verticales de cinco a diez segundos con tu marca, los monta y los publica en la red que elijas.' },
+        { sector: 'Campañas · lanzamientos, temporadas y ofertas',
+          hoy: 'Una campaña no son publicaciones sueltas, y montarla con su calendario es un trabajo que siempre se queda para la semana que viene.',
+          solucion: 'Diseña la idea, produce las fotos y los vídeos y lo publica todo con su calendario en dos redes.' },
+      ],
+    },
+    pack: {
+      gancho: 'Un solo agente que conoce tu marca y publica por ti, con tu voz.',
+      entra: ['Lo que pasa en tu negocio', 'Tu identidad de marca', 'El calendario del mes'],
+      accesos: ['Tu identidad: colores, tono y tipo de foto', 'Tus redes sociales', 'Tu calendario de publicaciones', 'Lo que pasa en tu negocio'],
+      sale: ['Publicado, con tu voz', 'Fotos y vídeos con tu marca', 'La campaña, entera'],
+      ramas: [
+        ['Redes', ['Escribe con tu voz', 'Genera la foto con tu marca', 'Publica en LinkedIn y en una red más']],
+        ['Vídeo', ['Vídeos verticales de 5 a 10 s', 'Para reels y stories', 'Montados y publicados']],
+        ['Campañas', ['Diseña la idea', 'Produce hasta 12 fotos y vídeos', 'Las publica con su calendario']],
+      ],
+      comoVa: 'Es un solo agente: la identidad que fija una vez es la que respetan las fotos, los vídeos y las campañas.',
+    },
+    aMedidaEj: 'Si solo quieres una parte —por ejemplo, publicar en LinkedIn sin fotos— o un poco de cada banda, cuéntanoslo y te mandamos un presupuesto cerrado para lo tuyo.',
+    aMedida: ['Publicar en LinkedIn', 'Fotos de marca', 'Vídeos cortos', 'Campañas', 'Más redes'],
+  },
+
+  '/posicionamiento-online': {
+    planes: 'posicionamiento',
+    pill: 'Páginas web y posicionamiento online',
+    nombreCarta: 'Páginas web y posicionamiento online',
+    h1Busqueda: 'Páginas web y posicionamiento online para negocios',
+    titulo: 'Páginas web y posicionamiento online para negocios | Marirrodriga IA',
+    lead: 'Antes de escribirte, la gente te busca: mira tu web, tu ficha de Google y lo que dicen otros. <strong>Te hacemos la web y la llevamos nosotros</strong>, y alrededor ponemos los agentes que hacen que Google te encuentre.',
+    descripcion: 'Tu web hecha y llevada por nosotros y, alrededor, los agentes que te sacan en Google: páginas por sector y zona, tu ficha al día y las reseñas pedidas y contestadas. Desde 109 €/mes.',
+    slugs: { 'Tu web, hecha y llevada por nosotros': 'presencia-web-landing', 'Páginas de captación por sector y zona': 'pos-paginas-captacion', 'Ficha de Google al día': 'pos-ficha-google', 'Reseñas: pedirlas y contestarlas': 'pos-resenas' },
+    problemaSolucion: {
+      titulo: ['Lo que pasa hoy.', 'Y lo que cambia.'],
+      lead: 'Depende de por dónde empieces: sin una web que enseñar, o con web pero sin que Google te saque.',
+      filas: [
+        { sector: 'Tu web · cualquier negocio',
+          hoy: 'La web está desactualizada, la hizo alguien que ya no está o directamente no existe. Y cada cambio es pedir un favor.',
+          etSol: 'Con nosotros',
+          solucion: 'Una web profesional hecha a medida y llevada por nosotros: el servidor, el mantenimiento, los cambios y lo que haya que conectarle después.' },
+        { sector: 'Que te encuentren · negocios locales',
+          hoy: 'Te buscan en Google y salen otros. Tu ficha tiene el horario de hace dos años y las reseñas, sin contestar.',
+          solucion: 'Páginas para cada cosa que tu cliente busca en tu zona, tu ficha de Google al día y las reseñas pedidas a quien quedó contento, y contestadas.' },
+      ],
+    },
+    pack: {
+      gancho: 'Tu web en el centro y, alrededor, los agentes que hacen que te encuentren.',
+      entra: ['Quien te busca en Google', 'Quien termina una compra o una cita', 'Tu web de hoy'],
+      accesos: ['Tu web y su servidor', 'Tu ficha de Google', 'Lo que se busca en tu sector y tu zona', 'Tus clientes, para pedirles la reseña'],
+      sale: ['Una web que funciona', 'Te encuentran en Google', 'Reseñas pedidas y contestadas'],
+      ramas: [
+        ['Web', ['Diseño y desarrollo a medida', 'Servidor y mantenimiento', 'Cambios y conexiones nuevas']],
+        ['Google', ['Una página por cada búsqueda de tu sector y zona', 'Tu ficha de Google, revisada cada semana']],
+        ['Reseñas', ['Pide la reseña a quien quedó contento', 'Si no, te avisa a ti', 'Contesta las publicadas']],
+      ],
+      comoVa: 'La web es la base: las páginas, la ficha y las reseñas llevan a ella.',
+    },
+    aMedidaEj: 'Si solo quieres una parte —por ejemplo, la ficha de Google y las reseñas, sin web— o un poco de cada banda, cuéntanoslo y te mandamos un presupuesto cerrado para lo tuyo.',
+    aMedida: ['Web nueva', 'Rehacer mi web', 'Páginas por sector y zona', 'Ficha de Google', 'Reseñas', 'Tienda online'],
+  },
+};
+
+for (const d of DEPARTAMENTOS) {
+  const r = REVISION[d.ruta];
+  if (!r) continue;
+  const { slugs, piezaNueva, pack, ...resto } = r;
+  Object.assign(d, resto);
+  Object.assign(d.pack, pack, { pie: r.presupuesto ? PIE_PRESUPUESTO : PIE_BANDAS });
+  for (const z of d.piezas) if (slugs[z.n]) z.slug = slugs[z.n];
+  if (piezaNueva) d.piezas.push(piezaNueva);
+  d.faq = d.faq.map(([q, a]) => [q, a.replace('cada una lleva su cuota con su límite al lado', r.presupuesto ? 'por eso tiene una cuota, con su límite al lado, que fijamos en el presupuesto' : 'cada banda lleva su cuota con su límite al lado')]);
+}
+for (const d of DEPARTAMENTOS) if (d.planes === 'atencion') {
+  d.faq = d.faq.map(([q, a]) => [q, a.replace('cada una lleva su cuota con su límite al lado', 'cada banda lleva su cuota con su límite al lado')]);
+}
+
+/* Ventas y Captación sale de la web el 25-11-2026 (Ismael): hoy no nos funciona
+   ni a nosotros, así que no se ofrece. Sus datos se quedan arriba por si vuelve;
+   /ventas-y-captacion redirige a /agentes (vercel.json). */
+{
+  const i = DEPARTAMENTOS.findIndex(d => d.ruta === '/ventas-y-captacion');
+  if (i >= 0) DEPARTAMENTOS.splice(i, 1);
+}
+
+/* Los departamentos con precios cerrados toman la cuota y el alta del pack
+   de su plan completo en catalogo_planes (25-11-2026). */
+const PLANES = require('./datos-catalogo.json').planes || [];
+for (const d of DEPARTAMENTOS) {
+  if (!d.planes) continue;
+  const todo = PLANES.find(x => x.departamento === d.planes && x.tipo === 'completo');
+  if (!todo) throw new Error('Sin plan completo para ' + d.planes);
+  d.pack.cuota = todo.cuota; d.pack.alta = todo.alta; d.pack.altaSuelta = todo.alta;
+}
 
 module.exports = { DEPARTAMENTOS, CAL };

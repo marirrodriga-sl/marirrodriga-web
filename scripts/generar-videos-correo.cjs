@@ -25,7 +25,7 @@ const PAGINAS = [
     descripcion: 'Un asistente que contesta en tu web y en WhatsApp: productos, stock y pedidos. Funciones, retorno y precios, en un vídeo.',
     eyebrow: 'Asistente de IA para tiendas online',
     h1: 'Que ninguna duda <em>te cueste una venta</em>',
-    lead: 'Un asistente que contesta en tu web y en tu WhatsApp a cualquier hora: productos, stock y dónde está cada pedido. Desde 49 € al mes.',
+    lead: 'Un asistente que contesta en tu web y en tu WhatsApp a cualquier hora: productos, stock y dónde está cada pedido. Desde 99 € al mes.',
     video: 'asistentes.mp4', poster: 'asistentes.jpg',
     cta: 'Vemos tu tienda y te decimos qué haría el asistente en ella.',
     utm: 'video-asistentes',

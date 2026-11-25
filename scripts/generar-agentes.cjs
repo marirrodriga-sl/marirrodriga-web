@@ -30,13 +30,16 @@ const BASE = 'https://www.marirrodriga-ia.com';
 const P = {
   archivo: 'agentes.html',
   ruta: '/agentes',
-  titulo: 'Agentes de IA para cada departamento de tu empresa | Marirrodriga IA',
-  descripcion: 'Agentes de IA que llevan un departamento entero o automatizan sus tareas repetitivas: atención, ventas, finanzas, logística, datos, marketing y SEO.',
+  titulo: 'Automatización de procesos con IA para empresas | Marirrodriga IA',
+  descripcion: 'Buscamos contigo los procesos repetitivos que se comen las horas de tu equipo y automatizamos con IA solo la parte que hace falta. Con ejemplos y precios por departamento.',
   /* 12-11-2026: «Qué hacemos», no «Productos». La página no es un estante:
      enseña lo que montamos para que se entienda el trabajo, y lleva al
      diagnóstico, que es lo que de verdad queremos que pidan. */
   h1: 'Qué hacemos',
-  lead: 'Montamos el departamento entero con agentes de IA, o automatizamos las tareas repetitivas dentro de él. Estos son los siete que más montamos: dales la vuelta para ver qué hace cada uno. Cuál necesita tu empresa no se elige en una lista: se ve en el diagnóstico.',
+  /* 25-11-2026 · Lo principal es la automatización de procesos, mano a mano
+     (Ismael): «vender agentes no es justo, porque automatizas más de lo que
+     hace falta». Los departamentos pasan a ser ejemplos. */
+  lead: 'Buscamos contigo los procesos repetitivos que se comen las horas de tu equipo, y los automatizamos con inteligencia artificial. No el proceso entero: solo la parte que de verdad compensa automatizar.',
 };
 
 /* El texto de cada carta (12-11-2026). Se escribe aquí y NO se saca del pack
@@ -46,11 +49,17 @@ const P = {
    «desde» tiene que estar dentro de lo que cuenta (Ventas empieza en el CRM,
    así que el CRM sale en el texto). */
 const CARTA = {
+  /* 25-11-2026 · Rehecha para la Cámara de Comercio. Sin «le entra / te
+     devuelve» y con las funciones por grupos (Ismael). Lo de la tienda está
+     comprobado con un agente de cliente ya en producción: catálogo, stock en tiempo real y
+     pedidos de solo lectura. */
   '/atencion-al-cliente': {
-    texto: 'Contesta por WhatsApp, Instagram o el chat de tu web a cualquier hora, mira tu agenda y cierra la cita él mismo. Y en el correo, ordena lo que entra y lo reparte.',
-    entra: ['WhatsApp e Instagram', 'El chat de tu web', 'Tu bandeja de correo'],
-    sale: ['Contestado a cualquier hora', 'La cita, cerrada', 'Lo que no le toca, en tus manos'],
-    tareas: ['Reserva, cambia y cancela en tu agenda real', 'Recuerda la cita la víspera', 'Pide la reseña si la visita fue bien'],
+    texto: 'Conectado a tu WhatsApp, redes sociales o correo electrónico.',
+    funciones: [
+      ['Atención', ['Resuelve las preguntas frecuentes con lo que sabe de tu negocio', 'Te pasa la conversación cuando no le toca a él']],
+      ['Calendario', ['Reserva, cambia y cancela en tu agenda real', 'Recuerda la cita la víspera', 'Pide la reseña si la visita fue bien']],
+      ['Tienda', ['Recomienda productos de tu catálogo', 'Conectado al stock real de tu tienda', 'Dice a cada cliente dónde está su pedido']],
+    ],
   },
   '/ventas-y-captacion': {
     texto: 'Una ficha por cliente con todo lo hablado, que se rellena sola. Y encima: busca clientes nuevos, sigue cada presupuesto y recupera a los que dejaron de venir.',
@@ -103,11 +112,27 @@ const FOTO = {
    144 €, porque el agente empieza en 49). */
 const desdeDe = d => Number(d.descripcion.match(/Desde (\d+) €\/mes/)[1]);
 
+/* 25-11-2026 · Todas las cartas con el formato de Atención: una línea de a qué
+   se conecta y las funciones por grupos, que son las ramas del mapa de su
+   página. «Le entra / te devuelve» se quita en todas. */
+const CONECTA = {
+  '/finanzas': 'Conectado a tu facturación, tu correo y tu WhatsApp.',
+  '/logistica': 'Conectado a tus pedidos, tus transportistas y tus proveedores.',
+  '/datos-y-direccion': 'Conectado a tu facturación, tu agenda y tus conversaciones.',
+  '/marketing': 'Conectado a tus redes sociales y a tu identidad de marca.',
+  '/posicionamiento-online': 'Tu web hecha y llevada por nosotros, con los agentes que hacen que Google te encuentre.',
+};
+for (const d of DEPARTAMENTOS) {
+  if (!CONECTA[d.ruta]) continue;
+  CARTA[d.ruta] = { texto: CONECTA[d.ruta], funciones: d.pack.ramas };
+}
+
 const AGENTES = DEPARTAMENTOS.map(d => ({
-  nombre: 'Agente de ' + d.pill,
+  nombre: d.nombreCarta || 'Agente de ' + d.pill,
   foto: '/assets/img/agentes/' + FOTO[d.ruta] + '.jpg',
   desde: desdeDe(d),
   ruta: d.ruta,
+  presupuesto: !!d.presupuesto,
   ...CARTA[d.ruta],
 }));
 for (const a of AGENTES) if (!a.texto) throw new Error('Falta el texto de la carta de ' + a.ruta);
@@ -139,15 +164,17 @@ const agente = (a, i) => {
           <div class="ag-cara ag-dorso" inert>
             <p class="ag-dorso-nombre">${esc(a.nombre)}</p>
             <p class="ag-texto">${esc(a.texto)}</p>
-            <div class="ag-flujo">
+            ${a.entra ? `<div class="ag-flujo">
               <div><h4>Le entra</h4>${lista(a.entra)}</div>
               <div><h4>Te devuelve</h4>${lista(a.sale)}</div>
-            </div>
-            <div class="ag-tareas">
+            </div>` : ''}
+            ${a.funciones ? `<div class="ag-tareas ag-funciones">
+              <h4>Funciones</h4>
+              ${a.funciones.map(([g, xs]) => `<div class="ag-grupo"><h5>${esc(g)}</h5>${lista(xs)}</div>`).join('\n              ')}
+            </div>` : `<div class="ag-tareas">
               <h4>Lo que hace</h4>
               ${lista(a.tareas)}
-            </div>
-            <p class="ag-precio">Desde ${euros(a.desde)} €/mes ${iva(a.desde)}</p>
+            </div>`}
             <div class="ag-dorso-botones">
               <a class="btn btn-1 ag-detalle" href="${a.ruta}">Ver detalles y precio</a>
               <button type="button" class="ag-volver">Volver</button>
@@ -166,7 +193,7 @@ const programa = p => `<a class="ag-prog" href="${p.ruta}">
 const ld = [
   migas([['Inicio', '/'], ['Qué hacemos', P.ruta]]),
   { '@context': 'https://schema.org', '@type': 'ItemList', name: P.h1,
-    itemListElement: [...AGENTES, ...PROGRAMAS].map((p, i) => ({ '@type': 'ListItem', position: i + 1, name: p.nombre, url: BASE + p.ruta })) },
+    itemListElement: [...AGENTES].map((p, i) => ({ '@type': 'ListItem', position: i + 1, name: p.nombre, url: BASE + p.ruta })) },
 ];
 
 const html = `<!DOCTYPE html>
@@ -216,36 +243,72 @@ ${nav([])}
     <div class="ag-ancho">
       <h1>${esc(P.h1)}</h1>
       <p>${esc(P.lead)}</p>
-      <a class="btn btn-1 ag-cab-btn" href="/#solicitar">Pedir el diagnóstico gratis</a>
+      <a class="btn btn-1 ag-cab-btn" href="/#solicitar">Pedir la consultoría gratis</a>
     </div>
   </header>
 
+  <!-- 25-11-2026 · Lo principal, en una banda horizontal que gira como las
+       cartas (Ismael). Usa las mismas clases ag-carta / ag-girar / ag-volver,
+       así que el mismo script la gira y le pasa el foco. -->
+  <section class="ag-sec ag-sec-blanca">
+    <div class="ag-ancho">
+      <article class="ag-carta ag-banda" aria-labelledby="ag-procesos">
+        <div class="ag-carta-in">
+          <div class="ag-cara ag-frente ag-banda-frente">
+            <img src="/assets/img/hero-asesoria.jpg" alt="" width="1600" height="900" loading="eager">
+            <div class="ag-banda-velo"></div>
+            <div class="ag-banda-txt">
+              <span class="ag-banda-et">Lo que hacemos</span>
+              <h2 id="ag-procesos">Automatización de tus procesos internos</h2>
+              <p>Lo que se repite cada día en tu empresa, hecho solo. Y solo la parte que compensa.</p>
+              <button type="button" class="ag-girar" aria-label="Ver cómo trabajamos">Ver cómo</button>
+            </div>
+          </div>
+          <div class="ag-cara ag-dorso ag-banda-dorso" inert>
+            <p class="ag-dorso-nombre">Cómo trabajamos</p>
+            <ol class="ag-pasos">
+              <li><b>Lo vemos contigo</b><span>En la consultoría hablamos contigo y con tu equipo, y apuntamos qué tareas se repiten y cuántas horas se llevan.</span></li>
+              <li><b>Automatizamos solo lo que compensa</b><span>De cada proceso, la parte que la IA hace mejor que una persona. Lo que necesita criterio sigue en vuestras manos.</span></li>
+              <li><b>Lo montamos y lo llevamos</b><span>Lo conectamos a los programas que ya usáis y nos encargamos de que siga funcionando.</span></li>
+            </ol>
+            <div class="ag-dorso-botones">
+              <a class="btn btn-1 ag-detalle" href="/#solicitar">Pedir la consultoría gratis</a>
+              <button type="button" class="ag-volver">Volver</button>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
   <section class="ag-sec">
     <div class="ag-ancho">
+      <div class="ag-marco">
+        <h2>Ejemplos de soluciones que ya hemos ofrecido a nuestros clientes</h2>
+        <p>Por departamento. Dales la vuelta para ver qué hace cada una.</p>
+      </div>
+      <h3 class="ag-grupo-tit">Con precio de referencia</h3>
+      <p class="ag-grupo-nota">Soluciones que se montan de forma parecida en casi todas las empresas. Te enseñamos el precio para que sepas por dónde va; la oferta final se ajusta a tu volumen y a lo que de verdad necesites.</p>
       <div class="ag-rejilla">
-      ${AGENTES.map(agente).join('\n      ')}
+      ${AGENTES.filter(a => !a.presupuesto).map(agente).join('\n      ')}
+      </div>
+      <h3 class="ag-grupo-tit">Con presupuesto a medida</h3>
+      <p class="ag-grupo-nota">Cada empresa lo tiene montado a su manera, así que darte un precio antes de hablar contigo sería un error. En su página tienes lo que suelen costar.</p>
+      <div class="ag-rejilla">
+      ${AGENTES.filter(a => a.presupuesto).map((a, i) => agente(a, i + 3)).join('\n      ')}
       </div>
     </div>
   </section>
 
-  <section class="ag-sec ag-sec-blanca">
-    <div class="ag-ancho">
-      <div class="ag-marco">
-        <h2>Programas con precio cerrado</h2>
-        <p>Para negocios de citas y clínicas dentales: listos para usar, sin proyecto.</p>
-      </div>
-      <div class="ag-progs">
-      ${PROGRAMAS.map(programa).join('\n      ')}
-      </div>
-    </div>
-  </section>
+  <!-- 25-11-2026 · Fuera «Programas con precio cerrado» (Citia y Dentia), por
+       decisión de Ismael. Sus páginas siguen existiendo. -->
 
   <section class="ag-sec">
     <div class="ag-ancho">
       <div class="ag-aviso">
-        <h2>¿Por qué departamento empezar?</h2>
-        <p>Si sois de 5 a 50 personas, empieza por el diagnóstico: hasta tres sesiones en tu empresa y un informe con lo que se puede automatizar, cuántas horas son y lo que cuesta.</p>
-        <a class="btn btn-1" href="/#solicitar">Pedir el diagnóstico gratis</a>
+        <h2>¿Por dónde empezar?</h2>
+        <p>Si sois de 5 a 50 personas, empieza por la consultoría: hasta tres sesiones en tu empresa y un informe con lo que se puede automatizar, cuántas horas son y lo que cuesta.</p>
+        <a class="btn btn-1" href="/#solicitar">Pedir la consultoría gratis</a>
       </div>
     </div>
   </section>

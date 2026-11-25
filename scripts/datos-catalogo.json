@@ -1,5 +1,5 @@
 {
-  "generado": "2026-10-19",
+  "generado": "2026-11-25",
   "suelo": 49,
   "escala": [
     [
@@ -204,6 +204,292 @@
       "canales": "acceso por navegador, con usuario para cada persona del equipo",
       "integra": "dos sistemas que ya uses (correo, agenda, facturación o tu programa de gestión), si tienen API",
       "excluye": "no sustituye a tu programa de gestión ni escribe en él · no hace contabilidad ni presenta nada ante la Administración · migrar históricos y conectar sistemas sin API se presupuestan aparte"
+    },
+    {
+      "slug": "correo-clasificacion",
+      "nombre": "Clasificación de correos",
+      "cat": "a_medida",
+      "regimen": "a_medida",
+      "base": null,
+      "eur": 15,
+      "setup": 70,
+      "limite": "hasta 1.000 correos/mes · 1 buzón",
+      "canales": "un buzón de Gmail o Outlook",
+      "integra": "solo lectura del buzón: etiqueta y ordena, no escribe",
+      "excluye": "responder por ti (es la pieza de respuesta) · buzones adicionales · archivar los adjuntos (eso es gestión documental) · buzones compartidos con datos de salud"
+    },
+    {
+      "slug": "correo-respuesta-derivacion",
+      "nombre": "Ningún correo se queda sin dueño",
+      "cat": "a_medida",
+      "regimen": "a_medida",
+      "base": null,
+      "eur": 15,
+      "setup": 70,
+      "limite": "hasta 300 respuestas, derivaciones o avisos/mes",
+      "canales": "el mismo buzón de la clasificación",
+      "integra": "lectura y escritura sobre el buzón · asignación a una persona del equipo · aviso por el canal que elijas",
+      "excluye": "cerrar ventas · comprometer precios o plazos · contestar reclamaciones legales o burofaxes · responder sin que tú hayas definido antes qué se contesta solo"
+    },
+    {
+      "slug": "correo-buzon-adicional",
+      "nombre": "Buzón adicional",
+      "cat": "a_medida",
+      "regimen": "a_medida",
+      "base": null,
+      "eur": 5,
+      "setup": 30,
+      "limite": "1 buzón por unidad · comparte el volumen de correos del producto",
+      "canales": "Gmail u Outlook",
+      "integra": "el mismo tratamiento que el buzón principal",
+      "excluye": "buzones de otro dominio que no controles · buzones compartidos con datos de salud"
+    },
+    {
+      "slug": "correo-extraccion-crm",
+      "nombre": "Extracción a tu CRM",
+      "cat": "a_medida",
+      "regimen": "a_medida",
+      "base": null,
+      "eur": 20,
+      "setup": 100,
+      "limite": "hasta 300 fichas o registros al mes",
+      "canales": "el mismo buzón",
+      "integra": "escritura sobre el CRM que ya uses, si tiene API",
+      "excluye": "CRMs sin API · limpiar o deduplicar la base que ya tengas · fusionar fichas repetidas · si no tienes CRM, el nuestro es una pieza aparte (crm-panel)"
+    },
+    {
+      "slug": "fin-recobro",
+      "nombre": "Recobro de facturas vencidas",
+      "cat": "a_medida",
+      "regimen": "a_medida",
+      "base": null,
+      "eur": 79,
+      "setup": 250,
+      "limite": "hasta 200 avisos/mes",
+      "canales": null,
+      "integra": null,
+      "excluye": null
+    },
+    {
+      "slug": "fin-fichas-validar",
+      "nombre": "Fichas listas para validar",
+      "cat": "a_medida",
+      "regimen": "a_medida",
+      "base": null,
+      "eur": 149,
+      "setup": 600,
+      "limite": "desde 500 documentos/mes · escala por tramos",
+      "canales": null,
+      "integra": null,
+      "excluye": null
+    },
+    {
+      "slug": "fin-contabilidad-cuadro",
+      "nombre": "Contabilidad y cuadro financiero",
+      "cat": "a_medida",
+      "regimen": "a_medida",
+      "base": null,
+      "eur": 99,
+      "setup": 450,
+      "limite": "hasta 800 apuntes/mes · 6 indicadores",
+      "canales": null,
+      "integra": null,
+      "excluye": null
+    },
+    {
+      "slug": "log-seguimiento-entregas",
+      "nombre": "Seguimiento de entregas",
+      "cat": "a_medida",
+      "regimen": "a_medida",
+      "base": null,
+      "eur": 79,
+      "setup": 250,
+      "limite": "hasta 400 envíos/mes",
+      "canales": null,
+      "integra": null,
+      "excluye": null
+    },
+    {
+      "slug": "log-avisos-cliente",
+      "nombre": "Avisar antes de que pregunten",
+      "cat": "a_medida",
+      "regimen": "a_medida",
+      "base": null,
+      "eur": 30,
+      "setup": 100,
+      "limite": "hasta 800 avisos/mes",
+      "canales": null,
+      "integra": null,
+      "excluye": null
+    },
+    {
+      "slug": "log-citas-carga",
+      "nombre": "Citas de carga y descarga",
+      "cat": "a_medida",
+      "regimen": "a_medida",
+      "base": null,
+      "eur": 49,
+      "setup": 150,
+      "limite": "hasta 200 citas/mes",
+      "canales": null,
+      "integra": null,
+      "excluye": null
+    },
+    {
+      "slug": "log-incidencias",
+      "nombre": "Gestión de incidencias",
+      "cat": "a_medida",
+      "regimen": "a_medida",
+      "base": null,
+      "eur": 49,
+      "setup": 200,
+      "limite": "hasta 150 incidencias/mes",
+      "canales": null,
+      "integra": null,
+      "excluye": null
+    },
+    {
+      "slug": "log-pedidos-proveedores",
+      "nombre": "Pedidos a proveedores",
+      "cat": "a_medida",
+      "regimen": "a_medida",
+      "base": null,
+      "eur": 49,
+      "setup": 200,
+      "limite": "hasta 150 pedidos a proveedores/mes",
+      "canales": null,
+      "integra": null,
+      "excluye": null
+    },
+    {
+      "slug": "dat-datos-un-sitio",
+      "nombre": "Tus datos en un sitio",
+      "cat": "a_medida",
+      "regimen": "a_medida",
+      "base": null,
+      "eur": 49,
+      "setup": 150,
+      "limite": "desde 2 fuentes",
+      "canales": null,
+      "integra": null,
+      "excluye": null
+    },
+    {
+      "slug": "dat-asistente",
+      "nombre": "Un asistente al que preguntarle",
+      "cat": "a_medida",
+      "regimen": "a_medida",
+      "base": null,
+      "eur": 49,
+      "setup": 150,
+      "limite": "preguntas sin tope · un informe escrito al mes",
+      "canales": null,
+      "integra": null,
+      "excluye": null
+    },
+    {
+      "slug": "dat-insights",
+      "nombre": "Insights semanales",
+      "cat": "a_medida",
+      "regimen": "a_medida",
+      "base": null,
+      "eur": 15,
+      "setup": 50,
+      "limite": "un envío semanal",
+      "canales": null,
+      "integra": null,
+      "excluye": null
+    },
+    {
+      "slug": "mkt-linkedin",
+      "nombre": "Publicación automática en LinkedIn",
+      "cat": "a_medida",
+      "regimen": "a_medida",
+      "base": null,
+      "eur": 29,
+      "setup": 100,
+      "limite": "hasta 20 publicaciones/mes · solo LinkedIn",
+      "canales": null,
+      "integra": null,
+      "excluye": null
+    },
+    {
+      "slug": "mkt-fotos",
+      "nombre": "Fotos de marca, publicadas",
+      "cat": "a_medida",
+      "regimen": "a_medida",
+      "base": null,
+      "eur": 49,
+      "setup": 150,
+      "limite": "hasta 20 fotos/mes · una red incluida",
+      "canales": null,
+      "integra": null,
+      "excluye": null
+    },
+    {
+      "slug": "mkt-videos",
+      "nombre": "Vídeos cortos, publicados",
+      "cat": "a_medida",
+      "regimen": "a_medida",
+      "base": null,
+      "eur": 79,
+      "setup": 250,
+      "limite": "hasta 8 vídeos de 5 a 10 s al mes · una red incluida",
+      "canales": null,
+      "integra": null,
+      "excluye": null
+    },
+    {
+      "slug": "mkt-campanas",
+      "nombre": "Campañas: diseño y publicación",
+      "cat": "a_medida",
+      "regimen": "a_medida",
+      "base": null,
+      "eur": 149,
+      "setup": 450,
+      "limite": "una campaña al mes · hasta 12 piezas entre fotos y vídeos · 2 redes",
+      "canales": null,
+      "integra": null,
+      "excluye": null
+    },
+    {
+      "slug": "pos-paginas-captacion",
+      "nombre": "Páginas de captación por sector y zona",
+      "cat": "a_medida",
+      "regimen": "a_medida",
+      "base": null,
+      "eur": 49,
+      "setup": 150,
+      "limite": "hasta 12 páginas",
+      "canales": null,
+      "integra": null,
+      "excluye": null
+    },
+    {
+      "slug": "pos-ficha-google",
+      "nombre": "Ficha de Google al día",
+      "cat": "a_medida",
+      "regimen": "a_medida",
+      "base": null,
+      "eur": 30,
+      "setup": 100,
+      "limite": "una ficha · revisión semanal",
+      "canales": null,
+      "integra": null,
+      "excluye": null
+    },
+    {
+      "slug": "pos-resenas",
+      "nombre": "Reseñas: pedirlas y contestarlas",
+      "cat": "a_medida",
+      "regimen": "a_medida",
+      "base": null,
+      "eur": 30,
+      "setup": 100,
+      "limite": "hasta 300 peticiones/mes · respuestas sin tope",
+      "canales": null,
+      "integra": null,
+      "excluye": null
     },
     {
       "slug": "agenda-reserva-publica",
@@ -516,58 +802,580 @@
       "canales": null,
       "integra": null,
       "excluye": "firma cualificada eIDAS · plantillas nuevas a medida · custodia certificada por tercero"
+    }
+  ],
+  "planes": [
+    {
+      "slug": "atencion-calendario",
+      "departamento": "atencion",
+      "nombre": "Calendario",
+      "tipo": "banda",
+      "cuota": 79,
+      "alta": 230,
+      "incluye": [
+        "El agente con 1 canal",
+        "Base de datos de tus clientes (para que el agente conozca a cada uno)",
+        "Preguntas frecuentes y pase a una persona",
+        "Reserva, cambia y cancela citas",
+        "Recordatorios de cita (anti no-show)",
+        "Reseña tras la cita"
+      ],
+      "piezas": [
+        "iris-0",
+        "agenda-reserva-publica",
+        "recordatorios-confirmacion"
+      ]
     },
     {
-      "slug": "correo-clasificacion",
-      "nombre": "Clasificación de correos",
-      "cat": "a_medida",
-      "regimen": "a_medida",
-      "base": null,
-      "eur": 15,
-      "setup": 70,
-      "limite": "hasta 1.000 correos/mes · 1 buzón",
-      "canales": "un buzón de Gmail o Outlook",
-      "integra": "solo lectura del buzón: etiqueta y ordena, no escribe",
-      "excluye": "responder por ti (es la pieza de respuesta) · buzones adicionales · archivar los adjuntos (eso es gestión documental) · buzones compartidos con datos de salud"
+      "slug": "atencion-pedidos",
+      "departamento": "atencion",
+      "nombre": "Pedidos",
+      "tipo": "banda",
+      "cuota": 99,
+      "alta": 300,
+      "incluye": [
+        "El agente con 1 canal",
+        "Base de datos de tus clientes (para que el agente conozca a cada uno)",
+        "Preguntas frecuentes y recomendación de productos",
+        "Dónde está cada pedido y sus detalles",
+        "Stock real",
+        "Reseña cuando llega el pedido"
+      ],
+      "piezas": [
+        "iris-0",
+        "modulo-seguimiento-pedidos",
+        "consulta-stock",
+        "recordatorios-confirmacion"
+      ]
     },
     {
-      "slug": "correo-respuesta-derivacion",
-      "nombre": "Ningún correo se queda sin dueño",
-      "cat": "a_medida",
-      "regimen": "a_medida",
-      "base": null,
-      "eur": 15,
-      "setup": 70,
-      "limite": "hasta 300 respuestas, derivaciones o avisos/mes",
-      "canales": "el mismo buzón de la clasificación",
-      "integra": "lectura y escritura sobre el buzón · asignación a una persona del equipo · aviso por el canal que elijas",
-      "excluye": "cerrar ventas · comprometer precios o plazos · contestar reclamaciones legales o burofaxes · responder sin que tú hayas definido antes qué se contesta solo"
+      "slug": "atencion-correo",
+      "departamento": "atencion",
+      "nombre": "Correo",
+      "tipo": "banda",
+      "cuota": 49,
+      "alta": 150,
+      "incluye": [
+        "Ordena tu buzón",
+        "Base de datos de tus clientes (para que el agente conozca a cada uno)",
+        "Contesta lo que se contesta solo",
+        "Reparte el resto y te pasa lo urgente"
+      ],
+      "piezas": [
+        "correo-clasificacion",
+        "correo-respuesta-derivacion"
+      ]
     },
     {
-      "slug": "correo-buzon-adicional",
-      "nombre": "Buzón adicional",
-      "cat": "a_medida",
-      "regimen": "a_medida",
-      "base": null,
-      "eur": 5,
-      "setup": 30,
-      "limite": "1 buzón por unidad · comparte el volumen de correos del producto",
-      "canales": "Gmail u Outlook",
-      "integra": "el mismo tratamiento que el buzón principal",
-      "excluye": "buzones de otro dominio que no controles · buzones compartidos con datos de salud"
+      "slug": "atencion-calendario-pedidos",
+      "departamento": "atencion",
+      "nombre": "Calendario + Pedidos",
+      "tipo": "combinacion",
+      "cuota": 129,
+      "alta": 380,
+      "incluye": [
+        "Las dos bandas, con el agente una sola vez"
+      ],
+      "piezas": [
+        "iris-0",
+        "agenda-reserva-publica",
+        "recordatorios-confirmacion",
+        "modulo-seguimiento-pedidos",
+        "consulta-stock"
+      ]
     },
     {
-      "slug": "correo-extraccion-crm",
-      "nombre": "Extracción a tu CRM",
-      "cat": "a_medida",
-      "regimen": "a_medida",
-      "base": null,
-      "eur": 20,
-      "setup": 100,
-      "limite": "hasta 300 fichas o registros al mes",
-      "canales": "el mismo buzón",
-      "integra": "escritura sobre el CRM que ya uses, si tiene API",
-      "excluye": "CRMs sin API · limpiar o deduplicar la base que ya tengas · fusionar fichas repetidas · si no tienes CRM, el nuestro es una pieza aparte (crm-panel)"
+      "slug": "atencion-calendario-correo",
+      "departamento": "atencion",
+      "nombre": "Calendario + Correo",
+      "tipo": "combinacion",
+      "cuota": 109,
+      "alta": 370,
+      "incluye": [
+        "Las dos bandas"
+      ],
+      "piezas": [
+        "iris-0",
+        "agenda-reserva-publica",
+        "recordatorios-confirmacion",
+        "correo-clasificacion",
+        "correo-respuesta-derivacion"
+      ]
+    },
+    {
+      "slug": "atencion-pedidos-correo",
+      "departamento": "atencion",
+      "nombre": "Pedidos + Correo",
+      "tipo": "combinacion",
+      "cuota": 129,
+      "alta": 440,
+      "incluye": [
+        "Las dos bandas"
+      ],
+      "piezas": [
+        "iris-0",
+        "modulo-seguimiento-pedidos",
+        "consulta-stock",
+        "recordatorios-confirmacion",
+        "correo-clasificacion",
+        "correo-respuesta-derivacion"
+      ]
+    },
+    {
+      "slug": "atencion-completa",
+      "departamento": "atencion",
+      "nombre": "Atención completa",
+      "tipo": "completo",
+      "cuota": 139,
+      "alta": 450,
+      "incluye": [
+        "Calendario, pedidos y correo",
+        "Base de datos de tus clientes",
+        "El agente una sola vez, con acceso a todo"
+      ],
+      "piezas": [
+        "iris-0",
+        "agenda-reserva-publica",
+        "recordatorios-confirmacion",
+        "modulo-seguimiento-pedidos",
+        "consulta-stock",
+        "correo-clasificacion",
+        "correo-respuesta-derivacion"
+      ]
+    },
+    {
+      "slug": "datos-panel",
+      "departamento": "datos",
+      "nombre": "Panel semanal",
+      "tipo": "banda",
+      "cuota": 64,
+      "alta": 200,
+      "incluye": [
+        "Tus datos juntos y cruzados en un panel",
+        "Un correo el lunes con cómo fue la semana",
+        "Te avisa cuando algo se tuerce"
+      ],
+      "piezas": [
+        "dat-datos-un-sitio",
+        "dat-insights"
+      ]
+    },
+    {
+      "slug": "datos-completa",
+      "departamento": "datos",
+      "nombre": "Panel y asistente",
+      "tipo": "completo",
+      "cuota": 109,
+      "alta": 240,
+      "incluye": [
+        "Todo lo del panel",
+        "Un asistente al que preguntarle por qué",
+        "Un informe escrito al mes"
+      ],
+      "piezas": [
+        "dat-datos-un-sitio",
+        "dat-insights",
+        "dat-asistente"
+      ]
+    },
+    {
+      "slug": "finanzas-facturar-cobrar",
+      "departamento": "finanzas",
+      "nombre": "Facturar y cobrar",
+      "tipo": "banda",
+      "cuota": 128,
+      "alta": 450,
+      "incluye": [
+        "Hace y envía la factura desde un mensaje",
+        "Reclama lo vencido con insistencia y buenas formas",
+        "Te pasa solo lo que necesita una llamada"
+      ],
+      "piezas": [
+        "abaco-facturacion-mensaje",
+        "fin-recobro"
+      ]
+    },
+    {
+      "slug": "finanzas-papeles",
+      "departamento": "finanzas",
+      "nombre": "Papeles",
+      "tipo": "banda",
+      "cuota": 79,
+      "alta": 300,
+      "incluye": [
+        "Pide a cada cliente lo que falta",
+        "Comprueba que llega completo",
+        "Te dice qué falta y de quién"
+      ],
+      "piezas": [
+        "abaco-gestion-documental"
+      ]
+    },
+    {
+      "slug": "finanzas-cuentas",
+      "departamento": "finanzas",
+      "nombre": "Cuentas",
+      "tipo": "banda",
+      "cuota": 99,
+      "alta": 450,
+      "incluye": [
+        "Clasifica gastos e ingresos",
+        "Cruza lo cobrado con lo facturado",
+        "Qué vas a cobrar y cuánto te falta para cubrir el mes"
+      ],
+      "piezas": [
+        "fin-contabilidad-cuadro"
+      ]
+    },
+    {
+      "slug": "finanzas-facturar-papeles",
+      "departamento": "finanzas",
+      "nombre": "Facturar y cobrar + Papeles",
+      "tipo": "combinacion",
+      "cuota": 189,
+      "alta": 680,
+      "incluye": [
+        "Las dos bandas"
+      ],
+      "piezas": [
+        "abaco-facturacion-mensaje",
+        "fin-recobro",
+        "abaco-gestion-documental"
+      ]
+    },
+    {
+      "slug": "finanzas-facturar-cuentas",
+      "departamento": "finanzas",
+      "nombre": "Facturar y cobrar + Cuentas",
+      "tipo": "combinacion",
+      "cuota": 209,
+      "alta": 810,
+      "incluye": [
+        "Las dos bandas"
+      ],
+      "piezas": [
+        "abaco-facturacion-mensaje",
+        "fin-recobro",
+        "fin-contabilidad-cuadro"
+      ]
+    },
+    {
+      "slug": "finanzas-papeles-cuentas",
+      "departamento": "finanzas",
+      "nombre": "Papeles + Cuentas",
+      "tipo": "combinacion",
+      "cuota": 159,
+      "alta": 680,
+      "incluye": [
+        "Las dos bandas"
+      ],
+      "piezas": [
+        "abaco-gestion-documental",
+        "fin-contabilidad-cuadro"
+      ]
+    },
+    {
+      "slug": "finanzas-completa",
+      "departamento": "finanzas",
+      "nombre": "Finanzas completa",
+      "tipo": "completo",
+      "cuota": 279,
+      "alta": 840,
+      "incluye": [
+        "Facturar, cobrar, papeles y cuentas",
+        "Un solo agente con acceso a todo"
+      ],
+      "piezas": [
+        "abaco-facturacion-mensaje",
+        "fin-recobro",
+        "abaco-gestion-documental",
+        "fin-contabilidad-cuadro"
+      ]
+    },
+    {
+      "slug": "logistica-envios",
+      "departamento": "logistica",
+      "nombre": "Envíos",
+      "tipo": "banda",
+      "cuota": 109,
+      "alta": 350,
+      "incluye": [
+        "Pide la fecha real a cada transportista",
+        "La apunta donde lleves los envíos",
+        "Avisa al cliente antes de que pregunte, y si cambia"
+      ],
+      "piezas": [
+        "log-seguimiento-entregas",
+        "log-avisos-cliente"
+      ]
+    },
+    {
+      "slug": "logistica-almacen",
+      "departamento": "logistica",
+      "nombre": "Almacén",
+      "tipo": "banda",
+      "cuota": 98,
+      "alta": 350,
+      "incluye": [
+        "Cuadra las citas de carga y descarga",
+        "Confirma al transportista y a tu almacén",
+        "Abre el parte de cada incidencia y lo persigue"
+      ],
+      "piezas": [
+        "log-citas-carga",
+        "log-incidencias"
+      ]
+    },
+    {
+      "slug": "logistica-proveedores",
+      "departamento": "logistica",
+      "nombre": "Proveedores",
+      "tipo": "banda",
+      "cuota": 49,
+      "alta": 200,
+      "incluye": [
+        "Ve lo que se está acabando",
+        "Prepara el pedido y lo manda con tu visto bueno",
+        "Confirma el plazo y avisa si se retrasa"
+      ],
+      "piezas": [
+        "log-pedidos-proveedores"
+      ]
+    },
+    {
+      "slug": "logistica-envios-almacen",
+      "departamento": "logistica",
+      "nombre": "Envíos + Almacén",
+      "tipo": "combinacion",
+      "cuota": 189,
+      "alta": 630,
+      "incluye": [
+        "Las dos bandas"
+      ],
+      "piezas": [
+        "log-seguimiento-entregas",
+        "log-avisos-cliente",
+        "log-citas-carga",
+        "log-incidencias"
+      ]
+    },
+    {
+      "slug": "logistica-envios-proveedores",
+      "departamento": "logistica",
+      "nombre": "Envíos + Proveedores",
+      "tipo": "combinacion",
+      "cuota": 149,
+      "alta": 500,
+      "incluye": [
+        "Las dos bandas"
+      ],
+      "piezas": [
+        "log-seguimiento-entregas",
+        "log-avisos-cliente",
+        "log-pedidos-proveedores"
+      ]
+    },
+    {
+      "slug": "logistica-almacen-proveedores",
+      "departamento": "logistica",
+      "nombre": "Almacén + Proveedores",
+      "tipo": "combinacion",
+      "cuota": 139,
+      "alta": 500,
+      "incluye": [
+        "Las dos bandas"
+      ],
+      "piezas": [
+        "log-citas-carga",
+        "log-incidencias",
+        "log-pedidos-proveedores"
+      ]
+    },
+    {
+      "slug": "logistica-completa",
+      "departamento": "logistica",
+      "nombre": "Logística completa",
+      "tipo": "completo",
+      "cuota": 229,
+      "alta": 650,
+      "incluye": [
+        "Envíos, almacén y proveedores",
+        "Un solo agente con acceso a todo"
+      ],
+      "piezas": [
+        "log-seguimiento-entregas",
+        "log-avisos-cliente",
+        "log-citas-carga",
+        "log-incidencias",
+        "log-pedidos-proveedores"
+      ]
+    },
+    {
+      "slug": "marketing-redes",
+      "departamento": "marketing",
+      "nombre": "Redes",
+      "tipo": "banda",
+      "cuota": 78,
+      "alta": 250,
+      "incluye": [
+        "Escribe con tu voz",
+        "Genera la foto con tu marca",
+        "Publica en LinkedIn y en una red más"
+      ],
+      "piezas": [
+        "mkt-linkedin",
+        "mkt-fotos"
+      ]
+    },
+    {
+      "slug": "marketing-video",
+      "departamento": "marketing",
+      "nombre": "Vídeo",
+      "tipo": "banda",
+      "cuota": 79,
+      "alta": 250,
+      "incluye": [
+        "Vídeos verticales de 5 a 10 segundos",
+        "Para reels y stories",
+        "Montados y publicados"
+      ],
+      "piezas": [
+        "mkt-videos"
+      ]
+    },
+    {
+      "slug": "marketing-campanas",
+      "departamento": "marketing",
+      "nombre": "Campañas",
+      "tipo": "banda",
+      "cuota": 149,
+      "alta": 450,
+      "incluye": [
+        "Diseña la idea de la campaña",
+        "Produce hasta 12 fotos y vídeos",
+        "Las publica con su calendario en 2 redes"
+      ],
+      "piezas": [
+        "mkt-campanas"
+      ]
+    },
+    {
+      "slug": "marketing-redes-video",
+      "departamento": "marketing",
+      "nombre": "Redes + Vídeo",
+      "tipo": "combinacion",
+      "cuota": 139,
+      "alta": 450,
+      "incluye": [
+        "Las dos bandas"
+      ],
+      "piezas": [
+        "mkt-linkedin",
+        "mkt-fotos",
+        "mkt-videos"
+      ]
+    },
+    {
+      "slug": "marketing-redes-campanas",
+      "departamento": "marketing",
+      "nombre": "Redes + Campañas",
+      "tipo": "combinacion",
+      "cuota": 209,
+      "alta": 630,
+      "incluye": [
+        "Las dos bandas"
+      ],
+      "piezas": [
+        "mkt-linkedin",
+        "mkt-fotos",
+        "mkt-campanas"
+      ]
+    },
+    {
+      "slug": "marketing-video-campanas",
+      "departamento": "marketing",
+      "nombre": "Vídeo + Campañas",
+      "tipo": "combinacion",
+      "cuota": 209,
+      "alta": 630,
+      "incluye": [
+        "Las dos bandas"
+      ],
+      "piezas": [
+        "mkt-videos",
+        "mkt-campanas"
+      ]
+    },
+    {
+      "slug": "marketing-completa",
+      "departamento": "marketing",
+      "nombre": "Marketing completo",
+      "tipo": "completo",
+      "cuota": 279,
+      "alta": 660,
+      "incluye": [
+        "Redes, vídeo y campañas",
+        "Todo con tu identidad de marca"
+      ],
+      "piezas": [
+        "mkt-linkedin",
+        "mkt-fotos",
+        "mkt-videos",
+        "mkt-campanas"
+      ]
+    },
+    {
+      "slug": "posicionamiento-web",
+      "departamento": "posicionamiento",
+      "nombre": "Tu página web",
+      "tipo": "banda",
+      "cuota": 119,
+      "alta": 400,
+      "incluye": [
+        "Web profesional hecha a medida",
+        "Servidor y mantenimiento incluidos",
+        "Cambios y conexiones nuevas cuando las necesites"
+      ],
+      "piezas": [
+        "presencia-web-landing"
+      ]
+    },
+    {
+      "slug": "posicionamiento-google",
+      "departamento": "posicionamiento",
+      "nombre": "Posicionamiento",
+      "tipo": "banda",
+      "cuota": 109,
+      "alta": 350,
+      "incluye": [
+        "Una página por cada búsqueda de tu sector y tu zona",
+        "Tu ficha de Google al día cada semana",
+        "Reseñas pedidas a quien quedó contento y contestadas"
+      ],
+      "piezas": [
+        "pos-paginas-captacion",
+        "pos-ficha-google",
+        "pos-resenas"
+      ]
+    },
+    {
+      "slug": "posicionamiento-completa",
+      "departamento": "posicionamiento",
+      "nombre": "Web y posicionamiento",
+      "tipo": "completo",
+      "cuota": 209,
+      "alta": 520,
+      "incluye": [
+        "Tu web hecha y llevada por nosotros",
+        "Todos los agentes de posicionamiento alrededor",
+        "Páginas, ficha de Google y reseñas"
+      ],
+      "piezas": [
+        "presencia-web-landing",
+        "pos-paginas-captacion",
+        "pos-ficha-google",
+        "pos-resenas"
+      ]
     }
   ]
 }
