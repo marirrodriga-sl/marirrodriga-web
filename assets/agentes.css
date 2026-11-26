@@ -141,3 +141,42 @@ a.ag-prog:focus-visible, .ag-tarjeta a:focus-visible { outline: 2px solid var(--
 .ag-banda-dorso .ag-pasos li { padding: 20px 20px 22px; font-size: inherit; }
 .ag-banda-dorso .ag-pasos li::before { position: static; width: auto; height: auto; background: none; top: auto; }
 .ag-banda-dorso .ag-dorso-nombre { font-size: 32px; }
+
+/* ─── 26-11-2026 · En el móvil, dos cartas por fila (Ismael) ─────────────
+   Más pequeñas a propósito: con una por fila había que deslizar seis cartas
+   de 750 px. Por detrás, la letra baja y el contenido se desliza dentro de
+   la carta si no cabe. Solo afecta a las cartas de la rejilla, no a la banda. */
+@media (max-width: 820px) {
+  .ag-rejilla { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .ag-rejilla .ag-carta { height: 440px; }
+  .ag-rejilla .ag-frente-pie { padding: 12px 12px 14px; gap: 10px; }
+  .ag-rejilla .ag-frente h3 { font-size: 19px; }
+  .ag-rejilla .ag-girar { font-size: 13px; padding: 8px 14px; }
+  .ag-rejilla .ag-dorso { padding: 14px 12px 12px; gap: 8px; }
+  .ag-rejilla .ag-dorso-nombre { font-size: 18px; }
+  .ag-rejilla .ag-texto { font-size: 12.5px; line-height: 1.45; }
+  .ag-rejilla .ag-dorso h4 { font-size: 11px; }
+  .ag-rejilla .ag-funciones { gap: 6px; }
+  .ag-rejilla .ag-grupo h5 { font-size: 9.5px; }
+  .ag-rejilla .ag-dorso li { font-size: 11.5px; line-height: 1.35; padding-left: 9px; }
+  .ag-rejilla .ag-dorso li::before { top: 8px; width: 4px; }
+  .ag-rejilla .ag-dorso-botones { gap: 6px; }
+  .ag-rejilla .ag-detalle { font-size: 12px; padding: 9px 12px; }
+  .ag-rejilla .ag-volver { font-size: 12px; padding: 8px 12px; }
+}
+@media (max-width: 380px) {
+  .ag-rejilla { gap: 8px; }
+  .ag-rejilla .ag-carta { height: 420px; }
+  .ag-rejilla .ag-frente h3 { font-size: 17px; }
+}
+@media (max-width: 820px) {
+  /* Los botones del dorso, siempre a la vista aunque el texto se deslice */
+  .ag-rejilla .ag-dorso { padding-bottom: 0; }
+  .ag-rejilla .ag-dorso-botones { position: sticky; bottom: 0; margin-top: auto; background: #fff; padding: 8px 0 12px; box-shadow: 0 -10px 12px -6px rgba(255,255,255,.95); }
+  .ag-rejilla .ag-texto { font-size: 12px; }
+}
+@media (max-width: 820px) {
+  .ag-rejilla .ag-dorso-botones { flex-direction: column; align-items: stretch; gap: 2px; }
+  .ag-rejilla .ag-detalle { width: 100%; white-space: normal; text-align: center; line-height: 1.2; font-size: 12px; padding: 9px 8px; }
+  .ag-rejilla .ag-volver { border: 0; background: none; padding: 6px 0 0; font-size: 12px; color: var(--ink-3); text-decoration: underline; }
+}
