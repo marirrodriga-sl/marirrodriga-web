@@ -48,8 +48,10 @@ const { CATALOGO, cotiza, calculaSetup } = require('../assets/catalogo.js');
 /* 25-11-2026 · Entran las 18 piezas de Finanzas, Logística, Datos, Marketing y
    Posicionamiento (estaban solo en la web, «pendientes de validar») y la nueva de
    pedidos a proveedores. Son 59. Exportadas de Supabase el mismo día. */
-const HUELLA_ESPERADA = 'f0c978a3ea2027e6c50087149fee3e01';
-const N_ESPERADAS = 59;
+/* 26-11-2026 · Redes sociales: entra mkt-competencia y salen mkt-linkedin y
+   mkt-campanas (vigente = false). Son 58. */
+const HUELLA_ESPERADA = '58f76fb4c90f02dfff10f5863eff503a';
+const N_ESPERADAS = 58;
 
 let fallos = 0;
 const check = (ok, etiqueta, detalle = '') => {
@@ -96,7 +98,8 @@ const ALTAS = { 'iris-0': 150, 'modulo-seguimiento-pedidos': 70, 'hermes-seguimi
   'log-seguimiento-entregas': 250, 'log-avisos-cliente': 100, 'log-citas-carga': 150, 'log-incidencias': 200,
   'log-pedidos-proveedores': 200, 'dat-datos-un-sitio': 150, 'dat-asistente': 150, 'dat-insights': 50,
   'mkt-linkedin': 100, 'mkt-fotos': 150, 'mkt-videos': 250, 'mkt-campanas': 450,
-  'pos-paginas-captacion': 150, 'pos-ficha-google': 100, 'pos-resenas': 100 };
+  'pos-paginas-captacion': 150, 'pos-ficha-google': 100, 'pos-resenas': 100,
+  'mkt-competencia': 150 };
 const altasMal = CATALOGO.piezas.filter(p => p.setup !== undefined && ALTAS[p.slug] !== p.setup);
 check(altasMal.length === 0, 'las altas fijadas coinciden con la base',
       altasMal.map(p => `${p.slug}=${p.setup}`).join(', ') || `las ${Object.keys(ALTAS).length} cuadran`);

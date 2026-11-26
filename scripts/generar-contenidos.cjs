@@ -29,7 +29,7 @@ const DOLORES = [
   ['/atencion-al-cliente', 'Contestar mensajes, llamadas y correo fuera de horario'],
   ['/finanzas', 'Facturar, reclamar cobros y saber cómo va la caja'],
   ['/posicionamiento-online', 'Que no te encuentren en Google ni tengas reseñas'],
-  ['/marketing', 'Publicar en redes sin que te robe la semana'],
+  ['/marketing', 'Contenido para redes con IA y saber qué hace tu competencia'],
   ['/datos-y-direccion', 'Tener los datos separados y decidir a ojo'],
 ];
 

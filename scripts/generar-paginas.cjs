@@ -68,7 +68,7 @@ const DEPTOS_MENU = [
   ['Finanzas', '/finanzas', 'Factura sin abrir el programa y persigue lo vencido'],
   ['Logística', '/logistica', 'Persigue al transportista y avisa antes de que pregunten'],
   ['Datos y Dirección', '/datos-y-direccion', 'Por qué ha ido bien el mes, no solo que ha ido bien'],
-  ['Marketing', '/marketing', 'Publicaciones, fotos y vídeos con tu marca'],
+  ['Redes sociales', '/marketing', 'Contenido con IA y análisis de la competencia'],
   ['Páginas web y posicionamiento', '/posicionamiento-online', 'Tu web, y que Google te encuentre'],
 ];
 
@@ -320,7 +320,7 @@ const pie = () => `<footer class="pie">
           <a href="/finanzas">Finanzas</a>
           <a href="/logistica">Logística</a>
           <a href="/datos-y-direccion">Datos y Dirección</a>
-          <a href="/marketing">Marketing</a>
+          <a href="/marketing">Redes sociales</a>
           <a href="/posicionamiento-online">Páginas web y posicionamiento</a>
         </div>
         <div class="pie-col">

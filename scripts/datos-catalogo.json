@@ -1,5 +1,5 @@
 {
-  "generado": "2026-11-25",
+  "generado": "2026-11-26",
   "suelo": 49,
   "escala": [
     [
@@ -401,19 +401,6 @@
       "excluye": null
     },
     {
-      "slug": "mkt-linkedin",
-      "nombre": "Publicación automática en LinkedIn",
-      "cat": "a_medida",
-      "regimen": "a_medida",
-      "base": null,
-      "eur": 29,
-      "setup": 100,
-      "limite": "hasta 20 publicaciones/mes · solo LinkedIn",
-      "canales": null,
-      "integra": null,
-      "excluye": null
-    },
-    {
       "slug": "mkt-fotos",
       "nombre": "Fotos de marca, publicadas",
       "cat": "a_medida",
@@ -440,14 +427,14 @@
       "excluye": null
     },
     {
-      "slug": "mkt-campanas",
-      "nombre": "Campañas: diseño y publicación",
+      "slug": "mkt-competencia",
+      "nombre": "Análisis de la competencia",
       "cat": "a_medida",
       "regimen": "a_medida",
       "base": null,
-      "eur": 149,
-      "setup": 450,
-      "limite": "una campaña al mes · hasta 12 piezas entre fotos y vídeos · 2 redes",
+      "eur": 49,
+      "setup": 150,
+      "limite": "hasta 5 competidores · un resumen semanal · solo fuentes públicas",
       "canales": null,
       "integra": null,
       "excluye": null
@@ -1211,117 +1198,53 @@
       ]
     },
     {
-      "slug": "marketing-redes",
+      "slug": "marketing-contenido",
       "departamento": "marketing",
-      "nombre": "Redes",
+      "nombre": "Contenido con IA",
       "tipo": "banda",
-      "cuota": 78,
-      "alta": 250,
+      "cuota": 119,
+      "alta": 350,
       "incluye": [
-        "Escribe con tu voz",
-        "Genera la foto con tu marca",
-        "Publica en LinkedIn y en una red más"
+        "Hasta 20 fotos al mes generadas con tu marca",
+        "Hasta 8 vídeos cortos al mes, para reels y stories",
+        "Nada sale sin que lo veas"
       ],
       "piezas": [
-        "mkt-linkedin",
-        "mkt-fotos"
-      ]
-    },
-    {
-      "slug": "marketing-video",
-      "departamento": "marketing",
-      "nombre": "Vídeo",
-      "tipo": "banda",
-      "cuota": 79,
-      "alta": 250,
-      "incluye": [
-        "Vídeos verticales de 5 a 10 segundos",
-        "Para reels y stories",
-        "Montados y publicados"
-      ],
-      "piezas": [
-        "mkt-videos"
-      ]
-    },
-    {
-      "slug": "marketing-campanas",
-      "departamento": "marketing",
-      "nombre": "Campañas",
-      "tipo": "banda",
-      "cuota": 149,
-      "alta": 450,
-      "incluye": [
-        "Diseña la idea de la campaña",
-        "Produce hasta 12 fotos y vídeos",
-        "Las publica con su calendario en 2 redes"
-      ],
-      "piezas": [
-        "mkt-campanas"
-      ]
-    },
-    {
-      "slug": "marketing-redes-video",
-      "departamento": "marketing",
-      "nombre": "Redes + Vídeo",
-      "tipo": "combinacion",
-      "cuota": 139,
-      "alta": 450,
-      "incluye": [
-        "Las dos bandas"
-      ],
-      "piezas": [
-        "mkt-linkedin",
         "mkt-fotos",
         "mkt-videos"
       ]
     },
     {
-      "slug": "marketing-redes-campanas",
+      "slug": "marketing-competencia",
       "departamento": "marketing",
-      "nombre": "Redes + Campañas",
-      "tipo": "combinacion",
-      "cuota": 209,
-      "alta": 630,
+      "nombre": "Análisis de la competencia",
+      "tipo": "banda",
+      "cuota": 49,
+      "alta": 150,
       "incluye": [
-        "Las dos bandas"
+        "Vigila hasta 5 competidores",
+        "Sus webs, fichas de Google y redes",
+        "Un resumen cada lunes con lo que ha cambiado"
       ],
       "piezas": [
-        "mkt-linkedin",
-        "mkt-fotos",
-        "mkt-campanas"
-      ]
-    },
-    {
-      "slug": "marketing-video-campanas",
-      "departamento": "marketing",
-      "nombre": "Vídeo + Campañas",
-      "tipo": "combinacion",
-      "cuota": 209,
-      "alta": 630,
-      "incluye": [
-        "Las dos bandas"
-      ],
-      "piezas": [
-        "mkt-videos",
-        "mkt-campanas"
+        "mkt-competencia"
       ]
     },
     {
       "slug": "marketing-completa",
       "departamento": "marketing",
-      "nombre": "Marketing completo",
+      "nombre": "Contenido y competencia",
       "tipo": "completo",
-      "cuota": 279,
-      "alta": 660,
+      "cuota": 149,
+      "alta": 450,
       "incluye": [
-        "Redes, vídeo y campañas",
+        "Contenido con IA y análisis de la competencia",
         "Todo con tu identidad de marca"
       ],
       "piezas": [
-        "mkt-linkedin",
         "mkt-fotos",
         "mkt-videos",
-        "mkt-campanas"
+        "mkt-competencia"
       ]
     },
     {

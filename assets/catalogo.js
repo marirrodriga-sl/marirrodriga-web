@@ -6,7 +6,7 @@
    catalogo_cotiza(). Este fichero es su copia para que la web funcione sin
    servidor.
 
-   Huella de las 59 piezas publicables y vigentes: f0c978a3ea2027e6c50087149fee3e01
+   Huella de las 58 piezas publicables y vigentes: 58f76fb4c90f02dfff10f5863eff503a
    (md5 de slug|eur|alta|nombre|limite ordenado por slug; la comprueba
    scripts/verificar-catalogo.mjs contra lo que diga la base)
 
@@ -15,7 +15,7 @@
    ═════════════════════════════════════════════════════════════════════════ */
 
 const CATALOGO = {
-  generado: '2026-11-25',
+  generado: '2026-11-26',
   suelo: 49,
   // [piezas_min, piezas_max, bonificación %]  ·  tope 20 %
   escala: [[1,3,0],[4,5,10],[6,7,15],[8,null,20]],
@@ -289,11 +289,6 @@ const CATALOGO = {
       canales: null,
       integra: null,
       excluye: null },
-    { slug: 'mkt-linkedin', nombre: 'Publicación automática en LinkedIn', cat: 'a_medida', regimen: 'a_medida', base: null, eur: 29, setup: 100,
-      limite: 'hasta 20 publicaciones/mes · solo LinkedIn',
-      canales: null,
-      integra: null,
-      excluye: null },
     { slug: 'mkt-fotos', nombre: 'Fotos de marca, publicadas', cat: 'a_medida', regimen: 'a_medida', base: null, eur: 49, setup: 150,
       limite: 'hasta 20 fotos/mes · una red incluida',
       canales: null,
@@ -304,8 +299,8 @@ const CATALOGO = {
       canales: null,
       integra: null,
       excluye: null },
-    { slug: 'mkt-campanas', nombre: 'Campañas: diseño y publicación', cat: 'a_medida', regimen: 'a_medida', base: null, eur: 149, setup: 450,
-      limite: 'una campaña al mes · hasta 12 piezas entre fotos y vídeos · 2 redes',
+    { slug: 'mkt-competencia', nombre: 'Análisis de la competencia', cat: 'a_medida', regimen: 'a_medida', base: null, eur: 49, setup: 150,
+      limite: 'hasta 5 competidores · un resumen semanal · solo fuentes públicas',
       canales: null,
       integra: null,
       excluye: null },

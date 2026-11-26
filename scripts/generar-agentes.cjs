@@ -119,7 +119,7 @@ const CONECTA = {
   '/finanzas': 'Conectado a tu facturación, tu correo y tu WhatsApp.',
   '/logistica': 'Conectado a tus pedidos, tus transportistas y tus proveedores.',
   '/datos-y-direccion': 'Conectado a tu facturación, tu agenda y tus conversaciones.',
-  '/marketing': 'Conectado a tus redes sociales y a tu identidad de marca.',
+  '/marketing': 'Conectado a tu identidad de marca, a tus redes y a las de tu competencia.',
   '/posicionamiento-online': 'Tu web hecha y llevada por nosotros, con los agentes que hacen que Google te encuentre.',
 };
 for (const d of DEPARTAMENTOS) {

@@ -1144,39 +1144,46 @@ const REVISION = {
     aMedida: ['Panel con tus datos', 'Correo semanal', 'Asistente al que preguntar', 'Conectar más fuentes'],
   },
 
+  /* 26-11-2026 · Marketing pasa a «Redes sociales» (Ismael): solo contenido
+     generado con IA (fotos y vídeos cortos) y el análisis de la competencia.
+     Fuera LinkedIn, las campañas y el vídeo vertical grabado. */
   '/marketing': {
     planes: 'marketing',
-    descripcion: 'Publica con tu voz en LinkedIn y en tus redes, genera fotos y vídeos con tu marca y monta campañas enteras con su calendario. Desde 78 €/mes.',
-    slugs: { 'Publicación automática en LinkedIn': 'mkt-linkedin', 'Fotos de marca, publicadas': 'mkt-fotos', 'Vídeos cortos, publicados': 'mkt-videos', 'Campañas: diseño y publicación': 'mkt-campanas' },
+    pill: 'Redes sociales',
+    h1Busqueda: 'Contenido para redes sociales con IA y análisis de la competencia',
+    titulo: 'Contenido para redes con IA y análisis de la competencia | Marirrodriga IA',
+    descripcion: 'Fotos y vídeos cortos generados con IA y con tu marca, listos para tus redes, y un agente que vigila a tu competencia y te resume lo que cambia. Desde 49 €/mes.',
+    h1: ['Contenido para tus redes,', 'sin que te robe la semana.'],
+    lead: 'No es que no sepas qué contar: es que hacer la foto o el vídeo cuesta un tiempo que no tienes, y pasan semanas sin publicar. <strong>Esto te lo deja hecho con tu marca, y además te cuenta qué está haciendo tu competencia.</strong>',
+    slugs: { 'Fotos de marca, publicadas': 'mkt-fotos', 'Vídeos cortos, publicados': 'mkt-videos' },
+    piezaNueva: { n: 'Análisis de la competencia', slug: 'mkt-competencia', eur: 49, setup: 150, lim: 'hasta 5 competidores · un resumen semanal · solo fuentes públicas',
+      d: 'Vigila las webs, las fichas de Google y las redes de tus competidores, y cada lunes te resume lo que ha cambiado: precios, ofertas y lo que les funciona.' },
     problemaSolucion: {
       titulo: ['Lo que pasa hoy.', 'Y lo que cambia.'],
-      lead: 'Depende de lo que te frene: no tener tiempo para publicar, no tener fotos ni vídeos o no tener una campaña detrás.',
+      lead: 'Depende de lo que te falte: contenido que publicar o saber qué hace tu competencia.',
       filas: [
-        { sector: 'Publicar con constancia · comercios, servicios y empresas',
-          hoy: 'Sabes qué contar, pero hacer la foto, escribir el texto y subirlo cuesta una hora que no tienes. Y pasan tres semanas sin publicar.',
-          solucion: 'Escribe con tu voz a partir de lo que pasa en tu negocio, genera la foto con tu marca y lo publica en LinkedIn o en la red que elijas. Nada sale sin que lo veas.' },
-        { sector: 'Vídeo · negocios que venden por Instagram o TikTok',
-          hoy: 'Lo que más se ve son los reels y las stories, y un vídeo hay que grabarlo, montarlo y subirlo. Así que no se hace.',
-          solucion: 'Genera vídeos verticales de cinco a diez segundos con tu marca, los monta y los publica en la red que elijas.' },
-        { sector: 'Campañas · lanzamientos, temporadas y ofertas',
-          hoy: 'Una campaña no son publicaciones sueltas, y montarla con su calendario es un trabajo que siempre se queda para la semana que viene.',
-          solucion: 'Diseña la idea, produce las fotos y los vídeos y lo publica todo con su calendario en dos redes.' },
+        { sector: 'Contenido · comercios, servicios y marcas',
+          hoy: 'Sabes que tienes que publicar, pero hacer una foto que quede bien o un vídeo corto cuesta un tiempo que no tienes. Y pasan semanas sin subir nada.',
+          solucion: 'Genera con IA fotos y vídeos cortos con la identidad de tu marca, listos para publicar en tus redes. Nada sale sin que lo veas.' },
+        { sector: 'Competencia · cualquier negocio con rivales en su zona',
+          hoy: 'Te enteras de que tu competencia ha bajado precios o lanzado una oferta cuando un cliente te lo dice. Y no tienes tiempo de mirar sus redes cada semana.',
+          solucion: 'Un agente vigila sus webs, fichas de Google y redes, y cada lunes te resume solo lo que ha cambiado y lo que les está funcionando.' },
       ],
     },
     pack: {
-      gancho: 'Un solo agente que conoce tu marca y publica por ti, con tu voz.',
-      entra: ['Lo que pasa en tu negocio', 'Tu identidad de marca', 'El calendario del mes'],
-      accesos: ['Tu identidad: colores, tono y tipo de foto', 'Tus redes sociales', 'Tu calendario de publicaciones', 'Lo que pasa en tu negocio'],
-      sale: ['Publicado, con tu voz', 'Fotos y vídeos con tu marca', 'La campaña, entera'],
+      gancho: 'Un solo agente que conoce tu marca y no pierde de vista a tu competencia.',
+      entra: ['Tu identidad de marca', 'Lo que quieres contar', 'Tus competidores'],
+      accesos: ['Tu identidad: colores, tono y tipo de foto', 'Tus redes sociales', 'Las webs, fichas de Google y redes de tu competencia'],
+      sale: ['Fotos y vídeos con tu marca', 'Listos para publicar', 'El resumen de tu competencia, cada lunes'],
       ramas: [
-        ['Redes', ['Escribe con tu voz', 'Genera la foto con tu marca', 'Publica en LinkedIn y en una red más']],
-        ['Vídeo', ['Vídeos verticales de 5 a 10 s', 'Para reels y stories', 'Montados y publicados']],
-        ['Campañas', ['Diseña la idea', 'Produce hasta 12 fotos y vídeos', 'Las publica con su calendario']],
+        ['Contenido', ['Fotos generadas con tu marca', 'Vídeos cortos para reels y stories', 'Nada sale sin que lo veas']],
+        ['Competencia', ['Vigila webs, fichas de Google y redes', 'Te resume solo lo que ha cambiado', 'Y lo que les está funcionando']],
       ],
-      comoVa: 'Es un solo agente: la identidad que fija una vez es la que respetan las fotos, los vídeos y las campañas.',
+      comoVa: 'Es un solo agente: lo que ve en tu competencia le sirve para saber qué contenido te conviene.',
     },
-    aMedidaEj: 'Si solo quieres una parte —por ejemplo, publicar en LinkedIn sin fotos— o un poco de cada banda, cuéntanoslo y te mandamos un presupuesto cerrado para lo tuyo.',
-    aMedida: ['Publicar en LinkedIn', 'Fotos de marca', 'Vídeos cortos', 'Campañas', 'Más redes'],
+    aMedidaEj: 'Si solo quieres una parte —por ejemplo, solo fotos, sin vídeos— cuéntanoslo y te mandamos un presupuesto cerrado para lo tuyo.',
+    aMedida: ['Fotos con IA', 'Vídeos cortos con IA', 'Análisis de la competencia', 'Más competidores'],
+    faqExtra: [['¿Se entera mi competencia?', 'No. Solo mira lo que es público —su web, su ficha de Google y sus redes—, nunca entra en zonas con contraseña y no interactúa con ellos.']],
   },
 
   '/posicionamiento-online': {
@@ -1221,11 +1228,12 @@ const REVISION = {
 for (const d of DEPARTAMENTOS) {
   const r = REVISION[d.ruta];
   if (!r) continue;
-  const { slugs, piezaNueva, pack, ...resto } = r;
+  const { slugs, piezaNueva, pack, faqExtra, ...resto } = r;
   Object.assign(d, resto);
   Object.assign(d.pack, pack, { pie: r.presupuesto ? PIE_PRESUPUESTO : PIE_BANDAS });
   for (const z of d.piezas) if (slugs[z.n]) z.slug = slugs[z.n];
   if (piezaNueva) d.piezas.push(piezaNueva);
+  if (faqExtra) d.faq.splice(2, 0, ...faqExtra);
   d.faq = d.faq.map(([q, a]) => [q, a.replace('cada una lleva su cuota con su límite al lado', r.presupuesto ? 'por eso tiene una cuota, con su límite al lado, que fijamos en el presupuesto' : 'cada banda lleva su cuota con su límite al lado')]);
 }
 for (const d of DEPARTAMENTOS) if (d.planes === 'atencion') {
