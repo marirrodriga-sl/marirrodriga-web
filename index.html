@@ -70,7 +70,7 @@
   <link rel="stylesheet" href="/assets/base.css?v=20261112c">
   <link rel="stylesheet" href="/assets/asesoria.css">
   <link rel="stylesheet" href="/assets/diagnostico.css?v=20261112">
-  <link rel="stylesheet" href="/assets/home.css?v=20261116a">
+  <link rel="stylesheet" href="/assets/home.css?v=20261126a">
 </head>
 <body class="home">
 
@@ -174,7 +174,13 @@
       <h2 class="hm-h2">Después, dos caminos</h2>
     <p class="hm-p hm-p-corta">Elige el que encaje con cada tarea, o ninguno. Cada camino lleva su precio en el informe.</p>
     </div>
-    <div class="hm-caminos">
+    <!-- 26-11-2026 · En el móvil, un selector y se ve un camino cada vez
+         (Ismael). En escritorio el selector no se pinta y van los dos. -->
+    <div class="hm-tabs" role="tablist" aria-label="Los dos caminos">
+      <button type="button" role="tab" aria-selected="true" data-camino="0">Formar al equipo</button>
+      <button type="button" role="tab" aria-selected="false" data-camino="1">Montar el software</button>
+    </div>
+    <div class="hm-caminos" data-activo="0">
       <article class="hm-camino">
         <h3>Formar a tu equipo</h3>
         <p>Les enseñamos a resolver la tarea con IA ellos mismos, con sus programas y sus casos. Encaja cuando la tarea cambia a menudo y el equipo tiene tiempo para aprender.</p>
@@ -199,7 +205,7 @@
       <p class="hm-p">Cuatro condiciones. Están para que la consultoría sirva, no para quedar bien.</p>
     </div>
     <dl class="hm-condiciones">
-      <div><dt>Empresas de 5 a 50 personas</dt><dd>Por debajo, casi siempre sirve mejor uno de nuestros productos con precio cerrado.</dd></div>
+      <div><dt>Empresas de 5 a 50 personas</dt><dd>Es donde más horas se recuperan con la consultoría.</dd></div>
       <div><dt>En toda España</dt><dd>En Castilla y León vamos a tu oficina. Fuera, las sesiones son por videollamada; si prefieres que vayamos, el viaje corre a cargo de la empresa.</dd></div>
       <div><dt>Quien dirige participa</dt><dd>Sin la persona que decide, el informe se queda en un cajón. Es la condición que no movemos.</dd></div>
       <div><dt>Solo 10 plazas a coste 0</dt><dd>Cada consultoría la hace quien después monta el trabajo, así que van de una en una. Cuando se acaben las 10, costará 350 € + 73,50 € de IVA.</dd></div>
@@ -231,13 +237,14 @@
   <div class="hm-ancho hm-dos">
     <div class="hm-dos-izq hm-marco">
       <h2 class="hm-h2">Quién va a tu empresa</h2>
-      <p class="hm-p">Quien hace la consultoría es quien después monta el trabajo. No hay comerciales en medio ni alguien distinto en cada reunión.</p>
+      <p class="hm-p">Quien hace la consultoría es quien después monta el trabajo: cerca de ti y de tu equipo, y la misma persona en cada reunión.</p>
     </div>
     <div class="hm-persona">
       <img src="/assets/img/isma.jpg" alt="Ismael Marirrodriga, de Marirrodriga IA" width="560" height="560" loading="lazy">
       <div>
         <h3>Ismael Marirrodriga</h3>
         <p class="hm-cargo">Implementación de IA</p>
+        <p class="hm-solo-movil">Hace la consultoría y después monta el trabajo, cerca de ti y de tu equipo.</p>
         <p>Hace las consultorías: se sienta contigo, habla con tu equipo y mira cómo se trabaja. Después monta los agentes, los flujos y las conexiones con los programas que ya usáis.</p>
         <p>Sabe lo que la IA puede hacer hoy en una empresa y, sobre todo, lo que no. Por eso el informe dice también lo que no compensa tocar.</p>
         <p class="hm-persona-mas"><a class="hm-enlace" href="/conocenos">Conócenos</a> · <a class="hm-enlace" href="/agencia-ia-palencia">Somos una agencia de IA de Palencia</a></p>
@@ -536,5 +543,18 @@ Cal("init", { origin: "https://cal.com" });
 <script defer src="/assets/nav.js"></script>
 <script defer src="/assets/plazas.js"></script>
 <script defer src="/assets/origen.js"></script>
+<script>
+  /* 26-11-2026 · Selector de «Dos caminos» en el móvil */
+  (function () {
+    var tabs = document.querySelectorAll('.hm-tabs [data-camino]'), caja = document.querySelector('.hm-caminos');
+    if (!caja) return;
+    tabs.forEach(function (b) {
+      b.addEventListener('click', function () {
+        caja.setAttribute('data-activo', b.getAttribute('data-camino'));
+        tabs.forEach(function (o) { o.setAttribute('aria-selected', o === b ? 'true' : 'false'); });
+      });
+    });
+  })();
+</script>
 </body>
 </html>

@@ -334,3 +334,93 @@
   .hm-cab .hm-botones { order: 2; margin-top: 26px; justify-content: center; }
   .hm-cab .hm-botones .btn { display: none; }
 }
+
+/* ═══ MÓVIL COMPACTO (26-11-2026, Ismael) ═══════════════════════════════════
+   La home en el móvil eran ~13 pantallas hasta el formulario. Nada se quita y
+   nada se desliza de lado: la hoja de la consultoría se compacta como en
+   escritorio, las listas pasan a 2 × 2, «Dos caminos» va con selector y las
+   franjas alternan fondos bien distintos. En escritorio no cambia nada. */
+.hm-tabs, .hm-solo-movil { display: none; }
+@media (max-width: 680px) {
+  .hm-sec { padding: 40px 0; }
+  .hm-marco-sep { margin-bottom: 18px; }
+  .hm-dos { gap: 18px; }
+
+  /* La hoja de la consultoría, compacta (el mismo esquema que en escritorio) */
+  .hm-hoja { padding: 16px 14px 14px; }
+  .hm-hoja-cab { padding-bottom: 10px; }
+  .hm-hoja-cab h2 { font-size: 23px; }
+  .hm-hoja-cab p { font-size: 12px; }
+  .hm-sesiones { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 10px; }
+  .hm-sesiones > li { grid-template-columns: 1fr; gap: 2px; align-content: start; padding: 10px 0; }
+  .hm-sesiones > li.hm-ses-final { grid-column: 1 / -1; grid-template-columns: 16px 1fr; gap: 6px; }
+  .hm-ses-num { font-size: 11.5px; }
+  .hm-sesiones b { font-size: 12.5px; line-height: 1.25; }
+  .hm-sesiones span { font-size: 11.5px; line-height: 1.4; }
+  .hm-ses-final .hm-ramas { display: grid; grid-template-columns: 1fr 1fr; column-gap: 10px; }
+  .hm-hoja-pie { display: grid; grid-template-columns: 1fr 1fr 1.15fr; column-gap: 10px; margin: 8px 0 12px; }
+  .hm-hoja-pie div { grid-template-columns: 1fr; gap: 2px; padding: 2px 0; font-size: 11.5px; line-height: 1.4; }
+  .hm-hoja-pie dt { font-size: 11px; }
+  .hm-plazas dd small { font-size: 10.5px; }
+  .hm-hoja-nota { font-size: 11px; margin-top: 8px; }
+
+  /* Listas en 2 × 2: qué te llevas, para quién es, departamentos */
+  .hm-lista, .hm-condiciones, .hm-deptos { grid-template-columns: 1fr 1fr; gap: 8px; border-top: 0; }
+  .hm-lista li { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 12px 11px; font-size: 12.5px; line-height: 1.45; }
+  .hm-lista li::before { display: none; }
+  .hm-condiciones div { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 11px; }
+  .hm-condiciones dt { font-size: 13px; line-height: 1.25; }
+  .hm-condiciones dd { font-size: 11.5px; line-height: 1.45; }
+  .hm-deptos a { background: #fff; border: 0; border-left: 2px solid var(--purple); border-radius: 0 10px 10px 0; padding: 10px 10px; height: 100%; }
+  .hm-deptos b { font-size: 12.5px; line-height: 1.25; }
+  .hm-deptos span { font-size: 11px; line-height: 1.4; }
+
+  /* Dos caminos: selector y uno cada vez */
+  .hm-tabs { display: flex; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16); border-radius: 999px; padding: 3px; margin-bottom: 12px; }
+  .hm-tabs button { flex: 1; font: inherit; font-size: 13px; font-weight: 600; padding: 9px 6px; border: 0; border-radius: 999px; background: none; color: rgba(255,255,255,.8); cursor: pointer; }
+  .hm-tabs button[aria-selected="true"] { background: var(--purple); color: #fff; }
+  .hm-caminos { grid-template-columns: 1fr; border-top: 0; }
+  .hm-caminos[data-activo="0"] .hm-camino:nth-child(2), .hm-caminos[data-activo="1"] .hm-camino:nth-child(1) { display: none; }
+  .hm-camino, .hm-camino + .hm-camino { padding: 14px; border: 1px solid rgba(255,255,255,.14); border-radius: 12px; background: rgba(255,255,255,.06); }
+  .hm-camino h3 { font-size: 22px; margin-bottom: 6px; }
+  .hm-camino p { font-size: 13.5px; line-height: 1.55; }
+  .hm-precio { margin-top: 12px; font-size: 14.5px !important; }
+
+  /* Quién va: foto pequeña al lado del nombre y dos líneas */
+  .hm-persona { grid-template-columns: 72px minmax(0, 1fr); gap: 14px; align-items: center; }
+  .hm-persona img { width: 72px; height: 72px; border-radius: 50%; }
+  .hm-persona h3 { font-size: 21px; }
+  .hm-cargo { margin: 0 0 4px; }
+  .hm-persona p:not(.hm-cargo):not(.hm-solo-movil):not(.hm-persona-mas) { display: none; }
+  .hm-solo-movil { display: block; font-size: 13px; line-height: 1.5; color: var(--ink-2); }
+  .hm-persona-mas { margin-top: 8px; font-size: 13px; }
+
+  /* Formulario completo, con las opciones en dos columnas */
+  #solicitar .as-ops { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+  #solicitar .as-op span { font-size: 12.5px; }
+  #solicitar .as-op small { font-size: 10.5px; }
+  .hm-solicitar-hoja { padding: 22px 14px 20px; }
+  #solicitar .as-bloque { padding: 18px 0; }
+
+  /* Franjas con salto de color claro */
+  #informe { background: #EFEAFD; }
+  #caminos { background: radial-gradient(125% 95% at 8% 22%, #2A2142 0%, #1B1728 42%, #14111C 72%, #100E16 100%); color: #fff; }
+  #caminos .hm-marco { background: rgba(255,255,255,.06); border-color: rgba(216,202,255,.5); }
+  #caminos .hm-h2, #caminos .hm-camino h3, #caminos .hm-precio { color: #fff !important; }
+  #caminos .hm-p, #caminos .hm-camino p { color: rgba(255,255,255,.78); }
+  #caminos .hm-iva { color: rgba(255,255,255,.6) !important; }
+  #para-quien { background: #FFFFFF; }
+  #para-quien .hm-condiciones div { background: var(--cream); }
+  #departamentos { background: #EDE7DD; }
+  #quienes { background: #FFFFFF; }
+}
+@media (max-width: 680px) {
+  #solicitar .as-op > span { padding: 10px 11px; }
+  #solicitar .as-op input[type="checkbox"] + span { padding-right: 30px; }
+}
+@media (max-width: 680px) {
+  .hm-sesiones > li > div { line-height: 1.3; }
+  .hm-sesiones > li > div > span { display: block; margin-top: 3px; line-height: 1.35; }
+  .hm-ramas li span { line-height: 1.35; }
+}
+@media (max-width: 680px) { .hm-sesiones .hm-ramas li { line-height: 1.35; font-size: 11.5px; } }
